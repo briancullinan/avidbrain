@@ -64,8 +64,10 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 		
 		<div class="navigation-left">
 			<logo>
-				<span class="icon amozek"></span>
-				<a href="/" class="logo">amozek</a>
+				<a href="/">
+					<span class="icon amozek"></span>
+					<span class="logo">amozek</span>
+				</a>
 			</logo>
 			<?php include($app->dependents->APP_PATH.'navigation/navigation.basics.php'); ?>
 			<ul>

@@ -76,13 +76,20 @@ logo{
 	color: #fff;
 	font-weight: 300;
 	font-weight: 400;
+	font-weight: 700;
 }
 logo .char3{
 	color: #FF0066;
-	font-weight: 700;
 }
-a.logo{
+logo a{
 	display: block;
+	color: #fff;
+}
+logo a:hover{
+	display: block;
+	color: #FF0066;
+}
+logo a:hover .char3{
 	color: #fff;
 }
 
