@@ -1,0 +1,96 @@
+RewriteEngine On
+
+RewriteRule ^subjects(.*) /categories$1 [R=301,NC,L]
+RedirectMatch 301 /find-a-tutor/(.*)/(.*)/(.*) /categories/$3/$2/$1
+RedirectMatch 301 /cities/(.*)/(.*)/(.*) /categories/$3/$2/$1
+RedirectMatch 301 /cities/(.*)/(.*) /tutors/$2/$1
+RedirectMatch 301 /states/(.*) /tutors/$1/
+RedirectMatch 301 /VIP /signup/students/promocode
+RedirectMatch 301 /vip /signup/students/promocode
+
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [QSA,L]
+
+RewriteCond %{REQUEST_URI} /+[^\.]+$
+RewriteRule ^(.+[^/])$ %{REQUEST_URI}/ [R=301,L]
+
+<FilesMatch "\.(js|css|html|htm|php|xml)$">
+	SetOutputFilter DEFLATE
+</FilesMatch>
+
+#RewriteCond %{HTTP_HOST} !^www\.avidbrain\.com [NC]
+#RewriteRule ^(.*)$ https://www.avidbrain.com/$1 [R=301,L]
+
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css  application/x-javascript
+    BrowserMatch ^Mozilla/4 gzip-only-text/html
+    BrowserMatch ^Mozilla/4\.0[678] no-gzip
+    BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+</IfModule>
+
+
+# limit indexing of directories
+Options All -Indexes
+
+# protect the htaccess file,
+# this is done by default with apache config file,
+# but you never know.
+<files .htaccess>
+order allow,deny
+deny from all
+</files>
+
+# disable the server signature
+ServerSignature Off
+
+# limit file uploads to 10mb
+LimitRequestBody 10240000
+php_value upload_max_filesize 25M
+php_value post_max_size 25M
+
+#Set Directory Index
+DirectoryIndex index.php index.html 404.php
+    
+
+# block bad query strings (hackers/bots), please be aware this might break some plugins
+# QUERY STRING EXPLOITS
+<IfModule mod_rewrite.c>
+	RewriteCond %{QUERY_STRING} \.\.\/    [NC,OR]
+	RewriteCond %{QUERY_STRING} boot\.ini [NC,OR]
+	RewriteCond %{QUERY_STRING} tag\=     [NC,OR]
+	RewriteCond %{QUERY_STRING} ftp\:     [NC,OR]
+	RewriteCond %{QUERY_STRING} http\:    [NC,OR]
+	RewriteCond %{QUERY_STRING} https\:   [NC,OR]
+	RewriteCond %{QUERY_STRING} mosConfig [NC,OR]
+	RewriteCond %{QUERY_STRING} ^.*(\[|\]|\(|\)|<|>|'|"|;|\?|\*).* [NC,OR]
+	RewriteCond %{QUERY_STRING} ^.*(%22|%27|%3C|%3E|%5C|%7B|%7C).* [NC,OR]
+	RewriteCond %{QUERY_STRING} ^.*(%0|%A|%B|%C|%D|%E|%F|127\.0).* [NC,OR]
+	RewriteCond %{QUERY_STRING} ^.*(globals|encode|config|localhost|loopback).* [NC,OR]
+	RewriteCond %{QUERY_STRING} ^.*(request|select|insert|union|declare|drop).* [NC]
+	RewriteRule ^(.*)$ - [F,L]
+</IfModule>
+
+<IfModule mod_expires.c>
+   ExpiresActive on
+   ExpiresDefault "access plus 1 month"
+   ExpiresByType application/javascript "access plus 1 year"
+   ExpiresByType image/x-ico "access plus 1 year"
+   ExpiresByType image/jpg "access plus 14 days"
+   ExpiresByType image/jpeg "access plus 14 days"
+   ExpiresByType image/gif "access plus 14 days"
+   ExpiresByType image/png "access plus 14 days"
+   ExpiresByType text/css "access plus 14 days"
+</IfModule>
+
+
+Redirect 301 /terms-of-service /terms-of-use
+Redirect 301 /tutors-by-location-and-subject /tutors-by-location
+Redirect 301 /states /tutors-by-location
+Redirect 301 /dashboard /
+Redirect 301 /help/contact-us /help/contact
+Redirect 301 /help/our-staff /staff
+Redirect 301 /help/reset-password /help/forgot-password
+Redirect 301 /signup/students	/signup/student
+Redirect 301 /learn-more/how-it-works	/how-it-works
+#Redirect 301 /math-tutors	/categories/math

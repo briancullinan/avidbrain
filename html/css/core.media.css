@@ -1,0 +1,57 @@
+@charset "utf-8";
+@media only screen and (max-width: 992px){
+	h1{
+		font-size: 2.5rem;
+	}
+	h2{
+		font-size: 2rem;
+	}
+	h3{
+		font-size: 1.5rem;
+	}
+	navigation{
+		left: -350px;
+	}
+	main, .sub-active main{
+		padding-left: 0px;
+	}
+	.sub-active .main-content, .main-content{
+		padding-left: 10px;
+	}
+	.main-content{
+		padding-top: 60px;
+	}
+	.active-user .activate-mobile{
+		display: block;
+	}
+	.trigger-user{
+		z-index: 555;
+	}
+	
+	navigation logo{
+		display: none;
+	}
+	.navigation-left{
+		height: 100%;
+		background: rgba(0, 0, 0, 0.95);
+	}
+	badge{
+		width: 100%;
+	}
+	footer{
+		z-index: 33;
+		height: auto;
+		min-height: 300px;
+	}
+	.toast{
+		background: red;
+	}
+	.hiw-col{
+		margin-top: 25px;
+	}
+}
+@media only screen and (min-width: 993px){
+	.trigger{
+		display: none;
+	}
+}

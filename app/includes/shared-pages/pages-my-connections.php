@@ -1,0 +1,1 @@
+<?php if(isset($app->currentuser->my_connections)){printer($app->currentuser->my_connections);} ?>

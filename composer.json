@@ -1,0 +1,19 @@
+{
+    "require": {
+        "slim/slim": "~2.0",
+        "slim/extras":  "2.*",
+        "phpfastcache/phpfastcache": "~3.0.4",
+        "stripe/stripe-php": "2.*",
+        "mailgun/mailgun-php": "~1.7.2",
+        "intervention/image": "~2.0",
+        "intervention/imagecache": "2.0.1",
+        "matthiasmullie/minify": "1.*",
+        "doctrine/dbal": "2.5.1",
+        "zeuxisoo/slim-whoops": "0.3.0",
+        "doctrine/cache": "^1.4",
+        "fguillot/picofeed": "@stable",
+        "twilio/sdk": "^4.3",
+        "google/apiclient": "^1.1",
+        "abraham/twitteroauth": "^0.5.4"
+    }
+}

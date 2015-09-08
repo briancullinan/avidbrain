@@ -1,0 +1,3 @@
+#!/bin/bash
+mysqldump -h 7b9488aeb86ce5dc0843d7298b2b70b44ddeb574.rackspaceclouddb.com -u brainiac -p avidbrain > avidbrain.sql
+mysqldump -h 7b9488aeb86ce5dc0843d7298b2b70b44ddeb574.rackspaceclouddb.com -u brainiac -p ab_messaging > ab_messaging.sql

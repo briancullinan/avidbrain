@@ -1,0 +1,260 @@
+.how-it-works-slide{
+	position: relative;
+	height: 500px;
+	margin-top: -500px;
+	width: 100%;
+	left: 0px;
+	top:0px;
+	z-index: 444;
+	color: #222;
+	
+	background: #e3f2fd;
+
+}
+.how-it-works-slide.slideDown{
+    animation-name: slideDown;
+    animation-duration: .5s;
+    margin-top: 0px;
+}
+.how-it-works-slide.slideUp{
+    animation-name: slideUp;
+    animation-duration: .5s;
+    margin-top: -500px;
+}
+.how-it-works-image img{
+	background: #2196F3;
+	-webkit-border-radius: 300px;
+	-moz-border-radius: 300px;
+	border-radius: 300px;
+	padding: 0px 10px;
+}
+
+
+@-webkit-keyframes slideUp {
+    from {margin-top: 0px}
+    to {margin-top: -500px;}
+}
+@-moz-keyframes slideUp {
+    from {margin-top: 0px}
+    to {margin-top: -500px;}
+}
+@-o-keyframes slideUp {
+    from {margin-top: 0px}
+    to {margin-top: -500px;}
+}
+@keyframes slideUp {
+    from {margin-top: 0px}
+    to {margin-top: -500px;}
+}
+
+
+@-webkit-keyframes slideDown {
+    from {margin-top: -500px;}
+    to {margin-top: 0px}
+}
+@-moz-keyframes slideDown {
+    from {margin-top: -500px;}
+    to {margin-top: 0px}
+}
+@-o-keyframes slideDown {
+    from {margin-top: -500px;}
+    to {margin-top: 0px}
+}
+@keyframes slideDown {
+    from {margin-top: -500px;}
+    to {margin-top: 0px;}
+}
+
+
+.how-it-works-title {
+  font-size: 26px;
+}
+
+.how-it-works-slide-inside{
+	padding: 20px;
+}
+.close-it-works{
+	position: absolute;
+	right: 0px;
+	top:0px;
+	color: #333;
+	font-size: 30px;
+	padding: 10px 15px;
+	cursor: pointer;
+}
+.close-it-works:hover{
+	opacity: .8;
+}
+
+.homepage-items{
+	
+	position: absolute;
+	z-index: 33;
+	margin: auto;
+	position: absolute;
+	top: 0; left: 0; right: 0;
+	padding-top: 60px;
+	color: #fff;
+}
+.homepage-items h1{
+	
+    text-shadow: 0px 0px 20px black;
+}
+.homepageslide{
+	text-align: center;
+	position: relative;
+	margin: 0px;
+}
+
+.homepage-items .how-it-works{
+    margin-top: 30px;
+    color: #222;
+    background: #fff;
+    display: inline-block;
+    padding: 10px 25px;
+    background: rgba(255, 255, 255, 0.7);
+    font-weight: bold;
+    -moz-box-shadow: 0 0 10px #000;
+	-webkit-box-shadow: 0 0 10px #000;
+	box-shadow: 0 0 10px #000;
+    font-size: 16px;
+    cursor: pointer;
+
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.slider .indicators .indicator-item{
+	background: #fff;
+}
+.slider .indicators .indicator-item.active{
+	background: #99ff00;
+}
+
+.motivation{
+	float: left;
+	width: 100%;
+	padding: 20px;
+	text-align: center;
+	color: #fff;
+}
+.motivation-quote{
+	font-size: 22px;
+}
+.motivation-quote i{
+	font-size: 26px;
+	color: #b2ff59;
+}
+.motivation-author{
+	font-size: 12px;
+	color: #d8f3ff;
+}
+.top-tutors .user-name{
+	max-height: 30px;
+	overflow: hidden;
+}
+.tutor-results-subjects{
+	max-height: 100%;
+	overflow: hidden;
+}
+.top-tutors .toptutors-cell{
+	max-height: 230px;
+	overflow: hidden;
+	margin-bottom: 20px;
+}
+.homepagewide{
+	width: 100%;
+	float: left;
+}
+.open-jobs{
+	margin-bottom: 15px;
+}
+.open-jobs .description{
+	min-height: 70px;
+}
+.open-jobs .block-bottom{
+	min-height: 120px;
+}
+.top-tutors h2{
+	margin-bottom: 15px;
+}
+.top-tutors .short-description{
+	font-size: 16px;
+}
+.top-tutors .tutor-results-subjects{
+	font-size: 12px;
+}
+.homepage-benefits, .top-tutors{
+	width: 100%;
+	float: left;
+	margin-top: 20px;
+}
+.homepage-search{
+	width: 100%;
+	float: left;
+	position: relative;
+}
+.homepage-search-button{
+	background: red;
+	position: absolute;
+	right: 0px;
+	top:0px;
+}
+.slider .indicators{
+	padding: 5px;
+	z-index: 33;
+	bottom: 40px;
+}
+.find-a-tutor{
+	float: left;
+	width: 100%;
+	padding-top: 15px;
+	margin-top: -40px;
+	position: relative;
+	z-index: 33;
+	background: #E4E4E4;
+	border: solid 1px #ccc;
+}
+.homepage-benefits .collection i{
+	color: #78D700;
+	font-size: 22px;
+}
+
+
+.mainhomepage .jobs-block .title{
+	font-size: 18px;
+}
+
+
+.win-an-ipad-mini{
+	width: 100%;
+	float: left;
+	background: #f50057;
+	color: #fff;
+	padding: 10px;
+}
+.mainhomepage .win-an-ipad-mini{
+	
+	margin-top: 40px;
+}
+.waim-title{
+	font-size: 55px;
+}
+.waim-button{
+	margin-bottom: 20px;
+}
+.waim-button a{
+	padding: 15px 30px;
+	font-size: 22px;
+}
+.waim-countdown{
+	margin-top: -10px;
+	margin-bottom: 20px;
+}
+.waim-deadline{
+	font-size: 12px;
+}
+.win-an-ipad-mini .responsive-img{
+	max-height: 300px;
+}
