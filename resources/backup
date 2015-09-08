@@ -1,2 +1,2 @@
 #!/bin/bash
-mysqldump -u root -p  avidbrain > avidbrain.sql
+mysqldump -u root -p  avidbrain > amozek.sql

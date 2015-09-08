@@ -1,4 +1,0 @@
-<?php
-
-notify('tracking');
-
