@@ -58,7 +58,7 @@
 	if(isset($app->user->email) && empty($app->user->status)){
 		$email = $app->crypter->encrypt($app->user->email);
 		$sessiontoken = $app->crypter->encrypt($app->user->sessiontoken);
-		$qalink = 'http://qa.avidbrain.dev/login.php?one='.$email.'&two='.$sessiontoken;
+		$qalink = $app->dependents->social->qa.'/login.php?one='.$email.'&two='.$sessiontoken;
 		$footerlinks[$qalink] = (object) array('name'=>'Questions & Answers');
 	}
 	elseif(isset($app->user->email) && isset($app->user->status)){
@@ -66,9 +66,9 @@
 		$footerlinks[$qalink] = (object) array('name'=>'Questions & Answers');
 	}
 	else{
-		$footerlinks['http://qa.avidbrain.dev'] = (object) array('name'=>'Questions & Answers');
+		$footerlinks[$app->dependents->social->qa] = (object) array('name'=>'Questions & Answers');
 	}
-	$footerlinks['http://blog.avidbrain.com'] = (object) array('name'=>'Our Blog');
+	$footerlinks[$app->dependents->social->blog] = (object) array('name'=>'Our Blog');
 	$footerlinks['/terms-of-use'] = (object) array('name'=>'Terms of Use');
 	$footerlinks['/help/contact'] = (object) array('name'=>'Contact Us');
 	$footerlinks['/staff'] = (object) array('name'=>'Our Staff');

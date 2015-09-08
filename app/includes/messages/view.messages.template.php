@@ -12,7 +12,7 @@
 				<div class="col s12 m2 l2">
 					<?php
 						
-						if(empty($message->usertype) && avidbrainemail($message->from_user)){
+						if(empty($message->usertype) && parent_company_email($message->from_user)){
 							$email = $message->from_user;
 							include($app->dependents->APP_PATH.'includes/user-profile/staff-block.php');
 						}

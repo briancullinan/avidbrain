@@ -110,7 +110,7 @@
 		$message = '<p>'. $app->contactus->message.'</p>';
 		$message.='<p><a href="'.$app->dependents->DOMAIN.'/sessions/view/'.$id.'">View Session</a></p>';
 		
-		$app->mailgun->to = 'david@avidbrain.com';
+		$app->mailgun->to = 'david'.$app->dependents->mailgun->EMAIL_DOMAIN;
 		$app->mailgun->subject = 'Contest Dispute';
 		$app->mailgun->message = $message;
 		$app->mailgun->send();

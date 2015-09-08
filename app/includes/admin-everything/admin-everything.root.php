@@ -14,7 +14,7 @@
 	$childen['create-tutor'] = (object) array('name'=>'Create Tutor','slug'=>'/admin-everything/create-tutor');
 	#$childen['xxx'] = (object) array('name'=>'xxx','slug'=>'/admin-everything/xxx');
 	
-	if($app->user->email=='david@avidbrain.com'){
+	if($app->user->email=='david'.$app->dependents->mailgun->EMAIL_DOMAIN){
 		
 		$childen['fix-photos'] = (object) array('name'=>'Fix Photos','slug'=>'/admin-everything/fix-photos');
 		$childen['fix-username'] = (object) array('name'=>'Fix Username','slug'=>'/admin-everything/fix-username');

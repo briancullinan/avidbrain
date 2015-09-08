@@ -11,7 +11,7 @@
 <?php
 	$email = $app->crypter->encrypt($app->user->email);
 	$sessiontoken = $app->crypter->encrypt($app->user->sessiontoken);
-	$qalink = 'http://qa.avidbrain.dev/login.php?one='.$email.'&two='.$sessiontoken;
+	$qalink = $app->dependents->social->qa.'/login.php?one='.$email.'&two='.$sessiontoken;
 ?>
 <a href="<?php echo $qalink; ?>" class="btn "><?php echo $app->dependents->SITE_NAME_PROPPER; ?> Q&A</a>
 <?php else: ?>

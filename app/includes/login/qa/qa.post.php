@@ -59,7 +59,7 @@
 			$prepeare = array(':email'=>$app->login->email);
 			$app->connect->executeQuery($sql,$prepeare);
 			
-			new Flash(array('action'=>'jump-to','location'=>'http://qa.avidbrain.dev/login.php?one='.$email.'&two='.$sessiontoken,'message'=>'You are now logged in'));
+			new Flash(array('action'=>'jump-to','location'=>$app->dependents->social->qa.'/login.php?one='.$email.'&two='.$sessiontoken,'message'=>'You are now logged in'));
 
 		}
 		else{

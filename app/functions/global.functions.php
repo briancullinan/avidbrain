@@ -288,17 +288,17 @@
 		$prepeare = array(':'.$type=>$email);
 		return $connect->executeQuery($sql,$prepeare)->fetch();
 	}
-	function avidbrainemail($email){
+	function parent_company_email($email){
 		$check = explode('@',$email);
 		if(isset($check[0])){
-			if(in_array('avidbrain.com', $check)){
+			if(in_array('amozek.com', $check)){
 				return true;
 			}
 		}
 	}
 	function doesuserexist($connect,$email){
 		
-		if(avidbrainemail($email)){
+		if(parent_company_email($email)){
 			return 'admin';
 		}
 		
@@ -395,7 +395,7 @@
 		
 		if(isset($_SESSION['user'])){
 			$email = $crypter->decrypt($_SESSION['user']['email']);
-			if(avidbrainemail($email)){
+			if(parent_company_email($email)){
 				$query = "UPDATE avid___admins SET sessiontoken = :sessiontoken WHERE `email` = :email ";
 				$prepare = array(':email'=>$email,':sessiontoken'=>NULL);
 				$logout = $connection->executeQuery($query,$prepare);	

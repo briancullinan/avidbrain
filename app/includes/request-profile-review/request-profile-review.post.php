@@ -2,7 +2,7 @@
 
 	if(isset($app->requestprofilereview) && $app->requestprofilereview->status=='reviewmyprofile'){
 		
-		$app->mailgun->to = 'david@avidbrain.com';
+		$app->mailgun->to = 'david'.$app->dependents->mailgun->EMAIL_DOMAIN;
 		$app->mailgun->subject = 'Someone needs their profile reviewed';
 		$app->mailgun->message = "Please review this user: ".$app->dependents->DOMAIN.$app->user->url." ";
 		$app->mailgun->send();

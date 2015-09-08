@@ -26,7 +26,7 @@
 					Contest Dispute
 				</button>
 			<?php else: ?>
-				<!-- AVIDBRAIN -->
+				<!-- <?php echo $app->dependents->SITE_NAME_PROPPER; ?> -->
 			<?php endif; ?>
 		</div>
 		

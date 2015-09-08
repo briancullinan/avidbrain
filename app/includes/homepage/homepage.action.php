@@ -205,7 +205,7 @@
 		try {
 		
 		    $reader = new Reader;
-		    $resource = $reader->download('http://qa.avidbrain.dev/feed/qa.rss');
+		    $resource = $reader->download($app->dependents->social->qa.'/feed/qa.rss');
 		
 		    $parser = $reader->getParser(
 		        $resource->getUrl(),

@@ -20,7 +20,7 @@
 				$this->email = $this->crypter->decrypt($_SESSION['user']['email']);
 				$this->sessiontoken = $this->crypter->decrypt($_SESSION['user']['sessiontoken']);
 				
-				if(avidbrainemail($this->email)==true){
+				if(parent_company_email($this->email)==true){
 					$this->table = 'avid___admins';
 					$select = "user.*";
 					$userResults = $this->connect->createQueryBuilder()->select($select)
@@ -87,7 +87,7 @@
 		
 		public function payment(){
 			
-			if(avidbrainemail($this->email)){
+			if(parent_company_email($this->email)){
 				$payment = true;
 				$this->creditcardonfile = true;
 			}

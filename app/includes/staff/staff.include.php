@@ -11,7 +11,7 @@
 							$image = $staff->my_avatar;
 						}
 						else{
-							$image = '/images/avidbrain.png';
+							$image = '/images/amozek.png';
 						}
 					?>
 					<div class="avatar staff"><img class="responsive-img" src="<?php echo $image; ?>" /></div>

@@ -105,3 +105,14 @@
     font-style: normal;
 
 }
+
+@font-face {
+	font-family: 'amozek';
+	src:url('/fonts/amozek/amozek.eot?kspjcv');
+	src:url('/fonts/amozek/amozek.eot?#iefixkspjcv') format('embedded-opentype'),
+		url('/fonts/amozek/amozek.ttf?kspjcv') format('truetype'),
+		url('/fonts/amozek/amozek.woff?kspjcv') format('woff'),
+		url('/fonts/amozek/amozek.svg?kspjcv#amozek') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}

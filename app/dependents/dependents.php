@@ -23,14 +23,24 @@
 	$dependents->SITE_NAME_PROPPER = 'Amozek';
 	
 	$dependents->mailgun = new stdClass();
-	$dependents->mailgun->SYSTEM_EMAIL = 'donotreply@avidbrain.com';
-	$dependents->mailgun->MAILGUN_DOMAIN = 'avidbrain.com';
+	$dependents->mailgun->SYSTEM_EMAIL = 'donotreply@amozek.com';
+	$dependents->mailgun->EMAIL_DOMAIN = '@amozek.com';
+	$dependents->mailgun->MAILGUN_DOMAIN = 'amozek.com';
 	$dependents->mailgun->MAILGUN_KEY = 'key-78294wr0c4mlq8d0nx-bma1pugoo0zg1';
 	$dependents->mailgun->MAILGUN_PUBLIC = 'pubkey-5nfmay4eqeewzb4mkk1qaw1xx4p7h-v9';
 	
 	$dependents->twilio = new stdClass();
 	$dependents->twilio->id = 'AC0b159b382464c3e1c63f5d18fdf7ca22'; 
-	$dependents->twilio->auth_token = 'e3d65fabfe6d0e6e688ad2f9a369946a'; 
+	$dependents->twilio->auth_token = 'e3d65fabfe6d0e6e688ad2f9a369946a';
+	
+	$dependents->social = new stdClass();
+	$dependents->social->twitter = 'https://twitter.com/avidbrain';
+	$dependents->social->facebook = 'https://www.facebook.com/avidbrain';
+	$dependents->social->linkedin = 'https://www.linkedin.com/company/avidbrain/';
+	$dependents->social->blog = 'http://blog.avidbrain.com';
+	$dependents->social->qa = 'http://qa.avidbrain.dev';
+	$dependents->social->pinterest = 'https://www.pinterest.com/avidbrain/';
+	//$dependents->social->xxxpotato = 'xxx';
 	
 	$dependents->scribblarAPI = '27D1B127-9CCB-A496-810CC85CDECC42D1';
 	
@@ -42,13 +52,13 @@
 	
 	//$dependents->offline = true;
 	
-	if($dependents->SERVER_NAME=='avidbrain2.dev'){
+	if($dependents->SERVER_NAME=='amozek.dev'){
 		
 		$dependents->database->HOST = 'localhost';
 		$dependents->database->DBUSER = 'root';
 		$dependents->database->DBPASS = 'root';
 		
-		$dependents->DOMAIN = 'http://avidbrain2.dev';
+		$dependents->DOMAIN = 'http://amozek.dev';
 		$dependents->DEBUG = true;
 		$dependents->MODE = 'development';
 		
@@ -56,46 +66,19 @@
 		$dependents->stripe->STRIPE_PUBLIC = 'pk_test_jIcjo9aRNH4Xm8uaWuGZdf7B';
 		
 	}
-	elseif($dependents->SERVER_NAME=='192.168.10.10'){
-		
-		$dependents->database->HOST = 'localhost';
-		$dependents->database->DBUSER = 'root';
-		$dependents->database->DBPASS = 'root';
-		
-		$dependents->DOMAIN = 'http://192.168.10.10';
-		$dependents->DEBUG = true;
-		$dependents->MODE = 'development';
-		
-		$dependents->stripe->STRIPE_SECRET = 'sk_test_RKw0H6vV3pyB5JsBuQKXU4sO';
-		$dependents->stripe->STRIPE_PUBLIC = 'pk_test_jIcjo9aRNH4Xm8uaWuGZdf7B';
-		
-	}
-	elseif($dependents->SERVER_NAME=='www.avidbrain.com'){
+	elseif($dependents->SERVER_NAME=='www.amozek.com'){
 		
 		$dependents->database->HOST = '7b9488aeb86ce5dc0843d7298b2b70b44ddeb574.rackspaceclouddb.com';
 		$dependents->database->DBUSER = 'brainiac';
 		$dependents->database->DBPASS = 'ipi}nGaN6P4QAEJtxJ3W^Xc%Q9aforDBwnpFk}B';
 		
-		$dependents->DOMAIN = 'https://www.avidbrain.com';
+		$dependents->DOMAIN = 'https://www.amozek.com';
 		$dependents->DEBUG = false;
 		$dependents->MODE = 'production';
 		
 		$dependents->stripe->STRIPE_SECRET = 'sk_live_XUObU4RQbEVKsWq8yU5XFjJU';
 		$dependents->stripe->STRIPE_PUBLIC = 'pk_live_QjMUIzGXr1yqTKehZrvwXCsQ';
 		
-	}
-	elseif($dependents->SERVER_NAME=='avidbra.in'){
-		
-		$dependents->database->HOST = 'localhost';
-		$dependents->database->DBUSER = 'root';
-		$dependents->database->DBPASS = 'ipi}nGaN6P4QAEJtxJ3W^Xc%Q9aforDBwnpFk}B';
-		
-		$dependents->DOMAIN = 'http://avidbra.in';
-		$dependents->DEBUG = true;
-		$dependents->MODE = 'testing';
-		
-		$dependents->stripe->STRIPE_SECRET = 'sk_test_RKw0H6vV3pyB5JsBuQKXU4sO';
-		$dependents->stripe->STRIPE_PUBLIC = 'pk_test_jIcjo9aRNH4Xm8uaWuGZdf7B';
 	}
 	
 	$includeme = array(

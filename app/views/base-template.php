@@ -63,7 +63,10 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 	<navigation>
 		
 		<div class="navigation-left">
-			<logo><a href="/" class="logo">amozek</a></logo>
+			<logo>
+				<span class="icon amozek"></span>
+				<a href="/" class="logo">amozek</a>
+			</logo>
 			<?php include($app->dependents->APP_PATH.'navigation/navigation.basics.php'); ?>
 			<ul>
 				<?php foreach($app->leftnav as $key=> $navitem): ?>
@@ -186,16 +189,16 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 						<h5 class="white-text">Follow Us</h5>
 						<ul class="follow-us">
 							<li>
-								<a href="https://www.facebook.com/avidbrain" target="_blank"><i class="fa fa-facebook"></i></a>
+								<a href="<?php echo $app->dependents->social->facebook; ?>" target="_blank"><i class="fa fa-facebook"></i></a>
 							</li>
 							<li>
-								<a href="https://twitter.com/avidbrain" target="_blank"><i class="fa fa-twitter"></i></a>
+								<a href="<?php echo $app->dependents->social->twitter; ?>" target="_blank"><i class="fa fa-twitter"></i></a>
 							</li>
 							<li>
-								<a href="https://www.linkedin.com/company/avidbrain/" target="_blank"><i class="fa fa-linkedin"></i></a>
+								<a href="<?php echo $app->dependents->social->linkedin; ?>" target="_blank"><i class="fa fa-linkedin"></i></a>
 							</li>
 							<li>
-								<a href="https://www.pinterest.com/avidbrain/" target="_blank"><i class="fa fa-pinterest"></i></a>
+								<a href="<?php echo $app->dependents->social->pinterest; ?>" target="_blank"><i class="fa fa-pinterest"></i></a>
 							</li>
 						</ul>
 					</div>
