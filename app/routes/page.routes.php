@@ -96,11 +96,15 @@
 	$routes['help'] = (object)array('url'=>'/help','slug'=>'help','route'=>'/help/','include'=>'help','protected'=>NULL,'permissions'=>array());
 	$routes['what-is-amozek'] = (object)array('url'=>'/help/what-is-amozek','slug'=>'what-is-amozek','route'=>'/help/what-is-amozek/','include'=>'help/what-is-amozek','protected'=>NULL,'permissions'=>array());
 	$routes['help-faqs'] = (object)array('url'=>'/help/faqs','slug'=>'faqs','route'=>'/help/faqs/','include'=>'help/faqs','protected'=>NULL,'permissions'=>array());
+	$routes['help-faqs-type'] = (object)array('url'=>'/help/faqs','slug'=>'faqs','route'=>'/help/faqs/:type/','include'=>'help/faqs','protected'=>NULL,'permissions'=>array());
 	$routes['help-how-to-videos'] = (object)array('url'=>'/help/how-to-videos','slug'=>'how-to-videos','route'=>'/help/how-to-videos/','include'=>'help/how-to-videos','protected'=>NULL,'permissions'=>array());
 	$routes['help-forgot-password'] = (object)array('url'=>'/help/forgot-password','slug'=>'forgot-password','route'=>'/help/forgot-password/','include'=>'help/forgot-password','protected'=>NULL,'permissions'=>array());
 	$routes['help-forgot-password-recovery'] = (object)array('url'=>'/help/forgot-password/recovery','slug'=>'recovery','route'=>'/help/forgot-password/recovery/:validationcode/','include'=>'help/forgot-password/recovery','protected'=>NULL,'permissions'=>array());
 	$routes['help-contact'] = (object)array('url'=>'/help/contact','slug'=>'contact','route'=>'/help/contact/','include'=>'help/contact','protected'=>NULL,'permissions'=>array());
 	$routes['safety-center'] = (object)array('url'=>'/help/safety-center','slug'=>'safety-center','route'=>'/help/safety-center/','include'=>'help/safety-center','protected'=>NULL,'permissions'=>array());
+	$routes['tutor-walkthrough'] = (object)array('url'=>'/help/tutor-walkthrough','slug'=>'tutor-walkthrough','route'=>'/help/tutor-walkthrough/','include'=>'help/tutor-walkthrough','protected'=>1,'permissions'=>array('tutor'));
+	$routes['tutor-walkthrough-step'] = (object)array('url'=>'/help/tutor-walkthrough','slug'=>'tutor-walkthrough','route'=>'/help/tutor-walkthrough/:step/','include'=>'help/tutor-walkthrough','protected'=>1,'permissions'=>array('tutor'));
+	
 	
 	// Staff
 	$routes['staff'] = (object)array('url'=>'/staff','slug'=>'staff','route'=>'/staff/','include'=>'staff','protected'=>NULL,'permissions'=>array());

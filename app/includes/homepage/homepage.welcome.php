@@ -2,8 +2,7 @@
 	
 	<h1>Welcome to <?php echo $app->dependents->SITE_NAME_PROPPER; ?></h1>
 	
-	<p>Thank you for activating your account.</p>
-	<p>A message from our CEO</p>
+	<p>Thank you for activating your Amozek account.</p>
 	
 	<div>
 		

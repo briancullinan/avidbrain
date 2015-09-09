@@ -615,6 +615,12 @@ $(document).ready(function() {
 		$(this).val(swapnumber);
 	});
 	
+	// FAQ's
+	var faqid = $('.faqid').attr('id');
+	if(faqid){
+		$('html, body').animate({scrollTop: $("#"+faqid).offset().top - 120}, 1000);
+	}
+	
 });
 $(window).on('scroll', function() {
     scrollPosition = $(this).scrollTop();

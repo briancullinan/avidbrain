@@ -23,9 +23,12 @@
 	$dependents->SITE_NAME_PROPPER = 'Amozek';
 	
 	$dependents->mailgun = new stdClass();
-	$dependents->mailgun->SYSTEM_EMAIL = 'donotreply@amozek.com';
-	$dependents->mailgun->EMAIL_DOMAIN = '@amozek.com';
-	$dependents->mailgun->MAILGUN_DOMAIN = 'amozek.com';
+	$dependents->mailgun->SYSTEM_EMAIL = 'donotreply@avidbrain.com';
+	$dependents->mailgun->EMAIL_DOMAIN = '@avidbrain.com';
+	$dependents->mailgun->MAILGUN_DOMAIN = 'avidbrain.com';
+	#$dependents->mailgun->SYSTEM_EMAIL = 'donotreply@amozek.com';
+	#$dependents->mailgun->EMAIL_DOMAIN = '@amozek.com';
+	#$dependents->mailgun->MAILGUN_DOMAIN = 'amozek.com';
 	$dependents->mailgun->MAILGUN_KEY = 'key-78294wr0c4mlq8d0nx-bma1pugoo0zg1';
 	$dependents->mailgun->MAILGUN_PUBLIC = 'pubkey-5nfmay4eqeewzb4mkk1qaw1xx4p7h-v9';
 	

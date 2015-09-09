@@ -48,13 +48,13 @@
 			<li class="collection-item"> <i class="fa fa-check light-green-text accent-2-text"></i> <strong>Highest pay percentage in the industry!</strong></li>
 		</ul>
 		
-		<h2>Background Checks & Interviews</h2>
+		<h2>Application Process</h2>
 		<ul class="collection">
-			<li class="collection-item"> <i class="fa fa-check light-green-text accent-2-text"></i> Mandatory Background Check <span class="green-text">($29.99)</span></li>
-			<li class="collection-item"> <i class="fa fa-check light-green-text accent-2-text"></i> Telephone Interview </li>
-			<li class="collection-item"> <i class="fa fa-check light-green-text accent-2-text"></i> stuff </li>
-			<li class="collection-item"> <i class="fa fa-check light-green-text accent-2-text"></i> stuff </li>
-			<li class="collection-item"> <i class="fa fa-check light-green-text accent-2-text"></i> stuff </li>
+			<li class="collection-item"> <i class="fa fa-check light-green-text accent-2-text"></i> Submit your application and resume </li>
+			<li class="collection-item"> <i class="fa fa-check light-green-text accent-2-text"></i> Schedule a phone interview with one of our staff members </li>
+			<li class="collection-item"> <i class="fa fa-check light-green-text accent-2-text"></i> Mandatory Background Check <span class="green-text">($29.99)</span> </li>
+			<li class="collection-item"> <i class="fa fa-check light-green-text accent-2-text"></i> Profile Creation </li>
+			<li class="collection-item"> <i class="fa fa-check light-green-text accent-2-text"></i> Start Tutoring </li>
 		</ul>
 
 	</div>
