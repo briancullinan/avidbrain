@@ -1,0 +1,1 @@
+It looks like you found the Amozek hideout. Whatcha looking for?

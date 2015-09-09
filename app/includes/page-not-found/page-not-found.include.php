@@ -9,13 +9,4 @@
 	$kitties = $kitties[0];
 ?>
 
-<img class="responsive-img" src="<?php echo $kitties; ?>" />
-
-
-<?php
-	/*
-		<video autoplay loop poster="placeholder.jpg" id="backgroundgif">
-			<source src="http://i.imgur.com/wusYXgK.webm" type="video/webm">
-		</video>
-	*/
-?>
+<a href="/"><img class="responsive-img" src="<?php echo $kitties; ?>" /></a>

@@ -171,3 +171,54 @@ width: 50%;
 	float: left;
 	width: 100%;
 }
+
+/* Student Signup */
+.signup-promo{
+	font-size: 22px;
+	text-align: center;
+	padding: 15px;
+	margin-bottom: 15px;
+	display: inline-block;
+	border: dashed 2px #efefef;
+}
+.signup-promo span{
+	color: yellow;
+}
+.form-parent .promocode{
+	border: solid 5px #e74c3c;
+	position: relative;
+}
+.form-parent .promocode:before{
+	display:inline-block;font:normal normal normal 14px/1 FontAwesome;font-size:inherit;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;transform:translate(0, 0);
+	content:"\f00c";
+	background: #e74c3c;
+	font-size: 30px;
+	position: absolute;
+	left: -50px;
+	padding:5px 10px;
+	top:145px;
+	color: #fff;
+}
+.form-parent .promocode #field_signup_promocode{
+	background: #efefef;
+}
+.form-parent #field_signup_promocode input{
+	color: #e74c3c;
+}
+.form-parent .promocode .form-submit button{
+	background: #e74c3c !important;
+}
+.form-parent .promocode .notify-user{
+	background: #e74c3c;
+	color: #fff;
+}
+
+.mainpagenotfound h1{
+	background: #333;
+	color: #cf0054;
+	color: #FF0066;
+	background: #FF0066;
+	color: #333;
+	display: inline-block;
+	padding: 5px 15px;
+}

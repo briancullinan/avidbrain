@@ -629,6 +629,54 @@ $(document).ready(function() {
 		$('html, body').animate({scrollTop: $("#"+faqid).offset().top - 120}, 1000);
 	}
 	
+	// Tutor Signup
+	$('#becomeatutor').removeClass('form-post');
+	var input = document.getElementById("upload-clicker"), formdata = false; 
+	if(window.FormData) {
+		formdata = new FormData();
+	}		
+	$('#becomeatutor').on('submit',function(){
+		
+		var serialized_data = $(this).find("input, select, button, textarea").serialize();
+		var selectedFile = document.getElementById('upload-clicker').files[0];
+		
+		if(selectedFile){
+			file = selectedFile;			
+			if ( window.FileReader ) {
+				reader = new FileReader();
+				reader.onloadend = function (e) {};
+				reader.readAsDataURL(file);
+			}
+			if (formdata) {
+				formdata.append("images[]", file);
+				formdata.append("uploadme", 'files');
+			}
+		}
+		$('#becomeatutor button').attr('disabled','disabled').addClass('disabled');
+		formdata.append('csrf_token',$('input[name="csrf_token"]').val());
+		formdata.append('SERIAL',serialized_data);
+		$.ajax({
+			url: "/signup/tutor",
+			type: "POST",
+			data: formdata,
+			processData: false,
+			contentType: false,
+			success: function (res) {
+				handlepost(res);
+			}
+		});
+		
+		return false;
+		
+	});
+	
+	$('#signup_promocode').on('focus',function(){
+		var thisval = $(this).val();
+		if(thisval=='Enter Your Promo Code'){
+			$(this).val('');
+		}
+	});
+	
 });
 $(window).on('scroll', function() {
     scrollPosition = $(this).scrollTop();

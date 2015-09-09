@@ -47,7 +47,7 @@
 			<li class="collection-item"> <i class="fa fa-check light-green-text accent-2-text"></i> Network with other tutors</li>
 			<li class="collection-item"> <i class="fa fa-check light-green-text accent-2-text"></i> <strong>Highest pay percentage in the industry!</strong></li>
 		</ul>
-		
+		<br/>
 		<h2>Application Process</h2>
 		<ul class="collection">
 			<li class="collection-item"> <i class="fa fa-check light-green-text accent-2-text"></i> Submit your application and resume </li>
@@ -60,50 +60,3 @@
 	</div>
 
 </div>
-
-<script type="text/javascript">
-	
-	$(document).ready(function() {
-		$('#becomeatutor').removeClass('form-post');
-		var input = document.getElementById("upload-clicker"), formdata = false; 
-		if(window.FormData) {
-			formdata = new FormData();
-		}		
-		$('#becomeatutor').on('submit',function(){
-			
-			var serialized_data = $(this).find("input, select, button, textarea").serialize();
-			var selectedFile = document.getElementById('upload-clicker').files[0];
-			
-			if(selectedFile){
-				file = selectedFile;			
-				if ( window.FileReader ) {
-					reader = new FileReader();
-					reader.onloadend = function (e) {};
-					reader.readAsDataURL(file);
-				}
-				if (formdata) {
-					formdata.append("images[]", file);
-					formdata.append("uploadme", 'files');
-				}
-			}
-			$('#becomeatutor button').attr('disabled','disabled').addClass('disabled');
-			formdata.append('csrf_token',$('input[name="csrf_token"]').val());
-			formdata.append('SERIAL',serialized_data);
-			$.ajax({
-				url: "/signup/tutor",
-				type: "POST",
-				data: formdata,
-				processData: false,
-				contentType: false,
-				success: function (res) {
-					handlepost(res);
-				}
-			});
-			
-			return false;
-			
-		});
-		
-	});
-	
-</script>

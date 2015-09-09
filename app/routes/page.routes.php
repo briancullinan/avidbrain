@@ -4,6 +4,7 @@
 	//$routes['uniqueKey'] = (object)array('url'=>'/uniqueKey','slug'=>'uniqueKey','route'=>'/uniqueKey/','include'=>'uniqueKey','protected'=>NULL,'permissions'=>array());
 	$routes['homepage'] = (object)array('url'=>'/','slug'=>'/','route'=>'/','include'=>'homepage','protected'=>NULL,'permissions'=>array());
 	$routes['sitemap'] = (object)array('url'=>'/sitemap','slug'=>'sitemap','route'=>'/sitemap/','include'=>'sitemap','protected'=>NULL,'permissions'=>array());
+	$routes['amozek'] = (object)array('url'=>'/amozek','slug'=>'amozek','route'=>'/amozek/','include'=>'amozek','protected'=>NULL,'permissions'=>array());
 	
 	$routes['contest'] = (object)array('url'=>'/contest','slug'=>'contest','route'=>'/contest/','include'=>'contest','protected'=>NULL,'permissions'=>array());
 	$routes['contest-rules'] = (object)array('url'=>'/contest/rules','slug'=>'rules','route'=>'/contest/rules/','include'=>'contest/rules','protected'=>NULL,'permissions'=>array());
