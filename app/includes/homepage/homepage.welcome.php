@@ -6,7 +6,7 @@
 	
 	<div>
 		
-		<a class="btn" href="<?php echo $app->user->url; ?>">Lets Get Started</a>
+		<a class="btn" href="<?php echo $app->user->url; ?>">Lets find you the help you need</a>
 		
 	</div>
 	

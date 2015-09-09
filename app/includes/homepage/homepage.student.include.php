@@ -66,7 +66,7 @@
 		
 		<div class="col s12 m6 l6">		
 		
-			&nbsp;
+			SOMETHINGHERE
 			
 			<?php
 				$sql = "SELECT id FROM avid___user_subjects WHERE email = :email";
@@ -106,8 +106,8 @@
 			<?php
 				$signupcode = signupcode($app->connect,$app->user->email);
 			?>
-			<h3>Earn $<?php echo $signupcode->value; ?> towards tutoring</h3>
-			<p>When a friend gets tutored with your code, you both get $<?php echo $signupcode->value; ?></p>
+			<h3>Earn $30 towards tutoring</h3>
+			<p>When a friend gets tutored with your code, you both get $<?php echo $signupcode->value; ?> off your next session.</p>
 			<div class="block">
 				<div class="row invite-area">
 					<div class="col s12 m4 l4">
@@ -186,7 +186,7 @@
 					</div>
 				</div>
 				
-				<p>Sharing your invite link is the easiest way to rack up free Uber rides. Every new rider who signs up with your code will get their first ride free, and you'll earn a free ride (up to $20) for spreading the word. It's the ultimate win-win.</p>
+				<p>Sharing your invite link is the easiest way for you and your friends to get the help you need. Every new student who signs up with your code will get their first session free, and you'll earn a free session (up to $20) for spreading the word. It's the ultimate win-win.</p>
 				
 			</div>
 			

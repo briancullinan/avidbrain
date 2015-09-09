@@ -76,8 +76,10 @@
 			
 			$newroom = scribblar($createRoom);
 			$newsession['roomid'] = $newroom['result']['roomid'];
+			$roomid = $newroom['result']['roomid'];
 		}
 		
+		//notify($newsession);
 		$app->connect->insert('avid___sessions',$newsession);
 		$lastid = $app->connect->lastInsertId();
 		

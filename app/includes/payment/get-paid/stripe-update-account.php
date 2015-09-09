@@ -3,7 +3,7 @@
 		$recipient = \Stripe\Recipient::retrieve($app->user->account_id);
 	}
 	catch(Exception $e){
-		printer($e);
+		//printer($e);
 	}
 
 ?>
@@ -81,5 +81,5 @@
 </form>
 
 <?php else: ?>
- No Recipeient
+ No recipient setup
 <?php endif; ?>

@@ -40,7 +40,7 @@
 <div class="find-a-tutor">
 	
 	<div class="center-align container">
-		<h2>Find A Tutor</h2>
+		<h2>Find A <span class="finda">Tutor</span></h2>
 	
 		<form method="post" action="/tutors">
 		

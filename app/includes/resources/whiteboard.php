@@ -23,27 +23,24 @@
 					</div>
 				<?php endforeach; ?>
 				<?php else: ?>
-					You have no whiteboard sessions
+					<p>You have no whiteboard sessions</p>
+					<p><a href="/sessions/setup-new">Schedule A Whiteboard Session</a></p>
 				<?php endif; ?>
 			</div>
 		</div>
 		<div class="col s12 m8 l8">
 			<p>You can now schedule a whiteboard session with your students.</p>
+			<p><img src="/images/scribblar-example.jpg" class="responsive-img" /></p>
+			<h3>Whiteboard Features</h3>
 			<ul class="collection">
 				<li class="collection-item">
-					xxx
+					Chat, audio, virtual whiteboards
 				</li>
 				<li class="collection-item">
-					xxx
+					Simple, safe, stable
 				</li>
 				<li class="collection-item">
-					xxx
-				</li>
-				<li class="collection-item">
-					xxx
-				</li>
-				<li class="collection-item">
-					xxx
+					Perfect for online tutoring
 				</li>
 			</ul>
 		</div>

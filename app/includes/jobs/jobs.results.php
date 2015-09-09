@@ -124,5 +124,5 @@
 	<?php echo $app->pagination; ?>
 	
 <?php else: ?>
-	You have no VALUES
+	There are no jobs available
 <?php endif; ?>

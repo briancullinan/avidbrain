@@ -79,7 +79,7 @@
 			'first_name'=>$app->signup->first_name,
 			'last_name'=>$app->signup->last_name,
 			'terms_of_service'=>1,
-			'parent'=>$app->signup->parent,
+			//'parent'=>$app->signup->parent,
 			'temppass'=>NULL,
 			'zipcode'=>$zipData->zipcode,
 			'city'=>$zipData->city,

@@ -78,21 +78,20 @@ logo{
 	font-weight: 300;
 	font-weight: 400;
 	font-weight: 700;
-	padding-top: 10px;
 }
-logo .char3{
+logo .logo span{
 	color: #FF0066;
 }
 logo a{
+	padding-top: 10px;
 	display: block;
 	color: #fff;
 }
 logo a:hover{
-	display: block;
-	color: #FF0066;
+	background: #222;
 }
-logo a:hover .char3{
-	color: #fff;
+logo a:hover .amozek:after{
+	color: #cf0054;
 }
 
 .icon{

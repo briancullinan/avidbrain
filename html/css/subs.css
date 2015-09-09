@@ -165,3 +165,9 @@ width: 50%;
 	padding: 0px;
 	margin: 0px;
 }
+.walk-order{
+	margin-top: 15px;
+	display: block;
+	float: left;
+	width: 100%;
+}

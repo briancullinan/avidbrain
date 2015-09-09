@@ -53,9 +53,13 @@
 			</li>
 		</ul>
 		
-		<p>
-			<a class="btn waves-effect" href="<?php echo $app->currentuser->url; ?>/okgotit">Ok, I Got It</a>
-		</p>
+			<p>
+				<a class="btn waves-effect" href="<?php echo $app->currentuser->url; ?>/okgotit">Ok, I Got It, skip to the good stuff</a>
+			</p>
+			<p>
+				<a class="btn blue waves-effect" href="/help/student-walkthrough">View Walkthrough</a>
+			</p>
+		
 		
 		<?php endif; ?>
 	</div>

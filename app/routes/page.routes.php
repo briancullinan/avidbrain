@@ -104,6 +104,8 @@
 	$routes['safety-center'] = (object)array('url'=>'/help/safety-center','slug'=>'safety-center','route'=>'/help/safety-center/','include'=>'help/safety-center','protected'=>NULL,'permissions'=>array());
 	$routes['tutor-walkthrough'] = (object)array('url'=>'/help/tutor-walkthrough','slug'=>'tutor-walkthrough','route'=>'/help/tutor-walkthrough/','include'=>'help/tutor-walkthrough','protected'=>1,'permissions'=>array('tutor'));
 	$routes['tutor-walkthrough-step'] = (object)array('url'=>'/help/tutor-walkthrough','slug'=>'tutor-walkthrough','route'=>'/help/tutor-walkthrough/:step/','include'=>'help/tutor-walkthrough','protected'=>1,'permissions'=>array('tutor'));
+	$routes['student-walkthrough'] = (object)array('url'=>'/help/student-walkthrough','slug'=>'student-walkthrough','route'=>'/help/student-walkthrough/','include'=>'help/student-walkthrough','protected'=>1,'permissions'=>array('student'));
+	$routes['student-walkthrough-step'] = (object)array('url'=>'/help/student-walkthrough','slug'=>'student-walkthrough','route'=>'/help/student-walkthrough/:step/','include'=>'help/student-walkthrough','protected'=>1,'permissions'=>array('student'));
 	
 	
 	// Staff

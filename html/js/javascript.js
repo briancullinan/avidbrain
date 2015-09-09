@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	
-	$(".logo").lettering();
+	//$(".logo").lettering();
 	
 	$('.activate-mobile').on('click',function(){
 		var activestatus = $(this).attr('data-status');
@@ -495,6 +495,14 @@ $(document).ready(function() {
         strings: strignarray,
         typeSpeed: 0
     });
+    
+    setTimeout(function(){
+	    $('.finda').typed({
+	        strings: ['Coach','Instructor','Teacher','POTATO'],
+	        typeSpeed: 0,
+	        showCursor: false
+	    });
+    }, 3000);
     
 	if($('#scribblar').attr('id')){
 		

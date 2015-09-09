@@ -53,7 +53,6 @@
 
 	$localjs = array(
 		'functions.js',
-		'letters.js',
 		'javascript.js',
 		'jquery.nouislider.min.js',
 		'js.cookie.js',

@@ -869,13 +869,18 @@
 			$cachename = 'cached-search-'.$connect->lastInsertId();;
 		}
 		
+		#$connect->cache->clean();
+		#exit;
+		
 		// Now attempt to pull the Cached item out of Cache
 		$cachedSearch = $connect->cache->get($cachename);
 		if($cachedSearch == null){
 		    $returnedData = $data->execute()->fetchAll();
 		    $cachedSearch = $returnedData;
-		    $connect->cache->set($cachename, $returnedData, 600);
+		    $connect->cache->set($cachename, $returnedData, 1800);
 		}
+		
+		//notify($cachedSearch);
 		
 		return $cachedSearch;
 	}
