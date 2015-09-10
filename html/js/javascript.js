@@ -493,7 +493,13 @@ $(document).ready(function() {
 	        typeSpeed: 0,
 	        showCursor: false,
 	        callback: function() {
-		        $('.homepage-typed').focus().attr('placeholder','Type a subject to find a tutor');
+		        var slideDown = $('.slideDown').attr('class');
+		        if(slideDown){
+			        $('.homepage-typed').attr('placeholder','Type a subject to find a tutor');   
+		        }
+		        else{
+			        $('.homepage-typed').focus().attr('placeholder','Type a subject to find a tutor');   
+		        }
 	        }
 	    });
     }, 1000);

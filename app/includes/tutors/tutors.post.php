@@ -33,6 +33,16 @@
 			$data	=	$data->andWhere('subjects.status = :verified')->setParameter(':verified','verified');
 			$data	=	$data->setParameter(':subject_name',"%".$app->search->search."%");
 		}
+		if(isset($app->search->category)){
+			//notify('category');
+			$data	=	$data->addSelect('subjects.parent_slug');
+			$data	=	$data->innerJoin('user','avid___user_subjects','subjects','user.email = subjects.email');
+			$data	=	$data->andWhere('subjects.parent_slug LIKE :subject_name');
+			$data	=	$data->andWhere('subjects.status = :verified')->setParameter(':verified','verified');
+			$data	=	$data->setParameter(':subject_name',"%".$app->search->category."%");
+		}
+		
+		
 		if(isset($app->search->zipcode)){
 			$zipcodedata = get_zipcode_data($app->connect,$app->search->zipcode);
 			if(empty($app->search->distance)){
@@ -131,6 +141,10 @@
 	
 	$app->searchResults = make_search_key_cache($data,$app->connect);
 	//notify($app->searchResults);
+	
+	if(empty($app->search->search) && isset($app->search->category)){
+		$app->search->search = $app->search->category;
+	}
 	
 	$middle = NULL;
 	if(isset($app->search->search)){

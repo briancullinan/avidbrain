@@ -4,12 +4,21 @@
 		Find A Tutor
 	</legend>
 
+    <?php if(isset($app->searching->category)): ?>
+    <div class="input-field">
+
+      <input type="text" name="search[category]" id="search" class="validate searchbox" value="<?php if(isset($app->searching->category)){ echo $app->searching->category;} ?>" />
+      <label for="search">Category</label>
+
+    </div>
+    <?php else: ?>
     <div class="input-field">
 
       <input type="text" name="search[search]" id="search" class="validate searchbox" value="<?php if(isset($app->searching->search)){ echo $app->searching->search;} ?>" />
       <label for="search">Subject</label>
 
     </div>
+    <?php endif; ?>
 
     <div class="input-field">
 

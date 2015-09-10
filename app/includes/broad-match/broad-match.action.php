@@ -1,4 +1,6 @@
 <?php
+	$app->filterby = $app->getCookie('filterby');
+	$app->secondary = $app->target->secondary;
 	
 	$broadMatch = $parent_slug;
 	$app->broadMatchCap = ucwords(str_replace('-',' ',$broadMatch));
