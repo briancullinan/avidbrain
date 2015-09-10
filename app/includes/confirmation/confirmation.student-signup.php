@@ -1,4 +1,4 @@
-<p>Welcome to Amozek, the largest tutoring marketplace of interview and background checked tutors! We have created a new account to help you communicate with potential tutors and schedule tutoring lessons.</p>
+<p>Welcome to <?php echo $app->dependents->SITE_NAME_PROPPER; ?>, the largest tutoring marketplace of interview and background checked tutors! We have created a new account to help you communicate with potential tutors and schedule tutoring lessons.</p>
 <div class="row">
 	<div class="col s12 m6 l6">
 		<p>Please be sure to check your email to authenticate your account.</p>

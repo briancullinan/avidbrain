@@ -7,7 +7,7 @@
 		<?php if($app->user->usertype=='tutor'): ?>		
 			<div class="row">
 				<div class="col s12 m6 l6">
-					<p>Thank you for deciding to become a tutor with Amozek! In order to make sure you have the best experience tutoring with us we are going to walk you through how Amozek works. </p>
+					<p>Thank you for deciding to become a tutor with <?php echo $app->dependents->SITE_NAME; ?>! In order to make sure you have the best experience tutoring with us we are going to walk you through how <?php echo $app->dependents->SITE_NAME; ?> works. </p>
 					
 					<p>
 						<a class="btn waves-effect" href="<?php echo $app->currentuser->url; ?>/okgotit">Ok, I Got It, skip to the good stuff</a>

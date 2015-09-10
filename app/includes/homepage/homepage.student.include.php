@@ -122,7 +122,7 @@
 				
 				<?php
 					$facebook = 'https://www.facebook.com/sharer/sharer.php?u='.$app->dependents->DOMAIN.'/student/'.$signupcode->promocode;
-					$twitter = 'https://twitter.com/share?url='.$app->dependents->DOMAIN.'/student/'.$signupcode->promocode.'&text=I love @amozek Sign up with my promo code and get $'.$signupcode->value.' off your first tutoring session!';
+					$twitter = 'https://twitter.com/share?url='.$app->dependents->DOMAIN.'/student/'.$signupcode->promocode.'&text=I love @'.str_replace('https://twitter.com/','@',$app->dependents->social->twitter).' Sign up with my promo code and get $'.$signupcode->value.' off your first tutoring session!';
 				?>
 				
 				<div class="row">

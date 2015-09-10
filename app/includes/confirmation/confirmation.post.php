@@ -21,7 +21,7 @@
 			
 		}
 		else{
-			notify('Amozek');
+			notify($app->dependents->SITE_NAME_PROPPER);
 		}
 		
 	}

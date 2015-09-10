@@ -291,7 +291,7 @@
 	function parent_company_email($email){
 		$check = explode('@',$email);
 		if(isset($check[0])){
-			if(in_array('amozek.com', $check)){
+			if(in_array('amozek.com', $check) || in_array('avidbrain.com', $check)){
 				return true;
 			}
 		}

@@ -24,7 +24,7 @@
 			}
 		?>
 		<?php if(isset($app->my_tweets)): ?>
-			<h3> News from @amozek</h3>
+			<h3> News from <?php echo str_replace('https://twitter.com/','@',$app->dependents->social->twitter); ?></h3>
 			<?php foreach($app->my_tweets as $tweet):# printer($tweet); ?>
 			
 			<div class="block">
