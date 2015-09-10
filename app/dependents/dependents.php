@@ -3,8 +3,8 @@
 	include_once('config.php');
 	
 	
-	$sitename				=	'amozek';// avidbrain
-	$sitenamePropper		=	'Amozek';// AvidBrain
+	$sitename				=	'avidbrain';// avidbrain, amozek
+	$sitenamePropper		=	'AvidBrain';// AvidBrain
 	$location				=	'development'; // production , staging, development
 	$dependents->VERSION	=	0.003;
 	$dependents->stripe = new stdClass();

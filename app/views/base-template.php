@@ -65,9 +65,9 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 				</a>
 			</logo>
 			<?php elseif($app->dependents->SITE_NAME=='avidbrain'): ?>
-			<logo>
+			<logo class="avidbrain">
 				<a href="/">
-					ARBOODBRTOWN
+					avidbrain
 				</a>
 			</logo>
 			<?php endif; ?>

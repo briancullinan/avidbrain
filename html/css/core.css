@@ -99,6 +99,13 @@ logo a:hover{
 logo a:hover .amozek:after{
 	color: #cf0054;
 }
+logo.avidbrain{
+	font-size: 30px;
+}
+logo.avidbrain a{
+	padding-top: 110px;
+	background: url('/images/avidbrain-logo.png') center top no-repeat;
+}
 
 .icon{
 	font-family: 'amozek';
