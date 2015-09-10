@@ -5,7 +5,7 @@
 	
 	$sitename				=	'avidbrain';// avidbrain, amozek
 	$sitenamePropper		=	'AvidBrain';// AvidBrain
-	$location				=	'development'; // production , staging, development
+	$location				=	'staging'; // production , staging, development
 	$dependents->VERSION	=	0.003;
 	$dependents->stripe = new stdClass();
 	
@@ -79,7 +79,7 @@
 		$dependents->stripe->STRIPE_SECRET = 'sk_test_RKw0H6vV3pyB5JsBuQKXU4sO';
 		$dependents->stripe->STRIPE_PUBLIC = 'pk_test_jIcjo9aRNH4Xm8uaWuGZdf7B';
 		$dependents->DEBUG = true;
-		$dependents->MODE = 'development';
+		$dependents->MODE = $location;
 		
 	}
 	
@@ -94,6 +94,12 @@
 		$dependents->database->HOST = 'localhost';
 		$dependents->database->DBUSER = 'root';
 		$dependents->database->DBPASS = 'root';
+		$dependents->DOMAIN = 'http://'.$sitename.'.dev';
+	}
+	elseif($dependents->SERVER_NAME=='avidbra.in'){
+		$dependents->database->HOST = 'localhost';
+		$dependents->database->DBUSER = 'root';
+		$dependents->database->DBPASS = 'ipi}nGaN6P4QAEJtxJ3W^Xc%Q9aforDBwnpFk}B';
 		$dependents->DOMAIN = 'http://'.$sitename.'.dev';
 	}
 	
