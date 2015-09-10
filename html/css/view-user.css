@@ -483,6 +483,7 @@ badge.badge-mad-scientist a{
 	font-size: 13px;
 	padding: 4px;
 	margin-bottom: 15px;
+	word-break: break-all;
 }
 .tutor-results-subjects{
 	margin-bottom: 10px;
