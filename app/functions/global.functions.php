@@ -526,6 +526,26 @@
 		}
 	}
 	
+	function badge_type($hours){
+		$hours = round($hours);
+		$ranges = array();
+		$ranges[] = (object)array('rank'=>'New User','range'=>range(0,50),'class'=>'newuser','icon'=>'fa fa-star');
+		$ranges[] = (object)array('rank'=>'Instructor','range'=>range(51,200),'class'=>'instructor','icon'=>'fa fa-star');
+		$ranges[] = (object)array('rank'=>"Teacher's Assistant",'range'=>range(201,1000),'class'=>'teachersassistant','icon'=>'fa fa-star');
+		$ranges[] = (object)array('rank'=>'Teacher','range'=>range(1001,2000),'class'=>'teacher','icon'=>'fa fa-star');
+		$ranges[] = (object)array('rank'=>'Assistant Professor','range'=>range(2001,4000),'class'=>'assistantprofessor','icon'=>'fa fa-star');
+		$ranges[] = (object)array('rank'=>'Associate Professor','range'=>range(4001,6000),'class'=>'associateprofessor','icon'=>'fa fa-star');
+		$ranges[] = (object)array('rank'=>'Professor','range'=>range(6001,12000),'class'=>'professor','icon'=>'fa fa-bookmark');
+		
+		foreach($ranges as $key=> $badgeamount){
+			if(in_array($hours, $badgeamount->range)){
+				$type = $badgeamount;
+				break;
+			}
+		}
+		
+		return '<badge class="rank rank-'.$type->class.'"> <a href="#myrank" class="modal-trigger"><i class="'.$type->icon.'"></i> <span>'.$type->rank.'</span></a> </badge>';
+	}
 	
 	function badge($type,$info){
 		
@@ -558,26 +578,10 @@
 				return '<badge class="success"><i class="fa fa-credit-card"></i> <span> Payment On File </span> </badge>';
 			}
 			elseif(isset($info->reviewinfo->hours_tutored) && isset($type) && $type=='fancy_hours_badge'){
-				
-				$hours = round($info->reviewinfo->hours_tutored);
-				
-				$ranges = array();
-				$ranges[] = (object)array('rank'=>'New User','range'=>range(0,50),'class'=>'newuser','icon'=>'fa fa-star');
-				$ranges[] = (object)array('rank'=>'Instructor','range'=>range(51,200),'class'=>'instructor','icon'=>'fa fa-star');
-				$ranges[] = (object)array('rank'=>"Teacher's Assistant",'range'=>range(201,1000),'class'=>'teachersassistant','icon'=>'fa fa-star');
-				$ranges[] = (object)array('rank'=>'Teacher','range'=>range(1001,2000),'class'=>'teacher','icon'=>'fa fa-star');
-				$ranges[] = (object)array('rank'=>'Assistant Professor','range'=>range(2001,4000),'class'=>'assistantprofessor','icon'=>'fa fa-star');
-				$ranges[] = (object)array('rank'=>'Associate Professor','range'=>range(4001,6000),'class'=>'associateprofessor','icon'=>'fa fa-star');
-				$ranges[] = (object)array('rank'=>'Professor','range'=>range(6001,12000),'class'=>'professor','icon'=>'fa fa-bookmark');
-				
-				foreach($ranges as $key=> $badgeamount){
-					if(in_array($hours, $badgeamount->range)){
-						$type = $badgeamount;
-						break;
-					}
-				}
-				
-				return '<badge class="rank rank-'.$type->class.'"> <a href="#myrank" class="modal-trigger"><i class="'.$type->icon.'"></i> <span>'.$type->rank.'</span></a> </badge>';
+				return badge_type($info->reviewinfo->hours_tutored);
+			}
+			elseif(empty($info->reviewinfo->hours_tutored) && isset($type) && $type=='fancy_hours_badge'){
+				return badge_type(1);
 			}
 		}
 	}

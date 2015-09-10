@@ -1,48 +1,31 @@
-<div class="how-it-works-slide center-align ">
-
-	<div class="close-it-works" data-status="closed"><i class="fa fa-times"></i></div>
-
-	<div class="how-it-works-slide-inside">
-		<div class="row">
-			<div class="col s12 m4 hiw-col">
-				<div class="how-it-works-image hide-on-small-only">
-					<img class="responsive-img" src="/images/how-it-works/createprofile.png" />
-				</div>
-				<div class="how-it-works-title">
-					Create a Free Profile
-				</div>
-				<div class="how-it-works-text">
-					It’s easy to <a href="/signup">sign up</a> AND it’s free!
-				</div>
-			</div>
-			<div class="col s12 m4 hiw-col">
-				<div class="how-it-works-image hide-on-small-only">
-					<img class="responsive-img" src="/images/how-it-works/search.png" />
-				</div>
-				<div class="how-it-works-title">
-					Discover Amazing Tutors
-				</div>
-				<div class="how-it-works-text">
-					<a href="/tutors">Search for a tutor</a>, or post a request and tutors will contact you.
-				</div>
-			</div>
-			<div class="col s12 m4 hiw-col">
-				<div class="how-it-works-image hide-on-small-only">
-					<img class="responsive-img" src="/images/how-it-works/schedule.png" />
-				</div>
-				<div class="how-it-works-title">
-					Schedule a Session
-				</div>
-				<div class="how-it-works-text">
-					Connect with an expert tutor anytime 24/7 face-to-face or online.
-				</div>
+<div class="how-it-works-slide">
+	
+	<h1>How It Works</h1>
+	
+	
+	<div class="row hiw-cols">
+		<div class="col s12 m4 l4">
+			<div class="hiw-title valign-wrapper center"><div class="valign">Create A Profile</div></div>
+			<div class="how-text valign-wrapper">
+				<div class="valign">It’s easy to <a href="/signup">Sign Up</a> AND it’s free!</div>
 			</div>
 		</div>
-
-		<div class="asdf">
-			<a href="/how-it-works">Learn more</a> about tutoring with <?php echo $app->dependents->SITE_NAME_PROPPER; ?> and discover our unique community of expert tutors.
+		<div class="col s12 m4 l4">
+			<div class="hiw-title valign-wrapper center"><div class="valign">Discover Amazing Tutors</div></div>
+			<div class="how-text valign-wrapper">
+				<div class="valign"><a href="/tutors">Search for a tutor</a>, or post a request and tutors will contact you.</div>
+			</div>
 		</div>
-
+		<div class="col s12 m4 l4">
+			<div class="hiw-title valign-wrapper center"><div class="valign">Schedule a Session</div></div>
+			<div class="how-text valign-wrapper">
+				<div class="valign">Connect with an expert tutor anytime 24/7 face-to-face or online.</div>
+			</div>
+		</div>
 	</div>
-
+	
+	<div class="hiw-bottom">
+		<a href="/how-it-works">Learn more</a> about tutoring with <?php echo $app->dependents->SITE_NAME_PROPPER; ?> and discover our unique community of expert tutors.
+	</div>
+	
 </div>

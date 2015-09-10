@@ -40,7 +40,7 @@
 <div class="find-a-tutor">
 	
 	<div class="center-align container">
-		<h2>Find A <span class="finda">Tutor</span></h2>
+		<h2>Find <span class="finda">A Tutor</span></h2>
 	
 		<form method="post" action="/tutors">
 		
@@ -54,13 +54,6 @@
 			<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
 		</form>
 		
-		<div class="typed hide">
-			<?php
-				foreach($app->autocomplete as $subjects){
-					echo '<span>'.$subjects->subject_name.'</span>';
-				}
-			?>
-		</div>
 	</div>
 	
 </div>

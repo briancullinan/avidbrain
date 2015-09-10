@@ -1,7 +1,9 @@
 <div class="row">
 	<div class="col s12 m4 l4">
 		<h3>Profile Info</h3>
-			Total Page Views: <?php echo page_views($app); ?>
+		<div class="block">
+			<div class="page-views">Total Page Views <span><?php echo page_views($app); ?></span></div>
+		</div>
 	</div>
 	
 	<div class="col s12 m4 l4">

@@ -46,9 +46,32 @@
 	.toast{
 		background: red;
 	}
-	.hiw-col{
-		margin-top: 25px;
+	
+	.how-it-works-slide{
+		overflow: hidden;
 	}
+	.how-it-works-slide h1{
+		font-size: 22px;
+	}
+	.hiw-title{
+		height: auto;
+		font-size: 20px;
+		padding: 0px;
+	}
+	.hiw-title .valign{
+		background: #000;
+		padding: 10px;
+	}
+	.how-text{
+		height: auto;
+		margin-bottom: 10px;
+	}
+	.hiw-bottom{
+		margin: 0px;
+		font-size: 12px;
+		margin-top: -10px;
+	}
+	
 }
 @media only screen and (min-width: 993px){
 	.trigger{

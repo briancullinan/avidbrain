@@ -107,15 +107,7 @@
 		$app->homepagesubjects = array(1,2,3);
 	
 		$app->howitworks = true;
-		//$app->connect->cache->delete("autocomplete");
-		$autocomplete = $app->connect->cache->get("autocomplete");
-		if($autocomplete == null) {
-		    $sql = "SELECT subject_name FROM avid___user_subjects WHERE usertype = :usertype AND subject_name NOT LIKE '%&%' GROUP BY subject_name ORDER BY RAND() LIMIT 4";
-			$autocomplete = $app->connect->executeQuery($sql,array(':usertype'=>'tutor'))->fetchAll();
-		    $autocomplete = $autocomplete;
-		    $app->connect->cache->set("autocomplete", $autocomplete, 1200);
-		}
-		$app->autocomplete = $autocomplete;
+		
 		
 		//$app->connect->cache->delete("topsubjects");
 		$topsubjects = $app->connect->cache->get("topsubjects");

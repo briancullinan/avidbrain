@@ -486,23 +486,17 @@ $(document).ready(function() {
 		});
 	});
 	
-	var strignarray = ['Welcome to AvidBrain','What do you want to learn?'];
-	$( ".typed span" ).each(function( index ) {
-		strignarray.push($(this).html());
-	});
-	$('.homepage-typed').focus();
-    $(".homepage-typed").typed({
-        strings: strignarray,
-        typeSpeed: 0
-    });
-    
+	
     setTimeout(function(){
 	    $('.finda').typed({
-	        strings: ['Coach','Instructor','Teacher','POTATO'],
+	        strings: ['A Coach','An Instructor','A Teacher','A Professor'],
 	        typeSpeed: 0,
-	        showCursor: false
+	        showCursor: false,
+	        callback: function() {
+		        $('.homepage-typed').focus().attr('placeholder','Type a subject to find a tutor');
+	        }
 	    });
-    }, 3000);
+    }, 1000);
     
 	if($('#scribblar').attr('id')){
 		

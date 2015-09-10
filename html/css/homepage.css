@@ -6,9 +6,6 @@
 	left: 0px;
 	top:0px;
 	z-index: 444;
-	color: #222;
-	
-	background: #e3f2fd;
 
 }
 .how-it-works-slide.slideDown{
@@ -21,14 +18,6 @@
     animation-duration: .5s;
     margin-top: -500px;
 }
-.how-it-works-image img{
-	background: #2196F3;
-	-webkit-border-radius: 300px;
-	-moz-border-radius: 300px;
-	border-radius: 300px;
-	padding: 0px 10px;
-}
-
 
 @-webkit-keyframes slideUp {
     from {margin-top: 0px}
@@ -65,26 +54,60 @@
     to {margin-top: 0px;}
 }
 
-
-.how-it-works-title {
-  font-size: 26px;
+.how-it-works-slide{
+	padding: 20px;
+	text-align: center;
+	background: #333;
+	border-bottom: solid 5px #FF0066;
+	color: #fff;
 }
+.how-it-works-slide a{
+	color: #FF0066;
+	text-decoration: underline;
+}
+.how-it-works-slide a:hover{
+	color: #cf0054;
+}
+.how-it-works-slide h1{
+	font-size: 65px;
+	background: #FF0066;
+	padding: 5px 15px;
+	display: inline-block;
+	margin-bottom: 15px;
+}
+.hiw-cols{
+	
+}
+.hiw-title{
+	font-family: 'Quicksand';
+	font-size: 25px;
+	line-height: normal;
+	background: #000;
+	background: rgba(0, 0, 0, 0.6);
+	height: 80px;
+	padding: 5px;
 
-.how-it-works-slide-inside{
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
+}
+.hiw-title .valign, .how-text .valign{
+	width: 100%;
+}
+.how-text{
+	margin-top: -10px;
+	border: solid 1px #000;
+	background: #222;
+	height: 140px;
+	overflow: hidden;
 	padding: 20px;
 }
-.close-it-works{
-	position: absolute;
-	right: 0px;
-	top:0px;
-	color: #333;
-	font-size: 30px;
-	padding: 10px 15px;
-	cursor: pointer;
+.hiw-bottom{
+	font-size: 18px;
+	margin-top: 60px;
+	display: block;
 }
-.close-it-works:hover{
-	opacity: .8;
-}
+
 
 .homepage-items{
 	
@@ -257,4 +280,14 @@
 }
 .win-an-ipad-mini .responsive-img{
 	max-height: 300px;
+}
+
+.page-views{
+	font-size: 18px;
+}
+.page-views span{
+	background: red;
+	color: #fff;
+	display: inline-block;
+	padding: 0px 5px;
 }
