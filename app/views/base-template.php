@@ -478,9 +478,6 @@ endif;
   ga('send', 'pageview');
 </script>
 <?php endif; ?>
-<noscript>
-<style type="text/css">main, navigation, footer{opacity: .1;}.js-required{background: #e74c3c;color: #fff;font-size: 33px;position: fixed;width: 100%;left: 0px;top:0px;text-align: center;padding: 20px;}</style>
-<div class="js-required">Javascript Is Required. Please Enable.</div>
-</noscript>
+<noscript><link rel="stylesheet" href="/css/scripts-required.css"><div class="js-required">Javascript Is Required. Please Enable.</div></noscript>
 </body>
 </html>
