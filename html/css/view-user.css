@@ -73,50 +73,48 @@ badge a{
 	color: #fff;
 }
 
-badge.fancy-badge{
-	background: transparent;
-	border: solid 1px #ccc;
+.collection .badge-new-user, badge.badge-new-user{
+	background:#ffb300;
+	color:#fff;
+}
+.collection .badge-instructor, badge.badge-instructor{
+	background:#e91e63;
+	color:#fff;
+}
+.collection .badge-teachers-assistant, badge.badge-teachers-assistant{
+	background:#9c27b0;
+	color:#fff;
+}
+.collection .badge-teacher, badge.badge-teacher{
+	background:#673ab7;
+	color:#fff;
+}
+.collection .badge-assistant-professor, badge.badge-assistant-professor{
+	background:#3f51b5;
+	color:#fff;
+}
+.collection .badge-associate-professor, badge.badge-associate-professor{
+	background:#2196f3;
+	color:#fff;
+}
+.collection .badge-professor, badge.badge-professor{
+	background:#4caf50;
+	color:#fff;
+}
+.collection .badge-mad-scientist, badge.badge-mad-scientist{
+	background:#c6ff00;
+	color:#111;
+	border: solid 1px #81d500;
+
+  -webkit-animation: uranium 5s infinite;
+  -moz-animation:    uranium 5s infinite;
+  -o-animation:      uranium 5s infinite;
+  animation:         uranium 5s infinite;
+}
+badge.badge-mad-scientist a{
 	color: #333;
 }
-badge.fancy-badge.badge-bronze{
-	background: #c08a4e;
-	color: #fff;
-}
-badge.fancy-badge.badge-coal{
-	background: #333;
-	color: #fff;
-}
-badge.fancy-badge.badge-copper{
-	background: #df6e36;
-	color: #fff;
-	border-color: #e2682c;
-}
-badge.fancy-badge.badge-silver{
-	background: #ccc;
-	color: #333;
-	border-color: #999;
-}
-badge.fancy-badge.badge-gold{
-	background: #ffd900;
-	color: #da8000;
-	border-color: #ffb300;
-}
-badge.fancy-badge.badge-platinum{
-	background: #999;
-	color: #fff;
-	border-color: #ccc;
-}
-badge.fancy-badge.badge-uranium{
-	background: #70ff00;
-	color: #111;
-	border-color: #58c900;
-	
-	
-  -webkit-animation: uranium 2s infinite;
-  -moz-animation:    uranium 2s infinite;
-  -o-animation:      uranium 2s infinite;
-  animation:         uranium 2s infinite;
-}
+
 @-webkit-keyframes uranium {
   0%   {
 	-moz-box-shadow: 0 0 0px #58c900;

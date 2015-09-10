@@ -79,11 +79,13 @@
 	
 	// Twitters
 	use Abraham\TwitterOAuth\TwitterOAuth;
+	//$app->connect->cache->delete("my_tweets");
 	$app->my_tweets = $app->connect->cache->get("my_tweets");
+	//notify($app->my_tweets);
 	if($app->my_tweets == null){
-		$connection = new TwitterOAuth('GHpWmq80H2kQ3M7nfjE1aZBZW', 'VEHtfuN6CFaoQ0YnbJXYEOTQUtYoA7mHVe1asBlmwYbX25YCVR', '20285275-70JkqvSkD377VrE5kYpdQyI9UZePLp2rClGdtgbmM', 'Db0st9KusN5OG8xgFkJlMMO1cTrPHkNroWQdENBM5VpkE');
+		$connection = new TwitterOAuth('Us5wwKQrRRpT6zSdcznwHI84k', 'M3826Tuq5AniP0KuMBllwButIvGn0W8p0XWxqRVQh67fMhsKAL', '2840761432-fmuW8KuLUPa6aBuzlD7pTk6ttoJLQ9LuAej3vWP', 'veyYK8Hciun1ELTHdf3yzoFsxm2Ny6K5kYgX0ceuM0tWK');
 		$content = $connection->get("account/verify_credentials");
-		$twitterAPI = $connection->get('statuses/user_timeline', array('screen_name' => 'davidglaeseman', 'count' => 5));
+		$twitterAPI = $connection->get('statuses/user_timeline', array('screen_name' => 'avidbrain', 'count' => 5));
 	    $app->my_tweets = $twitterAPI;
 	    $app->connect->cache->set("my_tweets", $twitterAPI, 3600);
 	}

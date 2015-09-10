@@ -1,5 +1,7 @@
 <div class="how-it-works-slide">
 	
+	<div class="close-it-works"><i class="fa fa-times"></i></div>
+	
 	<h1>How It Works</h1>
 	
 	

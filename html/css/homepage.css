@@ -307,3 +307,19 @@ border-radius: 5px;
 .homepage-typed:-ms-input-placeholder {  
 	color: #999;
 }
+
+.tweets .description{
+	padding: 0px;
+}
+.close-it-works{
+	color: #999;
+	cursor: pointer;
+	position: absolute;
+	right: 0px;
+	top:0px;
+	font-size: 40px;
+	padding:5px 15px;
+}
+.close-it-works:hover{
+	color: #FF0066;
+}

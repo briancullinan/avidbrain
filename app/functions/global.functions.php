@@ -529,13 +529,14 @@
 	function badge_type($hours){
 		$hours = round($hours);
 		$ranges = array();
-		$ranges[] = (object)array('rank'=>'New User','range'=>range(0,50),'class'=>'newuser','icon'=>'fa fa-star');
-		$ranges[] = (object)array('rank'=>'Instructor','range'=>range(51,200),'class'=>'instructor','icon'=>'fa fa-star');
-		$ranges[] = (object)array('rank'=>"Teacher's Assistant",'range'=>range(201,1000),'class'=>'teachersassistant','icon'=>'fa fa-star');
-		$ranges[] = (object)array('rank'=>'Teacher','range'=>range(1001,2000),'class'=>'teacher','icon'=>'fa fa-star');
-		$ranges[] = (object)array('rank'=>'Assistant Professor','range'=>range(2001,4000),'class'=>'assistantprofessor','icon'=>'fa fa-star');
-		$ranges[] = (object)array('rank'=>'Associate Professor','range'=>range(4001,6000),'class'=>'associateprofessor','icon'=>'fa fa-star');
-		$ranges[] = (object)array('rank'=>'Professor','range'=>range(6001,12000),'class'=>'professor','icon'=>'fa fa-bookmark');
+		$ranges[] = (object)array('rank'=>'New User','range'=>range(0,50),'class'=>'badge-new-user','icon'=>'fa fa-check');
+		$ranges[] = (object)array('rank'=>'Instructor','range'=>range(51,200),'class'=>'badge-instructor','icon'=>'fa fa-certificate');
+		$ranges[] = (object)array('rank'=>"Teacher's Assistant",'range'=>range(201,1000),'class'=>'badge-teachers-assistant','icon'=>'fa fa-bolt');
+		$ranges[] = (object)array('rank'=>'Teacher','range'=>range(1001,2000),'class'=>'badge-teacher','icon'=>'fa fa-rocket');
+		$ranges[] = (object)array('rank'=>'Assistant Professor','range'=>range(2001,4000),'class'=>'badge-assistant-professor','icon'=>'fa fa-trophy');
+		$ranges[] = (object)array('rank'=>'Associate Professor','range'=>range(4001,6000),'class'=>'badge-associate-professor','icon'=>'fa fa-star');
+		$ranges[] = (object)array('rank'=>'Professor','range'=>range(6001,12000),'class'=>'badge-professor','icon'=>'fa fa-university');
+		$ranges[] = (object)array('rank'=>'Mad Scientist','range'=>range(12001,99999),'class'=>'badge-mad-scientist','icon'=>'fa fa-flask');
 		
 		foreach($ranges as $key=> $badgeamount){
 			if(in_array($hours, $badgeamount->range)){
@@ -544,7 +545,7 @@
 			}
 		}
 		
-		return '<badge class="rank rank-'.$type->class.'"> <a href="#myrank" class="modal-trigger"><i class="'.$type->icon.'"></i> <span>'.$type->rank.'</span></a> </badge>';
+		return '<badge class="rank '.$type->class.'"> <a href="#myrank" class="modal-trigger"><i class="'.$type->icon.'"></i> <span>'.$type->rank.'</span></a> </badge>';
 	}
 	
 	function badge($type,$info){

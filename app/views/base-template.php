@@ -290,83 +290,153 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 				</div>
 				<div class="col s12 m8 l8">
 					<ul class="collection">
-						<li class="collection-item">
+						<li class="collection-item badge-new-user">
 							<div class="row">
-								<div class="col s12 m4 l4">
-									New User
+								<div class="col s12 m6 l6">
+									
+									<div class="row">
+										<div class="col s2 m2 l2">
+											<i class="fa fa-check"></i>
+										</div>
+										<div class="col s10 m10 l10">
+											New User
+										</div>
+									</div>
+									
 								</div>
-								<div class="col s12 m8 l8">
+								<div class="col s12 m6 l6">
 									0 - 50 Hours
 								</div>
 							</div>
 						</li>
-						<li class="collection-item">
+						<li class="collection-item badge-instructor">
 							<div class="row">
-								<div class="col s12 m4 l4">
-									Instructor
+								<div class="col s12 m6 l6">
+									
+									<div class="row">
+										<div class="col s2 m2 l2">
+											<i class="fa fa-certificate"></i>
+										</div>
+										<div class="col s10 m10 l10">
+											Instructor
+										</div>
+									</div>
+									
 								</div>
-								<div class="col s12 m8 l8">
+								<div class="col s12 m6 l6">
 									51 - 200 Hours
 								</div>
 							</div>
 						</li>
-						<li class="collection-item">
+						<li class="collection-item badge-teachers-assistant">
 							<div class="row">
-								<div class="col s12 m4 l4">
-									Teacher's Assistant
+								<div class="col s12 m6 l6">
+									<div class="row">
+										<div class="col s2 m2 l2">
+											<i class="fa fa-bolt"></i>
+										</div>
+										<div class="col s10 m10 l10">
+											Teacher's Assistant
+										</div>
+									</div>
 								</div>
-								<div class="col s12 m8 l8">
+								<div class="col s12 m6 l6">
 									201 - 1,000 Hours
 								</div>
 							</div>
 						</li>
-						<li class="collection-item">
+						<li class="collection-item badge-teacher">
 							<div class="row">
-								<div class="col s12 m4 l4">
-									Teacher
+								<div class="col s12 m6 l6">
+									
+									<div class="row">
+										<div class="col s2 m2 l2">
+											<i class="fa fa-rocket"></i>
+										</div>
+										<div class="col s10 m10 l10">
+											Teacher
+										</div>
+									</div>
+									
 								</div>
-								<div class="col s12 m8 l8">
+								<div class="col s12 m6 l6">
 									1,001 - 2,000 Hours
 								</div>
 							</div>
 						</li>
-						<li class="collection-item">
+						<li class="collection-item badge-assistant-professor">
 							<div class="row">
-								<div class="col s12 m4 l4">
-									Assistant Professor
+								<div class="col s12 m6 l6">
+									
+									<div class="row">
+										<div class="col s2 m2 l2">
+											<i class="fa fa-trophy"></i>
+										</div>
+										<div class="col s10 m10 l10">
+											Assistant Professor
+										</div>
+									</div>
+									
 								</div>
-								<div class="col s12 m8 l8">
+								<div class="col s12 m6 l6">
 									2,001 - 4,000 Hours
 								</div>
 							</div>
 						</li>
-						<li class="collection-item">
+						<li class="collection-item badge-associate-professor">
 							<div class="row">
-								<div class="col s12 m4 l4">
-									Associate Professor
+								<div class="col s12 m6 l6">
+									
+									<div class="row">
+										<div class="col s2 m2 l2">
+											<i class="fa fa-star"></i>
+										</div>
+										<div class="col s10 m10 l10">
+											Associate Professor
+										</div>
+									</div>
+									
 								</div>
-								<div class="col s12 m8 l8">
+								<div class="col s12 m6 l6">
 									4,001 - 6,000 Hours
 								</div>
 							</div>
 						</li>
-						<li class="collection-item">
+						<li class="collection-item badge-professor">
 							<div class="row">
-								<div class="col s12 m4 l4">
-									Professor
+								<div class="col s12 m6 l6">
+									
+									<div class="row">
+										<div class="col s2 m2 l2">
+											<i class="fa fa-university"></i>
+										</div>
+										<div class="col s10 m10 l10">
+											Professor
+										</div>
+									</div>
+									
 								</div>
-								<div class="col s12 m8 l8">
+								<div class="col s12 m6 l6">
 									6,001 - 12,000 Hours
 								</div>
 							</div>
 						</li>
-						<li class="collection-item">
+						<li class="collection-item badge-mad-scientist">
 							<div class="row">
-								<div class="col s12 m4 l4">
-									Mad Scientist
+								<div class="col s12 m6 l6">
+									
+									<div class="row">
+										<div class="col s2 m2 l2">
+											<i class="fa fa-flask"></i>
+										</div>
+										<div class="col s10 m10 l10">
+											Mad Scientist
+										</div>
+									</div>
+									
 								</div>
-								<div class="col s12 m8 l8">
-									12,000+ Hours
+								<div class="col s12 m6 l6">
+									12,001+ Hours
 								</div>
 							</div>
 						</li>
@@ -380,7 +450,6 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 			<a href="#!" class=" modal-action modal-close waves-effect waves-red btn-flat">OK, Thanks</a>
 		</div>
 	</div>
-
 <?php
 // CDN JS
 foreach($app->header->cdnjs as $cdnjs){

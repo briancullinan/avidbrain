@@ -4,7 +4,9 @@
 	//$routes['uniqueKey'] = (object)array('url'=>'/uniqueKey','slug'=>'uniqueKey','route'=>'/uniqueKey/','include'=>'uniqueKey','protected'=>NULL,'permissions'=>array());
 	$routes['homepage'] = (object)array('url'=>'/','slug'=>'/','route'=>'/','include'=>'homepage','protected'=>NULL,'permissions'=>array());
 	$routes['sitemap'] = (object)array('url'=>'/sitemap','slug'=>'sitemap','route'=>'/sitemap/','include'=>'sitemap','protected'=>NULL,'permissions'=>array());
-	$routes['amozek'] = (object)array('url'=>'/amozek','slug'=>'amozek','route'=>'/amozek/','include'=>'amozek','protected'=>NULL,'permissions'=>array());
+	if($app->dependents->SITE_NAME=='amozek'){
+		$routes['amozek'] = (object)array('url'=>'/amozek','slug'=>'amozek','route'=>'/amozek/','include'=>'amozek','protected'=>NULL,'permissions'=>array());
+	}
 	
 	$routes['contest'] = (object)array('url'=>'/contest','slug'=>'contest','route'=>'/contest/','include'=>'contest','protected'=>NULL,'permissions'=>array());
 	$routes['contest-rules'] = (object)array('url'=>'/contest/rules','slug'=>'rules','route'=>'/contest/rules/','include'=>'contest/rules','protected'=>NULL,'permissions'=>array());
@@ -95,7 +97,9 @@
 	
 	// Help
 	$routes['help'] = (object)array('url'=>'/help','slug'=>'help','route'=>'/help/','include'=>'help','protected'=>NULL,'permissions'=>array());
-	$routes['what-is-amozek'] = (object)array('url'=>'/help/what-is-amozek','slug'=>'what-is-amozek','route'=>'/help/what-is-amozek/','include'=>'help/what-is-amozek','protected'=>NULL,'permissions'=>array());
+	if($app->dependents->SITE_NAME=='amozek'){
+		$routes['what-is-amozek'] = (object)array('url'=>'/help/what-is-amozek','slug'=>'what-is-amozek','route'=>'/help/what-is-amozek/','include'=>'help/what-is-amozek','protected'=>NULL,'permissions'=>array());	
+	}
 	$routes['help-faqs'] = (object)array('url'=>'/help/faqs','slug'=>'faqs','route'=>'/help/faqs/','include'=>'help/faqs','protected'=>NULL,'permissions'=>array());
 	$routes['help-faqs-type'] = (object)array('url'=>'/help/faqs','slug'=>'faqs','route'=>'/help/faqs/:type/','include'=>'help/faqs','protected'=>NULL,'permissions'=>array());
 	$routes['help-how-to-videos'] = (object)array('url'=>'/help/how-to-videos','slug'=>'how-to-videos','route'=>'/help/how-to-videos/','include'=>'help/how-to-videos','protected'=>NULL,'permissions'=>array());
