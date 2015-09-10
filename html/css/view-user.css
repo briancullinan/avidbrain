@@ -209,6 +209,7 @@ badge.badge-mad-scientist a{
 	width: 100%;
 	margin-bottom: 15px;
 	position: relative;
+	word-break: break-all;
 }
 .block .title span{
 	color: #2196F3;
@@ -483,6 +484,9 @@ badge.badge-mad-scientist a{
 	font-size: 13px;
 	padding: 4px;
 	margin-bottom: 15px;
+	word-break: break-all;
+}
+.tutor-statement{
 	word-break: break-all;
 }
 .tutor-results-subjects{
