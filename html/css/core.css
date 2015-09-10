@@ -28,6 +28,7 @@ h1{
 	font-size: 3.5rem;
 	margin-bottom: 5px;
 	font-weight: 700;
+	font-kerning: normal;
 }
 h1 span{
 	color: #2196F3;

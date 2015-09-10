@@ -17,7 +17,7 @@
 	
 	    <div class="input-field">
 	
-	      <input type="text" name="searchingforstudents[studentname]" id="search" class="validate searchbox" value="<?php if(isset($app->searchingforstudents->studentname)){ echo $app->searchingforstudents->studentname;} ?>" />
+	      <input type="text" name="searchingforstudents[studentname]" id="search" class="validate" value="<?php if(isset($app->searchingforstudents->studentname)){ echo $app->searchingforstudents->studentname;} ?>" />
 	      <label for="search">Student's Name</label>
 	
 	    </div>

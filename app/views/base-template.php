@@ -1,12 +1,6 @@
 <!DOCTYPE html>
-<!--	
-		 █████╗ ███╗   ███╗ ██████╗ ███████╗███████╗██╗  ██╗
-		██╔══██╗████╗ ████║██╔═══██╗╚══███╔╝██╔════╝██║ ██╔╝
-		███████║██╔████╔██║██║   ██║  ███╔╝ █████╗  █████╔╝ 
-		██╔══██║██║╚██╔╝██║██║   ██║ ███╔╝  ██╔══╝  ██╔═██╗ 
-		██║  ██║██║ ╚═╝ ██║╚██████╔╝███████╗███████╗██║  ██╗
-		╚═╝  ╚═╝╚═╝     ╚═╝ ╚═════╝ ╚══════╝╚══════╝╚═╝  ╚═╝
-		www.amozek.com/amozek
+<!-- <?php echo $app->dependents->headerinfo; ?>
+	
 -->
 <html>
 <head>
@@ -63,12 +57,20 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 	<navigation>
 		
 		<div class="navigation-left">
+			<?php if($app->dependents->SITE_NAME=='amozek'): ?>
 			<logo>
 				<a href="/">
 					<span class="icon amozek"></span>
 					<span class="logo">am<span>o</span>zek</span>
 				</a>
 			</logo>
+			<?php elseif($app->dependents->SITE_NAME=='avidbrain'): ?>
+			<logo>
+				<a href="/">
+					ARBOODBRTOWN
+				</a>
+			</logo>
+			<?php endif; ?>
 			<?php include($app->dependents->APP_PATH.'navigation/navigation.basics.php'); ?>
 			<ul>
 				<?php foreach($app->leftnav as $key=> $navitem): ?>
@@ -266,8 +268,9 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 	<div id="bgcheck_modal" class="modal">
 		<div class="modal-content">
 			<h4> <i class="mdi-action-assignment-ind"></i> Background Checks</h4>
-			<p>All of your tutors are interviewed and background checked, to make sure that things are good and stuff is fine.</p>
-			<p>Gummi bears fruitcake biscuit chupa chups marzipan powder sesame snaps donut. Tiramisu candy caramels pastry cupcake chupa chups oat cake fruitcake chocolate. Lemon drops halvah pie dessert marzipan caramels chocolate bar croissant. </p>
+			
+			<p>At <?php echo $app->dependents->SITE_NAME_PROPPER; ?>, we require all of our tutors to be background checked to ensure the safety of our students. By requiring all tutors to go through a thorough background check, we create a place that is both safe and an effective environment for our students.</p>
+			
 		</div>
 
 		<div class="modal-footer">

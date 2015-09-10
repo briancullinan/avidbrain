@@ -1,8 +1,8 @@
 <div class="row">
 	<div class="col s12 m6 l6">
-		<p>Gummi bears fruitcake biscuit chupa chups marzipan powder sesame snaps donut. Tiramisu candy caramels pastry cupcake chupa chups oat cake fruitcake chocolate. Lemon drops halvah pie dessert marzipan caramels chocolate bar croissant. Jelly beans cake gingerbread carrot cake cake. Pie halvah cheesecake pie topping chocolate oat cake lollipop. Cake soufflé brownie tart cupcake. Chocolate bar toffee gummies. Bear claw biscuit icing tootsie roll liquorice cheesecake. Lemon drops  candy canes toffee applicake jelly beans.</p>
-
-<p>Cheesecake marzipan dragée apple pie bear claw cotton candy toffee. Tootsie roll carrot cake soufflé sugar plum dragée marzipan. Jelly fruitcake marzipan ice cream icing cheesecake ice cream applicake. Marshmallow powder sweet sugar plum sweet marzipan halvah apple pie. Tiramisu muffin soufflé biscuit. Pastry powder dessert. Pie caramels candy cookie jelly liquorice. Toffee chocolate bar biscuit bear claw dessert . Chocolate liquorice chocolate.</p>
+		<p>Reviews are an important part in the tutor selection process. Tutor reviews allow students to get a better view on how other students rated their time with their tutor. Reviews can be given for a tutor only after a session has been completed, this allows us to authenticate all of our reviews and guarantee their legitimacy.</p>
+	
+		<p>If as a student you are unsure if a tutor will be a good fit for you, make sure to check out their reviews to get a better understanding of what previous students have to say.</p>
 	</div>
 	<div class="col s12 m6 l6">
 		<?php if(isset($app->reviews)): ?>

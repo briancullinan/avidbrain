@@ -44,15 +44,27 @@
 			else{
 				if(isset($zipcodedata->lat)){
 					
-					$getDistance = "
-						round(((acos(sin((" . $zipcodedata->lat . "*pi()/180)) * sin((user.lat*pi()/180))+cos((" . $zipcodedata->lat . "*pi()/180)) * cos((user.lat*pi()/180)) * cos(((" .$zipcodedata->long. "- user.long)* pi()/180))))*180/pi())*60*1.1515) 
-					";
-					
-					$app->getDistance = true;
-					
-					$asDistance = ' as distance ';
-					$data	=	$data->addSelect($getDistance.$asDistance)->setParameter(':distance',$app->searchingforstudents->distance)->having("distance <= :distance");
-					
+					if($app->searchingforstudents->zipcode=='00000'){
+						
+						$data	=	$data->andWhere('user.zipcode = 00000');
+						
+						
+					}
+					else{
+						
+						$getDistance = "
+							round(((acos(sin((" . $zipcodedata->lat . "*pi()/180)) * sin((user.lat*pi()/180))+cos((" . $zipcodedata->lat . "*pi()/180)) * cos((user.lat*pi()/180)) * cos(((" .$zipcodedata->long. "- user.long)* pi()/180))))*180/pi())*60*1.1515) 
+						";
+						
+						$app->getDistance = true;
+						
+						$asDistance = ' as distance ';
+						$data	=	$data->addSelect($getDistance.$asDistance)->setParameter(':distance',$app->searchingforstudents->distance)->having("distance <= :distance");
+						
+						$data	=	$data->andWhere('user.zipcode != 00000');
+						
+					}
+					//notify($data);
 				}
 			}
 		}
@@ -62,24 +74,31 @@
 	$offsets = new offsets((isset($number) ? $number : NULL),$app->dependents->pagination->items_per_page);
 		
 	$data	=	$data->addSelect('user.*, '.account_settings().', '.profile_select());	$data	=	$data->setMaxResults($offsets->perpage)->setFirstResult($offsets->offsetStart);
-	
 	if(isset($app->filterby)){
 		if($app->filterby=='lastactive'){
 			$data	=	$data->orderBy('user.last_active','DESC');
 		}
-		elseif($app->filterby=='furthestdistance'){
+		elseif(isset($app->getDistance) && $app->filterby=='furthestdistance'){
 			$data	=	$data->orderBy('distance','DESC');
 		}
-		elseif($app->filterby=='closestdistance'){
+		elseif(isset($app->getDistance) && $app->filterby=='closestdistance'){
 			$data	=	$data->orderBy('distance','ASC');
 		}
 		else{
-			//notify('filterby');
+			$data	=	$data->orderBy('user.last_active','DESC');
 		}
 	}
 	else{
-		$data	=	$data->orderBy('distance','ASC');
+		if(isset($app->getDistance)){
+			$data	=	$data->orderBy('distance','ASC');	
+		}
+		else{
+			$data	=	$data->orderBy('user.last_active','DESC');
+		}
+		
 	}
+	
+	//notify('STOODENTS');
 	
 	$data	=	$data->execute()->fetchAll();
 	

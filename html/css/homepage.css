@@ -291,3 +291,19 @@ border-radius: 5px;
 	display: inline-block;
 	padding: 0px 5px;
 }
+
+.homepage-typed::-webkit-input-placeholder {
+	color: #999;
+}
+
+.homepage-typed:-moz-placeholder { /* Firefox 18- */
+	color: #999;
+}
+
+.homepage-typed::-moz-placeholder {  /* Firefox 19+ */
+	color: #999;
+}
+
+.homepage-typed:-ms-input-placeholder {  
+	color: #999;
+}
