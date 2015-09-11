@@ -7,22 +7,6 @@
 	</div>
 	
 	<div class="col s12 m4 l4">
-		<?php
-			function linkify_tweet($tweet) {
-			
-			  //Convert urls to <a> links
-			  $tweet = preg_replace("/([\w]+\:\/\/[\w-?&;#~=\.\/\@]+[\w\/])/", "<a target=\"_blank\" href=\"$1\">$1</a>", $tweet);
-			
-			  //Convert hashtags to twitter searches in <a> links
-			  $tweet = preg_replace("/#([A-Za-z0-9\/\.]*)/", "<a target=\"_new\" href=\"http://twitter.com/search?q=$1\">#$1</a>", $tweet);
-			
-			  //Convert attags to twitter profiles in <a> links
-			  $tweet = preg_replace("/@([A-Za-z0-9\/\.]*)/", "<a href=\"http://www.twitter.com/$1\">@$1</a>", $tweet);
-			
-			  return $tweet;
-			
-			}
-		?>
 		<?php if(isset($app->my_tweets)): ?>
 			<h3> News from <?php echo str_replace('https://twitter.com/','@',$app->dependents->social->twitter); ?></h3>
 			<?php foreach($app->my_tweets as $tweet):# printer($tweet); ?>
