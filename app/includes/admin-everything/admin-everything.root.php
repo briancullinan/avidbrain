@@ -9,7 +9,7 @@
 	$childen['monitor-messages'] = (object) array('name'=>'Monitor Messages','slug'=>'/admin-everything/monitor-messages');
 	$childen['manage-subjects'] = (object) array('name'=>'Manage Subjects','slug'=>'/admin-everything/manage-subjects');
 	$childen['pay-tutors'] = (object) array('name'=>'Pay Tutors','slug'=>'/admin-everything/pay-tutors');
-	$childen['pay-recruiters'] = (object) array('name'=>'Pay Recruiters','slug'=>'/admin-everything/pay-recruiters');
+//	$childen['pay-recruiters'] = (object) array('name'=>'Pay Recruiters','slug'=>'/admin-everything/pay-recruiters');
 	$childen['contested-sessions'] = (object) array('name'=>'Contested Sessions','slug'=>'/admin-everything/contested-sessions');
 	$childen['create-tutor'] = (object) array('name'=>'Create Tutor','slug'=>'/admin-everything/create-tutor');
 	#$childen['xxx'] = (object) array('name'=>'xxx','slug'=>'/admin-everything/xxx');

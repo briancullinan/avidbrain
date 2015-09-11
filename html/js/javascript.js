@@ -618,7 +618,7 @@ $(document).ready(function() {
 		Materialize.toast(clickhelp, 6000,'help-box',function(){});
 	});
 	
-	$("#signup_phone, .swapnumber").keyup(function() {
+	$("#signup_phone, .swapnumber, #becomeatutor_phone").keyup(function() {
 		var swapnumber = $(this).val().replace('(','').replace(')','').replace(/[A-Za-z$-]/g, "");
 		$(this).val(swapnumber);
 	});
@@ -676,6 +676,37 @@ $(document).ready(function() {
 			$(this).val('');
 		}
 	});
+	
+	// Get GEO Loc
+	var geoloc = $('.getgeoloc').attr('class');
+	if(geoloc){
+		getLocation();
+
+		function getLocation() {
+		    if (navigator.geolocation) {
+		        navigator.geolocation.getCurrentPosition(showPosition);
+		    } else {
+			    console.log('Geolocation is not supported by this browser.');
+		    }
+		}
+		function showPosition(position){
+			
+			$.ajax({
+				type: 'POST',
+				url: '/my-location',
+				data: {latitude:position.coords.latitude,longitude:position.coords.longitude,csrf_token:$('input[name="csrf_token"]').val()},
+				success: function(response){
+					if(response.zipcode){
+						Cookies.set('mylocation', response, { expires: 1 });
+						var thislocation = document.location.href.split('#')[0];
+						window.location = thislocation;
+					}
+				}
+			});
+			return false;
+			
+		}
+	}
 	
 });
 $(window).on('scroll', function() {

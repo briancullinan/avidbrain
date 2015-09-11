@@ -91,8 +91,8 @@
 	}
 	
 	use MatthiasMullie\Minify;
-	#$minifyme = true;
-	#$app->minify = true;
+	//$minifyme = true;
+	$app->minify = true;
 	if(isset($minifyme)){
 			
 		$minifier = new Minify\CSS();

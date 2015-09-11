@@ -50,10 +50,11 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 	elseif(isset($hideSearch) && $hideSearch=='false'){
 		$openClosed = 'open';
 	}
+	$app->mylocation = json_decode($app->getCookie('mylocation'));
 ?>
 </head>
 <body class="<?php if(isset($app->secondary) && file_exists($app->secondary)){ echo 'sub-active';} if(isset($app->user->email)){ echo ' active-user ';} echo ' page--'.str_replace('-','',$app->target->css).' '; ?>">
-	
+	<?php if(empty($app->mylocation)){ echo '<div class="getgeoloc"></div>';} ?>
 	<navigation>
 		
 		<div class="navigation-left">

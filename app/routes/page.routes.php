@@ -40,6 +40,7 @@
 	
 	// Get Subjects AJAX Call
 	$routes['get-subjects'] = (object)array('url'=>'/get-subjects','slug'=>'get-subjects','route'=>'/get-subjects/','include'=>'get-subjects','protected'=>NULL,'permissions'=>array(),'type'=>array('GET'),'template'=>'xhr.call.php');
+	$routes['my-location'] = (object)array('url'=>'/my-location','slug'=>'my-location','route'=>'/my-location/','include'=>'my-location','protected'=>NULL,'permissions'=>array(),'type'=>array('POST'));
 	
 	// Tutored Categories
 	$routes['categories'] = (object)array('url'=>'/categories','slug'=>'categories','route'=>'/categories/','include'=>'categories','protected'=>NULL,'permissions'=>array());

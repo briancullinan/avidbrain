@@ -20,6 +20,7 @@
 			$tutorSignup->dependents = $app->dependents;
 			$tutorSignup->csrf_key = $csrf_key;
 			$tutorSignup->csrf_token = $csrf_token;
+			$tutorSignup->killAjax = true;
 			if(isset($promocode)){
 
 				$mycode = new stdClass();

@@ -38,9 +38,20 @@
 
 				$mycode = new stdClass();
 				$mycode->promocode = $promocode;
-				$studentSignup->formvalues = $mycode;
 
 			}
+			
+			if(isset($app->mylocation->zipcode)){
+				if(empty($mycode)){
+					$mycode = new stdClass();
+				}
+				$mycode->zipcode = $app->mylocation->zipcode;
+			}
+			
+			if(isset($mycode)){
+				$studentSignup->formvalues = $mycode;
+			}
+			
 			$studentSignup->makeform();
 
 		?>

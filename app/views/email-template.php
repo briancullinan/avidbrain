@@ -468,7 +468,7 @@
                                     <table border="0" cellpadding="0" cellspacing="0" width="100%" id="templateHeader">
                                         <tr>
                                             <td valign="top" class="headerContent">
-                                            	<a href="https://www.<?php echo $app->dependents->SITE_NAME; ?>.com" target="_blank">
+                                            	<a href="https://www.WEBSNAME.com" target="_blank">
 	                                            	<img src="http://avidbrane.com/images/email/header.gif" style="max-width:600px;" id="headerImage" mc:label="header_image" mc:edit="header_image" mc:allowdesigner mc:allowtext />
                                             	</a>
                                             </td>
@@ -496,16 +496,16 @@
                                         <tr>
                                             <td valign="top" class="footerContent" mc:edit="footer_content00">
                                                 
-                                                <a href="<?php echo $app->dependents->social->facebook; ?>" target="_blank">Facebook</a>
-                                                <a href="<?php echo $app->dependents->social->twitter; ?>" target="_blank">Twitter</a>
-                                                <a href="<?php echo $app->dependents->social->linkedin; ?>" target="_blank">LinkedIn</a>
-                                                <a href="<?php echo $app->dependents->social->blog; ?>" target="_blank">Our Blog</a>
+                                                <a href="FACEBOOKURL" target="_blank">Facebook</a>
+                                                <a href="TWITTERURL" target="_blank">Twitter</a>
+                                                <a href="LINKEDINURL" target="_blank">LinkedIn</a>
+                                                <a href="BLOGURL" target="_blank">Our Blog</a>
                                                 
                                             </td>
                                         </tr>
                                         <tr>
                                             <td valign="top" class="footerContent" style="padding-top:0;" mc:edit="footer_content01">
-                                                <em>Copyright &copy; THEDATE <?php echo $app->dependents->SITE_NAME_PROPPER; ?> Inc., All rights reserved.</em>
+                                                <em>Copyright &copy; THEDATE SITENAMEPROPPER Inc., All rights reserved.</em>
                                                 <br />
                                                 <br />
                                                 <strong>Our mailing address is:</strong>

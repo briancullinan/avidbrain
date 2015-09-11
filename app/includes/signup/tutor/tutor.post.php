@@ -68,6 +68,17 @@
 		if(empty($SERIAL->phone)){
 			new Flash(array('action'=>'required','message'=>'Phone Number Required','formID'=>'becomeatutor','field'=>'field_becomeatutor_phone'));
 		}
+		if(strlen($SERIAL->phone)!=10){
+			new Flash(array('action'=>'required','message'=>'Phone Number Must Be 10 Digits','formID'=>'becomeatutor','field'=>'field_becomeatutor_phone'));
+		}
+		
+		if(empty($SERIAL->password)){
+			new Flash(array('action'=>'required','message'=>'Please enter a password','formID'=>'becomeatutor','field'=>'field_becomeatutor_password'));
+		}
+		if(empty($SERIAL->password_confirm)){
+			new Flash(array('action'=>'required','message'=>'Please confirm your password','formID'=>'becomeatutor','field'=>'field_becomeatutor_password_confirm'));
+		}
+		
 		if(empty($SERIAL->whytutor)){
 			new Flash(array('action'=>'required','message'=>'Why do you want to be a tutor?','formID'=>'becomeatutor','field'=>'field_becomeatutor_whytutor'));
 		}

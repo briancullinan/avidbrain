@@ -22,7 +22,7 @@
 
     <div class="input-field">
 
-        <input type="text" name="search[zipcode]" maxlength="5" id="zipcode" class="validate" value="<?php if(isset($app->searching->zipcode)){ echo $app->searching->zipcode;} ?>" />
+        <input type="text" name="search[zipcode]" maxlength="5" id="zipcode" class="validate" value="<?php if(isset($app->searching->zipcode)){ echo $app->searching->zipcode;}elseif(empty($app->searching->zipcode) && isset($app->mylocation->zipcode)){ echo $app->mylocation->zipcode; } ?>" />
         <label for="zipcode">Zip Code</label>
 
     </div>
