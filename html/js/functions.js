@@ -102,3 +102,27 @@ function stripeResponseHandler(status, response) {
 	}
 	
 }
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+	    console.log('Geolocation is not supported by this browser.');
+    }
+}
+function showPosition(position){
+	
+	$.ajax({
+		type: 'POST',
+		url: '/my-location',
+		data: {latitude:position.coords.latitude,longitude:position.coords.longitude,csrf_token:$('input[name="csrf_token"]').val()},
+		success: function(response){
+			if(response.zipcode){
+				Cookies.set('mylocation', response, { expires: 1 });
+				var thislocation = document.location.href.split('#')[0];
+				window.location = thislocation;
+			}
+		}
+	});
+	return false;
+	
+}
