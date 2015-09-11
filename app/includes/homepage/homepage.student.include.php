@@ -66,6 +66,8 @@
 		
 		<div class="col s12 m4 l4">
 			
+			somethinghere
+			
 			<?php
 				$sql = "SELECT id FROM avid___user_subjects WHERE email = :email";
 				$prepare = array(':email'=>$app->user->email);
