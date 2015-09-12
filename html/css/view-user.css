@@ -69,39 +69,111 @@
 	margin-top: 8px;
 }
 
-badge a{
+badge{
+	line-height: normal;
+	color: #fff;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	display: inline-block;
+	position: relative;
+	overflow: hidden;
+	background: #999;
+	font-size: 12px;
+	padding: 5px;
+	height: auto;
+	background: #ffffff;
+	color: #111;
+	border: solid 1px #ccc;
+}
+.tutor-results badge{
+	background: #f5f5f5;
+}
+badge .badge-icon{
+	display: inline-block;
+	background: red;
+	padding: 3px 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	float: left;
 	color: #fff;
 }
+badge .badge-text{
+	float: left;
+	display: inline-block;
+	padding: 2px;
+	margin-left: 5px;
+	margin-top: 5px;
+}
+badge.success .badge-icon{
+	background: #57ce0d;
+}
+badge.attention .badge-icon{
+	background: #2196F3;
+}
+badge.info .badge-icon{
+	background: #3f51b5 ;
+}
 
-.collection .badge-new-user, badge.badge-new-user{
+badge.star-score .badge-icon{
+	background: #ff9800;
+}
+badge.star-score .badge-icon{
+	
+}
+badge.student .badge-icon{
+	background: #f50057;
+}
+.your-student{
+	margin-top: 10px;
+}
+.badges i{
+	font-size: 22px;
+	display: inline-block;
+}
+.badges span{
+/*
+	float: left;
+	display: inline-block;
+	padding: 3px 5px 0px 5px;
+*/
+}
+badge a{
+	color: #333;
+}
+badge a i{
+	color: #fff;
+}
+.collection-item.badge-new-user, badge.badge-new-user .badge-icon{
 	background:#ffb300;
 	color:#fff;
 }
-.collection .badge-instructor, badge.badge-instructor{
+.collection-item.badge-instructor, badge.badge-instructor .badge-icon{
 	background:#e91e63;
 	color:#fff;
 }
-.collection .badge-teachers-assistant, badge.badge-teachers-assistant{
+.collection-item.badge-teachers-assistant, badge.badge-teachers-assistant .badge-icon{
 	background:#9c27b0;
 	color:#fff;
 }
-.collection .badge-teacher, badge.badge-teacher{
+.collection-item.badge-teacher, badge.badge-teacher .badge-icon{
 	background:#673ab7;
 	color:#fff;
 }
-.collection .badge-assistant-professor, badge.badge-assistant-professor{
+.collection-item.badge-assistant-professor, badge.badge-assistant-professor .badge-icon{
 	background:#3f51b5;
 	color:#fff;
 }
-.collection .badge-associate-professor, badge.badge-associate-professor{
+.collection-item.badge-associate-professor, badge.badge-associate-professor .badge-icon{
 	background:#2196f3;
 	color:#fff;
 }
-.collection .badge-professor, badge.badge-professor{
+.collection-item.badge-professor, badge.badge-professor .badge-icon{
 	background:#4caf50;
 	color:#fff;
 }
-.collection .badge-mad-scientist, badge.badge-mad-scientist{
+.collection-item.badge-mad-scientist, badge.badge-mad-scientist .badge-icon{
 	background:#c6ff00;
 	color:#111;
 	border: solid 1px #81d500;
@@ -111,8 +183,8 @@ badge a{
   -o-animation:      uranium 5s infinite;
   animation:         uranium 5s infinite;
 }
-badge.badge-mad-scientist a{
-	color: #333;
+badge.badge-mad-scientist a i{
+	color: #333 !important;
 }
 
 @-webkit-keyframes uranium {
@@ -503,52 +575,7 @@ badge.badge-mad-scientist a{
 .tutor-results-subjects a:hover{
 	color: #00a7ff;
 }
-badge{
-	line-height: normal;
-	color: #fff;
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
-	border-radius: 10px;
-	display: inline-block;
-	position: relative;
-	overflow: hidden;
-	background: #999;
-	font-size: 12px;
-	padding: 5px 10px;
-	height: auto;
-}
-badge.success{
-	background: #57ce0d;
-}
-badge.attention{
-	background: #2196F3;
-}
-badge.info{
-	background: #3f51b5 ;
-}
-badge.star-score{
-	background: #ff9800;
-}
-badge.star-score i{
-	font-size: 15px;
-	padding:3px 1px;
-}
-badge.student{
-	background: #f50057;
-}
-.your-student{
-	margin-top: 10px;
-}
-.badges i{
-	font-size: 22px;
-	display: inline-block;
-	float: left;
-}
-.badges span{
-	float: left;
-	display: inline-block;
-	padding: 3px 5px 0px 5px;
-}
+
 
 .my-photos h2{
 	margin-bottom: 5px;

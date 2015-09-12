@@ -545,38 +545,38 @@
 			}
 		}
 		
-		return '<badge class="rank '.$type->class.'"> <a href="#myrank" class="modal-trigger"><i class="'.$type->icon.'"></i> <span>'.$type->rank.'</span></a> </badge>';
+		return '<badge class="rank '.$type->class.'"> <a href="#myrank" class="modal-trigger"><span class="badge-icon"><i class="'.$type->icon.'"></i></span> <span class="badge-text">'.$type->rank.'</span></a> </badge>';
 	}
 	
 	function badge($type,$info){
 		
 			if(isset($type) && $type=='background_check'){
-				return '<badge class="success"><a class="modal-trigger" href="#bgcheck_modal"><i class="mdi-action-assignment-ind"></i> <span>Background Check</span></a></badge>';
+				return '<badge class="success"><a class="modal-trigger" href="#bgcheck_modal"><span class="badge-icon"><i class="mdi-action-assignment-ind"></i></span> <span class="badge-text">Background Check</span></a></badge>';
 			}
 		
 		if(isset($info->reviewinfo)){
 			$s = NULL;
 			if(isset($info->reviewinfo->star_score) && isset($type) && $type=='average_score'){
-				return '<badge class="star-score"> '.get_stars($info->reviewinfo->star_score)->icons.' <span> Average Score</span> </badge>';
+				return '<badge class="star-score"> <span class="badge-icon">'.get_stars($info->reviewinfo->star_score)->icons.'</span> <span class="badge-text"> Average Score</span> </badge>';
 			}
 			elseif(isset($info->reviewinfo->count) && $info->reviewinfo->count>0 && isset($type) && $type=='review_count'){
 				if($info->reviewinfo->count!=1){
 					$s='s';
 				}
-				return '<badge class="attention"> <i class="mdi-action-speaker-notes"></i> <span><a href="'.$info->url.'/my-reviews">'.$info->reviewinfo->count.' Review'.$s.'</a></span> </badge>';
+				return '<badge class="attention"> <span class="badge-icon"><i class="mdi-action-speaker-notes"></i></span> <span class="badge-text"><a href="'.$info->url.'/my-reviews">'.$info->reviewinfo->count.' Review'.$s.'</a></span> </badge>';
 			}
 			elseif(isset($info->reviewinfo->hours_tutored) && isset($type) && $type=='hours_tutored'){
 				if($info->reviewinfo->hours_tutored!=1){
 					$s='s';
 				}
-				return '<badge class="info"> <i class="mdi-action-alarm"></i> <span>'.numbers(floor($info->reviewinfo->hours_tutored),1).'+ Hour'.$s.' Tutored</span> </badge>';
+				return '<badge class="info"> <span class="badge-icon"><i class="mdi-action-alarm"></i></span> <span class="badge-text">'.numbers(floor($info->reviewinfo->hours_tutored),1).'+ Hour'.$s.' Tutored</span> </badge>';
 			}
 			elseif(isset($info->reviewinfo->student_count) && $info->reviewinfo->student_count>0 && isset($type) && $type=='student_count' && isset($info->reviewinfo->student_count)){
 				if($info->reviewinfo->student_count!=1){$s='s';}
-				return '<badge class="student"> <i class="mdi-action-face-unlock"></i> <span>'.$info->reviewinfo->student_count.' Student'.$s.' </span> </badge>';
+				return '<badge class="student"> <span class="badge-icon"><i class="mdi-action-face-unlock"></i></span> <span class="badge-text">'.$info->reviewinfo->student_count.' Student'.$s.' </span> </badge>';
 			}
 			elseif(isset($type) && $type=='payment_on_file' && isset($info->creditcard)){
-				return '<badge class="success"><i class="fa fa-credit-card"></i> <span> Payment On File </span> </badge>';
+				return '<badge class="success"><span class="badge-icon"><i class="fa fa-credit-card"></i></span> <span class="badge-text"> Payment On File </span> </badge>';
 			}
 			elseif(isset($info->reviewinfo->hours_tutored) && isset($type) && $type=='fancy_hours_badge'){
 				return badge_type($info->reviewinfo->hours_tutored);
