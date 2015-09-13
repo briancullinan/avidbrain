@@ -555,7 +555,14 @@
 			}
 		
 		if(isset($info->reviewinfo)){
+			
+			
 			$s = NULL;
+			if(isset($info->reviewinfo->review_average) && isset($type) && $type=='average_score'){
+				$average = $info->reviewinfo->review_average * 1;
+				$average = floor($average * 2) / 2;
+				return '<badge class="star-score"> <span class="badge-icon"><i class="fa fa-star"></i></span> <span class="badge-text">Average Score '.$average.' / 5 Stars</span></badge>';
+			}
 			if(isset($info->reviewinfo->star_score) && isset($type) && $type=='average_score'){
 				return '<badge class="star-score"> <span class="badge-icon">'.get_stars($info->reviewinfo->star_score)->icons.'</span> <span class="badge-text"> Average Score</span> </badge>';
 			}
@@ -618,7 +625,7 @@
 				->orderBy('id','DESC')
 				->execute()->fetchAll();
 	}
-	function get_reviewinfo($connect,$email,$usertype){
+	function get_reviewinfo($connect,$email,$usertype){	
 		
 		if($usertype=='tutor'){
 			$selector = 'from_user';
@@ -626,19 +633,21 @@
 		elseif($usertype=='student'){
 			$selector = 'to_user';
 		}
-				
-		$sql = "SELECT round(avg(review_score)) as star_score, (sum(session_length) / 60) as hours_tutored FROM avid___sessions WHERE $selector = :email AND session_status = :session_status";
-		$prepeare = array(':email'=>$email,':session_status'=>'complete');
-		$reviewinfo = $connect->executeQuery($sql,$prepeare)->fetch();
-				
-		$sql = "SELECT id  FROM avid___sessions WHERE $selector = :email AND session_status = :session_status AND review_name IS NOT NULL";
-		$prepeare = array(':email'=>$email,':session_status'=>'complete');
-		$reviewcount = $connect->executeQuery($sql,$prepeare)->rowCount();
 		
-		$reviewinfo->count = $reviewcount;
+		$data	=	$connect->createQueryBuilder();
+		$data	=	$data->select('avg(review_score) as review_average, round(avg(review_score)) as star_score, (sum(session_length) / 60) as hours_tutored')->from('avid___sessions','sessions');
+		$data	=	$data->where($selector.' = :myemail AND session_status = "complete" AND review_score IS NOT NULL');
+		$data	=	$data->setParameter(':myemail',$email);
+		$reviewinfo	=	$data->execute()->fetch();
 		
+		$data	=	$connect->createQueryBuilder();
+		$data	=	$data->select('id')->from('avid___sessions','sessions');
+		$data	=	$data->where($selector.' = :myemail AND session_status = "complete" AND review_name IS NOT NULL');
+		$data	=	$data->setParameter(':myemail',$email);
+		$reviewinfo->count	=	$data->execute()->rowCount();
 		
 		return $reviewinfo;
+		
 	}
 	function get_videos($connect,$email){
 		$sql = "SELECT * FROM avid___user_videos WHERE email = :email ORDER BY `order` ASC";
@@ -938,4 +947,33 @@
 		
 		return $colors[0];
 		
+	}
+	function average_stars($averageScore){
+		$total = 5;
+		$average = $averageScore * 1;
+		$average = floor($average * 2) / 2;
+		$averageTop = ceil($average);
+		
+		$average_stars = '';
+		
+		if(strpos($average, '.5')){
+			foreach(range(2,$averageTop) as $starsleft){
+				$average_stars.='<i class="fa fa-star"></i>';
+			}
+			//$total = $total - 1;
+			$average_stars.='<i class="fa fa-star-half-o"></i>';
+		}
+		else{
+			foreach(range(1,$averageTop) as $starsleft){
+				$average_stars.='<i class="fa fa-star"></i>';
+			}
+		}
+		
+		$whatsLeft = $total - $averageTop;
+		if($whatsLeft>0){								
+			foreach(range(1,$whatsLeft) as $starsleft){
+				$average_stars.='<i class="fa fa-star-o"></i>';
+			}	
+		}
+		return $average_stars;
 	}

@@ -12,30 +12,13 @@
 					 if(count($subjects)>0){
 						 $searchResults->subjects = $subjects;
 					 }
-					 
-	$sql = "SELECT round(avg(review_score)) as star_score, (sum(session_length) / 60) as hours_tutored FROM avid___sessions WHERE from_user = :email AND session_status = :session_status";
-	$prepeare = array(':email'=>$searchResults->email,':session_status'=>'complete');
-	$reviewinfo = $app->connect->executeQuery($sql,$prepeare)->fetch();
 	
-		$sql = "SELECT * FROM avid___sessions WHERE from_user = :email AND session_status = 'complete' AND review_score IS NOT NULL OR from_user = :email AND session_status = 'complete' AND review_text IS NOT NULL ";
-		$prepeare = array(':email'=>$searchResults->email);
-		$reviewinfo->count = $app->connect->executeQuery($sql,$prepeare)->rowCount();
-		$reviewinfo->student_count = $app->connect->executeQuery('SELECT id FROM avid___sessions WHERE from_user = :myemail AND session_status = "complete" GROUP BY to_user ',array(':myemail'=>$searchResults->email))->rowCount();
-		
-		if(empty($reviewinfo->star_score)){
-			unset($reviewinfo->star_score);
-		}
-		if(empty($reviewinfo->hours_tutored)){
-			unset($reviewinfo->hours_tutored);
-		}
-		if(empty($reviewinfo->count)){
-			unset($reviewinfo->count);
-		}
-		if(empty($reviewinfo->student_count)){
-			unset($reviewinfo->student_count);
-		}
-		
-		$searchResults->reviewinfo = $reviewinfo;
+	$test = get_reviewinfo($app->connect,$searchResults->email,$searchResults->usertype);
+	$searchResults->reviewinfo = new stdClass();
+	$searchResults->reviewinfo->review_average = $test->review_average;
+	$searchResults->reviewinfo->star_score = $test->star_score;
+	$searchResults->reviewinfo->hours_tutored = $test->hours_tutored;
+	$searchResults->reviewinfo->count = $test->count;
 	
 ?>
 

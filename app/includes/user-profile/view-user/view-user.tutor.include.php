@@ -139,7 +139,7 @@
 						<?php if(isset($app->currentuser->reviewinfo->star_score)): ?>
 						<div class="my-stars">
 							<span class="the-star-score">
-							<?php echo get_stars($app->currentuser->reviewinfo->star_score)->icons; ?>
+							<?php echo average_stars($app->currentuser->reviewinfo->review_average); ?>
 							</span>
 							
 							<span class="my-stars-text">
