@@ -120,7 +120,7 @@
 					<div class="row">
 						<div class="form-submit col s12">
 							<button class="btn light-green accent-4 waves-effect" type="submit">
-								Submit
+								<?php if(isset($this->button)){echo $this->button;}else{echo'Submit';} ?>
 							</button>
 						</div>
 					</div>

@@ -10,6 +10,7 @@
 			$thelogin->dependents = $app->dependents;
 			$thelogin->csrf_key = $csrf_key;
 			$thelogin->csrf_token = $csrf_token;
+			$thelogin->button = 'Login';
 			if($validation_email = $app->getCookie('validation_email')){
 				$validate = new stdClass();
 				$validate->email = $validation_email;

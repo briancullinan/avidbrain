@@ -368,3 +368,7 @@ input[type=text], input[type=password], input[type=email], input[type=url], inpu
 	color: #9aff00;
 	text-decoration: underline;
 }
+.help-box{
+	background: #007dd5;
+	color: #fff;
+}
