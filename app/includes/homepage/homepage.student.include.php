@@ -66,10 +66,9 @@
 		
 		<div class="col s12 m4 l4">
 			
-			<h3>Your Tutors</h3>
-		
-			<div class="compose-list center-align white">
-				<?php if(isset($app->mytutors)): ?>
+				<?php if(isset($app->mytutors[0])): ?>
+				<h3>Your Tutors</h3>
+				<div class="compose-list center-align white">
 					<?php foreach($app->mytutors as $compose): ?>
 						<div class="compose-item <?php if(isset($username) && $compose->username==$username){ echo 'active'; } ?>" id="<?php echo $compose->url; ?>">
 							<div class="row">
@@ -97,10 +96,11 @@
 							</div>
 						</div>
 					<?php endforeach; ?>
+				</div>
 				<?php else: ?>
-					You have no tutors
+					You have no tutors, <a href="/tutors">find one now</a>.
 				<?php endif; ?>
-			</div>
+			
 			
 			<?php
 				$sql = "SELECT id FROM avid___user_subjects WHERE email = :email";
