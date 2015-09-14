@@ -15,7 +15,7 @@
 		$prepare = array(':email'=>$app->studentapplication->email,':date'=>thedate());
 		$results = $app->connect->executeQuery($query,$prepare);
 		
-		new Flash(array('action'=>'kill-form','formID'=>'studentapplication','message'=>'Message Sent <i class="fa fa-heart"></i>'));
+		new Flash(array('action'=>'kill-form','formID'=>'studentapplication','message'=>'Signup Success <i class="fa fa-heart"></i>'));
 		
 		
 	}

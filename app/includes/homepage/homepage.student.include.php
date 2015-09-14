@@ -66,7 +66,41 @@
 		
 		<div class="col s12 m4 l4">
 			
-			somethinghere
+			<h3>Your Tutors</h3>
+		
+			<div class="compose-list center-align white">
+				<?php if(isset($app->mytutors)): ?>
+					<?php foreach($app->mytutors as $compose): ?>
+						<div class="compose-item <?php if(isset($username) && $compose->username==$username){ echo 'active'; } ?>" id="<?php echo $compose->url; ?>">
+							<div class="row">
+								<div class="col s12 m3 l3">
+									<div class="avatar">
+										<?php echo show_avatar($compose,$user=$app->user,$app->dependents); ?>
+									</div>
+								</div>
+								<div class="col s12 m9 l9">
+									<div class="user-name">
+										<?php echo the_users_name($compose); ?>
+									</div>
+									<?php
+										if(empty($compose->promocode) && $compose->usertype=='student'){
+											echo '<div class="badge grey white-text">Student</div>';
+										}
+										elseif(isset($compose->promocode) && $compose->usertype=='student'){
+											echo '<div class="badge blue white-text">Your Student</div>';
+										}
+										elseif($compose->usertype=='tutor'){
+											echo '<div class="badge light-green accent-4 white-text">Tutor</div>';
+										}								
+									?>
+								</div>
+							</div>
+						</div>
+					<?php endforeach; ?>
+				<?php else: ?>
+					You have no tutors
+				<?php endif; ?>
+			</div>
 			
 			<?php
 				$sql = "SELECT id FROM avid___user_subjects WHERE email = :email";
@@ -132,15 +166,8 @@
 			<h3>Earn $30 towards tutoring</h3>
 			<p>When a friend gets tutored with your code, you both get $<?php echo $signupcode->value; ?> off your next session.</p>
 			<div class="block">
-				<div class="row invite-area">
-					<div class="col s12 m4 l4">
-						<strong>Your Invite Link:</strong>
-					</div>
-					<div class="col s12 m8 l8">
-						<input type="text" value="<?php echo $app->dependents->DOMAIN; ?>/signup/student/<?php echo $signupcode->promocode; ?>" onclick="select();" />
-					</div>
-				</div>
-				
+				<div>Your Invite Link</div>
+				<div class="invite-area"><input type="text" value="<?php echo $app->dependents->DOMAIN; ?>/signup/student/<?php echo $signupcode->promocode; ?>" onclick="select();" /></div>
 				<br/>
 				
 				<?php

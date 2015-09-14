@@ -114,13 +114,9 @@ width: 50%;
 .example{
 	color: #999;
 }
-.invite-area strong{
-	display: block;
-	padding: 9px;
-}
+
 .invite-area input{
 	border: solid 1px #ccc;
-	padding: 5px;
 }
 .my-reward{
 	border: dashed 1px #ccc;

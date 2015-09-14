@@ -31,8 +31,9 @@
 	<div class="col s12 m4 l4">
 		<h3>Your Students</h3>
 		
-		<div class="compose-list center-align white">
+		
 			<?php if(isset($app->mystudents)): ?>
+			<div class="compose-list center-align white">
 				<?php foreach($app->mystudents as $compose): ?>
 					<div class="compose-item <?php if(isset($username) && $compose->username==$username){ echo 'active'; } ?>" id="<?php echo $compose->url; ?>">
 						<div class="row">
@@ -60,10 +61,10 @@
 						</div>
 					</div>
 				<?php endforeach; ?>
+			</div>
 			<?php else: ?>
-				You have no students
+				You have no students, <a href="/students">find one now</a>.
 			<?php endif; ?>
-		</div>
 		
 	</div>
 	

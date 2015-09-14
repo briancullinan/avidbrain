@@ -152,6 +152,23 @@
 					</div>
 				</li>
 				
+				<li class="collection-item homepage-signup">
+					<div class="signup-today">Signup Today</div>
+					<?php
+
+						$simpleSignup = new Forms($app->connect);
+						$simpleSignup->button = 'Signup';
+						//$simpleSignup->classname = 'homepage-signup';
+						$simpleSignup->formname = 'studentapplication';
+						$simpleSignup->url = '/signup/student';
+						$simpleSignup->dependents = $app->dependents;
+						$simpleSignup->csrf_key = $csrf_key;
+						$simpleSignup->csrf_token = $csrf_token;
+						$simpleSignup->makeform();
+			
+					?>
+				</li>
+				
 			</ul>
 		</div>
 		<div class="col s12 m6 l6">
@@ -329,3 +346,25 @@
 		</div>
 	</div>
 </div>
+
+
+<style type="text/css">
+.collection .homepage-signup{
+	padding: 10px;
+}
+.homepage-signup .form-parent{
+	float: none;
+}
+.homepage-signup .form-parent form{
+	border: none;
+	margin: 0px;
+	padding: 0px;
+}
+.signup-today{
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+.homepage-signup .notify-user{
+	display: none !important;
+}
+</style>

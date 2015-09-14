@@ -17,6 +17,7 @@
 		$data	=	$data->innerJoin('sessions','avid___user','user','user.email = sessions.'.$selec2);
 		$data	=	$data->innerJoin('sessions','avid___user_profile','profile','profile.email = sessions.'.$selec2);
 		$data	=	$data->innerJoin('sessions','avid___user_account_settings','settings','settings.email = sessions.'.$selec2);
+		$data	=	$data->groupBy('sessions.id');
 	
 	$count = $data->execute()->rowCount();
 	$offsets = new offsets((isset($number) ? $number : NULL),$app->dependents->pagination->items_per_page);

@@ -215,6 +215,12 @@
 						
 			$delete = $app->connect->delete('avid___user_needsprofilereview', array('email' => $app->currentuser->email));
 			
+			$app->mailgun->to = $app->currentuser->email;
+			$app->mailgun->subject = 'Profile Approved';
+			$app->mailgun->message = 'Your profile has been approved, you may now login and start tutoring.';
+			$app->mailgun->send();
+			
+			
 			$app->currentuser->status = NULL;
 			$app->currentuser->lock = NULL;
 			$app->currentuser->hidden = NULL;

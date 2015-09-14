@@ -269,6 +269,13 @@ input[type=text], input[type=password], input[type=email], input[type=url], inpu
 .secondary-container.closed .tutor-search-form{
 	
 }
+.secondary-top{
+	padding: 0px;
+	margin: 0px;
+	margin-bottom: 10px;
+	padding-bottom: 5px;
+	border-bottom: solid 1px #ccc;
+}
 .input-range input{
     padding: 0px;
     margin: 0px;

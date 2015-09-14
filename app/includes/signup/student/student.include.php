@@ -154,21 +154,6 @@
 
 		<small>*If you are not completely satisfied with your initial session, we will refund you the cost of the first hour.</small>
 		
-		
-		<p>Not sure if you want to signup? Enter your email address and we will notify you about news etc.</p>
-		
-		<?php
-
-			$simpleSignup = new Forms($app->connect);
-			$simpleSignup->formname = 'studentapplication';
-			$simpleSignup->url = $app->request->getPath();
-			$simpleSignup->dependents = $app->dependents;
-			$simpleSignup->csrf_key = $csrf_key;
-			$simpleSignup->csrf_token = $csrf_token;
-			$simpleSignup->makeform();
-
-		?>
-		
 	</div>
 
 </div>

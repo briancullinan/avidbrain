@@ -184,6 +184,19 @@
 		<div class="modal-content">
 			<h4>Admin Module</h4>
 			<br>
+			
+			<?php if(isset($app->currentuser->email)): ?>
+			<div>
+				<?php echo $app->currentuser->email; ?>
+			</div><br>
+			<?php endif; ?>
+			
+			<?php if(isset($app->currentuser->phone)): ?>
+			<div>
+				<?php echo $app->currentuser->phone; ?>
+			</div><br>
+			<?php endif; ?>
+			
 			<form method="post" action="<?php echo $app->request->getPath(); ?>">
 				
 				<div class="input-field">

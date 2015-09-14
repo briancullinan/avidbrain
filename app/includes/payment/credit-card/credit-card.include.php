@@ -1,16 +1,11 @@
 <h1>Add/Edit Credit Card</h1>
 
-<div class="alert blue white-text">
-	We no longer take pre-paid credit cards
-</div>
 
 <?php if(isset($app->user->creditcard)): ?>
 	
 	<div class="row">
 		<div class="col s12 m6 l6">
-			<h2>Your Information</h2>
-			<p>some text about how and why we keep your information safe and secure</p>
-			<p>creditcard something text goes here</p>
+			<?php include('credit-safety.php'); ?>
 		</div>
 		<div class="col s12 m6 l6">
 			
@@ -96,9 +91,7 @@
 
 	<div class="row">
 		<div class="col s12 m6 l6">
-			<h2>Your Information</h2>
-			<p>some text about how and why we keep your information safe and secure</p>
-			<p>creditcard something text goes here</p>
+			<?php include('credit-safety.php'); ?>
 		</div>
 		<div class="col s12 m6 l6">
 			
