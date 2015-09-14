@@ -503,7 +503,9 @@ $(document).ready(function() {
 	        callback: function() {
 		        var slideDown = $('.slideDown').attr('class');
 		        var homepagetyped = isScrolledIntoView('.homepage-typed');
-		        if(slideDown){
+		        var homepageModal = $('.modal').attr('style');
+		        
+		        if(slideDown || homepageModal){
 			        $('.homepage-typed').attr('placeholder','Type a subject to find a tutor');   
 		        }
 		        else if(!homepagetyped){

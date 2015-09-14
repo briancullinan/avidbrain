@@ -218,3 +218,25 @@ width: 50%;
 	display: inline-block;
 	padding: 5px 15px;
 }
+
+.collection .homepage-signup{
+	padding: 10px;
+	background: #f8f8f8;
+	border: solid 2px #2196F3 !important;
+}
+.homepage-signup .form-parent{
+	float: none;
+}
+.homepage-signup .form-parent form{
+	border: none;
+	margin: 0px;
+	padding: 0px;
+	background: transparent;
+}
+.signup-today{
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+.homepage-signup .notify-user{
+	display: none !important;
+}

@@ -98,7 +98,7 @@
 		$app->fixedname = $data->url.'/my-subjects';
 	}
 	
-	if(isset($data->promocode) && $data->promocode == $app->user->email){
+	if(isset($data->promocode) && isset($app->user->email) && $data->promocode == $app->user->email){
 		// Do Nothing
 	}
 	elseif(isset($data->hidden) && empty($data->thisisme)){

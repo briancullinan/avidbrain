@@ -346,25 +346,3 @@
 		</div>
 	</div>
 </div>
-
-
-<style type="text/css">
-.collection .homepage-signup{
-	padding: 10px;
-}
-.homepage-signup .form-parent{
-	float: none;
-}
-.homepage-signup .form-parent form{
-	border: none;
-	margin: 0px;
-	padding: 0px;
-}
-.signup-today{
-	font-weight: bold;
-	margin-bottom: 5px;
-}
-.homepage-signup .notify-user{
-	display: none !important;
-}
-</style>

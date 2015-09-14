@@ -13,7 +13,7 @@
 	if($app->target->key=='/help/tutor-walkthrough'){
 		$childen['tutor-walkthrough'] = (object) array('name'=>'Tutor Walkthrough','slug'=>'/help/tutor-walkthrough');
 	}
-	elseif($app->user->usertype=='student'){
+	elseif(isset($app->user->usertype) && $app->user->usertype=='student'){
 		$childen['student-walkthrough'] = (object) array('name'=>'Student Walkthrough','slug'=>'/help/student-walkthrough');
 	}
 	
