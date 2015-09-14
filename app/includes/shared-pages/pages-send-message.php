@@ -11,6 +11,14 @@
 	
 <?php elseif(isset($app->user->email) && isset($app->user->creditcardonfile) && empty($app->user->status)): ?>
 	<?php
+		
+		if(isset($app->sendwhiteboard)){
+			
+			$asdf = new stdClass();
+			$asdf->subject = 'Join my Whiteboard Session';
+			$asdf->message = 'Hi '.short($app->currentuser).' come over to '.$app->dependents->SITE_NAME_PROPPER.' and join my Scheduled Whiteboard Session. '.$app->dependents->DOMAIN.'/resources/whiteboard/'.$app->sendwhiteboard->roomid;
+			
+		}
 
 		$messagingsystem = new Forms($app->connect);
 		$messagingsystem->formname = 'messagingsystem';
@@ -18,6 +26,7 @@
 		$messagingsystem->dependents = $app->dependents;
 		$messagingsystem->csrf_key = $csrf_key;
 		$messagingsystem->csrf_token = $csrf_token;
+		$messagingsystem->formvalues = $asdf;
 		$messagingsystem->makeform();
 
 	?>

@@ -98,7 +98,10 @@
 		$app->fixedname = $data->url.'/my-subjects';
 	}
 	
-	if(isset($data->hidden) && empty($data->thisisme)){
+	if(isset($data->promocode) && $data->promocode == $app->user->email){
+		// Do Nothing
+	}
+	elseif(isset($data->hidden) && empty($data->thisisme)){
 		$app->target->include = str_replace('.include.','.hidden.include.',$app->target->include);
 		$app->secondary = NULL;
 	}
@@ -242,7 +245,14 @@
 	$app->target->include = str_replace('view-user.','view-user.'.$app->currentuser->usertype.'.',$app->target->include);
 	$app->target->post = str_replace('view-user.','view-user.'.$app->currentuser->usertype.'.',$app->target->post);
 	
-	
+	if(isset($category) && $category=='whiteboard' && isset($subject) && isset($pagename) && $pagename=='send-message'){
+		$sql = "SELECT roomid FROM avid___sessions WHERE roomid = :roomid AND to_user = :thisuser";
+		$prepare = array(':roomid'=>$subject,':thisuser'=>$data->email);
+		$results = $app->connect->executeQuery($sql,$prepare)->fetch();
+		if(isset($results->roomid)){
+			$app->sendwhiteboard = $results;
+		}
+	}
 	
 	$sql = "SELECT * FROM avid___user_needsprofilereview WHERE email = :email ORDER BY id DESC";
 	$prepare = array(':email'=>$app->currentuser->email);

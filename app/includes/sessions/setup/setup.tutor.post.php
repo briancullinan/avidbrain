@@ -41,7 +41,7 @@
 			'proposed_length'=>$app->setupsession->proposed_length,
 			'session_date'=>$app->setupsession->session_date,
 			'session_location'=>$app->setupsession->session_location,
-			'session_online'=>$app->setupsession->session_online,
+			//'session_online'=>$app->setupsession->session_online,
 			'session_rate'=>$app->setupsession->session_rate,
 			'session_subject'=>$app->setupsession->session_subject,
 			'session_time'=>$app->setupsession->session_time,
@@ -81,7 +81,7 @@
 		$message.='<p> <strong>Session Rate:</strong> $'.$app->setupsession->session_rate.'/Hour </p>';
 		$message.='<p> <strong>Session Date:</strong> '.formatdate(sessionTimestamp($app->setupsession)).' @ '.$app->setupsession->session_time.' </p>';
 		$message.='<p> <strong>Session Location:</strong> '.$app->setupsession->session_location.' </p>';
-		$message.='<p> <strong>Online/Offline:</strong> '.online_session($app->setupsession->session_online).' </p>';
+		//$message.='<p> <strong>Online/Offline:</strong> '.online_session($app->setupsession->session_online).' </p>';
 		$message.='<p> <strong>Session Subject:</strong> '.$app->setupsession->session_subject.' </p>';
 		if(isset($app->setupsession->student_notes)){$message.='<p> <strong>Notes:</strong> '.$app->setupsession->student_notes.' </p>';}
 		

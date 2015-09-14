@@ -120,7 +120,7 @@
 			if(isset($showsession->session_length)){		
 				$details[minutes_to_hours($showsession->session_length)] = 'Session Length';	
 			}
-			$details[online_session($showsession->session_online)] = 'Session Type';
+			//$details[online_session($showsession->session_online)] = 'Session Type';
 			if(isset($showsession->review_score)){
 				$details['<span class="orange-text">'.get_stars($showsession->review_score)->icons.'</span>'] = 'Star Score';
 			}
