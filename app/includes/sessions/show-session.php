@@ -80,13 +80,15 @@
 				
 				$total = '$'.numbers($total);
 				
-				$details[$total] = 'Session Cost';
+				$details[$total] = 'Session Cost + Taxes';
 			}
 			else{
-			
 				if(isset($showsession->session_cost)){
-					$details['$'.numbers($showsession->session_cost/100)] = 'Session Cost';
+					$details['$'.numbers($showsession->session_cost/100)] = 'Session Cost + Taxes';
 					//'$'.number_format(($showsession->session_cost/100), 2, '.', ',')
+				}
+				elseif(isset($showsession->session_status) && $showsession->session_status=='canceled-session'){
+					//
 				}
 				else{
 					$details['$'.session_cost($showsession)] = 'Estimated Cost';
