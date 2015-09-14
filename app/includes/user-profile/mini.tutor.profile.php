@@ -83,7 +83,7 @@
 		
 	</div>
 	
-	<div class="badges">
+	<div class="badges mini-badges">
 		<?php
 			echo badge('background_check',$searchResults);
 			echo badge('average_score',$searchResults);

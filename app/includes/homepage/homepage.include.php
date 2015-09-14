@@ -319,7 +319,7 @@
 				</ul>
 			</div>
 		<?php endif; ?>
-		<div>&nbsp;<br> <div class="center-align"><a class="btn" href="<?php echo $app->dependents->social->qa; ?>/">View More Questions & Answers</a></div></div>
+		<div>&nbsp;<br> <div class="center-align"><a class="btn qa-btn" href="<?php echo $app->dependents->social->qa; ?>/">View More Questions & Answers</a></div></div>
 	</div>
 	<div class="col s12 m6 l6">
 		<h2>Motivation</h2>

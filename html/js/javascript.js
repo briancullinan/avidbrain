@@ -486,7 +486,15 @@ $(document).ready(function() {
 		});
 	});
 	
-	
+	function isScrolledIntoView(elem){
+	    var $elem = $(elem);
+	    var $window = $(window);
+	    var docViewTop = $window.scrollTop();
+	    var docViewBottom = docViewTop + $window.height();
+	    var elemTop = $elem.offset().top;
+	    var elemBottom = elemTop + $elem.height();
+	    return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+	}
     setTimeout(function(){
 	    $('.finda').typed({
 	        strings: ['A Coach','An Instructor','A Teacher','A Professor'],
@@ -494,7 +502,11 @@ $(document).ready(function() {
 	        showCursor: false,
 	        callback: function() {
 		        var slideDown = $('.slideDown').attr('class');
+		        var homepagetyped = isScrolledIntoView('.homepage-typed');
 		        if(slideDown){
+			        $('.homepage-typed').attr('placeholder','Type a subject to find a tutor');   
+		        }
+		        else if(!homepagetyped){
 			        $('.homepage-typed').attr('placeholder','Type a subject to find a tutor');   
 		        }
 		        else{

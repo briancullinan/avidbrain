@@ -91,20 +91,19 @@ badge{
 }
 badge .badge-icon{
 	display: inline-block;
-	background: red;
-	padding: 3px 5px;
+	padding: 3px 3px 1px 3px;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
 	float: left;
 	color: #fff;
+	height: 30px;
+	overflow: hidden;
 }
 badge .badge-text{
 	float: left;
 	display: inline-block;
-	padding: 2px;
-	margin-left: 5px;
-	margin-top: 5px;
+	padding: 6px 10px;
 }
 badge.success .badge-icon{
 	background: #57ce0d;
@@ -354,6 +353,9 @@ badge.badge-mad-scientist a i{
 	margin-bottom: 5px;
 }
 .badges badge{
+	height: 43px;
+}
+.mini-badges badge{
 	margin-right: 5px;
 }
 .about-me{

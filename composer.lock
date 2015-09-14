@@ -531,16 +531,16 @@
         },
         {
             "name": "fguillot/picofeed",
-            "version": "v0.1.9",
+            "version": "v0.1.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fguillot/picoFeed.git",
-                "reference": "b1dc17e00215c6ffb6ff2fbc6d193d6403c8bb71"
+                "reference": "a2cc36244278afbfb9578037b1700ca3cd5a87d7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fguillot/picoFeed/zipball/b1dc17e00215c6ffb6ff2fbc6d193d6403c8bb71",
-                "reference": "b1dc17e00215c6ffb6ff2fbc6d193d6403c8bb71",
+                "url": "https://api.github.com/repos/fguillot/picoFeed/zipball/a2cc36244278afbfb9578037b1700ca3cd5a87d7",
+                "reference": "a2cc36244278afbfb9578037b1700ca3cd5a87d7",
                 "shasum": ""
             },
             "require": {
@@ -574,7 +574,7 @@
             ],
             "description": "Modern library to handle RSS/Atom feeds",
             "homepage": "https://github.com/fguillot/picoFeed",
-            "time": "2015-08-27 23:26:39"
+            "time": "2015-09-12 11:05:28"
         },
         {
             "name": "filp/whoops",
