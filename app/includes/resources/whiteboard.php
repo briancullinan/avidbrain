@@ -1,7 +1,7 @@
 <div class="compose-box">
 	<div class="row">
 		<div class="col s12 m4 l4">
-			<h3>Active Whiteboard Sessions</h3>
+			<h3>Whiteboard Sessions</h3>
 			<div class="compose-list center-align white">
 				<?php if(isset($app->getroomdata)): ?>
 				<?php foreach($app->getroomdata as $compose): ?>
@@ -29,8 +29,6 @@
 			</div>
 		</div>
 		<div class="col s12 m8 l8">
-			<p>You can now schedule a whiteboard session with your students.</p>
-			<p><img src="/images/scribblar-example.jpg" class="responsive-img" /></p>
 			<h3>Whiteboard Features</h3>
 			<ul class="collection">
 				<li class="collection-item">
@@ -41,6 +39,10 @@
 				</li>
 				<li class="collection-item">
 					Perfect for online tutoring
+				</li>
+				<li class="collection-item">
+					<div>Example Whiteboard</div>
+					<img src="/images/scribblar-example.jpg" class="responsive-img" />
 				</li>
 			</ul>
 		</div>
