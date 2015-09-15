@@ -23,6 +23,8 @@
 	$dependents->twilio = new stdClass();
 	$dependents->twilio->id = 'AC0b159b382464c3e1c63f5d18fdf7ca22'; 
 	$dependents->twilio->auth_token = 'e3d65fabfe6d0e6e688ad2f9a369946a';
+	$dependents->twilio->number = '+14803511893';
+	$dependents->twilio->friendly = 'AvidBrain Inc.';
 	
 	$dependents->scribblarAPI = '27D1B127-9CCB-A496-810CC85CDECC42D1';
 	

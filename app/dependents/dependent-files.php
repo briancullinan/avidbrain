@@ -18,18 +18,18 @@
 		$material = '0.97.0';
 		$cdncss = array(
 			'//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700',
-			'https://fonts.googleapis.com/css?family=Quicksand:300,400,700',
+			'//fonts.googleapis.com/css?family=Quicksand:300,400,700',
 			'//fonts.googleapis.com/css?family=Exo+2:700,400&subset=latin,cyrillic',
 			'//cdnjs.cloudflare.com/ajax/libs/materialize/'.$material.'/css/materialize.min.css',
 			'//fonts.googleapis.com/icon?family=Material+Icons',
 			'//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'
 		);
 		$headjs = array(
-			'https://js.stripe.com/v2',
-			'https://code.jquery.com/jquery-2.1.1.min.js'
+			'//js.stripe.com/v2',
+			'//code.jquery.com/jquery-2.1.1.min.js'
 		);
 		$cdnjs = array(
-			'https://cdnjs.cloudflare.com/ajax/libs/materialize/'.$material.'/js/materialize.min.js'
+			'//cdnjs.cloudflare.com/ajax/libs/materialize/'.$material.'/js/materialize.min.js'
 		);
 	}
 	

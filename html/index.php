@@ -71,6 +71,7 @@
 	$app->mailgun = new Email($app->dependents);
 	$app->sendmessage = new SendMessage($app->connect);
 	$app->twilio = new Services_Twilio($app->dependents->twilio->id, $app->dependents->twilio->auth_token);
+	$app->twilio->account->outgoing_caller_ids->create($app->dependents->twilio->number, array("FriendlyName" => $app->dependents->twilio->friendly));
 	
 	use Intervention\Image\ImageManager;
 	$app->imagemanager = new ImageManager(array('driver' => 'imagick'));
@@ -94,7 +95,7 @@
 	
 	use MatthiasMullie\Minify;
 	//$minifyme = true;
-	//$app->minify = true;
+	$app->minify = true;
 	if(isset($minifyme)){
 			
 		$minifier = new Minify\CSS();
