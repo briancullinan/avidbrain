@@ -88,6 +88,21 @@
 				</div>
 			</div>
 		</div>
+		<div class="row">
+			<div class="col s6 m8 l8">
+				<div class="switch-text">Is your rate negotiable? If so, it will show on your profile as negotiable. </div>
+			</div>
+			<div class="col s6 m4 l4 right-align">
+				<div class="switch">
+					<label>
+						No
+						<input <?php if($app->user->settings->negotiableprice=='yes'){ echo 'checked="checked"';} ?> name="accountsettings[negotiableprice]" type="checkbox">
+						<span class="lever"></span>
+						Yes
+					</label>
+				</div>
+			</div>
+		</div>
 		<?php endif; ?>
 		
 		<div class="row">

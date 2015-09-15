@@ -588,6 +588,9 @@
 			elseif(isset($info->reviewinfo->hours_tutored) && isset($type) && $type=='fancy_hours_badge'){
 				return badge_type($info->reviewinfo->hours_tutored);
 			}
+			elseif(isset($info->negotiableprice) && $info->negotiableprice=='yes' && isset($type) && $type=='negotiable_rate'){
+				return '<badge class="negotiable"> <span class="badge-icon"><i class="fa fa-dollar"></i></span> <span class="badge-text">My Rates Are Negotiable</span> </badge>';
+			}
 			elseif(empty($info->reviewinfo->hours_tutored) && isset($type) && $type=='fancy_hours_badge'){
 				return badge_type(1);
 			}
@@ -757,7 +760,7 @@
 		}
 	}
 	function account_settings(){
-		return ' settings.getemails, settings.showfullname, settings.anotheragency, settings.anotheragancy_rate, settings.showmyprofile, settings.avidbrainnews, settings.newjobs ';
+		return ' settings.getemails, settings.showfullname, settings.anotheragency, settings.anotheragancy_rate, settings.showmyprofile, settings.avidbrainnews, settings.newjobs, settings.negotiableprice';
 	}
 	function profile_select(){
 		return '

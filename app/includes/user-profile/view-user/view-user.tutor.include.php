@@ -15,13 +15,12 @@
 		
 		<div class="tutor-profile-inside">
 			
-			<div class="hourly-rate edit-change">
-				
+			<div class="hourly-rate edit-change <?php if(isset($app->currentuser->negotiableprice) && $app->currentuser->negotiableprice=='yes'){ echo 'negotiable-price';} ?>">
 				<?php if(isset($app->currentuser->thisisme)): ?>
 				<div class="edit-profile tooltipped" data-position="right" data-delay="50" data-tooltip="Change Hourly Rate"><i class="fa fa-pencil"></i></div>
 				$<span class="input"><input type="text" name="editprofile[hourly_rate]" class="reset-input hourly_rate" value="<?php echo $app->currentuser->hourly_rate; ?>" /></span>
 				<?php else: ?>
-				$<?php echo $app->currentuser->hourly_rate; ?>
+				$<?php echo $app->currentuser->hourly_rate; ?><?php if(isset($app->currentuser->negotiableprice) && $app->currentuser->negotiableprice=='yes'){ echo '<span class="asterisk"><i class="fa fa-asterisk"></i></span>';} ?>
 				<?php endif; ?>
 			</div>
 		
@@ -89,6 +88,7 @@
 								echo badge('hours_tutored',$app->currentuser);
 								echo badge('student_count',$app->currentuser);
 								echo badge('fancy_hours_badge',$app->currentuser);
+								echo badge('negotiable_rate',$app->currentuser);
 							?>
 						</div>
 						

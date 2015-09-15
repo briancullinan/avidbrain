@@ -1,7 +1,8 @@
 
 avid___user_account_settings
 	`textmessages` varchar(22) DEFAULT NULL,
-	`newjobs` varchar(11) DEFAULT 'no'
+	`newjobs` varchar(11) DEFAULT 'no',
+	`negotiableprice` varchar(11) DEFAULT 'no',
 	
 
 	
