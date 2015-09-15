@@ -1,4 +1,4 @@
-<h3>Credit cards we accept</h3>
+<h3>Cards we accept</h3>
 <ul class="collection">
 	<li class="collection-item">
 		<div class="row">
@@ -42,4 +42,4 @@
 	</li>
 </ul>
 
-<p>We no longer accept pre-paid or gift cards.</p>
+<small>We no longer accept pre-paid or gift cards.</small>
