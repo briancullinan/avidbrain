@@ -1,5 +1,6 @@
 <?php if(isset($app->user->usertype) && $app->user->usertype=='tutor'): ?>
-<p><button class="btn blue">Send <?php echo short($app->roominfo); ?> an invite to join your Whiteboard Session</button></p>
+<p><a href="<?php echo $app->roominfo->url; ?>/send-message/whiteboard/<?php echo $app->roomid; ?>" class="btn blue">Send <?php echo short($app->roominfo); ?> an invite to join your Whiteboard Session</a></p>
+
 <?php endif; ?>
 
 <div id="scribblar">

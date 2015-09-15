@@ -42,7 +42,7 @@
 		</div>
 		<div class="col s12 m8 l8">
 			<?php if(isset($app->setupsessionwith)): ?>
-				<h3>Setup a tutoring session with <?php echo the_users_name($app->setupsessionwith); ?> </h3>
+				<h3>Setup a tutoring session with <span class="blue-text"><?php echo the_users_name($app->setupsessionwith); ?></span> </h3>
 				
 				<?php
 					
@@ -68,3 +68,5 @@
 		</div>
 	</div>
 </div>
+
+<?php include($app->target->base.'what-is-a-whiteboard.php'); ?>

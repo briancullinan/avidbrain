@@ -170,7 +170,7 @@
 		$topsubjects = $app->connect->cache->get("topsubjects");
 		if($topsubjects == null) {
 		   
-		   $sql = "SELECT subject_slug,parent_slug,subject_name,count(subject_name) as count FROM avid___user_subjects WHERE usertype = :usertype AND status = :verified GROUP BY subject_name ORDER BY count(subject_name) DESC LIMIT 5";
+		   $sql = "SELECT subject_slug,parent_slug,subject_name,count(subject_name) as count FROM avid___user_subjects WHERE usertype = :usertype AND status = :verified GROUP BY subject_name ORDER BY count(subject_name) DESC LIMIT 8";
 			$prepeare = array(':usertype'=>'tutor',':verified'=>'verified');
 			$topsubjects = $app->connect->executeQuery($sql,$prepeare)->fetchAll();
 		    $app->connect->cache->set("topsubjects", $topsubjects, 1200);

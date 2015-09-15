@@ -70,10 +70,21 @@
 }
 .read-message{
 	background: #F2F2F2;
-	border: dashed 1px #ccc;
-}
-.read-message .avatar img{
+	border: solid 1px #ccc;
 	opacity: .8;
+}
+.read-message .message-subject{
+	font-size: 16px;
+}
+.read-message .hr{
+	margin: 5px 0px;
+}
+.message-blocks.read-message .user-block{
+	margin: 0px;
+	padding: 0px;
+}
+.message-blocks.read-message .avatar img{
+	max-height: 65px;
 }
 .needs-review{
 	border: solid 2px #57ce0d;

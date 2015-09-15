@@ -9,7 +9,7 @@
 		//notify();
 		
 		$data	=	$app->connect->createQueryBuilder();
-		$data	=	$data->select('sessions.to_user,user.first_name,user.last_name')->from('avid___sessions','sessions');
+		$data	=	$data->select('sessions.to_user,user.first_name,user.last_name,user.url')->from('avid___sessions','sessions');
 		$data	=	$data->where('sessions.roomid = :roomid')->setParameter(':roomid',$getroomdata->roomid);
 		$data	=	$data->innerJoin('sessions','avid___user','user','sessions.to_user = user.email');
 		$data	=	$data->execute()->fetch();

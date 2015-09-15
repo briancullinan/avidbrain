@@ -22,7 +22,7 @@
 			
 			$whiteboard = new stdClass();
 			$whiteboard->subject = 'Join my Whiteboard Session';
-			$whiteboard->message = 'Hi '.short($app->currentuser).' come over to '.$app->dependents->SITE_NAME_PROPPER.' and join my Scheduled Whiteboard Session. '.$app->dependents->DOMAIN.'/resources/whiteboard/'.$app->sendwhiteboard->roomid;
+			$whiteboard->message = 'Hi '.short($app->currentuser).' come over to '.$app->dependents->SITE_NAME_PROPPER.' and join my Scheduled Whiteboard Session.'."\n".$app->dependents->DOMAIN.'/resources/whiteboard/'.$app->sendwhiteboard->roomid;
 			$messagingsystem->formvalues = $whiteboard;	
 		}
 		
