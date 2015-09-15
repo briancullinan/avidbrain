@@ -240,3 +240,7 @@ width: 50%;
 .homepage-signup .notify-user{
 	display: none !important;
 }
+.apply-to-job .tutors-near-me{
+	margin-bottom: 15px;
+	margin-top: 10px;
+}

@@ -5,6 +5,7 @@
         "This file is @generated automatically"
     ],
     "hash": "96cb8f38e211db057448dc9f6e3f4f28",
+    "content-hash": "2e33981e5da9865b8d8308dabc9ebfdf",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -1374,16 +1375,16 @@
         },
         {
             "name": "phpfastcache/phpfastcache",
-            "version": "3.0.10",
+            "version": "3.0.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/khoaofgod/phpfastcache.git",
-                "reference": "4fbc2a8a7b0a7589cd4ca0e750c711616ba03699"
+                "reference": "5ee8aadcf04921f1b6f5742d2610973a5d8e9fe0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/khoaofgod/phpfastcache/zipball/4fbc2a8a7b0a7589cd4ca0e750c711616ba03699",
-                "reference": "4fbc2a8a7b0a7589cd4ca0e750c711616ba03699",
+                "url": "https://api.github.com/repos/khoaofgod/phpfastcache/zipball/5ee8aadcf04921f1b6f5742d2610973a5d8e9fe0",
+                "reference": "5ee8aadcf04921f1b6f5742d2610973a5d8e9fe0",
                 "shasum": ""
             },
             "require": {
@@ -1426,7 +1427,7 @@
                 "redis",
                 "wincache"
             ],
-            "time": "2015-08-25 16:47:00"
+            "time": "2015-09-14 18:49:38"
         },
         {
             "name": "psr/http-message",

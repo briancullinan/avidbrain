@@ -96,25 +96,28 @@
 		<div class="col s12 m6 l6">
 			
 			<h2>Authorize A Credit Card</h2>
-			<?php
-				$prepaiderror = $app->getCookie('prepaid');
-				if($prepaiderror!=NULL){
-					echo '<div class="alert red white-text">'.$prepaiderror.'</div>';
-				}
-			?>
-			<form action="" method="post">
-				<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
-				<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-					data-email = "<?php echo $app->user->email; ?>"
-					data-key = "<?php echo $app->dependents->stripe->STRIPE_PUBLIC; ?>"
-					data-amount = "00"
-					data-panel-label = "Authorize Card"
-					data-label = "Authorize Card"
-					data-name = "<?php echo $app->dependents->SITE_NAME_PROPPER; ?> Authorization"
-					data-description = "Authorize Credit Card"
-					data-allow-remember-me = "false"
-				></script>
-			</form>
+			<div class="block">
+				<div>Click the authorize card to add your credit card to the secure online payment system.</div> <br>
+				<?php
+					$prepaiderror = $app->getCookie('prepaid');
+					if($prepaiderror!=NULL){
+						echo '<div class="alert red white-text">'.$prepaiderror.'</div>';
+					}
+				?>
+				<form action="" method="post">
+					<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
+					<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+						data-email = "<?php echo $app->user->email; ?>"
+						data-key = "<?php echo $app->dependents->stripe->STRIPE_PUBLIC; ?>"
+						data-amount = "00"
+						data-panel-label = "Authorize Card"
+						data-label = "Authorize Card"
+						data-name = "<?php echo $app->dependents->SITE_NAME_PROPPER; ?> Authorization"
+						data-description = "Authorize Credit Card"
+						data-allow-remember-me = "false"
+					></script>
+				</form>
+			</div>
 		</div>
 	</div>
 	

@@ -25,9 +25,36 @@
 						->innerJoin('applicants', 'avid___user_account_settings', 'settings', 'applicants.email = settings.email')
 						->execute()->fetchAll();
 	}
-		
 	
-	//notify($job);
+	$name = 'tutors-near-me'.$app->user->email.'-'.$app->job->subject_slug.'-'.$app->job->id;
+	$tutorsnearme = $app->connect->cache->get($name);
+	if($tutorsnearme == null) {
+		
+		$getDistance = "round(((acos(sin((" . $app->user->lat . "*pi()/180)) * sin((user.lat*pi()/180))+cos((" . $app->user->lat . "*pi()/180)) * cos((user.lat*pi()/180)) * cos(((" .$app->user->long. "- user.long)* pi()/180))))*180/pi())*60*1.1515)";
+		$asDistance = ' as distance ';
+	
+		$data	=	$app->connect->createQueryBuilder();
+		$data	=	$data->select('user.*, profile.hourly_rate, profile.my_avatar')->from('avid___user','user');
+		$data	=	$data->where('user.usertype = :usertype AND profile.hourly_rate IS NOT NULL')->setParameter(':usertype','tutor');
+		$data	=	$data->addSelect('subjects.subject_name');
+		$data	=	$data->innerJoin('user','avid___user_subjects','subjects','user.email = subjects.email');
+		$data	=	$data->innerJoin('user','avid___user_profile','profile','user.email = profile.email');
+		$data	=	$data->andWhere('subjects.subject_name LIKE :subject_name');
+		$data	=	$data->andWhere('subjects.status = :verified')->setParameter(':verified','verified');
+		$data	=	$data->setParameter(':subject_name',"%".$app->job->subject_name."%");
+		$data	=	$data->groupBy('user.email');
+		$data	=	$data->setMaxResults(3);
+		$data	=	$data->addSelect($getDistance.$asDistance)->setParameter(':distance',25)->having("distance <= :distance");
+		$data	=	$data->orderBy($getDistance,'ASC');
+		$returnedData	=	$data->execute()->fetchAll();
+		
+	    $tutorsnearme = $returnedData;
+	    $app->connect->cache->set($name, $returnedData, 3600);
+	}
+	
+	if(isset($tutorsnearme[0])){
+		$app->tutorsnearme = $tutorsnearme;
+	}
 					
 	if(isset($applicants[0])){
 		$job->applicants = $applicants;
@@ -40,7 +67,3 @@
 		}
 		
 	}
-	
-	//notify($job);
-	
-	

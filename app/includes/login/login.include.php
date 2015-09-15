@@ -24,17 +24,12 @@
 		<h2>Login Help</h2>
 		
 		<ul class="collection">
-			<li class="collection-item">  <a href="/help/forgot-password">Forgot Your Password?</a></li>
-			<li class="collection-item"><a href="/signup">Need To Signup?</a></li>
-			<li class="collection-item">xxx</li>
-			<li class="collection-item">xxx</li>
-			<li class="collection-item">xxx</li>
+			<li class="collection-item"> <a href="/help/forgot-password">Forgot Your Password?</a></li>
+			<li class="collection-item"> <a href="/signup">Create An Account</a></li>
+			<li class="collection-item"><a href="/how-it-works">How It Works</a></li>
+			<li class="collection-item"> <a href="/help/faqs">FAQ's</a> </li>
 		</ul>
 		
 	</div>
 	
 </div>
-
-<?php if(isset($special_login)): ?>
-	<!-- Special Login -->
-<?php endif; ?>
