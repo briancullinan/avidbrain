@@ -41,6 +41,8 @@
 	
 	include($app->dependents->APP_PATH.'functions/global.functions.php');
 	require '../app/autoload/autoload.php';
+	
+	//killallcookies();
 
 	// Global Database Connection
 	define('PREFIX', 'avid___');

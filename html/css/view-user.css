@@ -37,7 +37,8 @@
 }
 .tutor-left{
 }
-.tutor-right{
+.tutor-right .edit-block h1{
+	margin-bottom: 2px;
 }
 .review .profile-image img{
 	max-height: 100px;

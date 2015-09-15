@@ -694,7 +694,7 @@ $(document).ready(function() {
 	// Get GEO Loc
 	var geoloc = $('.getgeoloc').attr('class');
 	if(geoloc){
-		getLocation();
+		//getLocation();
 	}
 	
 });

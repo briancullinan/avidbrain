@@ -1,5 +1,18 @@
 <?php
 	
+	function killallcookies(){
+		
+		foreach($_COOKIE as $cookieKey => $cookie){
+			$_COOKIE[$cookieKey] = '';
+			unset($_COOKIE[$cookieKey]);
+			setcookie($cookieKey, '', time() - 3600, '/');
+		}
+		notify($_COOKIE);
+		echo 'COOKIES ARE GONE';
+		exit;
+		
+	}
+	
 	function clean($input) {
 		
 		$pattern1 = array(
