@@ -69,3 +69,62 @@
 	</div>
 	
 </div>
+
+<div class="block">
+	<div class="fancy"></div>
+	<div class="dancy"></div>
+</div>
+
+<script type="text/javascript">
+	
+	$(document).ready(function() {
+		// Create the XHR object.
+		function createCORSRequest(method, url) {
+		  var xhr = new XMLHttpRequest();
+		  	xhr.open(method, url, true);
+		  	xhr.withCredentials = "true";
+		  return xhr;
+		}
+		
+		// Make the actual CORS request.
+		function makeCorsRequest() {
+		  // All HTML5 Rocks properties support CORS.
+		  var url = 'http://qa.avidbrain.dev/sessionid.php';
+		
+		  var xhr = createCORSRequest('GET', url);
+		  if (!xhr) {
+		    alert('CORS not supported');
+		    return;
+		  }
+		  xhr.onload = function() {
+			  console.log(xhr);
+		    $('.fancy').html(xhr.response);
+		  };
+		  xhr.onerror = function() {
+			  console.log('WHOOPS');
+		  };
+		
+		  xhr.send();
+		}
+		
+		makeCorsRequest();
+		
+
+		setTimeout(function(){
+			$.ajax({
+				type: 'POST',
+				url: 'http://qa.avidbrain.dev/sessionid.php',
+				xhrFields: {
+			      withCredentials: true
+			    },
+				data: {withCredentials:true},
+				success: function(response){
+					$('.dancy').html(response);
+				}
+			});
+			return false;
+		}, 3000);
+		
+	});
+	
+</script>

@@ -25,7 +25,7 @@
 			'//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'
 		);
 		$headjs = array(
-			'//js.stripe.com/v2',
+			'https://js.stripe.com/v2',
 			'//code.jquery.com/jquery-2.1.1.min.js'
 		);
 		$cdnjs = array(

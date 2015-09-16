@@ -56,9 +56,11 @@
 	
 	$footerlinks = array();
 	if(isset($app->user->email) && empty($app->user->status)){
+		
 		$email = $app->crypter->encrypt($app->user->email);
 		$sessiontoken = $app->crypter->encrypt($app->user->sessiontoken);
-		$qalink = $app->dependents->social->qa.'/login.php?one='.$email.'&two='.$sessiontoken;
+		//$qalink = $app->dependents->social->qa.'/login.php?one='.$email.'&two='.$sessiontoken;
+		$qalink = $app->dependents->social->qa.'/redirect.php';//.'/login.php?one='.$email.'&two='.$sessiontoken;
 		$footerlinks[$qalink] = (object) array('name'=>'Questions & Answers');
 	}
 	elseif(isset($app->user->email) && isset($app->user->status)){
