@@ -697,6 +697,27 @@ $(document).ready(function() {
 		//getLocation();
 	}
 	
+	// QA Login
+	if($('.qalogin').attr('class')){
+		$.ajax({
+			type: 'POST',
+			url: 'http://qa.avidbrain.dev/sessionid.php',
+			xhrFields: {withCredentials: true},
+			data: {withCredentials:true,webernets:$('.webernets').val(),distancetothesun:$('.distancetothesun').val()},
+			success: function(response){
+				$('.qalogin').html('<div class="qalogin-text"> <i class="fa fa-refresh fa-spin yellow-text"></i> Logging Into AvidBrain Q&A</div>');
+				setTimeout(function(){
+					$('.qalogin-text').slideDown();
+				}, 400);
+				setTimeout(function(){
+					window.location = response;	
+				}, 1000);
+				
+			}
+		});
+		return false;
+	}
+	
 });
 $(window).on('scroll', function() {
     scrollPosition = $(this).scrollTop();

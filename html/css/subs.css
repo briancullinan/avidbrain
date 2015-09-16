@@ -247,3 +247,24 @@ width: 50%;
 .stripe-button-el{
 	width: 100%;
 }
+
+.qalogin{
+	position: fixed;
+	width: 100%;
+	left: 0px;
+	top:0px;
+	z-index: 55555;
+}
+.qalogin-text{
+	display: none;
+	padding: 20px 0px;
+	background: #0087F2;
+	color: #fff;
+	text-align: center;
+	
+}
+.qalogin-text i{
+	font-size: 20px;
+	display: inline-block;
+	padding: 5px;
+}
