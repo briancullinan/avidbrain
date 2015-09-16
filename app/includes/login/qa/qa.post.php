@@ -9,14 +9,20 @@
 		
 		if(isset($authenticate->admins) && isset($authenticate->authenticate)){
 			
-			$app->mailgun->to = $authenticate->phone;
-			$app->mailgun->subject = 'Authenticate';
-			$app->mailgun->message = 'Code: '.$authenticate->code;
-			$app->mailgun->send();
+			$app->twilio->account->messages->create(array( 
+				'To' => $authenticate->phone, 
+				'From' => $app->dependents->twilio->number, 
+				'Body' => 'Your authentication code is: '.$authenticate->code
+			));
+			
+			#$app->mailgun->to = $authenticate->phone;
+			#$app->mailgun->subject = 'Authenticate';
+			#$app->mailgun->message = 'Code: '.$authenticate->code;
+			#$app->mailgun->send();
 			
 			setcookie("dualauth", $app->crypter->encrypt($app->login->email), time()+3600);
 			
-			new Flash(array('action'=>'jump-to','location'=>'/login/qa/authenticate','formID'=>'login','message'=>'Dual Authentication Required'));
+			new Flash(array('action'=>'jump-to','location'=>'/login/authenticate','formID'=>'login','message'=>'Dual Authentication Required'));
 			
 		}
 		
