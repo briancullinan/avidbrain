@@ -119,17 +119,17 @@
 					$neeedss=NULL;
 					if(count($app->needsreview)!=1){$neeedss='s';}
 				?>
-				<h2>Please review your last tutoring session<?php echo $neeedss; ?></h2>
+				<h2>Past Session<?php echo $neeedss; ?></h2>
 				<?php foreach($app->needsreview as $needsreview): ?>
 					<div class="block">
-						<div class="row">
-							<div class="col s12 m6 l6">
-								<div><?php echo $needsreview->session_subject; ?> @ <?php echo formatdate($needsreview->session_timestamp); ?></div>
-								<div>With: <a href="<?php echo $needsreview->url; ?>" target="_blank"><?php echo short($needsreview); ?></a></div>
-							</div>
-							<div class="col s12 m6 l6">
-								<a href="/sessions/view/<?php echo $needsreview->id; ?>">Review Session</a>
-							</div>
+						<div class="title">
+							<?php echo $needsreview->session_subject; ?>
+						</div>
+						<div class="description">
+							<div><a href="/sessions/view/<?php echo $needsreview->id; ?>">Review Session</a></div>
+						</div>
+						<div class="date">
+							With: <a href="<?php echo $needsreview->url; ?>" target="_blank"><?php echo short($needsreview); ?></a> @ <?php echo formatdate($needsreview->session_timestamp); ?>
 						</div>
 					</div>
 				<?php endforeach; ?>

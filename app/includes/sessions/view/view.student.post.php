@@ -15,7 +15,7 @@
 		$message = '<p><a href="/sessions/view/'.$id.'">View Session Details</a></p>';
 		
 		
-		if(isset($app->sessionreviews->review_score)){
+		if(isset($app->sessionreviews->review_score) && $app->sessionreviews->review_score>0){
 			
 			$stars = get_stars($app->sessionreviews->review_score);
 			
@@ -51,9 +51,13 @@
 			'review_name'=>$app->user->email
 		);
 		
+		//notify($update);
 		
 		$app->connect->update('avid___sessions', $update, array('to_user' => $app->user->email,'id'=>$id));
-		
+		if(empty($stars->icons)){
+			$stars = new stdClass();
+			$stars->icons = NULL;
+		}
 		
 		new Flash(array('action'=>'jump-to','formID'=>'sessionreviews','location'=>'/sessions/view/'.$id,'message'=>'Review Posted '.$stars->icons));
 		

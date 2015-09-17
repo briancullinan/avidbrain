@@ -279,9 +279,11 @@
 		
 		$stars='';
 		$starsi='';
-		foreach(range(1,$starscore) as $xxx){
-			$stars.='&#9733;';
-			$starsi.='<i class="fa fa-star"></i>';
+		if($starscore>0){
+			foreach(range(1,$starscore) as $xxx){
+				$stars.='&#9733;';
+				$starsi.='<i class="fa fa-star"></i>';
+			}
 		}
 		if(count($howmanyrange)>0){
 			foreach($howmanyrange as $xxx){
@@ -626,22 +628,45 @@
 			$selector2 = 'from_user';
 		}
 		
+		return $connect->createQueryBuilder()->select('sessions.*')
+				->from('avid___sessions','sessions')
+				->where($selector.' = :email')
+				->andWhere('review_name IS NOT NULL')
+				->setParameter(':email',$email)
+				#->innerJoin('sessions','avid___user','user','user.email = sessions.'.$selector2)
+				#->innerJoin('user','avid___user_profile','profile','user.email = profile.email')
+				#->innerJoin('user','avid___user_account_settings','settings','user.email = settings.email')
+				->orderBy('id','DESC')
+				->execute()->fetchAll();
+	}
+	
+	function my_testimonials($connect,$email,$usertype){
+		
+		if($usertype=='tutor'){
+			$selector = 'from_user';
+			$selector2 = 'to_user';
+		}
+		elseif($usertype=='student'){
+			$selector = 'to_user';
+			$selector2 = 'from_user';
+		}
+		
 		return $connect->createQueryBuilder()->select('sessions.*, user.first_name, user.customer_id, user.last_name, user.url, user.usertype,
 			profile.my_avatar,
 			profile.my_avatar_status,
 			profile.my_upload,
 			profile.my_upload_status, settings.showfullname')
 				->from('avid___sessions','sessions')
-				->where($selector.' = :email')
-				->andWhere('review_name IS NOT NULL')
+				->where($selector.' = :email AND review_name IS NOT NULL AND review_text IS NOT NULL')
 				->setParameter(':email',$email)
 				->innerJoin('sessions','avid___user','user','user.email = sessions.'.$selector2)
 				->innerJoin('user','avid___user_profile','profile','user.email = profile.email')
 				->innerJoin('user','avid___user_account_settings','settings','user.email = settings.email')
+				->setMaxResults(5)
 				->orderBy('id','DESC')
 				->execute()->fetchAll();
 	}
-	function get_reviewinfo($connect,$email,$usertype){	
+	function get_reviewinfo($connect,$email,$usertype){
 		
 		if($usertype=='tutor'){
 			$selector = 'from_user';
@@ -650,19 +675,55 @@
 			$selector = 'to_user';
 		}
 		
-		$data	=	$connect->createQueryBuilder();
-		$data	=	$data->select('avg(review_score) as review_average, round(avg(review_score)) as star_score, (sum(session_length) / 60) as hours_tutored')->from('avid___sessions','sessions');
-		$data	=	$data->where($selector.' = :myemail AND session_status = "complete" AND review_score IS NOT NULL');
-		$data	=	$data->setParameter(':myemail',$email);
-		$reviewinfo	=	$data->execute()->fetch();
 		
 		$data	=	$connect->createQueryBuilder();
-		$data	=	$data->select('id')->from('avid___sessions','sessions');
-		$data	=	$data->where($selector.' = :myemail AND session_status = "complete" AND review_name IS NOT NULL');
-		$data	=	$data->setParameter(':myemail',$email);
-		$reviewinfo->count	=	$data->execute()->rowCount();
+		$data	=	$data->select('sessions.review_name,sessions.review_date,sessions.review_text,sessions.review_score,sessions.session_subject,sessions.session_length')->from('avid___sessions','sessions');
+		$data	=	$data->where('sessions.'.$selector.' = :email')->setParameter(':email',$email);
+		$data	=	$data->andWhere('sessions.session_status = "complete"');
+		$data	=	$data->execute()->fetchAll();
 		
-		return $reviewinfo;
+		if(isset($data[0])){
+			$reviewscore = array();
+			$session_length = array();
+			foreach($data as $item){
+				if(isset($item->review_score) && $item->review_score>0){
+					$reviewscore[] = $item->review_score;
+				}
+				if(isset($item->session_length) && $item->session_length>0){
+					$session_length[] = ($item->session_length/60);
+				}
+			}
+			
+			$count = count($data);
+			$star_count = count($reviewscore);
+			$star_sum = array_sum($reviewscore);
+			$star_average = ($star_sum/$star_count);
+			$hours_tutored = array_sum($session_length);
+			
+			$review_info = new stdClass();
+			$review_info->total_count = $count;
+			$review_info->total_star_count = $star_count;
+			$review_info->total_star_count_sum = $star_sum;
+			$review_info->total_star_count_average = $star_average;
+			$review_info->total_hours_tutored = $hours_tutored;
+			
+			$return = new stdClass();
+			$return->count = $star_count;
+			$return->review_average = $star_average;
+			$return->hours_tutored = $hours_tutored;
+			$return->star_score = $star_count;
+			
+			$return->additional = $review_info;
+		}
+		else{
+			$return = new stdClass();
+			$return->count = NULL;
+			$return->review_average = NULL;
+			$return->hours_tutored = NULL;
+			$return->star_score = NULL;
+		}
+			
+		return $return;
 		
 	}
 	function get_videos($connect,$email){

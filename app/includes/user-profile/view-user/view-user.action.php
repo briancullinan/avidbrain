@@ -123,6 +123,9 @@
 		if(!$data->my_reviews = get_reviews($app->connect,$data->email,$data->usertype)){
 			unset($data->my_reviews);
 		}
+		if(!$data->my_testimonials = my_testimonials($app->connect,$data->email,$data->usertype)){
+			unset($data->my_testimonials);
+		}
 		if(!$data->reviewinfo = get_reviewinfo($app->connect,$data->email,$data->usertype)){
 			unset($data->reviewinfo);
 		}
@@ -215,9 +218,16 @@
 						
 			$delete = $app->connect->delete('avid___user_needsprofilereview', array('email' => $app->currentuser->email));
 			
+			if($app->currentuser->usertype=='tutor'){
+				$message = 'Your profile has been approved, you may now login and start tutoring.';
+			}
+			elseif($app->currentuser->usertype=='student'){
+				$message = 'Your profile has been approved, you may now login and find a tutor.';
+			}
+			
 			$app->mailgun->to = $app->currentuser->email;
 			$app->mailgun->subject = 'Profile Approved';
-			$app->mailgun->message = 'Your profile has been approved, you may now login and start tutoring.';
+			$app->mailgun->message = $message;
 			$app->mailgun->send();
 			
 			

@@ -10,12 +10,14 @@
 		}
 		else{
 			
+			$final = 70;
 			$rateTable = array(
 				70=>range(0,50),
 				75=>range(51,200),
 				80=>range(201,1000),
 				85=>range(1001,2000),
-				90=>range(2001,9000)
+				90=>range(2001,9000),
+				95=>range(9001,99999)
 			);
 			
 			$sql = "SELECT
@@ -37,7 +39,6 @@
 					break;
 				}
 			}
-			
 			return $final;
 			
 		}
@@ -71,7 +72,7 @@
 	$childen['/sessions/completed/'] = (object) array('name'=>'Completed','slug'=>'/sessions/completed');
 	$childen['/sessions/canceled/'] = (object) array('name'=>'Canceled','slug'=>'/sessions/canceled');
 	if($app->path=='/sessions/setup/'){
-		$childen['/sessions/setup/'] = (object) array('name'=>'Setup Session','slug'=>'/sessions/setup/'.$id);
+		$childen['/sessions/setup/'] = (object) array('name'=>'Modify Session','slug'=>'/sessions/setup/'.$id);
 	}
 	if($app->path=='/sessions/view/'){
 		$childen['/sessions/view/'] = (object) array('name'=>'View Session','slug'=>'/sessions/view/'.$id);

@@ -77,7 +77,7 @@
 							</div>
 							<?php endif; ?>
 							
-							<?php if(isset($jobsessions->review_score)): ?>
+							<?php if(isset($jobsessions->review_score) && $jobsessions->review_score>0): ?>
 							<div>
 								Review Score: <span class="orange-text"><?php echo get_stars($jobsessions->review_score)->icons; ?></span>
 							</div>
