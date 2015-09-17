@@ -51,14 +51,32 @@
 		
 	</div>
 	<div class="col s12 m6 l6">
-		<div class="block">
+		
 			
-			<div class="title">Activating Messaging</div>
+		<?php if($app->user->usertype=='tutor'): ?>
+			<div class="block">
+				<div class="title">Getting Paid</div>
+				
+				<p>Tutors get paid every two weeks, or the 15th and the 30th of every month. We provide either direct deposit, or a check delivered via post. </p>
+				
+				<div> <a href="/payment/get-paid" class="btn btn-block blue">Setup Payment Method</a> </div>
+			</div>
+			<div class="block">
+				<div class="title">Your Pay Rate</div>
+				
+				You are currently makeing <?php echo whats_my_rate($app->connect,$app->user); ?>% for all of your tutoring sessions.
+				
+			</div>
+		<?php elseif($app->user->usertype=='student'): ?>
+			<div class="block">
+				<div class="title">Activating Messaging</div>
+				
+				<p>In order to communicate with tutors and students we require a valid credit card on file. We won't charge you anything, it just adds an additional level of authenticity to our accounts.</p>
+				
+				<div> <a href="/payment/credit-card" class="btn btn-block blue">Activate Messaging</a> </div>
+			</div>
+		<?php endif; ?>
 			
-			<p>In order to communicate with tutors and students we require a valid credit card on file. We won't charge you anything, it just adds an additional level of authenticity to our accounts.</p>
-			
-			<div> <a href="/payment/credit-card" class="btn btn-block blue">Activate Messaging</a> </div>
-			
-		</div>
+
 	</div>
 </div>

@@ -8,12 +8,8 @@
 
 
 <?php if(empty($app->user->status)): ?>
-<?php
-	$email = $app->crypter->encrypt($app->user->email);
-	$sessiontoken = $app->crypter->encrypt($app->user->sessiontoken);
-	$qalink = $app->dependents->social->qa.'/login.php?one='.$email.'&two='.$sessiontoken;
-?>
-<a href="<?php echo $qalink; ?>" class="btn "><?php echo $app->dependents->SITE_NAME_PROPPER; ?> Q&A</a>
+
+<a href="/qa-login" class="btn "><?php echo $app->dependents->SITE_NAME_PROPPER; ?> Q&A</a>
 <?php else: ?>
 	<p>Before you can participate in Q&A you must have an approved profile.</p>
 	<a href="/request-profile-review" class="btn red">Request Profile Review</a>

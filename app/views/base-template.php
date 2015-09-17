@@ -176,7 +176,7 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 							<?php foreach($app->leftnav as $key=> $navitem): ?>
 							<li>
 								<a class="<?php if(myrootisyourroot($app->request->getPath(),$key)){ echo ' active ';} if(isset($navitem->class)){ echo $navitem->class; } ?>" href="<?php echo $key; ?>">
-									<?php echo strip_tags($navitem->name); ?>
+									<?php echo $navitem->name; ?>
 								</a>
 							</li>
 							<?php endforeach; ?>

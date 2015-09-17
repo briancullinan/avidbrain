@@ -73,3 +73,11 @@
 		</form>
 	</div>
 </div>
+<?php
+	#$img_canvas = $app->imagemanager->canvas(160, 160);
+	#$img_canvas->fill($app->imagemanager->make($app->dependents->DOCUMENT_ROOT.'profiles/avatars/hair-brown.png'), 0, 0);
+	#$img_canvas->fill($app->imagemanager->make($app->dependents->DOCUMENT_ROOT.'profiles/avatars/shirt-blue.png'), 0, 0);
+	#$img_canvas->fill($app->imagemanager->make($app->dependents->DOCUMENT_ROOT.'profiles/avatars/base-white.png'), 0, 0);
+	#$img_canvas->fill(Image::make('img/grey.jpg'), 100, 0); // add offset
+	#$img_canvas->save($app->dependents->DOCUMENT_ROOT.'profiles/avatars/hamburger.png', 100);
+?>

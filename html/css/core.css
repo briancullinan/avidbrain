@@ -366,6 +366,26 @@ footer ul li a:hover{
 	color: #666;
 	font-size: 12px;
 }
+.footer-li li a .new{
+	position: relative;
+	float: none;
+	display: inline-block;
+	padding: 0px;
+	height: auto;
+	font-size: 11px;
+	line-height: normal;
+	min-height: inherit;
+	font-weight: normal;
+	right: auto;
+	background: #222;
+	color: #2196F3;
+	color: #999;
+	text-transform: capitalize;
+}
+.footer-li li a.active .new{
+	background: #2196F3;
+	color: #fff;
+}
 .av-versioning{
 	color: #666;
 }

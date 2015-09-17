@@ -1066,3 +1066,52 @@
 		}
 		return $average_stars;
 	}
+	
+	function calculate_payrate($connect,$sessioninfo,$userinfo){
+		
+		if(isset($sessioninfo->promocode) && $sessioninfo->promocode==$userinfo->email){
+			return 95;
+		}
+		elseif(isset($userinfo->top1000)){
+			return 80;
+		}
+		else{
+			return whats_my_rate($connect,$userinfo);
+		}
+		
+	}
+	
+	function whats_my_rate($connect,$userinfo){
+		
+		$final = 70;
+		$rateTable = array(
+			70=>range(0,50),
+			75=>range(51,200),
+			80=>range(201,1000),
+			85=>range(1001,2000),
+			90=>range(2001,9000),
+			95=>range(9001,99999)
+		);
+		
+		$sql = "SELECT
+				sum(session_length) as total
+			FROM
+				avid___sessions
+			WHERE
+				from_user = :from_user
+					AND
+				session_length IS NOT NULL
+		";
+		$prepare = array(':from_user'=>$userinfo->email);
+		$totalMinutes = $connect->executeQuery($sql,$prepare)->fetch();
+		$totalHours = floor($totalMinutes->total / 60);
+		
+		foreach($rateTable as $key =>$rate){
+			if(in_array($totalHours, $rate)){
+				$final = $key;
+				break;
+			}
+		}
+		return $final;
+		
+	}
