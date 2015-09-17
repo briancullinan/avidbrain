@@ -685,6 +685,7 @@
 		$data	=	$data->andWhere('sessions.session_status = "complete"');
 		$data	=	$data->execute()->fetchAll();
 		
+		
 		if(isset($data[0])){
 			$reviewscore = array();
 			$session_length = array();
@@ -696,11 +697,15 @@
 					$session_length[] = ($item->session_length/60);
 				}
 			}
+			//printer($data);
 			
 			$count = count($data);
 			$star_count = count($reviewscore);
 			$star_sum = array_sum($reviewscore);
-			$star_average = ($star_sum/$star_count);
+			$star_average = NULL;
+			if($star_sum>0){
+				$star_average = ($star_sum/$star_count);
+			}
 			$hours_tutored = array_sum($session_length);
 			
 			$review_info = new stdClass();
