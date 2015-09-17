@@ -578,9 +578,9 @@
 				$average = floor($average * 2) / 2;
 				return '<badge class="star-score"> <span class="badge-icon"><i class="fa fa-star"></i></span> <span class="badge-text">Average Score '.$average.' / 5 Stars</span></badge>';
 			}
-			if(isset($info->reviewinfo->star_score) && isset($type) && $type=='average_score'){
-				return '<badge class="star-score"> <span class="badge-icon">'.get_stars($info->reviewinfo->star_score)->icons.'</span> <span class="badge-text"> Average Score</span> </badge>';
-			}
+			#if(isset($info->reviewinfo->star_score) && isset($type) && $type=='average_score'){
+				//return '<badge class="star-score"> <span class="badge-icon">'.get_stars($info->reviewinfo->star_score)->icons.'</span> <span class="badge-text"> Average Score</span> </badge>';
+			#}
 			elseif(isset($info->reviewinfo->count) && $info->reviewinfo->count>0 && isset($type) && $type=='review_count'){
 				if($info->reviewinfo->count!=1){
 					$s='s';
@@ -685,7 +685,6 @@
 		$data	=	$data->andWhere('sessions.session_status = "complete"');
 		$data	=	$data->execute()->fetchAll();
 		
-		
 		if(isset($data[0])){
 			$reviewscore = array();
 			$session_length = array();
@@ -697,7 +696,7 @@
 					$session_length[] = ($item->session_length/60);
 				}
 			}
-			//printer($data);
+			
 			
 			$count = count($data);
 			$star_count = count($reviewscore);
@@ -730,7 +729,7 @@
 			$return->hours_tutored = NULL;
 			$return->star_score = NULL;
 		}
-			
+		
 		return $return;
 		
 	}
@@ -1034,6 +1033,11 @@
 		
 	}
 	function average_stars($averageScore){
+		
+		if(empty($averageScore)){
+			return '<i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i>';
+		}
+		
 		$total = 5;
 		$average = $averageScore * 1;
 		$average = floor($average * 2) / 2;
