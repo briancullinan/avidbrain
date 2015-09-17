@@ -54,7 +54,7 @@
 
 
 <?php if(isset($app->currentuser->my_testimonials)): ?>
-	<h2>My Testimonials</h2>
+	<h2>My Latest Testimonials</h2>
 	<?php foreach($app->currentuser->my_testimonials as $my_testimonials): ?>
 	
 		<div class="block review">

@@ -662,7 +662,7 @@
 				->innerJoin('sessions','avid___user','user','user.email = sessions.'.$selector2)
 				->innerJoin('user','avid___user_profile','profile','user.email = profile.email')
 				->innerJoin('user','avid___user_account_settings','settings','user.email = settings.email')
-				->setMaxResults(5)
+				->setMaxResults(7)
 				->orderBy('id','DESC')
 				->execute()->fetchAll();
 	}
