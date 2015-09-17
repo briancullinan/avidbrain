@@ -651,7 +651,7 @@
 			$selector2 = 'from_user';
 		}
 		
-		return $connect->createQueryBuilder()->select('sessions.*, user.first_name, user.customer_id, user.last_name, user.url, user.usertype,
+		$data = $connect->createQueryBuilder()->select('sessions.*, user.first_name, user.customer_id, user.last_name, user.url, user.usertype,
 			profile.my_avatar,
 			profile.my_avatar_status,
 			profile.my_upload,
@@ -665,6 +665,8 @@
 				->setMaxResults(7)
 				->orderBy('id','DESC')
 				->execute()->fetchAll();
+				
+		return $data;
 	}
 	function get_reviewinfo($connect,$email,$usertype){
 		
