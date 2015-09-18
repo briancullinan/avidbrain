@@ -64,7 +64,9 @@
 			<div class="block">
 				<div class="title">Your Pay Rate</div>
 				
-				You are currently makeing <?php echo whats_my_rate($app->connect,$app->user); ?>% for all of your tutoring sessions.
+				<p>Your current pay rate is: <span class="blue-text"><?php echo whats_my_rate($app->connect,$app->user); ?>%</span></p>
+				
+				<div><a href="/help/faqs/tutors">View Full Pay Table</a></div>
 				
 			</div>
 		<?php elseif($app->user->usertype=='student'): ?>

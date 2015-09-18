@@ -63,6 +63,7 @@
 	min-height: 43px;
 }
 .my-stars{
+	margin-top: 7px;
 	float: left;
 	width: 100%;
 }
@@ -464,7 +465,6 @@ badge.badge-mad-scientist a i{
 .hourly-rate{
 	position: absolute;
 	background: #2196F3;
-	border: solid 3px #fff;
 	left: -10px;
 	top: -10px;
 	color: #fff;
@@ -485,10 +485,13 @@ badge.badge-mad-scientist a i{
 }
 .hourly-rate.negotiable-price .asterisk{
 	position: absolute;
+/*
 	right: -5px;
 	top:-5px;
+*/
 	font-size: 12px;
 	color: #666;
+	color: #fff;
 }
 .attention-overlay{
 	background: rgba(255, 255, 255, 0.94);

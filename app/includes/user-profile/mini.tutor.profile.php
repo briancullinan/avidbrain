@@ -23,8 +23,10 @@
 ?>
 
 <div class="tutor-results">
-	<div class="hourly-rate valign-wrapper">
-		<span class="valign">$<?php echo $searchResults->hourly_rate; ?></span>
+	<div class="hourly-rate valign-wrapper <?php if(isset($searchResults->negotiableprice) && $searchResults->negotiableprice=='yes'){ echo 'negotiable-price';} ?>">
+		<span class="valign">
+			$<?php echo $searchResults->hourly_rate; ?> <?php if(isset($searchResults->negotiableprice) && $searchResults->negotiableprice=='yes'){ echo '<span class="asterisk"><i class="fa fa-asterisk"></i></span>';} ?>
+		</span>
 	</div>
 	
 	<div class="row">
@@ -91,6 +93,7 @@
 			echo badge('hours_tutored',$searchResults);
 			echo badge('student_count',$searchResults);
 			echo badge('fancy_hours_badge',$searchResults);
+			echo badge('negotiable_rate',$searchResults);
 		?>
 	</div>
 	

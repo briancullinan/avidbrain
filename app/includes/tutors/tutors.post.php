@@ -20,6 +20,7 @@
 	$data	=	$data->where('user.usertype = :usertype')->setParameter(":usertype","tutor");
 	$data	=	$data->andWhere('user.status IS NULL');
 	$data	=	$data->andWhere('user.hidden IS NULL');
+	$data	=	$data->andWhere('profile.hourly_rate IS NOT NULL');
 	$data	=	$data->andWhere('user.lock IS NULL');
 	
 //	notify($app->search);
