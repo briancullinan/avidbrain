@@ -674,9 +674,10 @@
 				->innerJoin('user','avid___user_profile','profile','user.email = profile.email')
 				->innerJoin('user','avid___user_account_settings','settings','user.email = settings.email')
 				->setMaxResults(7)
+				->orderBy('sessions.session_timestamp','ASC')
 				->groupBy('user.email')
-				->orderBy('id','DESC')
 				->execute()->fetchAll();
+				//notify($data);
 				
 		return $data;
 	}
