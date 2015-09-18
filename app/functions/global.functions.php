@@ -454,6 +454,17 @@
 			return $username;
 		}
 	}
+	function check_username($connect,$newname){
+		$sql = "SELECT username FROM avid___user WHERE username = :username";
+		$prepeare = array(':username'=>$newname);
+		$results = $connect->executeQuery($sql,$prepeare)->fetch();
+		if(isset($results->username)){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
 	function makefileupload($file,$key){
 		if(isset($file->name)){
 			$fileupload = new stdClass();

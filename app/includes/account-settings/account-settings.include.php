@@ -132,8 +132,6 @@
 	<div class="col s12 m6 l6">
 		<h2>Change Password</h2>
 		
-		
-		
 		<?php
 			$thelogin = new Forms($app->connect);
 			$thelogin->formname = 'changepassword';
@@ -143,7 +141,6 @@
 			$thelogin->csrf_token = $csrf_token;
 			$thelogin->makeform();
 		?>
-		
 		
 		<h2>Add Your Phone Number</h2>
 		
@@ -167,6 +164,37 @@
 				</div>
 				
 			</form>
+		</div>
+		
+		<h3>Change Username</h3>
+		<div class="block">
+			<p>If you would like to change your username, just type in a new one below and see if it's available.</p>
+			<p>Your current username is: <?php echo $app->user->username; ?></p>
+			<br>
+			<form class="form-post" method="post" action="<?php echo $app->request->getPath(); ?>" id="checkusername">
+	
+				<div class="row">
+					<div class="col s6 m6 l6">
+						<div class="input-field">
+							<input id="newusername" type="text" name="newusername[username]" class="validate">
+							<label for="newusername">
+								New Username
+							</label>
+						</div>
+					</div>
+					<div class="col s3 m3 l3">
+						<div class="name-status"></div>
+					</div>
+					<div class="col s3 m3 l3">
+						<div class="submit-me"></div>
+					</div>
+				</div>
+				
+				<input type="hidden" name="something[target]" value="something"  />
+				<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
+				
+			</form>
+			
 		</div>
 		
 		
@@ -218,7 +246,7 @@
 			<form method="post" class="form-post" id="deleteaccount" action="<?php echo $app->request->getPath(); ?>">
 				
 				<input type="hidden" name="deleteaccount[target]" value="deleteaccount"  />
-				<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
+				<input type="hidden" id="csrf" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
 				
 				<div class="form-submit">
 					<button class="btn red confirm-submit" type="button">
@@ -230,3 +258,54 @@
 		</div>
 	</div>
 </div>
+
+
+<script type="text/javascript">
+	
+	$(document).ready(function() {
+		
+		var thetoken = $('#csrf').val();
+		
+		$("#newusername").keyup(function() {
+		
+			setTimeout($.proxy(function() {
+				
+				var swapnumber = $(this).val().replace('(','').replace(')','').replace(/[^a-z0-9]/gi, "").toLowerCase();
+				$('#newusername').val(swapnumber);
+				
+				var thedata = $(this).val();
+				$.ajax({
+					type: 'POST',
+					url: '/account-settings',
+					data: {username:thedata,csrf_token:thetoken},
+					success: function(response){
+						if(response=='error'){
+							$('#checkusername .name-status').addClass('invalid-name').removeClass('valid-name').html('<i class="fa fa-warning"></i> Invalid Name');
+							$('.submit-me').html('');
+						}
+						else if(response=='success'){
+							$('#checkusername .name-status').removeClass('invalid-name').addClass('valid-name').html('<i class="fa fa-check"></i> Valid Name');
+							$('.submit-me').html('<button class="btn green white-text" type="submit">Submit</button>');
+						}
+					}
+				});
+				
+		    }, this), 10);
+			
+		});
+	});
+	
+</script>
+
+<style type="text/css">
+.invalid-name{
+	color: red;
+}
+.valid-name{
+	color: green;
+}
+.name-status{
+	text-align: center;
+	padding: 12px;
+}
+</style>

@@ -143,7 +143,7 @@
 							</span>
 							
 							<span class="my-stars-text">
-								<?php echo $app->currentuser->reviewinfo->count; ?> Reviews
+								<?php echo $app->currentuser->reviewinfo->count; ?> Review<?php if($app->currentuser->reviewinfo->count!=1){ echo 's';} ?>
 							</span>
 							
 						</div>

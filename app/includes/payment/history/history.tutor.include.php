@@ -46,13 +46,19 @@
 				</td>
 				<td>
 					<?php
-						$taxremoval = (((stripe_transaction($paymenthistory->amount))-$paymenthistory->amount)/100);
-						$totalCost = $paymenthistory->amount/100;
-						$final = ceil($totalCost - $taxremoval);
-						$finalPercent = (($final * $paymenthistory->payrate)/100);
-						//printer($finalPercent);
+						if(isset($paymenthistory->taxes)){
+							$taxremoval = (((stripe_transaction($paymenthistory->amount))-$paymenthistory->amount)/100);
+							$totalCost = $paymenthistory->amount/100;
+							$final = ceil($totalCost - $taxremoval);
+							$finalPercent = (($final * $paymenthistory->payrate)/100);
+						}
+						else{
+							$finalPercent = (($paymenthistory->amount * $paymenthistory->payrate)/10000);
+						}
 					?>
+					
 					$<?php echo numbers($finalPercent); ?>
+					
 				</td>
 				<td>
 					<?php echo $paymenthistory->payrate; ?>%

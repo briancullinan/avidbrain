@@ -1,6 +1,27 @@
 <?php
-	
-	if(isset($app->accountsettings)){
+
+
+	if(isset($app->newusername)){
+		$checkusername = makeslug($app->dependents->ROMANIZE,$app->newusername->username);
+		$newusername = check_username($app->connect,$checkusername);
+		if($newusername==true){
+			notify('error');
+		}
+		else{
+			notify('success');
+		}
+	}
+	elseif(isset($app->username)){
+		$checkusername = makeslug($app->dependents->ROMANIZE,$app->username);
+		$newusername = check_username($app->connect,$checkusername);
+		if($newusername==true){
+			notify('error');
+		}
+		else{
+			notify('success');
+		}
+	}
+	elseif(isset($app->accountsettings)){
 		$accountsettings = array();
 		foreach($app->user->settings() as $key=> $setting){
 			if(isset($app->accountsettings->$key)){

@@ -80,6 +80,8 @@
 			
 			//notify($amount);
 			
+			//notify($amount);
+			
 			if(isset($myrewards->value)){
 				$value = ($myrewards->value*100);
 				$amountAfterDiscount = ($amount-$value);
@@ -108,7 +110,8 @@
 				'session_cost'=>$amount,
 				'session_length'=>$app->completesession->session_length,
 				'session_status'=>'complete',
-				'payrate'=>$payrate
+				'payrate'=>$payrate,
+				'taxes'=>1
 			);
 			
 			if(isset($amountAfterDiscount) && $amountAfterDiscount>0){
