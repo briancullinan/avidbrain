@@ -1,6 +1,7 @@
 <div class="row">
 	<div class="col s12 m6 l6">
-		Change your password text
+		<p>You may now change your password. Please enter a new password, then confirm it.</p>
+		<p>Please use a strong password, to guarantee your accounts security.</p>
 	</div>
 	<div class="col s12 m6 l6">
 		<?php
