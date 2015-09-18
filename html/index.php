@@ -80,6 +80,9 @@
 	$app->contest = new stdClass();
 	//$app->contest->ipadgiveaway = true;
 	
+	// Free Sessions
+	$app->freesessions = true;
+	
 	// Twitters
 	use Abraham\TwitterOAuth\TwitterOAuth;
 	//$app->connect->cache->delete("my_tweets");
@@ -95,7 +98,7 @@
 	
 	use MatthiasMullie\Minify;
 	//$minifyme = true;
-	//$app->minify = true;
+	$app->minify = true;
 	if(isset($minifyme)){
 			
 		$minifier = new Minify\CSS();
@@ -114,6 +117,7 @@
 	}
 	
  	#$app->connect->cache->clean();
+ 	#echo 'CLEANUP()';
 	#exit;
 
 	if(isset($app->user->email)){

@@ -16,6 +16,46 @@
 	  return $tweet;
 	
 	}
+	
+	function uniquepromocode($connect){
+		$random = random_all(8);
+		$sql = "SELECT promocode FROM avid___promotions WHERE promocode = :promocode";
+		$prepare = array(':promocode'=>$random);
+		$results = $connect->executeQuery($sql,$prepare)->rowCount();
+		
+		if($results==0){
+			return $random;
+		}
+		else{
+			return uniquepromocode($connect);
+		}
+		
+	}
+	function signupcode($connect,$email){
+		
+		$promocodevalues = new stdClass();
+		$sql = "SELECT * FROM avid___promotions WHERE email = :email";
+		$prepare = array(':email'=>$email);
+		$results = $connect->executeQuery($sql,$prepare)->fetch();
+		
+		if(isset($results->id)){
+			$promocodevalues->promocode = $results->promocode;
+			$promocodevalues->value = $results->value;
+		}
+		else{
+			
+			$random = uniquepromocode($connect);
+			$value = 30;
+			$connect->insert('avid___promotions',array('promocode'=>$random,'value'=>$value,'email'=>$email));
+			$promocode = $random;
+			$promocodevalues->promocode = $random;
+			$promocodevalues->value = $value;
+		}
+		
+		return $promocodevalues;
+	}
+	
+	
 
 	if(isset($app->user->email)){
 		
@@ -54,6 +94,7 @@
 			$app->target->include = $app->target->user->include;
 			$app->target->css = "";
 		}
+		
 		
 		$data	=	$app->connect->createQueryBuilder();
 		$data	=	$data->select('promotions.*, user.first_name, user.last_name, user.url')->from('avid___promotions_active','promotions');
@@ -156,6 +197,18 @@
 			if(isset($sessionTutors[0])){
 				$app->mytutors = array_merge($app->mytutors, $sessionTutors);
 			}
+			
+			// Check for sessions without reviews
+			$data	=	$app->connect->createQueryBuilder();
+			$data	=	$data->select('sessions.*, user.first_name,user.last_name,user.url')->from('avid___sessions','sessions');
+			$data	=	$data->where('sessions.to_user = :myemail AND sessions.session_status = "complete" AND sessions.review_name IS NULL')->setParameter(':myemail',$app->user->email);
+			$data	=	$data->innerJoin('sessions','avid___user','user','user.email = sessions.from_user');
+			$data	=	$data->execute()->fetchAll();
+			//printer($data);
+			if(isset($data[0])){
+				$app->needsreview = $data;
+			}
+			
 		}
 		
 	}

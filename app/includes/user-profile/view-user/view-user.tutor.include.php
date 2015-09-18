@@ -12,16 +12,16 @@
 	<?php endif; ?>
 	
 	<div class="tutor-profile">
-		
-		<div class="tutor-profile-inside">
 			
-			<div class="hourly-rate edit-change <?php if(isset($app->currentuser->negotiableprice) && $app->currentuser->negotiableprice=='yes'){ echo 'negotiable-price';} ?>">
-				<?php if(isset($app->currentuser->thisisme)): ?>
-				<div class="edit-profile tooltipped" data-position="right" data-delay="50" data-tooltip="Change Hourly Rate"><i class="fa fa-pencil"></i></div>
-				$<span class="input"><input type="text" name="editprofile[hourly_rate]" class="reset-input hourly_rate" value="<?php echo $app->currentuser->hourly_rate; ?>" /></span>
-				<?php else: ?>
-				$<?php echo $app->currentuser->hourly_rate; ?><?php if(isset($app->currentuser->negotiableprice) && $app->currentuser->negotiableprice=='yes'){ echo '<span class="asterisk"><i class="fa fa-asterisk"></i></span>';} ?>
-				<?php endif; ?>
+			<div class="hourly-rate valign-wrapper edit-change <?php if(isset($app->currentuser->negotiableprice) && $app->currentuser->negotiableprice=='yes'){ echo 'negotiable-price';} ?>">
+				<span class="valign">
+					<?php if(isset($app->currentuser->thisisme)): ?>
+					<div class="edit-profile tooltipped" data-position="right" data-delay="50" data-tooltip="Change Hourly Rate"><i class="fa fa-pencil"></i></div>
+					$<span class="input"><input type="text" name="editprofile[hourly_rate]" class="reset-input hourly_rate" value="<?php echo $app->currentuser->hourly_rate; ?>" /></span>
+					<?php else: ?>
+					$<?php echo $app->currentuser->hourly_rate; ?><?php if(isset($app->currentuser->negotiableprice) && $app->currentuser->negotiableprice=='yes'){ echo '<span class="asterisk"><i class="fa fa-asterisk"></i></span>';} ?>
+					<?php endif; ?>
+				</span>
 			</div>
 		
 			<div class="row">

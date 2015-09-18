@@ -23,8 +23,8 @@
 ?>
 
 <div class="tutor-results">
-	<div class="hourly-rate">
-		$<?php echo $searchResults->hourly_rate; ?>
+	<div class="hourly-rate valign-wrapper">
+		<span class="valign">$<?php echo $searchResults->hourly_rate; ?></span>
 	</div>
 	
 	<div class="row">

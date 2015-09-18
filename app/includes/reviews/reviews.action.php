@@ -8,7 +8,7 @@
 	
 	$data	=	$app->connect->createQueryBuilder();
 	$data	=	$data->select('sessions.*,'.everything())->from('avid___sessions','sessions');
-	$data	=	$data->where('sessions.review_name IS NOT NULL');
+	$data	=	$data->where('sessions.review_name IS NOT NULL AND sessions.review_text IS NOT NULL');
 	$data	=	$data->innerJoin('sessions','avid___user','user','user.email = sessions.to_user');
 	$data	=	$data->innerJoin('sessions','avid___user_profile','profile','profile.email = sessions.to_user');
 	$data	=	$data->innerJoin('sessions','avid___user_account_settings','settings','settings.email = sessions.to_user');

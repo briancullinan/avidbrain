@@ -66,7 +66,7 @@
 		$applicantinfo = applicantinfo($app->redactapplication,$app->job);
 		
 		$subject = the_users_name($app->user).' has redacted your tutoring application.';
-		$message = '<p>xxxxpotato '.the_users_name($app->user).'</p>';
+		$message = '<p>'.the_users_name($app->user).'</p>';
 		
 		if(isset($applicantinfo->getemails) && $applicantinfo->getemails=='yes'){
 			$app->mailgun->to = $applicantinfo->email;

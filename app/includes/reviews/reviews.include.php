@@ -25,10 +25,6 @@
 							</div>
 							<?php endif; ?>
 							
-							<?php if(isset($reviews->review_score)): ?>
-							<div class="my-stars"><div class="the-star-score"><?php echo get_stars($reviews->review_score)->icons; ?></div></div>
-							<?php endif; ?>
-							
 							<?php if(isset($reviews->review_text)): ?>
 							<div class="description"><?php echo nl2br($reviews->review_text); ?></div>
 							<?php endif; ?>

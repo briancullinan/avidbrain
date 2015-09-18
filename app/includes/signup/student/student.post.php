@@ -103,7 +103,7 @@
 			
 		}
 		
-		if(isset($app->isvalidpromo)){
+		if(isset($app->isvalidpromo) && isset($app->freesessions)){
 			
 			$insertpromo = array(
 				'email'=>$app->signup->email,

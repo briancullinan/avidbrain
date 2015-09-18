@@ -285,7 +285,7 @@
 				$starsi.='<i class="fa fa-star"></i>';
 			}
 		}
-		if(count($howmanyrange)>0){
+		if(count($howmanyrange)>0 && $starscore!=0){
 			foreach($howmanyrange as $xxx){
 				$stars.='&#9734;';
 				$starsi.='<i class="fa fa-star-o inactive"></i>';
@@ -913,7 +913,12 @@
 		$ahrefEnd=NULL;
 		$default = $imageowner->my_avatar;
 		
-		if(isset($imageowner->my_upload) && isset($imageowner->my_upload_status) && $imageowner->my_upload_status=='verified'){
+		if(isset($user->email) && isset($imageowner->email) && $user->email == $imageowner->email && isset($imageowner->my_upload) && isset($imageowner->my_upload_status) && $imageowner->my_upload_status!='verified'){
+			
+			$filename = $imageowner->url.'/thumbnail';
+			
+		}
+		elseif(isset($imageowner->my_upload) && isset($imageowner->my_upload_status) && $imageowner->my_upload_status=='verified'){
 			$checkfilename = str_replace($path->APP_PATH.'uploads/photos/','',croppedfile($imageowner->my_upload));
 			if(file_exists($path->DOCUMENT_ROOT.'profiles/approved/'.$checkfilename)){
 				$filename = '/profiles/approved/'.$checkfilename;
@@ -938,7 +943,13 @@
 			$ahrefEnd='</a>';
 		}
 		
-		return $ahrefStart.'<img class="responsive-img" src="'.$filename.'" />'.$ahrefEnd;
+		$addClass = NULL;
+		if(strpos($filename, '/profiles/avatars') !== false){
+			$addClass = ' default-avatar ';
+		}
+		
+		
+		return $ahrefStart.'<img class="responsive-img '.$addClass.'" src="'.$filename.'" />'.$ahrefEnd;
 		
 	}
 	

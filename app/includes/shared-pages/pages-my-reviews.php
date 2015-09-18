@@ -37,7 +37,7 @@
 	<div class="block">
 		<div class="title">My Reviews Overview </div>
 		<div class="description">
-			<span class="blue-text"><?php echo $app->currentuser->reviewinfo->count; ?> Reviews Total</span>
+			<span class="grey-text"><?php echo $app->currentuser->reviewinfo->count; ?> Review<?php if($app->currentuser->reviewinfo->count!=1){echo 's';} ?> Total</span>
 		</div>
 		<?php
 			disply_star_things($counts,5,$app->currentuser->reviewinfo->count);
@@ -92,32 +92,3 @@
 		}
 	?> has no testimonials at this time
 <?php endif; ?>
-
-
-
-<style type="text/css">
-.display-stars{
-	margin-bottom: 5px;
-}
-.wide-count-total{
-	width: 100%;
-	background: #f4f4f4;
-}
-.wide-count{
-	height: 20px;
-	display: block;
-
-
-/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#2196f3+0,1b68c6+100 */
-background: #2196f3; /* Old browsers */
-background: -moz-linear-gradient(left, #2196f3 0%, #1b68c6 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, right top, color-stop(0%,#2196f3), color-stop(100%,#1b68c6)); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(left, #2196f3 0%,#1b68c6 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(left, #2196f3 0%,#1b68c6 100%); /* Opera 11.10+ */
-background: -ms-linear-gradient(left, #2196f3 0%,#1b68c6 100%); /* IE10+ */
-background: linear-gradient(to right, #2196f3 0%,#1b68c6 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2196f3', endColorstr='#1b68c6',GradientType=1 ); /* IE6-9 */
-
-
-}
-</style>

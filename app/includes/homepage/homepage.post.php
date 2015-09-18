@@ -29,7 +29,7 @@
 		$length = strlen($app->textnumber->message);
 		
 		if($length>160){
-			new Flash(array('action'=>'required','formID'=>'potato','message'=>'Message must be less than 160 characters'));
+			new Flash(array('action'=>'required','formID'=>'homepage','message'=>'Message must be less than 160 characters'));
 		}
 		
 		$app->textnumber->number = preg_replace("/[^0-9,.]/", "", $app->textnumber->number);
