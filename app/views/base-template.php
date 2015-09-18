@@ -7,12 +7,8 @@
 	<title><?php if(isset($app->meta->title)){ echo strip_tags($app->meta->title);}else{ echo $app->dependents->SITE_NAME; } ?></title>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 	<meta name="application-name" content="<?php echo $app->dependents->SITE_NAME; ?>" />
-	<?php if(isset($app->meta->description)): ?>
-	<meta name="description" content="<?php echo $app->meta->description; ?>" />
-	<?php endif; ?>
-	<?php if(isset($app->meta->keywords)): ?>
-	<meta name="keywords" content="<?php echo $app->meta->keywords; ?>" />
-	<?php endif; ?>
+	<meta name="description" content="<?php if(isset($app->meta->description)){echo $app->meta->description;}else{ echo $app->dependents->SITE_NAME_PROPPER.' Tutoring. Find A Tutor. Become a Tutor.'; } ?>" />
+	<meta name="keywords" content="<?php if(isset($app->meta->keywords)){echo $app->meta->keywords;}else{echo $app->dependents->SITE_NAME_PROPPER.','.$app->dependents->SITE_NAME.',avid,brain,tutor,tutoring,education';} ?>" />
 	
 	<meta name="author" content="<?php echo $app->dependents->SITE_NAME_PROPPER; ?> inc." />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>

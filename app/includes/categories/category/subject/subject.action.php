@@ -75,8 +75,8 @@
 		$app->meta = new stdClass();
 		$app->meta->title = 'exampletitle';
 		$app->meta->h1 = 'pageh1';
-		$app->meta->keywords = 'examplekeys';
-		$app->meta->description = 'exampledescribers';
+		#$app->meta->keywords = 'examplekeys';
+		#$app->meta->description = 'exampledescribers';
 	}
 	
 	$app->filterbylocation = 'subjects---'.$category.'---'.$subject;
