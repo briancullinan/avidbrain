@@ -17,7 +17,10 @@
 	if(isset($app->user->usertype) && $app->user->usertype=='student'){
 		$childen['/payment/credit-card'] = (object) array('name'=>'Add/Edit Credit Card','slug'=>'/payment/credit-card');
 	}
-	$childen['/payment/get-paid'] = (object) array('name'=>'Get Paid','slug'=>'/payment/get-paid');
+	
+	if($app->user->usertype=='tutor'){
+		$childen['/payment/get-paid'] = (object) array('name'=>'Get Paid','slug'=>'/payment/get-paid');
+	}
 	
 	$app->childen = $childen;
 	$navtitle = (object)array('slug'=>'/payment','text'=>'Payment');

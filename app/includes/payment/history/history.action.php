@@ -44,3 +44,5 @@
 	$app->meta->title = 'Payment History';
 	
 	//notify((stripe_transaction(10000)/100)-100);
+	
+	$app->target->include = $app->target->user->include;

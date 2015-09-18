@@ -9,9 +9,6 @@
 				<div>+ Taxes</div>
 			</td>
 			<td>
-				You Made
-			</td>
-			<td>
 				Date
 			</td>
 			<td>
@@ -40,16 +37,6 @@
 				</td>
 				<td>
 					$<?php echo numbers(($paymenthistory->amount/100)); ?>
-				</td>
-				<td>
-					<?php
-						$taxremoval = (((stripe_transaction($paymenthistory->amount))-$paymenthistory->amount)/100);
-						$totalCost = $paymenthistory->amount/100;
-						$final = ceil($totalCost - $taxremoval);
-						$finalPercent = (($final * $paymenthistory->payrate)/100);
-						//printer($finalPercent);
-					?>
-					$<?php echo numbers($finalPercent); ?>
 				</td>
 				<td>
 					<?php echo formatDate($paymenthistory->date,'M. jS, Y @ g:i a'); ?>

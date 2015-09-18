@@ -69,13 +69,21 @@
 				<div><a href="/help/faqs/tutors">View Full Pay Table</a></div>
 				
 			</div>
-		<?php elseif($app->user->usertype=='student'): ?>
+		<?php elseif($app->user->usertype=='student' && empty($app->user->creditcardonfile)): ?>
 			<div class="block">
 				<div class="title">Activating Messaging</div>
 				
 				<p>In order to communicate with tutors and students we require a valid credit card on file. We won't charge you anything, it just adds an additional level of authenticity to our accounts.</p>
 				
 				<div> <a href="/payment/credit-card" class="btn btn-block blue">Activate Messaging</a> </div>
+			</div>
+		<?php elseif($app->user->usertype=='student' && isset($app->user->creditcardonfile)): ?>
+			<div class="block">
+				<div class="title">Messaging Activated</div>
+				
+				<p>Thank you for authorizing your credit card.</p>
+				
+				<div> <a href="/payment/credit-card" class="btn btn-block blue">Manage Credit Card</a> </div>
 			</div>
 		<?php endif; ?>
 			
