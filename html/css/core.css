@@ -352,15 +352,21 @@ footer{
 	font-size: 12px;
 	overflow: hidden;
 }
+footer a{
+	color: #0088ff;
+}
+footer a:hover{
+	color: #999;
+}
 footer h5{
 	font-size: 18px;
 	margin-top: 10px;
 }
 footer ul li a.active{
-	color: #ccc;
+	color: #fff;
 }
 footer ul li a:hover{
-	color: #83C8FF;
+/* 	color: #83C8FF; */
 }
 .footer-copyright .row{
 	color: #666;

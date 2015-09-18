@@ -6,7 +6,7 @@
 	$sitename				=	'avidbrain';// avidbrain, amozek
 	$sitenamePropper		=	'AvidBrain';// AvidBrain
 	$location				=	'staging'; // production , staging, development
-	$dependents->VERSION	=	0.003;
+	$dependents->VERSION	=	0.004;
 	$dependents->stripe = new stdClass();
 	
 	
