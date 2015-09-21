@@ -80,8 +80,12 @@
 	$app->contest = new stdClass();
 	//$app->contest->ipadgiveaway = true;
 	
-	// Free Sessions
-	$app->freesessions = true;
+	// Free Sessions	
+	
+	$freesessions = new stdClass();
+	$freesessions->enabled = true;
+	$freesessions->maximum = 3000;
+	$app->freesessions = $freesessions;
 	
 	// Twitters
 	use Abraham\TwitterOAuth\TwitterOAuth;

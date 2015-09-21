@@ -11,7 +11,7 @@
 <?php if(isset($app->isvalidpromo)): ?>
 <div class="center-align">
 	<div class="green white-text signup-promo">
-		Signup now with promo code: <span><?php echo $app->isvalidpromo->promocode; ?></span> and get $<?php echo $app->isvalidpromo->value; ?> off your next tutoring session.
+		Signup now with promo code: <span><?php echo $app->isvalidpromo->promocode; ?></span> and get $<?php echo numbers($app->isvalidpromo->value,1); ?> off your next tutoring session.
 	</div>
 </div>
 <?php endif;?>

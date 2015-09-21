@@ -4,17 +4,19 @@
 		$data	=	$app->connect->createQueryBuilder();
 		$data	=	$data->select('promotions_active.*, promotions.email as shared_email, user.first_name, user.last_name, user.url')->from('avid___promotions_active','promotions_active');
 		$data	=	$data->where('promotions_active.email = :email AND promotions_active.used IS NULL AND promotions_active.activated IS NOT NULL')->setParameter(':email',$app->user->email);
-		$data	=	$data->innerJoin('promotions_active','avid___promotions','promotions','promotions_active.promocode = promotions.promocode');
-		$data	=	$data->innerJoin('promotions_active','avid___user','user','user.email = promotions.email');
+		$data	=	$data->leftJoin('promotions_active','avid___promotions','promotions','promotions_active.promocode = promotions.promocode');
+		$data	=	$data->leftJoin('promotions_active','avid___user','user','user.email = promotions.email');
 		$data	=	$data->setMaxResults(1);
 		$data	=	$data->orderBy('value','DESC');
 		$myrewards	=	$data->execute()->fetch();
+		
+	//	printer($myrewards,1);
 		
 		
 		$data	=	$app->connect->createQueryBuilder();
 		$data	=	$data->select('promotions.*, payments.*')->from('avid___user_payments','payments');
 		$data	=	$data->where('payments.session_id = :id AND payments.discount IS NOT NULL')->setParameter(':id',$id);
-		$data	=	$data->innerJoin('payments','avid___promotions_active','promotions','payments.discount = promotions.id');
+		$data	=	$data->leftJoin('payments','avid___promotions_active','promotions','payments.discount = promotions.id');
 		$data	=	$data->execute()->fetch();
 		
 		if(isset($data->id)){

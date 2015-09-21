@@ -647,6 +647,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f6f8f9', end
 	margin-top: 10px;
 	border: dashed 1px #333;
 	text-align: center;
+	margin-bottom: 10px;
 }
 .image-preview img{
 	-moz-box-shadow: 5px 5px 5px #ccc;

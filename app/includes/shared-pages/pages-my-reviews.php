@@ -27,7 +27,7 @@
 	}
 ?>
 
-<?php if(isset($app->currentuser->my_reviews)): ?>
+<?php if(isset($app->currentuser->my_reviews) && $app->currentuser->usertype=='tutor'): ?>
 	<?php foreach($app->currentuser->my_reviews as $my_reviews): ?>
 		<?php
 			$counts[$my_reviews->review_score][] = 1;

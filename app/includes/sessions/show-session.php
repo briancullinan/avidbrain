@@ -6,11 +6,11 @@
 	<div class="block session-promotion">
 		<div class="row">
 			<div class="col s12 m6 l6">
-				<div>$<?php echo $myrewards->value; ?> off your next session.</div>
+				<div>$<?php echo numbers($myrewards->value,1); ?> off your next session.</div>
 				<div>Promo Discount: <?php echo $myrewards->promocode; ?></div>
 			</div>
 			<div class="col s12 m6 l6">
-				When your next tutoring session is billed your will get $<?php echo $myrewards->value; ?> off the total price.
+				When your next tutoring session is billed your will get $<?php echo numbers($myrewards->value,1); ?> off the total price.
 			</div>
 		</div>
 	</div>
@@ -19,7 +19,7 @@
 <?php if(isset($usedRewards->id)): ?>
 	
 	<div class="block session-promotion">
-		Your earned $<?php echo $usedRewards->value; ?> off this tutoring session
+		Your earned $<?php echo numbers($usedRewards->value,1) ?> off this tutoring session
 	</div>
 <?php endif; ?>
 <div class="box">

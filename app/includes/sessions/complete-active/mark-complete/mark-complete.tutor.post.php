@@ -5,8 +5,8 @@
 		$data	=	$app->connect->createQueryBuilder();
 		$data	=	$data->select('promotions_active.*, promotions.email as shared_email, user.first_name, user.last_name, user.url')->from('avid___promotions_active','promotions_active');
 		$data	=	$data->where('promotions_active.email = :email AND promotions_active.used IS NULL AND promotions_active.activated IS NOT NULL')->setParameter(':email',$app->markcomplete->to_user);
-		$data	=	$data->innerJoin('promotions_active','avid___promotions','promotions','promotions_active.promocode = promotions.promocode');
-		$data	=	$data->innerJoin('promotions_active','avid___user','user','user.email = promotions.email');
+		$data	=	$data->leftJoin('promotions_active','avid___promotions','promotions','promotions_active.promocode = promotions.promocode');
+		$data	=	$data->leftJoin('promotions_active','avid___user','user','user.email = promotions.email');
 		$data	=	$data->setMaxResults(1);
 		$data	=	$data->orderBy('value','DESC');
 		$myrewards	=	$data->execute()->fetch();
@@ -80,8 +80,6 @@
 			
 			//notify($amount);
 			
-			//notify($amount);
-			
 			if(isset($myrewards->value)){
 				$value = ($myrewards->value*100);
 				$amountAfterDiscount = ($amount-$value);
@@ -92,6 +90,8 @@
 			else{
 				$amountAfterDiscount = $amount;
 			}
+			
+			//notify($amountAfterDiscount);
 			
 			$payment = array(
 				'amount' => $amount,
@@ -170,8 +170,8 @@
 				$chargeCard->id = NULL;
 			}
 			
-			if(isset($chargeCard->id)){
-				//
+			
+			//
 				// Update Session
 				$app->connect->update('avid___sessions',$session,array('id'=>$app->markcomplete->id,'from_user'=>$app->user->email));
 				
@@ -186,10 +186,13 @@
 					'type'=>'Tutoring Session',
 					'amount'=>$amount,
 					'date'=>thedate(),
-					'charge_id'=>$chargeCard->id,
 					'session_id'=>$app->markcomplete->id,
 					'recipient'=>$app->user->email
 				);
+				
+				if(isset($chargeCard->id)){		
+					$payment['charge_id'] = $chargeCard->id;	
+				}
 				if(isset($myrewards->id)){		
 					$payment['discount'] = $myrewards->id;	
 				}
@@ -220,8 +223,6 @@
 				
 				
 				new Flash(array('action'=>'jump-to','location'=>'/sessions/view/'.$app->markcomplete->id,'formID'=>'completesession','message'=>'Credit Card Charged <i class="fa fa-heart"></i>'));
-				//	
-			}
 			
 		}
 		else{

@@ -72,6 +72,13 @@
 			<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
 		</form>
 	</div>
+	
+	<h2>Custom Avatar</h2>
+	
+	<div class="block">
+		Select your base: 
+	</div>
+	
 </div>
 <?php
 	#$img_canvas = $app->imagemanager->canvas(160, 160);

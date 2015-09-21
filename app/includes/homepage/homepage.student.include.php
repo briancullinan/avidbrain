@@ -102,7 +102,7 @@
 		<div class="col s12 m4 l4">
 			
 			<?php
-				if(isset($app->freesessions)){
+				if( isset($app->freesessions->enabled) && $app->freesessions->enabled==true ){
 					include('homepage-free-sessions.php');
 				}
 				else{
@@ -119,8 +119,8 @@
 								<div class="col s12 m6 l6">
 									<div class="my-reward-value">
 										
-										<div><span>$<?php echo $myrewards->value; ?></span> Off Your Next Tutoring Session.</div>
-										<div>Automatically applied after your next session</div>
+										<div><span>$<?php echo numbers($myrewards->value,1); ?></span> Off Your Next Tutoring Session.</div>
+										<div class="grey-text">Automatically applied after your next session</div>
 										
 									</div>
 								</div>
@@ -128,7 +128,9 @@
 									<div class="my-reward-promo">Promo Code: <span><?php echo $myrewards->promocode; ?></span></div>
 									<div>Activated: <?php echo formatdate($myrewards->date); ?></div>
 									
+									<?php if(isset($myrewards->url)): ?>
 									<div>Shared With: <a href="<?php echo $myrewards->url; ?>" target="_blank"><?php echo short($myrewards); ?></a></div>
+									<?php endif; ?>
 									
 								</div>
 							</div>

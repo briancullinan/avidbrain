@@ -103,7 +103,7 @@
 			
 		}
 		
-		if(isset($app->isvalidpromo) && isset($app->freesessions)){
+		if(isset($app->isvalidpromo) && isset($app->freesessions->enabled) && $app->freesessions->enabled==true){
 			
 			$insertpromo = array(
 				'email'=>$app->signup->email,
@@ -117,21 +117,23 @@
 			
 			$app->connect->insert('avid___promotions_active',$insertpromo);
 			
-			$insertpromo = array(
-				'email'=>$app->isvalidpromo->email,
-				'promocode'=>$app->isvalidpromo->promocode,
-				'value'=>$app->isvalidpromo->value,
-				'date'=>thedate(),
-				'sharedwith'=>$app->signup->email,
-				'activated'=>NULL
-			);
+			if(parent_company_email($app->isvalidpromo->email)!=true){
+				$insertpromo = array(
+					'email'=>$app->isvalidpromo->email,
+					'promocode'=>$app->isvalidpromo->promocode,
+					'value'=>$app->isvalidpromo->value,
+					'date'=>thedate(),
+					'sharedwith'=>$app->signup->email,
+					'activated'=>NULL
+				);
+				
+				$app->connect->insert('avid___promotions_active',$insertpromo);
+			}
 			
 			$app->mailgun->to = $app->isvalidpromo->email;
 			$app->mailgun->subject = 'Promo Code Activated';
 			$app->mailgun->message = 'A new student has signed up using your promo code.';
 			$app->mailgun->send();
-			
-			$app->connect->insert('avid___promotions_active',$insertpromo);
 			
 		}
 		

@@ -98,10 +98,11 @@
 		
 		$data	=	$app->connect->createQueryBuilder();
 		$data	=	$data->select('promotions.*, user.first_name, user.last_name, user.url')->from('avid___promotions_active','promotions');
-		$data	=	$data->where('promotions.email = :myemail AND used IS NULL AND promotions.activated IS NOT NULL')->setParameter(':myemail',$app->user->email);
-		$data	=	$data->innerJoin('promotions','avid___user','user','user.email = promotions.sharedwith');
+		$data	=	$data->where('promotions.email = :myemail AND promotions.used IS NULL AND promotions.activated IS NOT NULL')->setParameter(':myemail',$app->user->email);
+		$data	=	$data->leftJoin('promotions','avid___user','user','user.email = promotions.sharedwith');
 		$data	=	$data->orderBy('id','DESC');
 		$data	=	$data->execute()->fetchAll();
+		//notify($data);
 		
 		if(isset($data[0])){
 			$app->myrewards = $data;
