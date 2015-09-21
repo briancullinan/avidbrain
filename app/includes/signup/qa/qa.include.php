@@ -19,11 +19,8 @@
 
 	<div class="col s12 m6 l6">
 		<h2>Get Answers to all your questions</h2>
-		<p>something about qa signup</p>
-		<p>something about qa signup</p>
-		<p>something about qa signup</p>
-		<p>something about qa signup</p>
-		<p>something about qa signup</p>
+		<p>Ask a Question and get an answer from a knowledgable tutor.</p>
+		<p>Only our tutors can answer questions, so you don't have to worry about getting a wrong answer. </p>
 		
 	</div>
 

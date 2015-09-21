@@ -7,9 +7,8 @@
 	if($app->dependents->SITE_NAME=='amozek'){
 		$routes['amozek'] = (object)array('url'=>'/amozek','slug'=>'amozek','route'=>'/amozek/','include'=>'amozek','protected'=>NULL,'permissions'=>array());
 	}
-	
 	$routes['qa-login'] = (object)array('url'=>'/qa-login','slug'=>'qa-login','route'=>'/qa-login/','include'=>'qa-login','protected'=>1,'permissions'=>array());
-	
+	$routes['find-a-tutor'] = (object)array('url'=>'/find-a-tutor','slug'=>'find-a-tutor','route'=>'/find-a-tutor/','include'=>'find-a-tutor','protected'=>NULL,'permissions'=>array());
 	
 	$routes['contest'] = (object)array('url'=>'/contest','slug'=>'contest','route'=>'/contest/','include'=>'contest','protected'=>NULL,'permissions'=>array());
 	$routes['contest-rules'] = (object)array('url'=>'/contest/rules','slug'=>'rules','route'=>'/contest/rules/','include'=>'contest/rules','protected'=>NULL,'permissions'=>array());
