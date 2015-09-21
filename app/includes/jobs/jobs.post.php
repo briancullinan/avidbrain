@@ -103,7 +103,7 @@
 			$data	=	$data->execute()->fetchAll();
 			
 			
-			if(isset($data[0]) && $app->dependents->SERVER_NAME!='amozek.dev'){
+			if(isset($data[0]) && $app->dependents->SERVER_NAME!='amozek.dev' || isset($data[0]) && $app->dependents->SERVER_NAME!='avidbrain.dev'){
 				
 				//notify('ZERO XOOL');
 				
