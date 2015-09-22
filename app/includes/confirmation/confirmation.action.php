@@ -2,7 +2,8 @@
 	
 	$allowedPages = array(
 		'student-signup',
-		'tutor-signup'
+		'tutor-signup',
+		'find-me-a-tutor'
 	);
 	
 	$app->meta = new stdClass();

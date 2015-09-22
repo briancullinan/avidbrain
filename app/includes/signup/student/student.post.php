@@ -30,7 +30,7 @@
 		elseif(strlen($app->signup->zipcode) != 5){
 			new Flash(array('action'=>'required','formID'=>'signup','field'=>'field_signup_zipcode','message'=>"Invalid Zip Code"));
 		}
-		elseif(strlen($app->signup->phone) > 10){
+		elseif(strlen($app->signup->phone) != 10){
 			new Flash(array('action'=>'required','formID'=>'signup','field'=>'field_signup_phone','message'=>"Phone number must be 10 digits"));
 		}
 		
@@ -67,7 +67,7 @@
 		}
 		
 		$password = password_hash($app->signup->password, PASSWORD_DEFAULT);
-		$validation_code = random_numbers(16);
+		$validation_code = random_numbers_guarantee(16);
 		
 		$inserttemp = array(
 			'email'=>$app->signup->email,

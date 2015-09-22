@@ -167,15 +167,3 @@
 	<?php include($app->target->base.'jobs.results.php'); ?>
 
 <?php endif; ?>
-
-
-<style type="text/css">
-.jobs-range{
-	margin-bottom: 25px;
-}
-.jobs-price-range{
-	margin-bottom: 10px;
-	color: #a8a8a8;
-    font-size: .8rem;
-}
-</style>

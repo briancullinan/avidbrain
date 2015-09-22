@@ -30,6 +30,7 @@
 ?>
 
 <?php if(isset($submitbutton)): ?>
+
 <p>Once you've clicked the button you will be logged out of <?php echo $app->dependents->SITE_NAME_PROPPER; ?> and your account will be locked, so we can review your profile.</p>
 <form method="post" action="<?php echo $app->request->getPath(); ?>">
 	
@@ -39,6 +40,7 @@
 	<button type="button" class="btn red confirm-submit" data-value="reviewmyprofile" data-name="requestprofilereview">Request Profile Review</button>
 	
 </form>
+
 <?php else: ?>
 	
 	

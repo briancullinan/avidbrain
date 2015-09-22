@@ -395,6 +395,22 @@
 	    $max = pow(10, $digits) - 1;
 	    return mt_rand($min, $max);
 	}
+	function random_numbers_guarantee($connect,$digits) {
+	    $min = pow(10, $digits - 1);
+	    $max = pow(10, $digits) - 1;
+	    $random = mt_rand($min, $max);
+	    
+	    $sql = "SELECT validation_code FROM avid___users_temp WHERE validation_code = :validation_code";
+		$prepare = array(':validation_code'=>$random);
+		if($connect->executeQuery($sql,$prepare)->rowCount()==0){
+			return $random;
+		}
+		else{
+			return random_numbers_guarantee($connect,17);
+		}
+		
+		
+	}
 	function random_all($length = 10) {
 	    $characters = '123456789abcdefghijklmnopqrstuvwxyz';
 	    //return str_shuffle($characters);

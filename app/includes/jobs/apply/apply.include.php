@@ -50,7 +50,7 @@
 					<div class="col s12 m6 l6">
 						
 						<?php if(isset($app->job->applicants)): ?>
-							<div><span class="notice blue white-text"><?php echo $app->job->applicants; ?></span> Tutors have applied for this job</div>
+							<div><span class="notice blue white-text"><?php echo $app->job->applicants; ?></span> Tutor<?php if(count($app->job->applicants)!=1){ echo 's';} ?> has applied for this job</div>
 						<?php endif; ?>
 						<?php if(isset($app->job->subject_slug)): ?>
 							<div class="view-more-jobs">
