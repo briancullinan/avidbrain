@@ -52,49 +52,22 @@
 	
 </div>
 
-
-<div class="college-tutors">
-	<div class="row">
-		<div class="col s12 m6 l4">
-			<div class="valign-wrapper">
-				<a class="economics valign" href="/categories/business/economics">Economics</a>
-			</div>
-		</div>
-		<div class="col s12 m6 l4">
-			<div class="valign-wrapper">
-				<a class="biology valign" href="/categories/science/biology">Biology</a>
-			</div>
-		</div>
-		<div class="col s12 m6 l4">
-			<div class="valign-wrapper">
-				<a class="writing valign" href="/categories/xxx/xxx">Writing</a>
-			</div>
-		</div>
-		<div class="col s12 m6 l4">
-			<div class="valign-wrapper">
-				<a class="philosophy valign" href="/categories/xxx/xxx">Philosophy</a>
-			</div>
-		</div>
-		<div class="col s12 m6 l4">
-			<div class="valign-wrapper">
-				<a class="chemistry valign" href="/categories/xxx/xxx">Chemistry</a>
-			</div>
-		</div>
-		<div class="col s12 m6 l4">
-			<div class="valign-wrapper">
-				<a class="psychology valign" href="/categories/xxx/xxx">Psychology</a>
-			</div>
-		</div>
-	</div>
-	
-	<a class="view-more" href="/categories">View More Subjects</a>
-	
-</div>
-
-
 <div class="row">
 	<div class="col s12 m6 l6">
-		SIMPLESIGNUP
+		<h2>Signup Now</h2>
+		<?php
+
+			$simpleSignup = new Forms($app->connect);
+			$simpleSignup->button = 'Signup';
+			//$simpleSignup->classname = 'homepage-signup';
+			$simpleSignup->formname = 'studentapplication';
+			$simpleSignup->url = '/signup/student';
+			$simpleSignup->dependents = $app->dependents;
+			$simpleSignup->csrf_key = $csrf_key;
+			$simpleSignup->csrf_token = $csrf_token;
+			$simpleSignup->makeform();
+
+		?>
 	</div>
 	<div class="col s12 m6 l6">
 		<h2>Student Benefits</h2>

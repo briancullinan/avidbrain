@@ -12,25 +12,19 @@
 	<div class="slider">
 		<ul class="slides">
 			<li>
-				<img src="/images/homepage-slides/city.jpg">
+				<img src="/images/subs/find-a-tutor-1.jpg">
 			</li>
 			<li>
-				<img src="/images/homepage-slides/fog.jpg">
+				<img src="/images/subs/find-a-tutor-2.jpg">
 			</li>
 			<li>
-				<img src="/images/homepage-slides/forest.jpg">
+				<img src="/images/subs/find-a-tutor-3.jpg">
 			</li>
 			<li>
-				<img src="/images/homepage-slides/golden-gate.jpg">
+				<img src="/images/subs/find-a-tutor-4.jpg">
 			</li>
 			<li>
-				<img src="/images/homepage-slides/hilltop.jpg">
-			</li>
-			<li>
-				<img src="/images/homepage-slides/mountains.jpg">
-			</li>
-			<li>
-				<img src="/images/homepage-slides/plains.jpg">
+				<img src="/images/subs/find-a-tutor-5.jpg">
 			</li>
 		</ul>
 	</div>
