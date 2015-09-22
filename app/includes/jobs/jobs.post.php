@@ -156,6 +156,8 @@
 			$data	=	$data->innerJoin('jobs', 'avid___user', 'user', 'user.email = jobs.email');
 			$data	=	$data->innerJoin('jobs', 'avid___user_profile', 'profile', 'profile.email = jobs.email');
 			
+			//notify($app->searchingforjobs);
+			
 				if(isset($app->searchingforjobs->zipcode)){
 				if(isset($app->searchingforjobs->zipcode)){
 					$zipcodedata = get_zipcode_data($app->connect,$app->searchingforjobs->zipcode);
@@ -185,6 +187,14 @@
 			}
 			
 			$data	=	$data->innerJoin('jobs','avid___user_account_settings','settings','settings.email = jobs.email');
+			
+			$data	=	$data->andWhere('jobs.price_range_low >= :pricelow');
+			$data	=	$data->andWhere('jobs.price_range_high <= :pricehigh');
+			
+			$data	=	$data->setParameter(':pricelow',$app->searchingforjobs->pricerangeLower);
+			$data	=	$data->setParameter(':pricehigh',$app->searchingforjobs->pricerangeUpper);
+			
+			
 			//$data	=	$data->groupBy('jobs.email');
 			
 			if(isset($getDistance)){
@@ -206,8 +216,9 @@
 			);
 			$pagify->initialize($config);
 			$app->pagination = $pagify->get_links();
-			
 			$data	=	$data->execute()->fetchAll();
+			
+			//notify($data);
 			
 			//notify($data);
 			

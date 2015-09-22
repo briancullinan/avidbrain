@@ -290,6 +290,10 @@ input[type=text], input[type=password], input[type=email], input[type=url], inpu
     transition: none;
     font-size: 12px;
 }
+.input-range input{
+	background: #f6f6f6;
+	border: solid 1px #ebebeb;
+}
 .slidebox{
 
 }
