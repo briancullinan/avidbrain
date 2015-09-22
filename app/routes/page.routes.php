@@ -9,6 +9,8 @@
 	}
 	$routes['qa-login'] = (object)array('url'=>'/qa-login','slug'=>'qa-login','route'=>'/qa-login/','include'=>'qa-login','protected'=>1,'permissions'=>array());
 	$routes['find-a-tutor'] = (object)array('url'=>'/find-a-tutor','slug'=>'find-a-tutor','route'=>'/find-a-tutor/','include'=>'find-a-tutor','protected'=>NULL,'permissions'=>array());
+	$routes['tutor-finder'] = (object)array('url'=>'/tutor-finder','slug'=>'tutor-finder','route'=>'/tutor-finder/','include'=>'tutor-finder','protected'=>NULL,'permissions'=>array());
+	$routes['find-me-a-tutor'] = (object)array('url'=>'/find-me-a-tutor','slug'=>'find-me-a-tutor','route'=>'/find-me-a-tutor/','include'=>'find-me-a-tutor','protected'=>NULL,'permissions'=>array());
 	
 	$routes['contest'] = (object)array('url'=>'/contest','slug'=>'contest','route'=>'/contest/','include'=>'contest','protected'=>NULL,'permissions'=>array());
 	$routes['contest-rules'] = (object)array('url'=>'/contest/rules','slug'=>'rules','route'=>'/contest/rules/','include'=>'contest/rules','protected'=>NULL,'permissions'=>array());

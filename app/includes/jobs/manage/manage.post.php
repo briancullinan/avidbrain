@@ -98,6 +98,7 @@
 	}	
 	elseif(isset($app->updatejob) && $app->user->usertype=='student'){
 		
+		
 		$update = array(
 			'job_description'=>$app->updatejob->job_description,
 			'parent_slug'=>$app->updatejob->parent_slug,
@@ -105,7 +106,9 @@
 			'subject_name'=>$app->updatejob->subject_name,
 			'subject_slug'=>$app->updatejob->subject_slug,
 			'type'=>$app->updatejob->type,
-			'date'=>thedate()
+			'date'=>thedate(),
+			'price_range_low'=>$app->updatejob->price_range_low,
+			'price_range_high'=>$app->updatejob->price_range_high
 		);
 		
 		$message = 'Job Posting Updated';

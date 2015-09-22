@@ -28,6 +28,12 @@
 				</div>
 				<?php endif; ?>
 				
+				<?php if(isset($app->job->price_range_low)): ?>
+				<div>
+					My Price Range: <strong class="green-text">$<?php echo $app->job->price_range_low; ?> - $<?php echo $app->job->price_range_high; ?></strong>
+				</div>
+				<?php endif; ?>
+				
 				<div>
 					Posted by ~
 					<?php if(isset($app->user->email)): ?>
@@ -61,6 +67,19 @@
 							Please explain why you need help with this subject
 						</label>
 					</div>
+					
+					<div class="input-field input-range jobs-range">
+					
+						<div class="jobs-price-range">What is your price range?</div>
+
+				        <div class="pricerange slidebox"></div>
+				        <div class="slidebox-inputs">
+				            <input type="text" name="updatejob[price_range_low]" id="pricerangeLower" data-value="<?php if(isset($app->job->price_range_low)){ echo $app->job->price_range_low; }else{ echo '15';} ?>" />
+				            <input type="text" name="updatejob[price_range_high]" id="pricerangeUpper" data-value="<?php if(isset($app->job->price_range_high)){ echo $app->job->price_range_high; }else{ echo '65';} ?>" />
+				        </div>
+
+					</div>
+					<p></p>
 					
 					<div class="row">
 						<div class="col s12 m6 l6">

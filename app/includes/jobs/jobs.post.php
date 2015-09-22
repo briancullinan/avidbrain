@@ -33,7 +33,7 @@
 		}
 		elseif(isset($app->postjob) && $app->user->usertype=='student'){
 			
-			
+			//notify($app->postjob);
 			
 			$doesexist = NULL;
 			if(isset($app->postjob->subject_slug)){
@@ -84,7 +84,9 @@
 				'job_description'=>$app->postjob->job_description,
 				'type'=>$app->postjob->type,
 				'skill_level'=>$app->postjob->skill_level,
-				'open'=>1
+				'open'=>1,
+				'price_range_low'=>$app->postjob->price_range_low,
+				'price_range_high'=>$app->postjob->price_range_high
 			);
 			
 			$app->connect->insert('avid___jobs',$newjob);
@@ -102,10 +104,7 @@
 			$data	=	$data->setParameter(':parent_slug',$app->postjob->parent_slug);
 			$data	=	$data->execute()->fetchAll();
 			
-			
-			if(isset($data[0]) && $app->dependents->SERVER_NAME!='amozek.dev' || isset($data[0]) && $app->dependents->SERVER_NAME!='avidbrain.dev'){
-				
-				//notify('ZERO XOOL');
+			if(isset($data[0]) && $app->dependents->MODE == 'production'){
 				
 				$subject = 'A student has posted a new job';
 				$message = '<br><h2>'.$app->postjob->subject_name.' Student</h2>';

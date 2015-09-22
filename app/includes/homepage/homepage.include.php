@@ -281,6 +281,12 @@
 						</div>
 						<?php endif; ?>
 						
+						<?php if(isset($job->price_range_low)): ?>
+						<div>
+							My Price Range: <strong class="green-text">$<?php echo $job->price_range_low; ?> - $<?php echo $job->price_range_high; ?></strong>
+						</div>
+						<?php endif; ?>
+						
 						<div>
 							Posted by ~
 							<?php if(isset($app->user->email)): ?>

@@ -23,6 +23,19 @@
 						</label>
 					</div>
 					
+					<div class="input-field input-range jobs-range">
+					
+						<div class="jobs-price-range">What is your price range?</div>
+
+				        <div class="pricerange slidebox"></div>
+				        <div class="slidebox-inputs">
+				            <input type="text" name="postjob[price_range_low]" id="pricerangeLower" data-value="<?php if(isset($app->searching->pricerangeLower)){ echo $app->searching->pricerangeLower; }else{ echo '15';} ?>" />
+				            <input type="text" name="postjob[price_range_high]" id="pricerangeUpper" data-value="<?php if(isset($app->searching->pricerangeUpper)){ echo $app->searching->pricerangeUpper; }else{ echo '65';} ?>" />
+				        </div>
+
+					</div>
+					<p></p>
+					
 					<div class="row">
 						<div class="col s12 m6 l6">
 							<div class="input-field">
@@ -154,3 +167,15 @@
 	<?php include($app->target->base.'jobs.results.php'); ?>
 
 <?php endif; ?>
+
+
+<style type="text/css">
+.jobs-range{
+	margin-bottom: 25px;
+}
+.jobs-price-range{
+	margin-bottom: 10px;
+	color: #a8a8a8;
+    font-size: .8rem;
+}
+</style>

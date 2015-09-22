@@ -25,6 +25,13 @@
 						My Skill Level: <?php echo $myjobs->skill_level; ?>
 					</div>
 					<?php endif; ?>
+					
+					<?php if(isset($myjobs->price_range_low)): ?>
+					<div>
+						My Price Range: <strong class="green-text">$<?php echo $myjobs->price_range_low; ?> - $<?php echo $myjobs->price_range_high; ?></strong>
+					</div>
+					<?php endif; ?>
+					
 				</div>
 				
 				<div class="col s12 m4 l4 right-align">

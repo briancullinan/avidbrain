@@ -94,45 +94,10 @@
 
 <div class="row">
 	<div class="col s12 m6 l6">
-		<h2>Signup</h2>
-		<?php
-
-
-			$studentSignup = new Forms($app->connect);
-			if(isset($promocode) && $promocode=='promocode'){
-				$studentSignup->classname = 'promocode';
-				//unset($promocode);
-				$promocode = 'Enter Your Promo Code';
-			}
-			$studentSignup->formname = 'signup';
-			$studentSignup->url = $app->request->getPath();
-			$studentSignup->dependents = $app->dependents;
-			$studentSignup->csrf_key = $csrf_key;
-			$studentSignup->csrf_token = $csrf_token;
-			if(isset($promocode)){
-
-				$mycode = new stdClass();
-				$mycode->promocode = $promocode;
-
-			}
-			
-			if(isset($app->mylocation->zipcode)){
-				if(empty($mycode)){
-					$mycode = new stdClass();
-				}
-				$mycode->zipcode = $app->mylocation->zipcode;
-			}
-			
-			if(isset($mycode)){
-				$studentSignup->formvalues = $mycode;
-			}
-			
-			$studentSignup->makeform();
-
-		?>
+		SIMPLESIGNUP
 	</div>
 	<div class="col s12 m6 l6">
-		<h2>Benefits</h2>
+		<h2>Student Benefits</h2>
 		<?php include($app->dependents->APP_PATH.'includes/signup/student/student-benefits.php'); ?>
 	</div>
 </div>
