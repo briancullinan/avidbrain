@@ -57,7 +57,7 @@
 
 	padding:0px 8px;
 	font-size: 30px;
-	right: -18px;
+	right: 5px;
 	top:-18px;
 	z-index: 555;
 }
@@ -389,4 +389,9 @@ input[type=text], input[type=password], input[type=email], input[type=url], inpu
 .help-box{
 	background: #007dd5;
 	color: #fff;
+}
+
+[type="radio"]:checked+label:after{
+	border-color: #34a3ff;
+	background-color: #0087F2;
 }

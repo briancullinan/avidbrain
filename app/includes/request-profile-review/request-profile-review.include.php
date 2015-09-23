@@ -37,6 +37,34 @@
 	<input type="hidden" name="requestprofilereview[target]" value="requestprofilereview"  />
 	<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
 	
+	<?php if($app->user->status!='needs-review'): ?>
+	<div>
+		What would you like reviewed?
+	</div>
+	
+	<div>
+		<span>
+			<input type="radio" id="myphoto" name="requestprofilereview[type]" value="My Photo" />
+			<label for="myphoto">My Photo</label>
+		</span>
+		<span>
+			<input type="radio" id="mysubjects" name="requestprofilereview[type]" value="My Subjects" />
+			<label for="mysubjects">My Subjects</label>
+		</span>
+		<span>
+			<input type="radio" id="shortdescription" name="requestprofilereview[type]" value="Short Description / About Me" />
+			<label for="shortdescription">My Short Description / About Me</label>
+		</span>
+		<span>
+			<input type="radio" id="everything" name="requestprofilereview[type]" value="Everything" />
+			<label for="everything">Everything</label>
+		</span>
+	</div>
+	<br>
+	<?php else: ?>
+	<input type="hidden" name="requestprofilereview[type]" value="First Time Review"  />
+	<?php endif; ?>
+	
 	<button type="button" class="btn red confirm-submit" data-value="reviewmyprofile" data-name="requestprofilereview">Request Profile Review</button>
 	
 </form>
