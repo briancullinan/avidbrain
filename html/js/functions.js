@@ -69,6 +69,9 @@ function handlepost(response){
 		}, 2000);
 		
 	}
+	else if(response.action=='custom'){
+		$(response.target).html(response.message);
+	}
 	else if(response.action=='confirm-payment'){
 		$('.confirm-payment').removeClass('hide').hide().fadeIn().html(response.html);
 		Materialize.toast(response.message, 4000,'fixed-toast',function(){});

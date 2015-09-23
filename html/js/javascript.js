@@ -444,11 +444,8 @@ $(document).ready(function() {
 	    }
 	});
 	
-	$('.searchbox, #setupsession_session_subject').autocomplete({
-	    serviceUrl: '/get-subjects',
-	    onSelect: function (suggestion) {
-		    console.log(suggestion.data);
-	    }
+	$('.searchbox, #setupsession_session_subject, #getprices_subject').autocomplete({
+	    serviceUrl: '/get-subjects'
 	});
 	
 	$('.find-a-subject').autocomplete({

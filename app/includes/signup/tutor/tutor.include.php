@@ -5,14 +5,6 @@
         <h2>Become a Tutor</h2>
 		
 		<?php
-			
-			$tutorninfo = new stdClass();
-			$tutorninfo->first_name = 'walter';
-			$tutorninfo->last_name = 'white';
-			$tutorninfo->email = 'me@you.com';
-			$tutorninfo->phone = '480-232-2211';
-			$tutorninfo->promocode = 'zebra alpha tango';
-			$tutorninfo->whytutor = 'cause';
 
 			$tutorSignup = new Forms($app->connect);
 			$tutorSignup->formname = 'becomeatutor';
@@ -28,8 +20,6 @@
 				$tutorSignup->formvalues = $mycode;
 
 			}
-			
-			//$tutorSignup->formvalues = $tutorninfo;
 			
 			$tutorSignup->makeform();
 
@@ -57,6 +47,24 @@
 			<li class="collection-item"> <i class="fa fa-check light-green-text accent-2-text"></i> Profile Creation </li>
 			<li class="collection-item"> <i class="fa fa-check light-green-text accent-2-text"></i> Start Tutoring </li>
 		</ul>
+		<br>
+		<h2>How much can you make?</h2>
+		<div class="block">
+			<div>Enter a subject and a zip code to find out how much tutors in your area are making.</div>
+			<div class="show-prices"></div>
+			<?php
+				$variablename = new Forms($app->connect);
+				$variablename->formname = 'getprices';
+				$variablename->url = $app->request->getPath();
+				$variablename->dependents = $app->dependents;
+				$variablename->csrf_key = $csrf_key;
+				$variablename->csrf_token = $csrf_token;
+				$variablename->button = 'Get Prices';
+				$variablename->classname = 'getprices';
+				$variablename->makeform();
+			?>
+			
+		</div>
 
 	</div>
 

@@ -329,3 +329,23 @@ width: 50%;
 .college-tutors a.psychology{
 	background-image: url('/images/subjects/psychology.jpg');
 }
+
+.post-a-job{
+	margin-top: 20px;
+}
+
+.show-prices div{
+	padding: 10px;
+	text-align: center;
+	margin-top: 5px;
+	margin-bottom: 15px;
+}
+.form-parent  .getprices{
+	margin: 0px;
+	padding: 0px;
+	border: none;
+	margin-bottom: 10px;
+}
+#field_getprices_subject, #field_getprices_zipcode{
+	width: 50%;
+}
