@@ -69,6 +69,9 @@
 	color: #caff79;
 }
 .how-it-works-slide h1{
+	
+}
+.how-it-works-slide.h1{
 	font-size: 65px;
 	background: #99ff00;
 	color: #222;
@@ -323,4 +326,24 @@ border-radius: 5px;
 }
 .close-it-works:hover{
 	color: #99ff00;
+}
+
+.how-it-works-slide{
+    font-family: 'Quicksand';
+}
+.howie-howitworks-img img{
+	background: #0087F2;
+	max-height: 140px;
+}
+.howie-howitworks-title{
+	font-size: 25px;
+	font-weight: 700;
+}
+.howie-howitworks-text{
+	font-size: 14px;
+	padding: 10px;
+	color: #ccc;
+}
+.howie-howitworks-bottom{
+	margin-top: 15px;
 }

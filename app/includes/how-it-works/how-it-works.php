@@ -5,29 +5,59 @@
 	<h1>How It Works</h1>
 	
 	
-	<div class="row hiw-cols">
+	<div class="row">
 		<div class="col s12 m4 l4">
-			<div class="hiw-title valign-wrapper center"><div class="valign">Create A Profile</div></div>
-			<div class="how-text valign-wrapper">
-				<div class="valign">It’s easy to <a href="/signup">Sign Up</a> AND it’s free!</div>
+			
+			<div class="howie-howitworks-img">
+				<img class="responsive-img" src="/images/how-it-works/search.png" />
 			</div>
+			
+			<div class="howie-howitworks-title">
+				Discover Amazing Tutors
+			</div>
+			
+			<div class="howie-howitworks-text">
+				Get help in any subject you can think of. We have instructors in both academic and non- academic subjects.
+			</div>
+			
 		</div>
 		<div class="col s12 m4 l4">
-			<div class="hiw-title valign-wrapper center"><div class="valign">Discover Amazing Tutors</div></div>
-			<div class="how-text valign-wrapper">
-				<div class="valign"><a href="/tutors">Search for a tutor</a>, or post a request and tutors will contact you.</div>
+			
+			<div class="howie-howitworks-img">
+				<img class="responsive-img" src="/images/how-it-works/communicate.png" />
 			</div>
+			
+			<div class="howie-howitworks-title">
+				Hire a Tutor
+			</div>
+			
+			<div class="howie-howitworks-text">
+				Connect with tutors, confirm tutoring sessions, and pay - all through AvidBrain’s trusted services. 
+			</div>
+			
 		</div>
 		<div class="col s12 m4 l4">
-			<div class="hiw-title valign-wrapper center"><div class="valign">Schedule a Session</div></div>
-			<div class="how-text valign-wrapper">
-				<div class="valign">Connect with an expert tutor anytime 24/7 face-to-face or online.</div>
+			
+			<div class="howie-howitworks-img">
+				<img class="responsive-img" src="/images/how-it-works/whytutor.png" />
 			</div>
+			
+			<div class="howie-howitworks-title">
+				Learn
+			</div>
+			
+			<div class="howie-howitworks-text">
+				See the progress in any subject you choose to learn.
+			</div>
+			
 		</div>
 	</div>
 	
-	<div class="hiw-bottom">
-		<a href="/how-it-works">Learn more</a> about tutoring with <?php echo $app->dependents->SITE_NAME_PROPPER; ?> and discover our unique community of expert tutors.
+	<div class="howie-howitworks-bottom">
+
+		
+		<a href="/how-it-works">Learn more</a> about tutoring on <?php echo $app->dependents->SITE_NAME_PROPPER; ?> and show your students how well you can teach them.
+		
 	</div>
 	
 </div>

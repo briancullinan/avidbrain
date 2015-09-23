@@ -60,11 +60,17 @@
 		
 	}
 	
+	.howie-howitworks-img{
+		display: none;
+	}
 	.how-it-works-slide{
 		overflow: hidden;
 	}
+	.howie-howitworks-title{
+		font-size: 18px;
+	}
 	.how-it-works-slide h1{
-		font-size: 22px;
+		font-size: 30px;
 	}
 	.hiw-title{
 		height: auto;
