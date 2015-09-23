@@ -60,10 +60,6 @@ $(document).ready(function() {
 		selectYears: 2
 	});
 	
-	$('.scroller').pushpin({
-		offset: 39
-	});
-	
 	if($(window).width() < 600 && $('.shadow-nav').attr('class')){
 		$('html, body').animate({scrollTop: $(".shadow-nav").offset().top - 50}, 1000);
 		if($('#fp-signup').attr('id')){$('#fp-signup input').first().focus();}

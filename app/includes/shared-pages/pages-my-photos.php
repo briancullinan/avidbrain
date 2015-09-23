@@ -73,18 +73,201 @@
 		</form>
 	</div>
 	
+	<!-- Custom Avatars -->
 	<h2>Custom Avatar</h2>
+	<link rel="stylesheet" href="/css/customize-avatar.css" />	
 	
 	<div class="block">
-		Select your base: 
+		
+		
+		<div class="row my-avatar-container">
+			
+			
+			<div class="col s12 m12 l6">
+				<div class="my-avatar">
+					<div class="icon-user">
+						<div class="custom-avatar custom-avatar-body"></div>
+						<div class="custom-avatar custom-avatar-ears-shadow"></div>
+						<div class="custom-avatar custom-avatar-lips-01"></div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="col s12 m12 l6">
+				<div>Select a skin tone:</div>
+				
+				<div class="select-skin-tone">
+					<div class="default"></div>
+					<div class="peaches"></div>
+					<div class="blue"></div>
+					<div class="green"></div>
+				</div>
+				
+				<div>
+					<div>Add A Shirt</div>
+					<div class="add-some" id="shirts">
+						<div class="empty"><i class="fa fa-times"></i></div>
+						<?php foreach(range(1,19) as $shirts): ?>
+							<div class="custom-avatar custom-avatar-shirt-<?php echo str_pad($shirts, 2, '0', STR_PAD_LEFT); ?>">
+								<div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+							</div>
+						<?php endforeach; ?>
+					</div>
+				</div>
+				
+				<div>
+					<div>Add Glasses</div>
+					<div class="add-some" id="glasses">
+						<div class="empty"><i class="fa fa-times"></i></div>
+						<?php foreach(range(1,5) as $glasses): ?>
+							<div class="custom-avatar custom-avatar-glasses-<?php echo str_pad($glasses, 2, '0', STR_PAD_LEFT); ?>">
+								<div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+							</div>
+						<?php endforeach; ?>
+					</div>
+				</div>
+				
+				<div>
+					<div>Add some hair</div>
+					<div class="add-some" id="hair">
+						<div class="empty"><i class="fa fa-times"></i></div>
+						<?php foreach(range(1,7) as $hair): ?>
+							<div class="custom-avatar custom-avatar-hair-<?php echo str_pad($hair, 2, '0', STR_PAD_LEFT); ?>"></div>
+						<?php endforeach; ?>
+					</div>
+				</div>
+				
+				<div>
+					<div>Add some facial hair</div>
+					<div class="add-some" id="facialhair">
+						<div class="empty"><i class="fa fa-times"></i></div>
+						<?php foreach(range(1,6) as $facialhair): ?>
+							<div class="custom-avatar custom-avatar-beard-<?php echo str_pad($facialhair, 2, '0', STR_PAD_LEFT); ?>"></div>
+						<?php endforeach; ?>
+					</div>
+				</div>
+				
+				
+				
+			</div>
+			
+		</div>
+		
 	</div>
+	<!-- Custom Avatars -->
 	
 </div>
-<?php
-	#$img_canvas = $app->imagemanager->canvas(160, 160);
-	#$img_canvas->fill($app->imagemanager->make($app->dependents->DOCUMENT_ROOT.'profiles/avatars/hair-brown.png'), 0, 0);
-	#$img_canvas->fill($app->imagemanager->make($app->dependents->DOCUMENT_ROOT.'profiles/avatars/shirt-blue.png'), 0, 0);
-	#$img_canvas->fill($app->imagemanager->make($app->dependents->DOCUMENT_ROOT.'profiles/avatars/base-white.png'), 0, 0);
-	#$img_canvas->fill(Image::make('img/grey.jpg'), 100, 0); // add offset
-	#$img_canvas->save($app->dependents->DOCUMENT_ROOT.'profiles/avatars/hamburger.png', 100);
-?>
+
+
+<style type="text/css">
+.custom-avatar-ears-shadow{
+	color: #000;
+	opacity: .2;
+}
+.empty{
+	width: 72px;
+	height: 72px;
+	float: left;
+	color: red;
+	text-align: center;
+	font-size: 45px;
+	border: solid 1px #ccc;
+	margin-right: 2px;
+	margin-bottom: 2px;
+	cursor: pointer;
+}
+.add-some{
+	width: 100%;
+	float: left;
+	position: relative;
+}
+.add-some .custom-avatar{
+	cursor: pointer;
+	width: 72px;
+	height: 72px;
+	float: left;
+	display: inline-block;
+	display: block;
+	font-size: 70px;
+	background: #efefef;
+	position: relative;
+	margin-right: 2px;
+	margin-bottom: 2px;
+	border: solid 1px #ccc;
+}
+.default{
+	background: #222;
+}
+#default{
+	color: #222;
+}
+.peaches{
+	background: #EDD9B4;
+}
+#peaches{
+	color: #EDD9B4;
+}
+.blue{
+	background: #EDD9B4;
+}
+#blue{
+	color: #2196F3;
+}
+.green{
+	background: #4CAF50;
+}
+#green{
+	color: #4CAF50;
+}
+.select-skin-tone{
+	float: left;
+	width: 100%;
+}
+.select-skin-tone div{
+	float: left;
+	width: 50px;
+	height: 50px;
+	margin-right: 1px;
+}
+
+.custom-avatar.active{
+	border: solid 1px #f11900;
+}
+</style>
+
+
+<script type="text/javascript">
+	
+	$(document).ready(function() {
+		$('.select-skin-tone div').on('click',function(){
+			var skintone = $(this).attr('class');
+			$('.custom-avatar-body').attr('id','').attr('id',skintone);
+		});
+		
+		$('.add-some div').on('click',function(){
+			
+			var parentid = $(this).parent().attr('id');
+			var thisitem = $(this).attr('class');
+			
+			$('#'+parentid+' .active').removeClass('active');
+			$(this).addClass('active');
+			
+			$('#addme-'+parentid).remove();
+			
+			if(thisitem=='empty'){
+				
+			}
+			else{
+				$('.icon-user').append('<div id="addme-'+parentid+'" class="'+thisitem+'"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>');	
+			}
+			$('.icon-user .active').removeClass('active');
+			
+			$('html, body').animate({scrollTop: $(".my-avatar").offset().top - 100}, 300);
+			
+		});
+		
+		
+		
+	});
+	
+</script>
