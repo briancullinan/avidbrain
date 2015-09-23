@@ -88,7 +88,6 @@
 					<div class="icon-user">
 						<div class="custom-avatar custom-avatar-body"></div>
 						<div class="custom-avatar custom-avatar-ears-shadow"></div>
-						<div class="custom-avatar custom-avatar-lips-01"></div>
 					</div>
 				</div>
 			</div>
@@ -143,6 +142,16 @@
 						<div class="empty"><i class="fa fa-times"></i></div>
 						<?php foreach(range(1,6) as $facialhair): ?>
 							<div class="custom-avatar custom-avatar-beard-<?php echo str_pad($facialhair, 2, '0', STR_PAD_LEFT); ?>"></div>
+						<?php endforeach; ?>
+					</div>
+				</div>
+				
+				<div>
+					<div>Add Lips</div>
+					<div class="add-some" id="lips">
+						<div class="empty"><i class="fa fa-times"></i></div>
+						<?php foreach(range(1,1) as $lips): ?>
+							<div class="custom-avatar custom-avatar-lips-<?php echo str_pad($lips, 2, '0', STR_PAD_LEFT); ?>"></div>
 						<?php endforeach; ?>
 					</div>
 				</div>
