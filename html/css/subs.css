@@ -280,7 +280,7 @@ width: 50%;
 	float: left;
 	width: 100%;
 }
-.main-find-a-tutor,.main-find-me-a-tutor, .main-tutor-finder{
+.main-content.main-find-a-tutor, .main-content.main-find-me-a-tutor, .main-content.main-tutor-finder{
 	padding-left: 0px;
 	padding-right: 0px;
 	padding-top: 0px;
