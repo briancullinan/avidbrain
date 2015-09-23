@@ -188,11 +188,13 @@
 			
 			$data	=	$data->innerJoin('jobs','avid___user_account_settings','settings','settings.email = jobs.email');
 			
-			$data	=	$data->andWhere('jobs.price_range_low >= :pricelow');
-			$data	=	$data->andWhere('jobs.price_range_high <= :pricehigh');
-			
-			$data	=	$data->setParameter(':pricelow',$app->searchingforjobs->pricerangeLower);
-			$data	=	$data->setParameter(':pricehigh',$app->searchingforjobs->pricerangeUpper);
+			if(isset($app->searchingforjobs->pricerangeLower) && isset($app->searchingforjobs->pricerangeUpper)){
+				$data	=	$data->andWhere('jobs.price_range_low >= :pricelow');
+				$data	=	$data->andWhere('jobs.price_range_high <= :pricehigh');
+				
+				$data	=	$data->setParameter(':pricelow',$app->searchingforjobs->pricerangeLower);
+				$data	=	$data->setParameter(':pricehigh',$app->searchingforjobs->pricerangeUpper);
+			}
 			
 			
 			//$data	=	$data->groupBy('jobs.email');
