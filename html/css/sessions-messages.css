@@ -2,8 +2,11 @@
 
 .compose-list{
 	border: solid 2px #ccc;
-	max-height: 370px;
+	max-height: 570px;
 	overflow-y: auto;
+}
+.compose-list .row{
+	margin-bottom: 0px;
 }
 .compose-item{
 	padding-bottom: 10px;

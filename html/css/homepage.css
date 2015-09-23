@@ -58,19 +58,20 @@
 	padding: 20px;
 	text-align: center;
 	background: #333;
-	border-bottom: solid 5px #FF0066;
+	border-bottom: solid 5px #99ff00;
 	color: #fff;
 }
 .how-it-works-slide a{
-	color: #FF0066;
+	color: #99ff00;
 	text-decoration: underline;
 }
 .how-it-works-slide a:hover{
-	color: #cf0054;
+	color: #caff79;
 }
 .how-it-works-slide h1{
 	font-size: 65px;
-	background: #FF0066;
+	background: #99ff00;
+	color: #222;
 	padding: 5px 15px;
 	display: inline-block;
 	margin-bottom: 15px;
@@ -321,5 +322,5 @@ border-radius: 5px;
 	padding:5px 15px;
 }
 .close-it-works:hover{
-	color: #FF0066;
+	color: #99ff00;
 }

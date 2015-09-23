@@ -80,6 +80,5 @@
 	
 </form>
 
-<?php else: ?>
- No recipient setup
+
 <?php endif; ?>
