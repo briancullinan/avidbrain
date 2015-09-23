@@ -8,7 +8,7 @@
 		'/signup/tutor'=>'Tutor Signup',
 		'/help'=>'Help',
 		'/help/faqs'=>'FAQs',
-		'/help/what-is-amozek'=>'What is Amozek?',
+		//'/help/what-is-amozek'=>'What is Amozek?',
 		'/help/how-to-videos'=>'How To Videos',
 		'/help/forgot-password'=>'Forgot Password',
 		'/help/contact'=>'Contact Us',
@@ -25,7 +25,10 @@
 		'/terms-of-use/privacy-policy'=>'Privacy Policy',
 		'/terms-of-use/student-payment-policy'=>'Student Payment Policy',
 		'/reviews'=>$app->dependents->SITE_NAME_PROPPER.' Tutoring Reviews',
-		'/staff'=>'Our Staff'
+		'/staff'=>'Our Staff',
+		'/find-a-tutor'=>'Find A Tutor',
+		'/find-me-a-tutor'=>'Find Me A Tutor',
+		'/tutor-finder'=>'Tutor Finder'
 	);
 ?>
 

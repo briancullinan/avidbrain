@@ -12,7 +12,6 @@
 	}
 	
 	if($app->request->isPost()==false){
-		$app->searchingforjobs = json_decode($app->getCookie('searchingforjobs'));
 		include($app->target->post);
 	}
 	else{

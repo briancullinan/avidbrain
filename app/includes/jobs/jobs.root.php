@@ -1,5 +1,9 @@
 <?php
 	
+	if($app->request->isPost()==false){
+		$app->searchingforjobs = json_decode($app->getCookie('searchingforjobs'));
+	}
+	
 	//$app->childen = $childen;
 	$navtitle = (object)array('slug'=>'/jobs','text'=>'Jobs');
 	$app->navtitle = $navtitle;
