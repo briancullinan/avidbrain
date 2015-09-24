@@ -5,6 +5,7 @@
 		$key = key($_POST);
 		
 		$post = makepost(json_decode(json_encode($app->request->params($key)),FALSE));
+		
 		$app->keyname = $key;
 		$app->$key = $post;
 		

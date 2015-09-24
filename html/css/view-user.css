@@ -784,3 +784,108 @@ input.reset-input.hourly_rate{
 	display: block;
 	background: #2196F3;
 }
+
+
+/* Custom Avatar */
+.html5colorpicker{
+	width: 50px;
+	height: 50px;
+}
+.edit-avatar{
+	text-align: center;
+	float: none;
+	display: inline-block;
+}
+.custom-avatar-ears-shadow{
+	color: #000;
+	opacity: .2;
+}
+.empty{
+	width: 72px;
+	height: 72px;
+	float: left;
+	color: red;
+	text-align: center;
+	font-size: 45px;
+	border: solid 1px #ccc;
+	margin-right: 2px;
+	margin-bottom: 2px;
+	cursor: pointer;
+}
+.add-some{
+	width: 100%;
+	float: left;
+	position: relative;
+}
+.add-some .custom-avatar{
+	cursor: pointer;
+	width: 72px;
+	height: 72px;
+	float: left;
+	display: inline-block;
+	display: block;
+	font-size: 70px;
+	background: #efefef;
+	position: relative;
+	margin-right: 2px;
+	margin-bottom: 2px;
+	border: solid 1px #ccc;
+}
+.default{
+	background: #222;
+}
+#default{
+	color: #222;
+}
+.peaches{
+	background: #EDD9B4;
+}
+#peaches{
+	color: #EDD9B4;
+}
+.blue{
+	background: #EDD9B4;
+}
+#blue{
+	color: #2196F3;
+}
+.green{
+	background: #4CAF50;
+}
+#green{
+	color: #4CAF50;
+}
+.orange{
+	background: #ff9800;
+}
+#orange{
+	color: #ff9800;
+}
+.red{
+	background: #F44336;
+}
+#red{
+	color: #F44336;
+}
+.yellow{
+	background: #ffeb3b;
+}
+#yellow{
+	color: #ffeb3b;
+}
+.swap-color-type{
+	float: left;
+	width: 100%;
+}
+.swap-color-type div{
+	cursor: pointer;
+	float: left;
+	width: 50px;
+	height: 50px;
+	margin-right: 1px;
+	margin-bottom: 1px;
+	border: solid 1px transparent;
+}
+.custom-avatar.active{
+	border: solid 1px #f11900;
+}

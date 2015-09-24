@@ -199,7 +199,8 @@
 				'online_tutor'=>$this->online_tutor,
 				'top1000'=>$this->top1000,
 				'getpaid'=>$this->getpaid,
-				'starscore'=>$this->starscore
+				'starscore'=>$this->starscore,
+				'custom_avatar'=>$this->custom_avatar
 			);
 			
 			//notify($this);

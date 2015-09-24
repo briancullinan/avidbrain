@@ -1,5 +1,9 @@
 <?php
 	
+	if(isset($app->customizeavatar)){
+		notify($app->customizeavatar->final);	
+	}
+	
 	if(isset($app->currentuser->email) && isset($app->user->email) && $app->currentuser->email == $app->user->email){
 		if(isset($app->myavatar)){
 		

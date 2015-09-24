@@ -681,6 +681,7 @@
 		$data = $connect->createQueryBuilder()->select('sessions.*, user.first_name, user.customer_id, user.last_name, user.url, user.usertype,
 			profile.my_avatar,
 			profile.my_avatar_status,
+			profile.custom_avatar,
 			profile.my_upload,
 			profile.my_upload_status, settings.showfullname')
 				->from('avid___sessions','sessions')
@@ -881,7 +882,8 @@
 			profile.my_upload_status,
 			profile.personal_statement_verified,
 			profile.short_description_verified,
-			profile.getpaid
+			profile.getpaid,
+			profile.custom_avatar
 			
 		';
 	}

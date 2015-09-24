@@ -157,9 +157,23 @@ form .form-submit button.btn.disabled{
 	-moz-border-radius: 3px;
 	border-radius: 3px;
 }
+
+.pagination li a{
+	display: block;
+	padding: 5px 12px;
+	font-size: 16px;
+	background: #fff;
+	border: solid 1px #ccc;
+	
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+}
+
 .pagination li a:hover{
-	background: #ccc;
+	background: #efefef;
 	color: #000;
+	border-color: #999;
 }
 .pagination li.active{
 	background: transparent;
@@ -167,6 +181,10 @@ form .form-submit button.btn.disabled{
 .pagination li.active a{
 	background: #2196F3;
 	color: #fff;
+	border-color: transparent;
+}
+.pagination li.active a:hover{
+	background: #4790cb;
 }
 .pagination li a i{
 	font-size: 16px;

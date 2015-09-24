@@ -9,7 +9,7 @@
 		<div class="col s12 m4 l4">
 			
 			<div class="howie-howitworks-img">
-				<img class="responsive-img" src="/images/how-it-works/search.png" />
+				<img class="responsive-img blue" src="/images/how-it-works/search.png" />
 			</div>
 			
 			<div class="howie-howitworks-title">
@@ -24,7 +24,7 @@
 		<div class="col s12 m4 l4">
 			
 			<div class="howie-howitworks-img">
-				<img class="responsive-img" src="/images/how-it-works/communicate.png" />
+				<img class="responsive-img blue darken-1" src="/images/how-it-works/communicate.png" />
 			</div>
 			
 			<div class="howie-howitworks-title">
@@ -39,7 +39,7 @@
 		<div class="col s12 m4 l4">
 			
 			<div class="howie-howitworks-img">
-				<img class="responsive-img" src="/images/how-it-works/whytutor.png" />
+				<img class="responsive-img blue darken-2" src="/images/how-it-works/whytutor.png" />
 			</div>
 			
 			<div class="howie-howitworks-title">

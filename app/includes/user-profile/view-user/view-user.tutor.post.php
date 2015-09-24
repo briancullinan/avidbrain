@@ -1,5 +1,15 @@
 <?php
 	
+	if(isset($app->customizeavatar)){
+		
+		unset($app->customizeavatar->target);
+		
+		$jsonencode = json_encode($app->customizeavatar);
+		$app->currentuser->custom_avatar = $jsonencode;
+		$app->currentuser->save();
+		$app->redirect($app->currentuser->url.'/my-photos');
+	}
+	
 	if(isset($app->user->usertype) && $app->user->usertype=='admin'){
 		
 		
