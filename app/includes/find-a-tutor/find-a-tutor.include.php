@@ -94,7 +94,7 @@
 
 <div class="row">
 	<div class="col s12 m6 l6">
-		<h2>Signup</h2>
+		<h2>Student Signup</h2>
 		<?php
 
 
