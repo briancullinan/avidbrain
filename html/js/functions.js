@@ -129,3 +129,20 @@ function showPosition(position){
 	return false;
 	
 }
+
+function fixavatars(){
+	
+	
+	$(".my-avatar.edit-avatar").each(function( index ) {
+		
+		var avatarwidth = $(this).outerWidth();
+		var maxheight = 200;
+		if(avatarwidth>maxheight){
+			avatarwidth = maxheight
+		}
+		
+		$(this).attr('style','font-size:'+avatarwidth+'px;height:'+avatarwidth+'px');
+		
+	});
+	
+}

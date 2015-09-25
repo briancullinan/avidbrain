@@ -1,16 +1,3 @@
-function fixavatars(){
-	
-	var avatarwidth = $('.my-avatar.edit-avatar').outerWidth();
-	var maxheight = 200;
-	if(avatarwidth>maxheight){
-		avatarwidth = maxheight
-	}
-	
-	$('.my-avatar.edit-avatar').attr('style','font-size:'+avatarwidth+'px;height:'+avatarwidth+'px');
-	
-}
-
-
 $(document).ready(function() {
 	
 	//$(".logo").lettering();
