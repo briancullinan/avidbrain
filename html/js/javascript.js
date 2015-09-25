@@ -821,6 +821,17 @@ $(document).ready(function() {
 	}
 	
 	
+	$('.clickity-click').on('click',function(){
+		
+		var jumpto = $(this).attr('data-target');
+		
+		$(this).addClass('active');
+		setTimeout(function(){
+			window.location = jumpto;
+		}, 500);
+		
+	});
+	
 	fixavatars();
 	
 });

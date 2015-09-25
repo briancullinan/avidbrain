@@ -995,9 +995,9 @@
 				// Show Custom Avatar
 				$show = json_decode($imageowner->custom_avatar);
 				$customavatar = $show;
-				#echo $ahrefStart;
-				include($path->APP_PATH.'includes/user-profile/custom-avatar.php');
-				#echo $ahrefEnd;
+				if(isset($imageowner->url) && empty($imageowner->dontshow)){echo '<div class="clickity-click" data-target="'.$imageowner->url.'">';}
+					include($path->APP_PATH.'includes/user-profile/custom-avatar.php');
+				if(isset($imageowner->url) && empty($imageowner->dontshow)){echo '</div>';}
 				return;
 			}
 		}
@@ -1005,7 +1005,7 @@
 			$show = $filename;
 		}
 		
-		return $ahrefStart.'<img class="responsive-img '.$addClass.'" src="'.$show.'" />'.$ahrefEnd;
+		return $ahrefStart.'<img class="avatarbg responsive-img '.$addClass.'" src="'.$show.'" />'.$ahrefEnd;
 		
 	}
 	

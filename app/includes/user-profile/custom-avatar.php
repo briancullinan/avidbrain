@@ -1,4 +1,4 @@
-<div class="my-avatar edit-avatar">
+<div class="avatarbg my-avatar edit-avatar">
 	<div class="icon-user">
 		<div class="custom-avatar custom-avatar-body" <?php if(isset($customavatar->skintoneid)){ echo 'id="'.$customavatar->skintoneid.'"'; }  if(isset($customavatar->skintonecolor)){ echo 'style="'.$customavatar->skintonecolor.'"'; } ?> ></div>
 		<div class="custom-avatar custom-avatar-ears-shadow"></div>
