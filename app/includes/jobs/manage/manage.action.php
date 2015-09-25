@@ -34,7 +34,7 @@
 		$asDistance = ' as distance ';
 	
 		$data	=	$app->connect->createQueryBuilder();
-		$data	=	$data->select('user.*, profile.hourly_rate, profile.my_avatar')->from('avid___user','user');
+		$data	=	$data->select('user.*, profile.hourly_rate, profile.custom_avatar, profile.showmyphotoas, profile.my_avatar')->from('avid___user','user');
 		$data	=	$data->where('user.usertype = :usertype AND profile.hourly_rate IS NOT NULL')->setParameter(':usertype','tutor');
 		$data	=	$data->addSelect('subjects.subject_name');
 		$data	=	$data->innerJoin('user','avid___user_subjects','subjects','user.email = subjects.email');

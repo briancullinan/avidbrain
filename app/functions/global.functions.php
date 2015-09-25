@@ -682,6 +682,7 @@
 			profile.my_avatar,
 			profile.my_avatar_status,
 			profile.custom_avatar,
+			profile.showmyphotoas,
 			profile.my_upload,
 			profile.my_upload_status, settings.showfullname')
 				->from('avid___sessions','sessions')
@@ -878,6 +879,7 @@
 			profile.hourly_rate,
 			profile.my_avatar,
 			profile.my_avatar_status,
+			profile.showmyphotoas,
 			profile.my_upload,
 			profile.my_upload_status,
 			profile.personal_statement_verified,
@@ -938,6 +940,7 @@
 	}
 	
 	function show_avatar($imageowner,$user=NULL,$path){
+		
 		$filename = NULL;
 		$ahrefStart=NULL;
 		$ahrefEnd=NULL;
@@ -978,8 +981,31 @@
 			$addClass = ' default-avatar ';
 		}
 		
+		$show = NULL;
+		if(isset($imageowner->showmyphotoas)){
+			if($imageowner->showmyphotoas==1){
+				// Show Photo
+				$show = $filename;
+			}
+			elseif($imageowner->showmyphotoas==2){
+				// Show Old Avatar
+				$show = $default;
+			}
+			elseif($imageowner->showmyphotoas==3 && isset($imageowner->custom_avatar)){
+				// Show Custom Avatar
+				$show = json_decode($imageowner->custom_avatar);
+				$customavatar = $show;
+				#echo $ahrefStart;
+				include($path->APP_PATH.'includes/user-profile/custom-avatar.php');
+				#echo $ahrefEnd;
+				return;
+			}
+		}
+		else{
+			$show = $filename;
+		}
 		
-		return $ahrefStart.'<img class="responsive-img '.$addClass.'" src="'.$filename.'" />'.$ahrefEnd;
+		return $ahrefStart.'<img class="responsive-img '.$addClass.'" src="'.$show.'" />'.$ahrefEnd;
 		
 	}
 	

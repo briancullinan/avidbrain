@@ -1,5 +1,13 @@
 <?php
 	
+	if(isset($app->defaultphototype->type)){
+		
+		$app->currentuser->showmyphotoas = $app->defaultphototype->type;
+		$app->currentuser->save();
+		$app->redirect($app->currentuser->url.'/my-photos');	
+		
+	}
+	
 	if(isset($app->customizeavatar)){
 		
 		unset($app->customizeavatar->target);

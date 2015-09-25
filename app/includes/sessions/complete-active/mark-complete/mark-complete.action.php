@@ -1,7 +1,7 @@
 <?php
 	
 	$markcomplete	=	$app->connect->createQueryBuilder()->
-			select('sessions.*, user.first_name, user.last_name, user.usertype, user.url, user.promocode, user.customer_id, profile.my_avatar, profile.my_avatar_status, profile.my_upload, profile.my_upload_status, '.account_settings())->from('avid___sessions','sessions')->
+			select('sessions.*, user.first_name, user.last_name, user.usertype, user.url, user.promocode, user.customer_id, profile.custom_avatar, profile.showmyphotoas, profile.my_avatar, profile.my_avatar_status, profile.my_upload, profile.my_upload_status, '.account_settings())->from('avid___sessions','sessions')->
 			where('sessions.id = :id')->setParameter(':id',$id)->
 			andWhere('from_user = :from_user')->setParameter(':from_user',$app->user->email)->
 			innerJoin('sessions','avid___user','user','user.email = sessions.to_user')->

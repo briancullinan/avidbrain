@@ -10,7 +10,7 @@
 	}
 	
 	$viewsession	=	$app->connect->createQueryBuilder()->
-			select('sessions.*, user.first_name, user.last_name, user.usertype, user.url, user.customer_id, profile.cancellation_rate, profile.cancellation_policy, profile.my_avatar, profile.my_avatar_status, profile.my_upload, profile.my_upload_status, settings.showfullname, settings.getemails')->from('avid___sessions','sessions')->
+			select('sessions.*, user.first_name, user.last_name, user.usertype, user.url, user.customer_id, profile.cancellation_rate,profile.custom_avatar, profile.showmyphotoas, profile.cancellation_policy, profile.my_avatar, profile.my_avatar_status, profile.my_upload, profile.my_upload_status, settings.showfullname, settings.getemails')->from('avid___sessions','sessions')->
 			where('sessions.id = :id')->setParameter(':id',$id)->
 			andWhere($type.' = :myemail')->setParameter(':myemail',$app->user->email)->
 			innerJoin('sessions','avid___user','user','user.email = sessions.'.$type2)->

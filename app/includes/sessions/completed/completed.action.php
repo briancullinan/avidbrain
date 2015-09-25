@@ -4,7 +4,7 @@
 		$app->target->include = str_replace('.tutor.','.',$app->target->include);
 			
 		$completed	=	$app->connect->createQueryBuilder()->
-					select('sessions.*, user.first_name, user.last_name, user.customer_id, user.url, user.usertype, profile.my_avatar, profile.my_avatar_status, profile.my_upload, profile.my_upload_status, settings.showfullname')->
+					select('sessions.*, user.first_name, user.last_name, user.customer_id, user.url, user.usertype, profile.custom_avatar, profile.showmyphotoas, profile.my_avatar, profile.my_avatar_status, profile.my_upload, profile.my_upload_status, settings.showfullname')->
 					from('avid___sessions','sessions')->
 					where('from_user = :email')->setParameter(':email',$app->user->email)->
 					andWhere('sessions.session_status = :paid')->setParameter(':paid','complete')->
@@ -40,7 +40,7 @@
 		$app->target->include = str_replace('.student.','.',$app->target->include);
 			
 		$completed	=	$app->connect->createQueryBuilder()->
-					select('sessions.*, user.first_name, user.last_name, user.customer_id, user.url, user.usertype, profile.my_avatar, profile.my_avatar_status, profile.my_upload, profile.my_upload_status, settings.showfullname')->
+					select('sessions.*, user.first_name, user.last_name, user.customer_id, user.url, user.usertype,profile.custom_avatar, profile.showmyphotoas, profile.my_avatar, profile.my_avatar_status, profile.my_upload, profile.my_upload_status, settings.showfullname')->
 					from('avid___sessions','sessions')->
 					where('to_user = :email')->setParameter(':email',$app->user->email)->
 					andWhere('sessions.session_status = :paid')->setParameter(':paid','complete')->

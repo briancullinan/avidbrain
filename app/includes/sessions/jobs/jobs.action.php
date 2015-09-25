@@ -1,6 +1,6 @@
 <?php	
 	$data	=	$app->connect->createQueryBuilder()->
-				select('sessions.id, sessions.jobid, sessions.session_subject, user.customer_id, user.first_name, user.last_name, user.url, user.usertype, profile.my_avatar, profile.my_avatar_status, profile.my_upload, profile.my_upload_status, settings.showfullname')->
+				select('sessions.id, sessions.jobid, sessions.session_subject, user.customer_id, user.first_name, user.last_name, user.url, user.usertype, profile.custom_avatar, profile.showmyphotoas, profile.my_avatar, profile.my_avatar_status, profile.my_upload, profile.my_upload_status, settings.showfullname')->
 				from('avid___sessions','sessions')->
 				where('from_user = :email')->setParameter(':email',$app->user->email)->
 				andWhere('jobsetup IS NOT NULL')->

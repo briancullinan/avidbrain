@@ -1,7 +1,20 @@
 <?php
 	
+	if(isset($app->defaultphototype->type)){
+		
+		$app->currentuser->showmyphotoas = $app->defaultphototype->type;
+		$app->currentuser->save();
+		$app->redirect($app->currentuser->url.'/my-photos');	
+		
+	}
+	
 	if(isset($app->customizeavatar)){
-		notify($app->customizeavatar->final);	
+		unset($app->customizeavatar->target);
+		
+		$jsonencode = json_encode($app->customizeavatar);
+		$app->currentuser->custom_avatar = $jsonencode;
+		$app->currentuser->save();
+		$app->redirect($app->currentuser->url.'/my-photos');	
 	}
 	
 	if(isset($app->currentuser->email) && isset($app->user->email) && $app->currentuser->email == $app->user->email){

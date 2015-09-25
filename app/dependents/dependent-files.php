@@ -46,7 +46,8 @@
 		'material.fix.css',
 		'core.media.css',
 		'crop.css',
-		'time.picker.css'
+		'time.picker.css',
+		'customize-avatar.css'
 	);
 
 	

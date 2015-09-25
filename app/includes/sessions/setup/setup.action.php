@@ -1,7 +1,7 @@
 <?php
 	
 	$setup	=	$app->connect->createQueryBuilder()->
-			select('sessions.*, user.first_name, user.last_name, user.usertype, user.url, user.customer_id, profile.my_avatar, profile.my_avatar_status, profile.my_upload, profile.my_upload_status, settings.getemails,settings.showfullname')->from('avid___sessions','sessions')->
+			select('sessions.*, user.first_name, user.last_name, user.usertype, user.url, user.customer_id, profile.custom_avatar, profile.showmyphotoas, profile.my_avatar, profile.my_avatar_status, profile.my_upload, profile.my_upload_status, settings.getemails,settings.showfullname')->from('avid___sessions','sessions')->
 			where('sessions.jobid = :id')->setParameter(':id',$id)->orWhere('sessions.id = :id')->
 			andWhere('from_user = :from_user')->setParameter(':from_user',$app->user->email)->
 			innerJoin('sessions','avid___user','user','user.email = sessions.to_user')->

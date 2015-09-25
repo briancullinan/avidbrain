@@ -200,7 +200,8 @@
 				'top1000'=>$this->top1000,
 				'getpaid'=>$this->getpaid,
 				'starscore'=>$this->starscore,
-				'custom_avatar'=>$this->custom_avatar
+				'custom_avatar'=>$this->custom_avatar,
+				'showmyphotoas'=>$this->showmyphotoas
 			);
 			
 			//notify($this);

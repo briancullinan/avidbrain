@@ -2,7 +2,7 @@
 	
 	if($app->user->usertype=='student'){
 		$dispute	=	$app->connect->createQueryBuilder()->
-					select('sessions.*, user.first_name, user.last_name, user.url, user.customer_id, user.usertype, profile.my_avatar, profile.my_avatar_status, profile.my_upload, profile.my_upload_status, settings.showfullname')->
+					select('sessions.*, user.first_name, user.last_name, user.url, user.customer_id, user.usertype, profile.custom_avatar, profile.showmyphotoas, profile.my_avatar, profile.my_avatar_status, profile.my_upload, profile.my_upload_status, settings.showfullname')->
 					from('avid___sessions','sessions')->
 					where('to_user = :email')->setParameter(':email',$app->user->email)->
 					andWhere('dispute is not null')->
@@ -13,7 +13,7 @@
 	}
 	elseif($app->user->usertype=='tutor'){
 		$dispute	=	$app->connect->createQueryBuilder()->
-					select('sessions.*, user.first_name, user.last_name, user.url, user.customer_id, user.usertype, profile.my_avatar, profile.my_avatar_status, profile.my_upload, profile.my_upload_status, settings.showfullname')->
+					select('sessions.*, user.first_name, user.last_name, user.url, user.customer_id, user.usertype, profile.custom_avatar, profile.showmyphotoas, profile.my_avatar, profile.my_avatar_status, profile.my_upload, profile.my_upload_status, settings.showfullname')->
 					from('avid___sessions','sessions')->
 					where('from_user = :email')->setParameter(':email',$app->user->email)->
 					andWhere('dispute is not null')->

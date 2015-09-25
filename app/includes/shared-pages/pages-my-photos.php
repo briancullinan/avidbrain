@@ -1,5 +1,41 @@
 <div class="my-photos">
 	
+	<h2>Choose Your Image</h2>
+	<div class="block">
+		<div>Please select what you would like to show up on your profile.</div>
+		
+		
+		
+		
+		<form method="post" action="<?php echo $app->request->getPath(); ?>">
+	
+			<input type="hidden" name="defaultphototype[target]" value="defaultphototype"  />
+			<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
+			
+			<div>
+				<p>
+					<input type="radio" id="myupload" name="defaultphototype[type]" value="1" <?php if(isset($app->currentuser->showmyphotoas) && $app->currentuser->showmyphotoas==1){ echo 'checked="checked"';} ?> />
+					<label for="myupload">My Upload</label>
+				</p>
+				<p>
+					<input type="radio" id="selectedavatar" name="defaultphototype[type]" value="2" <?php if(isset($app->currentuser->showmyphotoas) && $app->currentuser->showmyphotoas==2){ echo 'checked="checked"';} ?> />
+					<label for="selectedavatar">Selected Avatar</label>
+				</p>
+				<?php if(isset($app->currentuser->custom_avatar)): ?>
+				<p>
+					<input type="radio" id="customavatar" name="defaultphototype[type]" value="3" <?php if(isset($app->currentuser->showmyphotoas) && $app->currentuser->showmyphotoas==3){ echo 'checked="checked"';} ?> />
+					<label for="customavatar">Custom Avatar</label>
+				</p>
+				<?php endif; ?>
+			</div>
+			<br>
+			<button class="btn blue" type="submit">Set Image Type</button>
+			
+		</form>
+		
+	</div>
+	
+	
 	<h2>Uploads</h2>
 	
 	<?php if(isset($app->currentuser->my_upload)): ?>
@@ -75,7 +111,6 @@
 	
 	<!-- Custom Avatars -->
 	<h2>Custom Avatar</h2>
-	<link rel="stylesheet" href="/css/customize-avatar.css" />	
 	
 	<div class="block">
 		
