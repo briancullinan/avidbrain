@@ -53,6 +53,14 @@
 	</div>
 	<div class="col s12 m8 l8">
 		<h2>Session Details</h2>
+		
+		<?php if(isset($app->setup->payment_details) && $app->setup->payment_details=='Credit Card Error'): ?>
+			<div class="credit-errors">
+				<div><?php echo short($app->setup); ?>'s <span>credit card was declined</span>.</div>
+				<div>Please contact let them know, so you can proceed.</div>
+			</div>
+		<?php endif; ?>
+		
 		<?php
 			
 			if(!empty($app->setup->roomid)){

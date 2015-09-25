@@ -52,7 +52,8 @@
 			'session_cost'=>$amount,
 			'session_length'=>NULL,
 			'session_status'=>'canceled-session',
-			'payrate'=>$payrate
+			'payrate'=>$payrate,
+			'payment_details'=>NULL
 		);
 		
 		if(isset($app->setup->roomid)){
@@ -81,10 +82,19 @@
 				'session_id'=>$id
 			);
 			$app->connect->insert('avid___crediterrors',$insert);
+			$message = str_replace('Your card was','Credit card',$stripeErrors->message);
+			
+			$updateSession = array(
+				'payment_details'=>'Credit Card Error',
+				'pending'=>NULL
+			);
+			$app->connect->update('avid___sessions',$updateSession,array('id'=>$id,'from_user'=>$app->user->email));
+			
 			new Flash(
 				array(
-					'action'=>'alert',
-					'message'=>str_replace('Your card was','Credit card',$stripeErrors->message)
+					'action'=>'jump-to',
+					'message'=>$message,
+					'location'=>'/sessions/broken-sessions/'
 				)
 			);
 			
@@ -93,7 +103,7 @@
 		if(isset($chargeCard->id)){
 			//
 			$payment = array(
-				'email'=>$app->user->email,
+				'email'=>$app->setup->to_user,
 				'type'=>'Canceled Tutoring Session',
 				'amount'=>$amount,
 				'date'=>thedate(),
@@ -141,7 +151,8 @@
 			'pending'=>NULL,
 			'session_length'=>NULL,
 			'session_status'=>'canceled-session',
-			'payrate'=>NULL
+			'payrate'=>NULL,
+			'payment_details'=>NULL
 		);
 		
 		if(isset($app->setup->roomid)){

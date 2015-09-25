@@ -10,6 +10,18 @@
 		//$app->target->actions = $app->target->user->action;	
 	}
 	
+	$sql = "
+		SELECT * FROM avid___sessions WHERE
+			from_user = :myemail AND pending IS  NULL AND payment_details = 'Credit Card Error'
+				OR
+			to_user = :myemail AND pending IS  NULL AND payment_details = 'Credit Card Error'
+		LIMIT 2
+	";
+	$prepare = array(
+		':myemail'=>$app->user->email
+	);
+	$brokensessions = $app->connect->executeQuery($sql,$prepare)->rowCount();
+	
 	
 	$sql = "SELECT id FROM avid___sessions WHERE dispute IS NOT NULL AND from_user = :email OR dispute IS NOT NULL AND to_user = :email";
 	$prepeare = array(':email'=>$app->user->email);
@@ -34,6 +46,9 @@
 	}
 	if($dispute>0){	
 		$childen['/sessions/disputed/'] = (object) array('name'=>'Disputed','slug'=>'/sessions/disputed');
+	}
+	if($brokensessions>0){	
+		$childen['/sessions/broken-sessions/'] = (object) array('name'=>'Broken Sessions','slug'=>'/sessions/broken-sessions');
 	}
 	
 	$app->childen = $childen;

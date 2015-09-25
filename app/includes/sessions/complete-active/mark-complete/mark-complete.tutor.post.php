@@ -102,7 +102,6 @@
 			);
 			
 			
-			
 			// Update Session
 			$session = array(
 				'pending'=>NULL,
@@ -111,7 +110,8 @@
 				'session_length'=>$app->completesession->session_length,
 				'session_status'=>'complete',
 				'payrate'=>$payrate,
-				'taxes'=>1
+				'taxes'=>1,
+				'payment_details'=>NULL
 			);
 			
 			if(isset($amountAfterDiscount) && $amountAfterDiscount>0){
@@ -121,7 +121,8 @@
 				catch(\Stripe\Error\Card $e){
 					$stripeErrors = handleStripe($e);
 					if(isset($stripeErrors->message)){
-						$stripeErrors->message = str_replace('Your card','The card',$stripeErrors->message);
+						$errorMessage = str_replace('Your card','The card',$stripeErrors->message);
+						$stripeErrors->message = $errorMessage;
 					}
 					$insert = array(
 						'status'=>$stripeErrors->status,
@@ -156,11 +157,19 @@
 					$app->sendmessage->message = $message;
 					$app->sendmessage->newmessage();
 					
+					$updateSession = array(
+						'payment_details'=>'Credit Card Error',
+						'pending'=>NULL
+					);
+					$app->connect->update('avid___sessions',$updateSession,array('id'=>$app->markcomplete->id,'from_user'=>$app->user->email));
+					
 					$app->connect->insert('avid___crediterrors',$insert);
+					
 					new Flash(
 						array(
-							'action'=>'alert',
-							'message'=>$stripeErrors->message
+							'action'=>'jump-to',
+							'message'=>$errorMessage,
+							'location'=>'/sessions/broken-sessions'
 						)
 					);
 				}

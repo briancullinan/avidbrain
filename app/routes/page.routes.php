@@ -174,6 +174,8 @@
 	$routes['sessions-mark-complete'] = (object)array('url'=>'/sessions/complete-active/mark-complete','slug'=>'mark-complete','route'=>'/sessions/complete-active/mark-complete/:id/','include'=>'sessions/complete-active/mark-complete','protected'=>1,'permissions'=>array('tutor'));
 	$routes['sessions-view'] = (object)array('url'=>'/sessions/view','slug'=>'view','route'=>'/sessions/view/:id/','include'=>'sessions/view','protected'=>1,'permissions'=>array());
 	$routes['sessions-view-action'] = (object)array('url'=>'/sessions/view','slug'=>'view','route'=>'/sessions/view/:id/:action/','include'=>'sessions/view','protected'=>1,'permissions'=>array());
+	$routes['sessions-broken-sessions'] = (object)array('url'=>'/sessions/broken-sessions','slug'=>'broken-sessions','route'=>'/sessions/broken-sessions/','include'=>'sessions/broken-sessions','protected'=>1,'permissions'=>array('tutor','student'));
+	$routes['sessions-broken-sessions-pagination'] = (object)array('url'=>'/sessions/broken-sessions','slug'=>'broken-sessions','route'=>'/sessions/broken-sessions/page/:number/','include'=>'sessions/broken-sessions','protected'=>1,'permissions'=>array('tutor','student'));
 	
 	// Signup
 	$routes['signup'] = (object)array('url'=>'/signup','slug'=>'signup','route'=>'/signup/','include'=>'signup','protected'=>NULL,'permissions'=>array());

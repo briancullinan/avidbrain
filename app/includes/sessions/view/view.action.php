@@ -105,28 +105,38 @@
 					$chargeCard = \Stripe\Charge::create($cancelsessionwithcharge);
 				}
 				catch(\Stripe\Error\Card $e){
+					
 					$stripeErrors = handleStripe($e);
 					$insert = array(
 						'status'=>$stripeErrors->status,
 						'type'=>$stripeErrors->type,
 						'code'=>$stripeErrors->code,
 						'message'=>$stripeErrors->message,
-						'email'=>$app->user->email,
+						'email'=>$app->setup->to_user,
 						'date'=>thedate(),
 						'session_id'=>$id
 					);
 					$app->connect->insert('avid___crediterrors',$insert);
+					$message = str_replace('Your card was','Credit card',$stripeErrors->message);
+					
+					$updateSession = array(
+						'payment_details'=>'Credit Card Error',
+						'pending'=>NULL
+					);
+					$app->connect->update('avid___sessions',$updateSession,array('id'=>$id,'from_user'=>$app->user->email));
+					
 					new Flash(
 						array(
-							'action'=>'alert',
-							'message'=>$stripeErrors->message
+							'action'=>'jump-to',
+							'message'=>$message,
+							'location'=>'/sessions/broken-sessions/'
 						)
 					);
 				}
 				
 				if(isset($chargeCard->id)){
 					$payment = array(
-						'email'=>$app->user->email,
+						'email'=>$app->viewsession->to_user,
 						'type'=>'Canceled Tutoring Session',
 						'amount'=>$amount,
 						'date'=>thedate(),
