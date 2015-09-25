@@ -586,7 +586,7 @@
 	width: 100%;
 	max-width: 100%;
 	overflow: hidden;
-	height: 160px;
+	min-height: 80px;
 	font-size: 150px;
 	position: relative;
 	display: block;

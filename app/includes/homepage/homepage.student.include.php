@@ -11,20 +11,29 @@
 				<div class="compose-list center-align white">
 					<?php foreach($app->mytutors as $compose): ?>
 						<div class="compose-item <?php if(isset($username) && $compose->username==$username){ echo 'active'; } ?>" id="<?php echo $compose->url; ?>">
-							<div class="user-name">
-								<?php echo the_users_name($compose); ?>
+							<div class="row">
+								<div class="col s12 m4 l4">
+									<div class="avatar">
+										<?php echo show_avatar($compose,$user=$app->user,$app->dependents); ?>
+									</div>
+								</div>
+								<div class="col s12 m8 l8">
+									<div class="user-name">
+										<?php echo the_users_name($compose); ?>
+									</div>
+									<?php
+										if(empty($compose->promocode) && $compose->usertype=='student'){
+											echo '<div class="badge grey white-text">Student</div>';
+										}
+										elseif(isset($compose->promocode) && $compose->usertype=='student'){
+											echo '<div class="badge blue white-text">Your Student</div>';
+										}
+										elseif($compose->usertype=='tutor'){
+											echo '<div class="badge light-green accent-4 white-text">Tutor</div>';
+										}								
+									?>
+								</div>
 							</div>
-							<?php
-								if(empty($compose->promocode) && $compose->usertype=='student'){
-									echo '<div class="badge grey white-text">Student</div>';
-								}
-								elseif(isset($compose->promocode) && $compose->usertype=='student'){
-									echo '<div class="badge blue white-text">Your Student</div>';
-								}
-								elseif($compose->usertype=='tutor'){
-									echo '<div class="badge light-green accent-4 white-text">Tutor</div>';
-								}								
-							?>
 						</div>
 					<?php endforeach; ?>
 				</div>
