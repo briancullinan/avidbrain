@@ -65,7 +65,6 @@
 		$dependents->social->pinterest = 'https://www.pinterest.com/avidbrain/';
 	}
 	
-	
 	if($location=='production'){
 		
 		$dependents->stripe->STRIPE_SECRET = 'sk_live_XUObU4RQbEVKsWq8yU5XFjJU';
@@ -100,6 +99,7 @@
 		$dependents->database->DBUSER = 'root';
 		$dependents->database->DBPASS = 'ipi}nGaN6P4QAEJtxJ3W^Xc%Q9aforDBwnpFk}B';
 		$dependents->DOMAIN = 'http://avidbra.in';
+		$dependents->social->qa = 'http://qa.avidbra.in';
 	}
 	
 	$dependents->SITE_NAME = $sitename;
