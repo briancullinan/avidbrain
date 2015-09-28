@@ -69,6 +69,9 @@ function handlepost(response){
 		}, 2000);
 		
 	}
+	else if(response.action=='invalidcsrf'){
+		alert(response);
+	}
 	else if(response.action=='custom'){
 		$(response.target).html(response.message);
 	}

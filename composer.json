@@ -3,7 +3,7 @@
         "slim/slim": "~2.0",
         "slim/extras":  "2.*",
         "phpfastcache/phpfastcache": "~3.0.4",
-        "stripe/stripe-php": "2.*",
+        "stripe/stripe-php": "3.*",
         "mailgun/mailgun-php": "~1.7.2",
         "intervention/image": "~2.0",
         "intervention/imagecache": "2.0.1",

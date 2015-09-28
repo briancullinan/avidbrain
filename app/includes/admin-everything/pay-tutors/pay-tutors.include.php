@@ -3,7 +3,10 @@
 		<?php if(isset($app->tutorswithsessions)): ?>
 			<div class="block block-list">
 				<?php foreach($app->tutorswithsessions as $tutorswithsessions): ?>
-					<a class="<?php if(isset($id) && $id==$tutorswithsessions->id){ echo 'active';} ?>" href="/admin-everything/pay-tutors/<?php echo $tutorswithsessions->id; ?>"><?php echo $tutorswithsessions->first_name.' '.$tutorswithsessions->last_name; ?></a>
+					<a class="<?php if(isset($id) && $id==$tutorswithsessions->id){ echo 'active';} ?>" href="/admin-everything/pay-tutors/<?php echo $tutorswithsessions->id; ?>">
+						<?php echo $tutorswithsessions->first_name.' '.$tutorswithsessions->last_name; ?>: 
+						<span class="green-text">$<?php echo numbers(($tutorswithsessions->cost/100)); ?></span>
+					</a>
 				<?php endforeach; ?>
 			</div>
 		<?php else: ?>
@@ -32,7 +35,7 @@
 						Status
 					</td>
 					<td>
-						Payrate
+						Pay Rate
 					</td>
 					<td>
 						Cost
@@ -78,6 +81,23 @@
 					</td>
 				</tr>
 				<?php endforeach; ?>
+				<?php $additional = NULL; ?>
+				<?php if(empty($app->bgcheckrefund)): ?>
+				<tr class="green white-text">
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>$30</td>
+					<td>Background Check</td>
+					<td><?php echo formatdate(thedate()); ?></td>
+				</tr>
+				<?php
+					$additional = 30;
+					#$totalgross[] = 3000;
+					#$totalpay[0] = $totalpay[0] - 3000;
+				?>
+				<?php endif; ?>
 			</table>
 			
 			<?php
@@ -98,16 +118,43 @@
 				</div>
 				<div class="col s12 m4 l4">
 					<div class="alert green white-text">
-						Profit: $<?php echo numbers($totalpayout); ?>
+						AvidBrain Profit: $<?php echo numbers($totalpayout); ?>
 					</div>
 				</div>
 			</div>
 
+			<?php ?>
 			
 			<?php if($app->paytutor->getpaid=='check'): ?>
 				check
-			<?php elseif($app->paytutor->getpaid=='directdeposit'): ?>
-				directdeposit
+			<?php elseif($app->paytutor->getpaid=='directdeposit' && isset($app->paytutor->account_id)): ?>
+			
+				<form method="post" action="<?php echo $app->request->getPath(); ?>">
+					
+					
+					<?php foreach($app->paytutor->sessions as $sessionpay): ?>
+						<input type="hidden" name="paytutorsessioninfo[sessionid][<?php echo $sessionpay->id; ?>]" value="1" />
+					<?php endforeach; ?>
+					
+					<?php if(isset($additional)): ?>
+						<input type="hidden" name="paytutorsessioninfo[paybgcheck]" value="1" />
+					<?php endif; ?>
+					
+					<input type="hidden" name="paytutorsessioninfo[type]" value="directdeposit" />
+					<input type="hidden" name="paytutorsessioninfo[email]" value="<?php echo $app->paytutor->email; ?>" />
+					<input type="hidden" name="paytutorsessioninfo[account_id]" value="<?php echo $app->paytutor->account_id; ?>" />
+					<input type="hidden" name="paytutorsessioninfo[amount]" value="<?php echo ((($total - $totalpayout) + $additional)*100); ?>" />
+					
+					<input type="hidden" name="paytutorsessioninfo[target]" value="paytutorsessioninfo"  />
+					<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
+				
+					
+					<button type="submit" class="btn green">
+						Pay $<?php echo numbers((($total - $totalpayout) + $additional)); ?> via Direct Deposit
+					</button>
+					
+				</form>
+				
 			<?php else: ?>
 				No Payment on File
 			<?php endif; ?>

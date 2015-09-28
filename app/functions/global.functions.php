@@ -898,6 +898,7 @@
 			user.first_name,
 			user.last_name,
 			user.account_id,
+			user.managed_id,
 			user.zipcode,
 			user.city,
 			user.city_slug,

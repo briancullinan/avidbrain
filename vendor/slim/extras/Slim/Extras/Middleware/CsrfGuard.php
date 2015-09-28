@@ -73,7 +73,7 @@ class CsrfGuard extends \Slim\Middleware
         if (in_array($this->app->request()->getMethod(), array('POST', 'PUT', 'DELETE'))) {
             $userToken = $this->app->request()->post($this->key);
             if ($token !== $userToken) {
-                $this->app->halt(400, 'Invalid or missing CSRF token.');
+	            $this->app->halt(400, 'Invalid or missing CSRF token.');
             }
         }
 

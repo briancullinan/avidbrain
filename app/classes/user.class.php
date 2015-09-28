@@ -159,6 +159,7 @@
 				'zipcode'=>$this->zipcode,
 				'customer_id'=>$this->customer_id,
 				'account_id'=>$this->account_id,
+				'managed_id'=>$this->managed_id,
 				'signup_date'=>$this->signup_date,
 				'promocode'=>$this->promocode,
 				'phone'=>$this->phone,

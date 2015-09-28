@@ -37,7 +37,7 @@
 					}
 				}
 			?>
-			<tr>
+			<tr <?php if(isset($paymenthistory->paidout)){ echo 'class="light-green lighten-3"'; } ?>>
 				<td>
 					<?php echo $paymenthistory->type; ?>
 				</td>
