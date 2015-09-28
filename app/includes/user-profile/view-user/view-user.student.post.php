@@ -14,7 +14,16 @@
 		$jsonencode = json_encode($app->customizeavatar);
 		$app->currentuser->custom_avatar = $jsonencode;
 		$app->currentuser->save();
-		$app->redirect($app->currentuser->url.'/my-photos');	
+		
+		if(empty($app->customizeavatar->dontshow)){
+			new Flash(
+				array(
+					'action'=>'alert',
+					'message'=>'Avatar Saved'
+				)
+			);	
+		}
+		
 	}
 	
 	if(isset($app->currentuser->email) && isset($app->user->email) && $app->currentuser->email == $app->user->email){

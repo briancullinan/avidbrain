@@ -76,6 +76,7 @@
 	$footerlinks['/help/contact'] = (object) array('name'=>'Contact Us');
 	$footerlinks['/staff'] = (object) array('name'=>'Our Staff');
 	$footerlinks['/tutors-by-location'] = (object) array('name'=>'Tutors By Location');
+	$footerlinks['/attributions'] = (object) array('name'=>'Attributions');
 	$footerlinks['/sitemap'] = (object) array('name'=>'Sitemap');
 	
 	

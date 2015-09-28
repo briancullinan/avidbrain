@@ -570,8 +570,19 @@
 .custom-avatar-body:before {
 	content: "\e67d";
 }
-.clickity-click{
+.clickity-click .my-avatar{
 	cursor: pointer;
+	-webkit-transition: all;
+	-webkit-transition-timing-function: ease-out;
+	-webkit-transition-duration: .2s;
+	
+	-moz-transition: all;
+	-moz-transition-timing-function: ease-out;
+	-moz-transition-duration: .2s;
+	
+	transition: all;
+	transition-timing-function: ease-out;
+	transition-duration: .2s;
 }
 .clickity-click.active .my-avatar{
 	border: solid 5px #0087F2;

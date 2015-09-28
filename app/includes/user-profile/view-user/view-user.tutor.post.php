@@ -15,7 +15,16 @@
 		$jsonencode = json_encode($app->customizeavatar);
 		$app->currentuser->custom_avatar = $jsonencode;
 		$app->currentuser->save();
-		$app->redirect($app->currentuser->url.'/my-photos');
+		
+		if(empty($app->customizeavatar->dontshow)){
+			new Flash(
+				array(
+					'action'=>'alert',
+					'message'=>'Avatar Saved'
+				)
+			);	
+		}
+		
 	}
 	
 	if(isset($app->user->usertype) && $app->user->usertype=='admin'){

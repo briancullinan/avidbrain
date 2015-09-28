@@ -215,18 +215,10 @@
 					</div>
 				</div>
 				
-				<form id="submit-avatar" method="post" action="<?php echo $app->request->getPath(); ?>">
+				<form id="submit-avatar" class="form-post" method="post" action="<?php echo $app->request->getPath(); ?>">
 					
 					<input type="hidden" name="customizeavatar[target]" value="customizeavatar"  />
 					<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
-					
-					<div class="form-submit">
-						<br>
-						<br>
-						<br>
-						<br>
-						<button type="button" id="save-avatar" class="btn">Save Avatar</button>
-					</div>
 					
 				</form>				
 				

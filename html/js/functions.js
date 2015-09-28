@@ -134,14 +134,16 @@ function fixavatars(){
 	
 	
 	$(".my-avatar.edit-avatar").each(function( index ) {
-		
-		var avatarwidth = $(this).outerWidth();
+		var mywidth = $(this).outerWidth();
 		var maxheight = 200;
-		if(avatarwidth>maxheight){
-			avatarwidth = maxheight
+		
+		if(mywidth>maxheight){
+			mywidth = maxheight
 		}
 		
-		$(this).attr('style','font-size:'+avatarwidth+'px;height:'+avatarwidth+'px');
+		var fontsize = (mywidth - 10);
+		
+		$(this).attr('style','font-size:'+fontsize+'px;height:'+mywidth+'px');
 		
 	});
 	

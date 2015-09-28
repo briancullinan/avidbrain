@@ -750,8 +750,7 @@ $(document).ready(function() {
 			$(this).addClass('active');
 		});
 		
-		$('#save-avatar').on('click',function(){
-			
+		function savavatar(dontshow){
 			var skintoneid = $('.custom-avatar-body').attr('id');
 			var skintonecolor = $('.custom-avatar-body').attr('style');
 			
@@ -813,10 +812,28 @@ $(document).ready(function() {
 				$('.add-addfacialhaircolor').remove();
 				$('#submit-avatar').append('<input type="hidden" class="add-addfacialhaircolor" name="customizeavatar[addfacialhaircolor]" value="'+addfacialhaircolor+'" />');
 			}
+			
+			if(dontshow){
+				$('#submit-avatar').append('<input type="hidden" class="dontshow" name="customizeavatar[dontshow]" value="1" />');
+			}
+			else{
 				
+			}
+			
+			
+			$('#submit-avatar').submit();
+		}
+		
+		$('.swap-color-type input').on('change',function(){
 			setTimeout(function(){
-				$('#submit-avatar').submit();
-			},100);
+				savavatar('dontshow');
+			}, 100);
+		});
+		
+		$('.add-some .custom-avatar, .swap-color-type div, .empty').on('click',function(){
+			
+			savavatar();
+			
 		});
 	}
 	

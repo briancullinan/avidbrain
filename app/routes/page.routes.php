@@ -4,6 +4,8 @@
 	//$routes['uniqueKey'] = (object)array('url'=>'/uniqueKey','slug'=>'uniqueKey','route'=>'/uniqueKey/','include'=>'uniqueKey','protected'=>NULL,'permissions'=>array());
 	$routes['homepage'] = (object)array('url'=>'/','slug'=>'/','route'=>'/','include'=>'homepage','protected'=>NULL,'permissions'=>array());
 	$routes['sitemap'] = (object)array('url'=>'/sitemap','slug'=>'sitemap','route'=>'/sitemap/','include'=>'sitemap','protected'=>NULL,'permissions'=>array());
+	$routes['attributions'] = (object)array('url'=>'/attributions','slug'=>'attributions','route'=>'/attributions/','include'=>'attributions','protected'=>NULL,'permissions'=>array());
+	
 	if($app->dependents->SITE_NAME=='amozek'){
 		$routes['amozek'] = (object)array('url'=>'/amozek','slug'=>'amozek','route'=>'/amozek/','include'=>'amozek','protected'=>NULL,'permissions'=>array());
 	}
