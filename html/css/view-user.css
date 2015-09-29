@@ -40,6 +40,12 @@
 .tutor-right .edit-block h1{
 	margin-bottom: 2px;
 }
+.hidden-avatar{
+	display: block;
+	text-align: center;
+	max-width: 250px;
+	margin: 0 auto;
+}
 .profile-image a{
 	display: block;
 }

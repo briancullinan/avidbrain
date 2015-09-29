@@ -253,6 +253,19 @@
 			$app->currentuser->save();
 			$app->redirect($app->currentuser->url);
 		}
+		
+		
+		if($pagename=='makehidden'){
+			$app->currentuser->hidden = 1;
+			$app->currentuser->save();
+				$app->redirect($app->currentuser->url);
+		}
+		elseif($pagename=='makevisible'){
+			$app->currentuser->hidden = NULL;
+			$app->currentuser->save();
+				$app->redirect($app->currentuser->url);
+		}
+		
 	}
 	
 	#notify($data);
