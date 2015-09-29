@@ -1,4 +1,7 @@
 <?php
+	ini_set('display_errors', 1); 
+	ini_set('log_errors', 1); 
+	error_reporting(E_ALL);
 	header('Content-Type: text/html; charset=utf-8');
 	mb_internal_encoding("UTF-8");
 	mb_http_output('UTF-8');
@@ -26,10 +29,6 @@
 	    'templates.path' => $app->dependents->APP_PATH.'/views'
 	));
 	$app->log->setEnabled(true);
-	use \Slim\Extras\Middleware\CsrfGuard;
-	use \Slim\Extras\Middleware\HttpBasicAuth;
-	$app->add(new HttpBasicAuth('avidbrain', 'tutornode'));
-	$app->add(new CsrfGuard());
 	if($app->request->getMethod()=='POST' && $app->request->isAjax()==true){
 		header('Content-type: application/json');
 		header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
@@ -41,6 +40,12 @@
 	
 	include($app->dependents->APP_PATH.'functions/global.functions.php');
 	require '../app/autoload/autoload.php';
+	
+	
+	use \Slim\Extras\Middleware\CSRFNINJA;
+	use \Slim\Extras\Middleware\HttpBasicAuth;
+	$app->add(new HttpBasicAuth('avidbrain', 'tutornode'));
+	$app->add(new CSRFNINJA());
 	
 	//killallcookies();
 

@@ -70,7 +70,10 @@ function handlepost(response){
 		
 	}
 	else if(response.action=='invalidcsrf'){
-		alert(response);
+		$('input[name="csrf_token"]').val(response.errorcode);
+		if(response.iskey){
+			$('#'+response.iskey).submit();
+		}
 	}
 	else if(response.action=='custom'){
 		$(response.target).html(response.message);
