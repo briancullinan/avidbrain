@@ -67,7 +67,7 @@
 		}
 		
 		$password = password_hash($app->signup->password, PASSWORD_DEFAULT);
-		$validation_code = random_numbers_guarantee(16);
+		$validation_code = random_numbers_guarantee($app->connect,16);
 		
 		$inserttemp = array(
 			'email'=>$app->signup->email,
