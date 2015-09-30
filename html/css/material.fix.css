@@ -10,10 +10,10 @@
 	left: 0px;
 }
 .row-fix{
-	margin: 0px;
+/* 	margin: 0px; */
 }
 .row-fix .col{
-	padding: 0px;
+/* 	padding: 0px; */
 }
 .login-toast{
 	background: #56ff00;
