@@ -71,19 +71,21 @@
 		$arrayCheck = (object)$array;
 		
 		//$array->imnotsure = '¯\_(ツ)_/¯';
+		//echo '¯\_(ツ)_/¯';exit;
 
 		if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
 			echo json_encode($array);
 			exit;
 		}
-		elseif(isset($arrayCheck->action) && $arrayCheck->action=='alert' && isset($arrayCheck->message)){
+		else{
 			// Flash Errors
 			$_SESSION['slim.flash']['error'] = $arrayCheck->message;
 			if(isset($array->postdata)){
 				$_SESSION['slim.flash']['postdata'] = $arrayCheckarray->postdata;
 			}
 		}
-		else{
+		/*
+			else{
 			
 			$array = (object)$array;
 			
@@ -107,6 +109,7 @@
 			
 			
 		}
+		*/
 	}
 	function handleStripe($e){
 		$body = $e->getJsonBody();

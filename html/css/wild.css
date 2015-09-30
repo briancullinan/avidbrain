@@ -26,11 +26,15 @@ html,body{
 	-ms-flex-direction: column;
 	flex-direction: column;
 }
+a{
+	color: #0099ff;
+}
 
 h1,h2,h3,h4,h5,h6{
 	line-height: normal;
 	margin: 0px;
 	padding: 0px;
+    font-family: 'Quicksand';
 }
 h1{
 	color: #111;
@@ -160,9 +164,16 @@ header.activeaction,main.activeaction,footer.activeaction{
 	padding-left: 200px;
 	position: relative;
 }
+footer.activeaction{
+	border-color: transparent;
+}
 body.activeaction{
 	overflow: hidden;
-	height: 100px;
+	height: auto;
+}
+main.activeaction .container{
+	height: auto;
+	overflow: hidden;
 }
 main .container{
 	padding-top: 20px;
@@ -245,6 +256,15 @@ header {
     left: 0;
     top: 0;
     text-align: center;
+    
+    transition: transform 200ms linear;
+}
+.itstheheader-top{
+	transform: translateY(-100%);
+	
+}
+.itstheheader-bottom{
+	transform: translateY(0%);
 }
 .logo{
 	display: inline-block;
@@ -265,8 +285,10 @@ sidebar .logo{
 	display: none;
 }
 footer{
+	padding: 10px 0px;
 	background: #222;
 	min-height: 100px;
+	border-top: solid 5px #0099ff;
 }
 
 .animated {
@@ -344,38 +366,40 @@ footer{
 }
 
 .sub-navigation-title{
-	position: relative;
-	z-index: 1;
-	margin-bottom: -1px;
-	border: solid 1px #ccc;
+	padding: 5px;
+	background: rgba(204, 204, 204, 0.2);
+	border-bottom: solid 1px #ccc;
 }
 .sub-navigation-title a{
-	color: #fff;
-	display: block;
-	padding: 5px;
-	background: #efefef;
+	
+	font-size: 18px;
 	color: #999;
 	
 }
 .sub-navigation-title a.active{
-	color: #fff;
-	background: #666;
+	font-weight: bold;
 }
+
+
 .left-navigation .sub-navigation{
-	background: #fff;
-	border: solid 1px #ccc;
-	padding: 5px;
-	margin: 0px;
 	padding: 0px;
-	margin-bottom: 15px;
+	margin: 0px;
+}
+.left-navigation{
+	
 }
 .left-navigation .sub-navigation li a{
+	color: #666;
 	display: block;
 	padding: 5px;
+	font-size: 17px;
+}
+.left-navigation .sub-navigation li a:hover{
+	color: #0099ff;
 }
 .left-navigation .sub-navigation li.active a{
-	background: #0099ff;
-	color: #fff;
+	color: #0099ff;
+	font-weight: bold;
 }
 
 /* Dropdown */
@@ -457,4 +481,51 @@ footer{
 .my-links li.active a{
 	background: #0099ff;
 	color: #fff;
+}
+
+/* Static Errors */
+.say-message{
+	position: fixed;
+	right: 7%;
+	top:10%;
+	z-index: 888;
+	animation-delay: 3s;
+    animation-name: staticerror;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+}
+.say-message .the-message{
+	background: #000;
+	padding: 10px;
+	font-size: 16px;
+	color: #fff;
+}
+
+@keyframes staticerror {
+    0%   {top:10%;}
+    100% {top:-100px;}
+}
+@keyframes heartbeat {
+    0%   {font-size: 0px;}
+    100% {font-size: 25px;}
+}
+
+/* Scroll Up */
+.all-the-way-up{
+	position: fixed;
+	right: 10px;
+	bottom: 10px;
+	background: #222;
+	color: #999;
+	z-index: 444;
+	font-size: 30px;
+	
+	-webkit-border-radius: 300px;
+	-moz-border-radius: 300px;
+	border-radius: 300px;
+}
+.all-the-way-up:hover{
+	color: #fff;
+	cursor: pointer;
 }

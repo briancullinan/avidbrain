@@ -17,7 +17,7 @@
 	
 	function page_views($app){
 		
-		return 999;
+		return 'GOOGLE NOT WORKING';
 				
 		$googleAPIcachename = $app->user->email.'-googleAPI';
 		

@@ -73,7 +73,9 @@ class CSRFNINJA extends \Slim\Middleware{
             $userToken = $this->app->request()->post($this->key);
             
             $iskey = NULL;
-            $iskey = $_POST[key($_POST)]['target'];
+            if(isset($_POST[key($_POST)]['target'])){
+	            $iskey = $_POST[key($_POST)]['target'];
+            }
             
             if ($token !== $userToken) {
 	            //$this->app->halt(400, 'Invalid or missing CSRF token.');

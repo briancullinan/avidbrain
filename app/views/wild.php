@@ -107,7 +107,7 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 	</ul>
 	
 </sidebar>
-<header>
+<header class="itstheheader">
 	
 	<div class="left">
 		<div class="left activate-menu" data-status="closed">		
@@ -145,6 +145,15 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 <main>
 	<div class="<?php if($app->target->key=='/homepage/homepage'){ echo 'homepage-container';}else{ echo 'container';} ?> ">
 		
+		<?php if(isset($app->howitworks)){ include($app->dependents->APP_PATH.'includes/how-it-works/how-it-works.php'); } ?>
+		<?php if(isset($_SESSION['slim.flash']['error'])): ?>
+			<div class="say-message"><div class="the-message show-message"><?php echo $_SESSION['slim.flash']['error']; ?></div></div>
+			<?php
+				unset($_SESSION['slim.flash']['error']);
+				$_SESSION['slim.flash']['error'] = NULL;
+			?>
+		<?php endif; ?>
+		
 		<?php if(isset($app->secondary) && file_exists($app->secondary) || isset($app->tertiary) && file_exists($app->tertiary)): ?>
 			
 			<div class="row">
@@ -168,71 +177,73 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 	</div>
 </main>
 <footer>
-	<div class="row">
-		<div class="col s12 m3 l3">
-			<h5 class="white-text">Important Things</h5>
-			<?php if(isset($app->footerlinks)): ?>
-			<ul class="footer-li">
-				<?php foreach($app->footerlinks as $key=> $navitem): ?>
-				<li>
-					<a class="<?php if(myrootisyourroot($app->request->getPath(),$key)){ echo ' active ';} if(isset($navitem->class)){ echo $navitem->class; } ?>" href="<?php echo $key; ?>">
-						<?php echo $navitem->name; ?>
-					</a>
-				</li>
-				<?php endforeach; ?>
-			</ul>
-			<?php endif; ?>
-		</div>
-		<div class="col s12 m3 l3">
-			<h5 class="white-text">Find Out More</h5>
-			<?php if(isset($app->leftnav)): ?>
-			<ul class="footer-li">
-				<?php foreach($app->leftnav as $key=> $navitem): ?>
-				<li>
-					<a class="<?php if(myrootisyourroot($app->request->getPath(),$key)){ echo ' active ';} if(isset($navitem->class)){ echo $navitem->class; } ?>" href="<?php echo $key; ?>">
-						<?php echo $navitem->name; ?>
-					</a>
-				</li>
-				<?php endforeach; ?>
-			</ul>
-			<?php endif; ?>
-		</div>
-		<div class="col s12 m3 l3">
-			<h5 class="white-text"><?php echo $app->dependents->SITE_NAME_PROPPER; ?> Headquarters</h5>
-			<div class="grey-text">
-				<a href="https://www.google.com/maps/place/Regus+Scottsdale/@33.495696,-111.924473,17z/data=!4m6!1m3!3m2!1s0x872b0bbf1d86c0fd:0xae8864ada3178e8f!2sRegus+Scottsdale!3m1!1s0x872b0bbf1d86c0fd:0xae8864ada3178e8f" target="_blank">7272 E. Indian School Rd. Suite 540  <br>
-				Scottsdale, AZ 85251</a>
-			</div>
-		</div>
-		<div class="col s12 m3 l3">
-			<h5 class="white-text">Follow Us</h5>
-			<ul class="follow-us">
-				<li>
-					<a href="<?php echo $app->dependents->social->facebook; ?>" target="_blank"><i class="fa fa-facebook"></i></a>
-				</li>
-				<li>
-					<a href="<?php echo $app->dependents->social->twitter; ?>" target="_blank"><i class="fa fa-twitter"></i></a>
-				</li>
-				<li>
-					<a href="<?php echo $app->dependents->social->linkedin; ?>" target="_blank"><i class="fa fa-linkedin"></i></a>
-				</li>
-				<li>
-					<a href="<?php echo $app->dependents->social->pinterest; ?>" target="_blank"><i class="fa fa-pinterest"></i></a>
-				</li>
-			</ul>
-		</div>
-		</div>
+	<div class="container">
 		<div class="row">
-			<div class="col s12 m6 l6">
-				<div class="av-versioning">
-					<?php echo $app->dependents->SITE_NAME_PROPPER; ?> inc. &copy; All rights reserved <?php echo date('Y'); ?>
-					<span class="version">Version <?php echo $app->dependents->VERSION; ?></span>
+			<div class="col s12 m3 l3">
+				<h5 class="white-text">Important Things</h5>
+				<?php if(isset($app->footerlinks)): ?>
+				<ul class="footer-li">
+					<?php foreach($app->footerlinks as $key=> $navitem): ?>
+					<li>
+						<a class="<?php if(myrootisyourroot($app->request->getPath(),$key)){ echo ' active ';} if(isset($navitem->class)){ echo $navitem->class; } ?>" href="<?php echo $key; ?>">
+							<?php echo $navitem->name; ?>
+						</a>
+					</li>
+					<?php endforeach; ?>
+				</ul>
+				<?php endif; ?>
+			</div>
+			<div class="col s12 m3 l3">
+				<h5 class="white-text">Find Out More</h5>
+				<?php if(isset($app->leftnav)): ?>
+				<ul class="footer-li">
+					<?php foreach($app->leftnav as $key=> $navitem): ?>
+					<li>
+						<a class="<?php if(myrootisyourroot($app->request->getPath(),$key)){ echo ' active ';} if(isset($navitem->class)){ echo $navitem->class; } ?>" href="<?php echo $key; ?>">
+							<?php echo $navitem->name; ?>
+						</a>
+					</li>
+					<?php endforeach; ?>
+				</ul>
+				<?php endif; ?>
+			</div>
+			<div class="col s12 m3 l3">
+				<h5 class="white-text"><?php echo $app->dependents->SITE_NAME_PROPPER; ?> Headquarters</h5>
+				<div class="grey-text">
+					<a href="https://www.google.com/maps/place/Regus+Scottsdale/@33.495696,-111.924473,17z/data=!4m6!1m3!3m2!1s0x872b0bbf1d86c0fd:0xae8864ada3178e8f!2sRegus+Scottsdale!3m1!1s0x872b0bbf1d86c0fd:0xae8864ada3178e8f" target="_blank">7272 E. Indian School Rd. Suite 540  <br>
+					Scottsdale, AZ 85251</a>
 				</div>
 			</div>
-			<div class="col s12 m6 l6 right-align">
-				<span class="godaddy">
-					<img src="/images/godaddy.gif"/>
-				</span>
+			<div class="col s12 m3 l3">
+				<h5 class="white-text">Follow Us</h5>
+				<ul class="follow-us">
+					<li>
+						<a href="<?php echo $app->dependents->social->facebook; ?>" target="_blank"><i class="fa fa-facebook"></i></a>
+					</li>
+					<li>
+						<a href="<?php echo $app->dependents->social->twitter; ?>" target="_blank"><i class="fa fa-twitter"></i></a>
+					</li>
+					<li>
+						<a href="<?php echo $app->dependents->social->linkedin; ?>" target="_blank"><i class="fa fa-linkedin"></i></a>
+					</li>
+					<li>
+						<a href="<?php echo $app->dependents->social->pinterest; ?>" target="_blank"><i class="fa fa-pinterest"></i></a>
+					</li>
+				</ul>
+			</div>
+			</div>
+			<div class="row">
+				<div class="col s12 m6 l6">
+					<div class="av-versioning">
+						<?php echo $app->dependents->SITE_NAME_PROPPER; ?> inc. &copy; All rights reserved <?php echo date('Y'); ?>
+						<span class="version">Version <?php echo $app->dependents->VERSION; ?></span>
+					</div>
+				</div>
+				<div class="col s12 m6 l6 right-align">
+					<span class="godaddy">
+						<img src="/images/godaddy.gif"/>
+					</span>
+				</div>
 			</div>
 		</div>
 	</div>
