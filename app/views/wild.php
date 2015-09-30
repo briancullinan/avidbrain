@@ -47,7 +47,7 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 		$openClosed = 'open';
 	}
 	$app->mylocation = json_decode($app->getCookie('mylocation'));
-	include($app->dependents->APP_PATH.'navigation/navigation.basics.php');
+	include($app->dependents->APP_PATH.'navigation/navigation.basics.wild.php');
 ?>
 </head>
 <body class="body <?php if(isset($app->secondary) && file_exists($app->secondary)){ echo 'sub-active';} if(isset($app->user->email)){ echo ' active-user ';} echo ' page--'.str_replace('-','',$app->target->css).' '; ?>">
@@ -76,35 +76,25 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 	</div>
 	
 	<ul class="sidebar-main">
+		<?php foreach($app->leftnav as $key=> $navitem): ?>
 		<li>
-			<a href="/">
-				Home
+			<a class="<?php if(myrootisyourroot($app->request->getPath(),$key)){ echo ' active ';} if(isset($navitem->class)){ echo $navitem->class; } ?>" href="<?php echo $key; ?>">
+				<?php echo $navitem->name; ?>
 			</a>
 		</li>
-		<li>
-			<a href="/tutors">
-				Tutors
-			</a>
-		</li>
-		<li>
-			<a href="/jobs">
-				Jobs
-			</a>
-		</li>
+		<?php endforeach; ?>
 	</ul>
 	
 	<ul class="sidebar-subs">
+		<?php foreach($app->leftnavsubs as $key=> $navitem): ?>
 		<li>
-			<a href="/help">
-				Help
+			<a class="<?php if(myrootisyourroot($app->request->getPath(),$key)){ echo ' active ';} if(isset($navitem->class)){ echo $navitem->class; } ?>" href="<?php echo $key; ?>">
+				<?php echo $navitem->name; ?>
 			</a>
 		</li>
-		<li>
-			<a href="/how-it-works">
-				How It Works
-			</a>
-		</li>
+		<?php endforeach; ?>
 	</ul>
+	
 	
 </sidebar>
 <header class="itstheheader">
@@ -207,14 +197,14 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 				</ul>
 				<?php endif; ?>
 			</div>
-			<div class="col s12 m3 l3">
+			<div class="col s12 m4 l4">
 				<h5 class="white-text"><?php echo $app->dependents->SITE_NAME_PROPPER; ?> Headquarters</h5>
 				<div class="grey-text">
 					<a href="https://www.google.com/maps/place/Regus+Scottsdale/@33.495696,-111.924473,17z/data=!4m6!1m3!3m2!1s0x872b0bbf1d86c0fd:0xae8864ada3178e8f!2sRegus+Scottsdale!3m1!1s0x872b0bbf1d86c0fd:0xae8864ada3178e8f" target="_blank">7272 E. Indian School Rd. Suite 540  <br>
 					Scottsdale, AZ 85251</a>
 				</div>
 			</div>
-			<div class="col s12 m3 l3">
+			<div class="col s12 m2 l2">
 				<h5 class="white-text">Follow Us</h5>
 				<ul class="follow-us">
 					<li>

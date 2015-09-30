@@ -49,7 +49,7 @@ function hasScrolled() {
         $('main').append('<div class="all-the-way-up"><span class="fa-stack fa-lg"><i class="fa fa-circle-thin fa-stack-2x"></i><i class="fa fa-arrow-up fa-stack-1x"></i></span></div>');
         
         $('.all-the-way-up').on('click',function(){
-	        $(this).remove();
+	       // $(this).remove();
 	        $('html, body').animate({scrollTop: $("main .container").offset().top - 100}, 1000);
         });
         
@@ -58,6 +58,12 @@ function hasScrolled() {
         if(st + $(window).height() < $(document).height()) {
 	        $('header').removeClass("itstheheader-top").addClass('itstheheader-bottom');
         }
+    }
+    
+    if(st < 100){
+	    $('.all-the-way-up').fadeOut(function(){
+		    $(this).remove();
+	    });
     }
     
     lastScrollTop = st;
