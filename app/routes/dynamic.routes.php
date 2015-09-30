@@ -33,7 +33,7 @@
 			$template = $definedRoute->template;
 		}
 		else{
-			$template = 'base-template.php';
+			$template = $app->settings['template'];
 		}
 		
 		$app->map($definedRoute->route, function() use($app,$definedRoute,$template){

@@ -21,12 +21,15 @@
 		require '../vendor/autoload.php';
 		require('../app/dependents/dependents.php');
 	$app = new \Slim\Slim();
-		require('../app/dependents/dependent-files.php');
+		//require('../app/dependents/dependent-files.php');
+		require('../app/dependents/dependent.wild.php');
 	$app->dependents = $dependents;
 	$app->config(array(
 	    'debug' => true,
 	    'mode'=>'development',
-	    'templates.path' => $app->dependents->APP_PATH.'/views'
+	    'templates.path' => $app->dependents->APP_PATH.'/views',
+	    //'template'=>'base-template.php'
+	    'template'=>'wild.php'
 	));
 	$app->log->setEnabled(true);
 	if($app->request->getMethod()=='POST' && $app->request->isAjax()==true){

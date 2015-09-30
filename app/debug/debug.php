@@ -35,7 +35,7 @@
 		$app->target = buildpaths($pathinfo,$app->dependents->APP_PATH,NULL);
 		include($app->target->action);
 	    $app->render(
-	    	'base-template.php',
+	    	$app->settings['template'],
 	    	array('app'=>$app)
 	    );
 	});
