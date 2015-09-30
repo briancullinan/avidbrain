@@ -12,6 +12,28 @@ $(document).ready(function() {
 		}
 	});
 	
+	$('.slider').slider({
+		height:300
+	});
+	$('.how-it-works').on('click',function(){
+		
+		var datastatus = $(this).attr('data-status');
+		if(datastatus=='closed'){
+			$('.how-it-works').attr('data-status','open').addClass('active');
+			$('.how-it-works-slide').addClass('slideDown').removeClass('slideUp');
+			window.scroll(0, 0);
+		}
+		else if(datastatus=='open'){
+			$('.how-it-works').attr('data-status','closed').removeClass('active');
+			$('.how-it-works-slide').removeClass('slideDown').addClass('slideUp');
+		}
+		
+		$('.close-it-works').on('click',function(){
+			$('.how-it-works').attr('data-status','closed');
+			$('.how-it-works-slide').removeClass('slideDown').addClass('slideUp');
+		});
+		
+	});
 	
 
 });
@@ -50,7 +72,7 @@ function hasScrolled() {
         
         $('.all-the-way-up').on('click',function(){
 	       // $(this).remove();
-	        $('html, body').animate({scrollTop: $("main .container").offset().top - 100}, 1000);
+	        $('html, body').animate({scrollTop: $("main .container, main .homepage-container").offset().top - 100}, 1000);
         });
         
     } else {

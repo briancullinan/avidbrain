@@ -256,11 +256,10 @@ subnav a.active, subnav li.active a{
 }
 
 header {
-	z-index: 6666;
+	z-index: 333;
 	background: #333;
 	height: 80px;
 	position: fixed;
-    z-index: 10;
     right: 0;
     left: 0;
     top: 0;

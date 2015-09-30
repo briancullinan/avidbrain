@@ -38,6 +38,7 @@
 
 	$localcss = array(
 		'wild.css',
+		'hiw.css',
 		'wild.media.css'
 	);
 

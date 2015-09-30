@@ -1,0 +1,132 @@
+@charset "utf-8";
+.how-it-works-slide{
+	height: 500px;
+	width: 100%;
+	position: fixed;
+	left: 0px;
+	top:0px;
+	margin-top: -500px;
+	background: #fff;
+	border-bottom: solid 1px #ccc;
+	z-index: 555;
+	text-align: center;
+	overflow: hidden;	
+}
+.how-it-works-slide h1{
+	padding: 10px;
+}
+.close-it-works{
+	position: absolute;
+	right: 10px;
+	top:0px;
+	font-size: 40px;
+}
+.howie-howitworks-img{
+	
+}
+.howie-howitworks-title{
+	font-size: 22px;
+}
+.howie-howitworks-text{
+	padding: 0px 15px;
+}
+.howie-howitworks-bottom{
+	
+}
+
+.how-it-works-slide.slideDown{
+    animation-name: slideDown;
+    animation-duration: .5s;
+    margin-top: 0px;
+}
+.how-it-works-slide.slideUp{
+    animation-name: slideUp;
+    animation-duration: .5s;
+    margin-top: -500px;
+}
+
+@-webkit-keyframes slideUp {
+    from {margin-top: 0px}
+    to {margin-top: -500px;}
+}
+@-moz-keyframes slideUp {
+    from {margin-top: 0px}
+    to {margin-top: -500px;}
+}
+@-o-keyframes slideUp {
+    from {margin-top: 0px}
+    to {margin-top: -500px;}
+}
+@keyframes slideUp {
+    from {margin-top: 0px}
+    to {margin-top: -500px;}
+}
+
+
+@-webkit-keyframes slideDown {
+    from {margin-top: -500px;}
+    to {margin-top: 0px}
+}
+@-moz-keyframes slideDown {
+    from {margin-top: -500px;}
+    to {margin-top: 0px}
+}
+@-o-keyframes slideDown {
+    from {margin-top: -500px;}
+    to {margin-top: 0px}
+}
+@keyframes slideDown {
+    from {margin-top: -500px;}
+    to {margin-top: 0px;}
+}
+
+.homepage-items h1{
+	position: absolute;
+	font-weight: bold;
+	color: #fff;
+    text-shadow: 0px 0px 20px black;
+	
+	right: 0 ;
+	left : 0 ;
+	z-index: 22;
+	margin-top: 8%;
+}
+.how-it-works{
+	position: absolute;
+	
+	right: 0 ;
+	left : 0 ;
+	z-index: 22;
+	margin-top: 12%;
+}
+.how-it-works span{
+	
+	margin-top: 30px;
+    color: #222;
+    background: #fff;
+    display: inline-block;
+    padding: 10px 25px;
+    background: rgba(255, 255, 255, 0.7);
+    font-weight: bold;
+    -moz-box-shadow: 0 0 10px #000;
+	-webkit-box-shadow: 0 0 10px #000;
+	box-shadow: 0 0 10px #000;
+    font-size: 16px;
+    cursor: pointer;
+
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+.homepageslide{
+	text-align: center;
+	position: relative;
+	margin: 0px;
+}
+
+.slider .indicators .indicator-item{
+	background: #fff;
+}
+.slider .indicators .indicator-item.active{
+	background: #99ff00;
+}
