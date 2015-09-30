@@ -106,6 +106,7 @@
 		$app->secondary = NULL;
 	}
 	
+	$app->secondary = NULL;
 	
 	// No Get Everything Else
 	

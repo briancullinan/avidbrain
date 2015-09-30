@@ -47,25 +47,33 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 		$openClosed = 'open';
 	}
 	$app->mylocation = json_decode($app->getCookie('mylocation'));
+	include($app->dependents->APP_PATH.'navigation/navigation.basics.php');
 ?>
 </head>
 <body class="body <?php if(isset($app->secondary) && file_exists($app->secondary)){ echo 'sub-active';} if(isset($app->user->email)){ echo ' active-user ';} echo ' page--'.str_replace('-','',$app->target->css).' '; ?>">
 <sidebar>
 	
+	<div class="logo">
+		<a href="/">avidbrain</a>
+	</div>
+	
 	<div class="sidebar-status">
 		
+		<?php if(isset($app->user->email)): ?>
+			<!-- Something Here -->
+		<?php else: ?>
+		<a class="sidebar-signup" href="/signup">Signup</a>
 		<div class="row">
-			<div class="col s12 m6 l6">
+			<div class="col s6 m6 l6">
 				<div class="sidebar-close"><i class="fa fa-times"></i></div>
 			</div>
-			<div class="col s12 m6 l6 right-align">
+			<div class="col s6 m6 l6 right-align">
 				<div class="sidebar-login"><a href="/login">LOG IN</a></div>
 			</div>
 		</div>
+		<?php endif; ?>
 		
 	</div>
-	
-	<a class="sidebar-signup" href="/signup">Signup</a>
 	
 	<ul class="sidebar-main">
 		<li>
@@ -99,7 +107,7 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 	</ul>
 	
 </sidebar>
-<header class="grabber">
+<header>
 	
 	<div class="left">
 		<div class="left activate-menu" data-status="closed">		
@@ -109,10 +117,13 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 	</div>
 	
 	<div class="logo align-center">
-		<a href="/"><img src="/images/avidbrain-logo.png" class="responsive-img" /></a>
+		<a href="/">avidbrain</a>
 	</div>
 	
 	<div class="right white-text">
+		<?php if(isset($app->user->email)): ?>
+			<?php include('user-dropdown.wild.php'); ?>
+		<?php else: ?>
 		<ul class="header-nav">
 			<li>
 				<a href="/login">Login</a>
@@ -120,26 +131,112 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 			<li>
 				<a href="/signup">Signup</a>
 			</li>
+			<li>
+				<a href="/help">Help</a>
+			</li>
 		</ul>
+		<?php endif; ?>
 	</div>
 	
 </header>
+
+
+
 <main>
-	
-	<?php
-		if(isset($app->target->include) && file_exists($app->target->include)){
-			include($app->target->include);
-		}
-		elseif(isset($app->target->include) && !file_exists($app->target->include) && $app->dependents->DEBUG==true){
-			include($app->dependents->APP_PATH.'debug/makeme.php');
-		}
-		else{
-			echo 'makeme';
-		}
-	?>
-	
+	<div class="<?php if($app->target->key=='/homepage/homepage'){ echo 'homepage-container';}else{ echo 'container';} ?> ">
+		
+		<?php if(isset($app->secondary) && file_exists($app->secondary) || isset($app->tertiary) && file_exists($app->tertiary)): ?>
+			
+			<div class="row">
+				<div class="col s12 m3 l3">
+					<div class="left-navigation">
+						<?php if(file_exists($app->secondary)){include($app->secondary);} ?>
+						<?php if(file_exists($app->tertiary)){include($app->tertiary);} ?>
+					</div>
+				</div>
+				<div class="col s12 m9 l9">
+					<?php include('wild.pages.php'); ?>
+				</div>
+			</div>
+		
+		<?php else: ?>
+		
+			<?php include('wild.pages.php'); ?>
+		
+		<?php endif; ?>
+		
+	</div>
 </main>
-<footer>footer</footer>
+<footer>
+	<div class="row">
+		<div class="col s12 m3 l3">
+			<h5 class="white-text">Important Things</h5>
+			<?php if(isset($app->footerlinks)): ?>
+			<ul class="footer-li">
+				<?php foreach($app->footerlinks as $key=> $navitem): ?>
+				<li>
+					<a class="<?php if(myrootisyourroot($app->request->getPath(),$key)){ echo ' active ';} if(isset($navitem->class)){ echo $navitem->class; } ?>" href="<?php echo $key; ?>">
+						<?php echo $navitem->name; ?>
+					</a>
+				</li>
+				<?php endforeach; ?>
+			</ul>
+			<?php endif; ?>
+		</div>
+		<div class="col s12 m3 l3">
+			<h5 class="white-text">Find Out More</h5>
+			<?php if(isset($app->leftnav)): ?>
+			<ul class="footer-li">
+				<?php foreach($app->leftnav as $key=> $navitem): ?>
+				<li>
+					<a class="<?php if(myrootisyourroot($app->request->getPath(),$key)){ echo ' active ';} if(isset($navitem->class)){ echo $navitem->class; } ?>" href="<?php echo $key; ?>">
+						<?php echo $navitem->name; ?>
+					</a>
+				</li>
+				<?php endforeach; ?>
+			</ul>
+			<?php endif; ?>
+		</div>
+		<div class="col s12 m3 l3">
+			<h5 class="white-text"><?php echo $app->dependents->SITE_NAME_PROPPER; ?> Headquarters</h5>
+			<div class="grey-text">
+				<a href="https://www.google.com/maps/place/Regus+Scottsdale/@33.495696,-111.924473,17z/data=!4m6!1m3!3m2!1s0x872b0bbf1d86c0fd:0xae8864ada3178e8f!2sRegus+Scottsdale!3m1!1s0x872b0bbf1d86c0fd:0xae8864ada3178e8f" target="_blank">7272 E. Indian School Rd. Suite 540  <br>
+				Scottsdale, AZ 85251</a>
+			</div>
+		</div>
+		<div class="col s12 m3 l3">
+			<h5 class="white-text">Follow Us</h5>
+			<ul class="follow-us">
+				<li>
+					<a href="<?php echo $app->dependents->social->facebook; ?>" target="_blank"><i class="fa fa-facebook"></i></a>
+				</li>
+				<li>
+					<a href="<?php echo $app->dependents->social->twitter; ?>" target="_blank"><i class="fa fa-twitter"></i></a>
+				</li>
+				<li>
+					<a href="<?php echo $app->dependents->social->linkedin; ?>" target="_blank"><i class="fa fa-linkedin"></i></a>
+				</li>
+				<li>
+					<a href="<?php echo $app->dependents->social->pinterest; ?>" target="_blank"><i class="fa fa-pinterest"></i></a>
+				</li>
+			</ul>
+		</div>
+		</div>
+		<div class="row">
+			<div class="col s12 m6 l6">
+				<div class="av-versioning">
+					<?php echo $app->dependents->SITE_NAME_PROPPER; ?> inc. &copy; All rights reserved <?php echo date('Y'); ?>
+					<span class="version">Version <?php echo $app->dependents->VERSION; ?></span>
+				</div>
+			</div>
+			<div class="col s12 m6 l6 right-align">
+				<span class="godaddy">
+					<img src="/images/godaddy.gif"/>
+				</span>
+			</div>
+		</div>
+	</div>
+</footer>
 	
 <?php
 // CDN JS

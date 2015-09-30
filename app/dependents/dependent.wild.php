@@ -34,33 +34,16 @@
 	}
 	
 
-/*
-	$localcss = array(
-		'jquery.nouislider.min.css',
-		'fonts.css',
-		'core.css',
-		'view-user.css',
-		'sessions-messages.css',
-		'subs.css',
-		'forms.css',
-		'homepage.css',
-		'material.fix.css',
-		'core.media.css',
-		'crop.css',
-		'time.picker.css',
-		'customize-avatar.css'
-	);
-*/
+
 
 	$localcss = array(
-		'wild.css'
+		'wild.css',
+		'wild.media.css'
 	);
 
 	
 
 	$localjs = array(
-		//'functions.js',
-		//'javascript.js',
 		'wild.js',
 		'jquery.nouislider.min.js',
 		'js.cookie.js',

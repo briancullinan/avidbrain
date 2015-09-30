@@ -16,6 +16,8 @@
 	}
 	
 	function page_views($app){
+		
+		return 999;
 				
 		$googleAPIcachename = $app->user->email.'-googleAPI';
 		

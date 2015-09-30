@@ -1,4 +1,16 @@
 @charset "utf-8";
+@font-face {
+    font-family: 'bariol_regular';
+    src: url('/fonts/bariol/bariol_regular-webfont.eot');
+    src: url('/fonts/bariol/bariol_regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/bariol/bariol_regular-webfont.woff2') format('woff2'),
+         url('/fonts/bariol/bariol_regular-webfont.woff') format('woff'),
+         url('/fonts/bariol/bariol_regular-webfont.ttf') format('truetype'),
+         url('/fonts/bariol/bariol_regular-webfont.svg#bariol_regularregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
 html,body{
 	margin: 0px;
 	padding: 0px;
@@ -14,6 +26,25 @@ html,body{
 	-ms-flex-direction: column;
 	flex-direction: column;
 }
+
+h1,h2,h3,h4,h5,h6{
+	line-height: normal;
+	margin: 0px;
+	padding: 0px;
+}
+h1{
+	color: #111;
+	font-size: 3.5rem;
+}
+h2{
+	font-size: 2.7rem;
+	color: #444;
+}
+h3{
+	font-size: 2rem;
+	color: #777;
+}
+
 main{
 	-webkit-flex: 1;
 	-ms-flex: 1;
@@ -129,10 +160,17 @@ header.activeaction,main.activeaction,footer.activeaction{
 	padding-left: 200px;
 	position: relative;
 }
-main.activeaction{
-	overflow-y: hidden;
+body.activeaction{
+	overflow: hidden;
 	height: 100px;
 }
+main .container{
+	padding-top: 20px;
+}
+main .subnav-active.container{
+	padding-top: 40px;
+}
+
 header.activeaction:before, main.activeaction:before, footer.activeaction:before{
 	width: 100%;
 	height: 100%;
@@ -142,6 +180,35 @@ header.activeaction:before, main.activeaction:before, footer.activeaction:before
 	left: 0px;
 	top:0px;
 	z-index: 33;
+}
+subnav{
+	padding: 5px;
+	width: 100%;
+	position: fixed;
+	top:80px;
+	background: #666;
+}
+subnav .sub-navigation-title{
+	float: left;
+}
+subnav .sub-navigation{
+	margin: 0px;
+	padding: 0px;
+	float: left;
+}
+subnav .sub-navigation li{
+	float: left;
+}
+subnav a{
+	display: block;
+	padding: 5px 10px;
+	color: #ccc;
+	margin-right: 10px;
+	background: #777;
+}
+subnav a.active, subnav li.active a{
+	color: #fff;
+	background: #555;
 }
 
 .activate-menu i{
@@ -169,6 +236,7 @@ header.activeaction:before, main.activeaction:before, footer.activeaction:before
 }
 
 header {
+	z-index: 6666;
 	background: #333;
 	height: 80px;
 	position: fixed;
@@ -180,9 +248,21 @@ header {
 }
 .logo{
 	display: inline-block;
+	text-align: center;
+}
+.logo a{
+	color: #fff;
+	font-family: 'bariol_regular','sans-serif','arial';
+	font-weight: 700;
+	font-size: 30px;
+	display: block;
+	padding:17px 10px 18px 10px;
 }
 .logo img{
 	max-height: 80px;
+}
+sidebar .logo{
+	display: none;
 }
 footer{
 	background: #222;
@@ -232,7 +312,7 @@ footer{
 }
 
 .sidebar-status{
-	margin-top: 10px;
+	
 }
 .sidebar-status .row{
 	margin: 0px;
@@ -250,7 +330,7 @@ footer{
 	color: #008dff;
 }
 .sidebar-login{
-	
+	margin-bottom: 10px;	
 }
 .sidebar-login a{
 	display: block;
@@ -261,4 +341,120 @@ footer{
 }
 .sidebar-login a:hover{
 	color: #ccc;
+}
+
+.sub-navigation-title{
+	position: relative;
+	z-index: 1;
+	margin-bottom: -1px;
+	border: solid 1px #ccc;
+}
+.sub-navigation-title a{
+	color: #fff;
+	display: block;
+	padding: 5px;
+	background: #efefef;
+	color: #999;
+	
+}
+.sub-navigation-title a.active{
+	color: #fff;
+	background: #666;
+}
+.left-navigation .sub-navigation{
+	background: #fff;
+	border: solid 1px #ccc;
+	padding: 5px;
+	margin: 0px;
+	padding: 0px;
+	margin-bottom: 15px;
+}
+.left-navigation .sub-navigation li a{
+	display: block;
+	padding: 5px;
+}
+.left-navigation .sub-navigation li.active a{
+	background: #0099ff;
+	color: #fff;
+}
+
+/* Dropdown */
+.dropdown-content li>a{
+	color: #555;
+	font-size: 16px;
+}
+.user-dropdown-container{
+	margin-right: 10px;
+	margin-top: 10px;
+	color: #fff;
+}
+.dropdown-button{
+	color: #fff;
+	float: left;
+	margin-top: 10px;
+}
+.dropdown-button:hover .dropdown-item i{
+	
+}
+.dropdown-button:hover .dropdown-sort i{
+	color: #ccc;
+}
+.dropdown-button:hover .my-name{
+	color: #ccc;
+}
+.dropdown-item{
+	float: left;
+	padding-right: 10px;
+}
+.dropdown-sort{
+	float: left;
+	padding: 2px 5px;
+}
+
+#user-dropdown{
+	min-width: 250px;
+}
+#user-dropdown li a{
+	
+}
+.dropdown-content .my-info:hover{
+	cursor: default;
+	background: transparent;
+}
+.my-info .row{
+	margin: 0px;
+}
+.row .col.my-info-img{
+	padding: 5px;
+	padding-bottom: 0px;
+}
+.my-info{
+	padding: 5px;
+	border-bottom: solid 2px #ccc;
+	background: #efefef !important;
+}
+.dropdown-content  .dll-logout a{
+	background: #666;
+	color: #fff;
+}
+.dll-logout a:hover{
+	background: #555;
+	color: #ccc;
+}
+
+.my-links{
+	background: #fff;
+	border: solid 1px #ccc;
+	padding: 5px;	
+}
+.my-links li{
+	
+}
+.my-links li a{
+	display: block;
+	padding: 5px 10px;
+}
+.my-links li.active a{
+	background: #0099ff;
+	color: #fff;
 }
