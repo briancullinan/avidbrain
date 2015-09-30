@@ -59,27 +59,27 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 				<div class="sidebar-close"><i class="fa fa-times"></i></div>
 			</div>
 			<div class="col s12 m6 l6 right-align">
-				<div class="sidebar-login"><a href="">LOG IN</a></div>
+				<div class="sidebar-login"><a href="/login">LOG IN</a></div>
 			</div>
 		</div>
 		
 	</div>
 	
-	<a class="sidebar-signup" href="">Signup</a>
+	<a class="sidebar-signup" href="/signup">Signup</a>
 	
 	<ul class="sidebar-main">
 		<li>
-			<a href="">
+			<a href="/">
 				Home
 			</a>
 		</li>
 		<li>
-			<a href="">
+			<a href="/tutors">
 				Tutors
 			</a>
 		</li>
 		<li>
-			<a href="">
+			<a href="/jobs">
 				Jobs
 			</a>
 		</li>
@@ -87,12 +87,12 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 	
 	<ul class="sidebar-subs">
 		<li>
-			<a href="">
+			<a href="/help">
 				Help
 			</a>
 		</li>
 		<li>
-			<a href="">
+			<a href="/how-it-works">
 				How It Works
 			</a>
 		</li>
@@ -109,16 +109,16 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 	</div>
 	
 	<div class="logo align-center">
-		<img src="/images/avidbrain-logo.png" class="responsive-img" />
+		<a href="/"><img src="/images/avidbrain-logo.png" class="responsive-img" /></a>
 	</div>
 	
 	<div class="right white-text">
 		<ul class="header-nav">
 			<li>
-				<a href="">Login</a>
+				<a href="/login">Login</a>
 			</li>
 			<li>
-				<a href="">Signup</a>
+				<a href="/signup">Signup</a>
 			</li>
 		</ul>
 	</div>
@@ -126,25 +126,17 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 </header>
 <main>
 	
-	<p>data</p>
-	<p>data</p>
-	<p>data</p>
-	<p>data</p>
-	<p>data</p>
-	<p>data</p>
-	<p>data</p>
-	<p>data</p>
-	<p>data</p>
-	<p>data</p>
-	<p>data</p>
-	<p>data</p>
-	<p>data</p>
-	<p>data</p>
-	<p>data</p>
-	<p>data</p>
-	<p>data</p>
-	<p>data</p>
-	<p>data</p>
+	<?php
+		if(isset($app->target->include) && file_exists($app->target->include)){
+			include($app->target->include);
+		}
+		elseif(isset($app->target->include) && !file_exists($app->target->include) && $app->dependents->DEBUG==true){
+			include($app->dependents->APP_PATH.'debug/makeme.php');
+		}
+		else{
+			echo 'makeme';
+		}
+	?>
 	
 </main>
 <footer>footer</footer>
