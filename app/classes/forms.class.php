@@ -61,6 +61,7 @@
 			}
 			
 			if(isset($_SESSION['slim.flash']['postdata'])){
+				//notify($_SESSION['slim.flash']['postdata']);
 				$this->formvalues = $_SESSION['slim.flash']['postdata'];
 			}
 			$_SESSION['slim.flash']['postdata'] = NULL;

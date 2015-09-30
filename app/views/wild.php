@@ -116,7 +116,7 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 		<?php else: ?>
 		<ul class="header-nav">
 			<li>
-				<a href="/login">Login</a>
+				<a class="modal-trigger" href="#loginModule">Log In</a>
 			</li>
 			<li>
 				<a href="/signup">Signup</a>
@@ -138,10 +138,6 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 		<?php if(isset($app->howitworks)){ include($app->dependents->APP_PATH.'includes/how-it-works/how-it-works.php'); } ?>
 		<?php if(isset($_SESSION['slim.flash']['error'])): ?>
 			<div class="say-message"><div class="the-message show-message"><?php echo $_SESSION['slim.flash']['error']; ?></div></div>
-			<?php
-				unset($_SESSION['slim.flash']['error']);
-				$_SESSION['slim.flash']['error'] = NULL;
-			?>
 		<?php endif; ?>
 		
 		<?php if(isset($app->secondary) && file_exists($app->secondary) || isset($app->tertiary) && file_exists($app->tertiary)): ?>
@@ -238,6 +234,8 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 		</div>
 	</div>
 </footer>
+
+<?php include('modals.php'); ?>
 	
 <?php
 // CDN JS
@@ -268,5 +266,9 @@ endif;
 </script>
 <?php endif; ?>
 <noscript><link rel="stylesheet" href="/css/scripts-required.css"><div class="js-required">Javascript Is Required. Please Enable.</div></noscript>
+<?php
+	unset($_SESSION['slim.flash']['error']);
+	$_SESSION['slim.flash']['error'] = NULL;
+?>
 </body>
 </html>

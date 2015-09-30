@@ -91,7 +91,7 @@
 	z-index: 22;
 	margin-top: 8%;
 }
-.how-it-works{
+.homepage-items .how-it-works{
 	position: absolute;
 	
 	right: 0 ;
@@ -99,9 +99,12 @@
 	z-index: 22;
 	margin-top: 12%;
 }
-.how-it-works span{
+.homepage-items .how-it-works span{
 	
 	margin-top: 30px;
+	
+}
+.how-it-works span{
     color: #222;
     background: #fff;
     display: inline-block;

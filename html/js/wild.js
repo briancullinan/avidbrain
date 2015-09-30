@@ -1,4 +1,26 @@
 $(document).ready(function() {
+	
+	$('.form-post, .post-form').on('submit',function(){
+		
+		$('.form-post .form-submit button').attr('disabled','disabled').addClass('disabled');
+		
+		var serialized_data = $(this).find("input, select, button, textarea").serialize();
+		var target = document.URL;
+		var formid = '#'+$(this).attr('id');
+		if($(this).attr('action')){
+			var target = $(this).attr('action');
+		}		
+		
+		var xhr = $.ajax({
+			type: 'POST',
+			url: target,
+			data: serialized_data,
+			success: function(response){handlepost(response)}
+		});
+		return false;	
+		
+		
+	});
 
 	$('.activate-menu, .sidebar-close i').on('click',function(){
 		var activestatus = $('.activate-menu').attr('data-status');
@@ -12,9 +34,25 @@ $(document).ready(function() {
 		}
 	});
 	
+	$('.time-picker').timepicker();
+	
+	
+	
+	$('.godaddy').on('click',function(){
+		var url = 'https:\/\/seal.godaddy.com\/verifySeal?sealID=Ife37TCcnamjWQG7v5u7LIF4gSu3BuWLtZZL25RGWmBEryK5DvgesB9s7lTv';
+		window.open(url,'SealVerfication','menubar=no,toolbar=no,personalbar=no,location=yes,status=no,resizable=yes,fullscreen=no,scrollbars=no,width=' + 593 + ',height=' + 779);
+	});
+	
+	$('.modal-trigger').leanModal();
+	$('select').material_select();
 	$('.slider').slider({
 		height:300
 	});
+	$('.datepicker').pickadate({
+		selectMonths: true,
+		selectYears: 2
+	});
+	
 	$('.how-it-works').on('click',function(){
 		
 		var datastatus = $(this).attr('data-status');
@@ -34,6 +72,8 @@ $(document).ready(function() {
 		});
 		
 	});
+	
+	fixavatars();
 	
 
 });
@@ -90,3 +130,23 @@ function hasScrolled() {
     
     lastScrollTop = st;
 }
+
+$(document).ajaxError( function(e, xhr, settings, exception) {
+	console.log(xhr.responseText);
+	resetform();
+});
+$(window).resize(function() {
+	var width = $(window).width();
+	var activestatus = $('.activate-mobile').attr('data-status');
+	if(width>992){
+		if(activestatus=='open'){
+			$('.activate-mobile').click();
+			$('html,body').removeClass('inaction');
+		}
+	}
+	else if(width<992){
+		
+	}
+	
+	fixavatars();
+});

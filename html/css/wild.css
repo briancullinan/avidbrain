@@ -180,6 +180,9 @@ body.activeaction{
 	overflow: hidden;
 	height: auto;
 }
+body.activeaction .header-nav{
+	display: none;
+}
 main.activeaction .container{
 	height: auto;
 	overflow: hidden;
@@ -485,9 +488,11 @@ footer{
 .my-links li a{
 	display: block;
 	padding: 5px 10px;
+	font-size: 18px;
+	color: #333;
 }
 .my-links li.active a{
-	background: #0099ff;
+	background: #444;
 	color: #fff;
 }
 
@@ -495,7 +500,7 @@ footer{
 .say-message{
 	position: fixed;
 	right: 7%;
-	top:10%;
+	top:11%;
 	z-index: 888;
 	animation-delay: 3s;
     animation-name: staticerror;
@@ -521,6 +526,7 @@ footer{
 
 /* Scroll Up */
 .all-the-way-up{
+	opacity: .9;
 	position: fixed;
 	right: 10px;
 	bottom: 10px;

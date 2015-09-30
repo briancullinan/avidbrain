@@ -80,8 +80,8 @@
 		else{
 			// Flash Errors
 			$_SESSION['slim.flash']['error'] = $arrayCheck->message;
-			if(isset($array->postdata)){
-				$_SESSION['slim.flash']['postdata'] = $arrayCheckarray->postdata;
+			if(isset($arrayCheck->postdata)){
+				$_SESSION['slim.flash']['postdata'] = $arrayCheck->postdata;
 			}
 		}
 		/*

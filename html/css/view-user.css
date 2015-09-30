@@ -419,44 +419,7 @@ badge.badge-mad-scientist a i{
 #slide-out .modal-login i{
 	color: #b0dfff;
 }
-.sub-navigation-title{
-	margin-bottom: -19px;
-}
-.sub-navigation-title a{
-	color: #999;
-	padding: 5px;
-	display: block;
-	background: #efefef;
-}
-.sub-navigation-title a:hover{
-	color: #000;
-}
-.sub-navigation-title a.active{
-	background: #2196F3;
-	color: #fff;
-}
-.sub-navigation{
-	margin: 0px;
-	padding: 0px;
-	margin-top: 20px;
-}
-.sub-navigation li{
-	
-}
-.sub-navigation li a{
-	display: block;
-	padding: 5px 10px;
-	color: #333;
-	color: #555;
-}
-.sub-navigation li a:hover{
-	color: #000;
-	background: #efefef;
-}
-.sub-navigation li.active a{
-	background: #2196F3;
-	color: #fff;
-}
+
 
 .tutor-results{
 	position: relative;

@@ -39,12 +39,17 @@
 	$localcss = array(
 		'wild.css',
 		'hiw.css',
-		'wild.media.css'
+		'material.fix.css',
+		'forms.css',
+		'view-user.css',
+		'customize-avatar.css',
+		'wild.media.css',
 	);
 
 	
 
 	$localjs = array(
+		'functions.js',
 		'wild.js',
 		'jquery.nouislider.min.js',
 		'js.cookie.js',
