@@ -95,12 +95,16 @@
 			echo json_encode($array);
 			exit;
 		}
-		else{
+		elseif(isset($arrayCheck->postdata)){
 			// Flash Errors
-			$_SESSION['slim.flash']['error'] = $arrayCheck->message;
+			
 			if(isset($arrayCheck->postdata)){
+				$_SESSION['slim.flash']['error'] = $arrayCheck->message;
 				$_SESSION['slim.flash']['postdata'] = $arrayCheck->postdata;
 			}
+		}
+		else{
+			printer($array,1);
 		}
 		/*
 			else{

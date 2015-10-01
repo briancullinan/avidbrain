@@ -31,43 +31,89 @@
 
 </div>
 
-<div class="container notoppadd">
-	<h2 class="center-align">Teach, Learn & Everything In-between</h2>
-	<div class="college-tutors">
-		<div class="row">
-			<div class="col s12 m6 l4">
-				<div class="valign-wrapper">
-					<a class="economics valign" href="/categories/business/economics">Economics</a>
-				</div>
-			</div>
-			<div class="col s12 m6 l4">
-				<div class="valign-wrapper">
-					<a class="biology valign" href="/categories/science/biology">Biology</a>
-				</div>
-			</div>
-			<div class="col s12 m6 l4">
-				<div class="valign-wrapper">
-					<a class="writing valign" href="/categories/xxx/xxx">Writing</a>
-				</div>
-			</div>
-			<div class="col s12 m6 l4">
-				<div class="valign-wrapper">
-					<a class="philosophy valign" href="/categories/xxx/xxx">Philosophy</a>
-				</div>
-			</div>
-			<div class="col s12 m6 l4">
-				<div class="valign-wrapper">
-					<a class="chemistry valign" href="/categories/xxx/xxx">Chemistry</a>
-				</div>
-			</div>
-			<div class="col s12 m6 l4">
-				<div class="valign-wrapper">
-					<a class="psychology valign" href="/categories/xxx/xxx">Psychology</a>
-				</div>
-			</div>
-		</div>
+<div class="container notoppadd subjects-we-offer">
+	<h2 class="center-align">What Subjects Do We Offer?</h2>
+	<div class="the-subjects-we-offer">
 		
-		<a class="view-more" href="/categories">View More Subjects</a>
+		<div class="row">
+			<div class="col s12 m6 l6">
+				<div class="block">
+					<div class="subjects-container liberalarts">
+						
+						<div class="row valign-wrapper">
+							<div class="col s12 m6 l6 valign">
+								<div class="subjectsweoffer-title"><a href="/liberal-arts-tutors">Liberal Arts</a></div>
+							</div>
+							<div class="col s12 m6 l6">
+								<div class="tswo-text">
+									<div>English Literature, Modern Languages, History, Philosophy, Anthropology, Economics, Geography, Political Science, Sociology, Creative Arts, and many more!</div>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			<div class="col s12 m6 l6">
+				<div class="block">
+					<div class="subjects-container science">
+						
+						<div class="row valign-wrapper">
+							<div class="col s12 m6 l6 valign">
+								<div class="subjectsweoffer-title"><a href="/science-tutors">Science</a></div>
+							</div>
+							<div class="col s12 m6 l6">
+								<div class="tswo-text">
+									<div>Biology, Chemistry, Organic Chemistry, Physics, Geology, ACT Science, MCAT, Nutition, Neuroscience,  and many more!</div>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			
+			<div class="col s12 m6 l6">
+				<div class="block">
+					<div class="subjects-container math">
+						
+						<div class="row valign-wrapper">
+							<div class="col s12 m6 l6 valign">
+								<div class="subjectsweoffer-title"><a href="/math-tutors">Math</a></div>
+							</div>
+							<div class="col s12 m6 l6">
+								<div class="tswo-text">
+									<div>Algebra, Trigonometry, Calculus, SAT Math, Statistics, Probability, Differential Equations, Finance,  and many more!</div>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			
+			<div class="col s12 m6 l6">
+				<div class="block">
+					<div class="subjects-container testprep">
+						
+						<div class="row valign-wrapper">
+							<div class="col s12 m6 l6 valign">
+								<div class="subjectsweoffer-title"><a href="/test-preparation-tutors">Test Prep</a></div>
+							</div>
+							<div class="col s12 m6 l6">
+								<div class="tswo-text">
+									<div>GRE, GMAT, LSAT, MCT, SAT, ACT, TOEFL, GED, PSAT,  and many more!</div>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			
+			
+			
+		</div>
 		
 	</div>
 </div>
@@ -113,7 +159,60 @@
 </div>
 
 <div class="container">
-	whatdoeweoffer
+	<h2 class="center-align">Teach, Learn & Everything In-between</h2>
+	<div class="college-tutors">
+		<div class="row">
+			<div class="col s12 m6 l4">
+				<div class="valign-wrapper">
+					<a class="economics valign" href="/categories/business/economics">Economics</a>
+				</div>
+			</div>
+			<div class="col s12 m6 l4">
+				<div class="valign-wrapper">
+					<a class="biology valign" href="/categories/science/biology">Biology</a>
+				</div>
+			</div>
+			<div class="col s12 m6 l4">
+				<div class="valign-wrapper">
+					<a class="writing valign" href="/categories/xxx/xxx">Writing</a>
+				</div>
+			</div>
+			<div class="col s12 m6 l4">
+				<div class="valign-wrapper">
+					<a class="philosophy valign" href="/categories/xxx/xxx">Philosophy</a>
+				</div>
+			</div>
+			<div class="col s12 m6 l4">
+				<div class="valign-wrapper">
+					<a class="chemistry valign" href="/categories/xxx/xxx">Chemistry</a>
+				</div>
+			</div>
+			<div class="col s12 m6 l4">
+				<div class="valign-wrapper">
+					<a class="psychology valign" href="/categories/xxx/xxx">Psychology</a>
+				</div>
+			</div>
+		</div>
+		
+		<a class="view-more" href="/categories">View More Subjects</a>
+		
+	</div>
+</div>
+
+<div class="container signup-post-a-job">
+	<h2 class="center-align">Signup / Post a Job</h2>
+	<div class="row">
+		<div class="col s12 m6 l6">
+			<div class="block">
+				xxx
+			</div>
+		</div>
+		<div class="col s12 m6 l6">
+			<div class="block">
+				xxx
+			</div>
+		</div>
+	</div>
 </div>
 
 
@@ -129,6 +228,56 @@ main .notoppadd{
 	background-position:right top;
 	background-attachment: fixed;
 	min-height: 500px;
+	margin-bottom: 30px;
+}
+.subjects-we-offer{
+	
+}
+.the-subjects-we-offer{
+	margin-bottom: 30px;
+}
+.the-subjects-we-offer .block .col{
+	padding: 0px;
+}
+.tswo-text{
+	padding:  20px;
+	background: #fff;
+	text-align: left;
+}
+.subjectsweoffer-title a{
+	font-family: 'Quicksand';
+    font-size: 35px;
+    font-weight: 700;
+    color: #fff;
+    background-size: cover;
+    text-shadow: 2px 2px #000;
+}
+.subjects-container{
+	background-size: cover;
+	background-position: center center;
+	background: #efefef;
+}
+.subjects-container.liberalarts{
+	background-image: url('/images/subjects/economics.jpg');
+}
+.subjects-container.science{
+	background-image: url('/images/subjects/economics.jpg');
+}
+.subjects-container.math{
+	background-image: url('/images/subjects/economics.jpg');
+}
+.subjects-container.testprep{
+	background-image: url('/images/subjects/economics.jpg');
+}
+.subjects-container .valign-wrapper{
+	min-height: 200px;
+}
+.tswo-title{
+	background-image: url('/images/subjects/economics.jpg');
+}
+.tswo-title .valign{
+	
+	width: 100%;
 }
 .wide-copy{
 	padding: 30px 10px;
@@ -136,6 +285,12 @@ main .notoppadd{
 	line-height: 1.3;
 	font-family: 'Quicksand';
 	text-shadow: 1px 1px 5px black;
+}
+.signup-post-a-job h2{
+	margin-top: 30px;
+	display: block;
+	display: inline-block;
+	width: 100%;
 }
 .info-block{
 	background: rgba(33, 33, 33, 0.92);

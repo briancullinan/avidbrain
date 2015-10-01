@@ -107,7 +107,7 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 	</div>
 	
 	<div class="logo logo-main">
-		<a href="/">avidbrain</a>
+		<a href="/"><img src="/images/avidbrainlogo.png" /></a>
 	</div>
 	
 	<div class="right-info">
@@ -119,7 +119,7 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 				<a class="modal-trigger" href="#loginModule">Log In</a>
 			</li>
 			<li>
-				<a href="/signup">Signup</a>
+				<a class="lime-text text-accent-2" href="/signup">Signup</a>
 			</li>
 			<li>
 				<a href="/help">Help</a>

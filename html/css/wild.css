@@ -324,20 +324,16 @@ main .liu.active-notification{
     position: absolute;
     left: 0;
     right: 0;
-    width: 150px;
+    width: 270px;
     display: inline-block;
     text-align: center;
     margin: auto;
 }
 .logo a{
-	text-align: center;
-	color: #fff;
-	font-family: 'bariol_regular','sans-serif','arial';
-	font-weight: 700;
-	font-size: 30px;
 	display: block;
-	display: inline-block;
-	padding:17px 10px 18px 10px;
+	line-height: normal;
+	padding: 0px;
+	margin: 0px;
 }
 .logo img{
 	max-height: 80px;
@@ -350,6 +346,17 @@ footer{
 	background: #222;
 	min-height: 100px;
 	border-top: solid 5px #0099ff;
+}
+.follow-us li{
+	float: left;
+}
+.follow-us li a{
+	display: block;
+	padding: 5px 10px;
+	font-size: 22px;
+}
+.follow-us li a:hover{
+	color: #666;
 }
 
 .animated {
@@ -592,7 +599,7 @@ footer{
 	position: fixed;
 	right: 10px;
 	bottom: 10px;
-	background: #222;
+	background: rgba(0, 0, 0, 0.7);
 	color: #999;
 	z-index: 444;
 	font-size: 20px;

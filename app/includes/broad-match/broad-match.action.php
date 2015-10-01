@@ -1,4 +1,5 @@
 <?php
+	
 	$app->filterby = $app->getCookie('filterby');
 	$app->secondary = $app->target->secondary;
 	
@@ -19,6 +20,8 @@
 	    $allowed_parent_slugs = $returnedArray;
 	    $app->connect->cache->set("allowed_parent_slugs", $returnedArray, 3600);
 	}
+	
+	$allowed_parent_slugs[] = 'liberal-arts';
 	
 	if(!in_array($broadMatch, $allowed_parent_slugs)){
 		$app->redirect('/tutors');
