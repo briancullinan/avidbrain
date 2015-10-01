@@ -38,6 +38,7 @@
 
 	$localcss = array(
 		'wild.css',
+		'wild.core.css',
 		'hiw.css',
 		'material.fix.css',
 		'forms.css',

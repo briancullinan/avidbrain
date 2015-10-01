@@ -49,7 +49,7 @@
 ?>
 
 <ul id="user-dropdown" class="dropdown-content">
-	<li class="my-info">
+	<li class="my-info-drop">
 		<div class="row valign-wrapper">
 			<div class="col s5 m5 l5 my-info-img">
 				<?php $userinfo = $app->user; echo show_avatar($userinfo,$app->user,$app->dependents); ?> 

@@ -471,16 +471,18 @@ footer{
 	cursor: default;
 	background: transparent;
 }
-.my-info .row{
+.my-info-drop .row{
 	margin: 0px;
 }
 .row .col.my-info-img{
 	padding: 5px;
 	padding-bottom: 0px;
 }
-.my-info{
+.my-info-drop{
 	padding: 5px;
+	padding-bottom: 10px;
 	background: #efefef !important;
+	border-bottom: solid 1px #999;
 }
 .dropdown-content  .dll-logout a{
 	background: #666;
