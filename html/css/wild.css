@@ -66,7 +66,6 @@ main{
 	-webkit-flex: 1;
 	-ms-flex: 1;
 	flex: 1;
-	padding-top: 80px;
 	
 /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f7f7f7+0,e2e2e2+100 */
 background: rgb(247,247,247); /* Old browsers */
@@ -82,7 +81,7 @@ background-attachment: fixed;
 
 	
 }
-header,main,footer{
+header,main,footer,notifications{
 	-webkit-transition: all;
 	-webkit-transition-timing-function: ease-out;
 	-webkit-transition-duration: .2s;
@@ -181,11 +180,12 @@ sidebar.activeaction{
 	color: #fff;
 	background: #111;
 }
-
+.right-info{
+	color: #ccc;
+	float: right;
+}
 header.activeaction,main.activeaction,footer.activeaction{
-/*
 	padding-left: 200px;
-*/
 
 }
 footer.activeaction{
@@ -202,14 +202,14 @@ main.activeaction .container{
 	height: auto;
 	overflow: hidden;
 }
-main .container{
-	padding-top: 20px;
+main .container, main .homepage-container.liu{
+	padding-top: 100px;
 }
 main .subnav-active.container{
 	padding-top: 40px;
 }
 
-header.activeaction:before, main.activeaction:before, footer.activeaction:before{
+header.activeaction:before, main.activeaction:before, footer.activeaction:before, notifications.activeaction:before{
 	width: 100%;
 	height: 100%;
 	position: absolute;
@@ -275,7 +275,7 @@ subnav a.active, subnav li.active a{
 
 header {
 	z-index: 333;
-	background: #333;
+	background: rgba(33, 33, 33, 0.85);
 	height: 80px;
 	position: fixed;
     right: 0;
@@ -284,6 +284,29 @@ header {
     text-align: center;
     
     transition: transform 200ms linear;
+    
+    
+}
+notifications{
+	position: fixed;
+	top:80px;
+	background: #000;
+	color: #fff;
+	width: 100%;
+	text-align: center;
+	padding: 10px;
+	left: 0px;
+	
+	-moz-box-shadow: 0 0 10px #666;
+	-webkit-box-shadow: 0 0 10px #666;
+	box-shadow: 0 0 10px #666;
+}
+notifications.urgent{
+	background: #F44336;
+}
+
+main .liu.active-notification{
+	padding-top: 130px;
 }
 .itstheheader-top{
 	transform: translateY(-100%);
@@ -293,15 +316,26 @@ header {
 	transform: translateY(0%);
 }
 .logo{
-	display: inline-block;
 	text-align: center;
 }
+.logo.logo-main{
+	
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 150px;
+    display: inline-block;
+    text-align: center;
+    margin: auto;
+}
 .logo a{
+	text-align: center;
 	color: #fff;
 	font-family: 'bariol_regular','sans-serif','arial';
 	font-weight: 700;
 	font-size: 30px;
 	display: block;
+	display: inline-block;
 	padding:17px 10px 18px 10px;
 }
 .logo img{

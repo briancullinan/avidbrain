@@ -106,11 +106,11 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 		
 	</div>
 	
-	<div class="logo align-center">
+	<div class="logo logo-main">
 		<a href="/">avidbrain</a>
 	</div>
 	
-	<div class="right white-text">
+	<div class="right-info">
 		<?php if(isset($app->user->email)): ?>
 			<?php include('user-dropdown.wild.php'); ?>
 		<?php else: ?>
@@ -128,12 +128,18 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 		<?php endif; ?>
 	</div>
 	
+	
+	<?php if(isset($app->notifications)): ?>
+	<notifications class="<?php echo $app->notifications->status; ?>">
+		<?php echo $app->notifications->message; ?>
+	</notifications>
+	<?php endif; ?>
+	
 </header>
 
 
-
 <main>
-	<div class="<?php if($app->target->key=='/homepage/homepage'){ echo 'homepage-container';}else{ echo 'container';} ?> ">
+	<div class="<?php if($app->target->key=='/homepage/homepage'){ echo 'homepage-container';}else{ echo 'container';} if(isset($app->user->email)){ echo ' liu ';} if(isset($app->notifications)){ echo 'active-notification';} ?> ">
 		
 		<?php if(isset($app->howitworks)){ include($app->dependents->APP_PATH.'includes/how-it-works/how-it-works.php'); } ?>
 		<?php if(isset($_SESSION['slim.flash']['error'])): ?>
@@ -162,6 +168,7 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 		
 	</div>
 </main>
+
 <footer>
 	<div class="container">
 		<div class="row">

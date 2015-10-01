@@ -59,6 +59,24 @@
 	function coder($data){
 		echo '<code class="coder"><pre>'; print_r($data); echo '</pre></code>';
 	}
+	function showme($data){
+		?>
+		<style type="text/css">
+		html,body{
+			margin: 0px;
+			padding: 0px;
+			font-size: 14px;
+		}
+		.showme{
+			padding: 20px;
+			background: #efefef;
+			color: #222;
+		}
+		</style>
+		<?php
+		echo '<pre class="showme">'; print_r($data); echo '</pre>';
+		exit;
+	}
 	function notify($array){
 		
 		if(isset($array->connect)){

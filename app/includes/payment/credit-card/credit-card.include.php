@@ -95,7 +95,7 @@
 		</div>
 		<div class="col s12 m8 l8">
 			
-			<h2>Authorize A Credit Card</h2>
+			<h3>Authorize A Credit Card</h3>
 			<div class="block">
 				<div class="row">
 					<div class="col s12 m8 l8">

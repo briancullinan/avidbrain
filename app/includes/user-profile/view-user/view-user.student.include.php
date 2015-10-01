@@ -31,6 +31,25 @@
 							
 						</div>
 						
+						<?php if(isset($app->childen)): ?>
+							<div class="my-links">
+								
+								<div class="my-links-title">
+									My Profile
+								</div>
+								<ul>
+									<?php foreach($app->childen as $mylinks): ?>
+										<li <?php if($app->request->getPath()==$mylinks->slug){ echo 'class="active"';} ?>>
+											<a href="<?php echo $mylinks->slug; ?>">
+												<?php echo $mylinks->name; ?>
+											</a>
+										</li>
+									<?php endforeach; ?>
+								</ul>
+								
+							</div>
+						<?php endif; ?>
+						
 						<div class="about-me">
 							
 							<?php if(isset($app->currentuser->toplinks['send-message'])): ?>

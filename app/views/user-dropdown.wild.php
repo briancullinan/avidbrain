@@ -1,8 +1,4 @@
 <div class="right user-dropdown-container">
-	<?php if(isset($app->user->status) && $app->user->status=='needs-review'): ?>
-		<a href="/request-profile-review" class="btn btn-s red white-text left top-request"> <i class="fa fa-bolt"></i> Request Review</a>
-	<?php endif; ?>
-	
 	<a class="dropdown-button left" href="#" data-activates="user-dropdown">
 		<div class="dropdown-item">
 			<span class="fa-stack fa-lg">

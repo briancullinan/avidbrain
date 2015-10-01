@@ -1,5 +1,18 @@
 <?php
 	
+	if(isset($app->user->status) && $app->user->status=='needs-review' && $app->user->usertype=='student'){
+		//<a href="/request-profile-review" class="btn btn-s red white-text left top-request"> <i class="fa fa-bolt"></i> Request Review</a>	
+		
+		$notications = new stdClass();
+		$notications->status = 'urgent';
+		$notications->message = '<a class="btn btn-s" href="/activate-profile">Activate Your Profile</a>';
+		$app->notifications = $notications;
+		
+	}
+
+	
+	
+	
 	function countnewmessages($connect,$email){
 		$sql = "SELECT id FROM avid___messages WHERE to_user = :email AND location = :location AND status__read IS NULL ";
 		$prepeare = array(':email'=>$email,':location'=>'inbox');

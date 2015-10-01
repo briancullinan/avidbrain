@@ -2,11 +2,11 @@
 .how-it-works-slide{
 	height: 500px;
 	width: 100%;
-	position: fixed;
+	position: absolute;
 	left: 0px;
 	top:0px;
 	margin-top: -500px;
-	background: #fff;
+	background: rgba(255, 255, 255, 0.9);
 	border-bottom: solid 1px #ccc;
 	z-index: 555;
 	text-align: center;
@@ -16,10 +16,14 @@
 	padding: 10px;
 }
 .close-it-works{
+	cursor: pointer;
 	position: absolute;
 	right: 10px;
 	top:0px;
 	font-size: 40px;
+}
+.close-it-works:hover{
+	color: #666;
 }
 .howie-howitworks-img{
 	
@@ -89,7 +93,7 @@
 	right: 0 ;
 	left : 0 ;
 	z-index: 22;
-	margin-top: 8%;
+	margin-top: 200px;
 }
 .homepage-items .how-it-works{
 	position: absolute;
@@ -97,7 +101,7 @@
 	right: 0 ;
 	left : 0 ;
 	z-index: 22;
-	margin-top: 12%;
+	margin-top: 300px;
 }
 .homepage-items .how-it-works span{
 	

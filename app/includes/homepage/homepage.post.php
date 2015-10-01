@@ -34,7 +34,7 @@
 		
 		$app->textnumber->number = preg_replace("/[^0-9,.]/", "", $app->textnumber->number);
 		if(strlen($app->textnumber->number)!=10){
-			new Flash(array('action'=>'required','formID'=>'potato','message'=>'Phone number must be 10 digits'));
+			new Flash(array('action'=>'required','formID'=>'phone','message'=>'Phone number must be 10 digits'));
 		}
 		
 		$app->textnumber->message = strip_tags($app->textnumber->message);

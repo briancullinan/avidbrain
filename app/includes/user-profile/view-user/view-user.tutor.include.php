@@ -33,10 +33,9 @@
 						</div>
 						
 						<?php if(isset($app->childen)): ?>
-							<div class="my-links">
-								
-								<div>
-									POTATO
+							<div class="my-links">								
+								<div class="my-links-title">
+									My Profile
 								</div>
 								<ul>
 									<?php foreach($app->childen as $mylinks): ?>

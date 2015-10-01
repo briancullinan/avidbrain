@@ -5,6 +5,7 @@
 	$routes['homepage'] = (object)array('url'=>'/','slug'=>'/','route'=>'/','include'=>'homepage','protected'=>NULL,'permissions'=>array());
 	$routes['sitemap'] = (object)array('url'=>'/sitemap','slug'=>'sitemap','route'=>'/sitemap/','include'=>'sitemap','protected'=>NULL,'permissions'=>array());
 	$routes['attributions'] = (object)array('url'=>'/attributions','slug'=>'attributions','route'=>'/attributions/','include'=>'attributions','protected'=>NULL,'permissions'=>array());
+	$routes['activate-profile'] = (object)array('url'=>'/activate-profile','slug'=>'activate-profile','route'=>'/activate-profile/','include'=>'activate-profile','protected'=>NULL,'permissions'=>array('student'));
 	
 	if($app->dependents->SITE_NAME=='amozek'){
 		$routes['amozek'] = (object)array('url'=>'/amozek','slug'=>'amozek','route'=>'/amozek/','include'=>'amozek','protected'=>NULL,'permissions'=>array());
@@ -134,7 +135,7 @@
 	$routes['payment-get-paid'] = (object)array('url'=>'/payment/get-paid','slug'=>'get-paid','route'=>'/payment/get-paid/','include'=>'payment/get-paid','protected'=>true,'permissions'=>array('tutor'));
 	
 	// Request Profile Review
-	$routes['request-profile-review'] = (object)array('url'=>'/request-profile-review','slug'=>'request-profile-review','route'=>'/request-profile-review/','include'=>'request-profile-review','protected'=>true,'permissions'=>array());
+	$routes['request-profile-review'] = (object)array('url'=>'/request-profile-review','slug'=>'request-profile-review','route'=>'/request-profile-review/','include'=>'request-profile-review','protected'=>true,'permissions'=>array('tutor'));
 	
 	// Jobs
 	$routes['jobs'] = (object)array('url'=>'/jobs','slug'=>'jobs','route'=>'/jobs/','include'=>'jobs','protected'=>NULL,'permissions'=>array());
