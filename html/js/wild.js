@@ -65,7 +65,7 @@ $(document).ready(function() {
 	$('.modal-trigger').leanModal();
 	$('select').material_select();
 	$('.slider').slider({
-		height:300
+		height:400
 	});
 	$('.datepicker').pickadate({
 		selectMonths: true,
