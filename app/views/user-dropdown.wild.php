@@ -27,7 +27,7 @@
 		if($app->user->status=='needs-review'){
 			//$dropdownnav[] = (object)array('url'=>'/request-profile-review','class'=>'attention','text'=>'<i class="fa fa-warning"></i> Request Profile Review');
 		}
-		else{
+		elseif(isset($app->user->usertype) && $app->user->usertype=='tutor'){
 			$dropdownnav[] = (object)array('url'=>'/request-profile-review','class'=>'request','text'=>'Request Profile Review','class'=>'dll-rpp');
 		}
 		

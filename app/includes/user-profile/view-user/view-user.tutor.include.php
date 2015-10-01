@@ -38,8 +38,8 @@
 									My Profile
 								</div>
 								<ul>
-									<?php foreach($app->childen as $mylinks): ?>
-										<li <?php if($app->request->getPath()==$mylinks->slug){ echo 'class="active"';} ?>>
+									<?php foreach($app->childen as $key=> $mylinks): ?>
+										<li <?php if($app->request->getPath()==$mylinks->slug || $key=='about-me' && empty($pagename)){ echo 'class="active"';} ?>>
 											<a href="<?php echo $mylinks->slug; ?>">
 												<?php echo $mylinks->name; ?>
 											</a>

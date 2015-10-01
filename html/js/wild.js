@@ -94,6 +94,55 @@ $(document).ready(function() {
 	
 	fixavatars();
 	
+	$('#upload-select').on('click',function(){
+		$('#upload-clicker').click();
+		$('#upload-clicker').on('change',function(){
+			$('input[type="hidden"][name="becomeatutor[myresume]"]').val('uploadmyresume');
+			$('#upload-select').removeClass('btn-gray').addClass('active');
+			$('#upload-select').html('<i class="fa fa-upload"></i> File Selected');
+			var uploadform = '#'+$('#upload-select').closest('form').attr('id');
+			$(uploadform).removeClass('form-post').addClass('manual');
+			
+		});
+	});
+	// 	Images
+	$('#myavatar input').on('click',function(){
+		$('#myavatar').submit();
+	});
+	$('#select-photo').on('click',function(){
+		$('#upload-trigger').click();
+		$('#upload-trigger').on('change',function(){
+			$('#select-photo').removeClass('grey').html('<i class="fa fa-refresh fa-spin"></i> Uploading Photo');
+			setTimeout(function(){
+				$('#upload-photo-form').submit();
+			}, 1000);
+		});
+	});
+	$('#pagewidth').val(($('.tutor-profile').outerWidth()-40));
+	
+	var image = new Image();
+	image.onload = function () {
+	   $('#cropbox').Jcrop({
+			aspectRatio: 1/1,
+			onSelect: updateCoords,
+			allowSelect:false,
+			bgColor:'black',
+			bgOpacity: .5,
+		    setSelect: [ 172, 71, 322, 271 ],
+	        minSize: [210]
+		});
+		function updateCoords(c){
+			$('#x').val(c.x);
+			$('#y').val(c.y);
+			$('#w').val(c.w);
+			$('#h').val(c.h);
+		};
+	}
+	var setcropbox = $('#cropbox').attr('data-image');
+	if(setcropbox){
+		image.src = setcropbox;	
+	}
+	
 
 });
 

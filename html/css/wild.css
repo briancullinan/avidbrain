@@ -526,7 +526,13 @@ footer{
 	background: #555;
 	color: #ccc;
 }
-
+.my-links-title{
+	background: #ccc;
+	padding: 10px;
+	font-size: 18px;
+	color: #111;
+	text-align: center;
+}
 .my-links ul{
 	margin: 0px;
 	margin-bottom: 15px;
@@ -542,6 +548,9 @@ footer{
 	padding: 5px 10px;
 	font-size: 18px;
 	color: #333;
+}
+.my-links li a:hover{
+	background: #efefef;
 }
 .my-links li.active a{
 	background: #444;

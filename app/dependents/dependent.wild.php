@@ -44,8 +44,27 @@
 		'forms.css',
 		'view-user.css',
 		'customize-avatar.css',
+		'crop.css',
 		'wild.media.css',
 	);
+	
+/*
+	$localcss = array(
+		'jquery.nouislider.min.css',
+		'fonts.css',
+		'core.css',
+		'view-user.css',
+		'sessions-messages.css',
+		'subs.css',
+		'forms.css',
+		'homepage.css',
+		'material.fix.css',
+		'core.media.css',
+		'crop.css',
+		'time.picker.css',
+		'customize-avatar.css'
+	);
+*/
 
 	
 
