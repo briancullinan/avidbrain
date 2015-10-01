@@ -43,6 +43,8 @@
 		'material.fix.css',
 		'forms.css',
 		'view-user.css',
+		'sessions-messages.css',
+		'subs.css',
 		'customize-avatar.css',
 		'crop.css',
 		'wild.media.css',

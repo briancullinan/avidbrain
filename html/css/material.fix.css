@@ -83,7 +83,27 @@
 	width: 100%;
 	margin-bottom: 5px;
 }
-
+.collapse{
+	margin: 0px;
+	padding: 0px;
+	border: none;
+	box-shadow: none;
+	padding: 5px;
+}
+.collapse .collapsible-header{
+	border: none;
+	padding: 0px;
+	margin-bottom: 10px;
+}
+.collapse .collapsible-header span{
+	display: none;
+}
+.collapse .collapsible-header.active span{
+	display: inline-block;
+}
+.collapse .collapsible-body{
+	border: none;
+}
 .collapsible-header{
 	height: auto;
 	line-height: normal;

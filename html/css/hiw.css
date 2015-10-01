@@ -137,3 +137,9 @@
 .slider .indicators .indicator-item.active{
 	background: #99ff00;
 }
+
+.homepage-container .indicators{
+	position: relative;
+	z-index: 33;
+	margin-top: -30px;
+}
