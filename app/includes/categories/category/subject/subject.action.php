@@ -129,7 +129,9 @@
 		$app->meta->description = truncate($cachedsubjectinfo->description,128);
 	}
 	
-	$app->pagedescription = $cachedsubjectinfo->description;
+	if(isset($cachedsubjectinfo->description)){
+		$app->pagedescription = $cachedsubjectinfo->description;
+	}
 	
 	$searching = new stdClass();
 	$searching->search = $app->zero->subject_name;
