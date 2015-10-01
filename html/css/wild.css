@@ -42,7 +42,11 @@ h1,h2,h3,h4,h5,h6{
 }
 h1{
 	color: #000;
-	font-size: 3.5rem;
+	font-size: 4rem;
+	font-weight: 700;
+}
+h1 span{
+	color: #666;
 }
 h2{
 	font-size: 2.7rem;
@@ -53,6 +57,9 @@ h3{
 	font-size: 2rem;
 	color: #999;
 	margin-bottom: 10px;
+}
+.notbold{
+	font-weight: 300;
 }
 
 main{
@@ -176,8 +183,10 @@ sidebar.activeaction{
 }
 
 header.activeaction,main.activeaction,footer.activeaction{
+/*
 	padding-left: 200px;
-	position: relative;
+*/
+
 }
 footer.activeaction{
 	border-color: transparent;
@@ -204,7 +213,7 @@ header.activeaction:before, main.activeaction:before, footer.activeaction:before
 	width: 100%;
 	height: 100%;
 	position: absolute;
-	background: rgba(0, 0, 0, 0.82);
+	background: rgba(0, 0, 0, 0.6);
 	content: "";
 	left: 0px;
 	top:0px;
@@ -471,7 +480,6 @@ footer{
 }
 .my-info{
 	padding: 5px;
-	border-bottom: solid 2px #ccc;
 	background: #efefef !important;
 }
 .dropdown-content  .dll-logout a{
@@ -483,7 +491,9 @@ footer{
 	color: #ccc;
 }
 
-.my-links{
+.my-links ul{
+	margin: 0px;
+	margin-bottom: 15px;
 	background: #fff;
 	border: solid 1px #ccc;
 	padding: 5px;	
@@ -539,7 +549,7 @@ footer{
 	background: #222;
 	color: #999;
 	z-index: 444;
-	font-size: 30px;
+	font-size: 20px;
 	
 	-webkit-border-radius: 300px;
 	-moz-border-radius: 300px;

@@ -24,14 +24,33 @@ $(document).ready(function() {
 
 	$('.activate-menu, .sidebar-close i').on('click',function(){
 		var activestatus = $('.activate-menu').attr('data-status');
+		
 		if(activestatus=='closed'){
 			$('.activate-menu').attr('data-status','open').addClass('active');
-			$('header,main,footer,sidebar,html,body').addClass('activeaction').removeClass('inaction');
+			setTimeout(function(){
+				$('header,main,footer,sidebar,html,body').addClass('activeaction').removeClass('inaction');
+			}, 200);
 		}
 		else if(activestatus=='open'){
 			$('.activate-menu').attr('data-status','closed').removeClass('active');
-			$('header,main,footer,sidebar,html,body').removeClass('activeaction').addClass('inaction');
+			setTimeout(function(){
+				$('header,main,footer,sidebar,html,body').removeClass('activeaction').addClass('inaction');
+			}, 200);
 		}
+		
+		var activeactive = $('.activate-menu').attr('data-status');
+		
+		$('header,main,footer').on('click',function(){
+			var thisaction = $(this).attr('class');
+			var isaclass = thisaction.indexOf("activeaction") > -1;
+			if(isaclass){
+				$('.activate-menu').attr('data-status','closed').removeClass('active');
+				$('header,main,footer,sidebar,html,body').removeClass('activeaction').addClass('inaction');
+			}
+		});
+		
+
+		
 	});
 	
 	$('.time-picker').timepicker();
@@ -149,4 +168,10 @@ $(window).resize(function() {
 	}
 	
 	fixavatars();
+});
+$(document).keyup(function(e) {
+     if (e.keyCode == 27) {
+		$('.activate-menu').attr('data-status','closed').removeClass('active');
+		$('header,main,footer,sidebar,html,body').removeClass('activeaction').addClass('inaction');
+    }
 });
