@@ -143,8 +143,9 @@ sidebar.activeaction{
 	color: #fff;
 }
 .sidebar-main li a.active{
-	background: #000;
-	color: #0099ff;
+	
+	background: #0099ff;
+	color: #fff;
 }
 .sidebar-signup{
 	display: block;
