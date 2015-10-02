@@ -115,15 +115,17 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 			<?php include('user-dropdown.wild.php'); ?>
 		<?php else: ?>
 		<ul class="header-nav">
-			<li>
-				<a class="modal-trigger" href="#loginModule">Log In</a>
+			<?php
+				$links = array();
+				$links[] = (object)array('text'=>'Log In','link'=>'#loginModule','class'=>'modal-trigger');
+				$links[] = (object)array('text'=>'Signup','link'=>'/signup','class'=>'signup-link');
+				$links[] = (object)array('text'=>'Help','link'=>'/help','class'=>NULL);
+			?>
+			<?php foreach($links as $link): ?>
+			<li <?php if($app->request->getPath()==$link->link){ echo 'class="active"';} ?>>
+				<a class="<?php echo $link->class; ?>" href="<?php echo $link->link; ?>"><?php echo $link->text; ?></a>
 			</li>
-			<li>
-				<a class="signup-link" href="/signup">Signup</a>
-			</li>
-			<li>
-				<a href="/help">Help</a>
-			</li>
+			<?php endforeach; ?>
 		</ul>
 		<?php endif; ?>
 	</div>

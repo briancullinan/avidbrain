@@ -2,6 +2,12 @@
 
 @media only screen and (max-width: 500px){
 	
+	.wide-copy{
+		font-size: 25px;
+	}
+	.tswo-text{
+		padding: 5px 0px;
+	}
 }
 
 @media only screen and (max-width: 992px){
@@ -13,6 +19,10 @@
 	}
 	.activeaction .right-info{
 		display: none;
+	}
+	.homepage-items h1{
+		font-size: 35px;
+		margin-top: 170px;
 	}
 }
 @media only screen and (min-width: 993px){
