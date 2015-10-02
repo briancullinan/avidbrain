@@ -119,7 +119,7 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 				<a class="modal-trigger" href="#loginModule">Log In</a>
 			</li>
 			<li>
-				<a class="lime-text text-accent-2" href="/signup">Signup</a>
+				<a class="signup-link" href="/signup">Signup</a>
 			</li>
 			<li>
 				<a href="/help">Help</a>

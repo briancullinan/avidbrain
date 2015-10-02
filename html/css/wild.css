@@ -101,7 +101,7 @@ main.onPin{
 sidebar{
 	width: 200px;
 	left: -200px;
-	z-index: 555;
+	z-index: 777;
 	position: fixed;
 	height: 100%;
 	max-height: 100%;
@@ -199,6 +199,9 @@ body.activeaction{
 body.activeaction .header-nav{
 	display: none;
 }
+.header-nav li a.signup-link{
+	color: #96FF00;
+}
 main.activeaction .container{
 	height: auto;
 	overflow: hidden;
@@ -274,8 +277,8 @@ subnav a.active, subnav li.active a{
 	color: #0087F2;
 }
 
-header {
-	z-index: 333;
+header{
+	z-index: 555;
 	background: rgba(33, 33, 33, 0.85);
 	height: 80px;
 	position: fixed;
