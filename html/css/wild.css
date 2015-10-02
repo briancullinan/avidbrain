@@ -522,6 +522,11 @@ footer{
 .my-info-drop .row{
 	margin: 0px;
 }
+.dropdown-content .my-info-drop a{
+	padding: 0px;
+	margin: 0px;
+	display: block;
+}
 .row .col.my-info-img{
 	padding: 5px;
 	padding-bottom: 0px;
@@ -531,6 +536,7 @@ footer{
 	padding-bottom: 10px;
 	background: #efefef !important;
 	border-bottom: solid 1px #999;
+	text-align: left;
 }
 .dropdown-content  .dll-logout a{
 	background: #666;

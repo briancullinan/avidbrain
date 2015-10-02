@@ -53,7 +53,7 @@
 			<div class="col s7 m7 l7 ">
 				
 				<div class="valign">
-					<?php echo $app->user->first_name; ?> <?php echo $app->user->last_name; ?>
+					<a href="<?php echo $app->user->url; ?>"><?php echo $app->user->first_name; ?> <?php echo $app->user->last_name; ?></a>
 				</div>
 				
 			</div>

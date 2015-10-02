@@ -161,3 +161,50 @@ ul.list li.active:before{
 	left: auto !important;
 	min-width: 200px;
 }
+
+/* padding */
+.padd{
+	display: inline-block;
+	width: 100%;
+}
+.padd5{
+	padding: 5px;
+}
+.padd10{
+	padding: 10px;
+}
+.padd15{
+	padding: 15px;
+}
+.padd20{
+	padding: 20px;
+}
+
+table{
+	background: #fff;
+}
+/*
+table tr:first-child{
+	background: #2196F3 !important;
+	color: #fff;
+}
+*/
+
+span.badge.new{
+	position: relative;
+	background: orange;
+	float: right;
+	margin: 0px;
+	right: auto;
+	margin-top: 5px;
+	background: #fff;
+	color: #333;
+}
+footer span.badge.new{
+	float: none;
+	margin: 0px;
+	background: #555;
+	color: #ccc;
+	padding: 0px;
+	line-height: normal;	
+}

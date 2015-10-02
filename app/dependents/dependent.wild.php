@@ -48,7 +48,8 @@
 		'subs.css',
 		'customize-avatar.css',
 		'crop.css',
-		'wild.media.css'
+		'wild.media.css',
+		'time.picker.css'
 	);
 	
 /*
