@@ -30,7 +30,7 @@
 				$app->user->my_upload = $new_upload_name;
 			}
 			
-			if(file_exists($old_approved)){
+			if(isset($old_approved) && file_exists($old_approved)){
 				rename($old_approved,$new_approved);
 			}
 			$app->user->url = $newurl;
