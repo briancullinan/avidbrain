@@ -20,7 +20,7 @@
 ?>
 
 	<div class="filter-by right-align">
-		<a class="dropdown-button red btn btn-s" href="#" data-activates="filterby">
+		<a class="dropdown-button grey btn btn-s" href="#" data-activates="filterby">
 			Filter By <i class="fa fa-chevron-down"></i>
 		</a>
 		

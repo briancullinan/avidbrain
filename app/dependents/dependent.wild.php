@@ -39,15 +39,16 @@
 	$localcss = array(
 		'wild.css',
 		'wild.core.css',
-		'hiw.css',
+		'wild.homepage.css',
 		'material.fix.css',
+		'jquery.nouislider.min.css',
 		'forms.css',
 		'view-user.css',
 		'sessions-messages.css',
 		'subs.css',
 		'customize-avatar.css',
 		'crop.css',
-		'wild.media.css',
+		'wild.media.css'
 	);
 	
 /*

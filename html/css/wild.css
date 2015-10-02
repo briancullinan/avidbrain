@@ -48,6 +48,9 @@ h1{
 h1 span{
 	color: #666;
 }
+h1 span:first-child{
+	font-weight: 300;
+}
 h2{
 	font-size: 2.7rem;
 	color: #666;

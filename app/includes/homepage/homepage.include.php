@@ -36,82 +36,114 @@
 	<div class="the-subjects-we-offer">
 		
 		<div class="row">
-			<div class="col s12 m6 l6">
+			
+			<?php
+				$swo = array();
+				$swo[] = (object)array(
+					'title'=>'Liberal Arts',
+					'mainlink'=>'/liberal-arts-tutors',
+					'class'=>'liberalarts',
+					'links'=>array(
+						'/categories/english/literature'=>'English Literature',
+						'/categories/language'=>'Modern Languages',
+						'/history-tutors'=>'History',
+						'/categories/science/philosophy'=>'Philosophy',
+						'/categories/history/anthropology'=>'Anthropology',
+						'/categories/business/economics'=>'Economics',
+						'/categories/history/geography'=>'Geography',
+						'/categories/business/economics'=>'Economics',
+						'/categories/science/sociology'=>'Sociology',
+						'/categories/art'=>'and many more!'
+					)
+				);
+				
+				$swo[] = (object)array(
+					'title'=>'Science',
+					'mainlink'=>'/science-tutors',
+					'class'=>'science',
+					'links'=>array(
+						'/categories/science/biology'=>'Biology',
+						'/categories/science/chemistry'=>'Chemistry',
+						'/categories/science/organic-chemistry'=>'Organic Chemistry',
+						'/categories/science/physics'=>'Physics',
+						'/categories/science/geology'=>'Geology',
+						'/categories/science/act-science'=>'ACT Science',
+						'/categories/science/nutrition'=>'Nutrition',
+						'/categories/science/neuroscience'=>'Neuroscience',
+						'/categories/science'=>'and many more!'
+					)
+				);
+				
+				$swo[] = (object)array(
+					'title'=>'Math',
+					'mainlink'=>'/math-tutors',
+					'class'=>'math',
+					'links'=>array(
+						'/categories/math/algebra-1'=>'Algebra',
+						'/categories/math/trigonometry'=>'Trigonometry',
+						'/categories/math/calculus'=>'Calculus',
+						'/categories/math/sat-math'=>'SAT Math',
+						'/categories/math/statistics'=>'Statistics',
+						'/categories/math/probability'=>'Probability',
+						'/categories/math/differential-equations'=>'Differential Equations',
+						'/categories/business/finance'=>'Finance',
+						'/categories/math'=>'and many more!'
+					)
+				);
+				
+				$swo[] = (object)array(
+					'title'=>'Test Prep',
+					'mainlink'=>'/test-preparation-tutors',
+					'class'=>'testprep',
+					'links'=>array(
+						'/categories/test-preparation/gre'=>'GRE',
+						'/categories/test-preparation/gmat'=>'GMAT',
+						'/categories/test-preparation/lsat'=>'LSAT',
+						'/categories/test-preparation/mcat'=>'MCAT',
+						'/categories/test-preparation/ssat'=>'SSAT',
+						'/categories/test-preparation/act-math'=>'ACT Math',
+						'/categories/test-preparation/toefl'=>'TOEFL',
+						'/categories/test-preparation/ged'=>'GED',
+						'/categories/test-preparation/psat'=>'PSAT',
+						'/categories/test-preparation'=>'and many more!'
+					)
+				);
+				
+			?>
+			
+			<?php foreach($swo as $swoitems): ?>
+			<div class="col s12 m12 l6">
 				<div class="block">
-					<div class="subjects-container liberalarts">
-						
-						<div class="row valign-wrapper">
-							<div class="col s12 m6 l6 valign">
-								<div class="subjectsweoffer-title"><a href="/liberal-arts-tutors">Liberal Arts</a></div>
-							</div>
-							<div class="col s12 m6 l6">
-								<div class="tswo-text">
-									<div>English Literature, Modern Languages, History, Philosophy, Anthropology, Economics, Geography, Political Science, Sociology, Creative Arts, and many more!</div>
+					<div class="row">
+						<div class="col s12 m6 l6">
+							<div class="tswo-title valign-wrapper <?php echo $swoitems->class; ?>">
+								<div class="valign">
+									<a href="<?php echo $swoitems->mainlink; ?>">
+										<?php echo $swoitems->title; ?>
+									</a>
 								</div>
 							</div>
 						</div>
-						
-					</div>
-				</div>
-			</div>
-			<div class="col s12 m6 l6">
-				<div class="block">
-					<div class="subjects-container science">
-						
-						<div class="row valign-wrapper">
-							<div class="col s12 m6 l6 valign">
-								<div class="subjectsweoffer-title"><a href="/science-tutors">Science</a></div>
-							</div>
-							<div class="col s12 m6 l6">
-								<div class="tswo-text">
-									<div>Biology, Chemistry, Organic Chemistry, Physics, Geology, ACT Science, MCAT, Nutition, Neuroscience,  and many more!</div>
-								</div>
+						<div class="col s12 m6 l6">
+							<div class="tswo-text">
+								<?php
+									$counting = count($swoitems->links);
+									$start = 1;
+								?>
+								<?php foreach($swoitems->links as $key=> $sublink): ?>
+								<a href="<?php echo $key; ?>">
+									<?php echo $sublink; ?><?php if($counting!=$start){echo ',';} ?>
+								</a>
+								<?php
+									$start++;
+								?>
+								<?php endforeach; ?>
 							</div>
 						</div>
-						
 					</div>
 				</div>
 			</div>
-			
-			<div class="col s12 m6 l6">
-				<div class="block">
-					<div class="subjects-container math">
-						
-						<div class="row valign-wrapper">
-							<div class="col s12 m6 l6 valign">
-								<div class="subjectsweoffer-title"><a href="/math-tutors">Math</a></div>
-							</div>
-							<div class="col s12 m6 l6">
-								<div class="tswo-text">
-									<div>Algebra, Trigonometry, Calculus, SAT Math, Statistics, Probability, Differential Equations, Finance,  and many more!</div>
-								</div>
-							</div>
-						</div>
-						
-					</div>
-				</div>
-			</div>
-			
-			<div class="col s12 m6 l6">
-				<div class="block">
-					<div class="subjects-container testprep">
-						
-						<div class="row valign-wrapper">
-							<div class="col s12 m6 l6 valign">
-								<div class="subjectsweoffer-title"><a href="/test-preparation-tutors">Test Prep</a></div>
-							</div>
-							<div class="col s12 m6 l6">
-								<div class="tswo-text">
-									<div>GRE, GMAT, LSAT, MCT, SAT, ACT, TOEFL, GED, PSAT,  and many more!</div>
-								</div>
-							</div>
-						</div>
-						
-					</div>
-				</div>
-			</div>
-			
-			
+			<?php endforeach; ?>
 			
 		</div>
 		
@@ -158,150 +190,20 @@
 	</div>
 </div>
 
-<div class="container">
-	<h2 class="center-align">Teach, Learn & Everything In-between</h2>
-	<div class="college-tutors">
-		<div class="row">
-			<div class="col s12 m6 l4">
-				<div class="valign-wrapper">
-					<a class="economics valign" href="/categories/business/economics">Economics</a>
-				</div>
-			</div>
-			<div class="col s12 m6 l4">
-				<div class="valign-wrapper">
-					<a class="biology valign" href="/categories/science/biology">Biology</a>
-				</div>
-			</div>
-			<div class="col s12 m6 l4">
-				<div class="valign-wrapper">
-					<a class="writing valign" href="/categories/xxx/xxx">Writing</a>
-				</div>
-			</div>
-			<div class="col s12 m6 l4">
-				<div class="valign-wrapper">
-					<a class="philosophy valign" href="/categories/xxx/xxx">Philosophy</a>
-				</div>
-			</div>
-			<div class="col s12 m6 l4">
-				<div class="valign-wrapper">
-					<a class="chemistry valign" href="/categories/xxx/xxx">Chemistry</a>
-				</div>
-			</div>
-			<div class="col s12 m6 l4">
-				<div class="valign-wrapper">
-					<a class="psychology valign" href="/categories/xxx/xxx">Psychology</a>
-				</div>
-			</div>
-		</div>
-		
-		<a class="view-more" href="/categories">View More Subjects</a>
-		
-	</div>
-</div>
 
 <div class="container signup-post-a-job">
-	<h2 class="center-align">Signup / Post a Job</h2>
 	<div class="row">
 		<div class="col s12 m6 l6">
+			<h2>Post A Job</h2>
 			<div class="block">
-				xxx
+				<?php include($app->dependents->APP_PATH.'includes/jobs/postajob.php'); ?>
 			</div>
 		</div>
 		<div class="col s12 m6 l6">
+			<h2>Find A Tutor</h2>
 			<div class="block">
-				xxx
+				imalookingofatooter
 			</div>
 		</div>
 	</div>
 </div>
-
-
-<style type="text/css">
-main .notoppadd{
-	padding-top: 0px;
-}
-.homepage-wide{
-	float: left;
-	width: 100%;
-	background-image: url('/images/homepage-slides/plains.jpg');
-	background-size: cover;
-	background-position:right top;
-	background-attachment: fixed;
-	min-height: 500px;
-	margin-bottom: 30px;
-}
-.subjects-we-offer{
-	
-}
-.the-subjects-we-offer{
-	margin-bottom: 30px;
-}
-.the-subjects-we-offer .block .col{
-	padding: 0px;
-}
-.tswo-text{
-	padding:  20px;
-	background: #fff;
-	text-align: left;
-}
-.subjectsweoffer-title a{
-	font-family: 'Quicksand';
-    font-size: 35px;
-    font-weight: 700;
-    color: #fff;
-    background-size: cover;
-    text-shadow: 2px 2px #000;
-}
-.subjects-container{
-	background-size: cover;
-	background-position: center center;
-	background: #efefef;
-}
-.subjects-container.liberalarts{
-	background-image: url('/images/subjects/economics.jpg');
-}
-.subjects-container.science{
-	background-image: url('/images/subjects/economics.jpg');
-}
-.subjects-container.math{
-	background-image: url('/images/subjects/economics.jpg');
-}
-.subjects-container.testprep{
-	background-image: url('/images/subjects/economics.jpg');
-}
-.subjects-container .valign-wrapper{
-	min-height: 200px;
-}
-.tswo-title{
-	background-image: url('/images/subjects/economics.jpg');
-}
-.tswo-title .valign{
-	
-	width: 100%;
-}
-.wide-copy{
-	padding: 30px 10px;
-	font-size: 35px;
-	line-height: 1.3;
-	font-family: 'Quicksand';
-	text-shadow: 1px 1px 5px black;
-}
-.signup-post-a-job h2{
-	margin-top: 30px;
-	display: block;
-	display: inline-block;
-	width: 100%;
-}
-.info-block{
-	background: rgba(33, 33, 33, 0.92);
-	border: solid 1px #333;
-	
--webkit-border-radius: 2px;
--moz-border-radius: 2px;
-border-radius: 2px;
-	
-	padding: 18px;
-	margin-bottom: 15px;
-	font-size: 22px;
-}
-</style>
