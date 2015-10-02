@@ -551,6 +551,13 @@ footer{
 	margin: 0px;
 	display: block;
 }
+.my-info-drop:hover{
+	cursor: default;
+}
+.my-info-drop .valign a{
+	display: block;
+	padding: 10px 0px;
+}
 .row .col.my-info-img{
 	padding: 5px;
 	padding-bottom: 0px;
