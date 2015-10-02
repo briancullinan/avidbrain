@@ -15,7 +15,7 @@
 		
 	}
 	else{
-		$material = '0.97.0';
+		$material = '0.97.1';
 		$cdncss = array(
 			'//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700',
 			'//fonts.googleapis.com/css?family=Quicksand:300,400,700',

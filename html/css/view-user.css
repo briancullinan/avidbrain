@@ -284,6 +284,11 @@ badge.badge-mad-scientist a i{
 .tutor-info{
 	width: 100%;
 }
+.tutor-info h3{
+	border-bottom: solid 1px #ccc;
+	padding-bottom: 5px;
+	margin-bottom: 5px;
+}
 .tutor-info.left h2{
 	margin-bottom: 5px;
 }
