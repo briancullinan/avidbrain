@@ -1,9 +1,6 @@
 <?php
 
-
 	if(isset($app->newusername)){
-		
-		notify('snickers');
 		
 		$checkusername = makeslug($app->dependents->ROMANIZE,$app->newusername->username);
 		$newusername = check_username($app->connect,$checkusername);
