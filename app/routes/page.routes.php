@@ -6,6 +6,7 @@
 	$routes['sitemap'] = (object)array('url'=>'/sitemap','slug'=>'sitemap','route'=>'/sitemap/','include'=>'sitemap','protected'=>NULL,'permissions'=>array());
 	$routes['attributions'] = (object)array('url'=>'/attributions','slug'=>'attributions','route'=>'/attributions/','include'=>'attributions','protected'=>NULL,'permissions'=>array());
 	$routes['activate-profile'] = (object)array('url'=>'/activate-profile','slug'=>'activate-profile','route'=>'/activate-profile/','include'=>'activate-profile','protected'=>NULL,'permissions'=>array('student'));
+	$routes['about-us'] = (object)array('url'=>'/about-us','slug'=>'about-us','route'=>'/about-us/','include'=>'about-us','protected'=>NULL,'permissions'=>array());
 	
 	if($app->dependents->SITE_NAME=='amozek'){
 		$routes['amozek'] = (object)array('url'=>'/amozek','slug'=>'amozek','route'=>'/amozek/','include'=>'amozek','protected'=>NULL,'permissions'=>array());

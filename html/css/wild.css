@@ -174,7 +174,21 @@ sidebar.activeaction{
 	color: #51bf00;
 }
 footer h5{
-	font-size: 16px;
+	font-size: 17px;
+}
+footer ul{
+	margin: 0px;
+}
+footer a{
+	font-size: 12px;
+	display: block;
+	padding: 2px;
+}
+footer a:hover{
+	color: #777;
+}
+footer .active{
+	color: #999;
 }
 
 .sidebar-subs{

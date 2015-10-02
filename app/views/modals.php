@@ -18,7 +18,7 @@
 				?>
 			</div>
 			<div class="col s12 m4 l4">
-				<a href="/help/forgot-password" class="btn orange btn-block">Forgot Password?</a>
+				<a href="/help/forgot-password" class="btn red btn-block">Forgot Password?</a>
 				<a href="/signup" class="btn btn-block blue">Signup</a>
 			</div>
 		</div>
