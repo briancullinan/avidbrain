@@ -113,7 +113,7 @@
 	}
 	
 	$app->meta = new stdClass();
-	$app->meta->title = $app->zero->subject_name.' Tutor'.$s.' @ '.$app->dependents->SITE_NAME_PROPPER;
+	$app->meta->title = $app->zero->subject_name.' Tutor'.$s;
 	$app->meta->h1 = '<span>'.$count.'</span> '.$app->zero->subject_name.' Tutor'.$s;
 	if(isset($app->zero->keywords)){
 		$app->meta->keywords = $app->zero->keywords;

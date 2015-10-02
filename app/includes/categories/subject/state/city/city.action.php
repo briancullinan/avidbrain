@@ -93,7 +93,7 @@
 	$app->pagination = $pagify->get_links();
 	
 	$app->meta = new stdClass();
-	$app->meta->title = $app->zero->city.' '.$app->zero->subject_name.' Tutors @ '.$app->dependents->SITE_NAME_PROPPER;
+	$app->meta->title = $app->zero->city.' '.$app->zero->subject_name.' Tutors ';
 	$app->meta->h1 = '<span>'.$count.'</span> '.$app->zero->subject_name.' Tutors in '.$app->zero->city.', '.strtoupper($app->zero->state);
 	if(isset($app->zero->keywords)){
 		$app->meta->keywords = $app->zero->keywords;

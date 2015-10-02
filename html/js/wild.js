@@ -919,6 +919,14 @@ $(document).ready(function() {
 	    lastScrollTop = st;
 	}
 	
+	
+	$('.header-nav .modal-trigger').on('click',function(){
+		setTimeout(function(){
+			$('#loginModule #login_email').focus();
+			$('#field_login_email').addClass('ok-login');
+		}, 500);
+	});
+	
 
 });
 $(window).on('scroll', function() {

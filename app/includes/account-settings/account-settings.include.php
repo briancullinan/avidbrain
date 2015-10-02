@@ -174,7 +174,7 @@
 			<form class="form-post" method="post" action="<?php echo $app->request->getPath(); ?>" id="checkusername">
 	
 				<div class="row">
-					<div class="col s6 m6 l6">
+					<div class="col s12 m12 l12">
 						<div class="input-field">
 							<input id="newusername" type="text" name="newusername[username]" class="validate">
 							<label for="newusername">
@@ -182,15 +182,15 @@
 							</label>
 						</div>
 					</div>
-					<div class="col s3 m3 l3">
+					<div class="col s6 m6 l6">
 						<div class="name-status"></div>
 					</div>
-					<div class="col s3 m3 l3">
+					<div class="col s6 m6 l6">
 						<div class="submit-me"></div>
 					</div>
 				</div>
 				
-				<input type="hidden" name="something[target]" value="something"  />
+				<input type="hidden" name="newusername[target]" value="newusername"  />
 				<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
 				
 			</form>
@@ -286,6 +286,10 @@
 						else if(response=='success'){
 							$('#checkusername .name-status').removeClass('invalid-name').addClass('valid-name').html('<i class="fa fa-check"></i> Valid Name');
 							$('.submit-me').html('<button class="btn green white-text" type="submit">Submit</button>');
+						}
+						else if(response=='yourname'){
+							$('#checkusername .name-status').addClass('valid-name').removeClass('invalid-name').html('<i class="fa fa-check"></i> Your Name ');
+							$('.submit-me').html('');
 						}
 					}
 				});

@@ -13,10 +13,12 @@
 			<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
 			
 			<div>
+				<?php if(isset($app->currentuser->my_upload)): ?>
 				<p>
 					<input type="radio" id="myupload" name="defaultphototype[type]" value="1" <?php if(isset($app->currentuser->showmyphotoas) && $app->currentuser->showmyphotoas==1){ echo 'checked="checked"';} ?> />
 					<label for="myupload">My Upload</label>
 				</p>
+				<?php endif; ?>
 				<p>
 					<input type="radio" id="selectedavatar" name="defaultphototype[type]" value="2" <?php if(isset($app->currentuser->showmyphotoas) && $app->currentuser->showmyphotoas==2){ echo 'checked="checked"';} ?> />
 					<label for="selectedavatar">Selected Avatar</label>

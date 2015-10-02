@@ -2,18 +2,59 @@
 
 
 	if(isset($app->newusername)){
+		
 		$checkusername = makeslug($app->dependents->ROMANIZE,$app->newusername->username);
 		$newusername = check_username($app->connect,$checkusername);
+		
 		if($newusername==true){
 			notify('error');
 		}
 		else{
-			notify('success');
+			
+			$newurl = make_my_url($app->user,$checkusername);
+	
+			if(isset($app->user->my_upload) && !empty($app->user->my_upload)){
+				
+				$uploads = $app->dependents->APP_PATH.'uploads/photos/';
+				$approved = $app->dependents->DOCUMENT_ROOT.'profiles/approved/';
+				
+				$my_upload = $app->user->my_upload;
+				$my_upload_without = str_replace($uploads,'',$my_upload);
+				
+				$old_upload_name = $my_upload;
+				$new_upload_name = str_replace($app->user->username,$checkusername,$my_upload_without);
+				
+				$old_approved = $approved.str_replace('.','.crop.',$my_upload_without);
+				$new_approved = $approved.str_replace($checkusername,$checkusername.'.crop',$new_upload_name);
+				
+				rename($old_upload_name,$new_upload_name);
+				$app->user->my_upload = $new_upload_name;
+			}
+			
+			if(file_exists($old_approved)){
+				rename($old_approved,$new_approved);
+			}
+			$app->user->url = $newurl;
+			$app->user->username = $checkusername;
+			$app->user->save();
+			
+			new Flash(
+				array(
+					'action'=>'jump-to',
+					'message'=>'Username Changed',
+					'location'=>'/account-settings'
+				)
+			);
 		}
 	}
 	elseif(isset($app->username)){
 		$checkusername = makeslug($app->dependents->ROMANIZE,$app->username);
 		$newusername = check_username($app->connect,$checkusername);
+		
+		if($checkusername==$app->user->username){
+			notify('yourname');
+		}
+		
 		if($newusername==true){
 			notify('error');
 		}

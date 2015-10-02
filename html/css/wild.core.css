@@ -208,3 +208,69 @@ footer span.badge.new{
 	padding: 0px;
 	line-height: normal;	
 }
+
+
+.mainfindatutor .container{
+	padding-top: 0px;
+	padding: 0px;
+	max-width: inherit;
+}
+
+.find-a-tutor{
+	background: #fff;
+	border: solid 1px #ccc;
+}
+.tutor-search-form{
+	margin: 10px;
+}
+.tutor-search-form legend{
+	background: #efefef;
+	font-family: 'Quicksand';
+	font-weight: 700;
+	font-size: 18px;
+	display: inline-block;
+	width: 100%;
+	padding: 5px;
+	margin-bottom: 30px;
+}
+.ok-login{
+	background: #efefef;
+}
+.ok-login label{
+	top:7px;
+}
+
+.alert{
+	padding: 5px 10px;
+	text-align: center;
+	font-size: 16px;
+	margin: 5px 0px;
+	position: relative;
+}
+.alert:before{
+	padding: 5px;
+	text-align: center;
+	left: -10px;
+	top:-10px;
+	-webkit-border-radius: 300px;
+	-moz-border-radius: 300px;
+	border-radius: 300px;
+	position: absolute;
+	background: inherit;
+	display:inline-block;font:normal normal normal 14px/1 FontAwesome;font-size:inherit;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;transform:translate(0, 0)
+}
+.alert:before{
+	content:"\f071";
+}
+.alert.alert-thanks{
+	background: green;
+}
+.alert.alert-thanks:before{
+	content: '\f00c';
+}
+
+.form-post{
+	float: left;
+	width: 100%;
+	padding: 10px;
+}

@@ -43,5 +43,5 @@
 	
 	$app->meta = new stdClass();
 	$app->meta->title = $app->dependents->SITE_NAME_PROPPER.' '.$app->zero->subject_parent.' Tutors';
-	$app->meta->h1 = $app->zero->subject_parent.' Tutors <span class="grey-text notbold">@ '.$app->dependents->SITE_NAME_PROPPER.'</span>';
+	$app->meta->h1 = $app->zero->subject_parent.' Tutors';
 	$app->meta->keywords = 'Find a tutor, avidbrain, tutors';
