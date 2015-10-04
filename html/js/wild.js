@@ -251,7 +251,8 @@ $(document).ready(function() {
 				}, 1000);
 			});
 		});
-		$('#pagewidth').val(($('.tutor-profile').outerWidth()-40));
+		//$('#pagewidth').val(($('.tutor-profile').outerWidth()-40));
+		$('#pagewidth').val(($('.imagewidth').outerWidth()-5));
 		
 		var image = new Image();
 		image.onload = function () {

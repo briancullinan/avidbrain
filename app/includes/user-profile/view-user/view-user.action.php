@@ -232,6 +232,10 @@
 			$app->mailgun->send();
 			
 			
+			$app->currentuser->short_description_verified_status = NULL;
+			$app->currentuser->personal_statement_verified_status = NULL;
+			
+			
 			$app->currentuser->status = NULL;
 			$app->currentuser->lock = NULL;
 			$app->currentuser->hidden = NULL;

@@ -141,7 +141,7 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 
 
 <main>
-	<div class="<?php if($app->target->key=='/homepage/homepage'){ echo 'homepage-container';}else{ echo 'container';} if(isset($app->user->email)){ echo ' liu ';} if(isset($app->notifications)){ echo 'active-notification';} ?> ">
+	<div class="<?php if($app->target->key=='/homepage/homepage'){ echo 'homepage-container';}else{ echo 'container container-fluid';} if(isset($app->user->email)){ echo ' liu ';} if(isset($app->notifications)){ echo 'active-notification';} ?> ">
 		
 		<?php if(isset($app->howitworks)){ include($app->dependents->APP_PATH.'includes/how-it-works/how-it-works.php'); } ?>
 		<?php if(isset($_SESSION['slim.flash']['error'])): ?>
@@ -169,6 +169,23 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 		<?php endif; ?>
 		
 	</div>
+	
+
+	<?php if(isset($pagename) && $pagename=='my-photos'): ?>
+	<div class="container">
+		<div class="row">
+			<div class="col s12 m3 l3">
+				&nbsp;
+			</div>
+			<div class="col s12 m9 l9">
+				<div class="imagewidth">
+					&nbsp;
+				</div>
+			</div>
+		</div>
+	</div>
+	<?php endif; ?>
+	
 </main>
 
 <footer>

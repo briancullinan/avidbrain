@@ -1,12 +1,6 @@
 <?php if(isset($app->messages)): ?>
 	<?php foreach($app->messages as $message): ?>
 	<div class="block message-blocks <?php if(isset($message->status__read)){ echo ' read-message ';} ?>">
-		<div class="messages-active">
-		<?php	
-			if(isset($message->status__flagged)){echo '<div class="messages-flags"><i class="fa fa-flag blue-text"></i></div>';}
-			if(isset($message->status__starred)){echo '<div class="messages-flags"><i class="fa fa-star orange-text"></i></div>';}
-		?>
-		</div>
 		<div class="in-box" id="<?php echo $message->id; ?>">
 			<div class="row">
 				<div class="col s12 m2 l2">
@@ -29,7 +23,14 @@
 							<div class="message-subject"><?php echo $message->subject; ?></div>
 						</div>
 						<div class="col s12 m4 l4">
-							<div class="message-date"><?php echo FormatDate($message->send_date); ?></div>
+							<div class="message-date">
+								<?php echo FormatDate($message->send_date); ?>
+								<?php	
+									if(isset($message->status__flagged)){echo '<span class="messages-flags"><i class="fa fa-flag blue-text"></i></span>';}
+									if(isset($message->status__starred)){echo '<span class="messages-flags"><i class="fa fa-star orange-text"></i></span>';}
+								?>
+							</div>
+							
 						</div>
 					</div>
 					<div class="hr"></div>
@@ -41,7 +42,7 @@
 					</div>
 				</div>
 			</div>
-		</div>	
+		</div>
 	</div>
 	<?php endforeach; ?>
 	<?php echo $app->pagination; ?>

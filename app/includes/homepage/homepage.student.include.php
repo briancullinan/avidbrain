@@ -59,7 +59,7 @@
 					$neeedss=NULL;
 					if(count($app->needsreview)!=1){$neeedss='s';}
 				?>
-				<h2>Past Session<?php echo $neeedss; ?></h2>
+				<h3>Past Session<?php echo $neeedss; ?></h3>
 				<?php foreach($app->needsreview as $needsreview): ?>
 					<div class="block">
 						<div class="title">

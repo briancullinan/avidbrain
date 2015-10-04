@@ -32,6 +32,10 @@ a{
 #toast-container{
 	z-index: 9999;
 }
+main .container-fluid{
+	width: 95%;
+	max-width: inherit;
+}
 
 h1,h2,h3,h4,h5,h6{
 	line-height: normal;

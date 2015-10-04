@@ -1,4 +1,5 @@
 <h1>Crop Your Photo</h1>
+
 <p>
 	<div id="cropbox" data-image="<?php echo $app->currentuser->url.'/photo'; ?>"><img src="<?php echo $app->currentuser->url.'/photo'; ?>"></div>
 </p>

@@ -274,3 +274,9 @@ footer span.badge.new{
 	width: 100%;
 	padding: 10px;
 }
+
+.bank-details{
+	padding: 10px;
+	float: left;
+	width: 100%;
+}

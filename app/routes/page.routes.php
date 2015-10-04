@@ -137,7 +137,7 @@
 	$routes['payment-get-paid'] = (object)array('url'=>'/payment/get-paid','slug'=>'get-paid','route'=>'/payment/get-paid/','include'=>'payment/get-paid','protected'=>true,'permissions'=>array('tutor'));
 	
 	// Request Profile Review
-	$routes['request-profile-review'] = (object)array('url'=>'/request-profile-review','slug'=>'request-profile-review','route'=>'/request-profile-review/','include'=>'request-profile-review','protected'=>true,'permissions'=>array('tutor'));
+	$routes['request-profile-review'] = (object)array('url'=>'/request-profile-review','slug'=>'request-profile-review','route'=>'/request-profile-review/','include'=>'request-profile-review','protected'=>true);
 	
 	// Jobs
 	$routes['jobs'] = (object)array('url'=>'/jobs','slug'=>'jobs','route'=>'/jobs/','include'=>'jobs','protected'=>NULL,'permissions'=>array());

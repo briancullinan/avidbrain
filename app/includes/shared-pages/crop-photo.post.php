@@ -19,3 +19,16 @@
 		
 		$app->redirect($app->currentuser->url.'/my-photos');
 	}
+	else{
+		
+/*
+		$img = $app->imagemanager->make($app->currentuser->my_upload);
+		
+		$img->resize($app->cropresize->size, NULL, function ($constraint) {
+		    $constraint->aspectRatio();
+		})->save();
+		
+		$app->redirect('/tutors/scottsdale/arizona/zebras/my-photos/crop-photo');
+*/
+		
+	}

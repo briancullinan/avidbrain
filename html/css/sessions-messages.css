@@ -102,13 +102,13 @@
 	margin-bottom: 20px;
 }
 .messages-active{
-	position: absolute;
-	bottom: 0px;
-	left: 0px;
+	float: left;
+	width: 100%;
+	background: red;
 }
 .messages-flags{
-	float: left;
-	padding: 5px;
+	display: inline-block;
+	padding:1px 7px;
 }
 
 .data-unlock-group .unlock-block{

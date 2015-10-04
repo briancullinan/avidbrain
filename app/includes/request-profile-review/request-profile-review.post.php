@@ -1,6 +1,6 @@
 <?php
 
-	if(isset($app->requestprofilereview) && $app->requestprofilereview->status=='reviewmyprofile'){
+	if(isset($app->requestprofilereview) && $app->requestprofilereview->status=='reviewmyprofile' && $app->user->usertype=='tutor'){
 		
 		if(empty($app->requestprofilereview->type)){
 			$app->requestprofilereview->type = 'Not Set';
@@ -31,5 +31,10 @@
 		$insert = $app->connect->insert('avid___user_needsprofilereview',$needsreview);
 		
 		$app->redirect('/logout');
+		
+	}
+	elseif(isset($app->requestprofilereview) && $app->user->usertype=='student' && $app->requestprofilereview->type=='My Photo'){
+		
+		notify('Please Review My Photo');
 		
 	}
