@@ -17,9 +17,6 @@
 		$app->user->status = NULL;
 		$app->user->hidden = NULL;
 		$app->user->lock = NULL;
-		if(isset($app->user->my_upload)){
-			$app->user->my_upload_status = 'verified';
-		}
 		$app->user->save();
 		
 		$app->mailgun->to = 'david@avidbrain.com';

@@ -1,15 +1,26 @@
 <?php
 	
-	if(isset($app->user->status) && $app->user->status=='needs-review' && $app->user->usertype=='student'){
+	if(isset($app->user->status) && $app->user->status=='needs-review' && $app->user->usertype=='student' && isset($app->user->welcome)){
 		
 		$notications = new stdClass();
 		$notications->status = 'urgent';
-		$notications->message = '<a class="btn btn-s" href="/activate-profile">Activate Your Profile</a>';
+		$notications->message = '<a class="btn black btn-s" href="/activate-profile">Activate Your Profile</a>';
 		$app->notifications = $notications;
 		
 	}
-
 	
+	if(isset($app->user->my_upload) && isset($app->user->my_upload_status) && $app->user->my_upload_status=='needs-review'){
+		
+		$sql = "SELECT type FROM avid___user_needsprofilereview WHERE email = :email";
+		$prepare = array(':email'=>$app->user->email);
+		$results = $app->connect->executeQuery($sql,$prepare)->fetch();
+		if(isset($results->type) && $results->type=='My Photo'){
+			$notications = new stdClass();
+			$notications->status = 'low';
+			$notications->message = '<span>Your photo is under review</span>';
+			$app->notifications = $notications;	
+		}
+	}
 	
 	
 	function countnewmessages($connect,$email){
@@ -62,8 +73,19 @@
 	if(empty($app->user->email)){
 	}
 	else{
-		$navigation['/messages'] = (object) array('name'=>'Messages '.countnewmessages($app->connect,$app->user->email));
-		$navigation['/sessions'] = (object) array('name'=>'Sessions '.countpendingsessions($app->connect,$app->user->email,$app->user->usertype));
+		
+
+		$countnewmessages = countnewmessages($app->connect,$app->user->email);
+		if(isset($countnewmessages)){
+			$app->messsesscount = 1;
+		}
+		$countpendingsessions = countpendingsessions($app->connect,$app->user->email,$app->user->usertype);
+		if(isset($countpendingsessions)){
+			$app->messsesscount = 1;
+		}
+		
+		$navigation['/messages'] = (object) array('name'=>'Messages '.$countnewmessages);
+		$navigation['/sessions'] = (object) array('name'=>'Sessions '.$countpendingsessions);
 	}
 
 	$navigation['/help'] = (object) array('name'=>'Help');

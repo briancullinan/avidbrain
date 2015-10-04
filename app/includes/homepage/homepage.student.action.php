@@ -25,6 +25,15 @@
 		$app->mytutors = array_merge($app->mytutors, $sessionTutors);
 	}
 	
+	if(isset($app->user->usertype) && $app->user->usertype=='student'){
+		$sql = "SELECT id FROM avid___jobs WHERE email = :email AND open IS NOT NULL ORDER BY applicants DESC";
+		$prepeare = array(':email'=>$app->user->email);
+		$my_jobs = $app->connect->executeQuery($sql,$prepeare)->rowCount();
+		if(isset($my_jobs[0])){
+			$app->my_jobs = $my_jobs;
+		}	
+	}
+	
 	// Check for sessions without reviews
 	$data	=	$app->connect->createQueryBuilder();
 	$data	=	$data->select('sessions.*, user.first_name,user.last_name,user.url')->from('avid___sessions','sessions');

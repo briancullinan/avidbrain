@@ -1031,6 +1031,16 @@
 			$show = $filename;
 		}
 		
+		if(isset($imageowner->my_upload_status) && $imageowner->my_upload_status=='needs-review'  && isset($imageowner->thisisme)){
+			
+			$ahrefStart.='<div class="i-need-review">';
+			
+				echo '<div class="please-review"><a href="/request-profile-review">Photo Needs Review</a></div>';
+			
+			$ahrefEnd.='</div>';
+			
+		}
+		
 		return $ahrefStart.'<img class="avatarbg responsive-img '.$addClass.'" src="'.$show.'" />'.$ahrefEnd;
 		
 	}

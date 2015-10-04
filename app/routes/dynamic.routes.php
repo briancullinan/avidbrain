@@ -41,6 +41,8 @@
 			$router = $app->router();
 			$app->parameters = $router->getCurrentRoute()->getParams();
 			
+			include($app->dependents->APP_PATH.'navigation/navigation.basics.wild.php');
+			
 			$values = array();
 			$values['app'] = $app;
 			if(is_array($app->parameters)){

@@ -215,6 +215,10 @@ footer span.badge.new{
 	padding: 0px;
 	max-width: inherit;
 }
+main .container-nopadd{
+	padding-top: 10px;
+	text-align: center;
+}
 
 .find-a-tutor{
 	background: #fff;

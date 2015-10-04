@@ -19,7 +19,7 @@
 				</div>
 			<?php endif; ?>
 			
-			<h2>Your Credit Card Info</h2>
+			<h3>Your Credit Card Info</h3>
 			<ul class="collection">
 				<li class="collection-item">
 					<div class="row">
@@ -62,7 +62,8 @@
 					</div>
 				</li>
 			</ul>
-			<div class="hr"></div>
+			
+			<p></p>
 			<div>
 				<a class="btn red confirm-click" href="#" data-target="/payment/credit-card/deletecard">Delete Card</a>
 				<?php //<a class="btn green" id="updatecard" href="#updatecard">Update Card</a> ?>

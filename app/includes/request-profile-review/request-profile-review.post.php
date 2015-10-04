@@ -35,6 +35,22 @@
 	}
 	elseif(isset($app->requestprofilereview) && $app->user->usertype=='student' && $app->requestprofilereview->type=='My Photo'){
 		
-		notify('Please Review My Photo');
+		
+		$needsreview = array(
+			'email'=>$app->user->email,
+			'date'=>thedate(),
+			'url'=>$app->user->url,
+			'usertype'=>$app->user->usertype,
+			'type'=>'My Photo'
+		);
+		
+		$app->mailgun->to = 'david'.$app->dependents->mailgun->EMAIL_DOMAIN;
+		$app->mailgun->subject = 'Someone needs their photo reviewed';
+		$app->mailgun->message = "Please review this user: ".$app->dependents->DOMAIN.$app->user->url." <br> Reason: My Photo ";
+		$app->mailgun->send();
+		
+		$insert = $app->connect->insert('avid___user_needsprofilereview',$needsreview);
+		
+		$app->redirect($app->user->url);
 		
 	}

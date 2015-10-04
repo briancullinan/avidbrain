@@ -47,7 +47,6 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 		$openClosed = 'open';
 	}
 	$app->mylocation = json_decode($app->getCookie('mylocation'));
-	include($app->dependents->APP_PATH.'navigation/navigation.basics.wild.php');
 ?>
 </head>
 <body class="body <?php if(isset($app->secondary) && file_exists($app->secondary)){ echo 'sub-active';} if(isset($app->user->email)){ echo ' active-user ';} echo ' page--'.str_replace('-','',$app->target->css).' '; ?>">
@@ -101,7 +100,7 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 	
 	<div class="left">
 		<div class="left activate-menu" data-status="closed">		
-			<i class="fa fa-bars"></i> <span>Menu</span>
+			<i class="fa fa-bars"></i> <span>Menu</span> <?php if(isset($app->messsesscount)){ echo '<i class="fa fa-circle menu-new"></i>'; } ?>
 		</div>
 		
 	</div>

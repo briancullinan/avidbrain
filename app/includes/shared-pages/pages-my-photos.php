@@ -66,7 +66,7 @@
 		<div class="image-preview">
 			<?php if(isset($app->user->my_upload) && $app->user->my_upload_status!='verified'): ?>
 			<div class="alert red white-text">
-				Your photo needs to be approved before it's public. <a class="btn btn-s" href="/request-profile-review">Request Profile Review</a>
+				Your photo needs to be approved before it's public. <a class="btn btn-s" href="/request-profile-review">Request Photo Review</a>
 			</div>
 			<?php endif; ?>
 			<img class="responsive-img" src="<?php echo $app->currentuser->url.'/thumbnail'; ?>">
@@ -114,6 +114,7 @@
 		</form>
 	</div>
 	
+	<?php if(isset($app->customavatars)): ?>
 	<!-- Custom Avatars -->
 	<h2>Custom Avatar</h2>
 	
@@ -233,5 +234,6 @@
 		
 	</div>
 	<!-- Custom Avatars -->
+	<?php endif; ?>
 	
 </div>

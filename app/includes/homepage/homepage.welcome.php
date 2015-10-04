@@ -1,4 +1,4 @@
-<div class="homepage-logged-in">
+<div class="container container-nopadd">
 	
 	<h1>Welcome to <?php echo $app->dependents->SITE_NAME_PROPPER; ?></h1>
 	

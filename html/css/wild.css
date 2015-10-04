@@ -237,11 +237,16 @@ main.activeaction .container{
 	height: auto;
 	overflow: hidden;
 }
-main .container, main .homepage-container.liu{
+main .container{
 	padding-top: 100px;
 }
 main .subnav-active.container{
 	padding-top: 40px;
+}
+main .homepage-container.liu{
+	width: 95%;
+	margin: 0 auto;
+	padding-top: 100px;
 }
 
 header.activeaction:before, main.activeaction:before, footer.activeaction:before, notifications.activeaction:before{
@@ -297,6 +302,7 @@ subnav a.active, subnav li.active a{
 	display: block;
 	cursor: pointer;
 	color: #fff;
+	position: relative;
 }
 
 .activate-menu.active{
@@ -306,6 +312,13 @@ subnav a.active, subnav li.active a{
 }
 .activate-menu.active i{
 	color: #0087F2;
+}
+.activate-menu .menu-new{
+	color: red;
+	font-size: 9px;
+	position: absolute;
+	right: 0px;
+	top:15px;
 }
 
 header{
@@ -326,18 +339,27 @@ notifications{
 	position: fixed;
 	top:80px;
 	background: #000;
-	color: #fff;
 	width: 100%;
 	text-align: center;
 	padding: 10px;
 	left: 0px;
-	
-	-moz-box-shadow: 0 0 10px #666;
-	-webkit-box-shadow: 0 0 10px #666;
-	box-shadow: 0 0 10px #666;
+}
+notifications span{
+	padding: 5px 10px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
 }
 notifications.urgent{
 	background: #F44336;
+	color: #fff;
+}
+notifications.low{
+	background: #DEDEDE;
+	color: #000;
+}
+notifications.low span{
+	background: #ccc;
 }
 
 main .liu.active-notification{
@@ -576,6 +598,9 @@ footer{
 .dropdown-content  .dll-logout a{
 	background: #666;
 	color: #fff;
+}
+.dll-rpp{
+	background: #efefef;
 }
 .dll-logout a:hover{
 	background: #555;

@@ -38,7 +38,11 @@
 					<?php endforeach; ?>
 				</div>
 				<?php else: ?>
-					You have no tutors, <a href="/tutors">find one now</a>.
+					<div class="block">You have no tutors, <a href="/tutors">find one now</a>.</div>
+				<?php endif; ?>
+				
+				<?php if(empty($app->my_jobs)): ?>
+					<div class="block">You haven't posted a job yet, it's the easiest way to find a tutor. <a href="/jobs">Try It Now</a></div>
 				<?php endif; ?>
 			
 			

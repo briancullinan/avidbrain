@@ -521,6 +521,32 @@ background: -ms-linear-gradient(top, rgba(247,247,247,1) 0%,rgba(196,196,196,1) 
 background: linear-gradient(to bottom, rgba(247,247,247,1) 0%,rgba(196,196,196,1) 100%); /* W3C */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f7f7', endColorstr='#c4c4c4',GradientType=0 ); /* IE6-9 */
 }
+.i-need-review img{
+	border-color:#f44336 !important;
+	position: relative;
+}
+.i-need-review:before{
+	padding: 8px 10px 11px 10px;
+	text-align: center;
+	background: #f44336;
+	left: -10px;
+	top:-10px;
+	color: #fff;
+	-webkit-border-radius: 300px;
+	-moz-border-radius: 300px;
+	border-radius: 300px;
+	position: absolute;
+	display:inline-block;font:normal normal normal 14px/1 FontAwesome;font-size:inherit;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;transform:translate(0, 0)
+}
+.i-need-review:before{
+	content:"\f071";
+}
+.please-review a{
+	display: inline-block;
+	padding: 5px 10px;
+	background: #f44336;
+	color: #fff;
+}
 
 .staff.avatar img{
 	padding: 1px;

@@ -24,15 +24,12 @@
 	}
 	else{
 		
-		if($app->user->status=='needs-review'){
-			//$dropdownnav[] = (object)array('url'=>'/request-profile-review','class'=>'attention','text'=>'<i class="fa fa-warning"></i> Request Profile Review');
-		}
-		elseif(isset($app->user->usertype) && $app->user->usertype=='tutor'){
-			$dropdownnav[] = (object)array('url'=>'/request-profile-review','class'=>'request','text'=>'Request Profile Review','class'=>'dll-rpp');
-		}
-		
 		if(isset($app->user->url)){
 			$dropdownnav[] = (object)array('url'=>$app->user->url,'text'=>'View/Edit Your Profile','class'=>'dll-veyp');
+		}
+		
+		if(isset($app->user->usertype) && $app->user->usertype=='tutor'){
+			$dropdownnav[] = (object)array('url'=>'/request-profile-review','class'=>'request-review','text'=>'Request Profile Review','class'=>'dll-rpp');
 		}
 		
 		$dropdownnav[] = (object)array('url'=>'/account-settings','text'=>'Account Settings','class'=>'dll-acts');
