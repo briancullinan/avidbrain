@@ -1,9 +1,3 @@
-
-	<link rel="stylesheet" href="/shepard/shepherd-theme-arrows.css" />
-	<script src="/shepard/tether.min.js"></script>
-	<script src="/shepard/shepherd.js"></script>
-
-	
 <script type="text/javascript">
 	
 tour = new Shepherd.Tour({

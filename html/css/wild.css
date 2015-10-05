@@ -17,7 +17,7 @@ html,body{
 	font-family: 'Open Sans', 'Arial', sans-serif;
     -webkit-font-smoothing: subpixel-antialiased;
 }
-.body {	
+.body {
 	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
@@ -74,7 +74,7 @@ main{
 	-webkit-flex: 1;
 	-ms-flex: 1;
 	flex: 1;
-	
+
 /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f7f7f7+0,e2e2e2+100 */
 background: rgb(247,247,247); /* Old browsers */
 background: -moz-linear-gradient(top, rgba(247,247,247,1) 0%, rgba(226,226,226,1) 100%); /* FF3.6+ */
@@ -87,17 +87,17 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f7f7', end
 background-attachment: fixed;
 
 
-	
+
 }
 header,main,footer,notifications{
 	-webkit-transition: all;
 	-webkit-transition-timing-function: ease-out;
 	-webkit-transition-duration: .2s;
-	
+
 	-moz-transition: all;
 	-moz-transition-timing-function: ease-out;
 	-moz-transition-duration: .2s;
-	
+
 	transition: all;
 	transition-timing-function: ease-out;
 	transition-duration: .2s;
@@ -114,15 +114,15 @@ sidebar{
 	height: 100%;
 	max-height: 100%;
     overflow-y: auto;
-	
+
     -webkit-transition: all;
 	-webkit-transition-timing-function: ease-out;
 	-webkit-transition-duration: .2s;
-	
+
 	-moz-transition: all;
 	-moz-transition-timing-function: ease-out;
 	-moz-transition-duration: .2s;
-	
+
 	transition: all;
 	transition-timing-function: ease-out;
 	transition-duration: .2s;
@@ -137,7 +137,7 @@ sidebar.activeaction{
 	line-height: normal;
 }
 .sidebar-main li{
-	
+
 }
 .sidebar-main li a{
 	display: block;
@@ -151,7 +151,7 @@ sidebar.activeaction{
 	color: #fff;
 }
 .sidebar-main li a.active{
-	
+
 	background: #0099ff;
 	color: #fff;
 }
@@ -165,11 +165,11 @@ sidebar.activeaction{
 	margin-bottom: 15px;
 	font-size: 18px;
 	text-transform: uppercase;
-	
+
 }
 .sidebar-signup:hover{
 	background: #008dff;
-	
+
 }
 .av-versioning{
 	color: #777;
@@ -239,7 +239,7 @@ main.activeaction .container{
 	overflow: hidden;
 }
 main .container{
-	padding-top: 100px;
+	padding-top: 110px;
 }
 main .subnav-active.container{
 	padding-top: 40px;
@@ -247,7 +247,7 @@ main .subnav-active.container{
 main .homepage-container.liu{
 	width: 95%;
 	margin: 0 auto;
-	padding-top: 100px;
+	padding-top: 110px;
 }
 
 header.activeaction:before, main.activeaction:before, footer.activeaction:before, notifications.activeaction:before{
@@ -331,10 +331,10 @@ header{
     left: 0;
     top: 0;
     text-align: center;
-    
+
     transition: transform 200ms linear;
-    
-    
+
+
 }
 notifications{
 	position: fixed;
@@ -369,7 +369,7 @@ main .liu.active-notification{
 }
 .itstheheader-top{
 	transform: translateY(-100%);
-	
+
 }
 .itstheheader-bottom{
 	transform: translateY(0%);
@@ -378,7 +378,7 @@ main .liu.active-notification{
 	text-align: center;
 }
 .logo.logo-main{
-	
+
     position: absolute;
     left: 0;
     right: 0;
@@ -460,13 +460,13 @@ footer{
 }
 
 .sidebar-status{
-	
+
 }
 .sidebar-status .row{
 	margin: 0px;
 }
 .sidebar-close{
-	
+
 }
 .sidebar-close i{
 	color: #fff;
@@ -478,7 +478,7 @@ footer{
 	color: #008dff;
 }
 .sidebar-login{
-	margin-bottom: 10px;	
+	margin-bottom: 10px;
 }
 .sidebar-login a{
 	display: block;
@@ -497,10 +497,10 @@ footer{
 	border-bottom: solid 1px #ccc;
 }
 .sub-navigation-title a{
-	
+
 	font-size: 18px;
 	color: #999;
-	
+
 }
 .sub-navigation-title a.active{
 	font-weight: bold;
@@ -512,7 +512,7 @@ footer{
 	margin: 0px;
 }
 .left-navigation{
-	
+
 }
 .left-navigation .sub-navigation li a{
 	color: #666;
@@ -544,7 +544,7 @@ footer{
 	margin-top: 10px;
 }
 .dropdown-button:hover .dropdown-item i{
-	
+
 }
 .dropdown-button:hover .dropdown-sort i{
 	color: #ccc;
@@ -565,7 +565,7 @@ footer{
 	min-width: 250px;
 }
 #user-dropdown li a{
-	
+
 }
 .dropdown-content .my-info:hover{
 	cursor: default;
@@ -620,10 +620,10 @@ footer{
 	margin-bottom: 15px;
 	background: #fff;
 	border: solid 1px #ccc;
-	padding: 5px;	
+	padding: 5px;
 }
 .my-links li{
-	
+
 }
 .my-links li a{
 	display: block;
@@ -677,7 +677,7 @@ footer{
 	color: #999;
 	z-index: 444;
 	font-size: 20px;
-	
+
 	-webkit-border-radius: 300px;
 	-moz-border-radius: 300px;
 	border-radius: 300px;

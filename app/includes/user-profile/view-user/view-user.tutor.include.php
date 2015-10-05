@@ -1,8 +1,3 @@
-<?php if(isset($app->setupinstructions)): ?>
-	<?php include($page = $app->dependents->APP_PATH.'includes/shared-pages/setup-instructions.php'); ?>
-<?php endif; ?>
-
-
 	<?php if(isset($app->currentuser->thisisme)): ?>
 	<form class="form-post hide" method="post" action="<?php echo $app->currentuser->url ?>" id="editprofile">
 		
@@ -13,7 +8,7 @@
 	
 	<div class="tutor-profile">
 			
-			<div class="hourly-rate valign-wrapper edit-change <?php if(isset($app->currentuser->negotiableprice) && $app->currentuser->negotiableprice=='yes'){ echo 'negotiable-price';} ?>">
+			<div class="hourly-rate valign-wrapper edit-change <?php if(isset($app->currentuser->negotiableprice) && $app->currentuser->negotiableprice=='yes'){ echo 'negotiable-price';} ?>" id="changehourlyrate">
 				<span class="valign">
 					<?php if(isset($app->currentuser->thisisme)): ?>
 					<div class="edit-profile tooltipped" data-position="right" data-delay="50" data-tooltip="Change Hourly Rate"><i class="fa fa-pencil"></i></div>
@@ -33,7 +28,7 @@
 						</div>
 						
 						<?php if(isset($app->childen)): ?>
-							<div class="my-links">								
+							<div class="my-links" id="mylinks">
 								<div class="my-links-title">
 									My Profile
 								</div>
@@ -50,7 +45,7 @@
 							</div>
 						<?php endif; ?>
 						
-						<div class="about-me">
+						<div class="about-me" id="about-me">
 							
 							<?php if(isset($app->currentuser->toplinks['send-message'])): ?>
 							<div class="message-box">
@@ -278,3 +273,7 @@
 		</div>
 	</div>
 <?php endif ?>
+
+<?php if(isset($app->setupinstructions)): ?>
+	<?php include($page = $app->dependents->APP_PATH.'includes/shared-pages/setup-instructions.tutor.php'); ?>
+<?php endif; ?>

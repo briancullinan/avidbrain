@@ -26,7 +26,9 @@
 		);
 		$headjs = array(
 			'https://js.stripe.com/v2',
-			'//code.jquery.com/jquery-2.1.1.min.js'
+			'//code.jquery.com/jquery-2.1.1.min.js',
+			'/js/tether.min.js',
+			'/js/shepherd.js'
 		);
 		$cdnjs = array(
 			'//cdnjs.cloudflare.com/ajax/libs/materialize/'.$material.'/js/materialize.min.js'
@@ -49,7 +51,8 @@
 		'customize-avatar.css',
 		'crop.css',
 		'wild.media.css',
-		'time.picker.css'
+		'time.picker.css',
+		'shepherd-theme-arrows.css'
 	);
 	
 /*

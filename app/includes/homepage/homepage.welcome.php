@@ -6,7 +6,11 @@
 	
 	<div>
 		
-		<a class="btn" href="<?php echo $app->user->url; ?>">Lets find you the help you need</a>
+		<?php if($app->user->usertype=='student'): ?>
+			<a class="btn" href="<?php echo $app->user->url; ?>">Lets find you the help you need</a>
+		<?php else: ?>
+			<a class="btn" href="<?php echo $app->user->url; ?>">Lets create your Tutor Profile</a>
+		<?php endif; ?>
 		
 	</div>
 	
