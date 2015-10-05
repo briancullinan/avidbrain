@@ -31,6 +31,8 @@
 	$dependents->pagination = new stdClass();
 	$dependents->pagination->items_per_page = 11;
 	
+	//$dependents->offline = true;
+	
 	// Romanize Symbols
 	$dependents->ROMANIZE = array(
 		  // scandinavian - differs from what we do in deaccent
