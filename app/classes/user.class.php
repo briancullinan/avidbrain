@@ -49,6 +49,7 @@
 						foreach($userResults as $key=>$value){
 							$this->$key = $value;
 						}
+						self::lastActive();
 						self::payment();
 					}
 					else{
@@ -69,6 +70,26 @@
 					unset($this->$key);
 				}
 			}
+			
+		}
+		
+		public function lastActive(){
+			
+			$lastactive = $this->email.'---lastactive';
+			$lastactivesetvar = $this->connect->cache->get($lastactive);
+			if($lastactivesetvar == null) {
+				
+				$thedate = thedate();
+				$updatelastactive = array('last_active'=>$thedate);
+				$this->connect->update('avid___user',$updatelastactive,array('email'=>$this->email));
+				
+			    $returnedData = $thedate;
+			    $lastactivesetvar = $returnedData;
+			    $this->connect->cache->set($lastactive, $returnedData, 120);
+			}
+			
+			$this->last_active = $lastactivesetvar;
+			//notify($this);
 			
 		}
 		

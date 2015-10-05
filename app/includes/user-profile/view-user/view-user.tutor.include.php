@@ -100,7 +100,11 @@
 						
 						<div class="badges">
 							<?php
+								//printer($app->currentuser);
 								echo badge('background_check',$app->currentuser);
+								if(activenow($app->currentuser)){
+									echo badge('imonline',$app->currentuser);
+								}
 								echo badge('average_score',$app->currentuser);
 								echo badge('review_count',$app->currentuser);
 								echo badge('hours_tutored',$app->currentuser);

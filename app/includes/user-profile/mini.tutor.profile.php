@@ -21,7 +21,7 @@
 	$searchResults->reviewinfo->count = $test->count;
 ?>
 
-<div class="tutor-results <?php if(isset($searchResults->activenow) && $searchResults->activenow==1){ echo 'active-now';} ?>">
+<div class="tutor-results <?php if(activenow($searchResults)){ echo 'active-now';} ?>">
 	<div class="hourly-rate valign-wrapper <?php if(isset($searchResults->negotiableprice) && $searchResults->negotiableprice=='yes'){ echo 'negotiable-price';} ?>">
 		<span class="valign">
 			$<?php echo $searchResults->hourly_rate; ?> <?php if(isset($searchResults->negotiableprice) && $searchResults->negotiableprice=='yes'){ echo '<span class="asterisk"><i class="fa fa-asterisk"></i></span>';} ?>
@@ -87,6 +87,9 @@
 	<div class="badges mini-badges">
 		<?php
 			echo badge('background_check',$searchResults);
+			if(activenow($searchResults)){
+				echo badge('imonline',$searchResults);
+			}
 			echo badge('average_score',$searchResults);
 			echo badge('review_count',$searchResults);
 			echo badge('hours_tutored',$searchResults);

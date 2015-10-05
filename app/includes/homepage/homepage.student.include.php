@@ -1,12 +1,12 @@
 <div class="homepage-logged-in">
-	
+
 	<h1>Welcome to <?php echo $app->dependents->SITE_NAME_PROPPER; ?></h1>
-	
+
 	<div class="row">
-		
+
 		<div class="col s12 m4 l4">
 			
-				<?php if(isset($app->mytutors[0])): ?>
+				<?php if(isset($app->mytutors[0]->id)): ?>
 				<h3>Your Tutors</h3>
 				<div class="compose-list center-align white">
 					<?php foreach($app->mytutors as $compose): ?>
@@ -30,7 +30,7 @@
 										}
 										elseif($compose->usertype=='tutor'){
 											echo '<div class="badge light-green accent-4 white-text">Tutor</div>';
-										}								
+										}
 									?>
 								</div>
 							</div>
@@ -40,12 +40,12 @@
 				<?php else: ?>
 					<div class="block">You have no tutors, <a href="/tutors">find one now</a>.</div>
 				<?php endif; ?>
-				
+
 				<?php if(empty($app->my_jobs)): ?>
 					<div class="block">You haven't posted a job yet, it's the easiest way to find a tutor. <a href="/jobs">Try It Now</a></div>
 				<?php endif; ?>
-			
-			
+
+
 			<?php
 				$sql = "SELECT id FROM avid___user_subjects WHERE email = :email";
 				$prepare = array(':email'=>$app->user->email);
@@ -57,7 +57,7 @@
 			</div>
 			<div class="center-align"><a class="btn" href="/jobs/import">Import Your Job Posts</a></div>
 			<?php endif; ?>
-			
+
 			<?php if(isset($app->needsreview)): ?>
 				<?php
 					$neeedss=NULL;
@@ -78,14 +78,14 @@
 					</div>
 				<?php endforeach; ?>
 			<?php endif; ?>
-			
+
 		</div>
-		
+
 		<div class="col s12 m4 l4">
 			<?php if(isset($app->my_tweets)): ?>
 				<h3> News from <?php echo str_replace('https://twitter.com/','@',$app->dependents->social->twitter); ?></h3>
 				<?php foreach($app->my_tweets as $tweet):# printer($tweet); ?>
-				
+
 				<div class="block tweets">
 					<div class="row">
 						<div class="col s2 m3 l2">
@@ -100,11 +100,11 @@
 				<?php endforeach; ?>
 				<div class="more-tweets"><a target="_blank" href="https://twitter.com/<?php echo $tweet->user->screen_name; ?>">View More Tweets</a></div>
 			<?php endif; ?>
-			
+
 		</div>
-		
+
 		<div class="col s12 m4 l4">
-			
+
 			<?php
 				if( isset($app->freesessions->enabled) && $app->freesessions->enabled==true ){
 					include('homepage-free-sessions.php');
@@ -113,7 +113,7 @@
 					include('homepage-regular-sessions.php');
 				}
 			?>
-			
+
 			<?php if(isset($app->myrewards)): ?>
 				<h2>Your Rewards</h2>
 				<div class="all-my-rewards">
@@ -122,28 +122,28 @@
 							<div class="row">
 								<div class="col s12 m6 l6">
 									<div class="my-reward-value">
-										
+
 										<div><span>$<?php echo numbers($myrewards->value,1); ?></span> Off Your Next Tutoring Session.</div>
 										<div class="grey-text">Automatically applied after your next session</div>
-										
+
 									</div>
 								</div>
 								<div class="col s12 m6 l6">
 									<div class="my-reward-promo">Promo Code: <span><?php echo $myrewards->promocode; ?></span></div>
 									<div>Activated: <?php echo formatdate($myrewards->date); ?></div>
-									
+
 									<?php if(isset($myrewards->url)): ?>
 									<div>Shared With: <a href="<?php echo $myrewards->url; ?>" target="_blank"><?php echo short($myrewards); ?></a></div>
 									<?php endif; ?>
-									
+
 								</div>
 							</div>
 						</div>
 					<?php endforeach; ?>
 				</div>
 			<?php endif; ?>
-			
+
 		</div>
 	</div>
-	
+
 </div>

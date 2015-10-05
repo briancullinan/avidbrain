@@ -10,7 +10,7 @@
 	
 	
 	$data	=	$app->connect->createQueryBuilder();
-	$data	=	$data->select('payments.*,sessions.payrate,sessions.taxes,sessions.session_cost,'.everything())->from('avid___user_payments','payments');
+	$data	=	$data->select('payments.*,sessions.payrate,sessions.taxes,sessions.session_cost')->from('avid___user_payments','payments');
 	$data	=	$data->where('payments.'.$select1.' = :myemail OR payments.recipient = :myemail');
 	$data	=	$data->setParameter(':myemail',$app->user->email);
 		$data	=	$data->leftJoin('payments','avid___user','user','user.email = payments.'.$select2);

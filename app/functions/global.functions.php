@@ -1,7 +1,7 @@
 <?php
-	
+
 	function killallcookies(){
-		
+
 		foreach($_COOKIE as $cookieKey => $cookie){
 			$_COOKIE[$cookieKey] = '';
 			unset($_COOKIE[$cookieKey]);
@@ -10,11 +10,11 @@
 		notify($_COOKIE);
 		echo 'COOKIES ARE GONE';
 		exit;
-		
+
 	}
-	
+
 	function clean($input) {
-		
+
 		$pattern1 = array(
 			'@<script[^>]*?>.*?</script>@si',   // Strip out javascript
 			'@<[\/\!]*?[^<>]*?>@si',            // Strip out HTML tags
@@ -22,10 +22,10 @@
 			'@<![\s\S]*?--[ \t\n\r]*>@'         // Strip multi-line comments
 		);
 		$input = preg_replace($pattern1,NULL, $input);
-		
+
 		return $input;
 	}
-	
+
 	function cleanup($val){
 		$val = clean($val);
 		$val = filter_var($val, FILTER_SANITIZE_STRING);
@@ -33,7 +33,7 @@
 		return $val;
 	}
 	function makepost($post){
-		
+
 		if(is_object($post)){
 			foreach($post as $key =>$value){
 				if(is_object($value)){
@@ -46,7 +46,7 @@
 		}
 		return $post;
 	}
-	
+
 	function thedate(){
 		return date("Y-m-d H:i:s");
 	}
@@ -78,16 +78,16 @@
 		exit;
 	}
 	function notify($array){
-		
+
 		if(isset($array->connect)){
 			unset($array->connect);
 		}
 		if(isset($array->crypter)){
 			unset($array->crypter);
 		}
-		
+
 		$arrayCheck = (object)$array;
-		
+
 		//$array->imnotsure = '¯\_(ツ)_/¯';
 		//echo '¯\_(ツ)_/¯';exit;
 
@@ -97,7 +97,7 @@
 		}
 		elseif(isset($arrayCheck->postdata)){
 			// Flash Errors
-			
+
 			if(isset($arrayCheck->postdata)){
 				$_SESSION['slim.flash']['error'] = $arrayCheck->message;
 				$_SESSION['slim.flash']['postdata'] = $arrayCheck->postdata;
@@ -108,11 +108,11 @@
 		}
 		/*
 			else{
-			
+
 			$array = (object)$array;
-			
+
 			if(isset($array->action)){
-				
+
 				if($array->action=='jump-to' && isset($array->location)){
 					redirect($array->location);
 				}
@@ -123,13 +123,13 @@
 				else{
 					printer($array,1);
 				}
-				
+
 			}
 			else{
 				printer($array,1);
 			}
-			
-			
+
+
 		}
 		*/
 	}
@@ -138,7 +138,7 @@
 		$errors				=	new stdClass();
 		$err			  	=	$body['error'];
 		$errors->status 	=	$e->getHttpStatus();
-		
+
 		if(isset($err['type'])){
 			$errors->type		=	$err['type'];
 		}
@@ -153,7 +153,7 @@
 		}
 		return $errors;
 	}
-	
+
 	function buildpaths($pathinfo,$apppath,$user){
 
 		if($pathinfo->url=='/'){
@@ -183,8 +183,8 @@
 		$target->secondaryNav = $apppath.'views/secondary.navigation.php';
 		$target->secondaryCSS = 'secondary-'.$root;
 		$target->css = 'main-'.$root.' main-'.$slug;
-		
-		
+
+
 		if(isset($user->usertype)){
 			$target->user = new stdClass();
 			$target->user->include = $apppath.'includes/'.$include.'/'.$slug.'.'.$user->usertype.'.include.php';
@@ -196,25 +196,25 @@
 
 	}
 	function myrootisyourroot($path,$key){
-		
+
 		if(strpos($key, 'http:') !== false){
 			return false;
 		}
-		
+
 		$pathEx = explode('/',$path);
 		if(isset($pathEx[1])){
 			$pathEx = $pathEx[1];
 		}
-		
+
 		$keyEx = explode('/',$key);
 		if(isset($keyEx[1])){
 			$keyEx = $keyEx[1];
 		}
-		
+
 		if($keyEx==$pathEx){
 			return true;
 		}
-		
+
 	}
 	function redirect($location){
 		$imat = $_SERVER['REQUEST_URI'];
@@ -248,9 +248,9 @@
 		return date_format(new DateTime($date), $format);
 	}
 	function truncate($message,$length=100, $break=".", $pad="..."){
-		
+
 		$message = strip_tags($message);
-		
+
 		if(strlen($message) <= $length){
 			return $message;
 		}
@@ -271,27 +271,27 @@
 			return $first.$last;
 		}
 		else{
-			return short($userinfo);	
+			return short($userinfo);
 		}
 	}
 	function short($tutorinfo){
-		
+
 		$first = NULL;
 		$last = NULL;
-		
+
 		if(isset($tutorinfo->first_name)){
 			$first = strtolower($tutorinfo->first_name);
 			$first = ucwords($first);
 		}
-		
+
 		if(isset($tutorinfo->last_name)){
 			$last = $tutorinfo->last_name;
 			$last = substr($last,0,1);
 			$last = ' '.$last.'.';
 		}
-		
+
 		return $first.$last;
-		
+
 	}
 	function get_stars($starscore){
 		$max = 5;
@@ -299,9 +299,9 @@
 
 		$howmanyrange = NULL;
 		if($howmanyleft!=0){
-			$howmanyrange = range(0,($howmanyleft-1));	
+			$howmanyrange = range(0,($howmanyleft-1));
 		}
-		
+
 		$stars='';
 		$starsi='';
 		if($starscore>0){
@@ -316,13 +316,13 @@
 				$starsi.='<i class="fa fa-star-o inactive"></i>';
 			}
 		}
-		
+
 		$starscore = new stdClass();
 		$starscore->html = $stars;
 		$starscore->icons = $starsi;
 		return $starscore;
 	}
-	
+
 	function get_data($select,$email,$type,$connect){
 		$sql = "SELECT $select FROM avid___user WHERE `$type` = :$type";
 		$prepeare = array(':'.$type=>$email);
@@ -337,11 +337,11 @@
 		}
 	}
 	function doesuserexist($connect,$email){
-		
+
 		if(parent_company_email($email)){
 			return 'admin';
 		}
-		
+
 		$query = "
 				SELECT sum(email) as count
 					FROM (
@@ -359,31 +359,31 @@
 		else{
 			return false;
 		}
-		
+
 	}
-	
+
 	function get_zipcode_data($connect,$zipcode){
-		
+
 		if(!is_numeric($zipcode) || strlen($zipcode)!=5){
 			return false;
 		}
-		
+
 		$zicoddata = $connect->createQueryBuilder()->select("*")->from("avid___location_data")->where("zipcode = :zipcode")->setParameter(":zipcode",$zipcode)->setMaxResults(1)->execute()->fetch();
-		
+
 		if(empty($zicoddata)){
-			
+
 			$ch = curl_init();
 			curl_setopt($ch, CURLOPT_URL, 'http://api.zippopotam.us/us/'.$zipcode);
 			curl_setopt($ch, CURLOPT_HEADER, 0);
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 			$output = curl_exec($ch);
 			curl_close($ch);
-			
+
 			if(isset($output)){
 				$output = json_decode($output);
 				if(isset($output->places)){
 					$place = $output->places[0];
-					
+
 					$insert = array(
 						'zipcode'=>$zipcode,
 						'city'=>$place->{'place name'},
@@ -392,16 +392,16 @@
 						'lat'=>$place->latitude,
 						'`long`'=>$place->longitude
 					);
-					
+
 					$connect->insert('avid___location_data',$insert);
 					return $insert;
 				}
 			}
-			
+
 		}
-		
+
 		#notify($zicoddata);
-		
+
 		if(isset($zicoddata->id)){
 			$zicoddata->state_slug = string_cleaner($zicoddata->state_long);
 			$zicoddata->city_slug = string_cleaner($zicoddata->city);
@@ -424,7 +424,7 @@
 	    $min = pow(10, $digits - 1);
 	    $max = pow(10, $digits) - 1;
 	    $random = mt_rand($min, $max);
-	    
+
 	    $sql = "SELECT validation_code FROM avid___users_temp WHERE validation_code = :validation_code";
 		$prepare = array(':validation_code'=>$random);
 		if($connect->executeQuery($sql,$prepare)->rowCount()==0){
@@ -433,8 +433,8 @@
 		else{
 			return random_numbers_guarantee($connect,17);
 		}
-		
-		
+
+
 	}
 	function random_all($length = 10) {
 	    $characters = '123456789abcdefghijklmnopqrstuvwxyz';
@@ -446,32 +446,32 @@
 	    }
 	    return str_shuffle($randomString);
 	}
-	
+
 	function logout($location,$connection,$crypter){
-		
+
 		if(isset($_SESSION['user'])){
 			$email = $crypter->decrypt($_SESSION['user']['email']);
 			if(parent_company_email($email)){
 				$query = "UPDATE avid___admins SET sessiontoken = :sessiontoken WHERE `email` = :email ";
 				$prepare = array(':email'=>$email,':sessiontoken'=>NULL);
-				$logout = $connection->executeQuery($query,$prepare);	
+				$logout = $connection->executeQuery($query,$prepare);
 			}
 			else{
 				$query = "UPDATE avid___user SET sessiontoken = :sessiontoken WHERE `email` = :email ";
 				$prepare = array(':email'=>$email,':sessiontoken'=>NULL);
-				$logout = $connection->executeQuery($query,$prepare);				
+				$logout = $connection->executeQuery($query,$prepare);
 			}
-		}		
-		
+		}
+
 		$_SESSION['csrf_token'] = NULL;
 		$_SESSION['slim.flash'] = NULL;
 		$_SESSION['user']['sessiontoken'] = NULL;
 		$_SESSION['user']['email'] = NULL;
 		unset($_SESSION);
 		session_destroy();
-		
+
 		redirect($location);
-		
+
 	}
 	function string_cleaner($string){
 		$string = preg_replace("/[^a-zA-Z]/", "-", $string);
@@ -517,11 +517,11 @@
 			return $fileupload;
 		}
 	}
-	
+
 	function human_filesize($bytes, $decimals = 2) {
 		$sz = 'BKMGTP';
 		$factor = floor((strlen($bytes) - 1) / 3);
-		
+
 		$file = new stdClass();
 		$file->type = @$sz[$factor];
 		$file->size = sprintf("%.{$decimals}f", $bytes / pow(1024, $factor));
@@ -569,13 +569,13 @@
 			return 'Online';
 		}
 		else{
-			
+
 		}
 	}
 	function fix_parent_slug($string){
 		return ucwords(str_replace('-',' ',$string));
 	}
-	
+
 	function get_creditcard($customerid){
 		try{
 			$stripeinfo = \Stripe\Customer::retrieve($customerid);
@@ -592,7 +592,7 @@
 			//echo '<pre>'; print_r($e); echo '</pre>';exit;
 		}
 	}
-	
+
 	function badge_type($hours){
 		$hours = round($hours);
 		$ranges = array();
@@ -604,26 +604,30 @@
 		$ranges[] = (object)array('rank'=>'Associate Professor','range'=>range(4001,6000),'class'=>'badge-associate-professor','icon'=>'fa fa-star');
 		$ranges[] = (object)array('rank'=>'Professor','range'=>range(6001,12000),'class'=>'badge-professor','icon'=>'fa fa-university');
 		$ranges[] = (object)array('rank'=>'Mad Scientist','range'=>range(12001,99999),'class'=>'badge-mad-scientist','icon'=>'fa fa-flask');
-		
+
 		foreach($ranges as $key=> $badgeamount){
 			if(in_array($hours, $badgeamount->range)){
 				$type = $badgeamount;
 				break;
 			}
 		}
-		
+
 		return '<badge class="rank '.$type->class.'"> <a href="#myrank" class="modal-trigger"><span class="badge-icon"><i class="'.$type->icon.'"></i></span> <span class="badge-text">'.$type->rank.'</span></a> </badge>';
 	}
-	
+
 	function badge($type,$info){
-		
+
 			if(isset($type) && $type=='background_check'){
 				return '<badge class="success"><a class="modal-trigger" href="#bgcheck_modal"><span class="badge-icon"><i class="mdi-action-assignment-ind"></i></span> <span class="badge-text">Background Check</span></a></badge>';
 			}
-		
+
+			if(isset($type) && $type=='imonline'){
+				return '<badge class="imonline"> <span class="badge-icon"><i class="fa fa-wifi"></i></span> <span class="badge-text">I\'m Online</span></badge>';
+			}
+
 		if(isset($info->reviewinfo)){
-			
-			
+
+
 			$s = NULL;
 			if(isset($info->reviewinfo->review_average) && isset($type) && $type=='average_score'){
 				$average = $info->reviewinfo->review_average * 1;
@@ -668,9 +672,9 @@
 		$prepeare = array(':email'=>$email,':status'=>$status);
 		return $connect->executeQuery($sql,$prepeare)->fetchAll();
 	}
-	
+
 	function get_reviews($connect,$email,$usertype){
-		
+
 		if($usertype=='tutor'){
 			$selector = 'from_user';
 			$selector2 = 'to_user';
@@ -679,7 +683,7 @@
 			$selector = 'to_user';
 			$selector2 = 'from_user';
 		}
-		
+
 		return $connect->createQueryBuilder()->select('sessions.*')
 				->from('avid___sessions','sessions')
 				->where($selector.' = :email')
@@ -691,9 +695,9 @@
 				->orderBy('id','DESC')
 				->execute()->fetchAll();
 	}
-	
+
 	function my_testimonials($connect,$email,$usertype){
-		
+
 		if($usertype=='tutor'){
 			$selector = 'from_user';
 			$selector2 = 'to_user';
@@ -702,7 +706,7 @@
 			$selector = 'to_user';
 			$selector2 = 'from_user';
 		}
-		
+
 		$data = $connect->createQueryBuilder()->select('sessions.*, user.first_name, user.customer_id, user.last_name, user.url, user.usertype,
 			profile.my_avatar,
 			profile.my_avatar_status,
@@ -721,25 +725,25 @@
 				->groupBy('user.email')
 				->execute()->fetchAll();
 				//notify($data);
-				
+
 		return $data;
 	}
 	function get_reviewinfo($connect,$email,$usertype){
-		
+
 		if($usertype=='tutor'){
 			$selector = 'from_user';
 		}
 		elseif($usertype=='student'){
 			$selector = 'to_user';
 		}
-		
-		
+
+
 		$data	=	$connect->createQueryBuilder();
 		$data	=	$data->select('sessions.review_name,sessions.review_date,sessions.review_text,sessions.review_score,sessions.session_subject,sessions.session_length')->from('avid___sessions','sessions');
 		$data	=	$data->where('sessions.'.$selector.' = :email')->setParameter(':email',$email);
 		$data	=	$data->andWhere('sessions.session_status = "complete"');
 		$data	=	$data->execute()->fetchAll();
-		
+
 		if(isset($data[0])){
 			$reviewscore = array();
 			$session_length = array();
@@ -751,8 +755,8 @@
 					$session_length[] = ($item->session_length/60);
 				}
 			}
-			
-			
+
+
 			$count = count($data);
 			$star_count = count($reviewscore);
 			$star_sum = array_sum($reviewscore);
@@ -761,20 +765,20 @@
 				$star_average = ($star_sum/$star_count);
 			}
 			$hours_tutored = array_sum($session_length);
-			
+
 			$review_info = new stdClass();
 			$review_info->total_count = $count;
 			$review_info->total_star_count = $star_count;
 			$review_info->total_star_count_sum = $star_sum;
 			$review_info->total_star_count_average = $star_average;
 			$review_info->total_hours_tutored = $hours_tutored;
-			
+
 			$return = new stdClass();
 			$return->count = $star_count;
 			$return->review_average = $star_average;
 			$return->hours_tutored = $hours_tutored;
 			$return->star_score = $star_count;
-			
+
 			$return->additional = $review_info;
 		}
 		else{
@@ -784,9 +788,9 @@
 			$return->hours_tutored = NULL;
 			$return->star_score = NULL;
 		}
-		
+
 		return $return;
-		
+
 	}
 	function get_videos($connect,$email){
 		$sql = "SELECT * FROM avid___user_videos WHERE email = :email ORDER BY `order` ASC";
@@ -806,7 +810,7 @@
 		return $avatars;
 	}
 	function can_i_cancel($data){
-		
+
 		if(empty($data->cancellation_policy)){
 			return true;
 		}
@@ -814,18 +818,18 @@
 			return false;
 		}
 		else{
-			
+
 			if($data->dateDiff->d>0){
 				return true;
 			}
-			
+
 			if(isset($data->cancellation_policy) && $data->dateDiff->h >= $data->cancellation_policy){
 				return true;
 			}
-			
+
 		}
 	}
-	
+
 	function online_session($type){
 		if($type=='yes'){
 			return 'Online';
@@ -834,7 +838,7 @@
 			return 'In Person';
 		}
 	}
-	
+
 	function session_cost($session,$numbersolny=NULL){
 		if(isset($numbersolny)){
 			return (($session->session_rate * $session->session_length) / 60);
@@ -846,7 +850,7 @@
 			return number_format((($session->session_rate * $session->proposed_length) / 60), 2, '.', ',');
 		}
 	}
-	
+
 	function sessionTimestamp($session){
 		$onedate = strtolower(str_replace(',','',$session->session_date));
 		$time = date('H:i:s',strtotime($session->session_time));
@@ -863,14 +867,14 @@
 	    $datetime2 = date_create($date);
 	    $interval = date_diff($datetime1, $datetime2);
 	    $interval->format('%a');
-	    
+
 	    	$interval->text = NULL;
 
 		    if($interval->y!=0){
 			    $interval->text = $interval->y.' year'.calculatethes($interval->y);
 		    }
 		    elseif($interval->m!=0){
-			    $interval->text = $interval->m.' month'.calculatethes($interval->m);   
+			    $interval->text = $interval->m.' month'.calculatethes($interval->m);
 		    }
 		    elseif($interval->days!=0){
 			    $interval->text = $interval->days.' day'.calculatethes($interval->days);
@@ -884,11 +888,11 @@
 		    else{
 			    $interval->text = ' Less than a minute ';
 		    }
-	    
+
 	    return $interval;
 	}
 	function numbers($int,$nocomma=NULL){
-		if(isset($nocomma)){		
+		if(isset($nocomma)){
 			return number_format($int, 0, NULL, ',');
 		}
 		else{
@@ -900,7 +904,7 @@
 	}
 	function profile_select(){
 		return '
-			
+
 			profile.hourly_rate,
 			profile.my_avatar,
 			profile.my_avatar_status,
@@ -911,13 +915,14 @@
 			profile.short_description_verified,
 			profile.getpaid,
 			profile.custom_avatar
-			
+
 		';
 	}
 	function user_select(){
-	
+
 		return '
-			IF(COUNT(user.sessiontoken) = 0, 0, 1) as activenow,
+			IF(COUNT(user.sessiontoken) = 0, NULL, 1) as activenow,
+			user.last_active,
 			user.url,
 			user.usertype,
 			user.customer_id,
@@ -931,52 +936,52 @@
 			user.state,
 			user.state_slug,
 			user.state_long
-		
+
 		';
 	}
-	
+
 	function everything(){
-		
+
 		return user_select().','.profile_select().','.account_settings();
-		
+
 	}
-	
+
 	function removeContacts($string){
 		$patterns = array('<[\w.]+@[\w.]+>', '<\w{3,6}:(?:(?://)|(?:\\\\))[^\s]+>','/\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|$!:,.;]*[A-Z0-9+&@#\/%=~_|$]/i');
 		$matches = array('[***]', '[****]', '[*****]');
 		$string = preg_replace($patterns, $matches, $string);
 		return $string;
 	}
-	
+
 	function scribblar($postarray){
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, 'https://api.scribblar.com/v1/');
 		curl_setopt($ch, CURLOPT_HEADER, 0);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		
+
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $postarray);
-		
+
 		$output = curl_exec($ch);
 		curl_close($ch);
-		
+
 		$xml = simplexml_load_string($output);
 		$json = json_encode($xml);
 		$array = json_decode($json,TRUE);
-		
+
 		return $array;
 	}
-	
+
 	function show_avatar($imageowner,$user=NULL,$path){
-		
+
 		$filename = NULL;
 		$ahrefStart=NULL;
 		$ahrefEnd=NULL;
 		$default = $imageowner->my_avatar;
-		
+
 		if(isset($user->email) && isset($imageowner->email) && $user->email == $imageowner->email && isset($imageowner->my_upload) && isset($imageowner->my_upload_status) && $imageowner->my_upload_status!='verified'){
-			
+
 			$filename = $imageowner->url.'/thumbnail';
-			
+
 		}
 		elseif(isset($imageowner->my_upload) && isset($imageowner->my_upload_status) && $imageowner->my_upload_status=='verified'){
 			$checkfilename = str_replace($path->APP_PATH.'uploads/photos/','',croppedfile($imageowner->my_upload));
@@ -993,7 +998,7 @@
 		else{
 			$filename = $default;
 		}
-		
+
 		if($imageowner->usertype=='tutor' && empty($imageowner->dontshow)){
 			$ahrefStart='<a href="'.$imageowner->url.'">';
 			$ahrefEnd='</a>';
@@ -1002,12 +1007,12 @@
 			$ahrefStart='<a href="'.$imageowner->url.'">';
 			$ahrefEnd='</a>';
 		}
-		
+
 		$addClass = NULL;
 		if(strpos($filename, '/profiles/avatars') !== false){
 			$addClass = ' default-avatar ';
 		}
-		
+
 		$show = NULL;
 		if(isset($imageowner->showmyphotoas)){
 			if($imageowner->showmyphotoas==1){
@@ -1031,21 +1036,26 @@
 		else{
 			$show = $filename;
 		}
-		
+
 		if(isset($imageowner->my_upload_status) && $imageowner->my_upload_status=='needs-review'  && isset($imageowner->thisisme)){
-			
-			$ahrefStart.='<div class="i-need-review">';
-			
-				echo '<div class="please-review"><a href="/request-profile-review">Photo Needs Review</a></div>';
-			
-			$ahrefEnd.='</div>';
-			
+
+			if(isset($imageowner->showmyphotoas) && $imageowner->showmyphotoas!=1){
+				//
+			}
+			else{
+				$ahrefStart.='<div class="i-need-review">';
+
+					echo '<div class="please-review"><a href="/request-profile-review">Photo Needs Review</a></div>';
+
+				$ahrefEnd.='</div>';
+			}
+
 		}
-		
+
 		return $ahrefStart.'<img class="avatarbg responsive-img '.$addClass.'" src="'.$show.'" />'.$ahrefEnd;
-		
+
 	}
-	
+
 	function make_search_key_cache($data,$connect){
 		// Turn SQL into a fingerprint
 		$proccessed = strtolower(str_replace(array("\t","\n"),'',$data->getSql()));
@@ -1054,15 +1064,15 @@
 			$params.=$key.'-'.$param;
 		};
 		$key = $proccessed.$params;
-		
+
 		// Check to see if that fingerprint exists
 		$sql = "SELECT * FROM avid___cacheids WHERE content = :content";
 		$prepare = array(':content'=>$key);
 		$results = $connect->executeQuery($sql,$prepare)->fetch();
-		
-		
+
+
 		if(isset($results->id)){
-			// If it does exist, pull the ID of the fingerprint and 
+			// If it does exist, pull the ID of the fingerprint and
 			$cachename = 'cached-search-'.$results->id;
 		}
 		else{
@@ -1070,10 +1080,10 @@
 			$connect->insert('avid___cacheids',array('content'=>$key));
 			$cachename = 'cached-search-'.$connect->lastInsertId();;
 		}
-		
+
 		#$connect->cache->clean();
 		#exit;
-		
+
 		// Now attempt to pull the Cached item out of Cache
 		$cachedSearch = $connect->cache->get($cachename);
 		if($cachedSearch == null){
@@ -1081,12 +1091,12 @@
 		    $cachedSearch = $returnedData;
 		    $connect->cache->set($cachename, $returnedData, 1800);
 		}
-		
+
 		//notify($cachedSearch);
-		
+
 		return $cachedSearch;
 	}
-	
+
 	function makeslug($romanize,$string) {
         $string = trim($string);
         $string = strtr($string,$romanize);                    // Romanize
@@ -1100,7 +1110,7 @@
 		$sql = "SELECT * FROM avid___crediterrors WHERE email = :email ORDER BY id DESC LIMIT 1";
 		$prepare = array(':email'=>$email);
 		$results = $connect->executeQuery($sql,$prepare)->fetch();
-		if(isset($showresults)){		
+		if(isset($showresults)){
 			return $connect->executeQuery($sql,$prepare)->fetch();
 		}
 		if(isset($results->id)){
@@ -1114,7 +1124,7 @@
 		return $final;
 	}
 	function color($key){
-		
+
 		$colors = array(
 			'blue white-text',
 			'red white-text',
@@ -1130,25 +1140,25 @@
 			'orange darken-2 white-text',
 			'deep-orange darken-1 white-text'
 		);
-		
+
 		shuffle($colors);
-		
+
 		return $colors[0];
-		
+
 	}
 	function average_stars($averageScore){
-		
+
 		if(empty($averageScore)){
 			return '<i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i>';
 		}
-		
+
 		$total = 5;
 		$average = $averageScore * 1;
 		$average = floor($average * 2) / 2;
 		$averageTop = ceil($average);
-		
+
 		$average_stars = '';
-		
+
 		if(strpos($average, '.5')){
 			foreach(range(2,$averageTop) as $starsleft){
 				$average_stars.='<i class="fa fa-star"></i>';
@@ -1161,18 +1171,18 @@
 				$average_stars.='<i class="fa fa-star"></i>';
 			}
 		}
-		
+
 		$whatsLeft = $total - $averageTop;
-		if($whatsLeft>0){								
+		if($whatsLeft>0){
 			foreach(range(1,$whatsLeft) as $starsleft){
 				$average_stars.='<i class="fa fa-star-o"></i>';
-			}	
+			}
 		}
 		return $average_stars;
 	}
-	
+
 	function calculate_payrate($connect,$sessioninfo,$userinfo){
-		
+
 		if(isset($sessioninfo->promocode) && $sessioninfo->promocode==$userinfo->email){
 			return 95;
 		}
@@ -1182,11 +1192,11 @@
 		else{
 			return whats_my_rate($connect,$userinfo);
 		}
-		
+
 	}
-	
+
 	function whats_my_rate($connect,$userinfo){
-		
+
 		$final = 70;
 		$rateTable = array(
 			70=>range(0,50),
@@ -1196,7 +1206,7 @@
 			90=>range(2001,9000),
 			95=>range(9001,99999)
 		);
-		
+
 		$sql = "SELECT
 				sum(session_length) as total
 			FROM
@@ -1209,7 +1219,7 @@
 		$prepare = array(':from_user'=>$userinfo->email);
 		$totalMinutes = $connect->executeQuery($sql,$prepare)->fetch();
 		$totalHours = floor($totalMinutes->total / 60);
-		
+
 		foreach($rateTable as $key =>$rate){
 			if(in_array($totalHours, $rate)){
 				$final = $key;
@@ -1217,5 +1227,19 @@
 			}
 		}
 		return $final;
-		
+
+	}
+
+
+	function activenow($results){
+
+		if(isset($results->last_active) && !empty($results->last_active) && isset($results->activenow) && !empty($results->activenow)){
+
+			$lastactiveCal = dateDifference($results->last_active , thedate() , $differenceFormat = '%a' );
+			if($lastactiveCal->i <= 10){
+				return true;
+			}
+
+		}
+
 	}

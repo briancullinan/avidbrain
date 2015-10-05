@@ -1,5 +1,5 @@
 <?php if(isset($app->user->email) && isset($app->user->creditcardonfile) && isset($app->user->status)): ?>
-	
+
 	<div class="row">
 		<div class="col s12 m6 l6">
 			All tutors and students must have their profile verified before you can send messages.
@@ -8,7 +8,7 @@
 			<a href="/request-profile-review" class="btn red">Request Profile Review</a>
 		</div>
 	</div>
-	
+
 <?php elseif(isset($app->user->email) && isset($app->user->creditcardonfile) && empty($app->user->status)): ?>
 	<?php
 
@@ -19,34 +19,34 @@
 		$messagingsystem->csrf_key = $csrf_key;
 		$messagingsystem->csrf_token = $csrf_token;
 		if(isset($app->sendwhiteboard)){
-			
+
 			$whiteboard = new stdClass();
 			$whiteboard->subject = 'Join my Whiteboard Session';
 			$whiteboard->message = 'Hi '.short($app->currentuser).' come over to '.$app->dependents->SITE_NAME_PROPPER.' and join my Scheduled Whiteboard Session.'."\n".$app->dependents->DOMAIN.'/resources/whiteboard/'.$app->sendwhiteboard->roomid;
-			$messagingsystem->formvalues = $whiteboard;	
+			$messagingsystem->formvalues = $whiteboard;
 		}
-		
+
 		$messagingsystem->makeform();
 
 	?>
 <?php elseif(isset($app->user->email) && empty($app->user->creditcardonfile)): ?>
 
-	
-	
+
+
 	<div class="row">
 		<div class="col s12 m6 l6">
 			We required that all student's have a credit card on file before they can send out messages. We don't charge your card, it's only used for Authenticating that you are a student who is looking for tutors.
 		</div>
 		<div class="col s12 m6 l6">
-			<a href="/payment" class="btn blue">Activate Messaging</a>
+			<a href="/payment/credit-card" class="btn blue">Activate Messaging</a>
 		</div>
 	</div>
-	
-	
+
+
 <?php else: ?>
-	
+
 	<?php
-		
+
 		$newinserts = array();
 		$newinserts[] = (object)array(
 			'id'=>'555',
@@ -72,5 +72,5 @@
 		$studentSignup->makeform();
 
 	?>
-	
+
 <?php endif; ?>

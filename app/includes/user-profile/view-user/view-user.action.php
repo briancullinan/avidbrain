@@ -32,6 +32,7 @@
 			select('user.*,profile.*,'.account_settings().',user.id')->from('avid___user','user')->where('url = :url')->setParameter(':url',$url)->
 			innerJoin('user','avid___user_profile','profile','user.email = profile.email')->
 			innerJoin('user','avid___user_account_settings','settings','user.email = settings.email')->
+			addSelect(' IF(COUNT(user.sessiontoken) = 0, NULL, 1) as activenow ')->
 			execute()->fetch();
 			
 			if(isset($app->admin) && isset($data->id)){
