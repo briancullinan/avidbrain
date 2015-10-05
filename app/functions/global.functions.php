@@ -917,6 +917,7 @@
 	function user_select(){
 	
 		return '
+			IF(COUNT(user.sessiontoken) = 0, 0, 1) as activenow,
 			user.url,
 			user.usertype,
 			user.customer_id,

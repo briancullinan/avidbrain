@@ -74,6 +74,7 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 		
 	</div>
 	
+	<?php if(isset($app->leftnav)): ?>
 	<ul class="sidebar-main">
 		<?php foreach($app->leftnav as $key=> $navitem): ?>
 		<li>
@@ -83,7 +84,9 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 		</li>
 		<?php endforeach; ?>
 	</ul>
+	<?php endif; ?>
 	
+	<?php if(isset($app->leftnavsubs)): ?>
 	<ul class="sidebar-subs">
 		<?php foreach($app->leftnavsubs as $key=> $navitem): ?>
 		<li>
@@ -93,6 +96,7 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 		</li>
 		<?php endforeach; ?>
 	</ul>
+	<?php endif; ?>
 	
 	
 </sidebar>

@@ -103,6 +103,9 @@ badge{
 .tutor-results .hourly-rate{
 	border: none;
 }
+.tutor-results.active-now{
+	background: orange;
+}
 .tutor-results badge{
 	background: #f5f5f5;
 }

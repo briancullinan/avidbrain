@@ -19,10 +19,9 @@
 	$searchResults->reviewinfo->star_score = $test->star_score;
 	$searchResults->reviewinfo->hours_tutored = $test->hours_tutored;
 	$searchResults->reviewinfo->count = $test->count;
-	
 ?>
 
-<div class="tutor-results">
+<div class="tutor-results <?php if(isset($searchResults->activenow) && $searchResults->activenow==1){ echo 'active-now';} ?>">
 	<div class="hourly-rate valign-wrapper <?php if(isset($searchResults->negotiableprice) && $searchResults->negotiableprice=='yes'){ echo 'negotiable-price';} ?>">
 		<span class="valign">
 			$<?php echo $searchResults->hourly_rate; ?> <?php if(isset($searchResults->negotiableprice) && $searchResults->negotiableprice=='yes'){ echo '<span class="asterisk"><i class="fa fa-asterisk"></i></span>';} ?>
