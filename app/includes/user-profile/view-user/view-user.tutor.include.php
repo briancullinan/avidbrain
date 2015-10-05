@@ -1,6 +1,6 @@
 <?php if(isset($app->setupinstructions)): ?>
 	<?php include($page = $app->dependents->APP_PATH.'includes/shared-pages/setup-instructions.php'); ?>
-<?php else: ?>
+<?php endif; ?>
 
 
 	<?php if(isset($app->currentuser->thisisme)): ?>
@@ -197,7 +197,7 @@
 		
 	</div>
 
-<?php endif; ?>
+
 
 
 <?php if(isset($app->user->usertype) && $app->user->usertype=='admin'): ?>

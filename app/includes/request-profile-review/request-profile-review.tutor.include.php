@@ -18,43 +18,78 @@
 
 <?php if(isset($submitbutton)): ?>
 
-<p>Once you've clicked the button you will be logged out of <?php echo $app->dependents->SITE_NAME_PROPPER; ?> and your account will be locked, so we can review your profile.</p>
-<form method="post" action="<?php echo $app->request->getPath(); ?>">
-	
-	<input type="hidden" name="requestprofilereview[target]" value="requestprofilereview"  />
-	<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
-	
-	<?php if($app->user->status!='needs-review'): ?>
-	<div>
-		What would you like reviewed?
+<div class="row">
+	<div class="col s12 m6 l6">
+		<h3>Profile Review</h3>
+		<div class="block">
+			<div>Once you've clicked the button you will be logged out of <?php echo $app->dependents->SITE_NAME_PROPPER; ?> and your account will be locked, so we can review your profile.</div>
+			<br>
+			<form method="post" action="<?php echo $app->request->getPath(); ?>">
+				
+				<input type="hidden" name="requestprofilereview[target]" value="requestprofilereview"  />
+				<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
+				
+				<?php if($app->user->status!='needs-review'): ?>
+				<div>
+					What would you like reviewed?
+				</div>
+				
+				<div>
+					<p>
+						<input type="radio" id="mysubjects" name="requestprofilereview[type]" value="My Subjects" />
+						<label for="mysubjects">My Subjects</label>
+					</p>
+					<p>
+						<input type="radio" id="shortdescription" name="requestprofilereview[type]" value="Short Description / About Me" />
+						<label for="shortdescription">My Short Description / About Me</label>
+					</p>
+					<p>
+						<input type="radio" id="everything" name="requestprofilereview[type]" value="Everything" checked="checked" />
+						<label for="everything">Everything</label>
+					</p>
+				</div>
+				<br>
+				<?php else: ?>
+				<input type="hidden" name="requestprofilereview[type]" value="First Time Review"  />
+				<?php endif; ?>
+				
+				<button type="button" class="btn red confirm-submit" data-value="reviewmyprofile" data-name="requestprofilereview">Request Profile Review</button>
+				
+			</form>
+		</div>
 	</div>
-	
-	<div>
-		<span>
-			<input type="radio" id="myphoto" name="requestprofilereview[type]" value="My Photo" />
-			<label for="myphoto">My Photo</label>
-		</span>
-		<span>
-			<input type="radio" id="mysubjects" name="requestprofilereview[type]" value="My Subjects" />
-			<label for="mysubjects">My Subjects</label>
-		</span>
-		<span>
-			<input type="radio" id="shortdescription" name="requestprofilereview[type]" value="Short Description / About Me" />
-			<label for="shortdescription">My Short Description / About Me</label>
-		</span>
-		<span>
-			<input type="radio" id="everything" name="requestprofilereview[type]" value="Everything" />
-			<label for="everything">Everything</label>
-		</span>
+	<div class="col s12 m6 l6">
+		<h3>Photo Review</h3>
+		<div class="block">
+			<div>If you would like your photo approved, without locking your account, click the submit button below.</div>
+			<br>
+			<form method="post" action="<?php echo $app->request->getPath(); ?>">
+				
+				<input type="hidden" name="requestprofilereview[target]" value="requestprofilereview"  />
+				<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
+				
+				<?php if($app->user->status!='needs-review'): ?>
+				<div>
+					What would you like reviewed?
+				</div>
+				
+				<div>
+					<p>
+						<input type="radio" checked="checked" id="myphoto" name="requestprofilereview[type]" value="My Photo" />
+						<label for="myphoto">My Photo</label>
+					</p>
+				</div>
+				<br>
+				<?php else: ?>
+				<input type="hidden" name="requestprofilereview[type]" value="First Time Review"  />
+				<?php endif; ?>
+				
+				<button type="button" class="btn red confirm-submit" data-value="reviewmyprofile" data-name="requestprofilereview">Request Photo Review</button>
+				
+			</form>
+		</div>
 	</div>
-	<br>
-	<?php else: ?>
-	<input type="hidden" name="requestprofilereview[type]" value="First Time Review"  />
-	<?php endif; ?>
-	
-	<button type="button" class="btn red confirm-submit" data-value="reviewmyprofile" data-name="requestprofilereview">Request Profile Review</button>
-	
-</form>
+</div>
 
 <?php else: ?>
 	

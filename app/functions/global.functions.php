@@ -1037,7 +1037,7 @@
 			$show = $filename;
 		}
 
-		if(isset($imageowner->my_upload_status) && $imageowner->my_upload_status=='needs-review'  && isset($imageowner->thisisme)){
+		if(isset($imageowner->my_upload_status) && $imageowner->my_upload_status=='needs-review'  && isset($imageowner->thisisme) && empty($imageowner->dontwhownotice)){
 
 			if(isset($imageowner->showmyphotoas) && $imageowner->showmyphotoas!=1){
 				//

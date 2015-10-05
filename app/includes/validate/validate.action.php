@@ -20,6 +20,7 @@
 			$message = '<p>A new student has signed up, through your profile, after they complete their profile you will be able to view it</p>';
 			$message.= '<p>Message from student: '.$waiting_to_email->send_message.'</p>';
 			
+			
 			if(isset($waiting_to_email->getemails) && $waiting_to_email->getemails=='yes'){
 				
 				$app->mailgun->to = $waiting_to_email->to_user;

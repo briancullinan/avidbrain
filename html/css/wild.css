@@ -360,7 +360,8 @@ notifications.low{
 	color: #000;
 }
 notifications.low span{
-	background: #ccc;
+	background: #fff;
+	border: solid 1px #ccc;
 }
 
 main .liu.active-notification{

@@ -84,7 +84,7 @@
 	<?php else: ?>
 
 		<form enctype="multipart/form-data" action="<?php echo $app->currentuser->url; ?>" method="post" id="upload-photo-form">
-			<input type="text" name="upload[width]" value="200" id="pagewidth"  />
+			<input type="hidden" name="upload[width]" value="200" id="pagewidth"  />
 			<input type="hidden" name="upload[target]" value="upload"  />
 			<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
 			<input type="hidden" name="MAX_FILE_SIZE" value="5000000" />

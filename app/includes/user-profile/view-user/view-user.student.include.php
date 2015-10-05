@@ -1,6 +1,4 @@
-<?php if(isset($app->setupinstructions)): ?>
-	<?php include($page = $app->dependents->APP_PATH.'includes/shared-pages/setup-instructions.php'); ?>
-<?php else: ?>
+
 
 
 	<?php if(isset($app->currentuser->thisisme)): ?>
@@ -50,7 +48,7 @@
 							</div>
 						<?php endif; ?>
 						
-						<div class="about-me">
+						<div class="about-me" id="about-me">
 							
 							<?php if(isset($app->currentuser->toplinks['send-message'])): ?>
 							<div class="message-box">
@@ -168,5 +166,7 @@
 		
 		
 	</div>
-
+	
+<?php if(isset($app->setupinstructions)): ?>
+	<?php include($page = $app->dependents->APP_PATH.'includes/shared-pages/setup-instructions.student.php'); ?>
 <?php endif; ?>

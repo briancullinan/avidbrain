@@ -35,7 +35,7 @@
 			</div>
 		<?php endif; ?>
 	
-		<h3 class="edit-change">
+		<h3 class="edit-change" id="addshortdescription">
 			<input type="text" name="editprofile[short_description]" placeholder="Please add a short description about yourself" maxlength="40" value="<?php echo $app->currentuser->short_description; ?>"	/>
 		</h3>
 	
@@ -49,7 +49,7 @@
 			</div>
 		<?php endif; ?>
 		
-		<div class="edit-change">
+		<div class="edit-change" id="addpersonalstatement">
 			<textarea name="editprofile[personal_statement]" placeholder="Please describe yourself" class="materialize-textarea"><?php echo $app->currentuser->personal_statement; ?></textarea>
 		</div>
 	

@@ -43,8 +43,8 @@
 		$data	=	$data->andWhere('subjects.status = :verified')->setParameter(':verified','verified');
 		$data	=	$data->setParameter(':subject_name',"%".$app->job->subject_name."%");
 		$data	=	$data->groupBy('user.email');
-		$data	=	$data->setMaxResults(3);
-		$data	=	$data->addSelect($getDistance.$asDistance)->setParameter(':distance',25)->having("distance <= :distance");
+		$data	=	$data->setMaxResults(4);
+		$data	=	$data->addSelect($getDistance.$asDistance)->setParameter(':distance',50)->having("distance <= :distance");
 		$data	=	$data->orderBy($getDistance,'ASC');
 		$returnedData	=	$data->execute()->fetchAll();
 		
