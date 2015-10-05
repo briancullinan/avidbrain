@@ -192,7 +192,7 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 </main>
 
 <footer>
-	<div class="container">
+	<div class="container-fluid">
 		<div class="row">
 			<div class="col s12 m3 l3">
 				<h5 class="white-text">Important Things</h5>
