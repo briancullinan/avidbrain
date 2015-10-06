@@ -342,7 +342,7 @@ notifications{
 	background: #000;
 	width: 100%;
 	text-align: center;
-	padding: 10px;
+	padding: 5px;
 	left: 0px;
 }
 notifications span{
@@ -359,8 +359,11 @@ notifications.low{
 	background: #DEDEDE;
 	color: #000;
 }
-notifications.low span{
+notifications.low a{
 	background: #fff;
+    display: inline-block;
+    padding: 2px 10px;
+    color: #333;
 	border: solid 1px #ccc;
 }
 

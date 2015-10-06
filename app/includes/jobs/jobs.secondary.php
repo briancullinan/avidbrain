@@ -1,19 +1,7 @@
-<?php if(isset($app->navtitle)): ?>
-<div class="sub-navigation-title">
-	<a <?php if($app->request->getPath()==$app->navtitle->slug){ echo ' class="active" ';} ?> href="<?php echo $app->navtitle->slug; ?>">
-		<?php if($app->request->getPath()==$app->navtitle->slug){ echo ' <i class="fa fa-chevron-right"></i> ';} ?>
-		<?php echo $app->navtitle->text; ?>
-	</a>
-</div>
-<?php endif; ?>
-
+<div class="findauser">Find A Tutoring Job</div>
 <div class="sidebarsearch find-a-job">
 
 	<form class="tutor-search-form" id="searchform" method="post" action="/jobs">
-
-		<legend>
-			Find A Tutoring Job
-		</legend>
 
 	    <div class="input-field">
 

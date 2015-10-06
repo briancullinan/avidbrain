@@ -17,7 +17,7 @@
 		if(isset($results->type) && $results->type=='My Photo'){
 			$notications = new stdClass();
 			$notications->status = 'low';
-			$notications->message = '<span>Your photo is under review</span>';
+			$notications->message = '<a href="'.$app->user->url.'/my-photos">Your photo is under review</a>';
 			$app->notifications = $notications;
 		}
 	}

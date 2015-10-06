@@ -220,9 +220,16 @@ main .container-nopadd{
 	text-align: center;
 }
 
-.find-a-tutor, .find-a-job{
+.find-a-tutor, .find-a-job, .find-a-student{
 	background: #fff;
 	border: solid 1px #ccc;
+}
+.students-search-form{
+	padding: 10px;
+}
+.findauser{
+	background: #ececec;
+	padding: 10px;
 }
 .tutor-search-form{
 	margin: 10px;
