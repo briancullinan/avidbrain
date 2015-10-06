@@ -192,12 +192,11 @@ table tr:first-child{
 
 span.badge.new{
 	position: relative;
-	background: orange;
 	float: right;
 	margin: 0px;
 	right: auto;
 	margin-top: 5px;
-	background: #fff;
+	background: #CF0;
 	color: #333;
 }
 footer span.badge.new{
@@ -310,4 +309,8 @@ main .container-nopadd{
 }
 .shepherd-step{
 	z-index: 333;
+}
+
+.block.tweets .description{
+	padding: 0px;
 }

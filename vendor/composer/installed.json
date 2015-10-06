@@ -1624,64 +1624,6 @@
         "homepage": "https://github.com/fguillot/picoFeed"
     },
     {
-        "name": "phpfastcache/phpfastcache",
-        "version": "3.0.11",
-        "version_normalized": "3.0.11.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/khoaofgod/phpfastcache.git",
-            "reference": "5ee8aadcf04921f1b6f5742d2610973a5d8e9fe0"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/khoaofgod/phpfastcache/zipball/5ee8aadcf04921f1b6f5742d2610973a5d8e9fe0",
-            "reference": "5ee8aadcf04921f1b6f5742d2610973a5d8e9fe0",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.1.0"
-        },
-        "time": "2015-09-14 18:49:38",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "files": [
-                "phpfastcache.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Khoa Bui",
-                "email": "khoaofgod@gmail.com",
-                "homepage": "http://www.phpfastcache.com",
-                "role": "Developer"
-            }
-        ],
-        "description": "PHP Cache Class - Supported Redis, Cookie, Predis, APC, MemCached, WinCache, Files, PDO, Reduce mySQL Call by Caching",
-        "homepage": "http://www.phpfastcache.com",
-        "keywords": [
-            "APC Cache",
-            "apc",
-            "cache",
-            "cache class",
-            "caching",
-            "cookie",
-            "files cache",
-            "memcache",
-            "memcached",
-            "mysql cache",
-            "pdo cache",
-            "php cache",
-            "predis",
-            "redis",
-            "wincache"
-        ]
-    },
-    {
         "name": "google/apiclient",
         "version": "1.1.5",
         "version_normalized": "1.1.5.0",
@@ -1956,6 +1898,64 @@
             "api",
             "payment processing",
             "stripe"
+        ]
+    },
+    {
+        "name": "phpfastcache/phpfastcache",
+        "version": "3.0.14",
+        "version_normalized": "3.0.14.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/khoaofgod/phpfastcache.git",
+            "reference": "fcbc79853970e0fb2be2d4ca5e06602dc16b8400"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/khoaofgod/phpfastcache/zipball/fcbc79853970e0fb2be2d4ca5e06602dc16b8400",
+            "reference": "fcbc79853970e0fb2be2d4ca5e06602dc16b8400",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.1.0"
+        },
+        "time": "2015-10-03 09:16:49",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "phpfastcache.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Khoa Bui",
+                "email": "khoaofgod@gmail.com",
+                "homepage": "http://www.phpfastcache.com",
+                "role": "Developer"
+            }
+        ],
+        "description": "PHP Cache Class - Supported Redis, Cookie, Predis, APC, MemCached, WinCache, Files, PDO, Reduce mySQL Call by Caching",
+        "homepage": "http://www.phpfastcache.com",
+        "keywords": [
+            "APC Cache",
+            "apc",
+            "cache",
+            "cache class",
+            "caching",
+            "cookie",
+            "files cache",
+            "memcache",
+            "memcached",
+            "mysql cache",
+            "pdo cache",
+            "php cache",
+            "predis",
+            "redis",
+            "wincache"
         ]
     }
 ]

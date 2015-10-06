@@ -316,7 +316,7 @@ subnav a.active, subnav li.active a{
 	color: #0087F2;
 }
 .activate-menu .menu-new{
-	color: red;
+	color: #cf0;
 	font-size: 9px;
 	position: absolute;
 	right: 0px;
@@ -461,6 +461,9 @@ footer{
 	display: block;
 	padding: 10px;
 	color: #fff;
+}
+.header-nav li a:hover{
+    color: #ccc;
 }
 
 .sidebar-status{

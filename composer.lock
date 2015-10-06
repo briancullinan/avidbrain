@@ -1376,16 +1376,16 @@
         },
         {
             "name": "phpfastcache/phpfastcache",
-            "version": "3.0.11",
+            "version": "3.0.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/khoaofgod/phpfastcache.git",
-                "reference": "5ee8aadcf04921f1b6f5742d2610973a5d8e9fe0"
+                "reference": "fcbc79853970e0fb2be2d4ca5e06602dc16b8400"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/khoaofgod/phpfastcache/zipball/5ee8aadcf04921f1b6f5742d2610973a5d8e9fe0",
-                "reference": "5ee8aadcf04921f1b6f5742d2610973a5d8e9fe0",
+                "url": "https://api.github.com/repos/khoaofgod/phpfastcache/zipball/fcbc79853970e0fb2be2d4ca5e06602dc16b8400",
+                "reference": "fcbc79853970e0fb2be2d4ca5e06602dc16b8400",
                 "shasum": ""
             },
             "require": {
@@ -1428,7 +1428,7 @@
                 "redis",
                 "wincache"
             ],
-            "time": "2015-09-14 18:49:38"
+            "time": "2015-10-03 09:16:49"
         },
         {
             "name": "psr/http-message",

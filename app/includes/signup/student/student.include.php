@@ -1,4 +1,4 @@
-<div class="student-signup">
+<div class="student-signup hide">
 	<p>Welcome to <?php echo $app->dependents->SITE_NAME_PROPPER; ?>! We are a trusted community marketplace that connects students and qualified tutors for online and in-person tutoring sessions. All tutors are interviewed and background checked to ensure safety and effectiveness. </p>
 
 	<div class="signup-how-it-works center-align">
@@ -61,6 +61,11 @@
 		<h2>Student Benefits</h2>
 
 		<?php include($app->dependents->APP_PATH.'includes/signup/student/student-benefits.php'); ?>
+
+		<br><br>
+		<div class="how-it-works center-align" data-status="closed">
+	    	<span>How It Works</span>
+		</div>
 
 	</div>
 

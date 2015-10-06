@@ -376,3 +376,17 @@ width: 50%;
 
 	text-shadow: 2px 2px #000;
 }
+
+
+.avid-brain-subjects a{
+	display: block;
+	padding: 5px;
+}
+.avid-brain-subjects a:hover{
+	background: #fff;
+}
+.avid-brain-subjects a .badge{
+	right:auto;
+	margin-right: 5px;
+	position: relative;;
+}

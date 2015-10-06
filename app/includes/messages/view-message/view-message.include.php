@@ -29,7 +29,7 @@
 
 			?>
 		</div>
-		<div class="col s12 m2 l2">
+		<div class="col s12 m4 l3">
 		<?php if($app->viewmessage->to_user==$app->user->email): ?>
 
 			<form method="post" class="form-post button-form-switch" action="<?php echo $app->request->getPath(); ?>">
@@ -56,6 +56,8 @@
 				<?php endif; ?>
 
 
+				<?php
+				/*
 				<?php if(isset($app->viewmessage->status__flagged)): ?>
 				<button class="btn blue darken-2 btn-s btn-block" data-name="inboxaction[value]" data-value="un-flag">
 					<i class="fa fa-flag"></i> Un-Flag
@@ -65,6 +67,8 @@
 					<i class="fa fa-flag"></i> Flag
 				</button>
 				<?php endif; ?>
+				*/
+				?>
 
 				<?php if(isset($app->viewmessage->status__starred)): ?>
 				<button class="btn orange darken-2 btn-s btn-block" data-name="inboxaction[value]" data-value="un-star">
@@ -83,7 +87,7 @@
 			&nbsp;
 		<?php endif; ?>
 		</div>
-		<div class="col s12 m8 l8">
+		<div class="col s12 m6 l7">
 
 			<div class="row row-fix title">
 				<div class="col s12 m8 l8">
