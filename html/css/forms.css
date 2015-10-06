@@ -82,7 +82,7 @@
 }
 .form-parent form{
 	background: #fff;
-	padding: 10px;
+	padding: 10px 15px;
 	border: solid 1px #e0e0e0;
 }
 .kill-form{
@@ -184,7 +184,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', e
 	display: none;
 }
 .type-radio{
-	
+
 }
 .type-radio [type="radio"].with-gap:checked+label:before{
 	border: solid 2px #2196F3;
@@ -274,7 +274,7 @@ input[type=text], input[type=password], input[type=email], input[type=url], inpu
 	display: none;
 }
 .secondary-container.closed .tutor-search-form{
-	
+
 }
 .secondary-top{
 	padding: 0px;
