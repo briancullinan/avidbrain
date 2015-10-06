@@ -12,31 +12,31 @@
 </div>
 
 <?php
-	
+
 	$dropdownnav = array();
-	$dropdownnav[] = (object)array('url'=>'/','text'=>'<i class="fa fa-home"></i> Home','class'=>'dll-home');
+	//$dropdownnav[] = (object)array('url'=>'/','text'=>'<i class="fa fa-home"></i> Home','class'=>'dll-home');
 	//$dropdownnav[] = (object)array('class'=>'divider');
-	
-	
+
+
 	if($app->user->usertype=='admin'){
 		$dropdownnav[] = (object)array('url'=>'/admin-everything','text'=>'<i class="fa fa-gear"></i> Admin Everything');
 		$dropdownnav[] = (object)array('url'=>'/admin-everything/edit-profile','text'=>' Edit Profile');
 	}
 	else{
-		
+
 		if(isset($app->user->url)){
 			$dropdownnav[] = (object)array('url'=>$app->user->url,'text'=>'View/Edit Your Profile','class'=>'dll-veyp');
 		}
-		
+
 		if(isset($app->user->usertype) && $app->user->usertype=='tutor'){
 			$dropdownnav[] = (object)array('url'=>'/request-profile-review','class'=>'request-review','text'=>'Request Profile Review','class'=>'dll-rpp');
 		}
-		
+
 		$dropdownnav[] = (object)array('url'=>'/account-settings','text'=>'Account Settings','class'=>'dll-acts');
 		$dropdownnav[] = (object)array('url'=>'/payment','text'=>'Payment','class'=>'dll-pay');
-		
+
 	}
-	
+
 	$dropdownnav[] = (object)array('class'=>'divider');
 	$dropdownnav[] = (object)array('url'=>'/logout','text'=>'<i class="mdi-action-exit-to-app"></i> Logout','class'=>'dll-logout');
 ?>
@@ -50,14 +50,14 @@
 					$userinfo->thisisme = 1;
 					$userinfo->dontwhownotice = 1;
 					echo show_avatar($userinfo,$app->user,$app->dependents);
-				?> 
+				?>
 			</div>
 			<div class="col s7 m7 l7 ">
-				
+
 				<div class="valign">
 					<a href="<?php echo $app->user->url; ?>"><?php echo $app->user->first_name; ?> <?php echo $app->user->last_name; ?></a>
 				</div>
-				
+
 			</div>
 		</div>
 	</li>

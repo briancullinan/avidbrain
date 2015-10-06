@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- <?php echo $app->dependents->headerinfo; ?>
-	
+
 -->
 <html>
 <head>
@@ -9,12 +9,12 @@
 	<meta name="application-name" content="<?php echo $app->dependents->SITE_NAME; ?>" />
 	<meta name="description" content="<?php if(isset($app->meta->description)){echo $app->meta->description;}else{ echo $app->dependents->SITE_NAME_PROPPER.' Tutoring. Find A Tutor. Become a Tutor.'; } ?>" />
 	<meta name="keywords" content="<?php if(isset($app->meta->keywords)){echo $app->meta->keywords;}else{echo $app->dependents->SITE_NAME_PROPPER.','.$app->dependents->SITE_NAME.',avid,brain,tutor,tutoring,education';} ?>" />
-	
+
 	<meta name="author" content="<?php echo $app->dependents->SITE_NAME_PROPPER; ?> inc." />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 	<link rel="icon" type="image/png" href="/images/favicon.ico" />
 <?php
-	
+
 // CDN CSS
 foreach($app->header->cdncss as $cdncss){
 	echo "\t".'<link rel="stylesheet" href="'.$cdncss.'">'."\n";
@@ -32,7 +32,7 @@ endif;
 foreach($app->header->headjs as $localjs){
 	echo "\t".'<script src="'.$localjs.'"></script>'."\n";
 }
-	
+
 echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependents->stripe->STRIPE_PUBLIC.'");</script>'."\n";
 
 	$openClosed = NULL;
@@ -51,13 +51,13 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 </head>
 <body class="body <?php if(isset($app->secondary) && file_exists($app->secondary)){ echo 'sub-active';} if(isset($app->user->email)){ echo ' active-user ';} echo ' page--'.str_replace('-','',$app->target->css).' '; ?>">
 <sidebar>
-	
+
 	<div class="logo">
 		<a href="/">avidbrain</a>
 	</div>
-	
+
 	<div class="sidebar-status">
-		
+
 		<?php if(isset($app->user->email)): ?>
 			<!-- Something Here -->
 		<?php else: ?>
@@ -71,9 +71,9 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 			</div>
 		</div>
 		<?php endif; ?>
-		
+
 	</div>
-	
+
 	<?php if(isset($app->leftnav)): ?>
 	<ul class="sidebar-main">
 		<?php foreach($app->leftnav as $key=> $navitem): ?>
@@ -85,7 +85,7 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 		<?php endforeach; ?>
 	</ul>
 	<?php endif; ?>
-	
+
 	<?php if(isset($app->leftnavsubs)): ?>
 	<ul class="sidebar-subs">
 		<?php foreach($app->leftnavsubs as $key=> $navitem): ?>
@@ -97,22 +97,22 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 		<?php endforeach; ?>
 	</ul>
 	<?php endif; ?>
-	
-	
+
+
 </sidebar>
 <header class="itstheheader">
-	
+
 	<div class="left">
-		<div class="left activate-menu" data-status="closed">		
+		<div class="left activate-menu" data-status="closed">
 			<i class="fa fa-bars"></i> <span>Menu</span> <?php if(isset($app->messsesscount)){ echo '<i class="fa fa-circle menu-new"></i>'; } ?>
 		</div>
-		
+
 	</div>
-	
+
 	<div class="logo logo-main">
 		<a href="/"><img src="/images/avidbrainlogo.png" /></a>
 	</div>
-	
+
 	<div class="right-info">
 		<?php if(isset($app->user->email)): ?>
 			<?php include('user-dropdown.wild.php'); ?>
@@ -132,27 +132,27 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 		</ul>
 		<?php endif; ?>
 	</div>
-	
-	
+
+
 	<?php if(isset($app->notifications)): ?>
 	<notifications class="<?php echo $app->notifications->status; ?>">
 		<?php echo $app->notifications->message; ?>
 	</notifications>
 	<?php endif; ?>
-	
+
 </header>
 
 
 <main>
 	<div class="<?php if($app->target->key=='/homepage/homepage'){ echo 'homepage-container';}else{ echo 'container container-fluid';} if(isset($app->user->email)){ echo ' liu ';} if(isset($app->notifications)){ echo 'active-notification';} ?> ">
-		
+
 		<?php if(isset($app->howitworks)){ include($app->dependents->APP_PATH.'includes/how-it-works/how-it-works.php'); } ?>
 		<?php if(isset($_SESSION['slim.flash']['error'])): ?>
 			<div class="say-message"><div class="the-message show-message"><?php echo $_SESSION['slim.flash']['error']; ?></div></div>
 		<?php endif; ?>
-		
+
 		<?php if(isset($app->secondary) && file_exists($app->secondary) || isset($app->tertiary) && file_exists($app->tertiary)): ?>
-			
+
 			<div class="row">
 				<div class="col s12 m3 l3">
 					<div class="left-navigation">
@@ -164,15 +164,15 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 					<?php include('wild.pages.php'); ?>
 				</div>
 			</div>
-		
+
 		<?php else: ?>
-		
+
 			<?php include('wild.pages.php'); ?>
-		
+
 		<?php endif; ?>
-		
+
 	</div>
-	
+
 
 	<?php if(isset($pagename) && $pagename=='my-photos'): ?>
 	<div class="container-fluid">
@@ -188,7 +188,7 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 		</div>
 	</div>
 	<?php endif; ?>
-	
+
 </main>
 
 <footer>
@@ -265,13 +265,13 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 </footer>
 
 <?php include('modals.php'); ?>
-	
+
 <?php
 // CDN JS
 foreach($app->header->cdnjs as $cdnjs){
 	echo "\t".'<script src="'.$cdnjs.'"></script>'."\n";
 }
-	
+
 if(isset($app->minify)):
 	echo "\t".'<script src="/js/final.'.$app->dependents->VERSION.'.js"></script>'."\n";
 else:

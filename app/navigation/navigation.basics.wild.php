@@ -1,7 +1,7 @@
 <?php
 
 	if(isset($app->user->status) && $app->user->status=='needs-review' && $app->user->usertype=='student' && isset($app->user->welcome)){
-		
+
 		$notications = new stdClass();
 		$notications->status = 'urgent';
 		$notications->message = '<a class="btn black btn-s" href="/activate-profile">Activate Your Profile</a>';

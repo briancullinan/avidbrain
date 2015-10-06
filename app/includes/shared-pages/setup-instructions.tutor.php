@@ -15,6 +15,7 @@ tour.addStep('step0', {
 		{
 			text: 'Next',
 				action: function() {
+                    $('.itsanoverlay').fadeOut(function(){$(this).remove();});
 					$('html, body').animate({scrollTop: $(".tutor-left").offset().top - 120}, 1000);
 					return tour.next();
 				}
@@ -63,27 +64,27 @@ tour.addStep('step5', {
 		{
 			text: 'Next',
 				action: function() {
-					$('html, body').animate({scrollTop: $(".tutor-left").offset().top - 120}, 1000);
+					$('html, body').animate({scrollTop: $("#about-me").offset().top - 120}, 1000);
 					return tour.next();
 				}
 		}
 	]
 });
 
-tour.addStep('step4', {
-	title: "Add a Subject & A Photo",
-	text: "addasubjectandaphoto",
-	attachTo: '#mylinks right',
-	classes: 'shepherd shepherd-open shepherd-theme-arrows shepherd-transparent-text',
-	buttons: [
-		{
-			text: 'Next',
-				action: function() {
-					return tour.next();
-				}
-		}
-	]
-});
+// tour.addStep('step4', {
+// 	title: "Add a Subject & A Photo",
+// 	text: "addasubjectandaphoto",
+// 	attachTo: '#mylinks right',
+// 	classes: 'shepherd shepherd-open shepherd-theme-arrows shepherd-transparent-text',
+// 	buttons: [
+// 		{
+// 			text: 'Next',
+// 				action: function() {
+// 					return tour.next();
+// 				}
+// 		}
+// 	]
+// });
 
 tour.addStep('step3', {
 	title: "Update Your Info",

@@ -1,5 +1,12 @@
 <?php
 
+	$deleteRequest = array(
+		'type'=>'My Photo',
+		'email'=>$app->user->email
+	);
+
+	$app->connect->delete('avid___user_needsprofilereview',$deleteRequest);
+
 	$cropped = croppedfile($app->currentuser->my_upload);
 	$fileName = str_replace($app->dependents->APP_PATH.'uploads/photos/','',$cropped);
 	$approvedfile = $app->dependents->DOCUMENT_ROOT.'profiles/approved/'.$fileName;

@@ -16,6 +16,7 @@ tour.addStep('myStep', {
 		{
 			text: 'Next',
 				action: function() {
+                    $('.itsanoverlay').fadeOut(function(){$(this).remove();});
 					return tour.next();
 				}
 		}
@@ -55,4 +56,5 @@ tour.addStep('myStep', {
 tour.start();
 
 </script>
+
 <div class="itsanoverlay"></div>
