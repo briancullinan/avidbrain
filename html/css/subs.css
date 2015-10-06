@@ -26,7 +26,7 @@
 	margin-bottom: 10px;
 }
 .student-signup .how-it-works{
-	
+
 }
 .student-signup .how-it-works.active{
 
@@ -343,4 +343,36 @@ width: 50%;
 }
 #field_getprices_subject, #field_getprices_zipcode{
 	width: 50%;
+}
+
+
+.activate-complete{
+    width: 100%;
+    float: left;
+}
+.activate-complete-middle{
+    width: 4%;
+    float: left;
+}
+.activate-complete-left, .activate-complete-right{
+    float: left;
+    width: 48%;
+    background: #efefef;
+    background-image: url('/images/subjects/liberalarts.jpg');
+    background-size: cover;
+    min-height: 200px;
+}
+.activate-complete div{
+
+}
+.activate-complete a{
+    display: block;
+    padding: 20px;
+    width: 100%;
+    font-family: 'Quicksand';
+    color:#fff;
+    font-size: 25px;
+    font-weight: 700;
+
+	text-shadow: 2px 2px #000;
 }

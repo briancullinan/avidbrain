@@ -1,7 +1,10 @@
 @charset "utf-8";
 
 @media only screen and (max-width: 500px){
-	
+	.container{
+		width: 93% !important;
+		overflow: hidden;
+	}
 	.wide-copy{
 		font-size: 25px;
 	}
@@ -26,7 +29,7 @@
 	}
 }
 @media only screen and (min-width: 993px){
-	
+
 }
 @media only screen and (min-width: 1200px){
 	.container{

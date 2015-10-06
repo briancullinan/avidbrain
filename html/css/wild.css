@@ -36,6 +36,7 @@ main .container-fluid, footer .container-fluid{
 	width: 95%;
 	max-width: inherit;
 	margin: 0 auto;
+    padding-bottom: 15px;
 }
 
 h1,h2,h3,h4,h5,h6{

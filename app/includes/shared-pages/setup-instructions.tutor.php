@@ -17,6 +17,7 @@ tour.addStep('step0', {
 				action: function() {
                     $('.itsanoverlay').fadeOut(function(){$(this).remove();});
 					$('html, body').animate({scrollTop: $(".tutor-left").offset().top - 120}, 1000);
+                    $('#addshortdescription input').focus();
 					return tour.next();
 				}
 		}
@@ -33,6 +34,7 @@ tour.addStep('step1', {
 			text: 'Next',
 				action: function() {
 					$('html, body').animate({scrollTop: $("#addpersonalstatement").offset().top - 120}, 1000);
+                    $('#addpersonalstatement textarea').focus();
 					return tour.next();
 				}
 		}
@@ -49,6 +51,7 @@ tour.addStep('step2', {
 			text: 'Next',
 				action: function() {
 					$('html, body').animate({scrollTop: $(".tutor-left").offset().top - 120}, 1000);
+                    $('.reset-input.hourly_rate').focus();
 					return tour.next();
 				}
 		}
@@ -106,5 +109,4 @@ tour.addStep('step3', {
 tour.start();
 
 </script>
-
 <div class="itsanoverlay"></div>

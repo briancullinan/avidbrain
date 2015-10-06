@@ -7,6 +7,23 @@ tour = new Shepherd.Tour({
   }
 });
 
+tour.addStep('step0', {
+	title: "Welcome to the new AvidBrain",
+	text: "Something about the new interface and stuff",
+	classes: 'shepherd shepherd-open shepherd-theme-arrows shepherd-transparent-text',
+	buttons: [
+		{
+			text: 'Next',
+				action: function() {
+                    $('.itsanoverlay').fadeOut(function(){$(this).remove();});
+					$('html, body').animate({scrollTop: $(".tutor-left").offset().top - 120}, 1000);
+                    $('#addshortdescription input').focus();
+					return tour.next();
+				}
+		}
+	]
+});
+
 tour.addStep('myStep', {
 	title: "Add a short description",
 	text: "Add a short description about yourself.",
@@ -16,7 +33,8 @@ tour.addStep('myStep', {
 		{
 			text: 'Next',
 				action: function() {
-                    $('.itsanoverlay').fadeOut(function(){$(this).remove();});
+					$('html, body').animate({scrollTop: $("#addpersonalstatement").offset().top - 120}, 1000);
+                    $('#addpersonalstatement textarea').focus();
 					return tour.next();
 				}
 		}
@@ -56,5 +74,4 @@ tour.addStep('myStep', {
 tour.start();
 
 </script>
-
 <div class="itsanoverlay"></div>

@@ -9,6 +9,15 @@
 
 	}
 
+	if(isset($app->user->status) && $app->user->status=='needs-review' && $app->user->usertype=='tutor'){
+
+		$notications = new stdClass();
+		$notications->status = 'urgent';
+		$notications->message = '<a class="btn black btn-s" href="/request-profile-review">Request Profile Review</a>';
+		$app->notifications = $notications;
+
+	}
+
 	if(isset($app->user->my_upload) && isset($app->user->my_upload_status) && $app->user->my_upload_status=='needs-review'){
 
 		$sql = "SELECT type FROM avid___user_needsprofilereview WHERE email = :email";
@@ -64,8 +73,21 @@
 
 	$navigation = array();
 	$navigation['/'] = (object) array('name'=>'<i class="fa fa-home"></i> Home');
-	$navigation['/tutors'] = (object) array('name'=>'Tutors');
-	$navigation['/jobs'] = (object) array('name'=>'Jobs');
+
+	if(isset($app->user->usertype) && $app->user->usertype=='tutor'){
+		$navigation['/tutors'] = (object) array('name'=>'Tutors');
+		$navigation['/jobs'] = (object) array('name'=>'Tutoring Job');
+	}
+	elseif(isset($app->user->usertype) && $app->user->usertype=='student'){
+		$navigation['/tutors'] = (object) array('name'=>'Find A Tutor');
+		$navigation['/jobs'] = (object) array('name'=>'Request A Tutor');
+	}
+	else{
+		$navigation['/tutors'] = (object) array('name'=>'Tutors');
+		$navigation['/jobs'] = (object) array('name'=>'Jobs');
+	}
+
+
 	if(isset($app->user->email)){
 		$navigation['/students'] = (object) array('name'=>'Students');
 	}
