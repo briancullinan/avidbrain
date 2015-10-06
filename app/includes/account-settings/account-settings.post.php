@@ -24,11 +24,15 @@
 
 				$old_upload_name = $my_upload;
 				$new_upload_name = str_replace($app->user->username,$checkusername,$my_upload_without);
+				$old_cropped = str_replace('.','.crop.',$my_upload_without);
+				$new_cropped = str_replace($app->user->username,$checkusername,$old_cropped);
 
 				$old_approved = $approved.str_replace('.','.crop.',$my_upload_without);
 				$new_approved = $approved.str_replace($checkusername,$checkusername.'.crop',$new_upload_name);
 
-				notify($old_approved);
+				if(file_exists($uploads.$old_cropped)){
+					rename($uploads.$old_cropped,$uploads.$old_cropped);
+				}
 
 				rename($old_upload_name,$new_upload_name);
 				$app->user->my_upload = $new_upload_name;
