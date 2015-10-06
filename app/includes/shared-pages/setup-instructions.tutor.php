@@ -1,5 +1,5 @@
 <script type="text/javascript">
-	
+
 tour = new Shepherd.Tour({
   defaults: {
     classes: 'shepherd-theme-dark',
@@ -103,21 +103,7 @@ tour.addStep('step3', {
 
 
 tour.start();
-	
+
 </script>
 
 <div class="itsanoverlay"></div>
-<style type="text/css">
-.itsanoverlay{
-	position: fixed;
-	left: 0px;
-	top:0px;
-	z-index: 22;
-	background: rgba(0, 0, 0, 0.72);
-	width: 100%;
-	height: 100%;
-}
-.shepherd-step{
-	z-index: 333;
-}
-</style>

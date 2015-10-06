@@ -26,15 +26,10 @@
 	margin-bottom: 10px;
 }
 .student-signup .how-it-works{
-	background: #2196F3;
-	color: #fff;
-	cursor: pointer;
-	display: inline-block;
-	font-size: 22px;
-	padding: 5px 15px;
+	
 }
 .student-signup .how-it-works.active{
-	background: #1981d7;
+
 }
 .main-signup.main-student .collection i{
 	font-size: 25px;
@@ -56,7 +51,7 @@ border-radius: 5px;
 }
 
 #field_becomeatutor_first_name, #field_becomeatutor_last_name, #field_becomeatutor_phone, #field_becomeatutor_promocode, #field_becomeatutor_password, #field_becomeatutor_password_confirm{
-width: 50%;	
+width: 50%;
 }
 
 .signupbutton{
@@ -261,7 +256,7 @@ width: 50%;
 	background: #0087F2;
 	color: #fff;
 	text-align: center;
-	
+
 }
 .qalogin-text i{
 	font-size: 20px;

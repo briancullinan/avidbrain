@@ -1,12 +1,12 @@
 <div class="homepageslide">
-	
+
 	<div class="homepage-items">
 
 	    <h1>Teach Something. Learn Anything.</h1>
 	    <div class="how-it-works" data-status="closed">
 	        <span>How It Works</span>
 	    </div>
-	
+
 	</div>
 
 	<div class="slider">
@@ -34,9 +34,9 @@
 <div class="container notoppadd subjects-we-offer">
 	<h2 class="center-align">What Subjects Do We Offer?</h2>
 	<div class="the-subjects-we-offer">
-		
+
 		<div class="row">
-			
+
 			<?php
 				$swo = array();
 				$swo[] = (object)array(
@@ -56,7 +56,7 @@
 						'/categories/art'=>'and many more!'
 					)
 				);
-				
+
 				$swo[] = (object)array(
 					'title'=>'Science',
 					'mainlink'=>'/science-tutors',
@@ -73,7 +73,7 @@
 						'/categories/science'=>'and many more!'
 					)
 				);
-				
+
 				$swo[] = (object)array(
 					'title'=>'Math',
 					'mainlink'=>'/math-tutors',
@@ -90,7 +90,7 @@
 						'/categories/math'=>'and many more!'
 					)
 				);
-				
+
 				$swo[] = (object)array(
 					'title'=>'Test Prep',
 					'mainlink'=>'/test-preparation-tutors',
@@ -108,9 +108,9 @@
 						'/categories/test-preparation'=>'and many more!'
 					)
 				);
-				
+
 			?>
-			
+
 			<?php foreach($swo as $swoitems): ?>
 			<div class="col s12 m12 l6">
 				<div class="block">
@@ -144,16 +144,16 @@
 				</div>
 			</div>
 			<?php endforeach; ?>
-			
+
 		</div>
-		
+
 	</div>
 </div>
 
 <div class="homepage-wide">
 	<div class="container notoppadd center-align white-text">
 		<div class="wide-copy">AvidBrain is the leader in on-demand tutoring where all of our tutors are both interviewed and background checked.  We’ll have you learning what you want to learn in no time at all.</div>
-		
+
 		<div class="row">
 			<div class="col s12 m6 l6">
 				<div class="info-block">
@@ -186,7 +186,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 	</div>
 </div>
 
@@ -202,7 +202,7 @@
 		<div class="col s12 m6 l6">
 			<h2>Find A Tutor</h2>
 			<div class="block">
-				imalookingofatooter
+				Show Advanced Find A Tutor
 			</div>
 		</div>
 	</div>

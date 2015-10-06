@@ -1,6 +1,6 @@
 <div class="student-signup">
 	<p>Welcome to <?php echo $app->dependents->SITE_NAME_PROPPER; ?>! We are a trusted community marketplace that connects students and qualified tutors for online and in-person tutoring sessions. All tutors are interviewed and background checked to ensure safety and effectiveness. </p>
-	
+
 	<div class="signup-how-it-works center-align">
 		<div class="how-it-works" data-status="closed">
 	    	<span>How It Works</span>
@@ -40,18 +40,18 @@
 				$mycode->promocode = $promocode;
 
 			}
-			
+
 			if(isset($app->mylocation->zipcode)){
 				if(empty($mycode)){
 					$mycode = new stdClass();
 				}
 				$mycode->zipcode = $app->mylocation->zipcode;
 			}
-			
+
 			if(isset($mycode)){
 				$studentSignup->formvalues = $mycode;
 			}
-			
+
 			$studentSignup->makeform();
 
 		?>
@@ -59,14 +59,14 @@
 
 	<div class="col s12 m6 l6">
 		<h2>Student Benefits</h2>
-		
+
 		<?php include($app->dependents->APP_PATH.'includes/signup/student/student-benefits.php'); ?>
-		
+
 	</div>
 
 </div>
 
-<div class="why-tutoring">
+<div class="why-tutoring hide">
 	<h2>Why Tutoring</h2>
 	<strong>Tutoring provides personalized, one-on-one attention.</strong>
 	<p>In today's schools, the majority of teachers are because they enjoy helping students learn. However, teachers are limited by time and resources in regards to how much time they can spend giving attention to individual students. Teachers must show a strong balance between answering individual questions and focusing on the group as a whole. Because of this, your student might not be receiving the individual attention they need. With one-on-one tutoring, the tutor is dedicated 100% to your child's specific needs. Tutors are able to tailor sessions to best be able to help your student with his or her individual goals and challenges.</p>
