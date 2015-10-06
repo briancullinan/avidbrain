@@ -31,11 +31,11 @@
 				$new_approved = $approved.str_replace($checkusername,$checkusername.'.crop',$new_upload_name);
 
 				if(file_exists($uploads.$old_cropped)){
-					rename($uploads.$old_cropped,$uploads.$old_cropped);
+					rename($uploads.$old_cropped,$uploads.$new_cropped);
 				}
 
-				rename($old_upload_name,$new_upload_name);
-				$app->user->my_upload = $new_upload_name;
+				rename($old_upload_name,$uploads.$new_upload_name);
+				$app->user->my_upload = $uploads.$new_upload_name;
 			}
 
 			if(isset($old_approved) && file_exists($old_approved)){
