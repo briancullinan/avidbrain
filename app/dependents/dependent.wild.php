@@ -1,7 +1,7 @@
 <?php
 
 	if(isset($dependents->offline)){
-		
+
 		$cdncss = array(
 			'/offline/font-awesome.min.css',
 			'/offline/materialize.min.css',
@@ -12,7 +12,7 @@
 		$cdnjs = array(
 			'/offline/materialize.min.js'
 		);
-		
+
 	}
 	else{
 		$material = '0.97.1';
@@ -26,17 +26,12 @@
 		);
 		$headjs = array(
 			'https://js.stripe.com/v2',
-			'//code.jquery.com/jquery-2.1.1.min.js',
-			'/js/tether.min.js',
-			'/js/shepherd.js'
+			'//code.jquery.com/jquery-2.1.1.min.js'
 		);
 		$cdnjs = array(
 			'//cdnjs.cloudflare.com/ajax/libs/materialize/'.$material.'/js/materialize.min.js'
 		);
 	}
-	
-
-
 
 	$localcss = array(
 		'wild.css',
@@ -54,28 +49,10 @@
 		'time.picker.css',
 		'shepherd-theme-arrows.css'
 	);
-	
-/*
-	$localcss = array(
-		'jquery.nouislider.min.css',
-		'fonts.css',
-		'core.css',
-		'view-user.css',
-		'sessions-messages.css',
-		'subs.css',
-		'forms.css',
-		'homepage.css',
-		'material.fix.css',
-		'core.media.css',
-		'crop.css',
-		'time.picker.css',
-		'customize-avatar.css'
-	);
-*/
-
-	
 
 	$localjs = array(
+		'tether.min.js',
+		'shepherd.js',
 		'functions.js',
 		'wild.js',
 		'jquery.nouislider.min.js',

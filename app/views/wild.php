@@ -19,7 +19,7 @@
 foreach($app->header->cdncss as $cdncss){
 	echo "\t".'<link rel="stylesheet" href="'.$cdncss.'">'."\n";
 }
-	
+
 if(isset($app->minify)):
 	echo "\t".'<link rel="stylesheet" href="/css/final.'.$app->dependents->VERSION.'.css">'."\n";
 else:
@@ -280,6 +280,11 @@ else:
 		echo "\t".'<script src="/js/'.$localjs.'"></script>'."\n";
 	}
 endif;
+?>
+<?php
+	if(isset($app->setupinstructions)){
+		include($page = $app->dependents->APP_PATH.'includes/shared-pages/setup-instructions.'.$app->user->usertype.'.php');
+	}
 ?>
 <?php if($app->dependents->DEBUG!=true): ?>
 <script src="https://static.getclicky.com/js" type="text/javascript"></script>

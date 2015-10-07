@@ -158,8 +158,8 @@ sidebar.activeaction{
 }
 .sidebar-signup{
 	display: block;
-	background: #0087F2;
-	color: #fff;
+	background: #0cf200;
+	color: #111;
 	text-align: center;
 	padding: 10px;
 	margin: 10px;
@@ -169,7 +169,8 @@ sidebar.activeaction{
 
 }
 .sidebar-signup:hover{
-	background: #008dff;
+	background: #0ad200;
+    color: #fff;
 
 }
 .av-versioning{

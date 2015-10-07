@@ -358,16 +358,17 @@ width: 50%;
     float: left;
     width: 48%;
     background: #efefef;
-    background-image: url('/images/subjects/liberalarts.jpg');
     background-size: cover;
-    min-height: 200px;
 }
-.activate-complete div{
-
+.activate-complete-left{
+	background-image: url('/images/subjects/liberalarts.jpg');
+}
+.activate-complete-right{
+	background-image: url('/images/subjects/testprep.jpg');
 }
 .activate-complete a{
     display: block;
-    padding: 20px;
+    padding: 100px 20px;
     width: 100%;
     font-family: 'Quicksand';
     color:#fff;
@@ -375,6 +376,11 @@ width: 50%;
     font-weight: 700;
 
 	text-shadow: 2px 2px #000;
+}
+.activate-complete a:hover{
+	background: rgba(#000000, 0.7);
+	background: red;
+	background: rgba(0, 0, 0, 0.4);
 }
 
 

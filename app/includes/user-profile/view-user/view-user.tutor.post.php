@@ -238,16 +238,25 @@
 			}
 			//filter_var($app->currentuser->personal_statement, FILTER_SANITIZE_STRIPPED)
 
-			if(isset($app->currentuser->short_description_verified) && isset($app->editprofile->short_description) && $app->editprofile->short_description != $app->currentuser->short_description_verified){
-				#$app->currentuser->short_description_verified = NULL;
-				$app->currentuser->short_description_verified_status = 'needs-review';
+			if($app->user->usertype=='admin'){
+				if(isset($app->editprofile->short_description_verified)){
+					$app->currentuser->short_description_verified_status = NULL;
+				}
+				if(isset($app->editprofile->personal_statement_verified)){
+					$app->currentuser->personal_statement_verified_status = NULL;
+				}
 			}
+			else{
+				if(isset($app->currentuser->short_description_verified) && isset($app->editprofile->short_description) && $app->editprofile->short_description != $app->currentuser->short_description_verified){
+					#$app->currentuser->short_description_verified = NULL;
+					$app->currentuser->short_description_verified_status = 'needs-review';
+				}
 
-			if(isset($app->currentuser->personal_statement_verified) && isset($app->editprofile->personal_statement) && $app->editprofile->personal_statement != $app->currentuser->personal_statement_verified){
-				#$app->currentuser->personal_statement_verified = NULL;
-				$app->currentuser->personal_statement_verified_status = 'needs-review';
+				if(isset($app->currentuser->personal_statement_verified) && isset($app->editprofile->personal_statement) && $app->editprofile->personal_statement != $app->currentuser->personal_statement_verified){
+					#$app->currentuser->personal_statement_verified = NULL;
+					$app->currentuser->personal_statement_verified_status = 'needs-review';
+				}
 			}
-
 
 			//notify($app->currentuser);
 
@@ -332,6 +341,7 @@
 			if(isset($oldurl)){
 				new Flash(array('action'=>'jump-to','location'=>$app->currentuser->url,'message'=>'Account URL Changed'));
 			}
+
 
 
 			new Flash(array('action'=>'alert','message'=>'Profile Updated'));

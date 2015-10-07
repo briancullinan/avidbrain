@@ -11,6 +11,13 @@
 	.tswo-text{
 		padding: 5px 0px;
 	}
+	.activate-complete-left, .activate-complete-right{
+		width: 100%;
+		margin-bottom: 15px;
+	}
+	.activate-complete-middle{
+		display: none;
+	}
 }
 
 @media only screen and (max-width: 992px){

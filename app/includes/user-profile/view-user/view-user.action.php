@@ -22,8 +22,11 @@
 			if(isset($pagename) && $pagename=='okgotit'){
 				$app->setupinstructions = NULL;
 				$app->connect->insert('avid___user_first_time',array('email'=>$app->user->email,'name'=>'profile-check'));
-				$app->redirect($url);
+				$app->redirect('/jobs');
 			}
+		}
+		elseif(isset($pagename) && $pagename=='okgotit'){
+			$app->redirect('/jobs');
 		}
 	}
 

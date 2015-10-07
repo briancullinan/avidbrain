@@ -1,6 +1,6 @@
 <?php
-	ini_set('display_errors', 1); 
-	ini_set('log_errors', 1); 
+	ini_set('display_errors', 1);
+	ini_set('log_errors', 1);
 	error_reporting(E_ALL);
 	header('Content-Type: text/html; charset=utf-8');
 	mb_internal_encoding("UTF-8");
@@ -40,16 +40,16 @@
 		header('Cache-Control: post-check=0, pre-check=0', false);
 		header('Pragma: no-cache');
 	}
-	
+
 	include($app->dependents->APP_PATH.'functions/global.functions.php');
 	require '../app/autoload/autoload.php';
-	
-	
+
+
 	use \Slim\Extras\Middleware\CSRFNINJA;
 	use \Slim\Extras\Middleware\HttpBasicAuth;
 	$app->add(new HttpBasicAuth('avidbrain', 'tutornode'));
 	$app->add(new CSRFNINJA());
-	
+
 	//killallcookies();
 
 	// Global Database Connection
@@ -70,31 +70,31 @@
 	$conn = \Doctrine\DBAL\DriverManager::getConnection($connectionParams, $config);
 	$conn->setFetchMode(PDO::FETCH_OBJ);
 	$app->connect = $conn;
-	
+
 		phpFastCache::setup("storage","auto");
 		$app->connect->cache = new phpFastCache();
-	
+
 	$app->crypter = new Crypter($app->dependents->SALT, MCRYPT_RIJNDAEL_256);
 	$app->user = new User($app->connect,$app->crypter);
 	$app->mailgun = new Email($app->dependents);
 	$app->sendmessage = new SendMessage($app->connect);
 	$app->twilio = new Services_Twilio($app->dependents->twilio->id, $app->dependents->twilio->auth_token);
 	//$app->twilio->account->outgoing_caller_ids->create($app->dependents->twilio->number, array("FriendlyName" => $app->dependents->twilio->friendly));
-	
+
 	use Intervention\Image\ImageManager;
 	$app->imagemanager = new ImageManager(array('driver' => 'imagick'));
-	
+
 	// Contest / Giveaway
 	$app->contest = new stdClass();
 	//$app->contest->ipadgiveaway = true;
-	
-	// Free Sessions	
-	
+
+	// Free Sessions
+
 	$freesessions = new stdClass();
 	$freesessions->enabled = true;
 	$freesessions->maximum = 3000;
 	$app->freesessions = $freesessions;
-	
+
 	// Twitters
 	use Abraham\TwitterOAuth\TwitterOAuth;
 	//$app->connect->cache->delete("my_tweets");
@@ -107,18 +107,18 @@
 	    $app->my_tweets = $twitterAPI;
 	    $app->connect->cache->set("my_tweets", $twitterAPI, 3600);
 	}
-	
+
 	use MatthiasMullie\Minify;
 	//$minifyme = true;
 	//$app->minify = true;
 	if(isset($minifyme)){
-			
+
 		$minifier = new Minify\CSS();
 		foreach($app->header->localcss as $cssfile){
 			$minifier->add($app->dependents->DOCUMENT_ROOT.'css/'.$cssfile);
 		}
 		$minifier->minify($app->dependents->DOCUMENT_ROOT.'css/final.'.$app->dependents->VERSION.'.css');
-		
+
 		$minifier = new Minify\JS();
 		foreach($app->header->localjs as $jsfiles){
 			$minifier->add($app->dependents->DOCUMENT_ROOT.'js/'.$jsfiles);
@@ -127,7 +127,7 @@
 		notify('ALL DONE');
 		exit;
 	}
-	
+
  	#$app->connect->cache->clean();
  	#echo 'CLEANUP()';
 	#exit;
