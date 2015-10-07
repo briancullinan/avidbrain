@@ -259,11 +259,10 @@ border-radius: 2px;
 	max-height: 300px;
 }
 .featured-tutor-text{
-	float: left;
-	width: 30%;
 	text-align: center;
 }
 .featured-tutor-text h2{
+	margin-top: 20px;
 	background: #000;
 	display: inline-block;
 	padding: 5px 15px;
@@ -271,18 +270,21 @@ border-radius: 2px;
 	font-weight: 700;
 }
 .featured-tutor-container{
-	float: right;
 	background: rgba(255, 255, 255, 0.7);
 	background: rgba(0, 0, 0, 0.5);
-	width: 70%;
 	text-align: left;
 	color:#fff;
 }
-.featured-tutor-inside{
-	padding: 15px 5px 10px 5px;
+.col.featured-col{
+
+	padding:0px;
 }
-.featured-tutor-inside .row, .profile-image{
-	margin: 0px;
+.featured-tutor-inside{
+	
+	padding: 15px 0px;
+}
+.fullsize .row, .profile-image{
+	margin-bottom: 0px;
 }
 .featured-tutor-name{
 	font-family: 'Quicksand';
