@@ -280,7 +280,7 @@ border-radius: 2px;
 	padding:0px;
 }
 .featured-tutor-inside{
-	
+
 	padding: 15px 0px;
 }
 .fullsize .row, .profile-image{
@@ -295,15 +295,17 @@ border-radius: 2px;
 }
 .featured-tutor-subjects{
 	font-family: 'Quicksand';
+	font-size: 20px;
 	margin-bottom: 10px;
 	color:rgba(255, 255, 255, 0.79);
 }
 .featured-tutor-location{
 	font-family: 'Quicksand';
 	font-size: 26px;
+	margin-top: -10px;
 }
 .featured-tutor-score{
 	text-align: center;
 	color:#ffb000;
-	font-size: 30px;
+	font-size: 25px;
 }

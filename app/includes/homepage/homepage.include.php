@@ -237,7 +237,7 @@
 						</div>
 						<div class="col s12 m8 l8">
 							<div class="featured-tutor-name">Mister Tutor</div>
-							<div class="featured-tutor-location">Scottsdale Arizona, 85257</div>
+							<div class="featured-tutor-location">Scottsdale <span>Arizona</span></div>
 							<div class="featured-tutor-subjects">Algebra 1, Biology, ACT Science, Martial Arts, River Rafting</div>
 							<div class="featured-tutor-about">
 								Gummi bears fruitcake biscuit chupa chups marzipan powder sesame snaps donut. Tiramisu candy caramels pastry cupcake chupa chups oat cake fruitcake chocolate. Lemon drops halvah pie dessert marzipan caramels chocolate bar croissant. Jelly beans cake gingerbread carrot cake cake. Pie halvah cheesecake pie topping chocolate oat cake lollipop. Cake soufflé brownie tart cupcake. Chocolate bar toffee gummies. Bear claw biscuit icing tootsie roll liquorice cheesecake. Lemon drops  candy canes toffee applicake jelly beans.
