@@ -22,28 +22,28 @@ main .notoppadd{
 	background-size: cover;
 	background-position: center center;
 	background-color: #efefef;
-	min-height: 178px;
 	text-align: center;
 }
 .liberalarts{
 	background-image: url('/images/subjects/liberalarts.jpg');
 }
 .math{
-	background-image: url('/images/subjects/algebra-1.jpg');
+	background-image: url('/images/subjects/new-math.jpg');
 }
 .science{
-	background-image: url('/images/subjects/act-science.jpg');
+	background-image: url('/images/subjects/new-science.jpg');
 }
 .testprep{
 	background-image: url('/images/subjects/testprep.jpg');
 }
 .tswo-title a{
+	display: block;
 	font-family: 'Quicksand';
-    font-size: 35px;
+    font-size: 25px;
     font-weight: 700;
     color: #fff;
     text-shadow: 2px 2px #000;
-    padding: 5px;
+    padding:85px 5px;
     position: relative;
 }
 .tswo-title a:hover{
@@ -63,6 +63,12 @@ main .notoppadd{
 }
 .tswo-text a:hover{
 	color: #0099ff;
+}
+
+.fullsize{
+	width: 100%;
+	margin: 15px 0px;
+	float: left;
 }
 
 .wide-copy{
@@ -239,4 +245,63 @@ border-radius: 2px;
 	position: relative;
 	z-index: 33;
 	margin-top: -30px;
+}
+
+
+
+/*Featured Tutor*/
+.featured-tutor{
+
+	background-image: url('/images/featured-tutors/mistertutor.jpg');
+	background-size: cover;
+}
+.featured-tutor img.avatarbg{
+	max-height: 300px;
+}
+.featured-tutor-text{
+	float: left;
+	width: 30%;
+	text-align: center;
+}
+.featured-tutor-text h2{
+	background: #000;
+	display: inline-block;
+	padding: 5px 15px;
+	color:#fff;
+	font-weight: 700;
+}
+.featured-tutor-container{
+	float: right;
+	background: rgba(255, 255, 255, 0.7);
+	background: rgba(0, 0, 0, 0.5);
+	width: 70%;
+	text-align: left;
+	color:#fff;
+}
+.featured-tutor-inside{
+	padding: 15px 5px 10px 5px;
+}
+.featured-tutor-inside .row, .profile-image{
+	margin: 0px;
+}
+.featured-tutor-name{
+	font-family: 'Quicksand';
+	font-size: 45px;
+	font-weight: 700;
+	line-height: normal;
+
+}
+.featured-tutor-subjects{
+	font-family: 'Quicksand';
+	margin-bottom: 10px;
+	color:rgba(255, 255, 255, 0.79);
+}
+.featured-tutor-location{
+	font-family: 'Quicksand';
+	font-size: 26px;
+}
+.featured-tutor-score{
+	text-align: center;
+	color:#ffb000;
+	font-size: 30px;
 }
