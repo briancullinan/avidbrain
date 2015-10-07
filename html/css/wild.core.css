@@ -302,7 +302,7 @@ main .container-nopadd{
 	position: fixed;
 	left: 0px;
 	top:0px;
-	z-index: 22;
+	z-index: 34;
 	background: rgba(0, 0, 0, 0.72);
 	width: 100%;
 	height: 100%;

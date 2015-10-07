@@ -45,6 +45,13 @@
 
 <?php else: ?>
 
+	<p>
+		<a class="modal-trigger btn blue btn-block" href="#loginModule">Log In To Message</a>
+	</p>
+
+
+	Or Signup To Message <?php echo short($app->currentuser); ?>
+
 	<?php
 
 		$newinserts = array();

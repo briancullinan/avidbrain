@@ -5,8 +5,8 @@
 	$routes['homepage'] = (object)array('url'=>'/','slug'=>'/','route'=>'/','include'=>'homepage','protected'=>NULL,'permissions'=>array());
 	$routes['sitemap'] = (object)array('url'=>'/sitemap','slug'=>'sitemap','route'=>'/sitemap/','include'=>'sitemap','protected'=>NULL,'permissions'=>array());
 	$routes['attributions'] = (object)array('url'=>'/attributions','slug'=>'attributions','route'=>'/attributions/','include'=>'attributions','protected'=>NULL,'permissions'=>array());
-	$routes['activate-profile'] = (object)array('url'=>'/activate-profile','slug'=>'activate-profile','route'=>'/activate-profile/','include'=>'activate-profile','protected'=>NULL,'permissions'=>array('student'));
-	$routes['activate-profile-complete'] = (object)array('url'=>'/activate-profile/complete','slug'=>'complete','route'=>'/activate-profile/complete/','include'=>'activate-profile/complete','protected'=>NULL,'permissions'=>array('student'));
+	$routes['activate-profile'] = (object)array('url'=>'/activate-profile','slug'=>'activate-profile','route'=>'/activate-profile/','include'=>'activate-profile','protected'=>1,'permissions'=>array('student'));
+	$routes['activate-profile-complete'] = (object)array('url'=>'/activate-profile/complete','slug'=>'complete','route'=>'/activate-profile/complete/','include'=>'activate-profile/complete','protected'=>1,'permissions'=>array('student'));
 	$routes['about-us'] = (object)array('url'=>'/about-us','slug'=>'about-us','route'=>'/about-us/','include'=>'about-us','protected'=>NULL,'permissions'=>array());
 	$routes['shortie'] = (object)array('url'=>'/shortie','slug'=>'shortie','route'=>'/u/:username/','include'=>'shortie','protected'=>NULL,'permissions'=>array(),'type'=>array('GET'));
 

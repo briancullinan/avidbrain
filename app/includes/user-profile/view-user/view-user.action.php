@@ -17,16 +17,24 @@
 		$sql = "SELECT * FROM avid___user_first_time WHERE email = :email AND name = :name ";
 		$prepeare = array(':email'=>$app->user->email,':name'=>'profile-check');
 		$myfirsttime = $app->connect->executeQuery($sql,$prepeare)->fetch();
+
+		if($app->user->usertype=='student'){
+			$redirect = '/activate-profile';
+		}
+		elseif($app->user->usertype=='tutor'){
+			$redirect = $app->user->url;
+		}
+
 		if(empty($myfirsttime)){
 			$app->setupinstructions = true;
 			if(isset($pagename) && $pagename=='okgotit'){
 				$app->setupinstructions = NULL;
 				$app->connect->insert('avid___user_first_time',array('email'=>$app->user->email,'name'=>'profile-check'));
-				$app->redirect('/activate-profile');
+				$app->redirect($redirect);
 			}
 		}
 		elseif(isset($pagename) && $pagename=='okgotit'){
-			$app->redirect('/activate-profile');
+			$app->redirect($redirect);
 		}
 	}
 

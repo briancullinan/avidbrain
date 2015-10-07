@@ -17,13 +17,20 @@
 	$data	=	$data->groupBy('user.email');
 	$sessionTutors	=	$data->execute()->fetchAll();
 
-	$app->mytutors = array();
+	$mytutors = array();
 	if(isset($promocodeTutors[0])){
-		$app->mytutors = $promocodeTutors;
+		$mytutors = $promocodeTutors;
 	}
 	if(isset($sessionTutors[0])){
-		$app->mytutors = array_merge($app->mytutors, $sessionTutors);
+		$mytutors = array_merge($mytutors, $sessionTutors);
 	}
+
+	foreach($mytutors as $key => $cleanup){
+		if(empty($cleanup->id)){
+			unset($mytutors[$key]);
+		}
+	}
+	$app->mytutors = $mytutors;
 
 	if(isset($app->user->usertype) && $app->user->usertype=='student'){
 		$sql = "SELECT id FROM avid___jobs WHERE email = :email AND open IS NOT NULL ORDER BY applicants DESC";

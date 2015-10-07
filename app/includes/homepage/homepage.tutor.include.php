@@ -5,12 +5,12 @@
 			<div class="page-views">Total Page Views <span><?php echo page_views($app); ?></span></div>
 		</div>
 	</div>
-	
+
 	<div class="col s12 m4 l4">
 		<?php if(isset($app->my_tweets)): ?>
 			<h3> News from <?php echo str_replace('https://twitter.com/','@',$app->dependents->social->twitter); ?></h3>
 			<?php foreach($app->my_tweets as $tweet):# printer($tweet); ?>
-			
+
 			<div class="block tweets">
 				<div class="row">
 					<div class="col s2 m3 l2">
@@ -25,14 +25,12 @@
 			<?php endforeach; ?>
 			<div class="more-tweets"><a target="_blank" href="https://twitter.com/<?php echo $tweet->user->screen_name; ?>">View More Tweets</a></div>
 		<?php endif; ?>
-		
+
 	</div>
-	
+
 	<div class="col s12 m4 l4">
-		<h3>Your Students</h3>
-		
-		
-			<?php if(isset($app->mystudents)): ?>
+			<?php if(isset($app->mystudents[0]->id)): ?>
+			<h3>Your Students</h3>
 			<div class="compose-list center-align white">
 				<?php foreach($app->mystudents as $compose): ?>
 					<div class="compose-item <?php if(isset($username) && $compose->username==$username){ echo 'active'; } ?>" id="<?php echo $compose->url; ?>">
@@ -55,7 +53,7 @@
 									}
 									elseif($compose->usertype=='tutor'){
 										echo '<div class="badge light-green accent-4 white-text">Tutor</div>';
-									}								
+									}
 								?>
 							</div>
 						</div>
@@ -65,7 +63,7 @@
 			<?php else: ?>
 				You have no students, <a href="/students">find one now</a>.
 			<?php endif; ?>
-		
+
 	</div>
-	
+
 </div>

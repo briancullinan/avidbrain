@@ -5,8 +5,8 @@
 	<div class="row">
 
 		<div class="col s12 m4 l4">
-			
-				<?php if(isset($app->mytutors[0]->id)): ?>
+
+				<?php if(isset($app->mytutors)): ?>
 				<h3>Your Tutors</h3>
 				<div class="compose-list center-align white">
 					<?php foreach($app->mytutors as $compose): ?>
