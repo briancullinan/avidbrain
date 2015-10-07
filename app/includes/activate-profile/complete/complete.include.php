@@ -1,14 +1,14 @@
-<p>Thank you for activating your account, you can now either find a tutor, or request a tutoring session.</p>
+<p>Thank you for activating your profile. Now lets find the help you need.</p>
 
 
 <div class="activate-complete">
     <div class="activate-complete-left valign-wrapper">
-        <a class="valign" href="/jobs">Request A Tutoring Session</a>
+        <a class="valign" href="/jobs">You Can Request A Tutoring Session</a>
     </div>
     <div class="activate-complete-middle">
-        &nbsp;
+        OR
     </div>
     <div class="activate-complete-right valign-wrapper">
-        <a class="valign" href="/tutors">Find A Tutor</a>
+        <a class="valign" href="/tutors">You Can Search For A Tutor</a>
     </div>
 </div>

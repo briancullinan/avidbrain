@@ -63,7 +63,7 @@ tour.addStep('myStep', {
 	classes: 'shepherd shepherd-open shepherd-theme-arrows shepherd-transparent-text',
 	buttons: [
 		{
-			text: 'Close',
+			text: 'Activate My Profile',
 				action: function() {
 					window.location = '<?php echo $app->currentuser->url; ?>/okgotit';
 				}

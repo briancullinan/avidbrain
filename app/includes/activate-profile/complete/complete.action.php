@@ -1,4 +1,4 @@
 <?php
 
     $app->meta = new stdClass();
-    $app->meta->title = 'Activation Complete';
+    $app->meta->title = 'Profile Activated';
