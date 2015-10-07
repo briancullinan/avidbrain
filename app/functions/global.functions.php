@@ -1236,9 +1236,17 @@
 		if(isset($results->last_active) && !empty($results->last_active) && isset($results->activenow) && !empty($results->activenow)){
 
 			$lastactiveCal = dateDifference($results->last_active , thedate() , $differenceFormat = '%a' );
-			if($lastactiveCal->i <= 10){
-				return true;
+			if($lastactiveCal->d>0 || $lastactiveCal->m>0 || $lastactiveCal->y>0){
+				//return false;
 			}
+			if($lastactiveCal->h>1){
+				return false;
+			}
+			if($lastactiveCal->i > 10){
+				return false;
+			}
+
+			return true;
 
 		}
 

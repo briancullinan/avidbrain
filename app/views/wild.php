@@ -144,7 +144,26 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 
 
 <main>
-	<div class="<?php if($app->target->key=='/homepage/homepage'){ echo 'homepage-container';}else{ echo 'container container-fluid';} if(isset($app->user->email)){ echo ' liu ';} if(isset($app->notifications)){ echo 'active-notification';} ?> ">
+	<?php
+		$containerClass = NULL;
+		if(isset($app->wideconent)){
+			echo $app->wideconent;
+			$containerClass.= 'widecontentcontainer';
+		}
+		if($app->target->key=='/homepage/homepage'){
+			$containerClass.=' homepage-container ';
+		}else{
+			$containerClass.=' container container-fluid ';
+		}
+
+		if(isset($app->user->email)){
+			$containerClass.= ' liu ';
+		}
+		if(isset($app->notifications)){
+			$containerClass.= ' active-notification ';
+		}
+	?>
+	<div class="<?php echo $containerClass; ?>">
 
 		<?php if(isset($app->howitworks)){ include($app->dependents->APP_PATH.'includes/how-it-works/how-it-works.php'); } ?>
 		<?php if(isset($_SESSION['slim.flash']['error'])): ?>

@@ -18,6 +18,9 @@
 	.activate-complete-middle{
 		display: none;
 	}
+	.widecontentcontainer.container{
+		padding-top: 0px;
+	}
 }
 
 @media only screen and (max-width: 992px){

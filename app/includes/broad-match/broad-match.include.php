@@ -4,7 +4,7 @@
 	<?php endforeach; ?>
 	<?php echo $app->pagination; ?>
 <?php else: ?>
-	
+
 	<div class="row">
 		<div class="col s12 m6 l6">
 			<p>There were no <?php echo $app->broadMatchCap; ?> tutors found. </p>
@@ -12,7 +12,7 @@
 		</div>
 		<div class="col s12 m6 l6">
 			<?php
-	
+
 				$simpleSignup = new Forms($app->connect);
 				$simpleSignup->formname = 'studentapplication';
 				$simpleSignup->url = '/signup/student';
@@ -20,10 +20,10 @@
 				$simpleSignup->csrf_key = $csrf_key;
 				$simpleSignup->csrf_token = $csrf_token;
 				$simpleSignup->makeform();
-	
+
 			?>
 		</div>
 	</div>
-	
-	
+
+
 <?php endif; ?>

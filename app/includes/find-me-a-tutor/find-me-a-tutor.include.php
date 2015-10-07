@@ -1,12 +1,12 @@
 <div class="homepageslide">
-	
+
 	<div class="homepage-items">
 
 	    <h1>Teach Something. Learn Anything.</h1>
 	    <div class="how-it-works" data-status="closed">
 	        <span>How It Works</span>
 	    </div>
-	
+
 	</div>
 
 	<div class="slider">
@@ -32,12 +32,12 @@
 </div>
 
 <div class="find-a-tutor">
-	
+
 	<div class="center-align container">
 		<h2>Find <span class="finda">A Tutor</span></h2>
-	
+
 		<form method="post" action="/tutors">
-		
+
 			<div class="homepage-search">
 					<input name="search[search]" class="homepage-typed searchbox"  type="text"  />
 					<button class="btn blue btn-s homepage-search-button" type="submit">
@@ -47,9 +47,9 @@
 			<input type="hidden" name="search[target]" value="search"  />
 			<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
 		</form>
-		
+
 	</div>
-	
+
 </div>
 
 
@@ -58,15 +58,15 @@
 
 <div class="row college-tutors">
 	<div class="col s12 m6 l6">
-		
+
 		<h2>Post a Job, Get a Tutor</h2>
-		
+
 		<!---->
 		<div class="block">
 			<?php include($app->dependents->APP_PATH.'includes/jobs/postajob.php'); ?>
 		</div>
 		<!---->
-		
+
 	</div>
 	<div class="col s12 m6 l6">
 		<h2>Student Benefits</h2>
@@ -88,26 +88,26 @@
 		</div>
 		<div class="col s12 m6 l4">
 			<div class="valign-wrapper">
-				<a class="writing valign" href="/categories/xxx/xxx">Writing</a>
+				<a class="writing valign" href="/categories/english/literature">English</a>
 			</div>
 		</div>
 		<div class="col s12 m6 l4">
 			<div class="valign-wrapper">
-				<a class="philosophy valign" href="/categories/xxx/xxx">Philosophy</a>
+				<a class="philosophy valign" href="/categories/science/philosophy">Philosophy</a>
 			</div>
 		</div>
 		<div class="col s12 m6 l4">
 			<div class="valign-wrapper">
-				<a class="chemistry valign" href="/categories/xxx/xxx">Chemistry</a>
+				<a class="chemistry valign" href="/categories/science/chemistry">Chemistry</a>
 			</div>
 		</div>
 		<div class="col s12 m6 l4">
 			<div class="valign-wrapper">
-				<a class="psychology valign" href="/categories/xxx/xxx">Psychology</a>
+				<a class="psychology valign" href="/categories/science/psychology">Psychology</a>
 			</div>
 		</div>
 	</div>
-	
+
 	<a class="view-more" href="/categories">View More Subjects</a>
-	
+
 </div>

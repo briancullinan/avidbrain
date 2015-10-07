@@ -37,6 +37,8 @@ main .container-fluid, footer .container-fluid{
 	max-width: inherit;
 	margin: 0 auto;
     padding-bottom: 15px;
+    position: relative;
+	z-index: 33;
 }
 
 h1,h2,h3,h4,h5,h6{
@@ -397,6 +399,13 @@ main .liu.active-notification{
 	line-height: normal;
 	padding: 0px;
 	margin: 0px;
+}
+sidebar .logo a{
+    font-family: 'bariol_regular';
+    color: #fff;
+    padding: 10px;
+    background: #333;
+    font-size: 30px;
 }
 .logo img{
 	max-height: 80px;

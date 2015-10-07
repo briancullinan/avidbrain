@@ -61,3 +61,6 @@
 	</form>
 
 </div>
+<?php if(empty($app->user->email)): ?>
+	<a href="/signup" class="btn btn-block blue signupbutton bottom"><i class="fa fa-exclamation"></i> Signup</a>
+<?php endif; ?>
