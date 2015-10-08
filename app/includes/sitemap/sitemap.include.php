@@ -32,8 +32,8 @@
 	);
 ?>
 
-<div class="row">
-	
+<div class="row sitemap">
+
 	<div class="col s12 m4 l4">
 		<ul>
 			<?php foreach($sitemap as $key => $value): ?>
@@ -43,7 +43,7 @@
 			<?php endforeach; ?>
 		</ul>
 	</div>
-	
+
 	<div class="col s12 m4 l4">
 		<ul>
 			<li><a href="/tutors-by-location"> Tutoring Locations </a></li>
@@ -100,7 +100,7 @@
 			<li><a href="/tutors/wyoming"> Wyoming Tutors </a></li>
 		</ul>
 	</div>
-	
+
 	<div class="col s12 m4 l4">
 		<ul>
 			<li><a href="/art-tutors">Art Tutors</a></li>
@@ -137,5 +137,5 @@
 			<li><a href="/categories/test-preparation">Test Preparation Categories</a></li>
 		</ul>
 	</div>
-	
+
 </div>

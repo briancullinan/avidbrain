@@ -464,3 +464,14 @@ width: 50%;
 	color: #666;
 	margin: 0px;
 }
+
+
+.sitemap a{
+	display: block;
+	padding: 4px;
+	margin-bottom: 1px;
+}
+.sitemap a:hover{
+	background: #333;
+	color: #fff;
+}

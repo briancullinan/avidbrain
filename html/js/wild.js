@@ -635,6 +635,7 @@ $(document).ready(function() {
 		});
 
 		$('.helper .help').on('click',function(){
+			$('.help-box').remove();
 			var clickhelp = $(this).attr('data-click');
 			Materialize.toast(clickhelp, 6000,'help-box',function(){});
 		});

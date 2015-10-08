@@ -366,6 +366,10 @@ input[type=text], input[type=password], input[type=email], input[type=url], inpu
 	margin-top: -12px;
 	right: 0px;
 	margin-right:0.75rem;
+	cursor: pointer;
+}
+.helper:hover{
+	background: #00aaff;
 }
 .required-field .helper{
 	display: block;
