@@ -17,6 +17,7 @@ if(isset($app->searchingforjobs) && !empty($app->searchingforjobs)){
 		user.zipcode,
 		user.first_name,
 		user.last_name,
+		user.url,
 		settings.getemails,
 		settings.showfullname,
 		settings.anotheragency,

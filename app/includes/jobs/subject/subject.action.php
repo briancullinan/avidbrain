@@ -13,6 +13,8 @@
 		$data	=	$data->select($selectInitial)->from('avid___jobs','jobs');
 		$data	=	$data->where('subject_slug = :subject')->setParameter(':subject',$subject);
 		$data	=	$data->andWhere('jobs.open IS NOT NULL');
+		$data	=	$data->andWhere('user.usertype = :usertype')->setParameter(':usertype','student');
+		$data	=	$data->andWhere('user.status IS NULL');
 		$data	=	$data->orWhere('parent_slug = :subject')->setParameter(':subject',$subject);
 
 		// INNER JOIN
