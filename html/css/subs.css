@@ -427,9 +427,11 @@ width: 50%;
 	font-family: 'Quicksand';
 	font-weight: 700;
 	font-size: 40px;
+	font-size: 7vw;
 	color:#fff;
 	text-shadow: 0px 0px 20px black;
 	padding: 0px 15px;
+	line-height: normal;
 }
 .widecontent.science{
 	background-image: url('/images/categories/science.jpg');
@@ -445,10 +447,6 @@ width: 50%;
 }
 .widecontent.studentsignup{
 	background-image: url('/images/categories/student-signup.jpg');
-}
-.studentsignup .valign{
-	font-size: 50px;
-	font-size: 7vw;
 }
 
 .page--mainhowitworks .title{
