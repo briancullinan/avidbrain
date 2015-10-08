@@ -14,7 +14,6 @@
 			$activate = true;
 		}
 
-
 		if($activate==true){
 
 			/*
@@ -48,6 +47,9 @@
 		}
 
 
+	}
+	else{
+		$app->redirect('/activate-profile/complete');
 	}
 
 

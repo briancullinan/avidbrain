@@ -24,13 +24,14 @@
 	if(isset($sessionTutors[0])){
 		$mytutors = array_merge($mytutors, $sessionTutors);
 	}
-
 	foreach($mytutors as $key => $cleanup){
 		if(empty($cleanup->id)){
 			unset($mytutors[$key]);
 		}
 	}
-	$app->mytutors = $mytutors;
+	if(isset($mytutors[0])){
+		$app->mytutors = $mytutors;
+	}
 
 	if(isset($app->user->usertype) && $app->user->usertype=='student'){
 		$sql = "SELECT id FROM avid___jobs WHERE email = :email AND open IS NOT NULL ORDER BY applicants DESC";

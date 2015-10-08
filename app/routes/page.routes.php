@@ -147,6 +147,7 @@
 	$routes['jobs-apply'] = (object)array('url'=>'/jobs/apply','slug'=>'apply','route'=>'/jobs/apply/:id/','include'=>'jobs/apply','protected'=>NULL,'permissions'=>array());
 	$routes['jobs-manage'] = (object)array('url'=>'/jobs/manage','slug'=>'manage','route'=>'/jobs/manage/:id/','include'=>'jobs/manage','protected'=>NULL,'permissions'=>array());
 	$routes['jobs-subject'] = (object)array('url'=>'/jobs','slug'=>'subject','route'=>'/jobs/:subject/','include'=>'jobs/subject','protected'=>NULL,'permissions'=>array());
+	$routes['jobs-subject-paginate'] = (object)array('url'=>'/jobs','slug'=>'subject','route'=>'/jobs/:subject/page/:number','include'=>'jobs/subject','protected'=>NULL,'permissions'=>array());
 	$routes['jobs-location-state'] = (object)array('url'=>'/jobs/location/state','slug'=>'state','route'=>'/jobs/location/:state/','include'=>'jobs/location/state','protected'=>NULL,'permissions'=>array());
 	$routes['jobs-location-state-city'] = (object)array('url'=>'/jobs/location/state/city','slug'=>'city','route'=>'/jobs/location/:state/:city/','include'=>'jobs/location/state/city','protected'=>NULL,'permissions'=>array());
 

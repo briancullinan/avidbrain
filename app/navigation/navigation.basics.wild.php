@@ -2,10 +2,17 @@
 
 	if(isset($app->user->status) && $app->user->status=='needs-review' && $app->user->usertype=='student' && isset($app->user->welcome)){
 
-		$notications = new stdClass();
-		$notications->status = 'urgent';
-		$notications->message = '<a class="btn black btn-s" href="/activate-profile">Activate Your Profile</a>';
-		$app->notifications = $notications;
+		#$notications = new stdClass();
+		#$notications->status = 'urgent';
+		#$notications->message = '<a class="btn black btn-s" href="/activate-profile">Activate Your Profile</a>';
+		#$app->notifications = $notications;
+
+		// if($app->request->getPath()=='/activate-profile'){
+		//
+		// }
+		// elseif(isset($app->user->short_description) && !empty($app->user->short_description) && isset($app->user->personal_statement) && !empty($app->user->personal_statement)){
+		// 	$app->redirect('/activate-profile');
+		// }
 
 	}
 

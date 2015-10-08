@@ -41,3 +41,8 @@
 		$app->meta->h1 = 'Find A Tutoring Job';
 	}
 	$app->meta->keywords = 'jobs,tutoring,'.$app->dependents->SITE_NAME_PROPPER;
+
+
+	if(isset($app->user->email)){
+		$app->target->post = $app->target->user->post;
+	}

@@ -297,7 +297,22 @@ border-radius: 2px;
 	font-size: 45px;
 	font-weight: 700;
 	line-height: normal;
-
+}
+.featured-tutor-name a{
+	color: #96FF00;
+}
+.featured-tutor-name a:hover{
+	color: #bdff00;
+}
+.featured-tutor-link{
+	border-top: solid 5px #555;
+	margin-top:10px;
+}
+.featured-tutor-link a{
+	background: #555;
+	display: inline-block;
+	padding: 5px 10px;
+	color: #ccc;
 }
 .featured-tutor-subjects{
 	font-family: 'Quicksand';

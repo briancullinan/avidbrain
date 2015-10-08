@@ -217,7 +217,7 @@
 
 <div class="fullsize featured-tutor">
 	<div class="row ">
-		<div class="col s12 m4 l3 ">
+		<div class="col s12 m4 l3">
 			<div class="featured-tutor-text">
 				<h2>Featured Tutor</h2>
 			</div>
@@ -229,18 +229,21 @@
 					<div class="row">
 						<div class="col s12 m4 l4">
 							<div class="profile-image center-align avatar">
-								<img class="avatarbg responsive-img " src="/profiles/approved/--tutors--scottsdale--arizona--glaeseman.crop.jpg" />
+								<a href="/u/glaeseman"><img class="avatarbg responsive-img " src="/profiles/approved/--tutors--scottsdale--arizona--glaeseman.crop.jpg" /></a>
 							</div>
 							<div class="featured-tutor-score">
 								<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i>
 							</div>
 						</div>
 						<div class="col s12 m8 l8">
-							<div class="featured-tutor-name">Mister Tutor</div>
+							<div class="featured-tutor-name"><a href="/u/glaeseman">Mister Tutor</a></div>
 							<div class="featured-tutor-location">Scottsdale <span>Arizona</span></div>
 							<div class="featured-tutor-subjects">Algebra 1, Biology, ACT Science, Martial Arts, River Rafting</div>
 							<div class="featured-tutor-about">
 								Gummi bears fruitcake biscuit chupa chups marzipan powder sesame snaps donut. Tiramisu candy caramels pastry cupcake chupa chups oat cake fruitcake chocolate. Lemon drops halvah pie dessert marzipan caramels chocolate bar croissant. Jelly beans cake gingerbread carrot cake cake. Pie halvah cheesecake pie topping chocolate oat cake lollipop. Cake soufflé brownie tart cupcake. Chocolate bar toffee gummies. Bear claw biscuit icing tootsie roll liquorice cheesecake. Lemon drops  candy canes toffee applicake jelly beans.
+							</div>
+							<div class="featured-tutor-link">
+								<a href="/u/glaeseman">View Full Profile</a>
 							</div>
 						</div>
 					</div>

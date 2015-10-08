@@ -1,6 +1,3 @@
-
-
-
 	<?php if(isset($app->currentuser->thisisme)): ?>
 	<form class="form-post hide" method="post" action="<?php echo $app->currentuser->url ?>" id="editprofile">
 
