@@ -3,7 +3,6 @@
 @media only screen and (max-width: 500px){
 	.container{
 		width: 93% !important;
-		overflow: hidden;
 	}
 	.wide-copy{
 		font-size: 25px;

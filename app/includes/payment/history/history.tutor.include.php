@@ -12,7 +12,7 @@
 				You Made
 			</td>
 			<td>
-				Pay Rate 
+				Pay Rate
 			</td>
 			<td>
 				Date
@@ -27,7 +27,7 @@
 		<?php foreach($app->paymenthistory as $paymenthistory): #printer($paymenthistory); ?>
 			<?php
 				if(!empty($paymenthistory->discount) && $app->user->usertype=='student'){
-				
+
 					$sql = "SELECT value as discount FROM avid___promotions_active WHERE id = :id";
 					$prepare = array(':id'=>$paymenthistory->discount);
 					$results = $app->connect->executeQuery($sql,$prepare)->fetch();
@@ -56,9 +56,9 @@
 							$finalPercent = (($paymenthistory->amount * $paymenthistory->payrate)/10000);
 						}
 					?>
-					
+
 					$<?php echo numbers($finalPercent); ?>
-					
+
 				</td>
 				<td>
 					<?php echo $paymenthistory->payrate; ?>%
@@ -77,10 +77,9 @@
 			</tr>
 		<?php endforeach; ?>
 	</table>
-	
+
 	<?php echo $app->pagination; ?>
-	
+
 <?php else: ?>
 	You have no payment history
 <?php endif; ?>
-

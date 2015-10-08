@@ -50,7 +50,7 @@
 	</p>
 
 
-	Or Signup To Message <?php echo short($app->currentuser); ?>
+	<div class="orsignup">Or Signup To Message <?php echo short($app->currentuser); ?></div class="orsignup">
 
 	<?php
 

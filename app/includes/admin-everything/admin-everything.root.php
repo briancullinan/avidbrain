@@ -1,5 +1,5 @@
 <?php
-	
+
 	$childen = array();
 	//$childen['edit-profile'] = (object) array('name'=>'Edit Profile','slug'=>'/admin-everything/edit-profile');
 	$childen['stats'] = (object) array('name'=>'Stats','slug'=>'/admin-everything/stats');
@@ -13,19 +13,19 @@
 	$childen['contested-sessions'] = (object) array('name'=>'Contested Sessions','slug'=>'/admin-everything/contested-sessions');
 	$childen['create-tutor'] = (object) array('name'=>'Create Tutor','slug'=>'/admin-everything/create-tutor');
 	#$childen['xxx'] = (object) array('name'=>'xxx','slug'=>'/admin-everything/xxx');
-	
+
 	if($app->user->email=='david'.$app->dependents->mailgun->EMAIL_DOMAIN){
-		
-		$childen['fix-photos'] = (object) array('name'=>'Fix Photos','slug'=>'/admin-everything/fix-photos');
-		$childen['fix-username'] = (object) array('name'=>'Fix Username','slug'=>'/admin-everything/fix-username');
+
+		$childen['fix-breaks'] = (object) array('name'=>'Fix Breaks','slug'=>'/admin-everything/fix-breaks');
+		//$childen['fix-username'] = (object) array('name'=>'Fix Username','slug'=>'/admin-everything/fix-username');
 	}
-	
-	
+
+
 	//$childen['student-approvals'] = (object) array('name'=>'Student Approvals','slug'=>'/admin-everything/student-approvals');
 	//$childen['xxx'] = (object) array('name'=>'xxx','slug'=>'/admin-everything/xxx');
-	
+
 	$app->childen = $childen;
 	$navtitle = (object)array('slug'=>'/admin-everything','text'=>'Admin Everything');
 	$app->navtitle = $navtitle;
-	
+
 	$app->secondary = $app->target->secondaryNav;

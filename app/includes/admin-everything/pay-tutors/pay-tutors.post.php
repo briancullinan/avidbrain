@@ -1,17 +1,20 @@
 <?php
 
 	if(isset($app->paytutorsessioninfo)){
-		
+
+		if(empty($app->paytutor->managed_id)){
+			notify('User Must Become Managed');
+		}
+
 		//echo $app->dependents->stripe->STRIPE_SECRET; exit;
-		
 		$transferInfo = array(
 			"amount" => $app->paytutorsessioninfo->amount,
 			"currency" => "usd",
-			"destination" => $app->paytutorsessioninfo->account_id,
+			"destination" => $app->paytutor->managed_id,
 			"description" => "Bi-Monthly Tutor Payment"
 		);
-			
-		
+
+
 		$notes = NULL;
 		try{
 
@@ -22,7 +25,7 @@
 		  // Since it's a decline, \Stripe\Error\Card will be caught
 		  $body = $e->getJsonBody();
 		  $err  = $body['error'];
-		
+
 		  print('Status is:' . $e->getHttpStatus() . "\n");
 		  print('Type is:' . $err['type'] . "\n");
 		  print('Code is:' . $err['code'] . "\n");
@@ -58,7 +61,7 @@
 		  echo 'Something else happened, completely unrelated to Stripe';
 		  exit;
 		}
-		
+
 		if(isset($app->paytutorsessioninfo->paybgcheck)){
 			$notes = 'Paid Background Check';
 			$paidbg = array(
@@ -68,7 +71,7 @@
 			);
 			$app->connect->insert('avid___paid_bgchecks',$paidbg);
 		}
-		
+
 		$payment = array(
 			'email'=>$app->paytutorsessioninfo->email,
 			'type'=>'Bi-Monthly Tutor Payment',
@@ -79,15 +82,24 @@
 			'recipient'=>$app->paytutorsessioninfo->email,
 			'paidout'=>1
 		);
-		
+
 		$app->connect->insert('avid___user_payments',$payment);
-		
+
 		foreach($app->paytutorsessioninfo->sessionid as $key => $setaspaid){
-			$app->connect->update('avid___sessions',array('paidout'=>1),array('id'=>$key,'from_user'=>$app->paytutorsessioninfo->email));	
+			$app->connect->update('avid___sessions',array('paidout'=>1),array('id'=>$key,'from_user'=>$app->paytutorsessioninfo->email));
 		}
-		
+
+		$app->mailgun->to = $app->paytutorsessioninfo->email;
+		$app->mailgun->subject = 'Bi-Monthly Tutor Payment';
+
+		$message = '<p>Hello, '.$app->paytutor->first_name.' '.$app->paytutor->last_name.'</p>';
+		$message.= '<p>You are receiving this email, to let you know that we have paid you <span>$'.numbers(($app->paytutorsessioninfo->amount/100)).'</span> via Direct Deposit. The funds should be in your account within 2 days.</p>';
+
+		$app->mailgun->message = $message;
+		$app->mailgun->send();
+
 		$app->redirect('/admin-everything/pay-tutors');
-		
+
 	}
 
 

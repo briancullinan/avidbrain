@@ -314,3 +314,10 @@ main .container-nopadd{
 .block.tweets .description{
 	padding: 0px;
 }
+
+
+.orsignup{
+	background: #dedede;
+	padding: 10px;
+	text-align: center;
+}

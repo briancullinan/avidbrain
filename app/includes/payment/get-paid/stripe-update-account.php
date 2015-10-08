@@ -1,40 +1,36 @@
 <?php
 
-/*
-if(isset($app->user->account_id) && empty($app->user->managed_id)){
+	if(isset($app->user->account_id) && empty($app->user->managed_id)){
 
-	$managed = \Stripe\Account::create(
-		array(
-			'from_recipient'=>$app->user->account_id
-		)
-	);
+		$managed = \Stripe\Account::create(
+			array(
+				'from_recipient'=>$app->user->account_id
+			)
+		);
 
-	$app->user->managed_id = $managed->id;
-	$app->user->save();
+		$app->user->managed_id = $managed->id;
+		$app->user->save();
 
-	$app->redirect('/payment/get-paid');
-}
-
-
-
-if(isset($app->user->account_id)){
-	try{
-		$account = \Stripe\Account::retrieve($app->user->managed_id);
+		$app->redirect('/payment/get-paid');
 	}
-	catch(Exception $e){
-		//printer($e);
-	}
-}
-*/
 
-if(isset($app->user->account_id)){
-	try{
-		$recipient = \Stripe\Recipient::retrieve($app->user->account_id);
+	if(isset($app->user->account_id)){
+		try{
+			$recipient = \Stripe\Recipient::retrieve($app->user->account_id);
+		}
+		catch(Exception $e){
+			//printer($e);
+		}
 	}
-	catch(Exception $e){
-		//printer($e);
+
+	if(isset($app->user->account_id)){
+		try{
+			$account = \Stripe\Account::retrieve($app->user->managed_id);
+		}
+		catch(Exception $e){
+			//printer($e);
+		}
 	}
-}
 
 ?>
 

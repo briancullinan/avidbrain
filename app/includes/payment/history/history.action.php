@@ -7,10 +7,10 @@
 		$select1 = 'recipient';
 		$select2 = 'email';
 	}
-	
-	
+
+
 	$data	=	$app->connect->createQueryBuilder();
-	$data	=	$data->select('payments.*,sessions.payrate,sessions.taxes,sessions.session_cost')->from('avid___user_payments','payments');
+	$data	=	$data->select('payments.*,sessions.payrate,sessions.taxes,sessions.session_cost,user.url,user.first_name,user.last_name')->from('avid___user_payments','payments');
 	$data	=	$data->where('payments.'.$select1.' = :myemail OR payments.recipient = :myemail');
 	$data	=	$data->setParameter(':myemail',$app->user->email);
 		$data	=	$data->leftJoin('payments','avid___user','user','user.email = payments.'.$select2);
@@ -18,14 +18,14 @@
 		$data	=	$data->leftJoin('payments','avid___user_account_settings','settings','user.email = settings.email');
 		$data	=	$data->leftJoin('payments','avid___sessions','sessions','sessions.id = payments.session_id');
 	$data	=	$data->orderBy('payments.id','DESC');
-	
+
 	$offsets = new offsets((isset($number) ? $number : NULL),$app->dependents->pagination->items_per_page);
 	$count	=	$data->execute()->rowCount();
 	$data	=	$data->setMaxResults($offsets->perpage)->setFirstResult($offsets->offsetStart);
 	$data	=	$data->execute()->fetchAll();
-	
+
 	//notify($data);
-	
+
 	$pagify = new Pagify();
 	$config = array(
 		'total'    => $count,
@@ -35,14 +35,14 @@
 	);
 	$pagify->initialize($config);
 	$app->pagination = $pagify->get_links();
-	
+
 	if(isset($data[0])){
 		$app->paymenthistory = $data;
 	}
-	
+
 	$app->meta = new stdClass();
 	$app->meta->title = 'Payment History';
-	
+
 	//notify((stripe_transaction(10000)/100)-100);
-	
+
 	$app->target->include = $app->target->user->include;

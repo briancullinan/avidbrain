@@ -61,16 +61,20 @@ h1 span:first-child{
 }
 h2{
 	font-size: 2.7rem;
-	color: #666;
+	color: #444;
 	margin-bottom: 10px;
 }
 h3{
 	font-size: 2rem;
-	color: #999;
-	margin-bottom: 10px;
+	color: #666;
+	margin-bottom: 5px;
 }
 .notbold{
 	font-weight: 300;
+}
+p{
+    margin-top: 0px;
+    padding-top: 0px;
 }
 
 main{
@@ -221,9 +225,12 @@ footer .active{
 	color: #ccc;
 	float: right;
 }
-header.activeaction,main.activeaction,footer.activeaction{
+header.activeaction,main.activeaction{
 	padding-left: 200px;
 
+}
+footer.activeaction{
+    display: none;
 }
 footer.activeaction{
 	border-color: transparent;
@@ -257,12 +264,12 @@ main .homepage-container.liu{
 header.activeaction:before, main.activeaction:before, footer.activeaction:before, notifications.activeaction:before{
 	width: 100%;
 	height: 100%;
-	position: absolute;
+	position: fixed;
 	background: rgba(0, 0, 0, 0.6);
 	content: "";
 	left: 0px;
 	top:0px;
-	z-index: 33;
+	z-index: 444;
 }
 subnav{
 	padding: 5px;
@@ -542,7 +549,9 @@ footer{
 }
 .left-navigation .sub-navigation li.active a{
 	color: #0099ff;
-	font-weight: bold;
+}
+.signupbutton{
+    margin-top: 15px;
 }
 
 /* Dropdown */

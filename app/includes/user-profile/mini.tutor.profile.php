@@ -12,7 +12,7 @@
 					 if(count($subjects)>0){
 						 $searchResults->subjects = $subjects;
 					 }
-	
+
 	$test = get_reviewinfo($app->connect,$searchResults->email,$searchResults->usertype);
 	$searchResults->reviewinfo = new stdClass();
 	$searchResults->reviewinfo->review_average = $test->review_average;
@@ -27,14 +27,14 @@
 			$<?php echo $searchResults->hourly_rate; ?> <?php if(isset($searchResults->negotiableprice) && $searchResults->negotiableprice=='yes'){ echo '<span class="asterisk"><i class="fa fa-asterisk"></i></span>';} ?>
 		</span>
 	</div>
-	
+
 	<div class="row">
-		<div class="col s12 m3 l3 center-align">
+		<div class="col s12 m4 l3 center-align">
 			<?php
 				$userinfo = $searchResults;
 				include($app->dependents->APP_PATH.'includes/user-profile/user-block.php');
 			?>
-			
+
 			<?php if(isset($searchResults->city)): ?>
 			<div class="tutor-location">
 				<i class="mdi-action-room"></i>
@@ -46,30 +46,30 @@
 				<?php echo number_format(round($searchResults->distance), 0, '', ','); ?> Miles Away
 			</div>
 			<?php endif; ?>
-			
+
 		</div>
-		<div class="col s12 m9 l9">
+		<div class="col s12 m8 l9">
 			<div class="row">
 				<div class="col s12 m7 l9">
-					
+
 					<?php if(isset($searchResults->short_description_verified)): ?>
 						<div class="short-description"><?php echo $searchResults->short_description_verified; ?></div>
 					<?php endif; ?>
 					<?php if(isset($searchResults->personal_statement_verified)): ?>
 						<div class="personal-statement"><?php echo truncate($searchResults->personal_statement_verified,300); ?></div>
 					<?php endif; ?>
-					
+
 					<?php if(empty($searchResults->short_description_verified) && empty($searchResults->personal_statement_verified)): ?>
-						
+
 					<?php endif; ?>
-					
+
 					<?php if(isset($searchResults->subjects[0])): ?>
 					<div class="short-description">My Areas of Expertise</div>
 						<div class="tutor-results-subjects">
 							<?php echo showsubjects($searchResults->subjects,10); ?>
 						</div>
 					<?php endif; ?>
-				
+
 				</div>
 				<div class="col s12 m5 l3">
 					<?php if(isset($app->user->email) && $app->user->email == $searchResults->email): ?>
@@ -81,9 +81,9 @@
 				</div>
 			</div>
 		</div>
-		
+
 	</div>
-	
+
 	<div class="badges mini-badges">
 		<?php
 			echo badge('background_check',$searchResults);
@@ -98,6 +98,6 @@
 			echo badge('negotiable_rate',$searchResults);
 		?>
 	</div>
-	
-	
+
+
 </div>

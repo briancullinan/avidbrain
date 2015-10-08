@@ -142,7 +142,7 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 
 </header>
 
-
+<?php if(isset($app->howitworks)){ include($app->dependents->APP_PATH.'includes/how-it-works/how-it-works.php'); } ?>
 <main>
 	<?php
 		$containerClass = NULL;
@@ -164,8 +164,6 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 		}
 	?>
 	<div class="<?php echo $containerClass; ?>">
-
-		<?php if(isset($app->howitworks)){ include($app->dependents->APP_PATH.'includes/how-it-works/how-it-works.php'); } ?>
 		<?php if(isset($_SESSION['slim.flash']['error'])): ?>
 			<div class="say-message"><div class="the-message show-message"><?php echo $_SESSION['slim.flash']['error']; ?></div></div>
 		<?php endif; ?>
@@ -173,13 +171,13 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 		<?php if(isset($app->secondary) && file_exists($app->secondary) || isset($app->tertiary) && file_exists($app->tertiary)): ?>
 
 			<div class="row">
-				<div class="col s12 m3 l3">
+				<div class="col s12 m4 l3">
 					<div class="left-navigation">
 						<?php if(file_exists($app->secondary)){include($app->secondary);} ?>
 						<?php if(file_exists($app->tertiary)){include($app->tertiary);} ?>
 					</div>
 				</div>
-				<div class="col s12 m9 l9">
+				<div class="col s12 m8 l9">
 					<?php include('wild.pages.php'); ?>
 				</div>
 			</div>
