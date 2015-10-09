@@ -16,6 +16,12 @@
 		$data	=	$data->andWhere('user.usertype = :usertype')->setParameter(':usertype','student');
 		$data	=	$data->andWhere('user.status IS NULL');
 		$data	=	$data->orWhere('parent_slug = :subject')->setParameter(':subject',$subject);
+		if(isset($app->user->usertype) && $app->user->usertype=='admin'){
+
+		}
+		else{
+			$data	=	$data->andWhere('jobs.flag IS NULL');
+		}
 
 		// INNER JOIN
 		$data	=	$data->innerJoin('jobs','avid___user','user','jobs.email = user.email');

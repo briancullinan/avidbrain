@@ -73,6 +73,34 @@
 
 								<span class="date"><?php echo formatdate($job->date, 'M. jS, Y @ g:i a'); ?></span>
 							</div>
+
+							<?php if(isset($app->user->usertype) && $app->user->usertype=='admin'): ?>
+								<br>
+								<form method="post" action="/jobs">
+									<?php if(empty($job->flag)): ?>
+										<input type="hidden" name="flagjob[value]" value="flag"  />
+										<div class="form-submit">
+											<button class="btn red btn-s" type="submit">
+												Flag Job Post
+											</button>
+										</div>
+									<?php else: ?>
+										<input type="hidden" name="flagjob[value]" value="unflag"  />
+										<div class="form-submit">
+											<button class="btn blue btn-s" type="submit">
+												Un-Flag Job Post
+											</button>
+										</div>
+									<?php endif; ?>
+
+									<input type="hidden" name="flagjob[page]" value="<?php echo $app->request->getPath(); ?>"  />
+									<input type="hidden" name="flagjob[target]" value="flagjob"  />
+									<input type="hidden" name="flagjob[id]" value="<?php echo $job->id; ?>"  />
+									<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
+
+								</form>
+							<?php endif; ?>
+
 					</div>
 					<div class="col s12 m6 l6">
 						<div class="row">

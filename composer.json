@@ -14,6 +14,7 @@
         "fguillot/picofeed": "@stable",
         "twilio/sdk": "^4.3",
         "google/apiclient": "^1.1",
-        "abraham/twitteroauth": "^0.5.4"
+        "abraham/twitteroauth": "^0.5.4",
+        "snipe/banbuilder": "dev-master"
     }
 }

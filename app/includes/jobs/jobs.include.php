@@ -105,6 +105,8 @@
 							</a>
 							<?php if(isset($job->applicants)): ?>
 								<span class="badge <?php if(isset($job->open)){ echo 'blue';}else{ echo 'green';} ?> white-text"><?php echo $job->applicants; ?></span>
+							<?php elseif(isset($job->flag)): ?>
+								<span class="badge red white-text"><i class="fa fa-flag"></i></span>
 							<?php endif; ?>
 						</li>
 					<?php endforeach; ?>

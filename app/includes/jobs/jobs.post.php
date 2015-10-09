@@ -32,6 +32,12 @@ if(isset($app->searchingforjobs) && !empty($app->searchingforjobs)){
 	$data	=	$app->connect->createQueryBuilder();
 	$data	=	$data->select($select)->from('avid___jobs','jobs');
 	$data	=	$data->where('jobs.open IS NOT NULL');
+	if(isset($app->user->usertype) && $app->user->usertype=='admin'){
+
+	}
+	else{
+		$data	=	$data->andWhere('jobs.flag IS NULL');
+	}
 
 	$data	=	$data->andWhere('user.usertype = :usertype')->setParameter(':usertype','student');
 	$data	=	$data->andWhere('user.status IS NULL');
@@ -39,7 +45,7 @@ if(isset($app->searchingforjobs) && !empty($app->searchingforjobs)){
 	$search = NULL;
 	if(isset($app->searchingforjobs->search) && !empty($app->searchingforjobs->search)){
 		$search=true;
-		$data	=	$data->andWhere('CONCAT(jobs.subject_name," ",jobs.subject_slug) LIKE :subject_name')->setParameter(':subject_name',"%".$app->searchingforjobs->search."%");
+		$data	=	$data->andWhere('CONCAT(jobs.subject_name," ",jobs.subject_slug," ",jobs.parent_slug) LIKE :subject_name')->setParameter(':subject_name',"%".$app->searchingforjobs->search."%");
 
 	}
 

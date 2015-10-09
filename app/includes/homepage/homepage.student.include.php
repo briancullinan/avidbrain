@@ -4,7 +4,7 @@
 
 	<div class="row">
 
-		<div class="col s12 m4 l4">
+		<div class="col s12 m6 l4">
 
 				<?php if(isset($app->mytutors)): ?>
 				<h3>Your Tutors</h3>
@@ -81,7 +81,7 @@
 
 		</div>
 
-		<div class="col s12 m4 l4">
+		<div class="col s12 m6 l4">
 			<?php if(isset($app->my_tweets)): ?>
 				<h3> News from <?php echo str_replace('https://twitter.com/','@',$app->dependents->social->twitter); ?></h3>
 				<?php foreach($app->my_tweets as $tweet):# printer($tweet); ?>
@@ -103,7 +103,7 @@
 
 		</div>
 
-		<div class="col s12 m4 l4">
+		<div class="col s12 m12 l4">
 
 			<?php
 				if( isset($app->freesessions->enabled) && $app->freesessions->enabled==true ){

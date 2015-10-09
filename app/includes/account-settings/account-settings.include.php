@@ -279,7 +279,10 @@
 					url: '/account-settings',
 					data: {username:thedata,csrf_token:thetoken},
 					success: function(response){
-						if(response=='error'){
+						if(response.censor==true){
+							$('#newusername').val(response.clean);
+						}
+						else if(response=='error'){
 							$('#checkusername .name-status').addClass('invalid-name').removeClass('valid-name').html('<i class="fa fa-warning"></i> Invalid Name');
 							$('.submit-me').html('');
 						}
@@ -291,6 +294,7 @@
 							$('#checkusername .name-status').addClass('valid-name').removeClass('invalid-name').html('<i class="fa fa-check"></i> Your Name ');
 							$('.submit-me').html('');
 						}
+
 					}
 				});
 

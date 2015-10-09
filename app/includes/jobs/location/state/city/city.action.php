@@ -16,6 +16,12 @@
 		$data	=	$data->andWhere('user.status IS NULL');
 		$data	=	$data->andWhere('user.state_slug = :state')->setParameter(':state',$state);
 		$data	=	$data->andWhere('user.city_slug = :city')->setParameter(':city',$city);
+		if(isset($app->user->usertype) && $app->user->usertype=='admin'){
+
+		}
+		else{
+			$data	=	$data->andWhere('jobs.flag IS NULL');
+		}
 
 		$data	=	$data->innerJoin('jobs','avid___user','user','jobs.email = user.email');
 		$data	=	$data->innerJoin('jobs','avid___user_profile','profile','jobs.email = profile.email');

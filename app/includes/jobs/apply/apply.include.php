@@ -90,7 +90,7 @@
 
 		</div>
 	</div>
-	<div class="col s12 m4 l4">
+	<div class="col s12 m4 l4 jobs-page-right">
 		<?php if(isset($app->job->myapplication)): ?>
 			<h3>Thank you for applying</h3>
 		<?php elseif(empty($app->job->open)): ?>

@@ -91,7 +91,7 @@
 		);
 
 		if(isset($app->signup->promocode) && $app->signup->promocode=='qa-signup'){
-			$prepare['qasignup'] = 1;
+			$inserttemp['qasignup'] = 1;
 		}
 
 		if(isset($app->signup->promocode)){

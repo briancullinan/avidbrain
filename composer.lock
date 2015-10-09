@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "eb85e172934be62c62a503721bf436c0",
-    "content-hash": "34a6c8772fc7e7be26071f7d4f1d448f",
+    "hash": "8262675106ac0c4addcef057938ab338",
+    "content-hash": "03d60b21a8b888931d091ed237b7e4bb",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -1577,6 +1577,54 @@
             "time": "2015-03-08 18:41:17"
         },
         {
+            "name": "snipe/banbuilder",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/snipe/banbuilder.git",
+                "reference": "180f5085cbfc71423176d60071250487163df9d0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/snipe/banbuilder/zipball/180f5085cbfc71423176d60071250487163df9d0",
+                "reference": "180f5085cbfc71423176d60071250487163df9d0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Snipe\\BanBuilder\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "AGPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "snipe",
+                    "email": "snipe@snipe.net",
+                    "role": "Creator & Developer"
+                }
+            ],
+            "description": "Library to easily handle profanity filtering in PHP projects.",
+            "homepage": "http://banbuilder.com",
+            "keywords": [
+                "filter",
+                "language",
+                "profanity",
+                "strings",
+                "swear"
+            ],
+            "time": "2015-08-26 08:21:19"
+        },
+        {
             "name": "stripe/stripe-php",
             "version": "v3.4.0",
             "source": {
@@ -1903,7 +1951,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "fguillot/picofeed": 0
+        "fguillot/picofeed": 0,
+        "snipe/banbuilder": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

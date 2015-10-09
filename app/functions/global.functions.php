@@ -496,6 +496,26 @@
 		}
 	}
 	function check_username($connect,$newname){
+		$notAllowed = array(
+			'avidbrain',
+			'avidbrains',
+			'glaeseman',
+			'davidglaeseman',
+			'rezendez',
+			'ninja',
+			'admin',
+			'administrator',
+			'god',
+			'staff',
+			'davidg',
+			'amozek',
+			'avidbrian',
+			'acidbrain'
+		);
+		if(in_array($newname, $notAllowed)){
+			return true;
+		}
+
 		$sql = "SELECT username FROM avid___user WHERE username = :username";
 		$prepeare = array(':username'=>$newname);
 		$results = $connect->executeQuery($sql,$prepeare)->fetch();
@@ -798,7 +818,7 @@
 		return $connect->executeQuery($sql,$prepeare)->fetchAll();
 	}
 	function get_jobs($connect,$email){
-		$sql = "SELECT * FROM avid___jobs WHERE open IS NOT NULL AND email = :email ORDER BY `date` DESC";
+		$sql = "SELECT * FROM avid___jobs WHERE open IS NOT NULL AND flag IS NULL AND email = :email ORDER BY `date` DESC";
 		$prepeare = array(':email'=>$email);
 		return $connect->executeQuery($sql,$prepeare)->fetchAll();
 	}
@@ -1041,7 +1061,7 @@
 
 			if(isset($imageowner->showmyphotoas) && $imageowner->showmyphotoas!=1 && !empty($imageowner->showmyphotoas)){
 				//
-				
+
 			}
 			else{
 				$ahrefStart.='<div class="i-need-review">';

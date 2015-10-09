@@ -1,9 +1,27 @@
 <?php
+	use Snipe\BanBuilder\CensorWords;
 
-	if(isset($app->newusername)){
+	if(isset($app->newusername) && !empty($app->newusername)){
+
+		if(empty($app->newusername->username)){
+			notify('error');
+		}
 
 		$checkusername = makeslug($app->dependents->ROMANIZE,$app->newusername->username);
 		$newusername = check_username($app->connect,$checkusername);
+
+		$censor = new CensorWords;
+		$censor->setReplaceChar('*');
+		$string = $censor->censorString($checkusername);
+
+		if($string['orig']!=$string['clean']){
+			notify(
+				array(
+					'clean'=>str_replace('*','',$string['clean']),
+					'censor'=>true
+				)
+			);
+		}
 
 		if($newusername==true){
 			notify('error');
@@ -54,9 +72,27 @@
 			);
 		}
 	}
-	elseif(isset($app->username)){
+	elseif(isset($app->username) && !empty(isset($app->username))){
 		$checkusername = makeslug($app->dependents->ROMANIZE,$app->username);
 		$newusername = check_username($app->connect,$checkusername);
+
+		$censor = new CensorWords;
+		$censor->setReplaceChar('*');
+		$string = $censor->censorString($checkusername);
+		//$string
+
+		if($string['orig']!=$string['clean']){
+			notify(
+				array(
+					'clean'=>str_replace('*','',$string['clean']),
+					'censor'=>true
+				)
+			);
+		}
+
+		if(empty($app->username)){
+			notify('error');
+		}
 
 		if($checkusername==$app->user->username){
 			notify('yourname');

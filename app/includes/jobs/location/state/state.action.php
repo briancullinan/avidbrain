@@ -19,6 +19,12 @@
 		$data	=	$data->innerJoin('jobs','avid___user','user','jobs.email = user.email');
 		$data	=	$data->innerJoin('jobs','avid___user_profile','profile','jobs.email = profile.email');
 		$data	=	$data->innerJoin('jobs','avid___user_account_settings','settings','jobs.email = settings.email');
+		if(isset($app->user->usertype) && $app->user->usertype=='admin'){
+
+		}
+		else{
+			$data	=	$data->andWhere('jobs.flag IS NULL');
+		}
 
 		//$data	=	$data->innerJoin('user','aviduser_profile','profile','user.email = profile.email');
 		//$data	=	$data->orderBy('id','DESC');
