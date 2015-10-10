@@ -166,6 +166,7 @@ $(document).ready(function() {
 			if($('.advanced-switch input').is(':checked')){
 				$('.advanced-switch label').click();
 			}
+			Cookies.set('filterby', 'lastactive', { expires: 7 });
 			$('#searchform button').click();
 		});
 
@@ -937,6 +938,11 @@ $(document).ready(function() {
 $(window).on('scroll', function() {
     scrollPosition = $(this).scrollTop();
     var datastatus = $('.how-it-works').attr('data-status');
+	var scrollPositionMinus = (350 - scrollPosition);
+	var scrolltest = Math.abs(scrollPosition) * -1;
+	var scrolltestDivide = (scrolltest/1);
+	console.log(scrolltestDivide);
+	$('.widecontent').css('top',scrolltest).css('background-position','0px '+scrolltestDivide+'px');
     if (scrollPosition >= 501 && datastatus=='open') {
         $('.how-it-works').attr('data-status','closed');
 		$('.how-it-works-slide').removeClass('slideDown');

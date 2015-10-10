@@ -2,39 +2,10 @@
 	<div class="row">
 		<div class="col s12 m4 l4">
 			<h3>Your Contacts</h3>
-			<div class="compose-list center-align white">
-				<?php if(count($app->alltheusers)>0): ?>
-				<?php foreach($app->alltheusers as $compose): ?>
-					<div class="compose-item <?php if(isset($username) && $compose->username==$username){ echo 'active'; } ?>" id="/messages/compose/<?php echo $compose->username; ?>">
-						<div class="row">
-							<div class="col s12 m3 l3">
-								<div class="avatar">
-									<?php echo show_avatar($compose,$user=$app->user,$app->dependents); ?>
-								</div>
-							</div>
-							<div class="col s12 m9 l9">
-								<div class="user-name">
-									<?php echo the_users_name($compose); ?>
-								</div>
-								<?php
-									if(empty($compose->promocode) && $compose->usertype=='student'){
-										echo '<div class="badge grey white-text">Student</div>';
-									}
-									elseif(isset($compose->promocode) && $compose->usertype=='student'){
-										echo '<div class="badge blue white-text">Your Student</div>';
-									}
-									elseif($compose->usertype=='tutor'){
-										echo '<div class="badge light-green accent-4 white-text">Tutor</div>';
-									}								
-								?>
-							</div>
-						</div>
-					</div>
-				<?php endforeach; ?>
-				<?php else: ?>
-					You have no contacts
-				<?php endif; ?>
-			</div>
+			<?php
+				echo 'NEWCOMPOSE-LIST';
+				printer($app->alltheusers);
+			?>
 		</div>
 		<div class="col s12 m8 l8">
 			<?php if(isset($app->composemessage)): ?>

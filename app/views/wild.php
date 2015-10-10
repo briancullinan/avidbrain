@@ -162,6 +162,7 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 		if(isset($app->notifications)){
 			$containerClass.= ' active-notification ';
 		}
+		$containerClass.= $app->target->css;
 	?>
 	<div class="<?php echo $containerClass; ?>">
 		<?php if(isset($_SESSION['slim.flash']['error'])): ?>
