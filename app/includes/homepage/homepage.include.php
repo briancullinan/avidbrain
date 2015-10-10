@@ -229,21 +229,23 @@
 					<div class="row">
 						<div class="col s12 m4 l4">
 							<div class="profile-image center-align avatar">
-								<a href="/u/glaeseman"><img class="avatarbg responsive-img " src="/profiles/approved/--tutors--scottsdale--arizona--glaeseman.crop.jpg" /></a>
+								<a href="/tutors/idaho/moscow/31303039"><img class="avatarbg responsive-img " src="/images/featured-tutors/ross-m.jpg" /></a>
 							</div>
 							<div class="featured-tutor-score">
-								<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i>
+								<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
 							</div>
 						</div>
 						<div class="col s12 m8 l8">
-							<div class="featured-tutor-name"><a href="/u/glaeseman">Mister Tutor</a></div>
-							<div class="featured-tutor-location">Scottsdale <span>Arizona</span></div>
-							<div class="featured-tutor-subjects">Algebra 1, Biology, ACT Science, Martial Arts, River Rafting</div>
+							<div class="featured-tutor-name"><a href="/tutors/idaho/moscow/31303039">Ross M</a></div>
+							<div class="featured-tutor-location">Moscow <span>Idaho</span></div>
+							<div class="featured-tutor-subjects">
+								Physics, Calculus, Geometry, Prealgebra, Precalculus, Trigonometry, Statistics, SAT Math, Probability, Elementary Math, ACT Math, Study Skills, Algebra 1, Algebra 2
+							</div>
 							<div class="featured-tutor-about">
-								Gummi bears fruitcake biscuit chupa chups marzipan powder sesame snaps donut. Tiramisu candy caramels pastry cupcake chupa chups oat cake fruitcake chocolate. Lemon drops halvah pie dessert marzipan caramels chocolate bar croissant. Jelly beans cake gingerbread carrot cake cake. Pie halvah cheesecake pie topping chocolate oat cake lollipop. Cake soufflé brownie tart cupcake. Chocolate bar toffee gummies. Bear claw biscuit icing tootsie roll liquorice cheesecake. Lemon drops  candy canes toffee applicake jelly beans.
+								I love tutoring! I enjoy helping others learn new skills and gain more knowledge. I personalize instruction for every individual I work with and focus on encouraging independent learning skills to ensure a life-long ability to learn. I have five years experience tutoring algebra, calculus, and physics! I have spent the last two years tutoring at Allan Hancock College discovering different learning styles and helping students increase their understanding and their grades. I have flexible rates for individuals and groups so don't be afraid to ask. I can't wait to help you succeed today!
 							</div>
 							<div class="featured-tutor-link">
-								<a href="/u/glaeseman">View Full Profile</a>
+								<a href="/tutors/idaho/moscow/31303039">View Full Profile</a>
 							</div>
 						</div>
 					</div>

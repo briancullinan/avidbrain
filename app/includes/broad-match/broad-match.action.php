@@ -6,6 +6,9 @@
 	$broadMatch = $parent_slug;
 	$app->broadMatchCap = ucwords(str_replace('-',' ',$broadMatch));
 
+	$app->filterbylocation = 'maincats-'.$broadMatch.'-tutors';
+	//notify($app->filterbylocation);
+
 	$app->connect->cache->delete("allowed_parent_slugs");
 	$allowed_parent_slugs = $app->connect->cache->get("allowed_parent_slugs");
 	if($allowed_parent_slugs == null) {
@@ -56,12 +59,41 @@
 	$data	=	$data->groupBy('user.email');
 	//$data	=	$data->xxx();
 
-	$count	=	$data->select('user.id')->execute()->rowCount();
+
 	$offsets = new offsets((isset($number) ? $number : NULL),$app->dependents->pagination->items_per_page);
 
 	$data	=	$data->setMaxResults($offsets->perpage)->setFirstResult($offsets->offsetStart);
 
+	if(isset($app->filterby) && !empty($app->filterby)){
+		if($app->filterby=='highestrate'){
+			$data	=	$data->orderBy('profile.hourly_rate','DESC');
+		}
+		elseif($app->filterby=='lowestrate'){
+			$data	=	$data->andWhere('profile.hourly_rate IS NOT NULL');
+			$data	=	$data->orderBy('profile.hourly_rate','ASC');
+		}
+		elseif($app->filterby=='lastactive'){
+			$data	=	$data->orderBy('user.last_active');
+		}
+		elseif($app->filterby=='higheststarscore'){
+			$data->addSelect('sessions.review_score')->from('avid___sessions','sessions');
+			$data	=	$data->andWhere('sessions.review_score IS NOT NULL AND sessions.from_user = user.email');
+			$data	=	$data->orderBy('sessions.review_score','DESC');
+		}
+	}
+	else{
+		$data	=	$data->orderBy('user.last_active');
+	}
+
+	$count	=	$data->select('user.id')->execute()->rowCount();
 	$data	=	$data->addSelect('user.email,user.first_name,user.last_name,user.url,user.status,subjects.parent_slug,'.everything());
+
+
+	if($count==0 && $app->filterby=='higheststarscore'){
+		$app->setCookie('filterby','lastactive', '2 days');
+		$app->redirect($app->request->getPath());
+	}
+
 	$data	=	$data->execute()->fetchAll();
 	if(isset($data[0])){
 		$app->broadmatch = $data;

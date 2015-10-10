@@ -1,13 +1,13 @@
 <?php
-	
+
 	//location
 	//action
 	//number
-	
+
 	//notify($location);
-	
+
 	$redirect = NULL;
-	
+
 	if($location=='tutorssearch'){
 		$redirect = '/tutors';
 	}
@@ -21,14 +21,17 @@
 			$redirect.='/'.$slug;
 		}
 	}
-	else{
-		//notify($location);
+	elseif(strpos($location, 'maincats-') !== false){
+		$redirect = '/'.str_replace('maincats-','',$location);
 	}
-	
+	else{
+		//$redirect = $location;
+	}
+
 	if(isset($number)){
 		$redirect = $redirect.'/page/'.$number;
 	}
-	
+
 	$app->setCookie('filterby',$action, '2 days');
-	
+
 	$app->redirect($redirect);
