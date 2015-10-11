@@ -3,7 +3,7 @@
 		<div class="col s12 m4 l4">
 			<h3>Whiteboard Sessions</h3>
 			<?php
-				echo 'NEWCOMPOSE-LIST';
+				echo 'NEWCOMPOSE-LIST GET ROOM DATA';
 				printer($app->getroomdata);
 			?>
 		</div>

@@ -507,3 +507,37 @@ width: 50%;
 .main-staff.main-user h2{
 	margin-bottom: 15px;
 }
+
+
+/*New Order List*/
+.new-order-list{
+	width: 100%;
+	background: #fff;
+	border: solid 1px #ccc;
+	padding: 10px;
+	position: relative;
+	max-height: 300px;
+	overflow-y: auto;
+}
+.block-list-user{
+
+}
+.new-order-list a.block-list{
+	display: block;
+	padding: 5px;
+}
+.new-order-list a.block-list:hover{
+	background:#0099ff;
+	color:#fff;
+}
+.new-order-list .badge{
+	background: #0099ff;
+	right: 15px;
+	padding: 0px;
+	position: absolute;
+	color:#fff;
+}
+.new-order-list a.block-list:hover .badge{
+	background: #fff;
+	color:#0099ff;
+}

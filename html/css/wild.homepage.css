@@ -305,14 +305,14 @@ border-radius: 2px;
 	color: #bdff00;
 }
 .featured-tutor-link{
-	border-top: solid 5px #555;
+	border-top: solid 5px #0099ff;
 	margin-top:10px;
 }
 .featured-tutor-link a{
-	background: #555;
+	background: #0099ff;
 	display: inline-block;
 	padding: 2px 10px;
-	color: #ccc;
+	color: #fff;
 	-webkit-transition: all;
 	-webkit-transition-timing-function: ease-out;
 	-webkit-transition-duration: .2s;
@@ -325,10 +325,12 @@ border-radius: 2px;
 	transition-timing-function: ease-out;
 	transition-duration: .2s;
 }
-.featured-tutor-link a:hover{
-	background: #666;
+.featured-tutor-inside:hover{
+	background: rgba(0, 0, 0, 0.6);
+}
+.featured-tutor-inside:hover .featured-tutor-link a{
 	color: #fff;
-	padding: 5px 10px;
+	padding: 10px 10px;
 }
 .featured-tutor-subjects{
 	font-family: 'Quicksand';

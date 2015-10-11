@@ -10,7 +10,7 @@
 				<h3>Your Tutors</h3>
 
 				<?php
-					echo 'NEWCOMPOSE-LIST';
+					echo 'NEWCOMPOSE-LIST MY TUTORS';
 					printer($app->mytutors);
 				?>
 

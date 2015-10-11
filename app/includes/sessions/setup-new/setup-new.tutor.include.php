@@ -4,7 +4,7 @@
 			<h3>Available Students</h3>
 			<div class="confirm-payment hide"></div>
 			<?php
-				echo 'NEWCOMPOSE-LIST';
+				echo 'NEWCOMPOSE-LIST ALL THE USERS';
 				printer($app->alltheusers);
 			?>
 		</div>
