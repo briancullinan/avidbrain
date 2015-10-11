@@ -10,7 +10,7 @@ function resetform(){
 }
 
 function kill_form(formid,message){
-	
+
 	$(formid).fadeOut('slow',function(){
 		$(formid).parent().append('<div class="kill-form"><div class="slide-down invisible">'+message+'</div></div>');
 		var messageHeight = $('.slide-down').outerHeight();
@@ -26,8 +26,6 @@ function kill_form(formid,message){
 
 function handlepost(response){
 
-	console.log(response);
-
 	var formid = '#'+response.formID;
 	var fieldid = '#'+response.field;
 
@@ -41,7 +39,7 @@ function handlepost(response){
 
 	}
 	else if(response.action=='required'){
-		
+
 		$('.notify-user').remove();
 		$('.required-form').removeClass('required-form');
 		$(formid).addClass('required-form');
@@ -53,7 +51,7 @@ function handlepost(response){
 		$(formid+' '+fieldid).addClass('required-field');
 		$(formid+' '+fieldid).find('input,textarea,select,label').first().focus().click();
 		Materialize.toast(response.message, 4000,'fixed-toast',function(){});
-		
+
 	}
 	else if(response.action=='alert'){
 		Materialize.toast(response.message, 4000,'fixed-toast saved-toast',function(){});
@@ -67,7 +65,7 @@ function handlepost(response){
 		setTimeout(function(){
 			window.location = response.location;
 		}, 2000);
-		
+
 	}
 	else if(response.action=='invalidcsrf'){
 		$('input[name="csrf_token"]').val(response.errorcode);
@@ -96,7 +94,7 @@ function handlepost(response){
 }
 
 function stripeResponseHandler(status, response) {
-	
+
 	if(response.error){
 		$('.bank-errors').html('<div class="bank-problems">'+response.error.message+'</div>');
 	}
@@ -109,17 +107,17 @@ function stripeResponseHandler(status, response) {
 		$('.tax_id').val($('#tax_id').val());
 		$('#bank_token').submit();
 	}
-	
+
 }
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
     } else {
-	    console.log('Geolocation is not supported by this browser.');
+	    
     }
 }
 function showPosition(position){
-	
+
 	$.ajax({
 		type: 'POST',
 		url: '/my-location',
@@ -133,24 +131,24 @@ function showPosition(position){
 		}
 	});
 	return false;
-	
+
 }
 
 function fixavatars(){
-	
-	
+
+
 	$(".my-avatar.edit-avatar").each(function( index ) {
 		var mywidth = $(this).outerWidth();
 		var maxheight = 200;
-		
+
 		if(mywidth>maxheight){
 			mywidth = maxheight
 		}
-		
+
 		var fontsize = (mywidth - 10);
-		
+
 		$(this).attr('style','font-size:'+fontsize+'px;height:'+mywidth+'px');
-		
+
 	});
-	
+
 }

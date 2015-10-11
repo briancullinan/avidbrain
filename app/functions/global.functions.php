@@ -7,9 +7,7 @@
 			unset($_COOKIE[$cookieKey]);
 			setcookie($cookieKey, '', time() - 3600, '/');
 		}
-		notify($_COOKIE);
-		echo 'COOKIES ARE GONE';
-		exit;
+		return 1;
 
 	}
 

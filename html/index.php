@@ -1,7 +1,4 @@
 <?php
-	ini_set('display_errors', 1);
-	ini_set('log_errors', 1);
-	error_reporting(E_ALL);
 	header('Content-Type: text/html; charset=utf-8');
 	mb_internal_encoding("UTF-8");
 	mb_http_output('UTF-8');
@@ -24,13 +21,6 @@
 		//require('../app/dependents/dependent-files.php');
 		require('../app/dependents/dependent.wild.php');
 	$app->dependents = $dependents;
-	$app->config(array(
-	    'debug' => true,
-	    'mode'=>'development',
-	    'templates.path' => $app->dependents->APP_PATH.'/views',
-	    //'template'=>'base-template.php'
-	    'template'=>'wild.php'
-	));
 	$app->log->setEnabled(true);
 	if($app->request->getMethod()=='POST' && $app->request->isAjax()==true){
 		header('Content-type: application/json');
@@ -44,6 +34,21 @@
 	include($app->dependents->APP_PATH.'functions/global.functions.php');
 	require '../app/autoload/autoload.php';
 
+	$config = array(
+		'templates.path' => $app->dependents->APP_PATH.'/views',
+		'template'=>'wild.php'
+	);
+
+	if(isset($app->dependents->DEBUG) && !empty($app->dependents->DEBUG)){
+		$config['debug'] = true;
+		$config['mode'] = 'production';
+	}
+	else{
+		$config['debug'] = false;
+		$config['mode'] = 'development';
+	}
+
+	$app->config($config);
 
 	use \Slim\Extras\Middleware\CSRFNINJA;
 	use \Slim\Extras\Middleware\HttpBasicAuth;

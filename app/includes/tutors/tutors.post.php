@@ -23,7 +23,9 @@
 	$data	=	$data->andWhere('profile.hourly_rate IS NOT NULL');
 	$data	=	$data->andWhere('user.lock IS NULL');
 
-//	notify($app->search);
+	//notify($app->dependents);
+
+	//echo $variableJones;
 
 
 		$arrays = array();

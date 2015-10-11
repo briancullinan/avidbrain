@@ -12,6 +12,7 @@ return array(
     'Symfony\\Component\\Finder\\' => array($vendorDir . '/symfony/finder'),
     'Slim\\Extras' => array($vendorDir . '/slim/extras'),
     'Slim' => array($vendorDir . '/slim/slim'),
+    'Psr\\Log\\' => array($vendorDir . '/psr/log'),
     'PicoFeed' => array($vendorDir . '/fguillot/picofeed/lib'),
     'PHPParser' => array($vendorDir . '/nikic/php-parser/lib'),
     'Mailgun\\Tests' => array($vendorDir . '/mailgun/mailgun-php/tests'),
