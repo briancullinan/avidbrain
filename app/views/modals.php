@@ -29,13 +29,18 @@
 </div>
 <?php endif; ?>
 
+<?php
+	if(isset($loadModal) && $loadModal=='what-is-a-whiteboard'){
+		include($app->target->base.'what-is-a-whiteboard.php');
+	}
+?>
 
 <div id="bgcheck_modal" class="modal">
 	<div class="modal-content">
 		<h4> <i class="mdi-action-assignment-ind"></i> Background Checks</h4>
-		
+
 		<p>At <?php echo $app->dependents->SITE_NAME_PROPPER; ?>, we require all of our tutors to be background checked to ensure the safety of our students. By requiring all tutors to go through a thorough background check, we create a place that is both safe and an effective environment for our students.</p>
-		
+
 	</div>
 
 	<div class="modal-footer">
@@ -45,9 +50,9 @@
 
 <div id="myrank" class="modal">
 	<div class="modal-content">
-		
+
 		<h4><?php echo $app->dependents->SITE_NAME_PROPPER; ?> Ranking</h4>
-		
+
 		<div class="row">
 			<div class="col s12 m4 l4">
 				<p>At <?php echo $app->dependents->SITE_NAME_PROPPER; ?>, we rank all of our tutors with ranks and ranks and ranks and ranks.</p>
@@ -58,7 +63,7 @@
 					<li class="collection-item badge-new-user">
 						<div class="row">
 							<div class="col s12 m6 l6">
-								
+
 								<div class="row">
 									<div class="col s2 m2 l2">
 										<i class="fa fa-check"></i>
@@ -67,7 +72,7 @@
 										New User
 									</div>
 								</div>
-								
+
 							</div>
 							<div class="col s12 m6 l6">
 								0 - 50 Hours
@@ -77,7 +82,7 @@
 					<li class="collection-item badge-instructor">
 						<div class="row">
 							<div class="col s12 m6 l6">
-								
+
 								<div class="row">
 									<div class="col s2 m2 l2">
 										<i class="fa fa-certificate"></i>
@@ -86,7 +91,7 @@
 										Instructor
 									</div>
 								</div>
-								
+
 							</div>
 							<div class="col s12 m6 l6">
 								51 - 200 Hours
@@ -113,7 +118,7 @@
 					<li class="collection-item badge-teacher">
 						<div class="row">
 							<div class="col s12 m6 l6">
-								
+
 								<div class="row">
 									<div class="col s2 m2 l2">
 										<i class="fa fa-rocket"></i>
@@ -122,7 +127,7 @@
 										Teacher
 									</div>
 								</div>
-								
+
 							</div>
 							<div class="col s12 m6 l6">
 								1,001 - 2,000 Hours
@@ -132,7 +137,7 @@
 					<li class="collection-item badge-assistant-professor">
 						<div class="row">
 							<div class="col s12 m6 l6">
-								
+
 								<div class="row">
 									<div class="col s2 m2 l2">
 										<i class="fa fa-trophy"></i>
@@ -141,7 +146,7 @@
 										Assistant Professor
 									</div>
 								</div>
-								
+
 							</div>
 							<div class="col s12 m6 l6">
 								2,001 - 4,000 Hours
@@ -151,7 +156,7 @@
 					<li class="collection-item badge-associate-professor">
 						<div class="row">
 							<div class="col s12 m6 l6">
-								
+
 								<div class="row">
 									<div class="col s2 m2 l2">
 										<i class="fa fa-star"></i>
@@ -160,7 +165,7 @@
 										Associate Professor
 									</div>
 								</div>
-								
+
 							</div>
 							<div class="col s12 m6 l6">
 								4,001 - 6,000 Hours
@@ -170,7 +175,7 @@
 					<li class="collection-item badge-professor">
 						<div class="row">
 							<div class="col s12 m6 l6">
-								
+
 								<div class="row">
 									<div class="col s2 m2 l2">
 										<i class="fa fa-university"></i>
@@ -179,7 +184,7 @@
 										Professor
 									</div>
 								</div>
-								
+
 							</div>
 							<div class="col s12 m6 l6">
 								6,001 - 12,000 Hours
@@ -189,7 +194,7 @@
 					<li class="collection-item badge-mad-scientist">
 						<div class="row">
 							<div class="col s12 m6 l6">
-								
+
 								<div class="row">
 									<div class="col s2 m2 l2">
 										<i class="fa fa-flask"></i>
@@ -198,7 +203,7 @@
 										Mad Scientist
 									</div>
 								</div>
-								
+
 							</div>
 							<div class="col s12 m6 l6">
 								12,001+ Hours
@@ -208,7 +213,7 @@
 				</ul>
 			</div>
 		</div>
-		
+
 	</div>
 
 	<div class="modal-footer">

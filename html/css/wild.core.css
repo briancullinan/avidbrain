@@ -321,3 +321,7 @@ main .container-nopadd{
 	padding: 10px;
 	text-align: center;
 }
+
+#scribblar{
+	height: 600px;
+}

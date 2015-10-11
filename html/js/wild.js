@@ -82,8 +82,8 @@ $(document).ready(function() {
 			window.location = $(this).attr('id');
 		});
 
-		if($('.compose-item.active').attr('class')){
-			$(".compose-list").animate({ scrollTop: $('.compose-item.active').offset().top -120 }, 1000);
+		if($('.block-list-user.active').attr('class')){
+			$(".new-order-list").animate({ scrollTop: $('.block-list-user.active').offset().top -200 }, 1000);
 		}
 
 

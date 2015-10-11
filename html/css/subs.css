@@ -250,8 +250,8 @@ width: 50%;
 	position: fixed;
 	width: 100%;
 	left: 0px;
-	top:0px;
-	z-index: 55555;
+	top:100px;
+	z-index: 99999999;
 }
 .qalogin-text{
 	display: none;
@@ -518,6 +518,7 @@ width: 50%;
 	position: relative;
 	max-height: 300px;
 	overflow-y: auto;
+	margin-bottom: 15px;
 }
 .block-list-user{
 
@@ -527,17 +528,24 @@ width: 50%;
 	padding: 5px;
 }
 .new-order-list a.block-list:hover{
-	background:#0099ff;
-	color:#fff;
+	background:#efefef;
+	color:#333;
 }
 .new-order-list .badge{
 	background: #0099ff;
-	right: 15px;
+	float: right;
+	width: auto;
+	height: auto;
+	min-height: inherit;
+	min-width: inherit;
 	padding: 0px;
-	position: absolute;
+	position: relative;
 	color:#fff;
+	min-width: 26px;
+	margin-left: 1px;
 }
-.new-order-list a.block-list:hover .badge{
-	background: #fff;
-	color:#0099ff;
+
+.new-order-list .block-list-user.active a{
+	background:#0099ff;
+	color:#fff;
 }

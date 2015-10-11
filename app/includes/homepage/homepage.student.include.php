@@ -9,10 +9,15 @@
 				<?php if(isset($app->mytutors)): ?>
 				<h3>Your Tutors</h3>
 
-				<?php
-					echo 'NEWCOMPOSE-LIST MY TUTORS';
-					printer($app->mytutors);
-				?>
+				<div class="new-order-list">
+					<?php foreach($app->mytutors as $mytutors): ?>
+						<div class="block-list-user">
+							<a class="block-list" href="<?php echo $mytutors->url; ?>" target="_blank">
+								<?php echo short($mytutors); ?>
+							</a>
+						</div>
+					<?php endforeach; ?>
+				</div>
 
 				<?php else: ?>
 					<div class="block">You have no tutors, <a href="/tutors">find one now</a>.</div>
