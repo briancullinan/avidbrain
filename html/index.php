@@ -110,8 +110,20 @@
 
 	use MatthiasMullie\Minify;
 	//$minifyme = true;
-	//$app->minify = true;
+	$app->minify = true;
 	if(isset($minifyme)){
+
+		// Remove Old File
+		$oldFile = $app->dependents->DOCUMENT_ROOT;
+		$oldFileCSS = glob($oldFile.'css/final.*.*');
+		$oldFileJS = glob($oldFile.'js/final.*.*');
+		$remove = array_merge($oldFileCSS,$oldFileJS);
+		foreach($remove as $file){
+			//unlink($remove);
+			if(file_exists($file)){
+				unlink($file);
+			}
+		}
 
 		$minifier = new Minify\CSS();
 		foreach($app->header->localcss as $cssfile){

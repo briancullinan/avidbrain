@@ -1,12 +1,17 @@
 <div class="row">
 	<div class="col s12 m6 l6">
 		<p>Welcome to <?php echo $app->dependents->SITE_NAME_PROPPER; ?>, the largest tutoring marketplace of interviewed and background checked tutors! We have created a new account to help you communicate with potential tutors and schedule tutoring lessons.</p>
-		<p>Please be sure to check your email to authenticate your account.</p>
-		<p>If you have not received an email, you can have it resent. </p>
-		<p>You may also want to check your spam folder.</p>
+
+		<p>
+			Please call 1-800-485-3138 to setup an interview
+		</p>
+
+		<p><a class="btn blue" href="https://signup.avidbrain.com/interview-schedule.html" target="_blank">View our current interview schedule.</a></p>
+
 	</div>
 	<div class="col s12 m6 l6">
 		<h2>Resend Email</h2>
+		<p>If you never recieved an email confirmation, you can have it resent. Just type in your email address.</p>
 		<?php
 			$resetpass = new Forms($app->connect);
 			$resetpass->formname = 'resetpassword';

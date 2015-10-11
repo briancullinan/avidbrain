@@ -29,6 +29,7 @@
     padding: 10px 15px;
     background: #fff;
     display: block;
+    text-align: left;
 }
 .shepherd-content h3{
     font-size: 25px;
@@ -92,94 +93,10 @@
 .shepherd-target-attached-left .shepherd-content{
 
 }
-
-
-/*.shepherd-element, .shepherd-element:after, .shepherd-element:before, .shepherd-element *, .shepherd-element *:after, .shepherd-element *:before {
-    box-sizing: border-box;
+.shepherd-text ul{
+    text-align: left;
 }
-
-.shepherd-element {
-  position: absolute;
-  display: none;
+.shepherd-text ul li{
+    list-style-type: disc;
+    margin-left: 15px;
 }
-.shepherd-element.shepherd-open {
-    display: block;
-}
-
-header-shep{
-    border: solid 2px #222;
-    border-bottom: none;
-}
-footer-shep{
-    border: solid 2px #222;
-    border-top: none;
-}
-.shepherd-text{
-    border: solid 2px #222;
-}
-.shepherd-element header-shep{
-	background: #666;
-	margin-bottom: 10px;
-}
-.shepherd-element footer-shep{
-	background: #ececec;
-}
-.shepherd-element .shepherd-text{
-	padding-bottom: 20px !important;
-}
-
-.shepherd-element header-shep, .shepherd-element footer-shep{
-	float: left;
-	width: 100%;
-	text-align: center;
-	padding: 10px;
-}
-.shepherd-element header-shep h3{
-	font-size: 22px !important;
-	color: #fff;
-	line-height: normal;
-	padding: 0px;
-	margin: 0px;
-}
-.shepherd-element footer-shep{
-	margin-top: -10px;
-}
-.shepherd-element footer-shep ul{
-	margin: 0px;
-	padding: 0px;
-}
-.shepherd-element footer-shep ul li{
-
-}
-.shepherd-element footer-shep ul li a{
-	display: block;
-	display: inline-block;
-	padding: 5px 10px;
-	background: #0099ff;
-	color: #fff;
-	cursor: pointer;
-
--webkit-border-radius: 5px;
--moz-border-radius: 5px;
-border-radius: 5px;
-}
-.shepherd-element .shepherd-text *{
-	line-height: normal !important;
-	margin: auto !important;
-	padding: 0px !important;
-}
-.shepherd-cancel-link{
-	position: absolute;
-	right: 0px;
-	top:0px;
-	padding:2px 7px;
-	color: #fff;
-	background: #006fb8;
-}
-
-.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-left.shepherd-element-attached-middle .shepherd-content:before {
-	border-right-color:#222;
-}
-.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-top.shepherd-element-attached-center.shepherd-has-title .shepherd-content:before, .shepherd-element.shepherd-theme-arrows.shepherd-element-attached-top.shepherd-element-attached-right.shepherd-target-attached-bottom.shepherd-has-title .shepherd-content:before, .shepherd-element.shepherd-theme-arrows.shepherd-element-attached-top.shepherd-element-attached-left.shepherd-target-attached-bottom.shepherd-has-title .shepherd-content:before {
-	border-bottom-color: #222;
-}*/

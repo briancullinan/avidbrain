@@ -9,7 +9,7 @@ tour = new Shepherd.Tour({
 
 tour.addStep('step0', {
 	title: "Welcome to the new AvidBrain",
-	text: "Something about the new interface and stuff",
+	text: "Let us help you create the best profile so we can help you find what you need.",
 	classes: 'shepherd shepherd-open shepherd-theme-arrows shepherd-transparent-text',
 	buttons: [
 		{
@@ -26,7 +26,7 @@ tour.addStep('step0', {
 
 tour.addStep('step1', {
 	title: "Add a short description",
-	text: "Add a short description about yourself.",
+	text: "This short description is used to help students find out more about you.",
 	attachTo: '#addshortdescription bottom',
 	classes: 'shepherd shepherd-open shepherd-theme-arrows shepherd-transparent-text',
 	buttons: [
@@ -43,7 +43,7 @@ tour.addStep('step1', {
 
 tour.addStep('step2', {
 	title: "Add a lengthy description",
-	text: "Talk about yourself, what you need tutored in... words.",
+	text: "Go into detail about your self and what makes you a great tutor. <br />Some things to include in this section are: <br/><ul><li>Education Level</li><li>Years of Experience</li><li>Awards, Promotions</li></ul>",
 	attachTo: '#addpersonalstatement bottom',
 	classes: 'shepherd shepherd-open shepherd-theme-arrows shepherd-transparent-text',
 	buttons: [

@@ -19,8 +19,8 @@ RewriteRule ^(.+[^/])$ %{REQUEST_URI}/ [R=301,L]
 	SetOutputFilter DEFLATE
 </FilesMatch>
 
-#RewriteCond %{HTTP_HOST} !^www\.amozek\.com [NC]
-#RewriteRule ^(.*)$ https://www.amozek.com/$1 [R=301,L]
+#RewriteCond %{HTTP_HOST} !^www\.avidbrain\.com [NC]
+#RewriteRule ^(.*)$ https://www.avidbrain.com/$1 [R=301,L]
 
 <IfModule mod_deflate.c>
     AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css  application/x-javascript
@@ -51,7 +51,7 @@ php_value post_max_size 25M
 
 #Set Directory Index
 DirectoryIndex index.php index.html 404.php
-    
+
 
 # block bad query strings (hackers/bots), please be aware this might break some plugins
 # QUERY STRING EXPLOITS

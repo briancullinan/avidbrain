@@ -9,7 +9,7 @@ tour = new Shepherd.Tour({
 
 tour.addStep('step0', {
 	title: "Welcome to the new AvidBrain",
-	text: "Something about the new interface and stuff",
+	text: "Let us help you create the best profile so we can help you find what you need.",
 	classes: 'shepherd shepherd-open shepherd-theme-arrows shepherd-transparent-text',
 	buttons: [
 		{
@@ -26,7 +26,7 @@ tour.addStep('step0', {
 
 tour.addStep('myStep', {
 	title: "Add a short description",
-	text: "Add a short description about yourself.",
+	text: "This short description is used to help tutors see what you need help in.",
 	attachTo: '#addshortdescription bottom',
 	classes: 'shepherd shepherd-open shepherd-theme-arrows shepherd-transparent-text',
 	buttons: [
@@ -43,7 +43,7 @@ tour.addStep('myStep', {
 
 tour.addStep('myStep', {
 	title: "Add a lengthy description",
-	text: "Talk about yourself, what you need tutored in... words.",
+	text: "Go into detail about your self and what you really need from a tutor. <br />Some things to include in this section are: <br/><ul><li>Grade Level</li><li>Online or in person</li><li>Tutoring Goals</li><li>Frequency</li></ul>",
 	attachTo: '#addpersonalstatement bottom',
 	classes: 'shepherd shepherd-open shepherd-theme-arrows shepherd-transparent-text',
 	buttons: [
@@ -58,7 +58,7 @@ tour.addStep('myStep', {
 
 tour.addStep('myStep', {
 	title: "Update Your Info",
-	text: "How far you can travel, your gender, your prefered tutoring location",
+	text: "This is extra information that will help our tutors reach you.",
 	attachTo: '#about-me right',
 	classes: 'shepherd shepherd-open shepherd-theme-arrows shepherd-transparent-text',
 	buttons: [
