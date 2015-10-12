@@ -45,4 +45,5 @@
 
 	if(isset($app->user->email)){
 		$app->target->post = $app->target->user->post;
+		notify($app->target->post);
 	}
