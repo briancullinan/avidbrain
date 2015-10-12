@@ -1,6 +1,6 @@
 <?php
-	notify('test');
 	use Snipe\BanBuilder\CensorWords;
+		notify('test');
 
 	if(isset($app->newusername) && !empty($app->newusername)){
 
