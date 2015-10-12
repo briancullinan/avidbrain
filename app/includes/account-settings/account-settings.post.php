@@ -1,4 +1,5 @@
 <?php
+	notify('test');
 	use Snipe\BanBuilder\CensorWords;
 
 	if(isset($app->newusername) && !empty($app->newusername)){
