@@ -59,7 +59,6 @@
 	$data	=	$data->groupBy('user.email');
 	//$data	=	$data->xxx();
 
-	notify($data);
 
 	$offsets = new offsets((isset($number) ? $number : NULL),$app->dependents->pagination->items_per_page);
 
@@ -87,7 +86,16 @@
 	}
 
 	$count	=	$data->select('user.id')->execute()->rowCount();
-	$data	=	$data->addSelect('user.email,user.first_name,user.last_name,user.url,user.status,subjects.parent_slug,'.everything());
+	$data	=	$data->addSelect('user.email,user.first_name,user.last_name,user.url,user.status,subjects.parent_slug,settings.getemails, settings.showfullname, settings.anotheragency, settings.anotheragancy_rate, settings.showmyprofile, settings.avidbrainnews, settings.newjobs, settings.negotiableprice,profile.hourly_rate,
+	profile.my_avatar,
+	profile.my_avatar_status,
+	profile.showmyphotoas,
+	profile.my_upload,
+	profile.my_upload_status,
+	profile.personal_statement_verified,
+	profile.short_description_verified,
+	profile.getpaid,
+	profile.custom_avatar');
 
 
 	if($count==0 && $app->filterby=='higheststarscore'){
