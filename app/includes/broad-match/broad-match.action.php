@@ -24,8 +24,6 @@
 	    $app->connect->cache->set("allowed_parent_slugs", $returnedArray, 3600);
 	}
 
-	notify($allowed_parent_slugs);
-
 	$allowed_parent_slugs[] = 'liberal-arts';
 
 	if(!in_array($broadMatch, $allowed_parent_slugs)){
@@ -61,6 +59,7 @@
 	$data	=	$data->groupBy('user.email');
 	//$data	=	$data->xxx();
 
+	notify($data);
 
 	$offsets = new offsets((isset($number) ? $number : NULL),$app->dependents->pagination->items_per_page);
 
