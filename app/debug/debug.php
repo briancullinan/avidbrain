@@ -30,7 +30,7 @@
 			$pathinfo->include = 'errors';
 			$pathinfo->slug = 'errors';
 			$app->target = buildpaths($pathinfo,$app->dependents->APP_PATH,NULL);
-			killallcookies();
+			//killallcookies();
 			$app->render(
 		    	$app->settings['template'],
 		    	array('app'=>$app)
