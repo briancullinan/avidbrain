@@ -4,7 +4,8 @@
 		'fix-username'=>'Fix Username',
 		'rename'=>'Rename Photos',
 		'copy'=>'Copy Photos',
-		'fix'=>'Fix Database Name'
+		'fix'=>'Fix Database Name',
+		'import-student-jobs'=>'Import Student Jobs'
 	);
 ?>
 
@@ -200,6 +201,23 @@
 				}
 
 			}
+		}
+		elseif($action=='import-student-jobs'){
+			$data	=	$app->connect->createQueryBuilder();
+			$data	=	$data->select('subjects.*,user.status as user_status')->from('avid___user_subjects','subjects');
+			$data	=	$data->where('subjects.usertype = :usertype')->setParameter(':usertype','student');
+			$data	=	$data->andWhere('subjects.allow_job_requests = "yes"');
+			$data	=	$data->andWhere('user.status IS NULL');
+			$data	=	$data->andWhere('subjects.last_modified >= DATE_FORMAT( CURRENT_DATE - INTERVAL 2 MONTH, "%Y/%m/01" ) ');
+			//SELECT * FROM table WHERE myDtate BETWEEN now(), DATE_SUB(NOW(), INTERVAL 1 MONTH)
+			//notify($data);
+			$data	=	$data->innerJoin('subjects','avid___user','user','subjects.email = user.email');
+			$data	=	$data->orderBy('subjects.last_modified','DESC');
+			//$data	=	$data->groupBy('user.email');
+			//$data	=	$data->xxx();
+			$data	=	$data->execute()->fetchAll();
+			notify($data);
+
 		}
 		elseif($action=='xxx'){
 			notify('xxx');
