@@ -12,7 +12,7 @@
 		if($tutornode==true && $app->request->getPath()!='/admin-everything/edit-profile'){
 			//$app->redirect('/admin-everything/edit-profile');
 			redirect('/admin-everything/edit-profile');
-
+			// REQUIRE PASS
 		}
 
 
