@@ -22,10 +22,10 @@
 		</div>
 		<div class="col s12 m6 l6">
 			<?php
-				$text = 'I just discovered '.$app->dependents->SITE_NAME_PROPPER.'. Signup now & get $'.numbers($signupcode->value,1).' off your next session. '.$app->dependents->DOMAIN.'/signup/student/'.$signupcode->promocode;
-				$email = urlencode($text);
+				$text = 'I just discovered '.$app->dependents->SITE_NAME_PROPPER.'. Signup now & get $'.numbers($signupcode->value,1).' off your next session. '.urlencode($app->dependents->DOMAIN.'/signup/student/'.$signupcode->promocode);
+				//$email = urlencode($str)
 			?>
-			<a href="mailto:?subject=$<?php echo $signupcode->value; ?> Off Tutoring with <?php echo $app->dependents->SITE_NAME_PROPPER; ?>&amp;body=<?php echo $email; ?>" class="btn btn-block grey darken-3"> <i class="fa fa-envelope"></i> Send It</a>
+			<a href="mailto:?subject=$<?php echo $signupcode->value; ?> Off Tutoring with <?php echo $app->dependents->SITE_NAME_PROPPER; ?>&amp;body=<?php echo $text; ?>" class="btn btn-block grey darken-3"> <i class="fa fa-envelope"></i> Send It</a>
 		</div>
 		<div class="col s12 m6 l6">
 			<a href="#textit" class="btn btn-block red modal-trigger"> <i class="fa fa-mobile"></i> Text It</a>
