@@ -51,7 +51,7 @@
 
 	use \Slim\Extras\Middleware\CSRFNINJA;
 	use \Slim\Extras\Middleware\HttpBasicAuth;
-	$app->add(new HttpBasicAuth('avidbrain', 'tutornode'));
+	//$app->add(new HttpBasicAuth('avidbrain', 'tutornode'));
 	$app->add(new CSRFNINJA());
 
 	//killallcookies();
