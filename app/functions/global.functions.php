@@ -1111,7 +1111,7 @@
 		    $connect->cache->set($cachename, $returnedData, 1800);
 		}
 
-		//notify($cachedSearch);
+		notify($cachedSearch);
 
 		return $cachedSearch;
 	}
