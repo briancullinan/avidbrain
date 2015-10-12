@@ -82,7 +82,7 @@
 
 	}
 
-	
+
 
 	if($dependents->SERVER_NAME=='amozek.com'){
 		$dependents->database->HOST = '7b9488aeb86ce5dc0843d7298b2b70b44ddeb574.rackspaceclouddb.com';
@@ -106,6 +106,8 @@
 
 	$dependents->SITE_NAME = $sitename;
 	$dependents->SITE_NAME_PROPPER = $sitenamePropper;
+
+	echo $dependents->SITE_NAME; exit;
 
 	//echo '<pre>'; print_r($dependents); echo '</pre>';
 	//exit;
