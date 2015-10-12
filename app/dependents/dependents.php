@@ -82,7 +82,7 @@
 
 	}
 
-
+	echo $dependents->SERVER_NAME; exit;
 
 	if($dependents->SERVER_NAME=='avidbrain.com'){
 		$dependents->database->HOST = '7b9488aeb86ce5dc0843d7298b2b70b44ddeb574.rackspaceclouddb.com';
