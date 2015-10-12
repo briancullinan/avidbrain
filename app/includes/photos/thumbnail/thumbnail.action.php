@@ -3,13 +3,14 @@
 	$usertype=$usertype[1];
 
 $url = '/'.$usertype.'/'.$state.'/'.$city.'/'.$username;
-	
+
+$thefile = NULL;
 if(isset($usertype) && isset($state) && isset($city) && isset($username)){
-	
+
 	$urlfix = str_replace('/','--',$url);
 	$file = $app->dependents->DOCUMENT_ROOT.'profiles/approved/'.$urlfix.'*crop*';
 	$isthecrophere = glob($file);
-	
+
 	if(isset($app->user->usertype) && $app->user->usertype=='admin'){
 		$urlfix = str_replace('/','--',$url);
 		$file = $app->dependents->APP_PATH.'uploads/photos/'.$urlfix.'*';
@@ -21,11 +22,12 @@ if(isset($usertype) && isset($state) && isset($city) && isset($username)){
 		if(isset($cropped) && file_exists($cropped)){
 			$thefile = $cropped;
 		}
-		
+
 		if(empty($thefile)){
-		$img = $app->imagemanager->make($app->dependents->APP_PATH.'uploads/photos/empty-image.jpg');
+			$thefile = $app->dependents->APP_PATH.'uploads/photos/empty-image.jpg';
+			$img = $app->imagemanager->make($thefile);
 		}
-		
+
 		$img = $app->imagemanager->make($thefile);
 	}
 	elseif(isset($app->user->url) && $app->user->url==$url){
