@@ -107,7 +107,7 @@
 	$dependents->SITE_NAME = $sitename;
 	$dependents->SITE_NAME_PROPPER = $sitenamePropper;
 
-	echo $dependents->SITE_NAME; exit;
+	echo $dependents->DOMAIN; exit;
 
 	//echo '<pre>'; print_r($dependents); echo '</pre>';
 	//exit;
