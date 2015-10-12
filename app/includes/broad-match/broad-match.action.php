@@ -52,17 +52,15 @@
 	$data	=	$data->andWhere('user.hidden IS NULL');
 	$data	=	$data->andWhere('user.lock IS NULL');
 
-	$data	=	$data->leftJoin('user','avid___user_account_settings','settings','user.email = settings.email');
-	$data	=	$data->leftJoin('user','avid___user_profile','profile','user.email = profile.email');
-	$data	=	$data->leftJoin('user','avid___user_subjects','subjects','user.email = subjects.email');
+	$data	=	$data->innerJoin('user','avid___user_account_settings','settings','user.email = settings.email');
+	$data	=	$data->innerJoin('user','avid___user_profile','profile','user.email = profile.email');
+	$data	=	$data->innerJoin('user','avid___user_subjects','subjects','user.email = subjects.email');
 	//$data	=	$data->orderBy('id','DESC');
 	$data	=	$data->groupBy('user.email');
 	//$data	=	$data->xxx();
 
 
 	$offsets = new offsets((isset($number) ? $number : NULL),$app->dependents->pagination->items_per_page);
-
-	$data	=	$data->setMaxResults($offsets->perpage)->setFirstResult($offsets->offsetStart);
 
 	if(isset($app->filterby) && !empty($app->filterby)){
 		if($app->filterby=='highestrate'){
@@ -86,18 +84,9 @@
 	}
 
 	$count	=	$data->select('user.id')->execute()->rowCount();
-	$data	=	$data->addSelect('user.email,user.first_name,user.last_name,user.url,user.status,user.usertype,subjects.parent_slug,settings.getemails, settings.showfullname, settings.anotheragency, settings.anotheragancy_rate, settings.showmyprofile, settings.avidbrainnews, settings.newjobs, settings.negotiableprice,profile.hourly_rate,
-	profile.my_avatar,
-	profile.my_avatar_status,
-	profile.showmyphotoas,
-	profile.my_upload,
-	profile.my_upload_status,
-	profile.personal_statement_verified,
-	profile.short_description_verified,
-	profile.getpaid,
-	profile.custom_avatar');
+	$data	=	$data->setMaxResults($offsets->perpage)->setFirstResult($offsets->offsetStart);
+	$data	=	$data->addSelect('user.email,user.first_name,user.last_name,user.url,user.status,subjects.parent_slug,'.everything());
 
-	notify($count);
 
 	if($count==0 && $app->filterby=='higheststarscore'){
 		$app->setCookie('filterby','lastactive', '2 days');
