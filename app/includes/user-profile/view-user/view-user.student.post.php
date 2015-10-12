@@ -67,13 +67,21 @@
 				}
 			}
 
-			if(isset($app->currentuser->short_description_verified) && isset($app->editprofile->short_description) && $app->editprofile->short_description != $app->currentuser->short_description_verified){
-				$app->currentuser->short_description_verified = NULL;
+			// Automaticall Set VERIFIED
+			if(isset($app->editprofile->short_description)){
+				$app->currentuser->short_description_verified = $app->editprofile->short_description;
+			}
+			if(isset($app->editprofile->personal_statement)){
+				$app->currentuser->personal_statement_verified = $app->editprofile->personal_statement;
 			}
 
-			if(isset($app->currentuser->personal_statement_verified) && isset($app->editprofile->personal_statement) && $app->editprofile->personal_statement != $app->currentuser->personal_statement_verified){
-				$app->currentuser->personal_statement_verified = NULL;
-			}
+			// if(isset($app->currentuser->short_description_verified) && isset($app->editprofile->short_description) && $app->editprofile->short_description != $app->currentuser->short_description_verified){
+			// 	$app->currentuser->short_description_verified = NULL;
+			// }
+			//
+			// if(isset($app->currentuser->personal_statement_verified) && isset($app->editprofile->personal_statement) && $app->editprofile->personal_statement != $app->currentuser->personal_statement_verified){
+			// 	$app->currentuser->personal_statement_verified = NULL;
+			// }
 
 
 			if(isset($app->editprofile->hourly_rate) && $app->editprofile->hourly_rate < 20){

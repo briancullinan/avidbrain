@@ -20,6 +20,14 @@
 	.widecontentcontainer.container{
 		padding-top: 0px;
 	}
+
+	.widecontent{
+		position: absolute;
+		background-position: left top !important;
+	}
+	.widecontentcontainer.container-fluid{
+		padding-top: 350px;
+	}
 }
 
 @media only screen and (max-width: 992px){

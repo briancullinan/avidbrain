@@ -169,7 +169,7 @@
 		<h3>Change Username</h3>
 		<div class="block">
 			<div>If you would like to change your username, just type in a new one below and see if it's available.</div>
-			<p>Your current username is: <?php echo $app->user->username; ?></p>
+			<p>Your current username is: <span class="green white-text"><?php echo $app->user->username; ?></span></p>
 			<br>
 			<form class="form-post" method="post" action="<?php echo $app->request->getPath(); ?>" id="checkusername">
 

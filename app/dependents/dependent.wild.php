@@ -47,22 +47,26 @@
 		'shepherd-theme-arrows.css'
 	);
 
-	$localjs = array(
-		'tether.min.js',
-		'shepherd.js',
-		'wild.functions.js',
-		'functions.js',
-		'wild.js',
-		'jquery.nouislider.min.js',
-		'js.cookie.js',
-		'jcrop.js',
-		'sortable.js',
-		'jquery.autocomplete.js',
-		'time.picker.js',
-		'typed.js',
-		'scribblar.js',
-		'highlight.js'
-	);
+	$localjs = array();
+	$localjs[] = 'tether.min.js';
+	$localjs[] = 'shepherd.js';
+	if($dependents->DOMAIN=='http://avidbrain.dev'){
+		$localjs['wild'] = 'wild.functions.js';
+	}
+	else{
+		$localjs['production'] = 'production.functions.js';
+	}
+	$localjs[] = 'functions.js';
+	$localjs[] = 'wild.js';
+	$localjs[] = 'jquery.nouislider.min.js';
+	$localjs[] = 'js.cookie.js';
+	$localjs[] = 'jcrop.js';
+	$localjs[] = 'sortable.js';
+	$localjs[] = 'jquery.autocomplete.js';
+	$localjs[] = 'time.picker.js';
+	$localjs[] = 'typed.js';
+	$localjs[] = 'scribblar.js';
+	$localjs[] = 'highlight.js';
 
 	$app->header = new stdClass();
 	$app->header->cdncss = $cdncss;

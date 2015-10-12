@@ -118,6 +118,20 @@
 	$app->minify = true;
 	if(isset($minifyme)){
 
+		if(in_array('wild.functions.js', $app->header->localjs)){
+			$app->header->localjs['wild'] = 'production.functions.js';
+		}
+
+		// Current Version
+		$currentVersion = $app->dependents->VERSION;
+		$nextVersion = ($currentVersion+.001);
+		$versionFile = $app->dependents->APP_PATH.'dependents/version.php';
+
+		$fh = fopen($versionFile, 'a') or die("can't open file");
+		fwrite($fh, '<?php $version = '.$nextVersion.' ?>');
+		fclose($fh);
+
+
 		// Remove Old File
 		$oldFile = $app->dependents->DOCUMENT_ROOT;
 		$oldFileCSS = glob($oldFile.'css/final.*.*');
@@ -134,13 +148,13 @@
 		foreach($app->header->localcss as $cssfile){
 			$minifier->add($app->dependents->DOCUMENT_ROOT.'css/'.$cssfile);
 		}
-		$minifier->minify($app->dependents->DOCUMENT_ROOT.'css/final.'.$app->dependents->VERSION.'.css');
+		$minifier->minify($app->dependents->DOCUMENT_ROOT.'css/final.'.$nextVersion.'.css');
 
 		$minifier = new Minify\JS();
 		foreach($app->header->localjs as $jsfiles){
 			$minifier->add($app->dependents->DOCUMENT_ROOT.'js/'.$jsfiles);
 		}
-		$minifier->minify($app->dependents->DOCUMENT_ROOT.'js/final.'.$app->dependents->VERSION.'.js');
+		$minifier->minify($app->dependents->DOCUMENT_ROOT.'js/final.'.$nextVersion.'.js');
 		notify('ALL DONE');
 		exit;
 	}

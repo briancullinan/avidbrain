@@ -2,11 +2,10 @@
 	// Require config. Variables, that shouldn't have to change
 	include_once('config.php');
 
-
 	$sitename				=	'avidbrain';// avidbrain, amozek
 	$sitenamePropper		=	'AvidBrain';// AvidBrain
 	$location				=	'production'; // production , staging, development
-	$dependents->VERSION	=	1.003;
+	$dependents->VERSION	=	$version;
 	$dependents->stripe = new stdClass();
 
 

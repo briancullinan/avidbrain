@@ -175,6 +175,9 @@ width: 50%;
 	display: inline-block;
 	border: dashed 2px #efefef;
 }
+.mainstudent .signup-promo{
+	margin-top: 15px;
+}
 .signup-promo span{
 	color: yellow;
 }

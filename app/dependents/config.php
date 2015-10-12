@@ -1,43 +1,45 @@
 <?php
 	// ALL THE MAJOR CONFIGS
-	
+
+	include('version.php');
+
 	$approot = str_replace('/html','/',$_SERVER['DOCUMENT_ROOT']);
 	date_default_timezone_set('America/Phoenix');
-	
+
 	$dependents = new stdClass();
 	$dependents->APP_PATH = $approot.'app/';
 	$dependents->DOCUMENT_ROOT = $approot.'html/';
 	$dependents->DEFAULT_TIMEZONE = 'UTC';
 	$dependents->SERVER_NAME = $_SERVER['SERVER_NAME'];
-	
+
 	$dependents->DUALAUTH = 'B3FHMPWUSAAFEMD7';
 	$dependents->SALT = '4,CrHGdb}tATeGMCd9KomebEc4kz>zDQD4HEcMfBVx;g72k++y';
 	$dependents->IV = password_hash(str_shuffle(rand(0,64).uniqid()), PASSWORD_BCRYPT);
-	
+
 	$dependents->database = new stdClass();
 	$dependents->database->ENGINE = 'mysql';
 	$dependents->database->PORT = '3306';
 	$dependents->database->CHARSET = 'utf8';
 	$dependents->database->PREFIX = 'avid___';
-	
+
 	$dependents->twilio = new stdClass();
-	$dependents->twilio->id = 'AC0b159b382464c3e1c63f5d18fdf7ca22'; 
+	$dependents->twilio->id = 'AC0b159b382464c3e1c63f5d18fdf7ca22';
 	$dependents->twilio->auth_token = 'e3d65fabfe6d0e6e688ad2f9a369946a';
 	$dependents->twilio->number = '+14803511893';
 	$dependents->twilio->friendly = 'AvidBrain Inc.';
-	
+
 	$dependents->scribblarAPI = '27D1B127-9CCB-A496-810CC85CDECC42D1';
-	
+
 	$dependents->pagination = new stdClass();
 	$dependents->pagination->items_per_page = 11;
-	
+
 	//$dependents->offline = true;
-	
+
 	// Romanize Symbols
 	$dependents->ROMANIZE = array(
 		  // scandinavian - differs from what we do in deaccent
 		  'å'=>'a','Å'=>'A','ä'=>'a','Ä'=>'A','ö'=>'o','Ö'=>'O',
-		    
+
 		  // various accents - added by mvdkleijn
 		  'á'=>'a','à'=>'a','â'=>'a','ą'=>'a',
 		  'ć'=>'c','č'=>'c','ç'=>'c','ц'=>'c',
@@ -71,7 +73,7 @@
 		  'я'=>'ya',
 		  'ю'=>'yu',
 		  'ж'=>'zh',
-		
+
 		  //russian cyrillic
 		  'а'=>'a','А'=>'A','б'=>'b','Б'=>'B','в'=>'v','В'=>'V','г'=>'g','Г'=>'G',
 		  'д'=>'d','Д'=>'D','е'=>'e','Е'=>'E','ё'=>'jo','Ё'=>'Jo','ж'=>'zh','Ж'=>'Zh',
@@ -108,11 +110,11 @@
 		  'ذ'=>'dh','ر'=>'r','ز'=>'z','س'=>'s','ش'=>'sh','ص'=>'s\'','ض'=>'d\'',
 		  'ط'=>'t\'','ظ'=>'z\'','ع'=>'y','غ'=>'gh','ف'=>'f','ق'=>'q','ك'=>'k',
 		  'ل'=>'l','م'=>'m','ن'=>'n','ه'=>'x\'','و'=>'u','ي'=>'i',
-		
+
 		  // Japanese characters  (last update: 2008-05-09)
-		
+
 		  // Japanese hiragana
-		
+
 		  // 3 character syllables, っ doubles the consonant after
 		  'っちゃ'=>'ccha','っちぇ'=>'cche','っちょ'=>'ccho','っちゅ'=>'cchu',
 		  'っびゃ'=>'bbya','っびぇ'=>'bbye','っびぃ'=>'bbyi','っびょ'=>'bbyo','っびゅ'=>'bbyu',
@@ -125,11 +127,11 @@
 		  'っにゃ'=>'nnya','っにぇ'=>'nnye','っにぃ'=>'nnyi','っにょ'=>'nnyo','っにゅ'=>'nnyu',
 		  'っりゃ'=>'rrya','っりぇ'=>'rrye','っりぃ'=>'rryi','っりょ'=>'rryo','っりゅ'=>'rryu',
 		  'っしゃ'=>'ssha','っしぇ'=>'sshe','っし'=>'sshi','っしょ'=>'ssho','っしゅ'=>'sshu',
-		
+
 		  // seperate hiragana 'n' ('n' + 'i' != 'ni', normally we would write "kon'nichi wa" but the apostrophe would be converted to _ anyway)
 		  'んあ'=>'n_a','んえ'=>'n_e','んい'=>'n_i','んお'=>'n_o','んう'=>'n_u',
 		  'んや'=>'n_ya','んよ'=>'n_yo','んゆ'=>'n_yu',
-		
+
 		   // 2 character syllables - normal
 		  'ふぁ'=>'fa','ふぇ'=>'fe','ふぃ'=>'fi','ふぉ'=>'fo',
 		  'ちゃ'=>'cha','ちぇ'=>'che','ち'=>'chi','ちょ'=>'cho','ちゅ'=>'chu',
@@ -145,7 +147,7 @@
 		  'じゃ'=>'ja','じぇ'=>'je','じょ'=>'jo','じゅ'=>'ju',
 		  'うぇ'=>'we','うぃ'=>'wi',
 		  'いぇ'=>'ye',
-		
+
 		  // 2 character syllables, っ doubles the consonant after
 		  'っば'=>'bba','っべ'=>'bbe','っび'=>'bbi','っぼ'=>'bbo','っぶ'=>'bbu',
 		  'っぱ'=>'ppa','っぺ'=>'ppe','っぴ'=>'ppi','っぽ'=>'ppo','っぷ'=>'ppu',
@@ -158,7 +160,7 @@
 		  'っら'=>'rra','っれ'=>'rre','っり'=>'rri','っろ'=>'rro','っる'=>'rru',
 		  'っさ'=>'ssa','っせ'=>'sse','っし'=>'sshi','っそ'=>'sso','っす'=>'ssu',
 		  'っざ'=>'zza','っぜ'=>'zze','っじ'=>'jji','っぞ'=>'zzo','っず'=>'zzu',
-		
+
 		  // 1 character syllabels
 		  'あ'=>'a','え'=>'e','い'=>'i','お'=>'o','う'=>'u','ん'=>'n',
 		  'は'=>'ha','へ'=>'he','ひ'=>'hi','ほ'=>'ho','ふ'=>'fu',
@@ -177,12 +179,12 @@
 		  'や'=>'ya','よ'=>'yo','ゆ'=>'yu',
 		  // old characters
 		  'ゑ'=>'we','ゐ'=>'wi',
-		
-		 
-		
-		
+
+
+
+
 		  // Japanese katakana
-		
+
 		  // 4 character syllables: ッ doubles the consonant after, ー doubles the vowel before (usualy written with macron, but we don't want that in our URLs)
 		  'ッビャー'=>'bbyaa','ッビェー'=>'bbyee','ッビィー'=>'bbyii','ッビョー'=>'bbyoo','ッビュー'=>'bbyuu',
 		  'ッピャー'=>'ppyaa','ッピェー'=>'ppyee','ッピィー'=>'ppyii','ッピョー'=>'ppyoo','ッピュー'=>'ppyuu',
@@ -195,7 +197,7 @@
 		  'ッチャー'=>'cchaa','ッチェー'=>'cchee','ッチー'=>'cchii','ッチョー'=>'cchoo','ッチュー'=>'cchuu',
 		  'ッティー'=>'ttii',
 		  'ッヂィー'=>'ddii',
-		
+
 		  // 3 character syllables - doubled vowels
 		  'ファー'=>'faa','フェー'=>'fee','フィー'=>'fii','フォー'=>'foo',
 		  'フャー'=>'fyaa','フェー'=>'fyee','フィー'=>'fyii','フョー'=>'fyoo','フュー'=>'fyuu',
@@ -223,7 +225,7 @@
 		  'イェー'=>'yee',
 		  'ティー'=>'tii',
 		  'ヂィー'=>'dii',
-		
+
 		  // 3 character syllables - doubled consonants
 		  'ッビャ'=>'bbya','ッビェ'=>'bbye','ッビィ'=>'bbyi','ッビョ'=>'bbyo','ッビュ'=>'bbyu',
 		  'ッピャ'=>'ppya','ッピェ'=>'ppye','ッピィ'=>'ppyi','ッピョ'=>'ppyo','ッピュ'=>'ppyu',
@@ -236,7 +238,7 @@
 		  'ッチャ'=>'ccha','ッチェ'=>'cche','ッチ'=>'cchi','ッチョ'=>'ccho','ッチュ'=>'cchu',
 		  'ッティ'=>'tti',
 		  'ッヂィ'=>'ddi',
-		
+
 		  // 3 character syllables - doubled vowel and consonants
 		  'ッバー'=>'bbaa','ッベー'=>'bbee','ッビー'=>'bbii','ッボー'=>'bboo','ッブー'=>'bbuu',
 		  'ッパー'=>'ppaa','ッペー'=>'ppee','ッピー'=>'ppii','ッポー'=>'ppoo','ップー'=>'ppuu',
@@ -249,7 +251,7 @@
 		  'ッザー'=>'zzaa','ッゼー'=>'zzee','ッジー'=>'jjii','ッゾー'=>'zzoo','ッズー'=>'zzuu',
 		  'ッター'=>'ttaa','ッテー'=>'ttee','ッチー'=>'chii','ットー'=>'ttoo','ッツー'=>'ttsuu',
 		  'ッダー'=>'ddaa','ッデー'=>'ddee','ッヂー'=>'ddii','ッドー'=>'ddoo','ッヅー'=>'dduu',
-		
+
 		  // 2 character syllables - normal
 		  'ファ'=>'fa','フェ'=>'fe','フィ'=>'fi','フォ'=>'fo','フゥ'=>'fu',
 		  // 'フャ'=>'fya','フェ'=>'fye','フィ'=>'fyi','フョ'=>'fyo','フュ'=>'fyu',
@@ -278,7 +280,7 @@
 		  'イェ'=>'ye',
 		  'ティ'=>'ti',
 		  'ヂィ'=>'di',
-		
+
 		  // 2 character syllables - doubled vocal
 		  'アー'=>'aa','エー'=>'ee','イー'=>'ii','オー'=>'oo','ウー'=>'uu',
 		  'ダー'=>'daa','デー'=>'dee','ヂー'=>'dii','ドー'=>'doo','ヅー'=>'duu',
@@ -298,11 +300,11 @@
 		  'ヵー'=>'kaa','ヶー'=>'kee',
 		  // old characters
 		  'ヱー'=>'wee','ヰー'=>'wii',
-		
+
 		  // seperate katakana 'n'
 		  'ンア'=>'n_a','ンエ'=>'n_e','ンイ'=>'n_i','ンオ'=>'n_o','ンウ'=>'n_u',
 		  'ンヤ'=>'n_ya','ンヨ'=>'n_yo','ンユ'=>'n_yu',
-		
+
 		  // 2 character syllables - doubled consonants
 		  'ッバ'=>'bba','ッベ'=>'bbe','ッビ'=>'bbi','ッボ'=>'bbo','ッブ'=>'bbu',
 		  'ッパ'=>'ppa','ッペ'=>'ppe','ッピ'=>'ppi','ッポ'=>'ppo','ップ'=>'ppu',
@@ -315,7 +317,7 @@
 		  'ッザ'=>'zza','ッゼ'=>'zze','ッジ'=>'jji','ッゾ'=>'zzo','ッズ'=>'zzu',
 		  'ッタ'=>'tta','ッテ'=>'tte','ッチ'=>'cchi','ット'=>'tto','ッツ'=>'ttsu',
 		  'ッダ'=>'dda','ッデ'=>'dde','ッヂ'=>'ddi','ッド'=>'ddo','ッヅ'=>'ddu',
-		
+
 		  // 1 character syllables
 		  'ア'=>'a','エ'=>'e','イ'=>'i','オ'=>'o','ウ'=>'u','ン'=>'n',
 		  'ハ'=>'ha','ヘ'=>'he','ヒ'=>'hi','ホ'=>'ho','フ'=>'fu',
@@ -335,19 +337,19 @@
 		  'ヵ'=>'ka','ヶ'=>'ke',
 		  // old characters
 		  'ヱ'=>'we','ヰ'=>'wi',
-		
+
 		  //  convert what's left (probably only kicks in when something's missing above)
 		  'ァ'=>'a','ェ'=>'e','ィ'=>'i','ォ'=>'o','ゥ'=>'u',
 		  'ャ'=>'ya','ョ'=>'yo','ュ'=>'yu',
-		
+
 		  // special characters
 		  '・'=>'_','、'=>'_',
-		  'ー'=>'_', 
-		
+		  'ー'=>'_',
+
 		  // "Greeklish"
 		  'Γ'=>'G','Δ'=>'E','Θ'=>'Th','Λ'=>'L','Ξ'=>'X','Π'=>'P','Σ'=>'S','Φ'=>'F','Ψ'=>'Ps',
 		  'γ'=>'g','δ'=>'e','θ'=>'th','λ'=>'l','ξ'=>'x','π'=>'p','σ'=>'s','φ'=>'f','ψ'=>'ps',
-		
+
 		  // Thai
 		  'ก'=>'k','ข'=>'kh','ฃ'=>'kh','ค'=>'kh','ฅ'=>'kh','ฆ'=>'kh','ง'=>'ng','จ'=>'ch',
 		  'ฉ'=>'ch','ช'=>'ch','ซ'=>'s','ฌ'=>'ch','ญ'=>'y','ฎ'=>'d','ฏ'=>'t','ฐ'=>'th',
@@ -367,7 +369,7 @@
 		  'ๆ'=>'2','๏'=>'o','ฯ'=>'-','๚'=>'-','๛'=>'-',
 		  '๐'=>'0','๑'=>'1','๒'=>'2','๓'=>'3','๔'=>'4',
 		  '๕'=>'5','๖'=>'6','๗'=>'7','๘'=>'8','๙'=>'9',
-		
+
 		  // Korean
 		  'ㄱ'=>'k','ㅋ'=>'kh','ㄲ'=>'kk','ㄷ'=>'t','ㅌ'=>'th','ㄸ'=>'tt','ㅂ'=>'p',
 		  'ㅍ'=>'ph','ㅃ'=>'pp','ㅈ'=>'c','ㅊ'=>'ch','ㅉ'=>'cc','ㅅ'=>'s','ㅆ'=>'ss',
