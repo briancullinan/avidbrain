@@ -34,17 +34,16 @@
 	require '../app/autoload/autoload.php';
 
 	$config = array(
-		'templates.path' => $app->dependents->APP_PATH.'/views',
+		'templates.path' => $app->dependents->APP_PATH.'views',
 		'template'=>'wild.php'
 	);
-
 	if(isset($app->dependents->DEBUG) && !empty($app->dependents->DEBUG)){
 		$config['debug'] = true;
-		$config['mode'] = 'production';
+		$config['mode'] = $app->dependents->MODE;
 	}
 	else{
 		$config['debug'] = false;
-		$config['mode'] = 'development';
+		$config['mode'] = $app->dependents->MODE;
 	}
 
 	$app->config($config);

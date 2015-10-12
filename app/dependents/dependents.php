@@ -64,7 +64,7 @@
 		$dependents->social->pinterest = 'https://www.pinterest.com/avidbrain/';
 	}
 
-	if($location=='production'){
+	if($dependents->SERVER_NAME!='avidbrain.dev'){
 
 		$dependents->stripe->STRIPE_SECRET = 'sk_live_XUObU4RQbEVKsWq8yU5XFjJU';
 		$dependents->stripe->STRIPE_PUBLIC = 'pk_live_QjMUIzGXr1yqTKehZrvwXCsQ';
@@ -77,7 +77,7 @@
 		$dependents->stripe->STRIPE_SECRET = 'sk_test_RKw0H6vV3pyB5JsBuQKXU4sO';
 		$dependents->stripe->STRIPE_PUBLIC = 'pk_test_jIcjo9aRNH4Xm8uaWuGZdf7B';
 		$dependents->DEBUG = true;
-		$dependents->MODE = $location;
+		$dependents->MODE = 'development';
 
 	}
 

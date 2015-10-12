@@ -14,8 +14,7 @@
 
 		foreach($tutorswithsessions as $key=> $getSum){
 
-
-			$sql = "SELECT SUM(session_cost) as cost FROM avid___sessions WHERE from_user = :from_user AND paidout IS NULL AND session_status IS NOT NULL";
+			$sql = "SELECT SUM(session_cost) as cost FROM avid___sessions WHERE from_user = :from_user AND paidout IS NULL AND session_status IS NOT NULL AND session_cost IS NOT NULL";
 			$prepare = array(':from_user'=>$getSum->from_user);
 			$results = $app->connect->executeQuery($sql,$prepare)->fetch();
 
@@ -32,7 +31,7 @@
 
 	if(isset($id)){
 		$data	=	$app->connect->createQueryBuilder();
-		$data	=	$data->select(everything().',user.*')->from('avid___user','user');
+		$data	=	$data->select('user.*,profile.*,settings.*')->from('avid___user','user');
 		$data	=	$data->where('user.id = :id')->setParameter(':id',$id);
 		$data	=	$data->innerJoin('user','avid___user_profile','profile','user.email = profile.email');
 		$data	=	$data->innerJoin('user','avid___user_account_settings','settings','user.email = settings.email');

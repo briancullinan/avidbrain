@@ -5,12 +5,13 @@
 		'rename'=>'Rename Photos',
 		'copy'=>'Copy Photos',
 		'fix'=>'Fix Database Name',
-		'import-student-jobs'=>'Import Student Jobs'
+		'import-student-jobs'=>'Import Student Jobs',
+		'fix-approvals'=>'Fix Approval Page'
 	);
 ?>
 
 <?php foreach($fix as $key=> $value): ?>
-<a href="/admin-everything/fix-breaks/<?php echo $key; ?>" class="btn <?php if(isset($action) && $action==$key){ echo 'active';} ?>">
+<a href="/admin-everything/fix-breaks/<?php echo $key; ?>" class="btn btn-s <?php if(isset($action) && $action==$key){ echo 'active';} ?>">
 
 	<?php echo $value; ?>
 
@@ -203,6 +204,7 @@
 			}
 		}
 		elseif($action=='import-student-jobs'){
+			/*
 			$data	=	$app->connect->createQueryBuilder();
 			$data	=	$data->select('subjects.*,user.status as user_status')->from('avid___user_subjects','subjects');
 			$data	=	$data->where('subjects.usertype = :usertype')->setParameter(':usertype','student');
@@ -217,6 +219,41 @@
 			//$data	=	$data->xxx();
 			$data	=	$data->execute()->fetchAll();
 			notify($data);
+			*/
+
+		}
+		elseif($action=='fix-approvals'){
+			$data	=	$app->connect->createQueryBuilder();
+			$data	=	$data->select('review.*,user.usertype as thetype,user.status as THESTATUS')->from('avid___user_needsprofilereview','review');
+			$data	=	$data->where('review.usertype IS NULL');//->setParameter(':usertype','tutor');
+			$data	=	$data->innerJoin('review','avid___user','user','review.email = user.email');
+			$data	=	$data->orderBy('date','DESC');
+			$data	=	$data->groupBy('review.email');
+			//$data	=	$data->xxx();
+			$data	=	$data->execute()->fetchAll();
+
+			foreach($data as $needsapproval){
+
+				if(empty($needsapproval->THESTATUS)){
+
+					$delete = array(
+						'email'=>$needsapproval->email
+					);
+
+					$app->connect->delete('avid___user_needsprofilereview',$delete);
+					printer('DELETE');
+				}
+
+				$update = array(
+					'usertype'=>$needsapproval->thetype
+				);
+				$where = array(
+					'email'=>$needsapproval->email,
+					'id'=>$needsapproval->id
+				);
+				$app->connect->update('avid___user_needsprofilereview',$update,$where);
+				printer('UPDATE');
+			}
 
 		}
 		elseif($action=='xxx'){
