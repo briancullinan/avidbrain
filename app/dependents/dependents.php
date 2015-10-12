@@ -32,7 +32,7 @@
 		$dependents->social->facebook = 'https://www.facebook.com/avidbrain';
 		$dependents->social->linkedin = 'https://www.linkedin.com/company/avidbrain/';
 		$dependents->social->blog = 'http://blog.avidbrain.com';
-		$dependents->social->qa = 'http://qa.avidbrain.dev';
+		$dependents->social->qa = 'http://qa.avidbrain.com';
 		$dependents->social->check = 'http://signup.avidbrain.com';
 		$dependents->social->pinterest = 'https://www.pinterest.com/avidbrain/';
 
@@ -60,7 +60,7 @@
 		$dependents->social->facebook = 'https://www.facebook.com/avidbrain';
 		$dependents->social->linkedin = 'https://www.linkedin.com/company/avidbrain/';
 		$dependents->social->blog = 'http://blog.avidbrain.com';
-		$dependents->social->qa = 'http://qa.avidbrain.dev';
+		$dependents->social->qa = 'http://qa.avidbrain.com';
 		$dependents->social->check = 'http://signup.avidbrain.com';
 		$dependents->social->pinterest = 'https://www.pinterest.com/avidbrain/';
 	}

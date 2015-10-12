@@ -709,7 +709,7 @@ $(document).ready(function() {
 		if($('.qalogin').attr('class')){
 			$.ajax({
 				type: 'POST',
-				url: 'http://qa.avidbrain.dev/sessionid.php',
+				url: 'http://qa.avidbrain.com/sessionid.php',
 				xhrFields: {withCredentials: true},
 				data: {withCredentials:true,webernets:$('.webernets').val(),distancetothesun:$('.distancetothesun').val()},
 				success: function(response){
