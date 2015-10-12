@@ -158,6 +158,13 @@
 			$app->connect->insert('avid___waiting_to_email',$insert);
 		}
 
+		if($app->freesessions->enabled==false){
+			$app->mailgun->to = 'david@avidbrain.com';
+			$app->mailgun->subject = 'Maximum Free Sessions';
+			$app->mailgun->message = 'You have reached the maximum free sessions of: $'.numbers($app->freesessions->maximum);
+			$app->mailgun->send();
+		}
+
 		new Flash(array('action'=>'jump-to','formID'=>'signup','location'=>'/confirmation/student-signup','message'=>'Signup Success'));
 
 

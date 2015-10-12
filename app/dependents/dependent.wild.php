@@ -17,11 +17,12 @@
 	else{
 		$material = '0.97.1';
 		$cdncss = array(
-			'//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700',
-			'//fonts.googleapis.com/css?family=Quicksand:300,400,700',
-			'//fonts.googleapis.com/css?family=Exo+2:700,400&subset=latin,cyrillic',
+			//'//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700',
+			//'//fonts.googleapis.com/css?family=Quicksand:300,400,700',
+			//'//fonts.googleapis.com/css?family=Exo+2:700,400&subset=latin,cyrillic',
+			'//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700|Quicksand:300,400,700|Exo+2:700,400|Material+Icons',
 			'//cdnjs.cloudflare.com/ajax/libs/materialize/'.$material.'/css/materialize.min.css',
-			'//fonts.googleapis.com/icon?family=Material+Icons',
+			//'//fonts.googleapis.com/icon?family=Material+Icons',
 			'//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'
 		);
 		$headjs = array(
@@ -53,6 +54,7 @@
 	$localjs = array(
 		'tether.min.js',
 		'shepherd.js',
+		'wild.functions.js',
 		'functions.js',
 		'wild.js',
 		'jquery.nouislider.min.js',

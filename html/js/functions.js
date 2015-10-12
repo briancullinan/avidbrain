@@ -90,6 +90,7 @@ function handlepost(response){
 	}
 
 	resetform();
+    magicconsole(response);
 
 }
 
@@ -113,7 +114,7 @@ function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
     } else {
-	    
+
     }
 }
 function showPosition(position){
