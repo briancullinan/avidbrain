@@ -251,8 +251,10 @@
 
 					<a href="/categories/<?php echo $app->job->parent_slug; ?>/<?php echo $app->job->subject_slug; ?>">View More <?php echo $app->job->subject_name; ?> Tutors</a>
 				<?php elseif(isset($app->job->parent_slug)): ?>
+					<h2>Applicants</h2>
 					<div class="block">There are no applicants right now, go out and <a href="/categories/<?php echo $app->job->parent_slug; ?>/<?php echo $app->job->subject_slug; ?>">Find A <?php echo $app->job->subject_name; ?> Tutor</a>.</div>
 				<?php else: ?>
+					<h2>Applicants</h2>
 					<div class="block">There are no applicants right now, go out and  <a href="/tutors">Find A Tutor</a></a>.</div>
 				<?php endif; ?>
 

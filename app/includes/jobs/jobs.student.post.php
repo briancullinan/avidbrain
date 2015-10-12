@@ -1,6 +1,6 @@
 <?php
 
-    if(isset($app->postjob){
+    if(isset($app->postjob)){
         $doesexist = NULL;
         if(isset($app->postjob->subject_slug)){
             $sql = "SELECT id FROM avid___jobs WHERE subject_slug = :subject_slug AND email = :email AND open IS NOT NULL";
@@ -72,8 +72,6 @@
 
         if(isset($data[0]) && $app->dependents->MODE == 'production'){
 
-            echo json_encode('potato');exit;
-
             $subject = 'A student has posted a new job';
             $message = '<br><h2>'.$app->postjob->subject_name.' Student</h2>';
 
@@ -94,5 +92,5 @@
         }
 
         new Flash(array('action'=>'jump-to','location'=>'/jobs/manage/'.$jobid.'','message'=>'Job Posted'));
-    
+
     }
