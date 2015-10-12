@@ -52,9 +52,9 @@
 	$data	=	$data->andWhere('user.hidden IS NULL');
 	$data	=	$data->andWhere('user.lock IS NULL');
 
-	$data	=	$data->innerJoin('user','avid___user_account_settings','settings','user.email = settings.email');
-	$data	=	$data->innerJoin('user','avid___user_profile','profile','user.email = profile.email');
-	$data	=	$data->innerJoin('user','avid___user_subjects','subjects','user.email = subjects.email');
+	$data	=	$data->leftJoin('user','avid___user_account_settings','settings','user.email = settings.email');
+	$data	=	$data->leftJoin('user','avid___user_profile','profile','user.email = profile.email');
+	$data	=	$data->leftJoin('user','avid___user_subjects','subjects','user.email = subjects.email');
 	//$data	=	$data->orderBy('id','DESC');
 	$data	=	$data->groupBy('user.email');
 	//$data	=	$data->xxx();
@@ -97,7 +97,7 @@
 	profile.getpaid,
 	profile.custom_avatar');
 
-	notify($app->filterby);
+	notify($count);
 
 	if($count==0 && $app->filterby=='higheststarscore'){
 		$app->setCookie('filterby','lastactive', '2 days');
