@@ -7,7 +7,7 @@
 	set_error_handler("errorHandler",$app->request->isAjax());
 	register_shutdown_function("fatalHandler",$app);
 
-	function errorHandler($errno, $errstr, $errfile = '', $errline = 0, $errcontext = array(),$isajax,$app) {
+	function errorHandler($errno, $errstr, $errfile = '', $errline = 0, $errcontext = NULL,$isajax,$app) {
 		$erros = array(
 			'Error Number'=>$errno,
 			'Message'=>$errstr,
@@ -50,7 +50,7 @@
 
 		$isajax = $app->request->isAjax();
 	    $error = error_get_last();
-	    if($error) errorHandler($error["type"], $error["message"], $error["file"], $error["line"],array(),$isajax);
+	    if($error) errorHandler($error["type"], $error["message"], $error["file"], $error["line"],NULL,$isajax);
 	}
 
 	$app->notFound(function () use ($app) {
