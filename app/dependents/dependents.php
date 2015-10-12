@@ -82,9 +82,9 @@
 
 	}
 
-	echo $dependents->SERVER_NAME; exit;
 
-	if($dependents->SERVER_NAME=='avidbrain.com'){
+
+	if($dependents->SERVER_NAME=='www.avidbrain.com'){
 		$dependents->database->HOST = '7b9488aeb86ce5dc0843d7298b2b70b44ddeb574.rackspaceclouddb.com';
 		$dependents->database->DBUSER = 'brainiac';
 		$dependents->database->DBPASS = 'ipi}nGaN6P4QAEJtxJ3W^Xc%Q9aforDBwnpFk}B';
@@ -107,7 +107,7 @@
 	$dependents->SITE_NAME = $sitename;
 	$dependents->SITE_NAME_PROPPER = $sitenamePropper;
 
-	echo $dependents->DOMAIN; exit;
+//	echo $dependents->DOMAIN; exit;
 
 	//echo '<pre>'; print_r($dependents); echo '</pre>';
 	//exit;
