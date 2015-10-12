@@ -18,8 +18,6 @@
 
 	$app->number = (isset($number) ? $number : NULL);
 	$offsets = new offsets($app->number,$app->dependents->pagination->items_per_page);
-
-	$data	=	$data->setMaxResults($offsets->perpage)->setFirstResult($offsets->offsetStart);
 	$data	=	$data->addSelect(everything().',user.email,user.id');
 
 	if(isset($app->filterby)){
@@ -56,6 +54,7 @@
 		$data	=	$data->orderBy('distance','ASC');
 	}
 	$count	=	$data->execute()->rowcount();
+	$data	=	$data->setMaxResults($offsets->perpage)->setFirstResult($offsets->offsetStart);
 	$data	=	$data->execute()->fetchAll();
 
 	if($count==0 && $app->filterby=='higheststarscore'){
