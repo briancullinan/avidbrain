@@ -24,6 +24,8 @@
 	    $app->connect->cache->set("allowed_parent_slugs", $returnedArray, 3600);
 	}
 
+	notify($broadMatch);
+
 	$allowed_parent_slugs[] = 'liberal-arts';
 
 	if(!in_array($broadMatch, $allowed_parent_slugs)){
@@ -86,7 +88,6 @@
 	}
 
 	$count	=	$data->select('user.id')->execute()->rowCount();
-	notify($count);
 	$data	=	$data->addSelect('user.email,user.first_name,user.last_name,user.url,user.status,subjects.parent_slug,'.everything());
 
 
