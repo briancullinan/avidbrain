@@ -86,6 +86,7 @@
 	}
 
 	$count	=	$data->select('user.id')->execute()->rowCount();
+	notify($count);
 	$data	=	$data->addSelect('user.email,user.first_name,user.last_name,user.url,user.status,subjects.parent_slug,'.everything());
 
 
