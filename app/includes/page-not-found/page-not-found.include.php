@@ -21,4 +21,4 @@
 ?>
 
 
-Uh, oh. You found our 404 Page.
+<div>Uh, oh. You found our 404 Page.</div>
