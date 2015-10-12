@@ -24,7 +24,7 @@
 	    $app->connect->cache->set("allowed_parent_slugs", $returnedArray, 3600);
 	}
 
-	notify($broadMatch);
+	notify($allowed_parent_slugs);
 
 	$allowed_parent_slugs[] = 'liberal-arts';
 
