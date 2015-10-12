@@ -86,7 +86,7 @@
 	}
 
 	$count	=	$data->select('user.id')->execute()->rowCount();
-	$data	=	$data->addSelect('user.email,user.first_name,user.last_name,user.url,user.status,subjects.parent_slug,settings.getemails, settings.showfullname, settings.anotheragency, settings.anotheragancy_rate, settings.showmyprofile, settings.avidbrainnews, settings.newjobs, settings.negotiableprice,profile.hourly_rate,
+	$data	=	$data->addSelect('user.email,user.first_name,user.last_name,user.url,user.status,user.usertype,subjects.parent_slug,settings.getemails, settings.showfullname, settings.anotheragency, settings.anotheragancy_rate, settings.showmyprofile, settings.avidbrainnews, settings.newjobs, settings.negotiableprice,profile.hourly_rate,
 	profile.my_avatar,
 	profile.my_avatar_status,
 	profile.showmyphotoas,
