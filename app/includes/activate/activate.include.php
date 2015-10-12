@@ -10,13 +10,12 @@
 			$studentSignup->csrf_token = $csrf_token;
 			$studentSignup->formvalues = $app->activateprofile;
 			$studentSignup->makeform();
-		
+
 		?>
 	</div>
 	<div class="col s12 m6 l6">
 		<div>Almost there, just a couple things left before you can sign into your account.</div>
 		
-		<p>xxx123</p>
-		
+
 	</div>
 </div>
