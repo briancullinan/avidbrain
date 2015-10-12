@@ -96,6 +96,13 @@
 	$pagify->initialize($config);
 	$app->pagination = $pagify->get_links();
 
+	if(empty($app->zero->city)){
+		$app->zero->city = NULL;
+	}
+	if(empty($app->zero->subject_name
+		$app->zero->subject_name = NULL;
+	}
+
 	$app->meta = new stdClass();
 	$app->meta->title = $app->zero->city.' '.$app->zero->subject_name.' Tutors ';
 	$app->meta->h1 = '<span>'.$count.'</span> '.$app->zero->subject_name.' Tutors in '.$app->zero->city.', '.strtoupper($app->zero->state);
