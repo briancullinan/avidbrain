@@ -148,6 +148,9 @@
 		</div>
 
 	</div>
+
+	<div class="view-more"><a href="/categories">More Subjects</a></div>
+
 </div>
 
 <div class="homepage-wide">

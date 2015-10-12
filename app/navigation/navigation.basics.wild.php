@@ -71,7 +71,7 @@
 	$navigationsubs = array();
 	$navigationsubs['/terms-of-use'] = (object) array('name'=>'Terms of Service');
 	$navigationsubs['/help/contact'] = (object) array('name'=>'Contact Us');
-	$navigationsubs['/about-us'] = (object) array('name'=>'About Us');
+	//$navigationsubs['/about-us'] = (object) array('name'=>'About Us');
 	#$navigationsubs['/xxx'] = (object) array('name'=>'xxx');
 	#$navigationsubs['/xxx'] = (object) array('name'=>'xxx');
 	#$navigationsubs['/xxx'] = (object) array('name'=>'xxx');
@@ -83,7 +83,7 @@
 
 	if(isset($app->user->usertype) && $app->user->usertype=='tutor'){
 		$navigation['/tutors'] = (object) array('name'=>'Tutors');
-		$navigation['/jobs'] = (object) array('name'=>'Tutoring Job');
+		$navigation['/jobs'] = (object) array('name'=>'Tutoring Jobs');
 	}
 	elseif(isset($app->user->usertype) && $app->user->usertype=='student'){
 		$navigation['/tutors'] = (object) array('name'=>'Find A Tutor');
