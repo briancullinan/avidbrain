@@ -5,7 +5,7 @@
 
 	$sitename				=	'avidbrain';// avidbrain, amozek
 	$sitenamePropper		=	'AvidBrain';// AvidBrain
-	$location				=	'development'; // production , staging, development
+	$location				=	'production'; // production , staging, development
 	$dependents->VERSION	=	1.002;
 	$dependents->stripe = new stdClass();
 
@@ -82,6 +82,8 @@
 
 	}
 
+	
+
 	if($dependents->SERVER_NAME=='amozek.com'){
 		$dependents->database->HOST = '7b9488aeb86ce5dc0843d7298b2b70b44ddeb574.rackspaceclouddb.com';
 		$dependents->database->DBUSER = 'brainiac';
@@ -105,5 +107,5 @@
 	$dependents->SITE_NAME = $sitename;
 	$dependents->SITE_NAME_PROPPER = $sitenamePropper;
 
-	#echo '<pre>'; print_r($dependents); echo '</pre>';
-	#exit;
+	//echo '<pre>'; print_r($dependents); echo '</pre>';
+	//exit;
