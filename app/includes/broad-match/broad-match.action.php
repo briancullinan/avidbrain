@@ -97,6 +97,7 @@
 	profile.getpaid,
 	profile.custom_avatar');
 
+	notify($count);
 
 	if($count==0 && $app->filterby=='higheststarscore'){
 		$app->setCookie('filterby','lastactive', '2 days');
