@@ -22,7 +22,7 @@
 		</div>
 		<div class="col s12 m6 l6">
 			<?php
-				$text = 'I just discovered '.$app->dependents->SITE_NAME_PROPPER.'. Signup now &amp; get $'.numbers($signupcode->value,1).' off your next session. '.$app->dependents->DOMAIN.'/signup/student/'.$signupcode->promocode;
+				$text = 'I just discovered '.$app->dependents->SITE_NAME_PROPPER.'. Signup now and get $'.numbers($signupcode->value,1).' off your next session. '.$app->dependents->DOMAIN.'/signup/student/'.$signupcode->promocode;
 
 			?>
 			<a href="mailto:?subject=$<?php echo $signupcode->value; ?> Off Tutoring with <?php echo $app->dependents->SITE_NAME_PROPPER; ?>&amp;body=<?php echo $text; ?>" class="btn btn-block grey darken-3"> <i class="fa fa-envelope"></i> Send It</a>
