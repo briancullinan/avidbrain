@@ -11,8 +11,6 @@
 	  //Convert attags to twitter profiles in <a> links
 	  $tweet = preg_replace("/@([A-Za-z0-9\/\.]*)/", "<a href=\"http://www.twitter.com/$1\">@$1</a>", $tweet);
 
-	  $tweet = str_replace('http://pbs.twimg.com/','https://pbs.twimg.com/',$tweet);
-
 	  return $tweet;
 
 	}
