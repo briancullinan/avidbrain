@@ -179,11 +179,16 @@
 		$app->mailgun->send();
 
 
-		$app->twilio->account->messages->create(array(
-			'To' => $tophone,
-			'From' => $app->dependents->twilio->number,
-			'Body' => $message
-		));
+		try{
+			$app->twilio->account->messages->create(array(
+				'To' => $tophone,
+				'From' => $app->dependents->twilio->number,
+				'Body' => $message
+			));
+		}
+		catch(Exception $e){
+			//echo '<pre>'; print_r($e); echo '</pre>';
+		}
 
 		#$activeuser = random_all(rand(8,30));
 		$activeuser = password_hash($SERIAL->email, PASSWORD_BCRYPT);

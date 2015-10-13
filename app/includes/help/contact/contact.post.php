@@ -1,19 +1,22 @@
 <?php
 	if(isset($app->contactus)){
-		
+
 		$contactus = array(
 			'name'=>$app->contactus->name,
 			'email'=>$app->contactus->email,
 			'message'=>$app->contactus->message,
 			'date'=>thedate()
 		);
-		
+
 		if(isset($app->user->email)){
 			$contactus['activeuser'] = 1;
 		}
-		
+		else{
+			$contactus['activeuser'] = NULL;
+		}
+
 		$app->connect->insert('avid___help_contactus',$contactus);
-		
+
 		new Flash(
 			array(
 				'action'=>'kill-form',
@@ -21,6 +24,6 @@
 				'formID'=>'contactus'
 			)
 		);
-		
-		
+
+
 	}
