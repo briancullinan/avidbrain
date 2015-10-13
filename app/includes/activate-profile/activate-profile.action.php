@@ -33,7 +33,7 @@
 			$app->user->lock = NULL;
 			$app->user->save();
 
-			$app->mailgun->to = 'david@avidbrain.com';
+			$app->mailgun->to = 'support@avidbrain.com';
 			$app->mailgun->subject = 'Student Account Activation';
 				$message = '<p>'.$app->user->first_name.' '.$app->user->last_name.' has just activated their account.</p>';
 				$message.= '<p>Please do a quick fly-by and make sure everything is kosher. </p>';
