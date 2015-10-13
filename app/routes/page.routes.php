@@ -48,6 +48,8 @@
 	$routes['confirmation'] = (object)array('url'=>'/confirmation','slug'=>'confirmation','route'=>'/confirmation/:type/','include'=>'confirmation','protected'=>NULL,'permissions'=>array());
 	$routes['validate'] = (object)array('url'=>'/validate','slug'=>'validate','route'=>'/validate/:code/','include'=>'validate','protected'=>NULL,'permissions'=>array());
 	$routes['activate'] = (object)array('url'=>'/activate','slug'=>'activate','route'=>'/activate/:code/','include'=>'activate','protected'=>NULL,'permissions'=>array());
+	$routes['signup-validate'] = (object)array('url'=>'/signup/validate/','slug'=>'validate','route'=>'/signup/validate/:code/','include'=>'validate','protected'=>NULL,'permissions'=>array());
+
 
 	// Get Subjects AJAX Call
 	$routes['get-subjects'] = (object)array('url'=>'/get-subjects','slug'=>'get-subjects','route'=>'/get-subjects/','include'=>'get-subjects','protected'=>NULL,'permissions'=>array(),'type'=>array('GET'),'template'=>'xhr.call.php');
