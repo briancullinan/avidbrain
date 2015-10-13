@@ -123,11 +123,11 @@
 
 		// Current Version
 		$currentVersion = $app->dependents->VERSION;
-		$nextVersion = ($currentVersion+.001);
+		$nextVersion = ($currentVersion+.0001);
 		$versionFile = $app->dependents->APP_PATH.'dependents/version.php';
 
-		$fh = fopen($versionFile, 'a') or die("can't open file");
-		fwrite($fh, '<?php $version = '.$nextVersion.' ?>');
+		$fh = fopen($versionFile, 'w') or die("can't open file");
+		fwrite($fh, '<?php $version = '.$nextVersion.'; ?>');
 		fclose($fh);
 
 

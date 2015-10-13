@@ -84,8 +84,19 @@
 	}
 
 	$count	=	$data->select('user.id')->execute()->rowCount();
+	$data	=	$data->addSelect('user.email,user.first_name,user.last_name,user.url,user.status,subjects.parent_slug,user.usertype,profile.hourly_rate,
+	profile.my_avatar,
+	profile.my_avatar_status,
+	profile.showmyphotoas,
+	profile.my_upload,
+	profile.my_upload_status,
+	profile.personal_statement_verified,
+	profile.short_description_verified,
+	profile.getpaid,
+	profile.custom_avatar,
+	settings.getemails, settings.showfullname, settings.anotheragency, settings.anotheragancy_rate, settings.showmyprofile, settings.avidbrainnews, settings.newjobs, settings.negotiableprice
+	');
 	$data	=	$data->setMaxResults($offsets->perpage)->setFirstResult($offsets->offsetStart);
-	$data	=	$data->addSelect('user.email,user.first_name,user.last_name,user.url,user.status,subjects.parent_slug,'.everything());
 
 
 	if($count==0 && $app->filterby=='higheststarscore'){
@@ -93,7 +104,10 @@
 		$app->redirect($app->request->getPath());
 	}
 
-	$data	=	$data->execute()->fetchAll();
+	//$data	=	$data->execute()->fetchAll();
+	$data	=	make_search_key_cache($data,$app->connect);
+	//notify($data);
+
 	if(isset($data[0])){
 		$app->broadmatch = $data;
 	}

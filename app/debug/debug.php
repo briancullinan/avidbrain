@@ -16,7 +16,9 @@
 		);
 		if(empty($app->dependents->DEBUG)){
 
-			$message = '';
+			$message = '<p>Page: '.$app->request->getPath().'</p>';
+			if(isset($app->user->email)):$message.= '<p>User: '.$app->user->email.'</p>';endif;
+			$message.= '<p>Date: '.formatdate(thedate()).'</p>';
 			foreach($erros as $key=> $mitem){
 				$message.= '<p>'.$key.': '.$mitem.'</p>';
 			}
