@@ -71,7 +71,7 @@
         $data	=	$data->execute()->fetchAll();
 
         if(isset($data[0]) && $app->dependents->MODE == 'production'){
-
+            
             $subject = 'A student has posted a new job';
             $message = '<br><h2>'.$app->postjob->subject_name.' Student</h2>';
 

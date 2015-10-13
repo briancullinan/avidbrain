@@ -28,6 +28,15 @@
 	.widecontentcontainer.container-fluid{
 		padding-top: 350px;
 	}
+	h1{
+		font-size: 40px;
+	}
+	h2{
+		font-size: 30px;
+	}
+	h3{
+		font-size: 20px;
+	}
 }
 
 @media only screen and (max-width: 992px){

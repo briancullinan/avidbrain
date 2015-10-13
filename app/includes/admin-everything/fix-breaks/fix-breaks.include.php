@@ -204,13 +204,22 @@
 			}
 		}
 		elseif($action=='import-student-jobs'){
-			/*
+
+			function getsubjectid($connect,$data){
+				$sql = "SELECT id FROM avid___available_subjects WHERE subject_slug = :subject_slug AND parent_slug = :parent_slug";
+				$prepare = array(':subject_slug'=>$data->subject_slug,':parent_slug'=>$data->parent_slug);
+				$results = $connect->executeQuery($sql,$prepare)->fetch();
+				if(isset($results->id)){
+					return $results->id;
+				}
+			}
+
 			$data	=	$app->connect->createQueryBuilder();
 			$data	=	$data->select('subjects.*,user.status as user_status')->from('avid___user_subjects','subjects');
 			$data	=	$data->where('subjects.usertype = :usertype')->setParameter(':usertype','student');
 			$data	=	$data->andWhere('subjects.allow_job_requests = "yes"');
 			$data	=	$data->andWhere('user.status IS NULL');
-			$data	=	$data->andWhere('subjects.last_modified >= DATE_FORMAT( CURRENT_DATE - INTERVAL 2 MONTH, "%Y/%m/01" ) ');
+			$data	=	$data->andWhere('subjects.last_modified >= DATE_FORMAT( CURRENT_DATE - INTERVAL 3 MONTH, "%Y/%m/01" ) ');
 			//SELECT * FROM table WHERE myDtate BETWEEN now(), DATE_SUB(NOW(), INTERVAL 1 MONTH)
 			//notify($data);
 			$data	=	$data->innerJoin('subjects','avid___user','user','subjects.email = user.email');
@@ -218,8 +227,25 @@
 			//$data	=	$data->groupBy('user.email');
 			//$data	=	$data->xxx();
 			$data	=	$data->execute()->fetchAll();
-			notify($data);
-			*/
+			foreach($data as $insertJob){
+
+				$insertInto = array(
+					'email'=>$insertJob->email,
+					'subject_name'=>$insertJob->subject_name,
+					'subject_slug'=>$insertJob->subject_slug,
+					'parent_slug'=>$insertJob->parent_slug,
+					'subject_id'=>getsubjectid($app->connect,$insertJob),
+					'date'=>$insertJob->last_modified,
+					'job_description'=>$insertJob->description,
+					'open'=>NULL
+				);
+
+				$app->connect->update('avid___user_subjects',array('allow_job_requests'=>NULL),array('id'=>$insertJob->id,'email'=>$insertJob->email));
+
+				$app->connect->insert('avid___jobs',$insertInto);
+				printer('INSERT JEBS');
+			}
+
 
 		}
 		elseif($action=='fix-approvals'){

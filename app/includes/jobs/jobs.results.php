@@ -8,7 +8,7 @@
 <?php if(isset($app->alljobs[0])): ?>
 	<?php foreach($app->alljobs as $job): ?>
 
-		<div class="block block-inside jobs-block">
+		<div class="block block-inside jobs-block <?php if(empty($job->open)){ echo 'closed-job';} ?>">
 
 			<div class="title">
 				<a href="/jobs/apply/<?php echo $job->id; ?>">
@@ -142,6 +142,10 @@
 								<?php if(isset($job->applicants) && isset($app->user->email) && applied_already($app->connect,$app->user->email,$job->id)>0): ?>
 									<a href="/jobs/apply/<?php echo $job->id; ?>" class="btn  waves-effect">
 										View Application
+									</a>
+								<?php elseif(empty($job->open)): ?>
+									<a class="btn btn-s grey disabled" href="#">
+										Job Closed
 									</a>
 								<?php else: ?>
 									<a href="/jobs/apply/<?php echo $job->id; ?>" class="btn blue waves-effect">

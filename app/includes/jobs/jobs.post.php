@@ -31,7 +31,7 @@ if(isset($app->searchingforjobs) && !empty($app->searchingforjobs)){
 
 	$data	=	$app->connect->createQueryBuilder();
 	$data	=	$data->select($select)->from('avid___jobs','jobs');
-	$data	=	$data->where('jobs.open IS NOT NULL');
+	//$data	=	$data->where('jobs.open IS NOT NULL');
 	if(isset($app->user->usertype) && $app->user->usertype=='admin'){
 
 	}
@@ -111,7 +111,7 @@ if(isset($app->searchingforjobs) && !empty($app->searchingforjobs)){
 	$pagify->initialize($config);
 	$app->pagination = $pagify->get_links();
 
-	//$data	=	$data->execute()->fetchAll();
+	$data	=	$data->execute()->fetchAll();
 
 	//notify($count);
 

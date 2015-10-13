@@ -44,7 +44,7 @@
 .message-subject{
 	font-size: 18px;
 	font-weight: bold;
-	
+
 }
 .message-date{
 	text-align: right;
@@ -122,6 +122,9 @@
 
 
 /* Jobs */
+.closed-job{
+	opacity: .5;
+}
 .jobs-block{
 	margin-bottom: 25px;
 }
@@ -171,5 +174,5 @@ span.date{
 	font-size: 40px;
 }
 .apply-to-job h2{
-	font-size: 22px;	
+	font-size: 22px;
 }
