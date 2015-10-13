@@ -19,8 +19,8 @@
 			$message = '<p>Page: '.$app->request->getPath().'</p>';
 			if(isset($app->user->email)):$message.= '<p>User: '.$app->user->email.'</p>';endif;
 			$message.= '<p>Date: '.formatdate(thedate()).'</p>';
-			$message.= '<p>Domain: '.$app->dependents->DOMAIN.'</p>';
-			$message.= '<p>Serve Name: '.$app->dependents->SERVER_NAME.'</p>';
+			#$message.= '<p>Domain: '.$app->dependents->DOMAIN.'</p>';
+			#$message.= '<p>Server Name: '.$app->dependents->SERVER_NAME.'</p>';
 
 			foreach($erros as $key=> $mitem){
 				$message.= '<p>'.$key.': '.$mitem.'</p>';

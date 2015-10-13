@@ -1,4 +1,18 @@
+## AvidBrain .htaccess
 RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [QSA,L]
+
+RewriteCond %{REQUEST_URI} /+[^\.]+$
+RewriteRule ^(.+[^/])$ %{REQUEST_URI}/ [R=301,L]
+
+#RewriteCond %{REQUEST_URI} /+[^\.]+$
+#RewriteRule ^(.+[^/])$ %{REQUEST_URI}/ [R=301,L]
+#RewriteCond %{HTTP_HOST} !^www\.avidbrain\.com [NC]
+#RewriteRule ^(.*)$ https://www.avidbrain.com/$1 [R=301,L]
+
+## BELOW EVERYTHING ----------------------------------------------------------------------------------------------------
 
 RewriteRule ^subjects(.*) /categories$1 [R=301,NC,L]
 RedirectMatch 301 /find-a-tutor/(.*)/(.*)/(.*) /categories/$3/$2/$1
@@ -8,19 +22,20 @@ RedirectMatch 301 /states/(.*) /tutors/$1/
 RedirectMatch 301 /VIP /signup/students/promocode
 RedirectMatch 301 /vip /signup/students/promocode
 
-
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^ index.php [QSA,L]
-
-RewriteCond %{REQUEST_URI} /+[^\.]+$
-RewriteRule ^(.+[^/])$ %{REQUEST_URI}/ [R=301,L]
+Redirect 301 /terms-of-service /terms-of-use
+Redirect 301 /tutors-by-location-and-subject /tutors-by-location
+Redirect 301 /states /tutors-by-location
+Redirect 301 /dashboard /
+Redirect 301 /help/contact-us /help/contact
+Redirect 301 /help/our-staff /staff
+Redirect 301 /help/reset-password /help/forgot-password
+Redirect 301 /signup/students	/signup/student
+Redirect 301 /learn-more/how-it-works	/how-it-works
+#Redirect 301 /math-tutors	/categories/math
 
 <FilesMatch "\.(js|css|html|htm|php|xml)$">
 	SetOutputFilter DEFLATE
 </FilesMatch>
-
-#RewriteCond %{HTTP_HOST} !^www\.avidbrain\.com [NC]
-#RewriteRule ^(.*)$ https://www.avidbrain.com/$1 [R=301,L]
 
 <IfModule mod_deflate.c>
     AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css  application/x-javascript
@@ -30,6 +45,7 @@ RewriteRule ^(.+[^/])$ %{REQUEST_URI}/ [R=301,L]
 </IfModule>
 
 
+
 # limit indexing of directories
 Options All -Indexes
 
@@ -37,8 +53,8 @@ Options All -Indexes
 # this is done by default with apache config file,
 # but you never know.
 <files .htaccess>
-order allow,deny
-deny from all
+	order allow,deny
+	deny from all
 </files>
 
 # disable the server signature
@@ -82,15 +98,3 @@ DirectoryIndex index.php index.html 404.php
    ExpiresByType image/png "access plus 14 days"
    ExpiresByType text/css "access plus 14 days"
 </IfModule>
-
-
-Redirect 301 /terms-of-service /terms-of-use
-Redirect 301 /tutors-by-location-and-subject /tutors-by-location
-Redirect 301 /states /tutors-by-location
-Redirect 301 /dashboard /
-Redirect 301 /help/contact-us /help/contact
-Redirect 301 /help/our-staff /staff
-Redirect 301 /help/reset-password /help/forgot-password
-Redirect 301 /signup/students	/signup/student
-Redirect 301 /learn-more/how-it-works	/how-it-works
-#Redirect 301 /math-tutors	/categories/math
