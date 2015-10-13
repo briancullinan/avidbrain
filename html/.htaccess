@@ -4,13 +4,14 @@ RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^ index.php [QSA,L]
 
-RewriteCond %{REQUEST_URI} /+[^\.]+$
-RewriteRule ^(.+[^/])$ %{REQUEST_URI}/ [R=301,L]
-
 #RewriteCond %{REQUEST_URI} /+[^\.]+$
 #RewriteRule ^(.+[^/])$ %{REQUEST_URI}/ [R=301,L]
-#RewriteCond %{HTTP_HOST} !^www\.avidbrain\.com [NC]
-#RewriteRule ^(.*)$ https://www.avidbrain.com/$1 [R=301,L]
+
+RewriteCond %{HTTP_HOST} !^www\.
+RewriteRule (.*) http://www.%{SERVER_NAME}%{REQUEST_URI} [R=301]
+
+#RewriteCond %{HTTPS} !=on
+#RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301]
 
 ## BELOW EVERYTHING ----------------------------------------------------------------------------------------------------
 

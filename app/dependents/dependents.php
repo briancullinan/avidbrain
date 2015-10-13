@@ -87,7 +87,7 @@
 		$dependents->database->DBPASS = 'ipi}nGaN6P4QAEJtxJ3W^Xc%Q9aforDBwnpFk}B';
 		$dependents->DOMAIN = 'https://www.'.$sitename.'.com';
 	}
-	elseif($dependents->SERVER_NAME=='amozek.dev' || $dependents->SERVER_NAME=='avidbrain.dev'){
+	elseif($dependents->SERVER_NAME=='amozek.dev' || $dependents->SERVER_NAME=='avidbrain.dev' || $dependents->SERVER_NAME=='www.avidbrain.dev'){
 		$dependents->database->HOST = 'localhost';
 		$dependents->database->DBUSER = 'root';
 		$dependents->database->DBPASS = 'root';
