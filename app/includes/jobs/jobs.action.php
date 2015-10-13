@@ -42,7 +42,9 @@
 	}
 	$app->meta->keywords = 'jobs,tutoring,'.$app->dependents->SITE_NAME_PROPPER;
 
+	if(isset($app->user->usertype) && $app->user->usertype=='tutor'){
 
-	if(isset($app->user->email)){
+	}
+	elseif(isset($app->user->email)){
 		$app->target->post = $app->target->user->post;
 	}

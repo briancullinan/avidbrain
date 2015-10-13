@@ -165,7 +165,10 @@
 		}
 
 		if(isset($newupload->name)){
-			$file = $app->dependents->APP_PATH.'uploads/resumes/'.$SERIAL->email.getfiletype($newupload->name);
+			#$file = $app->dependents->APP_PATH.'uploads/resumes/'.$SERIAL->email.getfiletype($newupload->name);
+			#move_uploaded_file($newupload->tmp_name, $file);
+
+			$file = $app->dependents->DOCUMENT_ROOT.'uploads/resumes/'.$SERIAL->email.getfiletype($newupload->name);
 			move_uploaded_file($newupload->tmp_name, $file);
 		}
 

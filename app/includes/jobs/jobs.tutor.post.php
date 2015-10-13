@@ -1,3 +1,3 @@
 <?php
-    include(jobs.post.php);
+    notify('AvidBrain Jobs');
 ?>
