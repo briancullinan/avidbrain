@@ -99,7 +99,10 @@
 	if(empty($app->zero->city)){
 		$app->zero->city = NULL;
 	}
-	if(empty($app->zero->subject_name
+	// if(empty($app->zero->subject_name
+	// 	$app->zero->subject_name = NULL;
+	// }
+	if(empty($app->zero->subject_name)){
 		$app->zero->subject_name = NULL;
 	}
 
