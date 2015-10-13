@@ -8,12 +8,12 @@
 			'date'=>thedate()
 		);
 
-		if(isset($app->user->email)){
-			$contactus['activeuser'] = 1;
-		}
-		else{
-			$contactus['activeuser'] = NULL;
-		}
+		// if(isset($app->user->email)){
+		// 	$contactus['activeuser'] = 1;
+		// }
+		// else{
+		// 	$contactus['activeuser'] = NULL;
+		// }
 
 		$app->connect->insert('avid___help_contactus',$contactus);
 
