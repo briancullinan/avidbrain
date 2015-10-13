@@ -99,11 +99,14 @@
 	if(empty($app->zero->city)){
 		$app->zero->city = NULL;
 	}
-	// if(empty($app->zero->subject_name
-	// 	$app->zero->subject_name = NULL;
-	// }
 	if(empty($app->zero->subject_name)){
 		$app->zero->subject_name = NULL;
+	}
+	if(empty($app->zero->state)){
+		$app->zero->state = NULL;
+	}
+	if(empty($app->zero->zipcode)){
+		$app->zero->zipcode = NULL;
 	}
 
 	$app->meta = new stdClass();
