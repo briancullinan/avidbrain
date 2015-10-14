@@ -1,5 +1,6 @@
 <?php
 
+    $flag = NULL;
     if(isset($app->flagjob->value) && $app->flagjob->value=='flag'){
         $flag = 1;
     }

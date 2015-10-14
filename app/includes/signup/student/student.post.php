@@ -131,9 +131,14 @@
 				$app->connect->insert('avid___promotions_active',$insertpromo);
 			}
 
+			$promomessage = '<p>A new student has signed up using your promo code.</p>';
+			$promomessage.= '<p>Date: '.formatdate(thedate()).'</p>';
+			$promomessage.= '<p>Domain: '.$app->dependents->DOMAIN.'</p>';
+			$promomessage.= '<p>User Info: '.$app->signup->first_name.' </p>';
+
 			$app->mailgun->to = $app->isvalidpromo->email;
 			$app->mailgun->subject = 'Promo Code Activated';
-			$app->mailgun->message = 'A new student has signed up using your promo code.';
+			$app->mailgun->message = $promomessage;
 			$app->mailgun->send();
 
 		}
