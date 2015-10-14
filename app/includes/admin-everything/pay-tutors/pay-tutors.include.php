@@ -2,12 +2,19 @@
 	<div class="col s12 m3 l3">
 		<?php if(isset($app->tutorswithsessions)): ?>
 			<div class="block block-list">
+				<?php $total = array(); ?>
 				<?php foreach($app->tutorswithsessions as $tutorswithsessions): ?>
 					<a class="<?php if(isset($id) && $id==$tutorswithsessions->id){ echo 'active';} ?>" href="/admin-everything/pay-tutors/<?php echo $tutorswithsessions->id; ?>">
 						<?php echo $tutorswithsessions->first_name.' '.$tutorswithsessions->last_name; ?>:
 						<span class="green-text">$<?php echo numbers(($tutorswithsessions->cost/100)); ?></span>
+						<?php
+							$total[] = $tutorswithsessions->cost;
+						?>
 					</a>
 				<?php endforeach; ?>
+			</div>
+			<div class="block">
+				Total Ammount: $<?php echo numbers((array_sum($total)/100)); ?>
 			</div>
 		<?php else: ?>
 			There are no tutors who need paid
