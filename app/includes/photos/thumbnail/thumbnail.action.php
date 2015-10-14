@@ -11,10 +11,14 @@ if(isset($usertype) && isset($state) && isset($city) && isset($username)){
 	$file = $app->dependents->DOCUMENT_ROOT.'profiles/approved/'.$urlfix.'*crop*';
 	$isthecrophere = glob($file);
 
+
+
 	if(isset($app->user->usertype) && $app->user->usertype=='admin'){
+
 		$urlfix = str_replace('/','--',$url);
 		$file = $app->dependents->APP_PATH.'uploads/photos/'.$urlfix.'*';
 		$isthecrophere = glob($file);
+
 		if(isset($isthecrophere[0])){
 			$thefile = $isthecrophere[0];
 			$cropped = croppedfile($thefile);
@@ -29,6 +33,7 @@ if(isset($usertype) && isset($state) && isset($city) && isset($username)){
 		}
 
 		$img = $app->imagemanager->make($thefile);
+
 	}
 	elseif(isset($app->user->url) && $app->user->url==$url){
 		$cropped = croppedfile($app->user->my_upload);
@@ -47,9 +52,15 @@ if(isset($usertype) && isset($state) && isset($city) && isset($username)){
 	else{
 		$img = $app->imagemanager->make($app->dependents->APP_PATH.'uploads/photos/empty-image.jpg');
 	}
+
+	if(empty($app->user->my_upload) && empty($img)){
+		notify('No Image Found');
+	}
+
+	header('Content-Type: image/png');
+	echo $img->response();
+	exit;
 }
-
-
-header('Content-Type: image/png');
-echo $img->response();
-exit;
+else{
+	notify('No Image Found');
+}

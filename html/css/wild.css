@@ -243,7 +243,13 @@ body.activeaction .header-nav{
 	display: none;
 }
 .header-nav li a.signup-link{
-	color: #96FF00;
+	background: #96FF00;
+    color: #000;
+    font-weight: bold;
+}
+.header-nav li a.signup-link:hover{
+    background: #84e000;
+    color: #222;
 }
 main.activeaction .container{
 	height: auto;

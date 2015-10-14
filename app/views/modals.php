@@ -220,3 +220,110 @@
 		<a href="#!" class=" modal-action modal-close waves-effect waves-red btn-flat">OK, Thanks</a>
 	</div>
 </div>
+
+<?php if(isset($app->user->usertype) && $app->user->usertype=='admin' && isset($app->modal) && $app->modal == 'studentmodal'): ?>
+	<div id="adminModule" class="modal">
+
+		<div class="modal-content">
+			<h4>Admin Module</h4>
+			<br>
+
+			<?php if(isset($app->currentuser->email)): ?>
+			<div>
+				Email Address: <?php echo $app->currentuser->email; ?>
+			</div><br>
+			<?php endif; ?>
+
+			<?php if(isset($app->currentuser->phone)): ?>
+			<div>
+				Phone Number: <?php echo $app->currentuser->phone; ?>
+			</div><br>
+			<?php endif; ?>
+
+		</div>
+
+		<div class="modal-footer">
+			<a href="#!" class=" modal-action modal-close waves-effect waves-red btn-flat">Close</a>
+		</div>
+	</div>
+<?php endif ?>
+
+
+<?php if(isset($app->user->usertype) && $app->user->usertype=='admin' && isset($app->modal) && $app->modal == 'tutormodal'): ?>
+	<div id="adminModule" class="modal">
+
+		<div class="modal-content">
+			<h4>Admin Module</h4>
+			<br>
+
+			<?php if(isset($app->currentuser->email)): ?>
+			<div>
+				<?php echo $app->currentuser->email; ?>
+			</div><br>
+			<?php endif; ?>
+
+			<?php if(isset($app->currentuser->phone)): ?>
+			<div>
+				<?php echo $app->currentuser->phone; ?>
+			</div><br>
+			<?php endif; ?>
+
+			<form method="post" action="<?php echo $app->request->getPath(); ?>">
+
+				<div class="input-field">
+					<label class="select-label" for="anotheragency">
+						Is this a tutor from another agency?
+					</label>
+					<select id="anotheragency" class="browser-default" name="adminmodule[anotheragency]">
+
+						<option <?php if($app->currentuser->anotheragency==1){ echo 'selected="selected"';} ?> value="1">Yes</option>
+						<option <?php if(empty($app->currentuser->anotheragency)){ echo 'selected="selected"';} ?> value="">No</option>
+
+					</select>
+				</div>
+
+				<div class="input-field">
+					<label class="select-label" for="anotheragency">
+						What should their rate be set to?
+					</label>
+					<select id="anotheragencyrate" class="browser-default" name="adminmodule[anotheragencyrate]">
+						<?php foreach(array(70,75,80,85) as   $value): ?>
+						<option <?php if(isset($app->currentuser->anotheragency_rate) && $app->currentuser->anotheragency_rate== $value){ echo 'selected="selected"';} ?> value="<?php echo $value; ?>"><?php echo $value; ?></option>
+						<?php endforeach; ?>
+					</select>
+				</div>
+
+				<div class="input-field">
+					<input id="textid" name="adminmodule[assigntome]" type="checkbox" <?php if(isset($app->needsprofilereview->approvingnow)){ echo 'checked="checked"';} ?> class="validate">
+					<label for="textid">
+						Assign To Me
+					</label>
+				</div>
+
+				<br>
+
+				<div class="input-field">
+					<textarea name="adminmodule[notes]" id="notes" class="materialize-textarea"><?php if(isset($app->needsprofilereview->notes)){ echo $app->needsprofilereview->notes;} ?></textarea>
+					<label for="notes">Notes</label>
+				</div>
+
+			<br>
+
+				<input type="hidden" name="adminmodule[target]" value="adminmodule"  />
+				<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
+
+				<div class="form-submit">
+					<button class="btn blue" type="submit">
+						Submit
+					</button>
+				</div>
+
+			</form>
+
+		</div>
+
+		<div class="modal-footer">
+			<a href="#!" class=" modal-action modal-close waves-effect waves-red btn-flat">Close</a>
+		</div>
+	</div>
+<?php endif ?>

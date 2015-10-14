@@ -4,6 +4,8 @@
 
 $url = '/'.$usertype.'/'.$state.'/'.$city.'/'.$username;
 
+//notify($url);
+
 if(isset($usertype) && isset($state) && isset($city) && isset($username)){
 
 	$urlfix = str_replace('/','--',$url);
@@ -29,9 +31,15 @@ if(isset($usertype) && isset($state) && isset($city) && isset($username)){
 	else{
 		$img = $app->imagemanager->make($app->dependents->APP_PATH.'uploads/photos/empty-image.jpg');
 	}
+
+	if(empty($app->user->my_upload) && empty($img)){
+		notify('No Image Found');
+	}
+
+	header('Content-Type: image/png');
+	echo $img->response();
+	exit;
 }
-
-
-header('Content-Type: image/png');
-echo $img->response();
-exit;
+else{
+	notify('No Image Found');
+}

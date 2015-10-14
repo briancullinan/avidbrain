@@ -133,7 +133,6 @@
 
 			$promomessage = '<p>A new student has signed up using your promo code.</p>';
 			$promomessage.= '<p>Date: '.formatdate(thedate()).'</p>';
-			$promomessage.= '<p>Domain: '.$app->dependents->DOMAIN.'</p>';
 			$promomessage.= '<p>User Info: '.$app->signup->first_name.' </p>';
 
 			$app->mailgun->to = $app->isvalidpromo->email;
@@ -151,6 +150,23 @@
 		$app->mailgun->to = $app->signup->email;
 		$app->mailgun->subject = 'Please authenticate your email address';
 		$app->mailgun->message = 'Your verification link is: <a href="'.$app->dependents->DOMAIN.'/validate/'.$validation_code.'">Verify Email Address</a>';
+		$app->mailgun->send();
+
+		$serverinfo = (object)$_SERVER;
+		$newstudentEmail = '';
+		$newstudentEmail.= '<p> Email: '.$app->signup->email.' </p>';
+		$newstudentEmail.= '<p> Name: '.$app->signup->first_name.' '.$app->signup->last_name.' </p>';
+		$newstudentEmail.= '<p> Phone: '.$app->signup->phone.' </p>';
+		$newstudentEmail.= '<p> Promo Code: '.$app->signup->promocode.' </p>';
+		$newstudentEmail.= '<p> Zip Code: '.$app->signup->zipcode.' </p>';
+		$newstudentEmail.= '<p> <strong>Server Info</strong> </p>';
+		$newstudentEmail.= '<p> IP Address: '.$serverinfo->REMOTE_ADDR.' </p>';
+		$newstudentEmail.= '<p> URL: '.$serverinfo->REQUEST_URI.' </p>';
+		$newstudentEmail.= '<p> Referrer: '.$serverinfo->HTTP_REFERER.' </p>';
+
+		$app->mailgun->to = 'jake.stoll@avidbrain.com,keith@avidbrain.com,david@avidbrain.com';
+		$app->mailgun->subject = 'New Student Signup';
+		$app->mailgun->message = $newstudentEmail;
 		$app->mailgun->send();
 
 		if(isset($app->signup->waiting_to_email)){

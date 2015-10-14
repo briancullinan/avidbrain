@@ -65,6 +65,9 @@
 								<?php endif; ?>
 
 								<?php if(isset($app->user->usertype) && $app->user->usertype=='admin'): ?>
+
+									<a href="#adminModule" class="btn btn-block orange modal-trigger">Admin Module</a>
+
 									<?php if(isset($app->currentuser->status) && $app->currentuser->status=='needs-review'): ?>
 									<a href="<?php echo $app->currentuser->url; ?>/approveprofile" class="btn btn-block green waves-effect waves-light"> <i class="fa fa-check white-text"></i> Approve Profile</a>
 									<?php else: ?>
@@ -163,3 +166,5 @@
 
 
 	</div>
+
+<?php $app->modal = 'studentmodal'; ?>

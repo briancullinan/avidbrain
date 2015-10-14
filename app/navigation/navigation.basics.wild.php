@@ -24,12 +24,12 @@
 		$app->notifications = $notications;
 
 	}
-
 	if(isset($app->user->my_upload) && isset($app->user->my_upload_status) && $app->user->my_upload_status=='needs-review'){
 
-		$sql = "SELECT type FROM avid___user_needsprofilereview WHERE email = :email";
+		$sql = "SELECT type FROM avid___user_needsprofilereview WHERE email = :email ORDER BY id DESC";
 		$prepare = array(':email'=>$app->user->email);
 		$results = $app->connect->executeQuery($sql,$prepare)->fetch();
+
 		if(isset($results->type) && $results->type=='My Photo'){
 			$notications = new stdClass();
 			$notications->status = 'low';
