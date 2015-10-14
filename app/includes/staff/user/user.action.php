@@ -1,5 +1,6 @@
 <?php
 
+	// STAFF
 	if(isset($user)){
 		$sql = "SELECT first_name,last_name,my_avatar,short_description,personal_statement FROM avid___admins WHERE url = :url";
 		$prepeare = array(':url'=>'/staff/'.$user);
