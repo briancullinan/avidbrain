@@ -158,7 +158,7 @@
 					<input type="hidden" name="paytutorsessioninfo[type]" value="directdeposit" />
 					<input type="hidden" name="paytutorsessioninfo[email]" value="<?php echo $app->paytutor->email; ?>" />
 					<input type="hidden" name="paytutorsessioninfo[account_id]" value="<?php echo $app->paytutor->account_id; ?>" />
-					<input type="hidden" name="paytutorsessioninfo[amount]" value="<?php echo ((($total - $totalpayout) + $additional)*100); ?>" />
+					<input type="hidden" name="paytutorsessioninfo[amount]" value="<?php echo (round(((($total - $totalpayout) + $additional)),1)*100); ?>" />
 
 					<input type="hidden" name="paytutorsessioninfo[target]" value="paytutorsessioninfo"  />
 					<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">

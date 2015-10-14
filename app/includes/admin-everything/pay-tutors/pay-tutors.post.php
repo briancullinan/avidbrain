@@ -2,15 +2,27 @@
 
 	if(isset($app->paytutorsessioninfo)){
 
-		if(empty($app->paytutor->managed_id)){
-			notify('User Must Become Managed');
+		if(isset($app->paytutor->managed_id)){
+			$userAccountInfo = $app->paytutor->managed_id;
+		}
+		elseif(isset($app->paytutor->account_id)){
+
+			$createManaged = array('from_recipient'=>$app->paytutor->account_id);
+			$managed = \Stripe\Account::create($createManaged);
+			if(isset($managed->id)){
+				$app->connect->update('avid___user',array('managed_id'=>$managed->id),array('email'=>$app->paytutor->email));
+				$userAccountInfo = $managed->id;
+			}
 		}
 
+		if(empty($userAccountInfo)){
+			notify('No User Payment Info');
+		}
 		//echo $app->dependents->stripe->STRIPE_SECRET; exit;
 		$transferInfo = array(
 			"amount" => $app->paytutorsessioninfo->amount,
 			"currency" => "usd",
-			"destination" => $app->paytutor->managed_id,
+			"destination" => $userAccountInfo,
 			"description" => "Bi-Monthly Tutor Payment"
 		);
 
