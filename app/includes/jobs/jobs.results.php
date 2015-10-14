@@ -105,11 +105,12 @@
 					<div class="col s12 m6 l6">
 						<div class="row">
 							<div class="col s12 m8 l8">
+								
 								<?php if(isset($job->applicants)): ?>
 									<div><span class="notice blue white-text"><?php echo $job->applicants; ?></span> Tutor<?php if(count($job->applicants)!=1){ echo 's';} ?> has applied for this job</div>
 								<?php endif; ?>
 								<div class="view-more-jobs">
-								<?php if(isset($job->subject_slug)): ?>
+									<?php if(isset($job->subject_slug)): ?>
 										<div>
 											<a href="/jobs/<?php echo $job->parent_slug; ?>">
 												<?php echo fix_parent_slug($job->parent_slug); ?> Jobs
@@ -121,7 +122,7 @@
 											</a>
 										</div>
 
-								<?php endif; ?>
+									<?php endif; ?>
 
 									<?php if(isset($job->state_slug)): ?>
 									<div>

@@ -14,6 +14,8 @@ if(isset($app->searchingforjobs) && !empty($app->searchingforjobs)){
 		jobs.*,
 		user.city,
 		user.state_long,
+		user.state_slug,
+		user.city_slug,
 		user.zipcode,
 		user.first_name,
 		user.last_name,
