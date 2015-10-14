@@ -37,7 +37,7 @@
 		'templates.path' => $app->dependents->APP_PATH.'views',
 		'template'=>'wild.php'
 	);
-	
+
 	if(isset($app->dependents->DEBUG) && !empty($app->dependents->DEBUG) || $app->dependents->DOMAIN=='http://avidbrain.dev'){
 		$config['debug'] = true;
 		$config['mode'] = $app->dependents->MODE;
@@ -51,7 +51,9 @@
 
 	use \Slim\Extras\Middleware\CSRFNINJA;
 	use \Slim\Extras\Middleware\HttpBasicAuth;
-	//$app->add(new HttpBasicAuth('avidbrain', 'tutornode'));
+	if($app->dependents->DOMAIN=='http://avidbra.in'){
+		$app->add(new HttpBasicAuth('avidbrain', 'tutornode'));
+	}
 	$app->add(new CSRFNINJA());
 
 	//killallcookies();
