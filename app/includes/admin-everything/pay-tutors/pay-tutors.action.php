@@ -59,3 +59,11 @@
 
 		}
 	}
+
+	try{
+		$balance = \Stripe\Balance::retrieve();
+		$app->availableBalance = numbers(($balance->available[0]->amount/100));
+	}
+	catch(\Stripe\Error\Card $e) {
+		notify($e);
+	}

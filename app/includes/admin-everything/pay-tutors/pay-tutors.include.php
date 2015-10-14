@@ -1,6 +1,7 @@
 <div class="row">
 	<div class="col s12 m3 l3">
 		<?php if(isset($app->tutorswithsessions)): ?>
+			<div>Tutors Who Need Paid</div>
 			<div class="block block-list">
 				<?php $total = array(); ?>
 				<?php foreach($app->tutorswithsessions as $tutorswithsessions): ?>
@@ -13,8 +14,15 @@
 					</a>
 				<?php endforeach; ?>
 			</div>
-			<div class="block">
-				Total Ammount: $<?php echo numbers((array_sum($total)/100)); ?>
+
+			<div>Total Ammount Due</div>
+			<div class="block green white-text">
+				$<?php echo numbers((array_sum($total)/100)); ?>
+			</div>
+
+			<div>Available Balance</div>
+			<div class="block red white-text">
+				$<?php echo $app->availableBalance; ?>
 			</div>
 		<?php else: ?>
 			There are no tutors who need paid
