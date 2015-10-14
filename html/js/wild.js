@@ -622,13 +622,12 @@ $(document).ready(function() {
 		$( "#target" ).keyup(function() {
 
 			var thisdata = $(this).val();
-			$(".main-content a").unhighlight();
-			$(".main-content a").highlight(thisdata);
-
+			$(".maintutorsbycity a").unhighlight();
+			$(".maintutorsbycity a").highlight(thisdata);
 
 			$(this).keypress(function (e) {
 				if(e.which == 13) {
-					$('html, body').animate({scrollTop: $(".highlight").offset().top - 50}, 100);
+					$('html, body').animate({scrollTop: $(".highlight").offset().top - 150}, 100);
 				}
 			});
 
