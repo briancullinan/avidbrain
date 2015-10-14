@@ -21,6 +21,9 @@
 			if(isset($results->cost)){
 				$tutorswithsessions[$key]->cost = $results->cost;
 			}
+			else{
+				$tutorswithsessions[$key]->cost = NULL;
+			}
 
 		}
 
