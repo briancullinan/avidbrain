@@ -6,7 +6,7 @@
 			</td>
 			<td>
 				<div>Session Total</div>
-				<div>+ Taxes</div>
+				<div>+ Service Fee</div>
 			</td>
 			<td>
 				You Made

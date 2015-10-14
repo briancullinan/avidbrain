@@ -33,6 +33,9 @@
 	background: #444;
 	color: #fff;
 }
+.block.active-block{
+	border: solid 2px red;
+}
 
 ul.list li{
 	margin-left: 25px;
@@ -251,10 +254,13 @@ main .container-nopadd{
 }
 
 .alert{
-	padding: 5px 10px;
+	width: 100%;
+	float: left;
+	display: inline-block;
+	padding: 5px 0px;
 	text-align: center;
 	font-size: 16px;
-	margin: 5px 0px;
+	margin: 10px 0px;
 	position: relative;
 }
 .alert:before{
@@ -324,4 +330,18 @@ main .container-nopadd{
 
 #scribblar{
 	height: 600px;
+}
+
+
+.credit-errors{
+	width: 100%;
+	background: #000;
+	color: #fff;
+	padding: 25px;
+	text-align: center;
+	font-size: 24px;
+	border: solid 2px #F44336;
+}
+.credit-errors span{
+	color: #F44336;
 }

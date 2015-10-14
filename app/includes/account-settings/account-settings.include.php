@@ -202,12 +202,7 @@
 	<div class="col s12 m6 l6">
 		<h2>Change Your Email Address</h2>
 		<div class="box">
-
-
-			<div class="alert orange white-text">
-				You will be logged out once your email address has been changed.
-			</div>
-
+			<div>Your Email Address: <?php echo $app->user->email; ?></div>
 			<form method="post" class="form-post" id="changeaddress" action="<?php echo $app->request->getPath(); ?>">
 
 				<div class="input-field">
@@ -234,6 +229,11 @@
 				</div>
 
 			</form>
+
+
+			<div class="alert orange white-text">
+				You will be logged out once your email address has been changed.
+			</div>
 		</div>
 
 

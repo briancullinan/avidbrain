@@ -10,7 +10,7 @@
 						<div class="block-list-user <?php if(isset($username) && $username == $item->username){ echo 'active';} ?>">
 							<a class="block-list" href="/messages/compose/<?php echo $item->username; ?>">
 								<?php echo $item->first_name.' '.$item->last_name; ?>
-								<?php if($item->promocode==$app->user->email){ echo '<span class="badge tooltipped" data-position="bottom" data-delay="50" data-tooltip="Active Student"><i class="fa fa-user"></i></span>';} ?>
+								<?php if($item->promocode==$app->user->email){ echo '<span class="badge tooltipped" data-position="bottom" data-delay="50" data-tooltip="Referred Student"><i class="fa fa-user"></i></span>';} ?>
 							</a>
 						</div>
 					<?php endforeach; ?>
