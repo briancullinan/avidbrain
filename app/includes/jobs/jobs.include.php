@@ -1,9 +1,14 @@
-<?php if(isset($app->user->email) && $app->user->usertype=='student' && isset($app->user->status)): ?>
-		<p>Before you can request a tutoring session, we ask that you fill out your profile.</p>
+<?php if(empty($app->user->status) && empty($app->user->short_description) && isset($app->my_jobs) || empty($app->user->status) && empty($app->user->personal_statement) && isset($app->my_jobs)): ?>
+	<div class="alert blue white-text">
+		<p>Now that you have posted a job, help tutors find out if they are a good match with you.</p>
 
-		<p><a class="btn" href="<?php echo $app->user->url; ?>">View Profile</a></p>
+		<a href="<?php echo $app->user->url; ?>" class="btn btn-s green white-text">Complete your profile</a>
 
-<?php elseif(isset($app->user->email) && $app->user->usertype=='student'): ?>
+	</div>
+<?php endif; ?>
+
+
+<?php if(isset($app->user->email) && $app->user->usertype=='student'): ?>
 
 	<p>Looking for a tutor, a teacher, or just someone who knows what they are talking about? Post a job and they will find you, no more searching.</p>
 
