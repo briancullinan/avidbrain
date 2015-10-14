@@ -2,7 +2,7 @@
 
 	$data	=	$app->connect->createQueryBuilder();
 	$data	=	$data->select('sessions.id, user.first_name, user.last_name, user.url, user.id, user.account_id, sessions.from_user ')->from('avid___sessions','sessions');
-	$data	=	$data->where('sessions.paidout IS NULL AND sessions.session_status IS NOT NULL');
+	$data	=	$data->where('sessions.paidout IS NULL AND sessions.session_status IS NOT NULL AND sessions.session_cost IS NOT NULL');
 	$data	=	$data->setParameter(':usertype','tutor');
 	$data	=	$data->leftJoin('sessions','avid___user_profile','profile','profile.email = sessions.from_user');
 	$data	=	$data->leftJoin('sessions','avid___user','user','user.email = sessions.from_user');
