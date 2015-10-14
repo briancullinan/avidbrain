@@ -37,7 +37,8 @@
 		'templates.path' => $app->dependents->APP_PATH.'views',
 		'template'=>'wild.php'
 	);
-	if(isset($app->dependents->DEBUG) && !empty($app->dependents->DEBUG)){
+	
+	if(isset($app->dependents->DEBUG) && !empty($app->dependents->DEBUG) || $app->dependents->DOMAIN=='http://avidbrain.dev'){
 		$config['debug'] = true;
 		$config['mode'] = $app->dependents->MODE;
 	}

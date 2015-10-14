@@ -84,6 +84,7 @@
 		$pathinfo->include = 'page-not-found';
 		$pathinfo->slug = 'page-not-found';
 		$app->target = buildpaths($pathinfo,$app->dependents->APP_PATH,NULL);
+		include($app->dependents->APP_PATH.'navigation/navigation.basics.wild.php');
 		include($app->target->action);
 	    $app->render(
 	    	$app->settings['template'],
