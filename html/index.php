@@ -165,6 +165,8 @@
  	#echo 'CLEANUP()';
 	#exit;
 
+	//$app->purechat = true;
+
 	if(isset($app->user->email)){
 		include($app->dependents->APP_PATH.'validate/validate.user.php');
 	}
