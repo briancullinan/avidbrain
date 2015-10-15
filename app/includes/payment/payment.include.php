@@ -70,6 +70,13 @@
 
 			</div>
 		<?php elseif($app->user->usertype=='student' && empty($app->user->creditcardonfile)): ?>
+			<?php if(isset($app->notifications->type) && $app->notifications->type=='messages-waiting'): ?>
+			<div class="block">
+				<div class="title">Messages Waiting</div>
+				<div>You have a message waiting for <a href="<?php echo $app->waitingtoemail->url; ?>" target="_blank" class="green white-text padd5"><?php echo short($app->waitingtoemail); ?></a>, but before we can send it you need to activate messaging.</div>
+			</div>
+			<?php endif; ?>
+
 			<div class="block">
 				<div class="title">Activating Messaging</div>
 

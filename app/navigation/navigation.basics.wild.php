@@ -1,5 +1,22 @@
 <?php
 
+	if(isset($app->user->usertype) && $app->user->usertype=='student' && empty($app->user->customer_id)){
+		$data	=	$app->connect->createQueryBuilder();
+		$data	=	$data->select('settings.*,waiting.*, user.first_name, user.last_name, user.url')->from('avid___waiting_to_email','waiting');
+		$data	=	$data->where('waiting.from_user = :myemail')->setParameter(':myemail',$app->user->email);
+		$data	=	$data->innerJoin('waiting','avid___user','user','waiting.to_user = user.email');
+		$data	=	$data->innerJoin('waiting','avid___user_account_settings','settings','waiting.to_user = settings.email');
+		$app->waitingtoemail	=	$data->execute()->fetch();
+
+		if(isset($app->waitingtoemail->id)){
+			$notications = new stdClass();
+			$notications->status = 'moderate';
+			$notications->type = 'messages-waiting';
+			$notications->message = '<a class="btn btn-s" href="/payment">Acitvate Messaging</a>';
+			$app->notifications = $notications;
+		}
+	}
+
 	if(isset($app->user->status) && $app->user->status=='needs-review' && $app->user->usertype=='student' && isset($app->user->welcome)){
 
 		#$notications = new stdClass();

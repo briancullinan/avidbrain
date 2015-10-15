@@ -7,38 +7,6 @@
 
 	if(isset($validateMe->usertype) && $validateMe->usertype=='student'){
 
-		$data	=	$app->connect->createQueryBuilder();
-		$data	=	$data->select('waiting.*, settings.getemails')->from('avid___waiting_to_email','waiting');
-		$data	=	$data->where('waiting.from_user = :email')->setParameter(':email',$validateMe->email);
-		$data	=	$data->innerJoin('waiting','avid___user_account_settings','settings','settings.email = waiting.to_user');
-		$data	=	$data->execute()->fetch();
-
-		if(isset($data->id)){
-			$waiting_to_email = $data;
-
-			$subject = 'You have a message from a new student';
-			$message = '<p>A new student has signed up, through your profile, after they complete their profile you will be able to view it</p>';
-			$message.= '<p>Message from student: '.$waiting_to_email->send_message.'</p>';
-
-
-			if(isset($waiting_to_email->getemails) && $waiting_to_email->getemails=='yes'){
-
-				$app->mailgun->to = $waiting_to_email->to_user;
-				$app->mailgun->subject = $subject;
-				$app->mailgun->message = $message;
-				$app->mailgun->send();
-
-			}
-
-			$app->sendmessage->to_user = $waiting_to_email->to_user;
-			$app->sendmessage->from_user = $waiting_to_email->from_user;
-			$app->sendmessage->location = 'inbox';
-			$app->sendmessage->send_date = thedate();
-			$app->sendmessage->subject = $subject;
-			$app->sendmessage->message = $message;
-			$app->sendmessage->newmessage();
-		}
-
 		$state_slug = string_cleaner($validateMe->state_long);
 		$city_slug = string_cleaner($validateMe->city);
 

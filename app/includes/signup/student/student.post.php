@@ -154,6 +154,7 @@
 
 		$serverinfo = (object)$_SERVER;
 		$newstudentEmail = '';
+		$newstudentEmail.= '<p>Date: '.formatdate(thedate(),'M. jS, Y @ g:i a').'</p>';
 		$newstudentEmail.= '<p> Email: '.$app->signup->email.' </p>';
 		$newstudentEmail.= '<p> Name: '.$app->signup->first_name.' '.$app->signup->last_name.' </p>';
 		$newstudentEmail.= '<p> Phone: '.$app->signup->phone.' </p>';
@@ -164,7 +165,14 @@
 		$newstudentEmail.= '<p> URL: '.$serverinfo->REQUEST_URI.' </p>';
 		$newstudentEmail.= '<p> Referrer: '.$serverinfo->HTTP_REFERER.' </p>';
 
-		$app->mailgun->to = 'jake.stoll@avidbrain.com,keith@avidbrain.com,david@avidbrain.com';
+		if($app->dependents->DOMAIN=='http://avidbrain.dev'){
+			$toemails = 'david@avidbrain.com';
+		}
+		else{
+			$toemails = 'jake.stoll@avidbrain.com,keith@avidbrain.com,david@avidbrain.com';
+		}
+
+		$app->mailgun->to = $toemails;
 		$app->mailgun->subject = 'New Student Signup';
 		$app->mailgun->message = $newstudentEmail;
 		$app->mailgun->send();
