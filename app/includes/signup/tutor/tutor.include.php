@@ -1,9 +1,9 @@
 <div class="row">
 
-	<div class="col s12 m6 l6">
-        
+	<div class="col s12 m12 l6">
+
         <h2>Become a Tutor</h2>
-		
+
 		<?php
 
 			$tutorSignup = new Forms($app->connect);
@@ -20,14 +20,14 @@
 				$tutorSignup->formvalues = $mycode;
 
 			}
-			
+
 			$tutorSignup->makeform();
 
 		?>
-        
+
 	</div>
 
-	<div class="col s12 m6 l6">
+	<div class="col s12 m12 l6">
 		<h2>Tutor Benefits</h2>
 		<ul class="collection">
 			<li class="collection-item"> <i class="fa fa-check light-green-text accent-2-text"></i> Choose your rate</li>
@@ -63,9 +63,10 @@
 				$variablename->classname = 'getprices';
 				$variablename->makeform();
 			?>
-			
+
 		</div>
 
 	</div>
 
 </div>
+<script type='text/javascript' data-cfasync='false'>window.purechatApi = { l: [], t: [], on: function () { this.l.push(arguments); } }; (function () { var done = false; var script = document.createElement('script'); script.async = true; script.type = 'text/javascript'; script.src = 'https://app.purechat.com/VisitorWidget/WidgetScript'; document.getElementsByTagName('HEAD').item(0).appendChild(script); script.onreadystatechange = script.onload = function (e) { if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) { var w = new PCWidget({c: 'a450183c-ea47-4537-89d4-f8b55a44e006', f: true }); done = true; } }; })();</script>

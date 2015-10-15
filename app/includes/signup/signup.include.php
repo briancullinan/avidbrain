@@ -57,7 +57,7 @@
 		<br>
 		<div><a href="/signup/student" class="btn btn-block">Become A Student</a></div>
 	</div>
-	
+
 	<div class="col s12 m6 l6">
 		<h2>Tutor Signup</h2>
 		<p>Would you like to become an <?php echo $app->dependents->SITE_NAME_PROPPER; ?> tutor? Begin the application process and start tutoring ASAP.</p>
@@ -116,5 +116,7 @@
 		<br>
 		<div><a href="/signup/tutor" class="btn blue btn-block">Become A Tutor</a></div>
 	</div>
-	
+
 </div>
+
+<script type='text/javascript' data-cfasync='false'>window.purechatApi = { l: [], t: [], on: function () { this.l.push(arguments); } }; (function () { var done = false; var script = document.createElement('script'); script.async = true; script.type = 'text/javascript'; script.src = 'https://app.purechat.com/VisitorWidget/WidgetScript'; document.getElementsByTagName('HEAD').item(0).appendChild(script); script.onreadystatechange = script.onload = function (e) { if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) { var w = new PCWidget({c: 'a450183c-ea47-4537-89d4-f8b55a44e006', f: true }); done = true; } }; })();</script>

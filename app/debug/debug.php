@@ -7,7 +7,7 @@
 	set_error_handler("errorHandler",$app->request->isAjax());
 	register_shutdown_function("fatalHandler",$app);
 
-	function errorHandler($errno, $errstr, $errfile = '', $errline = 0, $errcontext = NULL,$isajax,$app) {
+	function errorHandler($errno=NULL, $errstr=NULL, $errfile = '', $errline = 0, $errcontext = NULL,$isajax=NULL,$app=NULL) {
 
 		$errornumbers = array(
 			1=>'E_ERROR: Fatal run-time errors. These indicate errors that can not be recovered from, such as a memory allocation problem. Execution of the script is halted.',
