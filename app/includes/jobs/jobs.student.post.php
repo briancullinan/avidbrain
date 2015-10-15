@@ -113,7 +113,9 @@
             $subject = 'A student has posted a new job';
             $message = '<br><h2>'.$app->postjob->subject_name.' Student</h2>';
 
-            $message.= '<p><strong>Location:</strong>   '.$app->user->city.', '.$app->user->state.'</p>';
+            if(isset($app->user->city) && isset($app->user->state)){
+                $message.= '<p><strong>Location:</strong>   '.$app->user->city.', '.$app->user->state.'</p>';
+            }
             $message.= '<p><strong>Job Description:</strong> <br> '.$app->postjob->job_description.'</p>';
             $message.= '<p><strong>Date Posted:</strong> '.formatdate(thedate(), 'M. jS, Y @ g:i a').'</p>';
             $message.= '<p><strong>My Skill Level:</strong> '.$app->postjob->skill_level.'</p>';
