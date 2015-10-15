@@ -77,20 +77,21 @@
 							<?php if(isset($app->user->usertype) && $app->user->usertype=='admin'): ?>
 								<br>
 								<form method="post" action="/jobs">
+									<a class="btn btn-s" href="/jobs/manage/<?php echo $job->id; ?>">Manage Job Post</a>
 									<?php if(empty($job->flag)): ?>
 										<input type="hidden" name="flagjob[value]" value="flag"  />
-										<div class="form-submit">
+
 											<button class="btn red btn-s" type="submit">
 												Flag Job Post
 											</button>
-										</div>
+
 									<?php else: ?>
 										<input type="hidden" name="flagjob[value]" value="unflag"  />
-										<div class="form-submit">
+
 											<button class="btn blue btn-s" type="submit">
 												Un-Flag Job Post
 											</button>
-										</div>
+										
 									<?php endif; ?>
 
 									<input type="hidden" name="flagjob[page]" value="<?php echo $app->request->getPath(); ?>"  />

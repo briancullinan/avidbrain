@@ -37,6 +37,12 @@
 	h3{
 		font-size: 20px;
 	}
+	.right-info ul li{
+		margin-right: 5px;
+	}
+	.right-info ul li a{
+		padding: 10px 5px;
+	}
 }
 
 @media only screen and (max-width: 992px){

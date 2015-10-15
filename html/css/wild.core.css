@@ -36,6 +36,9 @@
 .block.active-block{
 	border: solid 2px red;
 }
+.block.messages-waiting{
+	border: solid 5px #4CAF50;
+}
 
 ul.list li{
 	margin-left: 25px;

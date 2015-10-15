@@ -383,6 +383,12 @@ notifications.low a{
     color: #333;
 	border: solid 1px #ccc;
 }
+notifications.moderate{
+    background: #c4daec;
+}
+notifications.moderate a{
+
+}
 
 main .liu.active-notification{
 	padding-top: 130px;

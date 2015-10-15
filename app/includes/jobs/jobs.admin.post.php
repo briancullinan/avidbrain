@@ -1,6 +1,13 @@
 <?php
 
-    if(isset($app->flagjob)){
+    if(isset($app->postjob)){
+
+        $jostajobfor = $app->postjob->user;
+        $app->user = $jostajobfor;
+
+        include('jobs.student.post.php');
+    }
+    elseif(isset($app->flagjob)){
         $flag = NULL;
         if(isset($app->flagjob->value) && $app->flagjob->value=='flag'){
             $flag = 1;

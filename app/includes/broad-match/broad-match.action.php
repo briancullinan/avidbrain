@@ -9,7 +9,7 @@
 	$app->filterbylocation = 'maincats-'.$broadMatch.'-tutors';
 	//notify($app->filterbylocation);
 
-	$app->connect->cache->delete("allowed_parent_slugs");
+	//$app->connect->cache->delete("allowed_parent_slugs");
 	$allowed_parent_slugs = $app->connect->cache->get("allowed_parent_slugs");
 	if($allowed_parent_slugs == null) {
 
@@ -23,6 +23,8 @@
 	    $allowed_parent_slugs = $returnedArray;
 	    $app->connect->cache->set("allowed_parent_slugs", $returnedArray, 3600);
 	}
+
+	//notify($allowed_parent_slugs);
 
 	$allowed_parent_slugs[] = 'liberal-arts';
 
@@ -84,19 +86,20 @@
 	}
 
 	$count	=	$data->select('user.id')->execute()->rowCount();
-	$data	=	$data->addSelect('user.email,user.first_name,user.last_name,user.url,user.status,subjects.parent_slug,user.usertype,profile.hourly_rate,
-	profile.my_avatar,
-	profile.my_avatar_status,
-	profile.showmyphotoas,
-	profile.my_upload,
-	profile.my_upload_status,
-	profile.personal_statement_verified,
-	profile.short_description_verified,
-	profile.getpaid,
-	profile.custom_avatar,
-	settings.getemails, settings.showfullname, settings.anotheragency, settings.anotheragancy_rate, settings.showmyprofile, settings.avidbrainnews, settings.newjobs, settings.negotiableprice
-	');
 	$data	=	$data->setMaxResults($offsets->perpage)->setFirstResult($offsets->offsetStart);
+	$data	=	$data->addSelect('
+		user.email,user.first_name,user.last_name,user.url,user.status,subjects.parent_slug,user.usertype,profile.hourly_rate,
+		profile.my_avatar,
+		profile.my_avatar_status,
+		profile.showmyphotoas,
+		profile.my_upload,
+		profile.my_upload_status,
+		profile.personal_statement_verified,
+		profile.short_description_verified,
+		profile.getpaid,
+		profile.custom_avatar,
+		settings.getemails, settings.showfullname, settings.anotheragency, settings.anotheragancy_rate, settings.showmyprofile, settings.avidbrainnews, settings.newjobs, settings.negotiableprice
+	');
 
 
 	if($count==0 && $app->filterby=='higheststarscore'){

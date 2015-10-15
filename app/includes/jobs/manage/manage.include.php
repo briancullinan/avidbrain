@@ -196,7 +196,7 @@
 					<a href="/sessions/view/<?php echo $app->job->session->id; ?>" class="btn blue btn-block">View Session Info</a>
 				</div>
 
-			<?php elseif(isset($app->job->applicants[0])): ?>
+			<?php elseif(isset($app->job->applicants[0]) && empty($app->admin)): ?>
 				<h2>Job Applicants</h2>
 				<?php foreach($app->job->applicants as $applicants): ?>
 					<div class="block">
