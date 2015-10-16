@@ -11,6 +11,7 @@
 							<a class="block-list" href="/messages/compose/<?php echo $item->username; ?>">
 								<?php echo $item->first_name.' '.$item->last_name; ?>
 								<?php if($item->promocode==$app->user->email){ echo '<span class="badge tooltipped" data-position="bottom" data-delay="50" data-tooltip="Referred Student"><i class="fa fa-user"></i></span>';} ?>
+								<?php if(isset($item->customer_id)){ echo '<span class="badge tooltipped green" data-position="bottom" data-delay="50" data-tooltip="Credit Card On File"><i class="fa fa-credit-card"></i></span>';} ?>
 							</a>
 						</div>
 					<?php endforeach; ?>

@@ -355,14 +355,14 @@ $(document).ready(function() {
 				handle: '.fa-reorder',
 				animation: 300,
 				onUpdate: function (evt/**Event*/){
-					$('#unapprovedsortorder .theorder').empty();
+					$('#approvedsortorder .theorder').empty();
 					$( "#approvedsubjects .block" ).each(function( index ) {
 						var swap = $(this).attr('data-id');
 						var datainfo = $(this).attr('data-info');
-						$('#unapprovedsortorder .theorder').append('<input type="hidden" name="subjectorder['+datainfo+']" value="'+index+'" />');
+						$('#approvedsortorder .theorder').append('<input type="hidden" name="subjectorder['+datainfo+']" value="'+index+'" />');
 					});
 					setTimeout(function(){
-						$('#unapprovedsortorder').submit();
+						$('#approvedsortorder').submit();
 					}, 500);
 				}
 

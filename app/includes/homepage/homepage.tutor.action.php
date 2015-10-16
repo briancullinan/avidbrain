@@ -1,14 +1,19 @@
 <?php
 
+	$selectAdditions = "
+		,user.first_name,user.last_name,user.email,user.url,user.promocode,user.customer_id
+	";
+
 	$data	=	$app->connect->createQueryBuilder();
-	$data	=	$data->select('user.id,user.username,user.promocode,user.first_name,user.last_name,'.everything())->from('avid___user','user');
+	$data	=	$data->select('user.id'.$selectAdditions)->from('avid___user','user');
 	$data	=	$data->where('user.promocode = :promocode')->setParameter(':promocode',$app->user->email);
 	$data	=	$data->innerJoin('user','avid___user_profile','profile','user.email = profile.email');
 	$data	=	$data->innerJoin('user','avid___user_account_settings','settings','user.email = settings.email');
 	$promocodeStudents	=	$data->execute()->fetchAll();
+	//notify($promocodeStudents);
 
 	$data	=	$app->connect->createQueryBuilder();
-	$data	=	$data->select('sessions.id,user.promocode,'.everything())->from('avid___sessions','sessions');
+	$data	=	$data->select('user.id'.$selectAdditions)->from('avid___sessions','sessions');
 	$data	=	$data->where('sessions.from_user = :email AND user.promocode != :email')->setParameter(':email',$app->user->email);//->setParameter(':mypromocode',$app->user->email);
 	$data	=	$data->innerJoin('sessions','avid___user','user','sessions.to_user = user.email');
 	$data	=	$data->innerJoin('sessions','avid___user_profile','profile','sessions.to_user = profile.email');

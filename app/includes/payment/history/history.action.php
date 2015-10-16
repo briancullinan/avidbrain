@@ -1,48 +1,101 @@
 <?php
-	if($app->user->usertype=='student'){
-		$select1 = 'email';
-		$select2 = 'recipient';
-	}
-	elseif($app->user->usertype=='tutor'){
-		$select1 = 'recipient';
-		$select2 = 'email';
-	}
 
-
-	$data	=	$app->connect->createQueryBuilder();
-	$data	=	$data->select('payments.*,sessions.payrate,sessions.taxes,sessions.session_cost,user.url,user.first_name,user.last_name')->from('avid___user_payments','payments');
-	$data	=	$data->where('payments.'.$select1.' = :myemail OR payments.recipient = :myemail');
-	$data	=	$data->setParameter(':myemail',$app->user->email);
-		$data	=	$data->leftJoin('payments','avid___user','user','user.email = payments.'.$select2);
-		$data	=	$data->leftJoin('payments','avid___user_profile','profile','user.email = profile.email');
-		$data	=	$data->leftJoin('payments','avid___user_account_settings','settings','user.email = settings.email');
-		$data	=	$data->leftJoin('payments','avid___sessions','sessions','sessions.id = payments.session_id');
-	$data	=	$data->orderBy('payments.id','DESC');
-
-	$offsets = new offsets((isset($number) ? $number : NULL),$app->dependents->pagination->items_per_page);
-	$count	=	$data->execute()->rowCount();
-	$data	=	$data->setMaxResults($offsets->perpage)->setFirstResult($offsets->offsetStart);
-	$data	=	$data->execute()->fetchAll();
-
-	//notify($data);
-
-	$pagify = new Pagify();
-	$config = array(
-		'total'    => $count,
-		'url'      => '/payment/history/page/',
-		'page'     => $offsets->number,
-		'per_page' => $offsets->perpage
+	$app->historyOptions = array(
+		'tutor' => array(
+			'/payment/history/my-payments'=>'My Payments',
+			'/payment/history/session-history'=>'Session History'
+		),
+		'student' => array(
+			'/payment/history/session-history'=>'Session History'
+		)
 	);
-	$pagify->initialize($config);
-	$app->pagination = $pagify->get_links();
 
-	if(isset($data[0])){
-		$app->paymenthistory = $data;
+	if(isset($action)){
+
+		if($app->user->usertype=='tutor'){
+			if($action=='my-payments'){
+				$data	=	$app->connect->createQueryBuilder();
+				$data	=	$data->select('payments.*')->from('avid___user_payments','payments');
+				$data	=	$data->where('payments.type = "Bi Monthly Tutor Payment" AND payments.email = :myemail')->setParameter(':myemail',$app->user->email);
+				$data	=	$data->orderBy('payments.date','DESC');
+
+				$offsets = new offsets((isset($number) ? $number : NULL),$app->dependents->pagination->items_per_page);
+				$count	=	$data->execute()->rowCount();
+				$data	=	$data->setMaxResults($offsets->perpage)->setFirstResult($offsets->offsetStart);
+
+				$history	=	$data->execute()->fetchAll();
+				$app->history = $history;
+
+
+				$app->meta = new stdClass();
+				$app->meta->title = 'My Payments';
+			}
+			elseif($action=='session-history'){
+				$data	=	$app->connect->createQueryBuilder();
+				$data	=	$data->select('sessions.payrate,sessions.taxes,sessions.session_subject,sessions.session_cost,payments.*, user.first_name,user.last_name,user.url')->from('avid___user_payments','payments');
+				$data	=	$data->where('payments.recipient = :myemail AND payments.type != "Bi Monthly Tutor Payment"')->setParameter(':myemail',$app->user->email);
+				$data	=	$data->innerJoin('payments','avid___user','user','user.email = payments.email');
+				$data	=	$data->innerJoin('payments','avid___sessions','sessions','sessions.id = payments.session_id');
+				$data	=	$data->orderBy('payments.date','DESC');
+
+				$offsets = new offsets((isset($number) ? $number : NULL),$app->dependents->pagination->items_per_page);
+				$count	=	$data->execute()->rowCount();
+				$data	=	$data->setMaxResults($offsets->perpage)->setFirstResult($offsets->offsetStart);
+
+				$history	=	$data->execute()->fetchAll();
+				$app->history = $history;
+
+				$pagify = new Pagify();
+				$config = array(
+					'total'    => $count,
+					'url'      => '/payment/history/session-history/page/',
+					'page'     => $offsets->number,
+					'per_page' => $offsets->perpage
+				);
+				$pagify->initialize($config);
+				$app->pagination = $pagify->get_links();
+
+				$app->meta = new stdClass();
+				$app->meta->title = 'Session History';
+
+			}
+		}
+		elseif($app->user->usertype=='student'){
+
+			$data	=	$app->connect->createQueryBuilder();
+			$data	=	$data->select('sessions.payrate,sessions.taxes,sessions.session_subject,sessions.session_cost,payments.*, user.first_name,user.last_name,user.url')->from('avid___user_payments','payments');
+			$data	=	$data->where('payments.email = :myemail')->setParameter(':myemail',$app->user->email);
+			$data	=	$data->innerJoin('payments','avid___user','user','user.email = payments.recipient');
+			$data	=	$data->innerJoin('payments','avid___sessions','sessions','sessions.id = payments.session_id');
+			$data	=	$data->orderBy('payments.date','DESC');
+
+			$offsets = new offsets((isset($number) ? $number : NULL),$app->dependents->pagination->items_per_page);
+			$count	=	$data->execute()->rowCount();
+			$data	=	$data->setMaxResults($offsets->perpage)->setFirstResult($offsets->offsetStart);
+
+			$history	=	$data->execute()->fetchAll();
+			$app->history = $history;
+
+			$pagify = new Pagify();
+			$config = array(
+				'total'    => $count,
+				'url'      => '/payment/history/session-history/page/',
+				'page'     => $offsets->number,
+				'per_page' => $offsets->perpage
+			);
+			$pagify->initialize($config);
+			$app->pagination = $pagify->get_links();
+
+			$app->meta = new stdClass();
+			$app->meta->title = 'Session History';
+
+			//notify($app->history);
+
+		}
+
+
 	}
-
-	$app->meta = new stdClass();
-	$app->meta->title = 'Payment History';
-
-	//notify((stripe_transaction(10000)/100)-100);
-
-	$app->target->include = $app->target->user->include;
+	else{
+		$app->meta = new stdClass();
+		$app->meta->title = 'Payment History';
+	}

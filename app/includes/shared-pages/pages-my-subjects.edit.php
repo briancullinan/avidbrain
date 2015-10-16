@@ -1,27 +1,27 @@
 <?php
-		
+
 	$sql = "SELECT subject_parent,parent_slug FROM avid___available_subjects GROUP BY parent_slug";
 	$prepeare = array();
 	$app->subjectcategories = $app->connect->executeQuery($sql,$prepeare)->fetchAll();
-	
+
 	if(isset($category)){
-		
+
 		$app->subjects = $app->connect->createQueryBuilder()
 			->select('subjects.*')->from("avid___available_subjects",'subjects')
 			//->addSelect('usub.email')->from("avid___user_subjects",'usub')
 			->where("subjects.parent_slug = :parent_slug")->setParameter(':parent_slug',$category)
 			->execute()->fetchAll();
-			
+
 			//printer($app->subjects);
-		
+
 	}
-	
+
 	if(isset($subject)){
 		$sql = "SELECT * FROM avid___available_subjects WHERE subject_slug = :subject_slug AND parent_slug = :parent_slug";
 		$prepeare = array(':subject_slug'=>$subject,':parent_slug'=>$category);
 		$app->subjectinfo = $app->connect->executeQuery($sql,$prepeare)->fetch();
-		
-		
+
+
 		$sql = "
 			SELECT
 				*
@@ -41,14 +41,14 @@
 		);
 		$app->mysubjectinfo = $app->connect->executeQuery($sql,$prepeare)->fetch();
 	}
-	
+
 	$app->alltherest = $app->connect->createQueryBuilder()->select("*")->from("avid___user_subjects")
 		->where("email = :email")->setParameter(":email",$app->user->email)
 		->andWhere("status = :status")->setParameter(":status","needs-review")
 		->orderBy("sortorder","ASC")->execute()->fetchAll();
-		
+
 		//printer($app->alltherest);
-	
+
 ?>
 <h3><i class="fa fa-plus"></i> Add A Tutored Subject</h3>
 <p>Select from the drop-down, or start typing in the text box below to find your subject.</p>
@@ -83,10 +83,10 @@
 		<div class="">
 			<?php echo $app->subjectinfo->subject_name; ?>
 		</div>
-		
+
 		<div>
 			<form method="post" action="<?php echo $app->request->getPath(); ?>">
-				
+
 				<textarea name="mysubjects[description]" class="materialize-textarea" placeholder="Write about why you tutor this subject"><?php
 					if(isset($app->mysubjectinfo->description)){
 						echo $app->mysubjectinfo->description;
@@ -103,10 +103,10 @@
 						Save
 					</button>
 				</div>
-				
+
 			</form>
 		</div>
-		
+
 	</div>
 	<div class="hr"></div>
 <?php elseif(isset($category) && isset($subject) && isset($app->mysubjectinfo->description)): ?>
@@ -121,13 +121,13 @@
 		<?php $thesubjects = $app->currentuser->my_subjects; include('pages-my-subjects.edit-order.php'); ?>
 	</div>
 	<div class="hr"></div>
-	
+
 	<form class="form-post hide" method="post" action="<?php echo $app->request->getPath(); ?>" id="approvedsortorder">
 		<input type="hidden" name="subjectorder[target]" value="subjectorder"  />
 		<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
 		<div class="theorder"></div>
 	</form>
-	
+
 <?php endif; ?>
 
 <?php if(isset($app->alltherest[0])): ?>
@@ -135,7 +135,7 @@
 	<div id="unapprovedsubjects">
 		<?php $thesubjects = $app->alltherest; include('pages-my-subjects.edit-order.php'); ?>
 	</div>
-	
+
 	<form class="form-post hide" method="post" action="<?php echo $app->request->getPath(); ?>" id="unapprovedsortorder">
 		<input type="hidden" name="subjectorder[target]" value="subjectorder"  />
 		<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">

@@ -134,7 +134,11 @@
 	// Payment
 	$routes['payment'] = (object)array('url'=>'/payment','slug'=>'payment','route'=>'/payment/','include'=>'payment','protected'=>true,'permissions'=>array());
 	$routes['payment-history'] = (object)array('url'=>'/payment/history','slug'=>'history','route'=>'/payment/history/','include'=>'payment/history','protected'=>true,'permissions'=>array());
-	$routes['payment-history-page'] = (object)array('url'=>'/payment/history','slug'=>'history','route'=>'/payment/history/page/:number/','include'=>'payment/history','protected'=>true,'permissions'=>array());
+	$routes['payment-history-action'] = (object)array('url'=>'/payment/history','slug'=>'history','route'=>'/payment/history/:action/','include'=>'payment/history','protected'=>true,'permissions'=>array());
+	$routes['payment-history-action-paginate'] = (object)array('url'=>'/payment/history','slug'=>'history','route'=>'/payment/history/:action/page/:number/','include'=>'payment/history','protected'=>true,'permissions'=>array());
+
+	//$routes['payment-history-page'] = (object)array('url'=>'/payment/history','slug'=>'history','route'=>'/payment/history/page/:number/','include'=>'payment/history','protected'=>true,'permissions'=>array());
+
 	$routes['payment-credit-card'] = (object)array('url'=>'/payment/credit-card','slug'=>'credit-card','route'=>'/payment/credit-card/','include'=>'payment/credit-card','protected'=>true,'permissions'=>array('student'));
 	$routes['payment-credit-card-action'] = (object)array('url'=>'/payment/credit-card','slug'=>'credit-card','route'=>'/payment/credit-card/:action/','include'=>'payment/credit-card','protected'=>true,'permissions'=>array('student'));
 	$routes['payment-get-paid'] = (object)array('url'=>'/payment/get-paid','slug'=>'get-paid','route'=>'/payment/get-paid/','include'=>'payment/get-paid','protected'=>true,'permissions'=>array('tutor'));

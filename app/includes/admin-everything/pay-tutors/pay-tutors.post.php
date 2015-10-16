@@ -83,10 +83,10 @@
 			);
 			$app->connect->insert('avid___paid_bgchecks',$paidbg);
 		}
-
+		$notes = "Monthly Payment";
 		$payment = array(
 			'email'=>$app->paytutorsessioninfo->email,
-			'type'=>'Bi-Monthly Tutor Payment',
+			'type'=>'Bi Monthly Tutor Payment',
 			'amount'=>$app->paytutorsessioninfo->amount,
 			'date'=>thedate(),
 			'charge_id'=>$transfer->id,
@@ -102,7 +102,7 @@
 		}
 
 		$app->mailgun->to = $app->paytutorsessioninfo->email;
-		$app->mailgun->subject = 'Bi-Monthly Tutor Payment';
+		$app->mailgun->subject = 'Bi Monthly Tutor Payment';
 
 		$message = '<p>Hello, '.$app->paytutor->first_name.' '.$app->paytutor->last_name.'</p>';
 		$message.= '<p>You are receiving this email, to let you know that we have paid you <span>$'.numbers(($app->paytutorsessioninfo->amount/100)).'</span> via Direct Deposit. The funds should be in your account within 2 days.</p>';
