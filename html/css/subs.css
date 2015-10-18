@@ -450,7 +450,7 @@ width: 50%;
 .widecontent.math{
 	background-image: url('/images/categories/math.jpg');
 }
-.widecontent.liberal-arts{
+.widecontent.liberal-arts,.widecontent.english{
 	background-image: url('/images/categories/liberal-arts.jpg');
 }
 .widecontent.studentsignup{

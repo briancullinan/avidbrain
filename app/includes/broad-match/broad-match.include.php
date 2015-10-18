@@ -39,7 +39,7 @@
 
 
 	<?php foreach($app->broadmatch as $searchResults): ?>
-		<?php include($app->dependents->APP_PATH."includes/user-profile/mini.tutor.profile.php"); ?>
+		<?php include($app->dependents->APP_PATH."includes/user-profile/fixed.tutors.php"); ?>
 	<?php endforeach; ?>
 	<?php echo $app->pagination; ?>
 <?php else: ?>

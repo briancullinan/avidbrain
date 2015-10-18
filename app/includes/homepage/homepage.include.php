@@ -40,8 +40,8 @@
 			<?php
 				$swo = array();
 				$swo[] = (object)array(
-					'title'=>'Liberal Arts',
-					'mainlink'=>'/liberal-arts-tutors',
+					'title'=>'English',
+					'mainlink'=>'/english-tutors',
 					'class'=>'liberalarts',
 					'links'=>array(
 						'/categories/english/literature'=>'English Literature',

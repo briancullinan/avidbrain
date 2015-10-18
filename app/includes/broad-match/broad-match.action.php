@@ -1,123 +1,131 @@
 <?php
 
+
+	$allowed_parent_slugs = array(
+		'art',
+		'business',
+		'college-prep',
+		'computer',
+		'elementary-education',
+		'english',
+		'games',
+		'history',
+		'language',
+		'math',
+		'music',
+		'science',
+		'special-needs',
+		'sports-and-recreation',
+		'test-preparation',
+		'liberal-arts'
+	);
+	if(!in_array($parent_slug, $allowed_parent_slugs)){
+		$app->redirect('/tutors');
+	}
+
 	$app->filterby = $app->getCookie('filterby');
 	$app->secondary = $app->target->secondary;
 
 	$broadMatch = $parent_slug;
 	$app->broadMatchCap = ucwords(str_replace('-',' ',$broadMatch));
-
 	$app->filterbylocation = 'maincats-'.$broadMatch.'-tutors';
-	//notify($app->filterbylocation);
 
-	//$app->connect->cache->delete("allowed_parent_slugs");
-	$allowed_parent_slugs = $app->connect->cache->get("allowed_parent_slugs");
-	if($allowed_parent_slugs == null) {
+	$cachedBroadMatch = 'broadmatch---'.$broadMatch.'---'.$app->filterby;
+	$offsets = new offsets((isset($number) ? $number : 1),$app->dependents->pagination->items_per_page);
 
-		$sql = "SELECT parent_slug FROM avid___available_subjects GROUP BY parent_slug";
-		$prepare = array(':usertype'=>'tutor');
-		$returnedData = $app->connect->executeQuery($sql,$prepare)->fetchAll();
-		$returnedArray = array();
-		foreach($returnedData as $parent){
-			$returnedArray[] = $parent->parent_slug;
-		}
-	    $allowed_parent_slugs = $returnedArray;
-	    $app->connect->cache->set("allowed_parent_slugs", $returnedArray, 10800);
-	}
+	//notify($app->filterby);
 
-	//notify((3600/60));
-	//notify($allowed_parent_slugs);
+	$userSelect = "
+		user.last_active,
+		user.state,
+		user.state_long,
+		user.state_slug,
+		user.city,
+		user.city_slug,
+		user.zipcode,
+		user.first_name,
+		user.last_name,
+		user.url,
+		user.email,
+		user.usertype,
 
-	$allowed_parent_slugs[] = 'liberal-arts';
-
-	if(!in_array($broadMatch, $allowed_parent_slugs)){
-		$app->redirect('/tutors');
-	}
+		profile.short_description_verified,
+		profile.personal_statement_verified,
+		profile.my_avatar,
+		profile.my_avatar_status,
+		profile.my_upload,
+		profile.my_upload_status,
+		profile.hourly_rate,
+		subjects.parent_slug
+	";
 
 	$data	=	$app->connect->createQueryBuilder();
 	$data	=	$data->select('user.id')->from('avid___user','user');
+	$data	=	$data->where('user.usertype = :usertype');
 
-
-
-	$data	=	$data->innerJoin('user','avid___user_account_settings','settings','user.email = settings.email');
-	$data	=	$data->innerJoin('user','avid___user_profile','profile','user.email = profile.email');
-	$data	=	$data->innerJoin('user','avid___user_subjects','subjects','user.email = subjects.email');
-	$offsets = new offsets((isset($number) ? $number : NULL),$app->dependents->pagination->items_per_page);
-
-	if(isset($app->filterby) && !empty($app->filterby)){
-		if($app->filterby=='highestrate'){
-			$data	=	$data->orderBy('profile.hourly_rate','DESC');
-		}
-		elseif($app->filterby=='lowestrate'){
-			$data	=	$data->andWhere('profile.hourly_rate IS NOT NULL');
-			$data	=	$data->orderBy('profile.hourly_rate','ASC');
-		}
-		elseif($app->filterby=='lastactive'){
-			$data	=	$data->orderBy('user.last_active');
-		}
-		elseif($app->filterby=='higheststarscore'){
-			$data->addSelect('sessions.review_score')->from('avid___sessions','sessions');
-			$data	=	$data->andWhere('sessions.review_score IS NOT NULL AND sessions.from_user = user.email');
-			$data	=	$data->orderBy('sessions.review_score','DESC');
-		}
-	}
-	else{
-		$data	=	$data->orderBy('user.last_active');
-	}
-
-	$data	=	$data->groupBy('user.email');
-
-	$count	=	$data->select('user.id')->execute()->rowCount();
-	$data	=	$data->setMaxResults($offsets->perpage)->setFirstResult($offsets->offsetStart);
-
-	if($broadMatch=='liberal-arts'){
-		$data	=	$data->where('subjects.parent_slug = "english" AND subjects.subject_slug = "literature"');
-		$data	=	$data->orWhere('subjects.parent_slug = "history" AND subjects.subject_slug = "geography"');
-		$data	=	$data->orWhere('subjects.parent_slug = "science" AND subjects.subject_slug = "philosophy"');
-		$data	=	$data->orWhere('subjects.parent_slug = "history" AND subjects.subject_slug = "anthropology"');
-		$data	=	$data->orWhere('subjects.parent_slug = "business" AND subjects.subject_slug = "economics"');
-		$data	=	$data->orWhere('subjects.parent_slug = "science" AND subjects.subject_slug = "sociology"');
-		$data	=	$data->orWhere('subjects.parent_slug = "language"');
-
-	}
-	else{
-		$data	=	$data->where('subjects.parent_slug = :parent_slug')->setParameter(':parent_slug',$broadMatch);
-	}
-
-	$data	=	$data->andWhere('user.usertype = :usertype')->setParameter(":usertype","tutor");
+	// AND WHERE
 	$data	=	$data->andWhere('user.status IS NULL');
 	$data	=	$data->andWhere('user.hidden IS NULL');
 	$data	=	$data->andWhere('user.lock IS NULL');
+	$data	=	$data->andWhere('profile.hourly_rate IS NOT NULL');
 
-	//$data	=	$data->execute()->fetchAll();
-	$data	=	$data->addSelect('
-		user.email,user.first_name,user.last_name,user.url,user.status,subjects.parent_slug,user.usertype,profile.hourly_rate,
-		profile.my_avatar,
-		profile.my_avatar_status,
-		profile.showmyphotoas,
-		profile.my_upload,
-		profile.my_upload_status,
-		profile.personal_statement_verified,
-		profile.short_description_verified,
-		profile.getpaid,
-		profile.custom_avatar,
-		settings.getemails, settings.showfullname, settings.anotheragency, settings.anotheragancy_rate, settings.showmyprofile, settings.avidbrainnews, settings.newjobs, settings.negotiableprice
-	');
+	$data	=	$data->andWhere('subjects.parent_slug = :parent_slug');
+
+	// PARMAMETERS
+	$data	=	$data->setParameter(':usertype','tutor');
+	$data	=	$data->setParameter(':parent_slug',$broadMatch);
+
+		$data	=	$data->innerJoin('user','avid___user_profile','profile','user.email = profile.email');
+		$data	=	$data->innerJoin('user','avid___user_subjects','subjects','user.email = subjects.email');
+		$data	=	$data->leftJoin('user','avid___sessions','sessions','user.email = sessions.from_user');
+		$data = $data->addSelect(' (SELECT round((sum(sessions.session_length) / 60))  FROM avid___sessions sessions WHERE sessions.from_user = user.email) AS hours' );
+		$data = $data->addSelect(' (SELECT count(sessions.id)  FROM avid___sessions sessions WHERE sessions.review_name IS NOT NULL AND sessions.from_user = user.email) AS count' );
+		$data = $data->addSelect(' (SELECT sum(sessions.review_score)  FROM avid___sessions sessions WHERE sessions.review_name IS NOT NULL AND sessions.from_user = user.email) AS score' );
+		$data = $data->addSelect(' (SELECT (sum(sessions.review_score) / count(sessions.id))  FROM avid___sessions sessions WHERE sessions.review_name IS NOT NULL AND sessions.from_user = user.email) AS average' );
+
+		//notify($app->filterby);
+		// ORDER BY --++--++--++
+			$orderBy = "ORDER BY user.last_active DESC";
+			$data	=	$data->orderBy('user.last_active','DESC');
+			if(isset($app->filterby)){
+				if($app->filterby=='highestrate'){
+					$orderBy = "ORDER BY profile.hourly_rate DESC";
+					$data	=	$data->orderBy('profile.hourly_rate','DESC');
+				}
+				elseif($app->filterby=='lowestrate'){
+					$orderBy = "ORDER BY profile.hourly_rate ASC";
+					$data	=	$data->orderBy('profile.hourly_rate','ASC');
+				}
+				elseif($app->filterby=='lastactive'){
+					$orderBy = "ORDER BY user.last_active DESC";
+					$data	=	$data->orderBy('user.last_active','DESC');
+				}
+				elseif($app->filterby=='higheststarscore'){
+
+					$data =	$data->andWhere('sessions.review_name IS NOT NULL');
+					$data	=	$data->orderBy('(average/count)','ASC');
+
+				}
+			}
+		// ORDER BY --++--++--++
+
+		// GROUP
+		$data	=	$data->groupBy('user.email');
 
 
-	if($count==0 && $app->filterby=='higheststarscore'){
-		$app->setCookie('filterby','lastactive', '2 days');
-		$app->redirect($app->request->getPath());
-	}
+	$count	=	$data->execute()->rowCount();
+	$data	=	$data->addSelect($userSelect);
+	$data	=	$data->setMaxResults($offsets->perpage)->setFirstResult($offsets->offsetStart);
+	//$data = make_search_key_cache($data,$app->connect);
+	$data	=	$data->execute()->fetchAll();
 
-	//$data	=	$data->execute()->fetchAll();
-	$data	=	make_search_key_cache($data,$app->connect);
-	//$data	=	$data->execute()->fetchAll();
 	//notify($data);
 
-	if(isset($data[0])){
+	if($count>0){
 		$app->broadmatch = $data;
 	}
 
+	// PAGINATION
 	$pagify = new Pagify();
 	$config = array(
 		'total'    => $count,
@@ -127,7 +135,6 @@
 	);
 	$pagify->initialize($config);
 	$app->pagination = $pagify->get_links();
-
 
 	$app->meta = new stdClass();
 	$app->meta->title = $app->broadMatchCap.' Tutors';
