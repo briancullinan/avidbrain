@@ -116,8 +116,8 @@
 	$count	=	$data->execute()->rowCount();
 	$data	=	$data->addSelect($userSelect);
 	$data	=	$data->setMaxResults($offsets->perpage)->setFirstResult($offsets->offsetStart);
-	//$data = make_search_key_cache($data,$app->connect);
-	$data	=	$data->execute()->fetchAll();
+	$data = make_search_key_cache($data,$app->connect);
+	//$data	=	$data->execute()->fetchAll();
 
 	//notify($data);
 
