@@ -118,7 +118,7 @@
         }
 
 
-        $app->mailgun->to = 'david@avidbrain.com';//'keith@avidbrain.com,jake.stoll@avidbrain.com,david@avidbrain.com'
+        $app->mailgun->to = 'keith@avidbrain.com,jake.stoll@avidbrain.com,david@avidbrain.com';
         $app->mailgun->subject = 'New Job Post -- Please verify';
         $app->mailgun->message = $newjobmessage;
         $app->mailgun->send();
