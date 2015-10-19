@@ -18,7 +18,6 @@ return array(
     'Mailgun\\Tests' => array($vendorDir . '/mailgun/mailgun-php/tests'),
     'Mailgun' => array($vendorDir . '/mailgun/mailgun-php/src'),
     'Jeremeamia\\SuperClosure' => array($vendorDir . '/jeremeamia/SuperClosure/src'),
-    'Intervention\\Image' => array($vendorDir . '/intervention/imagecache/src'),
     'Illuminate\\Support' => array($vendorDir . '/illuminate/support'),
     'Illuminate\\Filesystem' => array($vendorDir . '/illuminate/filesystem'),
     'Illuminate\\Cache' => array($vendorDir . '/illuminate/cache'),

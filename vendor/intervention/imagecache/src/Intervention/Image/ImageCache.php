@@ -3,8 +3,7 @@
 namespace Intervention\Image;
 
 use Exception;
-use Jeremeamia\SuperClosure\SerializableClosure;
-use \Illuminate\Cache\Repository as Cache;
+use Illuminate\Cache\Repository as Cache;
 
 class ImageCache
 {
@@ -21,6 +20,13 @@ class ImageCache
      * @var array
      */
     public $calls = array();
+
+    /**
+     * Additional properties included in checksum
+     *
+     * @var array
+     */
+    public $properties = array();
 
     /**
      * Processed Image
@@ -66,12 +72,17 @@ class ImageCache
                 $this->cache = $cache;
 
             } else {
-                // add new default cache
-                $config = array();
-                $config['config']['cache.driver'] = 'file';
-                $config['config']['cache.path'] = __DIR__.'/../../../storage/cache';
-                $config['files'] = new \Illuminate\Filesystem\Filesystem;
-                $storage = new \Illuminate\Cache\FileStore($config['files'], $config['config']['cache.path']);
+                    
+                // define path in filesystem
+                if (isset($manager->config['cache']['path'])) {
+                    $path = $manager->config['cache']['path'];
+                } else {
+                    $path = __DIR__.'/../../../storage/cache';
+                }
+
+                // create new default cache
+                $filesystem = new \Illuminate\Filesystem\Filesystem;
+                $storage = new \Illuminate\Cache\FileStore($filesystem, $path);
                 $this->cache = new \Illuminate\Cache\Repository($storage);
             }
 
@@ -96,13 +107,62 @@ class ImageCache
     }
 
     /**
+     * Special make method to add modifed data to checksum
+     *
+     * @param  mixed $data
+     * @return Intervention\Image\ImageCache
+     */
+    public function make($data)
+    {
+        // include "modified" property for any files
+        if ($this->isFile($data)) {
+            $this->setProperty('modified', filemtime((string) $data));
+        }
+
+        // register make call
+        $this->__call('make', array($data));
+
+        return $this;
+    }
+
+    /**
+     * Checks if given data is file, handles mixed input
+     *
+     * @param  mixed $value
+     * @return boolean
+     */
+    private function isFile($value)
+    {
+        $value = strval(str_replace("\0", "", $value));
+
+        return is_file($value);
+    }
+
+    /**
+     * Set custom property to be included in checksum
+     *
+     * @param mixed $key
+     * @param mixed $value
+     * @return Intervention\Image\ImageCache
+     */
+    public function setProperty($key, $value)
+    {
+        $this->properties[$key] = $value;
+
+        return $this;
+    }
+
+    /**
      * Returns checksum of current image state
      * 
      * @return string
      */
     public function checksum()
     {
-        return md5(serialize($this->getSanitizedCalls()));
+        $properties = serialize($this->properties);
+        $calls = serialize($this->getSanitizedCalls());
+
+        return md5($properties.$calls);
     }
 
     /**
@@ -128,6 +188,16 @@ class ImageCache
     }
 
     /**
+     * Clears all currently set properties
+     * 
+     * @return void
+     */
+    private function clearProperties()
+    {
+        $this->properties = array();
+    }
+
+    /**
      * Return unprocessed calls
      * 
      * @return array
@@ -149,12 +219,29 @@ class ImageCache
         foreach ($calls as $i => $call) {
             foreach ($call['arguments'] as $j => $argument) {
                 if (is_a($argument, 'Closure')) {
-                    $calls[$i]['arguments'][$j] = new SerializableClosure($argument);
+                    $calls[$i]['arguments'][$j] = $this->buildSerializableClosure($argument);
                 }
             }
         }
 
         return $calls;
+    }
+
+    /**
+     * Build SerializableClosure from Closure
+     *
+     * @param  Closure $closure
+     * @return Jeremeamia\SuperClosure\SerializableClosure|SuperClosure\SerializableClosure
+     */
+    private function buildSerializableClosure(\Closure $closure)
+    {
+        switch (true) {
+            case class_exists('SuperClosure\\SerializableClosure'):
+                return new \SuperClosure\SerializableClosure($closure);
+            
+            default:
+                return new \Jeremeamia\SuperClosure\SerializableClosure($closure);
+        }
     }
 
     /**
@@ -186,7 +273,9 @@ class ImageCache
         // append checksum to image
         $this->image->cachekey = $this->checksum();
 
+        // clean-up
         $this->clearCalls();
+        $this->clearProperties();
 
         return $this->image;
     }
@@ -214,8 +303,8 @@ class ImageCache
             // transform into image-object
             if ($returnObj) {
                 $image = $this->manager->make($cachedImageData);
-                $image->cachekey = $key;
-                return $image;
+                $cachedImage = new CachedImage;
+                return $cachedImage->setFromOriginal($image, $key);
             }
         
             // return raw data
@@ -224,13 +313,16 @@ class ImageCache
         } else {
 
             // process image data
-            $image = $this->process()->encode();
+            $image = $this->process();
+
+            // encode image data only if image is not encoded yet
+            $encoded = $image->encoded ? $image->encoded : (string) $image->encode();
 
             // save to cache...
-            $this->cache->put($key, (string) $image, $lifetime);
+            $this->cache->put($key, $encoded, $lifetime);
 
             // return processed image
-            return $returnObj ? $image : (string) $image;
+            return $returnObj ? $image : $encoded;
         }
     }
 }

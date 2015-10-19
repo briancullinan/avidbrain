@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     $vendorDir . '/illuminate/support/Illuminate/Support/helpers.php',
+    $vendorDir . '/react/promise/src/functions_include.php',
     $vendorDir . '/guzzlehttp/psr7/src/functions_include.php',
     $vendorDir . '/twilio/sdk/Services/Twilio.php',
     $vendorDir . '/phpfastcache/phpfastcache/phpfastcache.php',
