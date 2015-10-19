@@ -13,12 +13,17 @@ if(isset($usertype) && isset($state) && isset($city) && isset($username)){
 	$isthecrophere = glob($file);
 
 	if(isset($app->user->usertype) && $app->user->usertype=='admin'){
-		$urlfix = str_replace('/','--',$url);
-		$file = $app->dependents->APP_PATH.'uploads/photos/'.$urlfix.'*';
-		$isthecrophere = glob($file);
-		if(isset($isthecrophere[0])){
-			$isthecrophere = str_replace('.crop.','.',$isthecrophere[0]);
-			$img = $app->imagemanager->make($isthecrophere);
+		$sql = "
+			SELECT user.url, profile.my_upload FROM avid___user user
+			INNER JOIN avid___user_profile profile
+			ON user.email = profile.email
+			WHERE url = :url AND profile.my_upload IS NOT NULL
+		";
+		$prepare = array(':url'=>$url);
+		$results = $app->connect->executeQuery($sql,$prepare)->fetch();
+		if(isset($results->my_upload)){
+			$thefile = $results->my_upload;
+			$img = $app->imagemanager->make($thefile);
 		}
 	}
 	elseif(isset($app->user->url) && $app->user->url==$url){

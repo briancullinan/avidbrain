@@ -147,9 +147,12 @@
 		// Email User
 		// Do Things
 
+		$welcomeMessage = '<p>Welcome to AvidBrain</p>';
+		$welcomeMessage.= '<p>Your verification link is: <a href="'.$app->dependents->DOMAIN.'/validate/'.$validation_code.'">Verify Email Address</a></p>';
+
 		$app->mailgun->to = $app->signup->email;
 		$app->mailgun->subject = 'Please authenticate your email address';
-		$app->mailgun->message = 'Your verification link is: <a href="'.$app->dependents->DOMAIN.'/validate/'.$validation_code.'">Verify Email Address</a>';
+		$app->mailgun->message = $welcomeMessage;
 		$app->mailgun->send();
 
 		$serverinfo = (object)$_SERVER;

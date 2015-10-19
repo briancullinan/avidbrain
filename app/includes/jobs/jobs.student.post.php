@@ -109,7 +109,23 @@
         $data	=	$data->execute()->fetchAll();
 
 
+        $newjobmessage = '<p>New job post from: '.short($app->user).'</p>';
+        $newjobmessage.= '<p>Subject Name: '.$app->postjob->subject_name.'</p>';
+        $newjobmessage.= '<p>Job Description: '.$app->postjob->job_description.'</p>';
+        $newjobmessage.= '<p><a href="https://www.avidbrain.com/jobs/apply/'.$jobid.'">View Post</a> </p>';
+        if(!empty($app->user->customer_id)){
+            $newjobmessage.= '<p> '.short($app->user).' has a credit card on file. </p>';
+        }
+
+
+        $app->mailgun->to = 'david@avidbrain.com';//'keith@avidbrain.com,jake.stoll@avidbrain.com,david@avidbrain.com'
+        $app->mailgun->subject = 'New Job Post -- Please verify';
+        $app->mailgun->message = $newjobmessage;
+        $app->mailgun->send();
+
+
         if(isset($data[0]) && $app->dependents->MODE == 'production'){
+            notify('snickers');
             $subject = 'A student has posted a new job';
             $message = '<br><h2>'.$app->postjob->subject_name.' Student</h2>';
 

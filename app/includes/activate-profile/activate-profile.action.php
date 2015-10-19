@@ -37,7 +37,7 @@
 			$app->mailgun->subject = 'Student Account Activation';
 				$message = '<p>'.$app->user->first_name.' '.$app->user->last_name.' has just activated their account.</p>';
 				$message.= '<p>Please do a quick fly-by and make sure everything is kosher. </p>';
-				$message.= '<p><a href="'.$app->user->url.'">View Student Profile</a></p>';
+				$message.= '<p><a href="https://www.avidbrain.com'.$app->user->url.'">View Student Profile</a></p>';
 			$app->mailgun->message = $message;
 			$app->mailgun->send();
 

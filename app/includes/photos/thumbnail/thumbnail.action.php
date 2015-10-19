@@ -15,24 +15,18 @@ if(isset($usertype) && isset($state) && isset($city) && isset($username)){
 
 	if(isset($app->user->usertype) && $app->user->usertype=='admin'){
 
-		$urlfix = str_replace('/','--',$url);
-		$file = $app->dependents->APP_PATH.'uploads/photos/'.$urlfix.'*';
-		$isthecrophere = glob($file);
-
-		if(isset($isthecrophere[0])){
-			$thefile = $isthecrophere[0];
-			$cropped = croppedfile($thefile);
-		}
-		if(isset($cropped) && file_exists($cropped)){
-			$thefile = $cropped;
-		}
-
-		if(empty($thefile)){
-			$thefile = $app->dependents->APP_PATH.'uploads/photos/empty-image.jpg';
+		$sql = "
+			SELECT user.url, profile.my_upload FROM avid___user user
+			INNER JOIN avid___user_profile profile
+			ON user.email = profile.email
+			WHERE url = :url AND profile.my_upload IS NOT NULL
+		";
+		$prepare = array(':url'=>$url);
+		$results = $app->connect->executeQuery($sql,$prepare)->fetch();
+		if(isset($results->my_upload)){
+			$thefile = croppedfile($results->my_upload);
 			$img = $app->imagemanager->make($thefile);
 		}
-
-		$img = $app->imagemanager->make($thefile);
 
 	}
 	elseif(isset($app->user->url) && $app->user->url==$url){
