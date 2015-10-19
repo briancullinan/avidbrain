@@ -552,3 +552,9 @@ width: 50%;
 	background:#0099ff;
 	color:#fff;
 }
+
+
+.mainpaytutors .block-list a.active span{
+	color:#ccc !important;
+	float: right;
+}

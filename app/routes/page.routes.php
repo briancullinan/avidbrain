@@ -10,6 +10,8 @@
 	//$routes['about-us'] = (object)array('url'=>'/about-us','slug'=>'about-us','route'=>'/about-us/','include'=>'about-us','protected'=>NULL,'permissions'=>array());
 	$routes['shortie'] = (object)array('url'=>'/shortie','slug'=>'shortie','route'=>'/u/:username/','include'=>'shortie','protected'=>NULL,'permissions'=>array(),'type'=>array('GET'));
 
+	$routes['subjects-match'] = (object)array('url'=>'/subjects-match','slug'=>'subjects-match','route'=>'/subjects/:subject/','include'=>'subjects-match','protected'=>NULL,'permissions'=>array());
+
 	if($app->dependents->SITE_NAME=='amozek'){
 		$routes['amozek'] = (object)array('url'=>'/amozek','slug'=>'amozek','route'=>'/amozek/','include'=>'amozek','protected'=>NULL,'permissions'=>array());
 	}

@@ -17,7 +17,7 @@
 		'special-needs',
 		'sports-and-recreation',
 		'test-preparation',
-		'liberal-arts'
+		//'liberal-arts'
 	);
 	if(!in_array($parent_slug, $allowed_parent_slugs)){
 		$app->redirect('/tutors');
