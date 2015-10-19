@@ -11,6 +11,8 @@ RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^ index.php [QSA,L]
 
+Deny from 172.248.214.252
+
 ## BELOW EVERYTHING ----------------------------------------------------------------------------------------------------
 
 RewriteRule ^subjects(.*) /categories$1 [R=301,NC,L]

@@ -141,7 +141,47 @@
 			<?php ?>
 
 			<?php if($app->paytutor->getpaid=='check'): ?>
-				<div>Pay user via check</div>
+
+				<div>Pay VIA Check</div>
+				<div class="block">
+					<div class="title">Make Check Out To:</div>
+					<div class="row">
+					<?php
+						if(isset($app->paytutor->check)){
+							foreach($app->paytutor->check as $key => $value):
+								echo '<div class="col s12 m4 l4">'.ucwords(str_replace('_',' ',$key)).':</div>';
+								echo '<div class="col s12 m8 l8">'.$app->crypter->decrypt($value).' &nbsp; </div>';
+								//echo ucwords(str_replace('_',' ',$key)).': '.$app->crypter->decrypt($value).'<br>';
+							endforeach;
+						}
+					?>
+					</div>
+
+				</div>
+
+				<form method="post" action="<?php echo $app->request->getPath(); ?>">
+
+					<?php foreach($app->paytutor->sessions as $sessionpay): ?>
+						<input type="hidden" name="paytutorcheck[sessionid][<?php echo $sessionpay->id; ?>]" value="1" />
+					<?php endforeach; ?>
+
+					<?php if(isset($additional)): ?>
+						<input type="hidden" name="paytutorcheck[paybgcheck]" value="1" />
+					<?php endif; ?>
+
+					<input type="hidden" name="paytutorcheck[type]" value="check" />
+					<input type="hidden" name="paytutorcheck[email]" value="<?php echo $app->paytutor->email; ?>" />
+					<input type="hidden" name="paytutorcheck[amount]" value="<?php echo (round(((($total - $totalpayout) + $additional)),1)*100); ?>" />
+
+					<input type="hidden" name="paytutorcheck[target]" value="paytutorcheck"  />
+					<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
+
+					<button type="submit" class="btn blue">
+						Pay $<?php echo numbers((($total - $totalpayout) + $additional)); ?> via Snail Mail <i class="fa fa-envelope"></i>
+					</button>
+
+				</form>
+
 			<?php elseif($app->paytutor->getpaid=='directdeposit' && isset($app->paytutor->account_id)): ?>
 
 				<form method="post" action="<?php echo $app->request->getPath(); ?>">

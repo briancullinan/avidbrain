@@ -1,6 +1,49 @@
 <?php
 
-	if(isset($app->paytutorsessioninfo)){
+	if(isset($app->paytutorcheck) && isset($app->paytutorcheck->email)){
+
+		if(isset($app->paytutorcheck->paybgcheck)){
+			$notes = 'Paid Background Check';
+			$paidbg = array(
+				'email'=>$app->paytutorcheck->email,
+				'date'=>thedate(),
+				'adminemail'=>$app->user->email
+			);
+			$app->connect->insert('avid___paid_bgchecks',$paidbg);
+		}
+
+
+		$notes = "Monthly Payment";
+		$payment = array(
+			'email'=>$app->paytutorcheck->email,
+			'type'=>'Bi Monthly Tutor Payment',
+			'amount'=>$app->paytutorcheck->amount,
+			'date'=>thedate(),
+			'charge_id'=>NULL,
+			'notes'=>$notes,
+			'recipient'=>$app->paytutorcheck->email,
+			'paidout'=>1
+		);
+
+		$app->connect->insert('avid___user_payments',$payment);
+
+		foreach($app->paytutorcheck->sessionid as $key => $setaspaid){
+			$app->connect->update('avid___sessions',array('paidout'=>1),array('id'=>$key,'from_user'=>$app->paytutorcheck->email));
+		}
+
+		$app->mailgun->to = $app->paytutorcheck->email;
+		$app->mailgun->subject = 'Bi Monthly Tutor Payment';
+
+		$message = '<p>Hello, '.$app->paytutor->first_name.' '.$app->paytutor->last_name.'</p>';
+		$message.= '<p>You are receiving this email, to let you know that we have sent your check for: <span>$'.numbers(($app->paytutorcheck->amount/100)).'</span> to your address on file. </p>';
+
+		$app->mailgun->message = $message;
+		$app->mailgun->send();
+
+		$app->redirect('/admin-everything/pay-tutors');
+
+	}
+	elseif(isset($app->paytutorsessioninfo)){
 
 		if(isset($app->paytutor->managed_id)){
 			$userAccountInfo = $app->paytutor->managed_id;

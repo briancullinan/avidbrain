@@ -57,6 +57,13 @@
 				$app->paytutor->sessions = $results;
 			}
 
+			$sql = "SELECT first_name,last_name,address_line_1,address_line_2,city,state,zipcode,notes FROM avid___user_checks WHERE email = :email";
+			$prepare = array(':email'=>$data->email);
+			$results = $app->connect->executeQuery($sql,$prepare)->fetch();
+			if(isset($results->first_name)){
+				$app->paytutor->check = $results;
+			}
+
 		}
 	}
 
