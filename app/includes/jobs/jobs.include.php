@@ -10,13 +10,14 @@
 
 <?php if(isset($app->user->email) && $app->user->usertype=='student'): ?>
 
-	<p>Looking for a tutor, a teacher, or just someone who knows what they are talking about? Post a job and they will find you, no more searching.</p>
+
 
 	<div class="row">
 		<div class="col s12 m6 l6">
 
-			<h2>Post A Job</h2>
+			<h2>Post A Job, <span class="blue-text">it's Free</span></h2>
 			<div class="block">
+				<div>Looking for a tutor, a teacher, or just someone who knows what they are talking about? <br/> Post a job and they will find you, no more searching.</div>
 				<form class="form-post" method="post" action="<?php echo $app->request->getPath(); ?>">
 
 					<div class="input-field">

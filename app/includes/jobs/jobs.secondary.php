@@ -10,16 +10,18 @@
 
 	    </div>
 
-		<div class="input-field input-range">
+		<?php if(isset($showrange)): ?>
+			<div class="input-field input-range">
 
-	        <div class="input-label">Price Range</div>
+		        <div class="input-label">Price Range</div>
 
-	        <div class="pricerange slidebox"></div>
-	        <div class="slidebox-inputs">
-	            <input type="text" name="searchingforjobs[pricerangeLower]" id="pricerangeLower" data-value="<?php if(isset($app->searchingforjobs->pricerangeLower)){ echo $app->searchingforjobs->pricerangeLower; }else{ echo '15';} ?>" />
-	            <input type="text" name="searchingforjobs[pricerangeUpper]" id="pricerangeUpper" data-value="<?php if(isset($app->searchingforjobs->pricerangeUpper)){ echo $app->searchingforjobs->pricerangeUpper; }else{ echo '65';} ?>" />
-	        </div>
-	    </div>
+		        <div class="pricerange slidebox"></div>
+		        <div class="slidebox-inputs">
+		            <input type="text" name="searchingforjobs[pricerangeLower]" id="pricerangeLower" data-value="<?php if(isset($app->searchingforjobs->pricerangeLower)){ echo $app->searchingforjobs->pricerangeLower; }else{ echo '15';} ?>" />
+		            <input type="text" name="searchingforjobs[pricerangeUpper]" id="pricerangeUpper" data-value="<?php if(isset($app->searchingforjobs->pricerangeUpper)){ echo $app->searchingforjobs->pricerangeUpper; }else{ echo '65';} ?>" />
+		        </div>
+		    </div>
+		<?php endif; ?>
 
 	    <div class="input-field">
 

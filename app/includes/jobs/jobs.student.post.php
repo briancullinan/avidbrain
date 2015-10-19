@@ -125,7 +125,7 @@
 
 
         if(isset($data[0]) && $app->dependents->MODE == 'production'){
-            notify('snickers');
+            
             $subject = 'A student has posted a new job';
             $message = '<br><h2>'.$app->postjob->subject_name.' Student</h2>';
 
