@@ -156,17 +156,26 @@
 		$app->mailgun->send();
 
 		$serverinfo = (object)$_SERVER;
+		if(isset($app->signup->first_name)){$firstname=$app->signup->first_name;}else{$firstname=NULL;}
+		if(isset($app->signup->last_name)){$lastname=$app->signup->last_name;}else{$lastname=NULL;}
+		if(isset($app->signup->phone)){$phone=$app->signup->phone;}else{$phone=NULL;}
+		if(isset($app->signup->promocode)){$promocode=$app->signup->promocode;}else{$promocode=NULL;}
+		if(isset($app->signup->zipcode)){$zipcode=$app->signup->zipcode;}else{$zipcode=NULL;}
+		if(isset($serverinfo->REMOTE_ADDR)){$remoteAddress=$serverinfo->REMOTE_ADDR;}else{$remoteAddress=NULL;}
+		if(isset($serverinfo->REQUEST_URI)){$url=$serverinfo->REQUEST_URI;}else{$url=NULL;}
+		if(isset($serverinfo->HTTP_REFERER)){$referrer=$serverinfo->HTTP_REFERER;}else{$referrer=NULL;}
+
 		$newstudentEmail = '';
 		$newstudentEmail.= '<p>Date: '.formatdate(thedate(),'M. jS, Y @ g:i a').'</p>';
 		$newstudentEmail.= '<p> Email: '.$app->signup->email.' </p>';
-		$newstudentEmail.= '<p> Name: '.$app->signup->first_name.' '.$app->signup->last_name.' </p>';
-		$newstudentEmail.= '<p> Phone: '.$app->signup->phone.' </p>';
-		$newstudentEmail.= '<p> Promo Code: '.$app->signup->promocode.' </p>';
-		$newstudentEmail.= '<p> Zip Code: '.$app->signup->zipcode.' </p>';
+		$newstudentEmail.= '<p> Name: '.$firstname.' '.$lastname.' </p>';
+		$newstudentEmail.= '<p> Phone: '.$phone.' </p>';
+		$newstudentEmail.= '<p> Promo Code: '.$promocode.' </p>';
+		$newstudentEmail.= '<p> Zip Code: '.$zipcode.' </p>';
 		$newstudentEmail.= '<p> <strong>Server Info</strong> </p>';
-		$newstudentEmail.= '<p> IP Address: '.$serverinfo->REMOTE_ADDR.' </p>';
-		$newstudentEmail.= '<p> URL: '.$serverinfo->REQUEST_URI.' </p>';
-		$newstudentEmail.= '<p> Referrer: '.$serverinfo->HTTP_REFERER.' </p>';
+		$newstudentEmail.= '<p> IP Address: '.$remoteAddress.' </p>';
+		$newstudentEmail.= '<p> URL: '.$url.' </p>';
+		$newstudentEmail.= '<p> Referrer: '.$referrer.' </p>';
 
 		if($app->dependents->DOMAIN=='http://avidbrain.dev'){
 			$toemails = 'david@avidbrain.com';
