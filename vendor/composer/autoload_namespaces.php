@@ -11,7 +11,6 @@ return array(
     'Twig_Extensions_' => array($vendorDir . '/slim/extras/Views/Extension'),
     'Slim\\Extras' => array($vendorDir . '/slim/extras'),
     'Slim' => array($vendorDir . '/slim/slim'),
-    'Psr\\Log\\' => array($vendorDir . '/psr/log'),
     'Mailgun\\Tests' => array($vendorDir . '/mailgun/mailgun-php/tests'),
     'Mailgun' => array($vendorDir . '/mailgun/mailgun-php/src'),
     'Doctrine\\DBAL\\' => array($vendorDir . '/doctrine/dbal/lib'),

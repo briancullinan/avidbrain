@@ -14,7 +14,6 @@ return array(
     'Snipe\\BanBuilder\\' => array($vendorDir . '/snipe/banbuilder/src'),
     'React\\Promise\\' => array($vendorDir . '/react/promise/src'),
     'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-message/src'),
-    'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
     'MatthiasMullie\\PathConverter\\' => array($vendorDir . '/matthiasmullie/path-converter/src'),
     'MatthiasMullie\\Minify\\' => array($vendorDir . '/matthiasmullie/minify/src'),
     'Intervention\\Image\\' => array($vendorDir . '/intervention/image/src/Intervention/Image', $vendorDir . '/intervention/imagecache/src/Intervention/Image'),
