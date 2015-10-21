@@ -71,7 +71,7 @@
 	}
 	function fatalHandler($app) {
 
-		//$app->whoops->handleShutdown();
+		$app->whoops->handleShutdown();
 
 		$isajax = $app->request->isAjax();
 	    $error = error_get_last();

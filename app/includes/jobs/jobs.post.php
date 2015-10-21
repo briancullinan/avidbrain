@@ -41,7 +41,7 @@ if(isset($app->searchingforjobs) && !empty($app->searchingforjobs)){
 		$data	=	$data->andWhere('jobs.flag IS NULL');
 	}
 
-	$data	=	$data->andWhere('user.usertype = :usertype')->setParameter(':usertype','student');
+	#$data	=	$data->andWhere('user.usertype = :usertype')->setParameter(':usertype','student');
 	$data	=	$data->andWhere('user.status IS NULL');
 
 	$search = NULL;
@@ -89,9 +89,9 @@ if(isset($app->searchingforjobs) && !empty($app->searchingforjobs)){
 		$data	=	$data->setParameter(':pricehigh',$app->searchingforjobs->pricerangeUpper);
 	}
 
-	$data	=	$data->innerJoin('jobs','avid___user_profile','profile','profile.email = jobs.email');
-	$data	=	$data->innerJoin('jobs','avid___user_account_settings','settings','settings.email = jobs.email');
-	$data	=	$data->innerJoin('jobs','avid___user','user','user.email = jobs.email');
+	$data	=	$data->leftJoin('jobs','avid___user_profile','profile','profile.email = jobs.email');
+	$data	=	$data->leftJoin('jobs','avid___user_account_settings','settings','settings.email = jobs.email');
+	$data	=	$data->leftJoin('jobs','avid___user','user','user.email = jobs.email');
 	if(isset($asDistance)){
 		//$data	=	$data->orderBy('jobs.distance','DESC');
 		$data	=	$data->orderBy('distance','ASC');

@@ -1,5 +1,48 @@
+<?php
+// if($app->user->email!='david@avidbrain.com'){
+// 	notify('Please Wait For Dave');
+// }
+// $stripeIssues = array(
+// 	'dr.thatch.talking@gmail.com'=>array(
+// 		'account'=>'acct_16vzFYKAiuA7CLtd',
+// 		'birthday'=>array('month'=>9,'day'=>9,'year'=>1967)
+// 	),
+// 	'hidehi.rosenberg@gmail.com'=>array(
+// 		'account'=>'acct_16vzERFRj0DrWOq5',
+// 		'birthday'=>array('month'=>11,'day'=>2,'year'=>1975)
+// 	),
+// 	'mosam@inbox.com'=>array(
+// 		'account'=>'acct_16vzBQIAEn4zTliH',
+// 		'birthday'=>array('month'=>11,'day'=>11,'year'=>1911)
+// 	),
+// 	'erica.ryke@gmail.com'=>array(
+// 		'account'=>'acct_16vYUuITpNhzet8i',
+// 		'birthday'=>array('month'=>1,'day'=>3,'year'=>1989)
+// 	),
+// 	'whereiskatima@gmail.com'=>array(
+// 		'account'=>'acct_16vFmlEYL90jX4on',
+// 		'birthday'=>array('month'=>9,'day'=>28,'year'=>1963)
+// 	)
+// );
+// foreach($stripeIssues as $verifyaccount){
+// 	//printer($verifyaccount);
+// 	$account = \Stripe\Account::retrieve($verifyaccount['account']);
+// 	if(is_array($account->verification->fields_needed)){
+// 		$account->legal_entity->dob->day = $verifyaccount['birthday']['day'];
+// 		$account->legal_entity->dob->month = $verifyaccount['birthday']['month'];
+// 		$account->legal_entity->dob->year = $verifyaccount['birthday']['year'];
+// 		$account->tos_acceptance->date = time();
+// 		$account->tos_acceptance->ip = $_SERVER['REMOTE_ADDR'];
+// 		$account->save();
+// 	}
+//
+// }
+
+?>
+
 <div class="row">
 	<div class="col s12 m3 l3">
+
 		<?php if(isset($app->tutorswithsessions)): ?>
 			<div>Tutors Who Need Paid</div>
 			<div class="block block-list">

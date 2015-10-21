@@ -3,6 +3,7 @@
 	$childen = array();
 	//$childen['edit-profile'] = (object) array('name'=>'Edit Profile','slug'=>'/admin-everything/edit-profile');
 	$childen['stats'] = (object) array('name'=>'Stats','slug'=>'/admin-everything/stats');
+	$childen['post-a-job'] = (object) array('name'=>'Post a Job','slug'=>'/admin-everything/post-a-job');
 	$childen['view-everyone'] = (object) array('name'=>'View Everyone','slug'=>'/admin-everything/view-everyone');
 	$childen['profile-approvals'] = (object) array('name'=>'Profile Approvals','slug'=>'/admin-everything/profile-approvals');
 	$childen['help-requests'] = (object) array('name'=>'Help Requests','slug'=>'/admin-everything/help-requests');

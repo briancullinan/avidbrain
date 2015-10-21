@@ -12,13 +12,13 @@
 
 		$data	=	$app->connect->createQueryBuilder();
 		$data	=	$data->select($select)->from('avid___jobs','jobs');
-		$data	=	$data->andWhere('user.usertype = :usertype')->setParameter(':usertype','student');
+		//$data	=	$data->andWhere('user.usertype = :usertype')->setParameter(':usertype','student');
 		$data	=	$data->andWhere('user.status IS NULL');
 		$data	=	$data->andWhere('user.state_slug = :state')->setParameter(':state',$state);
 
-		$data	=	$data->innerJoin('jobs','avid___user','user','jobs.email = user.email');
-		$data	=	$data->innerJoin('jobs','avid___user_profile','profile','jobs.email = profile.email');
-		$data	=	$data->innerJoin('jobs','avid___user_account_settings','settings','jobs.email = settings.email');
+		$data	=	$data->leftJoin('jobs','avid___user','user','jobs.email = user.email');
+		$data	=	$data->leftJoin('jobs','avid___user_profile','profile','jobs.email = profile.email');
+		$data	=	$data->leftJoin('jobs','avid___user_account_settings','settings','jobs.email = settings.email');
 		if(isset($app->user->usertype) && $app->user->usertype=='admin'){
 
 		}

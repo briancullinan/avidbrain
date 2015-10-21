@@ -219,6 +219,8 @@
 
 		//$routes['admin-xxx'] = (object)array('url'=>'/admin-everything/xxx','slug'=>'xxx','route'=>'/admin-everything/xxx/','include'=>'admin-everything/xxx','protected'=>true,'permissions'=>array('admin'));
 
+		$routes['post-a-job'] = (object)array('url'=>'/admin-everything/post-a-job','slug'=>'post-a-job','route'=>'/admin-everything/post-a-job/','include'=>'admin-everything/post-a-job','protected'=>true,'permissions'=>array('admin'));
+		$routes['post-a-job-id'] = (object)array('url'=>'/admin-everything/post-a-job','slug'=>'post-a-job','route'=>'/admin-everything/post-a-job/:id/','include'=>'admin-everything/post-a-job','protected'=>true,'permissions'=>array('admin'));
 		$routes['admin-everything'] = (object)array('url'=>'/admin-everything','slug'=>'admin-everything','route'=>'/admin-everything/','include'=>'admin-everything','protected'=>true,'permissions'=>array('admin'));
 		$routes['admin-everything-profile-approvals'] = (object)array('url'=>'/admin-everything/profile-approvals','slug'=>'profile-approvals','route'=>'/admin-everything/profile-approvals/','include'=>'admin-everything/profile-approvals','protected'=>true,'permissions'=>array('admin'));
 		$routes['admin-everything-contested-sessions'] = (object)array('url'=>'/admin-everything/contested-sessions','slug'=>'contested-sessions','route'=>'/admin-everything/contested-sessions/','include'=>'admin-everything/contested-sessions','protected'=>true,'permissions'=>array('admin'));

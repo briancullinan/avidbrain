@@ -13,7 +13,7 @@
 			<div class="title">
 				<a href="/jobs/apply/<?php echo $job->id; ?>">
 					<strong><?php echo $job->subject_name; ?></strong>
-					<span>Student in <?php echo $job->city; ?> <?php echo ucwords($job->state_long); ?>,  <?php echo $job->zipcode; ?></span>
+					<span>Student <?php if(isset($job->city)): ?>in <?php echo $job->city; ?> <?php echo ucwords($job->state_long); ?>,  <?php echo $job->zipcode; ?><?php endif; ?></span>
 				</a>
 				<?php if(isset($job->distance)): ?>
 					<div><div class="miles-away blue white-text"><?php echo str_replace('.00','',numbers($job->distance)); ?> Miles Away</div></div>
@@ -91,7 +91,7 @@
 											<button class="btn blue btn-s" type="submit">
 												Un-Flag Job Post
 											</button>
-										
+
 									<?php endif; ?>
 
 									<input type="hidden" name="flagjob[page]" value="<?php echo $app->request->getPath(); ?>"  />

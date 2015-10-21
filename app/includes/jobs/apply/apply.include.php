@@ -3,7 +3,13 @@
 		<h1> <?php echo $app->job->subject_name; ?> Student </h1>
 		<div class="row row-fix">
 			<div class="col s12 m8 l8">
-				<h2><?php echo $app->job->city; ?>, <?php echo $app->job->state; ?></h2>
+				<h2>
+					<?php if(isset($app->job->city)): ?>
+						<?php echo $app->job->city; ?>, <?php echo $app->job->state; ?>
+					<?php else: ?>
+						&nbsp;
+					<?php endif; ?>
+				</h2>
 			</div>
 			<div class="col s12 m4 l4 right-align">
 				<span class="date"><?php echo formatdate($app->job->date, 'M. jS, Y @ g:i a'); ?></span>

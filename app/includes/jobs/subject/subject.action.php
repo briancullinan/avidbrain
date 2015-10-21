@@ -13,7 +13,7 @@
 		$data	=	$data->select($selectInitial)->from('avid___jobs','jobs');
 		$data	=	$data->where('subject_slug = :subject')->setParameter(':subject',$subject);
 		$data	=	$data->andWhere('jobs.open IS NOT NULL');
-		$data	=	$data->andWhere('user.usertype = :usertype')->setParameter(':usertype','student');
+		//$data	=	$data->andWhere('user.usertype = :usertype')->setParameter(':usertype','student');
 		$data	=	$data->andWhere('user.status IS NULL');
 		$data	=	$data->orWhere('parent_slug = :subject')->setParameter(':subject',$subject);
 		if(isset($app->user->usertype) && $app->user->usertype=='admin'){
@@ -24,9 +24,9 @@
 		}
 
 		// INNER JOIN
-		$data	=	$data->innerJoin('jobs','avid___user','user','jobs.email = user.email');
-		$data	=	$data->innerJoin('jobs','avid___user_profile','profile','jobs.email = profile.email');
-		$data	=	$data->innerJoin('jobs','avid___user_account_settings','settings','jobs.email = settings.email');
+		$data	=	$data->leftJoin('jobs','avid___user','user','jobs.email = user.email');
+		$data	=	$data->leftJoin('jobs','avid___user_profile','profile','jobs.email = profile.email');
+		$data	=	$data->leftJoin('jobs','avid___user_account_settings','settings','jobs.email = settings.email');
 
 		$data	=	$data->orderBy('jobs.date','DESC');
 
