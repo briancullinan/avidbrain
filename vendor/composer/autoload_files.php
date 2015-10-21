@@ -6,9 +6,11 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    $vendorDir . '/illuminate/support/Illuminate/Support/helpers.php',
+    $vendorDir . '/danielstjules/stringy/src/Create.php',
+    $vendorDir . '/illuminate/support/helpers.php',
     $vendorDir . '/react/promise/src/functions_include.php',
     $vendorDir . '/guzzlehttp/psr7/src/functions_include.php',
+    $vendorDir . '/nikic/php-parser/lib/bootstrap.php',
     $vendorDir . '/twilio/sdk/Services/Twilio.php',
     $vendorDir . '/phpfastcache/phpfastcache/phpfastcache.php',
 );

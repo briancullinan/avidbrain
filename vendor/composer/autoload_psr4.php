@@ -7,8 +7,10 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Symfony\\Component\\Translation\\' => array($vendorDir . '/symfony/translation'),
-    'Symfony\\Component\\EventDispatcher\\' => array($vendorDir . '/symfony/event-dispatcher'),
+    'Symfony\\Component\\Finder\\' => array($vendorDir . '/symfony/finder'),
+    'SuperClosure\\' => array($vendorDir . '/jeremeamia/SuperClosure/src'),
     'Stripe\\' => array($vendorDir . '/stripe/stripe-php/lib'),
+    'Stringy\\' => array($vendorDir . '/danielstjules/stringy/src'),
     'Snipe\\BanBuilder\\' => array($vendorDir . '/snipe/banbuilder/src'),
     'React\\Promise\\' => array($vendorDir . '/react/promise/src'),
     'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-message/src'),
@@ -16,6 +18,10 @@ return array(
     'MatthiasMullie\\PathConverter\\' => array($vendorDir . '/matthiasmullie/path-converter/src'),
     'MatthiasMullie\\Minify\\' => array($vendorDir . '/matthiasmullie/minify/src'),
     'Intervention\\Image\\' => array($vendorDir . '/intervention/image/src/Intervention/Image', $vendorDir . '/intervention/imagecache/src/Intervention/Image'),
+    'Illuminate\\Support\\' => array($vendorDir . '/illuminate/support'),
+    'Illuminate\\Filesystem\\' => array($vendorDir . '/illuminate/filesystem'),
+    'Illuminate\\Contracts\\' => array($vendorDir . '/illuminate/contracts'),
+    'Illuminate\\Cache\\' => array($vendorDir . '/illuminate/cache'),
     'GuzzleHttp\\Stream\\' => array($vendorDir . '/guzzlehttp/streams/src'),
     'GuzzleHttp\\Ring\\' => array($vendorDir . '/guzzlehttp/ringphp/src'),
     'GuzzleHttp\\Psr7\\' => array($vendorDir . '/guzzlehttp/psr7/src'),
