@@ -1,4 +1,8 @@
-<h1>AvidBrain Error</h1>
+<?php if(isset($_SESSION['slim.flash']['error'])): ?>
+    <h1 class="custom-error"><?php echo $_SESSION['slim.flash']['error']; ?></h1>
+<?php else: ?>
+    <h1>AvidBrain Error</h1>
+<?php endif; ?>
 
 <p>
     There was an error. Sorry about that, an admistrator has been notified of the issue and will fix the problem as soon as possible.

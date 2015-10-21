@@ -4,11 +4,7 @@
 #ini_set('log_errors', 1);
 #error_reporting(E_ALL);
 
-	set_error_handler("errorHandler",$app->request->isAjax());
-	register_shutdown_function("fatalHandler",$app);
-
-	function errorHandler($errno=NULL, $errstr=NULL, $errfile = '', $errline = 0, $errcontext = NULL,$isajax=NULL,$app=NULL) {
-
+	function geterrortype($number){
 		$errornumbers = array(
 			1=>'E_ERROR: Fatal run-time errors. These indicate errors that can not be recovered from, such as a memory allocation problem. Execution of the script is halted.',
 			2=>'E_WARNING: Run-time warnings (non-fatal errors). Execution of the script is not halted.',
@@ -28,8 +24,16 @@
 			32767=>'E_ALL: All errors and warnings, as supported, except of level E_STRICT prior to PHP 5.4.0.'
 		);
 
+		return $errornumbers[$number];
+	}
+
+	set_error_handler("errorHandler",$app->request->isAjax());
+	register_shutdown_function("fatalHandler",$app);
+
+	function errorHandler($errno=NULL, $errstr=NULL, $errfile = '', $errline = 0, $errcontext = NULL,$isajax=NULL,$app=NULL) {
+
 		$erros = array(
-			'Error Number'=>$errornumbers[$errno],
+			'Error Number'=>geterrortype($errno),
 			'Message'=>$errstr,
 			'File'=>$errfile,
 			'Line'=>$errline
@@ -71,11 +75,29 @@
 	}
 	function fatalHandler($app) {
 
-		$app->whoops->handleShutdown();
+		if(isset($app->dependents->DEBUG) && $app->dependents->DEBUG == true){
+			$app->whoops->handleShutdown();
+		}
 
 		$isajax = $app->request->isAjax();
 	    $error = error_get_last();
-	    if($error) errorHandler($error["type"], $error["message"], $error["file"], $error["line"],NULL,$isajax);
+		if(!empty($error)){
+			$message = '';
+			$message.= '<p>Type: '.geterrortype($error['type']).'</p>';
+			$message.= '<p>Message: '.$error['message'].'</p>';
+			$message.= '<p>File: '.$error['file'].'</p>';
+			$message.= '<p>Line: '.$error['line'].'</p>';
+
+
+			$app->mailgun->to = 'david@avidbrain.com';
+			$app->mailgun->subject = 'AvidBrain Fatal Error';
+			$app->mailgun->message = $message;
+			$app->mailgun->send();
+
+			$_SESSION['slim.flash']['error'] = '<i class="fa fa-flash orange-text"></i> Whoops, there was an error';
+			header("Location: /errors");
+		}
+
 	}
 
 	$app->notFound(function () use ($app) {
@@ -93,5 +115,6 @@
 	});
 
 	$app->error(function (\Exception $error) use ($app) {
+		echo'zebras';exit;
 		errorHandler($error->getCode(),$error->getMessage(),$error->getFile(),$error->getLine(),$error->getTrace(),$app->request->isAjax(),$app);
 	});

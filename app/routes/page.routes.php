@@ -9,6 +9,7 @@
 	$routes['activate-profile-complete'] = (object)array('url'=>'/activate-profile/complete','slug'=>'complete','route'=>'/activate-profile/complete/','include'=>'activate-profile/complete','protected'=>1,'permissions'=>array('student'));
 	//$routes['about-us'] = (object)array('url'=>'/about-us','slug'=>'about-us','route'=>'/about-us/','include'=>'about-us','protected'=>NULL,'permissions'=>array());
 	$routes['shortie'] = (object)array('url'=>'/shortie','slug'=>'shortie','route'=>'/u/:username/','include'=>'shortie','protected'=>NULL,'permissions'=>array(),'type'=>array('GET'));
+	$routes['errors'] = (object)array('url'=>'/errors','slug'=>'errors','route'=>'/errors/','include'=>'errors','protected'=>NULL,'permissions'=>array());
 
 	$routes['subjects-match'] = (object)array('url'=>'/subjects-match','slug'=>'subjects-match','route'=>'/subjects/:subject/','include'=>'subjects-match','protected'=>NULL,'permissions'=>array());
 

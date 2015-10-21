@@ -217,7 +217,7 @@
 
 </div>
 
-
+<?php if(isset($app->featuredhomepagetutor->url)): ?>
 <div class="fullsize featured-tutor">
 	<div class="row ">
 		<div class="col s12 m4 l3">
@@ -228,27 +228,30 @@
 		<div class="col s12 m8 l9 featured-col">
 			<div class="featured-tutor-container">
 				<div class="featured-tutor-inside">
-
 					<div class="row">
 						<div class="col s12 m4 l4">
 							<div class="profile-image center-align avatar">
-								<a href="/tutors/idaho/moscow/31303039"><img class="avatarbg responsive-img " src="/images/featured-tutors/ross-m.jpg" /></a>
+								<a href="<?php echo $app->featuredhomepagetutor->url; ?>"><img class="avatarbg responsive-img " src="<?php echo $app->featuredhomepagetutor->myphoto; ?>" /></a>
 							</div>
+							<?php if(isset($app->featuredhomepagetutor->starscore)): ?>
 							<div class="featured-tutor-score">
-								<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+								<?php echo average_stars($app->featuredhomepagetutor->starscore); ?>
 							</div>
+							<?php endif; ?>
 						</div>
 						<div class="col s12 m8 l8">
-							<div class="featured-tutor-name"><a href="/tutors/idaho/moscow/31303039">Ross M</a></div>
-							<div class="featured-tutor-location">Moscow <span>Idaho</span></div>
+							<div class="featured-tutor-name"><a href="<?php echo $app->featuredhomepagetutor->url; ?>"><?php echo short($app->featuredhomepagetutor); ?></a></div>
+							<div class="featured-tutor-location"><?php echo ucwords($app->featuredhomepagetutor->city); ?> <span><?php echo ucwords($app->featuredhomepagetutor->state_long); ?></span></div>
 							<div class="featured-tutor-subjects">
-								Physics, Calculus, Geometry, Prealgebra, Precalculus, Trigonometry, Statistics, SAT Math, Probability, Elementary Math, ACT Math, Study Skills, Algebra 1, Algebra 2
+								<?php foreach($app->featuredhomepagetutor->subjects as $sub): ?>
+									<?php echo $sub->subject_name; ?>,
+								<?php endforeach; ?>
 							</div>
 							<div class="featured-tutor-about">
-								I love tutoring! I enjoy helping others learn new skills and gain more knowledge. I personalize instruction for every individual I work with and focus on encouraging independent learning skills to ensure a life-long ability to learn. I have five years experience tutoring algebra, calculus, and physics! I have spent the last two years tutoring at Allan Hancock College discovering different learning styles and helping students increase their understanding and their grades. I have flexible rates for individuals and groups so don't be afraid to ask. I can't wait to help you succeed today!
+								<?php echo truncate($app->featuredhomepagetutor->personal_statement_verified,500); ?>
 							</div>
 							<div class="featured-tutor-link">
-								<a href="/tutors/idaho/moscow/31303039">View Full Profile</a>
+								<a href="<?php echo $app->featuredhomepagetutor->url; ?>">View Full Profile</a>
 							</div>
 						</div>
 					</div>
@@ -258,3 +261,4 @@
 		</div>
 	</div>
 </div>
+<?php endif; ?>
