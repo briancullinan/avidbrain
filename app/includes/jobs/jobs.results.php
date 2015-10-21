@@ -47,7 +47,9 @@
 
 							<div>
 								Posted by ~
-								<?php if(isset($app->user->email)): ?>
+								<?php if(isset($job->anonymous)): ?>
+										Student
+								<?php elseif(isset($app->user->email)): ?>
 								<a href="<?php echo $job->url; ?>">
 									<?php
 										if($job->showfullname=='yes'){

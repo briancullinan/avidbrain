@@ -1,5 +1,5 @@
 <?php
-	echo 'AvidBrain Under Maintenance. Please Hold On.';exit;
+	//echo 'AvidBrain Under Maintanance. Please Hold On.';exit;
 	header('Content-Type: text/html; charset=utf-8');
 	mb_internal_encoding("UTF-8");
 	mb_http_output('UTF-8');
