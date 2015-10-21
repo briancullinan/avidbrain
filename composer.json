@@ -11,7 +11,6 @@
         "doctrine/dbal": "^2.5",
         "zeuxisoo/slim-whoops": "^0.3.0",
         "doctrine/cache": "^1.4",
-        "fguillot/picofeed": "@stable",
         "twilio/sdk": "^4.5",
         "google/apiclient": "^1.1",
         "abraham/twitteroauth": "^0.5.4",

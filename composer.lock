@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e52f531ace5cbdd622d02474a838fd9a",
-    "content-hash": "47b4f0a643f0071a2dea8fdf3607c947",
+    "hash": "d5967b0394c6a97c34a68be61e2cc092",
+    "content-hash": "2d0bfbe7683f9076181a17bd6fca4716",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -585,53 +585,6 @@
                 "parser"
             ],
             "time": "2014-09-09 13:34:57"
-        },
-        {
-            "name": "fguillot/picofeed",
-            "version": "v0.1.13",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/fguillot/picoFeed.git",
-                "reference": "84d9ee64df8596153ba080bd2436b333507aadba"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/fguillot/picoFeed/zipball/84d9ee64df8596153ba080bd2436b333507aadba",
-                "reference": "84d9ee64df8596153ba080bd2436b333507aadba",
-                "shasum": ""
-            },
-            "require": {
-                "ext-dom": "*",
-                "ext-iconv": "*",
-                "ext-libxml": "*",
-                "ext-simplexml": "*",
-                "ext-xml": "*",
-                "php": ">=5.3.0"
-            },
-            "suggest": {
-                "ext-curl": "PicoFeed will use cURL if present"
-            },
-            "bin": [
-                "picofeed"
-            ],
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "PicoFeed": "lib/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Frédéric Guillot"
-                }
-            ],
-            "description": "Modern library to handle RSS/Atom feeds",
-            "homepage": "https://github.com/fguillot/picoFeed",
-            "time": "2015-10-20 01:48:56"
         },
         {
             "name": "filp/whoops",
@@ -2240,7 +2193,6 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "fguillot/picofeed": 0,
         "snipe/banbuilder": 20
     },
     "prefer-stable": false,

@@ -116,7 +116,7 @@
 	}
 
 	use MatthiasMullie\Minify;
-	$minifyme = true;
+	//$minifyme = true;
 	$app->minify = true;
 	if(isset($minifyme)){
 
