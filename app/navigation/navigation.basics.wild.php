@@ -135,7 +135,7 @@
 	}
 
 	$navigation['/help'] = (object) array('name'=>'Help');
-	$navigation['https://qa.avidbrain.com'] = (object) array('name'=>'Q&A Forum');
+	$navigation['/ab-qa'] = (object) array('name'=>'Q&A Forum','class'=>'qa-link');
 	$navigation['/how-it-works'] = (object) array('name'=>'How It Works');
 	if(isset($app->user->email)){
 		$navigation['/resources'] = (object) array('name'=>'Resources');

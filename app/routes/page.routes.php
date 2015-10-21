@@ -10,6 +10,7 @@
 	//$routes['about-us'] = (object)array('url'=>'/about-us','slug'=>'about-us','route'=>'/about-us/','include'=>'about-us','protected'=>NULL,'permissions'=>array());
 	$routes['shortie'] = (object)array('url'=>'/shortie','slug'=>'shortie','route'=>'/u/:username/','include'=>'shortie','protected'=>NULL,'permissions'=>array(),'type'=>array('GET'));
 	$routes['errors'] = (object)array('url'=>'/errors','slug'=>'errors','route'=>'/errors/','include'=>'errors','protected'=>NULL,'permissions'=>array());
+	$routes['ab-qa'] = (object)array('url'=>'/ab-qa','slug'=>'ab-qa','route'=>'/ab-qa/','include'=>'ab-qa','protected'=>NULL,'permissions'=>array());
 
 	$routes['subjects-match'] = (object)array('url'=>'/subjects-match','slug'=>'subjects-match','route'=>'/subjects/:subject/','include'=>'subjects-match','protected'=>NULL,'permissions'=>array());
 
@@ -119,7 +120,7 @@
 	}
 	$routes['help-faqs'] = (object)array('url'=>'/help/faqs','slug'=>'faqs','route'=>'/help/faqs/','include'=>'help/faqs','protected'=>NULL,'permissions'=>array());
 	$routes['help-faqs-type'] = (object)array('url'=>'/help/faqs','slug'=>'faqs','route'=>'/help/faqs/:type/','include'=>'help/faqs','protected'=>NULL,'permissions'=>array());
-	$routes['help-how-to-videos'] = (object)array('url'=>'/help/how-to-videos','slug'=>'how-to-videos','route'=>'/help/how-to-videos/','include'=>'help/how-to-videos','protected'=>NULL,'permissions'=>array());
+	//$routes['help-how-to-videos'] = (object)array('url'=>'/help/how-to-videos','slug'=>'how-to-videos','route'=>'/help/how-to-videos/','include'=>'help/how-to-videos','protected'=>NULL,'permissions'=>array());
 	$routes['help-forgot-password'] = (object)array('url'=>'/help/forgot-password','slug'=>'forgot-password','route'=>'/help/forgot-password/','include'=>'help/forgot-password','protected'=>NULL,'permissions'=>array());
 	$routes['help-forgot-password-recovery'] = (object)array('url'=>'/help/forgot-password/recovery','slug'=>'recovery','route'=>'/help/forgot-password/recovery/:validationcode/','include'=>'help/forgot-password/recovery','protected'=>NULL,'permissions'=>array());
 	$routes['help-contact'] = (object)array('url'=>'/help/contact','slug'=>'contact','route'=>'/help/contact/','include'=>'help/contact','protected'=>NULL,'permissions'=>array());

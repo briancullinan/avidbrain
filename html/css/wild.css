@@ -179,6 +179,11 @@ sidebar.activeaction{
     color: #fff;
 
 }
+.sidebar-main a.qa-link{
+    background: #111;
+    color:#fff;
+}
+
 .av-versioning{
 	color: #777;
 	font-size: 13px;

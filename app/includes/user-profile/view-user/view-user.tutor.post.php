@@ -63,7 +63,7 @@
 				$app->currentuser->anotheragency = 1;
 				$app->currentuser->save();
 			}
-			elseif($app->adminmodule->anotheragency=='no'){
+			elseif(empty($app->adminmodule->anotheragency)){
 				$app->currentuser->anotheragency = NULL;
 				$app->currentuser->save();
 			}

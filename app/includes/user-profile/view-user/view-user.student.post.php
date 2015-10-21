@@ -246,19 +246,23 @@
 
 		}
 		else{
-			notify($app->keyname);
+			//notify($app->keyname);
 		}
 	}
 	else{
 
 		if(isset($app->user->email) && isset($app->messagingsystem)){
 
+			if(isset($app->messagingsystem->request) && isset($app->messagingsystem->extra)){
+				$link = '<p><a href="https://www.avidbrain.com/sessions/view/'.$app->messagingsystem->extra.'">Review Session</a></p>';
+			}
+
 			$app->sendmessage->to_user = $app->currentuser->email;
 			$app->sendmessage->from_user = $app->user->email;
 			$app->sendmessage->location = 'inbox';
 			$app->sendmessage->send_date = thedate();
 			$app->sendmessage->subject = $app->messagingsystem->subject;
-			$app->sendmessage->message = $app->messagingsystem->message;
+			$app->sendmessage->message = $app->messagingsystem->message.$link;
 			if(isset($app->messagingsystem->extra)){
 				$app->sendmessage->parent_id = $app->messagingsystem->extra;
 			}
@@ -267,7 +271,7 @@
 			if($app->currentuser->getemails=='yes'){
 				$app->mailgun->to = $app->currentuser->email;
 				$app->mailgun->subject = $app->messagingsystem->subject;
-				$app->mailgun->message = $app->messagingsystem->message;
+				$app->mailgun->message = $app->messagingsystem->message.$link;
 				$app->mailgun->send();
 			}
 

@@ -186,16 +186,18 @@
 	<?php
 		$messagingsystem = new Forms($app->connect);
 		$messagingsystem->formname = 'messagingsystem';
-		$messagingsystem->url = $showsession->url;
+		$messagingsystem->url = $showsession->url.'/request-review';
 		$messagingsystem->dependents = $app->dependents;
 		$messagingsystem->csrf_key = $csrf_key;
 		$messagingsystem->csrf_token = $csrf_token;
 
-			$message = "Hi ".short($showsession)." will you please review our last tutoring session?\n".$app->dependents->DOMAIN."/sessions/view/".$showsession->id;
+			$message = "Hi ".short($showsession)." will you please review our last tutoring session?";
 
 			$whiteboard = new stdClass();
 			$whiteboard->subject = 'Please Review Our Latest Session';
 			$whiteboard->message = $message;
+			$whiteboard->extra = $id;
+
 			$messagingsystem->formvalues = $whiteboard;
 
 		$messagingsystem->makeform();

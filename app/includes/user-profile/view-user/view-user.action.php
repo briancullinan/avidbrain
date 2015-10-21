@@ -86,6 +86,7 @@
 	}
 	$allowedPages[] = 'makehidden';
 	$allowedPages[] = 'makevisible';
+	$allowedPages[] = 'request-review';
 
 	if(isset($app->admin)){
 		$allowedPages[] = 'approveprofile';
@@ -108,6 +109,10 @@
 
 	if(isset($pagename) && $pagename=='my-subjects'){
 		$app->fixedname = $data->url.'/my-subjects';
+	}
+
+	if($pagename=='request-review'){
+		$app->messagingsystem->request = true;
 	}
 
 	if(isset($data->promocode) && isset($app->user->email) && $data->promocode == $app->user->email){
