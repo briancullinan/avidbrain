@@ -1,5 +1,7 @@
 <?php
 
+	//notify();
+
 	if(isset($app->defaultphototype->type)){
 
 		$app->currentuser->showmyphotoas = $app->defaultphototype->type;
@@ -253,6 +255,8 @@
 
 		if(isset($app->user->email) && isset($app->messagingsystem)){
 
+			//$app->messagingsystem
+			$link = NULL;
 			if(isset($app->messagingsystem->request) && isset($app->messagingsystem->extra)){
 				$link = '<p><a href="https://www.avidbrain.com/sessions/view/'.$app->messagingsystem->extra.'">Review Session</a></p>';
 			}

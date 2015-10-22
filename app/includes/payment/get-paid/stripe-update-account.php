@@ -32,11 +32,152 @@
 		}
 	}
 
+	$countNeeded = $account->verification->fields_needed;
+
+
 ?>
 
 
 <?php if(isset($recipient)): ?>
+<?php if(count($countNeeded)>0): ?>
+<h3>Verify Your Identity</h3>
+<div class="one-last-step">One last step, we just need to verify your identity.</div>
+<div class="block">
 
+	<form method="post" class="form-post" id="verifyaccount" action="/payment/get-paid">
+		<div class="red white-text one-last-red">
+			All fields are required
+		</div>
+		<div>Birthday</div>
+		<div class="row">
+			<div class="col s12 m4 l4"id="birthmonth">
+				<input type="text" name="fields_needed[legal_entity][dob][month]" placeholder="Month" maxlength="2" />
+			</div>
+			<div class="col s12 m4 l4" id="birthdate">
+				<input type="text" name="fields_needed[legal_entity][dob][day]" placeholder="Day" maxlength="2" />
+			</div>
+			<div class="col s12 m4 l4" id="birthyear">
+				<input type="text" name="fields_needed[legal_entity][dob][year]" placeholder="Year" maxlength="4" />
+			</div>
+		</div>
+
+		<div>Address</div>
+
+		<div>
+			<label id="line1">
+				Address Line 1
+				<input type="text" name="fields_needed[legal_entity][address][line1]" />
+			</label>
+			<label id="city">
+				City
+				<input type="text" name="fields_needed[legal_entity][address][city]"  />
+			</label>
+			<label  id="zipcode">
+				Zip Code
+				<input type="text" name="fields_needed[legal_entity][address][postal_code]" maxlength="5"  />
+			</label>
+			<label  id="state">
+				State
+				<select id="cutchecks_state" name="fields_needed[legal_entity][address][state]" class="validate   validate-required  browser-default">
+					<option  value="">Select State</option>
+					<option  value="Alabama">Alabama</option>
+					<option  value="Alaska">Alaska</option>
+					<option  value="American Samoa">American Samoa</option>
+					<option  value="Arizona">Arizona</option>
+					<option  value="Arkansas">Arkansas</option>
+					<option  value="California">California</option>
+					<option  value="Colorado">Colorado</option>
+					<option  value="Connecticut">Connecticut</option>
+					<option  value="Delaware">Delaware</option>
+					<option  value="District Of Columbia">District Of Columbia</option>
+					<option  value="Federated States Of Micronesia">Federated States Of Micronesia</option>
+					<option  value="Florida">Florida</option>
+					<option  value="Georgia">Georgia</option>
+					<option  value="Guam">Guam</option>
+					<option  value="Hawaii">Hawaii</option>
+					<option  value="Idaho">Idaho</option>
+					<option  value="Illinois">Illinois</option>
+					<option  value="Indiana">Indiana</option>
+					<option  value="Iowa">Iowa</option>
+					<option  value="Kansas">Kansas</option>
+					<option  value="Kentucky">Kentucky</option>
+					<option  value="Louisiana">Louisiana</option>
+					<option  value="Maine">Maine</option>
+					<option  value="Marshall Islands">Marshall Islands</option>
+					<option  value="Maryland">Maryland</option>
+					<option  value="Massachusetts">Massachusetts</option>
+					<option  value="Michigan">Michigan</option>
+					<option  value="Minnesota">Minnesota</option>
+					<option  value="Mississippi">Mississippi</option>
+					<option  value="Missouri">Missouri</option>
+					<option  value="Montana">Montana</option>
+					<option  value="Nebraska">Nebraska</option>
+					<option  value="Nevada">Nevada</option>
+					<option  value="New Hampshire">New Hampshire</option>
+					<option  value="New Jersey">New Jersey</option>
+					<option  value="New Mexico">New Mexico</option>
+					<option  value="New York">New York</option>
+					<option  value="North Carolina">North Carolina</option>
+					<option  value="North Dakota">North Dakota</option>
+					<option  value="Northern Mariana Islands">Northern Mariana Islands</option>
+					<option  value="Ohio">Ohio</option>
+					<option  value="Oklahoma">Oklahoma</option>
+					<option  value="Oregon">Oregon</option>
+					<option  value="Palau">Palau</option>
+					<option  value="Pennsylvania">Pennsylvania</option>
+					<option  value="Puerto Rico">Puerto Rico</option>
+					<option  value="Rhode Island">Rhode Island</option>
+					<option  value="South Carolina">South Carolina</option>
+					<option  value="South Dakota">South Dakota</option>
+					<option  value="Tennessee">Tennessee</option>
+					<option  value="Texas">Texas</option>
+					<option  value="Utah">Utah</option>
+					<option  value="Vermont">Vermont</option>
+					<option  value="Virgin Islands">Virgin Islands</option>
+					<option  value="Virginia">Virginia</option>
+					<option  value="Washington">Washington</option>
+					<option  value="West Virginia">West Virginia</option>
+					<option  value="Wisconsin">Wisconsin</option>
+					<option  value="Wyoming">Wyoming</option>
+			</select>
+			</label>
+
+		</div>
+
+		<div>Identification</div>
+		<div>
+			<label  id="ssn">
+				SSN Last 4
+				<input type="text" name="fields_needed[legal_entity][ssn_last_4]" maxlength="4" />
+			</label>
+		</div>
+
+		<div class="form-submit">
+			<button class="btn blue" type="submit">
+				Verify Account
+			</button>
+		</div>
+
+		<input type="hidden" name="fields_needed[target]" value="fields_needed"  />
+		<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
+
+	</form>
+</div>
+
+<style type="text/css">
+.one-last-red{
+	text-align: center;
+	padding: 5px;
+	margin-bottom: 10px;
+}
+.one-last-step{
+	background: #00abff;
+	padding: 10px;
+	text-align: center;
+	color:#fff;
+}
+</style>
+<?php endif; ?>
 
 <h3>Bank Details</h3>
 <div class="box">

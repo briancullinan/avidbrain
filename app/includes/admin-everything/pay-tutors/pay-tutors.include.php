@@ -38,7 +38,25 @@
 //
 // }
 
+	#$sql = "SELECT * FROM avid___user WHERE managed_id IS NOT NULL";
+	#$prepare = array();
+	#$results = $app->connect->executeQuery($sql,$prepare)->fetchAll();
+	#notify($results);
+
+	// $robin = 'acct_16ySpHAEITngTKg6';
+	// $account = \Stripe\Account::retrieve($robin);
+	// function stripeField($stringDots){
+	// 	$stringDots = explode('.',$stringDots);
+	// 	$return = '';
+	// 	foreach($stringDots as $dots){
+	// 		$return.='['.$dots.']';
+	// 	}
+	// 	return $return;
+	// }
+
+	//legal_entity.address., legal_entity.., legal_entity.address.postal_code, legal_entity.address.state, legal_entity.ssn_last_4
 ?>
+
 
 <div class="row">
 	<div class="col s12 m3 l3">

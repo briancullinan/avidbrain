@@ -2,13 +2,13 @@
 
 <div class="row">
 	<div class="col s12 m6 l6">
-		
+
 		<div class="radio-clicks">
 			<?php
-			
+
 				$getpaidme = new stdClass();
 				$getpaidme->getpaid = $app->user->getpaid;
-				
+
 				$getpaid = new Forms($app->connect);
 				$getpaid->formname = 'getpaid';
 				$getpaid->url = '/payment/get-paid';
@@ -19,7 +19,7 @@
 				$getpaid->makeform();
 			?>
 		</div>
-		
+
 		<div class="hr"></div>
 		<?php if(isset($app->user->getpaid) && $app->user->getpaid=='directdeposit'): ?>
 			<div class="padd padd5 green white-text center-align">
@@ -30,8 +30,8 @@
 				You have selected Check
 			</div>
 		<?php endif; ?>
-		
-		
+
+
 	</div>
 	<div class="col s12 m6 l6">
 		<?php if(isset($app->user->getpaid) && $app->user->getpaid=='directdeposit'): ?>
@@ -46,7 +46,7 @@
 			<h2>Mailing Address</h2>
 			<p>Please enter your mailing address, so we can send you bi-monthly checks.</p>
 			<?php
-				
+
 				$getpaid = new Forms($app->connect);
 				$getpaid->formname = 'cutchecks';
 				$getpaid->url = '/payment/get-paid';
