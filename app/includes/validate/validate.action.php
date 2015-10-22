@@ -4,8 +4,11 @@
 	$prepeare = array(':validation_code'=>$code);
 	$validateMe = $app->connect->executeQuery($sql,$prepeare)->fetch();
 
+	if(isset($validateMe->promocode) && $validateMe->promocode=='easy-signup'){
 
-	if(isset($validateMe->usertype) && $validateMe->usertype=='student'){
+		$app->easysignup = $validateMe;
+	}
+	elseif(isset($validateMe->usertype) && $validateMe->usertype=='student'){
 
 		$state_slug = string_cleaner($validateMe->state_long);
 		$city_slug = string_cleaner($validateMe->city);

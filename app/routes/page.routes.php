@@ -11,6 +11,7 @@
 	$routes['shortie'] = (object)array('url'=>'/shortie','slug'=>'shortie','route'=>'/u/:username/','include'=>'shortie','protected'=>NULL,'permissions'=>array(),'type'=>array('GET'));
 	$routes['errors'] = (object)array('url'=>'/errors','slug'=>'errors','route'=>'/errors/','include'=>'errors','protected'=>NULL,'permissions'=>array());
 	$routes['ab-qa'] = (object)array('url'=>'/ab-qa','slug'=>'ab-qa','route'=>'/ab-qa/','include'=>'ab-qa','protected'=>NULL,'permissions'=>array());
+	$routes['easy'] = (object)array('url'=>'/easy','slug'=>'easy','route'=>'/easy/','include'=>'easy','protected'=>NULL,'permissions'=>array());
 
 	$routes['subjects-match'] = (object)array('url'=>'/subjects-match','slug'=>'subjects-match','route'=>'/subjects/:subject/','include'=>'subjects-match','protected'=>NULL,'permissions'=>array());
 

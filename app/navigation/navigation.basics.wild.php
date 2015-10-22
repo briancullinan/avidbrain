@@ -33,7 +33,7 @@
 
 	}
 
-	if(isset($app->user->status) && $app->user->status=='needs-review' && $app->user->usertype=='tutor'){
+	if(isset($app->user->status) && $app->user->status=='needs-review' && $app->user->usertype=='tutor' && isset($app->user->zipcode)){
 
 		$notications = new stdClass();
 		$notications->status = 'urgent';

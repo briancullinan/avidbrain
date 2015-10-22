@@ -582,3 +582,68 @@ width: 50%;
 	text-align: center;
 	color:#fff;
 }
+
+
+/*Easy As Sunday Morning*/
+.maineasy main{
+    background: #47b6fe;
+}
+.easy-signup{
+    max-width: 80%;
+    display: block;
+    margin:0 auto;
+}
+.easy-signup-inside{
+    width: 100%;
+    float: left;
+}
+.easy-signup .btn{
+    padding: 10px;
+    font-size: 20px;
+    background: #3769cc;
+}
+.input-wrap{
+    margin-bottom: 15px;
+    background: #fff;
+    padding: 10px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border: solid 1px #0077c4;
+    height: 55px;
+}
+.easy-signup input{
+    padding: 0px;
+    border: none;
+    margin: 0px;
+    line-height: normal;
+    border-bottom:solid 2px transparent;
+}
+.easy-signup-title{
+    font-size: 40px;
+    color:#fff;
+    text-align: center;
+    font-family: 'Quicksand';
+}
+.easy-signup-title span{
+    font-size: 45px;
+}
+.easy-signup-phrase{
+    color:#fff;
+    text-align: center;
+}
+.easy-signup-tiny{
+    font-size: 12px;
+    margin-top: -25px;
+    text-align: center;
+    color:#fff;
+    margin-bottom: 10px;
+}
+.easy-signup-tiny a{
+    color:#d9f4ff;
+    text-decoration: underline;
+}
+.maineasy .slide-down{
+    background: #96FF00;
+    color:#000;
+}
