@@ -1,1 +1,1 @@
-Thank you for signing up. We will either call your or email you shortly, so we can cal walk you trhoug the WORDS GO HERE
+Thank you for signing up with AvidBrain. We will either call your or email you shortly, so we can setup your profile for you.
