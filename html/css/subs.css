@@ -558,3 +558,27 @@ width: 50%;
 	color:#ccc !important;
 	float: right;
 }
+
+
+.sub-title{
+	padding-bottom: 5px;
+	margin-bottom: 10px;
+	font-size: 16px;
+	font-weight: bold;
+	border-bottom:solid 1px #efefef;
+}
+.sub-block{
+	margin-bottom: 20px;
+	width: 100%;
+	float: left;
+}
+.one-last-red{
+	text-align: center;
+	padding: 5px;
+}
+.one-last-step{
+	background: #00abff;
+	padding: 10px;
+	text-align: center;
+	color:#fff;
+}

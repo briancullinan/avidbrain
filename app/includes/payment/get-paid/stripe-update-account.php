@@ -42,28 +42,81 @@
 <?php if(count($countNeeded)>0): ?>
 <h3>Verify Your Identity</h3>
 <div class="one-last-step">One last step, we just need to verify your identity.</div>
+<div class="red white-text one-last-red">
+	All fields are required
+</div>
 <div class="block">
 
 	<form method="post" class="form-post" id="verifyaccount" action="/payment/get-paid">
-		<div class="red white-text one-last-red">
-			All fields are required
-		</div>
-		<div>Birthday</div>
-		<div class="row">
-			<div class="col s12 m4 l4"id="birthmonth">
-				<input type="text" name="fields_needed[legal_entity][dob][month]" placeholder="Month" maxlength="2" />
-			</div>
-			<div class="col s12 m4 l4" id="birthdate">
-				<input type="text" name="fields_needed[legal_entity][dob][day]" placeholder="Day" maxlength="2" />
-			</div>
-			<div class="col s12 m4 l4" id="birthyear">
-				<input type="text" name="fields_needed[legal_entity][dob][year]" placeholder="Year" maxlength="4" />
+
+		<div class="sub-title">Birthday</div>
+		<div class="sub-block">
+			<div class="row">
+				<div class="col s12 m4 l4"id="birthmonth">
+					<select name="fields_needed[legal_entity][dob][month]" class="validate   validate-required  browser-default">
+						<?php
+							$months = array(
+								'1'=>'January',
+								'2'=>'February',
+								'3'=>'March',
+								'4'=>'April',
+								'5'=>'May',
+								'6'=>'June',
+								'7'=>'July',
+								'8'=>'August',
+								'9'=>'September',
+								'10'=>'October',
+								'11'=>'November',
+								'12'=>'Descember'
+							);
+						?>
+						<option value="">
+							-- Select Month
+						</option>
+						<?php foreach($months as $key => $value): ?>
+							<option value="<?php echo $key; ?>">
+								<?php echo $value; ?>
+							</option>
+						<?php endforeach; ?>
+					</select>
+				</div>
+				<div class="col s12 m4 l4" id="birthdate">
+					<select name="fields_needed[legal_entity][dob][day]" class="validate   validate-required  browser-default">
+						<?php
+							$days = range(1,31);
+						?>
+						<option value="">
+							-- Select Day
+						</option>
+						<?php foreach($days as  $value): ?>
+							<option value="<?php echo $value; ?>">
+								<?php echo $value; ?>
+							</option>
+						<?php endforeach; ?>
+					</select>
+				</div>
+				<div class="col s12 m4 l4" id="birthyear">
+					<select name="fields_needed[legal_entity][dob][year]" class="validate   validate-required  browser-default">
+						<?php
+							$years = range(1900,date('Y'));
+							$years = array_reverse($years);
+						?>
+						<option value="">
+							-- Select Year
+						</option>
+						<?php foreach($years as  $value): ?>
+							<option value="<?php echo $value; ?>">
+								<?php echo $value; ?>
+							</option>
+						<?php endforeach; ?>
+					</select>
+				</div>
 			</div>
 		</div>
 
-		<div>Address</div>
+		<div class="sub-title">Address</div>
 
-		<div>
+		<div class="sub-block">
 			<label id="line1">
 				Address Line 1
 				<input type="text" name="fields_needed[legal_entity][address][line1]" />
@@ -144,8 +197,8 @@
 
 		</div>
 
-		<div>Identification</div>
-		<div>
+		<div class="sub-title">Identification</div>
+		<div class="sub-block">
 			<label  id="ssn">
 				SSN Last 4
 				<input type="text" name="fields_needed[legal_entity][ssn_last_4]" maxlength="4" />
@@ -164,19 +217,7 @@
 	</form>
 </div>
 
-<style type="text/css">
-.one-last-red{
-	text-align: center;
-	padding: 5px;
-	margin-bottom: 10px;
-}
-.one-last-step{
-	background: #00abff;
-	padding: 10px;
-	text-align: center;
-	color:#fff;
-}
-</style>
+
 <?php endif; ?>
 
 <h3>Bank Details</h3>

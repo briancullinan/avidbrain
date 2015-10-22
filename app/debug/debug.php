@@ -82,7 +82,13 @@
 		$isajax = $app->request->isAjax();
 	    $error = error_get_last();
 		if(!empty($error)){
-			$message = '';
+
+
+			$message = '<p>Page: '.$app->request->getPath().'</p>';
+			if(isset($app->user->email)):$message.= '<p>User: '.$app->user->email.'</p>';endif;
+			$message.= '<p>Date: '.formatdate(thedate(),'M. jS, Y @ g:i a').'</p>';
+			$message.= '<p>Domain: '.$app->dependents->DOMAIN.'</p>';
+			$message.= '<p>Server Name: '.$app->dependents->SERVER_NAME.'</p>';
 			$message.= '<p>Type: '.geterrortype($error['type']).'</p>';
 			$message.= '<p>Message: '.$error['message'].'</p>';
 			$message.= '<p>File: '.$error['file'].'</p>';
