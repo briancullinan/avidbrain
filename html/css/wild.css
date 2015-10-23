@@ -338,7 +338,7 @@ subnav a.active, subnav li.active a{
     color: #fff;
 }
 .activeaction .right-info{
-    display: none;
+    
 }
 .activate-menu.active{
 	position: relative;

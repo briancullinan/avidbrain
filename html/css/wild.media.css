@@ -72,15 +72,18 @@
 	sidebar .logo{
 		display: block;
 	}
-	.activeaction .right-info{
-		display: none;
-	}
 	.homepage-items h1{
 		font-size: 35px;
 		margin-top: 170px;
 	}
 	.widecontent .valign{
 		font-size: 10vw;
+	}
+	#toast-container .fixed-toast{
+		padding: 40px 10px;
+		background: #80ff00;
+		color: #000;
+		font-weight: bold;
 	}
 }
 @media only screen and (min-width: 993px){

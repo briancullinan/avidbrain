@@ -29,13 +29,13 @@ $(document).ready(function() {
 			$('.activate-menu').attr('data-status','open').addClass('active');
 			setTimeout(function(){
 				$('header,main,footer,sidebar,html,body,notifications').addClass('activeaction').removeClass('inaction');
-			}, 200);
+			}, 100);
 		}
 		else if(activestatus=='open'){
 			$('.activate-menu').attr('data-status','closed').removeClass('active');
 			setTimeout(function(){
 				$('header,main,footer,sidebar,html,body,notifications').removeClass('activeaction').addClass('inaction');
-			}, 200);
+			}, 100);
 		}
 
 		var activeactive = $('.activate-menu').attr('data-status');
