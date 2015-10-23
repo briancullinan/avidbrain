@@ -9,29 +9,31 @@
 		<h2>Session Details</h2>
 
 		<?php if($app->markcomplete->session_status=='complete'): ?>
-			<div class="block">
-				Your session is complete
+			<div>
+				<a class="block active-block" href="/sessions/view/<?php echo $id; ?>">Your session is complete</a>
 			</div>
 		<?php else: ?>
 
 		<div class="block active-block">
-
-			<div>Now that your session is complete, you just need to confirm the charge below.</div>
+			<div>Please confirm the charge amount below, by clicking the <span>Green Button</span></div>
 		</div>
 
-		<?php
+			<div class="complete-session">
+				<?php
 
-			$app->markcomplete->session_length = $app->markcomplete->proposed_length;
+					$app->markcomplete->session_length = $app->markcomplete->proposed_length;
 
-			$setupsession = new Forms($app->connect);
-			$setupsession->formname = 'completesession';
-			$setupsession->url = '/sessions/complete-active/'.$id;
-			$setupsession->dependents = $app->dependents;
-			$setupsession->csrf_key = $csrf_key;
-			$setupsession->csrf_token = $csrf_token;
-				$setupsession->formvalues = $app->markcomplete;
-			$setupsession->makeform();
-		?>
+					$setupsession = new Forms($app->connect);
+					$setupsession->formname = 'completesession';
+					$setupsession->url = '/sessions/complete-active/'.$id;
+					$setupsession->dependents = $app->dependents;
+					$setupsession->csrf_key = $csrf_key;
+					$setupsession->csrf_token = $csrf_token;
+						$setupsession->formvalues = $app->markcomplete;
+					$setupsession->makeform();
+				?>
+			</div>
+
 		<?php endif; ?>
 	</div>
 </div>

@@ -248,8 +248,8 @@
 				$cost = session_cost($app->completesession);
 
 				$html = '<p class="confirm-payment-box orange white-text"> You are about to charge '.short($app->markcomplete).' <strong>$'.$cost.'</strong>, please confirm below. </p>';
-				$html.='<div><button id="confirm-charge" class="btn btn-block "> <i class="fa fa-check"></i> Confirm Charge</button></div>';
-				$html.='<div><a id="cancel-charge" href="'.$app->request->getPath().'" class="btn btn-block red"> <i class="fa fa-times"></i> Cancel Charge</button></div>';
+				$html.='<div><button id="confirm-charge" class="btn btn-block btn-l btn-notice greenbutton"> <i class="fa fa-check"></i> Confirm Charge</button></div>';
+				$html.='<div><a id="cancel-charge" href="/sessions/setup/'.$id.'" class="btn btn-block red"> <i class="fa fa-times"></i> Cancel Charge</button></div>';
 				new Flash(
 					array('action'=>'confirm-payment','html'=>$html,'message'=>'<i class="fa fa-chevron-left"></i> Please confirm charge','secret'=>random_all(12))
 				);

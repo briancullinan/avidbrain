@@ -1202,11 +1202,11 @@
 
 	function calculate_payrate($connect,$sessioninfo,$userinfo){
 
-		if(isset($userinfo->anotheragency_rate) && !empty($userinfo->anotheragency_rate)){
-			return $userinfo->anotheragency_rate;
-		}
-		elseif(isset($sessioninfo->promocode) && $sessioninfo->promocode==$userinfo->email){
+		if(isset($sessioninfo->promocode) && $sessioninfo->promocode==$userinfo->email){
 			return 95;
+		}
+		elseif(isset($userinfo->anotheragency_rate) && !empty($userinfo->anotheragency_rate)){
+			return $userinfo->anotheragency_rate;
 		}
 		elseif(isset($userinfo->top1000)){
 			return 80;
@@ -1218,6 +1218,10 @@
 	}
 
 	function whats_my_rate($connect,$userinfo){
+		if(isset($userinfo->top1000)){
+			return 80;
+		}
+
 		$final = 70;
 		$rateTable = array(
 			70=>range(0,50),

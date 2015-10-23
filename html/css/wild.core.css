@@ -34,7 +34,12 @@
 	color: #fff;
 }
 .block.active-block{
-	border: solid 2px red;
+	text-align: center;
+	border: solid 5px #57ce0d;
+}
+.block.active-block span, a.block.active-block{
+	color: #57ce0d;
+	font-weight: bold;
 }
 .block.messages-waiting{
 	border: solid 5px #4CAF50;

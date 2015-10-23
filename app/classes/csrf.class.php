@@ -41,7 +41,7 @@ class CSRFNINJA extends \Slim\Middleware{
      *
      * @return void
      */
-    public function call() 
+    public function call()
     {
         // Attach as hook.
         $this->app->hook('slim.before', array($this, 'check'));
@@ -71,23 +71,31 @@ class CSRFNINJA extends \Slim\Middleware{
         // Validate the CSRF token.
         if (in_array($this->app->request()->getMethod(), array('POST', 'PUT', 'DELETE'))) {
             $userToken = $this->app->request()->post($this->key);
-            
+
             $iskey = NULL;
             if(isset($_POST[key($_POST)]['target'])){
 	            $iskey = $_POST[key($_POST)]['target'];
             }
-            
+
             if ($token !== $userToken) {
-	            //$this->app->halt(400, 'Invalid or missing CSRF token.');
-	            $error = array(
-					'action'=>'invalidcsrf',
-					'message'=>'Invalid CSRF Token',
-					'errorcode'=>$token,
-					'iskey'=>$iskey
-				);
-				echo json_encode($error);
-				exit;
-	            
+
+                if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+                    //$this->app->halt(400, 'Invalid or missing CSRF token.');
+    	            $error = array(
+    					'action'=>'invalidcsrf',
+    					'message'=>'Invalid CSRF Token',
+    					'errorcode'=>$token,
+    					'iskey'=>$iskey
+    				);
+    				echo json_encode($error);
+    				exit;
+                }
+                else{
+                    $_SESSION['slim.flash']['error'] = 'Invalid CSRF';
+                    header("Location: ".$_SERVER['REQUEST_URI']);
+                    exit;
+                }
+
             }
         }
 

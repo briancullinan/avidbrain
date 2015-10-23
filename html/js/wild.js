@@ -923,6 +923,7 @@ $(document).ready(function() {
 		}
 	}
 
+	$('.complete-session .form-submit button').fadeOut(function(){$(this).click();});
 
 	$('.header-nav .modal-trigger').on('click',function(){
 		setTimeout(function(){

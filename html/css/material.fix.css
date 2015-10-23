@@ -96,15 +96,19 @@
 	position: absolute;
 	display:inline-block;font:normal normal normal 14px/1 FontAwesome;font-size:inherit;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;transform:translate(0, 0);
 	font-size: 35px;
-	color: #F44336;
-	color: #ccc;
-	color: #007ee3;
 
 	-webkit-animation: animatearrow 2s infinite;
     -moz-animation:    animatearrow 2s infinite;
     -o-animation:      animatearrow 2s infinite;
     animation:         animatearrow 2s infinite;
 }
+.btn.btn-notice.blue::before{
+	color: #007ee3;
+}
+.btn.btn-notice.greenbutton::before{
+	color: #57ce0d;
+}
+
 .btn.btn-notice:before{
 	content:"\f061";
 }
