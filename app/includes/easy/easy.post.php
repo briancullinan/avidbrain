@@ -19,7 +19,7 @@
 			new Flash(array('action'=>'required','message'=>'Email address already used to signup'));
 		}
 
-        $randomSix = random_numbers(6);
+        $randomSix = random_numbers(5);
         $password = $password = password_hash($randomSix, PASSWORD_DEFAULT);
 		$validation_code = random_numbers_guarantee($app->connect,16);
 
