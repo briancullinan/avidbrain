@@ -43,6 +43,26 @@
 	.right-info ul li a{
 		padding: 10px 5px;
 	}
+	.easy-signup-title{
+		font-size: 25px;
+		margin-bottom: 5px;
+	}
+	.input-wrap{
+		padding: 5px 10px;
+		height: 45px;
+	}
+	header{
+		height: 40px;
+	}
+	.header-nav{
+		margin: 0px;
+	}
+	.activate-menu{
+		padding: 3px;
+	}
+	main .container{
+		padding-top: 60px;
+	}
 }
 
 @media only screen and (max-width: 992px){

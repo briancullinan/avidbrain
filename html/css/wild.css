@@ -231,7 +231,7 @@ footer .active{
 	float: right;
 }
 header.activeaction,main.activeaction{
-	padding-left: 200px;
+	/*padding-left: 200px;*/
 
 }
 footer.activeaction{
@@ -311,7 +311,6 @@ subnav a.active, subnav li.active a{
 	color: #fff;
 	background: #555;
 }
-
 .activate-menu i{
 	font-size: 25px;
 	color: #ccc;
@@ -324,14 +323,28 @@ subnav a.active, subnav li.active a{
 	padding: 23px 20px;
 	display: block;
 	cursor: pointer;
-	color: #fff;
+	color: #ccc;
 	position: relative;
-}
+    -webkit-transition: all;
+    -webkit-transition-duration: .3s;
 
+    -moz-transition: all;
+    -moz-transition-duration: .3s;
+
+    transition: all;
+    transition-duration: .3s;
+}
+.activate-menu:hover{
+    color: #fff;
+}
+.activeaction .right-info{
+    display: none;
+}
 .activate-menu.active{
 	position: relative;
 	z-index: 5555;
-	color: #ccc;
+	color: #fff;
+    margin-left: 200px;
 }
 .activate-menu.active i{
 	color: #0087F2;

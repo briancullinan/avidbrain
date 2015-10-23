@@ -586,10 +586,22 @@ width: 50%;
 
 /*Easy As Sunday Morning*/
 .maineasy main{
-    background: #47b6fe;
+
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#47b5fb+0,63b6e9+44,b5d6e8+77 */
+background: rgb(71,181,251); /* Old browsers */
+background: -moz-linear-gradient(top, rgba(71,181,251,1) 0%, rgba(99,182,233,1) 44%, rgba(181,214,232,1) 77%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(71,181,251,1)), color-stop(44%,rgba(99,182,233,1)), color-stop(77%,rgba(181,214,232,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, rgba(71,181,251,1) 0%,rgba(99,182,233,1) 44%,rgba(181,214,232,1) 77%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, rgba(71,181,251,1) 0%,rgba(99,182,233,1) 44%,rgba(181,214,232,1) 77%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, rgba(71,181,251,1) 0%,rgba(99,182,233,1) 44%,rgba(181,214,232,1) 77%); /* IE10+ */
+background: linear-gradient(to bottom, rgba(71,181,251,1) 0%,rgba(99,182,233,1) 44%,rgba(181,214,232,1) 77%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#47b5fb', endColorstr='#b5d6e8',GradientType=0 ); /* IE6-9 */
+background-attachment: fixed;
+
 }
 .easy-signup{
-    max-width: 80%;
+    width: 80%;
+	max-width: 1000px;
     display: block;
     margin:0 auto;
 }
@@ -624,6 +636,7 @@ width: 50%;
     color:#fff;
     text-align: center;
     font-family: 'Quicksand';
+	line-height: normal;
 }
 .easy-signup-title span{
     font-size: 45px;
