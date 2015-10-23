@@ -40,7 +40,7 @@
         }
 
         if($doesexist!=0){
-            new Flash(array('action'=>'required','formID'=>'findasubject','message'=>'Duplicate posting for <span>'.$app->postjob->subject_name.'</span>'));
+            //new Flash(array('action'=>'required','formID'=>'findasubject','message'=>'Duplicate posting for <span>'.$app->postjob->subject_name.'</span>'));
         }
 
         if(empty($app->postjob->subject_name)){

@@ -1,6 +1,6 @@
 <?php
 
-    $sql = "SELECT * FROM avid___jobs WHERE anonymous IS NOT NULL";
+    $sql = "SELECT * FROM avid___jobs WHERE anonymous IS NOT NULL ORDER BY date DESC";
     $prepare = array();
     $results = $app->connect->executeQuery($sql,$prepare)->fetchAll();
     if(isset($results[0])){
