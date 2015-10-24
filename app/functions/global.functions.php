@@ -918,7 +918,7 @@
 		}
 	}
 	function account_settings(){
-		return ' settings.getemails, settings.showfullname, settings.anotheragency, settings.anotheragancy_rate, settings.showmyprofile, settings.avidbrainnews, settings.newjobs, settings.negotiableprice';
+		return ' settings.getemails, settings.showfullname, settings.anotheragency, settings.anotheragancy_rate, settings.showmyprofile, settings.avidbrainnews, settings.newjobs, settings.negotiableprice, settings.loggedinprofile';
 	}
 	function profile_select(){
 		return '

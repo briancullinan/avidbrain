@@ -1,5 +1,3 @@
-<h1>Account Settings</h1>
-
 <div class="basic-block">
 
 	<form method="post" class="switch-post" action="/account-settings" id="account-settings">
@@ -114,6 +112,22 @@
 					<label>
 						No
 						<input <?php if($app->user->settings->avidbrainnews=='yes'){ echo 'checked="checked"';} ?> name="accountsettings[avidbrainnews]" type="checkbox">
+						<span class="lever"></span>
+						Yes
+					</label>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col s6 m8 l8">
+				<div class="switch-text"><span class="blue-text">Account Visibilty:</span> Only show profile to logged in users. You won't show up in search results, unless the user is logged in.</div>
+			</div>
+			<div class="col s6 m4 l4 right-align">
+				<div class="switch">
+					<label>
+						No
+						<input <?php if($app->user->settings->loggedinprofile=='yes'){ echo 'checked="checked"';} ?> name="accountsettings[loggedinprofile]" type="checkbox">
 						<span class="lever"></span>
 						Yes
 					</label>

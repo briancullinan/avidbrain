@@ -22,10 +22,12 @@
 		$data	=	$data->andWhere('user.status IS NULL');
 		$data	=	$data->andWhere('user.hidden IS NULL');
 		$data	=	$data->andWhere('user.lock IS NULL');
+
+		$data	=	$data->innerJoin('user','avid___user_account_settings','settings','user.email = settings.email');
+		$data	=	$data->andWhere('settings.loggedinprofile = "no"');
 		$data	=	$data->andWhere('profile.my_upload IS NOT NULL AND profile.my_upload_status = "verified"');
 
 		$data	=	$data->innerJoin('user','avid___user_profile','profile','user.email = profile.email');
-		$data	=	$data->innerJoin('user','avid___user_account_settings','settings','user.email = settings.email');
 
 		$data	=	$data->orderBy('RAND()');
 		$data	=	$data->setMaxResults(1);

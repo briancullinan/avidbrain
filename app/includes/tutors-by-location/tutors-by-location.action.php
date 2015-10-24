@@ -7,27 +7,28 @@
 	$data	=	$data->andWhere('user.hidden IS NULL');
 	$data	=	$data->andWhere('user.lock IS NULL');
 	$data	=	$data->andWhere('user.state_slug IS NOT NULL');
-	
-	
+	$data	=	$data->andWhere('settings.loggedinprofile = "no"');
+
+
 	$data	=	$data->innerJoin('user','avid___user_profile','profile','user.email = profile.email');
 	$data	=	$data->innerJoin('user','avid___user_account_settings','settings','user.email = settings.email');
-	
+
 	$data	=	$data->andWhere('user.state_slug IS NOT NULL');
-	
+
 	$data	=	$data->orderBy('COUNT(user.state_slug)','DESC');
 	$data	=	$data->groupBy('user.state_slug');
-	
+
 	$data	=	$data->execute()->fetchAll();
-	
+
 	//notify($data);
 
-	
+
 	$app->tutorsbylocation = $data;
 	$keywords='';
 	foreach($data as $category){
 		$keywords.= $category->state_slug.' tutors,';
 	}
-	
+
 	$app->meta = new stdClass();
 	$app->meta->title = $app->dependents->SITE_NAME_PROPPER.' Tutors by Location';
 	$app->meta->h1 = $app->dependents->SITE_NAME_PROPPER.' Tutors by Location';

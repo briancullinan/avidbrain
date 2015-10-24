@@ -353,3 +353,12 @@ main .container-nopadd{
 .credit-errors span{
 	color: #F44336;
 }
+
+
+.invisibleprofile main{
+    background: #555;
+    color:#fff;
+}
+.private-profile{
+    text-align: center;
+}

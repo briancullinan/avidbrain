@@ -68,6 +68,11 @@
 
 	}
 
+	if(isset($data->loggedinprofile) && $data->loggedinprofile=='yes' && empty($app->user->email)){
+		$app->target->include = str_replace('.include.','.invisible.include.',$app->target->include);
+		$app->target->css.= " invisible-profile ";
+	}
+
 	$allowedPages = array();
 	$allowedPages[] = 'about-me';
 	if(isset($data->thisisme)){

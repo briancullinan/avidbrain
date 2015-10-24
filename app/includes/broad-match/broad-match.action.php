@@ -68,6 +68,7 @@
 	$data	=	$data->andWhere('user.hidden IS NULL');
 	$data	=	$data->andWhere('user.lock IS NULL');
 	$data	=	$data->andWhere('profile.hourly_rate IS NOT NULL');
+	$data	=	$data->andWhere('settings.loggedinprofile = "no"');
 
 	$data	=	$data->andWhere('subjects.parent_slug = :parent_slug');
 
@@ -78,6 +79,8 @@
 		$data	=	$data->innerJoin('user','avid___user_profile','profile','user.email = profile.email');
 		$data	=	$data->innerJoin('user','avid___user_subjects','subjects','user.email = subjects.email');
 		$data	=	$data->leftJoin('user','avid___sessions','sessions','user.email = sessions.from_user');
+		$data	=	$data->leftJoin('user','avid___user_account_settings','settings','user.email = settings.email');
+
 		$data = $data->addSelect(' (SELECT round((sum(sessions.session_length) / 60))  FROM avid___sessions sessions WHERE sessions.from_user = user.email) AS hours' );
 		$data = $data->addSelect(' (SELECT count(sessions.id)  FROM avid___sessions sessions WHERE sessions.review_name IS NOT NULL AND sessions.from_user = user.email) AS count' );
 		$data = $data->addSelect(' (SELECT sum(sessions.review_score)  FROM avid___sessions sessions WHERE sessions.review_name IS NOT NULL AND sessions.from_user = user.email) AS score' );

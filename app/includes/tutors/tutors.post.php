@@ -14,7 +14,6 @@
 	$data	=	$app->connect->createQueryBuilder();
 	$data	=	$data->select('user.email');
 	$data	=	$data->innerJoin('user','avid___user_profile','profile','user.email = profile.email');
-	$data	=	$data->innerJoin('user','avid___user_account_settings','settings','user.email = settings.email');
 	$data	=	$data->from('avid___user','user');
 
 	$data	=	$data->where('user.usertype = :usertype')->setParameter(":usertype","tutor");
@@ -22,6 +21,8 @@
 	$data	=	$data->andWhere('user.hidden IS NULL');
 	$data	=	$data->andWhere('profile.hourly_rate IS NOT NULL');
 	$data	=	$data->andWhere('user.lock IS NULL');
+	$data	=	$data->innerJoin('user','avid___user_account_settings','settings','user.email = settings.email');
+	$data	=	$data->andWhere('settings.loggedinprofile = "no"');
 
 	//notify($app->dependents);
 
