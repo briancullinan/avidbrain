@@ -16,7 +16,7 @@
 	<?php
 		if(isset($app->openGraph)){
 			foreach($app->openGraph as $og){
-				echo $og;
+				echo "\t".$og."\n";
 			}
 		}
 	?>
