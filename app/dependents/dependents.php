@@ -92,6 +92,7 @@
 		$dependents->database->DBUSER = 'root';
 		$dependents->database->DBPASS = 'root';
 		$dependents->DOMAIN = 'http://'.$sitename.'.dev';
+		$dependents->social->qa = 'http://qa.avidbrain.dev';
 	}
 	elseif($dependents->SERVER_NAME=='avidbra.in'){
 		$dependents->database->HOST = 'localhost';

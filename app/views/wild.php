@@ -222,6 +222,7 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 		<div class="row">
 			<div class="col s12 m3 l3">
 				<h5 class="white-text">Important Things</h5>
+				<div class="qa-location" data-attr="<?php echo $app->dependents->social->qa; ?>"></div>
 				<?php if(isset($app->footerlinks)): ?>
 				<ul class="footer-li">
 					<?php foreach($app->footerlinks as $key=> $navitem): ?>

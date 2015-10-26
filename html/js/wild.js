@@ -706,9 +706,10 @@ $(document).ready(function() {
 
 		// QA Login
 		if($('.qalogin').attr('class')){
+			var location = $('.qa-location').attr('data-attr')+'/sessionid.php';
 			$.ajax({
 				type: 'POST',
-				url: 'https://qa.avidbrain.com/sessionid.php',
+				url: location,
 				xhrFields: {withCredentials: true},
 				data: {withCredentials:true,webernets:$('.webernets').val(),distancetothesun:$('.distancetothesun').val()},
 				success: function(response){
@@ -723,132 +724,6 @@ $(document).ready(function() {
 				}
 			});
 			return false;
-		}
-
-
-		if($('.swap-color-type').attr('class')){
-			$('.swap-color-type div').on('click',function(){
-				var target = $(this).parent().attr('data-target');
-				var skintone = $(this).attr('class');
-				$('.'+target).attr('id','').attr('id',skintone);
-				$('.'+target).removeAttr('style');
-			});
-
-			$('.html5colorpicker').on('change',function(){
-				var target = $(this).parent().attr('data-target');
-				var skintone = $(this).val();
-				$('.'+target).attr('style','color:'+skintone);
-				$('.'+target).removeAttr('id');
-			});
-
-			$('.add-some div').on('click',function(){
-
-				var parentid = $(this).parent().attr('id');
-				var thisitem = $(this).attr('class');
-				$('.add'+parentid).attr('class','custom-avatar add'+parentid);
-
-
-				if(thisitem=='empty'){
-					$('#'+parentid+' .active').removeClass('active');
-				}
-				else{
-					$('.add'+parentid).addClass(thisitem);
-				}
-
-			});
-
-			$('.add-some .custom-avatar').on('click',function(){
-
-				var parentid = $(this).parent().attr('id');
-				$('#'+parentid+' .active').removeClass('active');
-				$(this).addClass('active');
-			});
-
-			function savavatar(dontshow){
-				var skintoneid = $('.custom-avatar-body').attr('id');
-				var skintonecolor = $('.custom-avatar-body').attr('style');
-
-				var addhairid = $('.addhair').attr('id');
-				var addhaircolor = $('.addhair').attr('style');
-
-				var addfacialhairid = $('.addfacialhair').attr('id');
-				var addfacialhaircolor = $('.addfacialhair').attr('style');
-
-
-				var shirtype = $('.addshirts').attr('class').replace('addshirts','').replace('custom-avatar','').replace(' ','').replace(' ','');
-				var glasstype = $('.addglasses').attr('class').replace('addglasses','').replace('custom-avatar','').replace(' ','').replace(' ','');
-				var hairtype = $('.addhair').attr('class').replace('addhair','').replace('custom-avatar','').replace(' ','').replace(' ','');
-				var facialhairtype = $('.addfacialhair').attr('class').replace('addfacialhair','').replace('custom-avatar','').replace(' ','').replace(' ','');
-				var liptype = $('.addlips').attr('class').replace('addlips','').replace('custom-avatar','').replace(' ','').replace(' ','');
-
-				if(shirtype){
-					$('.add-shirtype').remove();
-					$('#submit-avatar').append('<input type="hidden" class="add-shirtype" name="customizeavatar[shirtype]" value="'+shirtype+'" />');
-				}
-				if(glasstype){
-					$('.add-glasstype').remove();
-					$('#submit-avatar').append('<input type="hidden" class="add-glasstype" name="customizeavatar[glasstype]" value="'+glasstype+'" />');
-				}
-				if(hairtype){
-					$('.add-hairtype').remove();
-					$('#submit-avatar').append('<input type="hidden" class="add-hairtype" name="customizeavatar[hairtype]" value="'+hairtype+'" />');
-				}
-				if(facialhairtype){
-					$('.add-facialhairtype').remove();
-					$('#submit-avatar').append('<input type="hidden" class="add-facialhairtype" name="customizeavatar[facialhairtype]" value="'+facialhairtype+'" />');
-				}
-				if(liptype){
-					$('.add-liptype').remove();
-					$('#submit-avatar').append('<input type="hidden" class="add-liptype" name="customizeavatar[liptype]" value="'+liptype+'" />');
-				}
-
-				if(skintoneid){
-					$('.add-skintoneid').remove();
-					$('#submit-avatar').append('<input type="hidden" class="add-skintoneid" name="customizeavatar[skintoneid]" value="'+skintoneid+'" />');
-				}
-				if(skintonecolor){
-					$('.add-skintonecolor').remove();
-					$('#submit-avatar').append('<input type="hidden" class="add-skintonecolor" name="customizeavatar[skintonecolor]" value="'+skintonecolor+'" />');
-				}
-				if(addhairid){
-					$('.add-addhairid').remove();
-					$('#submit-avatar').append('<input type="hidden" class="add-addhairid" name="customizeavatar[addhairid]" value="'+addhairid+'" />');
-				}
-				if(addhaircolor){
-					$('.add-addhaircolor').remove();
-					$('#submit-avatar').append('<input type="hidden" class="add-addhaircolor" name="customizeavatar[addhaircolor]" value="'+addhaircolor+'" />');
-				}
-				if(addfacialhairid){
-					$('.add-addfacialhairid').remove();
-					$('#submit-avatar').append('<input type="hidden" class="add-addfacialhairid" name="customizeavatar[addfacialhairid]" value="'+addfacialhairid+'" />');
-				}
-				if(addfacialhaircolor){
-					$('.add-addfacialhaircolor').remove();
-					$('#submit-avatar').append('<input type="hidden" class="add-addfacialhaircolor" name="customizeavatar[addfacialhaircolor]" value="'+addfacialhaircolor+'" />');
-				}
-
-				if(dontshow){
-					$('#submit-avatar').append('<input type="hidden" class="dontshow" name="customizeavatar[dontshow]" value="1" />');
-				}
-				else{
-
-				}
-
-
-				$('#submit-avatar').submit();
-			}
-
-			$('.swap-color-type input').on('change',function(){
-				setTimeout(function(){
-					savavatar('dontshow');
-				}, 100);
-			});
-
-			$('.add-some .custom-avatar, .swap-color-type div, .empty').on('click',function(){
-
-				savavatar();
-
-			});
 		}
 
 
