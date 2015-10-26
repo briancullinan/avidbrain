@@ -9,10 +9,18 @@
 	<meta name="application-name" content="<?php echo $app->dependents->SITE_NAME; ?>" />
 	<meta name="description" content="<?php if(isset($app->meta->description)){echo $app->meta->description;}else{ echo $app->dependents->SITE_NAME_PROPPER.' Tutoring. Find A Tutor. Become a Tutor.'; } ?>" />
 	<meta name="keywords" content="<?php if(isset($app->meta->keywords)){echo $app->meta->keywords;}else{echo $app->dependents->SITE_NAME_PROPPER.','.$app->dependents->SITE_NAME.',avid,brain,tutor,tutoring,education';} ?>" />
-
 	<meta name="author" content="<?php echo $app->dependents->SITE_NAME_PROPPER; ?> inc." />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 	<link rel="icon" type="image/png" href="/images/favicon.ico" />
+
+	<?php
+		if(isset($app->openGraph)){
+			foreach($app->openGraph as $og){
+				echo $og;
+			}
+		}
+	?>
+
 <?php
 
 // CDN CSS

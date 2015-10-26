@@ -1,5 +1,10 @@
 <?php
 
+	if(isset($promocode) && $promocode=='facebook'){
+		$openGraph[] = '<meta property="og:image" content="https://www.avidbrain.com/images/share/facebookpromo.jpg" />';
+		$app->openGraph = $openGraph;
+	}
+
 	$app->howitworks = true;
 
 	$app->meta = new stdClass();
