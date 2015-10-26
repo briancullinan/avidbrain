@@ -673,3 +673,16 @@ background-attachment: fixed;
     background: #96FF00;
     color:#000;
 }
+
+
+.share-on-facebook{
+	display: inline-block;
+	padding: 5px 15px;
+	background: #3a5795;
+	color:#fff;
+}
+.share-on-facebook i{
+	font-size: 18px;
+	display: inline-block;
+	margin-right: 10px;
+}
