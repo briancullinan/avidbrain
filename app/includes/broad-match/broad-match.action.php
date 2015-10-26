@@ -68,7 +68,9 @@
 	$data	=	$data->andWhere('user.hidden IS NULL');
 	$data	=	$data->andWhere('user.lock IS NULL');
 	$data	=	$data->andWhere('profile.hourly_rate IS NOT NULL');
-	$data	=	$data->andWhere('settings.loggedinprofile = "no"');
+	if(empty($app->user->email)){
+		$data	=	$data->andWhere('settings.loggedinprofile = "no"');
+	}
 
 	$data	=	$data->andWhere('subjects.parent_slug = :parent_slug');
 

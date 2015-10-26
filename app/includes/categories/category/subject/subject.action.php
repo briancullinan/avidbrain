@@ -39,7 +39,9 @@
 	$data	=	$data->andWhere('user.status IS NULL');
 	$data	=	$data->andWhere('user.hidden IS NULL');
 	$data	=	$data->andWhere('user.lock IS NULL');
-	$data	=	$data->andWhere('settings.loggedinprofile = "no"');
+	if(empty($app->user->email)){
+		$data	=	$data->andWhere('settings.loggedinprofile = "no"');
+	}
 	$data	=	$data->andWhere('subjects.subject_slug = :subject')->setParameter(':subject',$subject);
 	$data	=	$data->andWhere('subjects.parent_slug = :parent_slug')->setParameter(':parent_slug',$category);
 	$data	=	$data->andWhere('subjects.parent_slug = av_subjects.parent_slug')->setParameter(':parent_slug',$category);

@@ -11,7 +11,9 @@
 	$data	=	$data->andWhere('user.status IS NULL');
 	$data	=	$data->andWhere('user.hidden IS NULL');
 	$data	=	$data->andWhere('user.lock IS NULL');
-	$data	=	$data->andWhere('settings.loggedinprofile = "no"');
+	if(empty($app->user->email)){
+		$data	=	$data->andWhere('settings.loggedinprofile = "no"');
+	}
 
 
 	$data	=	$data->groupBy('user.email');

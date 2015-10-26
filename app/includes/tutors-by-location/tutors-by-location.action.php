@@ -7,7 +7,9 @@
 	$data	=	$data->andWhere('user.hidden IS NULL');
 	$data	=	$data->andWhere('user.lock IS NULL');
 	$data	=	$data->andWhere('user.state_slug IS NOT NULL');
-	$data	=	$data->andWhere('settings.loggedinprofile = "no"');
+	if(empty($app->user->email)){
+		$data	=	$data->andWhere('settings.loggedinprofile = "no"');
+	}
 
 
 	$data	=	$data->innerJoin('user','avid___user_profile','profile','user.email = profile.email');

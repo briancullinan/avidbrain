@@ -121,7 +121,12 @@
 
 		<div class="row">
 			<div class="col s6 m8 l8">
-				<div class="switch-text"><span class="blue-text">Account Visibilty:</span> Only show profile to logged in users. You won't show up in search results, unless the user is logged in.</div>
+				<div class="switch-text">
+					<strong>Account Visibilty:</strong> Only show profile to logged in users.
+					<?php if($app->user->settings->loggedinprofile=='yes'): ?>
+						<span class="red-text">You won't show up in search results, unless the user is logged in.</span>
+					<?php endif; ?>
+				</div>
 			</div>
 			<div class="col s6 m4 l4 right-align">
 				<div class="switch">

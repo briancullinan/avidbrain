@@ -361,4 +361,8 @@ main .container-nopadd{
 }
 .private-profile{
     text-align: center;
+
+}
+.private-profile h1{
+	color:#fff;
 }

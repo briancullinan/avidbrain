@@ -12,6 +12,8 @@
 	$routes['errors'] = (object)array('url'=>'/errors','slug'=>'errors','route'=>'/errors/','include'=>'errors','protected'=>NULL,'permissions'=>array());
 	$routes['ab-qa'] = (object)array('url'=>'/ab-qa','slug'=>'ab-qa','route'=>'/ab-qa/','include'=>'ab-qa','protected'=>NULL,'permissions'=>array());
 	$routes['easy'] = (object)array('url'=>'/easy','slug'=>'easy','route'=>'/easy/','include'=>'easy','protected'=>NULL,'permissions'=>array());
+	$routes['facebook'] = (object)array('url'=>'/facebook','slug'=>'facebook','route'=>'/facebook/','include'=>'signup/student/','protected'=>NULL,'permissions'=>array());
+	$routes['facebook'] = (object)array('url'=>'/facebook','slug'=>'student','route'=>'/facebook/','params'=>array('promocode'=>'facebook'),'include'=>'signup/student','protected'=>NULL,'permissions'=>array());
 
 	$routes['subjects-match'] = (object)array('url'=>'/subjects-match','slug'=>'subjects-match','route'=>'/subjects/:subject/','include'=>'subjects-match','protected'=>NULL,'permissions'=>array());
 
