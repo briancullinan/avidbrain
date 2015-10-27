@@ -94,7 +94,7 @@
 						Posted by ~
 						<?php if(isset($app->job->anonymous)): ?>
 							Student
-						<?php if(isset($app->user->email)): ?>
+						<?php elseif(isset($app->user->email)): ?>
 						<a href="<?php echo $app->job->url; ?>">
 							<?php echo the_users_name($app->job); ?>
 						</a>

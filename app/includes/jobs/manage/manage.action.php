@@ -1,5 +1,7 @@
 <?php
 
+	//echo 'JOJOJO';exit;
+
 	$selectJobs = "
 		jobs.*,
 		user.zipcode, user.first_name, user.last_name, user.city, user.state, user.state_long, user.state_slug, user.city_slug, user.url,
@@ -15,10 +17,11 @@
 		$data	=	$data->where('user.email = :email')->setParameter('email',$app->user->email);
 	}
 	$data	=	$data->andWhere('jobs.id = :id')->setParameter('id',$id);
-	$data	=	$data->innerJoin('jobs', 'avid___user', 'user', 'user.email = jobs.email');
-	$data	=	$data->innerJoin('jobs', 'avid___user_account_settings', 'settings', 'jobs.email = settings.email');
+	$data	=	$data->leftJoin('jobs', 'avid___user', 'user', 'user.email = jobs.email');
+	$data	=	$data->leftJoin('jobs', 'avid___user_account_settings', 'settings', 'jobs.email = settings.email');
 	$job	=	$data->execute()->fetch();
-	//	notify($job);
+
+	//notify($job);
 
 	if(empty($job->id)){
 		$app->redirect('/jobs');
