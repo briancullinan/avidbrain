@@ -63,6 +63,15 @@
 	main .container{
 		padding-top: 60px;
 	}
+	#ts_first_name{
+		margin-bottom: 20px;
+	}
+	.maintutor h1{
+		font-size: 45px;
+	}
+	.signup-copy{
+		min-height: 400px;
+	}
 }
 
 @media only screen and (max-width: 992px){
