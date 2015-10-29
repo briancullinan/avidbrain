@@ -686,3 +686,117 @@ background-attachment: fixed;
 	display: inline-block;
 	margin-right: 10px;
 }
+
+
+/*New Tutor Signup*/
+.maintutor header{
+	position: absolute;
+}
+.maintutor main{
+	background: url('/images/subs/become-a-tutor3.jpg') top left no-repeat ;
+}
+.maintutor main .container{
+	max-width: 1200px;
+}
+.new-inputs{
+	margin-bottom: 20px;
+}
+.tutor-block .form-post{
+
+	padding: 0px;
+}
+.new-inputs .input-wrapper{
+	border: 1px solid #dcdcdc;
+    padding: 8px 12px;
+	background: #fff;
+}
+.input-wrapper input, .input-wrapper textarea{
+	border: none !important;
+	box-shadow: none !important;
+	background: transparent !important;
+	margin: 0px;
+	padding: 0px;
+	line-height: normal;
+	font-size: .8em;
+}
+.tutor-block{
+	background: #f1f1f1;
+	padding: 20px 10px;
+}
+.blocks{
+	padding: 5px 25px;
+}
+.maintutor main .container{
+	padding-top: 100px;
+
+}
+.maintutor h1, .maintutor h2{
+	display:inline-block;
+	color:#fff;
+	line-height: normal;
+	background: #333;
+	padding: 5px 10px;
+}
+.tutor-signup-title{
+	position: relative;
+	z-index: 333;
+}
+.tutor-signup-sub{
+	position: relative;
+	z-index: 222;
+	margin-top: 0px;
+
+
+}
+
+
+
+.maintutor h1{
+	font-size: 50px;
+}
+.maintutor h2{
+	font-size: 40px;
+	color:#ccc;
+	background: #444;
+}
+.maintutor h3{
+	margin-top: 15px;
+}
+.signup-copy{
+	color:#fff;
+	font-size: 20px;
+	min-height: 470px;
+}
+.maintutor .block{
+	min-height: 700px;
+}
+.signup-title{
+	text-align: center;
+	font-size: 20px;
+	margin-bottom: 10px;
+	text-transform:uppercase;
+}
+.page-title{
+	font-family: 'Quicksand';
+	font-weight: 700;
+	font-size: 30px;
+}
+.maintutor [type="checkbox"].filled-in:checked+label:after {
+    top: 0;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #00ADFF;
+    background-color: #00ADFF;
+    z-index: 0;
+}
+.the-disclaimer{
+	font-size: 11px;
+	color:#999;
+}
+.maintutor #toast-container{
+
+}
+.spacer-block{
+	width: 100%;
+	height:370px;
+}
