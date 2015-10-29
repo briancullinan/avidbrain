@@ -146,7 +146,7 @@
 
 						<div class="col s12 m12 l12">
 							<div class="input-wrapper" id="ts_reasons">
-								<textarea class="materialize-textarea" name="tutorsignup[tutor][reasons]" placeholder="Why do you want to be a tutor?"></textarea>
+								<textarea class="materialize-textarea" name="tutorsignup[tutor][reasons]" placeholder="Why do you want to be a tutor? (Explain In Detail)"></textarea>
 							</div>
 						</div>
 
