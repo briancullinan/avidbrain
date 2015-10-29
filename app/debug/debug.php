@@ -123,6 +123,5 @@
 	});
 
 	$app->error(function (\Exception $error) use ($app) {
-		echo'zebras';exit;
 		errorHandler($error->getCode(),$error->getMessage(),$error->getFile(),$error->getLine(),$error->getTrace(),$app->request->isAjax(),$app);
 	});

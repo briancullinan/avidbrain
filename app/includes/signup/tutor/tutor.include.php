@@ -1,75 +1,85 @@
 <div class="row">
+	<div class="col s12 m8 l8">
+		<h1>AvidBrain Needs Tutors <br> Just Like You</h1>
+		<p class="white-text">
+			Drive with uber and earn great money as an independent contractor. Get paid weekly just for helping our community of riders get around town. Be your own boss and get paid in fares for driving on your own schedule.
+		</p>
 
-	<div class="col s12 m12 l6">
 
-        <h2>Become a Tutor</h2>
-
-		<?php
-
-			$tutorSignup = new Forms($app->connect);
-			$tutorSignup->formname = 'becomeatutor';
-			$tutorSignup->url = $app->request->getPath();
-			$tutorSignup->dependents = $app->dependents;
-			$tutorSignup->csrf_key = $csrf_key;
-			$tutorSignup->csrf_token = $csrf_token;
-			$tutorSignup->killAjax = true;
-			if(isset($promocode)){
-
-				$mycode = new stdClass();
-				$mycode->promocode = $promocode;
-				$tutorSignup->formvalues = $mycode;
-
-			}
-
-			$tutorSignup->makeform();
-
-		?>
 
 	</div>
+	<div class="col s12 m4 l4">
+		<div class="block">xxx</div>
+	</div>
+</div>
 
-	<div class="col s12 m12 l6">
-		<h2>Tutor Benefits</h2>
-		<ul class="collection">
-			<li class="collection-item"> <i class="fa fa-check light-green-text accent-2-text"></i> Choose your rate</li>
-			<li class="collection-item"> <i class="fa fa-check light-green-text accent-2-text"></i> Choose your hours</li>
-			<li class="collection-item"> <i class="fa fa-check light-green-text accent-2-text"></i> Choose your clients</li>
-			<li class="collection-item"> <i class="fa fa-check light-green-text accent-2-text"></i> Work remotely or in person</li>
-			<li class="collection-item"> <i class="fa fa-check light-green-text accent-2-text"></i> Access to teaching resources</li>
-			<li class="collection-item"> <i class="fa fa-check light-green-text accent-2-text"></i> Network with other tutors</li>
-			<li class="collection-item"> <i class="fa fa-check light-green-text accent-2-text"></i> <strong>Highest pay percentage in the industry!</strong></li>
-		</ul>
-		<br/>
-		<h2>Application Process</h2>
-		<ul class="collection">
-			<li class="collection-item"> <i class="fa fa-check light-green-text accent-2-text"></i> Submit your application and resume </li>
-			<li class="collection-item"> <i class="fa fa-check light-green-text accent-2-text"></i> Schedule a phone interview with one of our staff members </li>
-			<li class="collection-item"> <i class="fa fa-check light-green-text accent-2-text"></i> Mandatory Background Check <span class="green-text">($29.99)</span> </li>
-			<li class="collection-item"> <i class="fa fa-check light-green-text accent-2-text"></i> Profile Creation </li>
-			<li class="collection-item"> <i class="fa fa-check light-green-text accent-2-text"></i> Start Tutoring </li>
-		</ul>
-		<br>
-		<h2>How much can you make?</h2>
-		<div class="block">
-			<div>Enter a subject and a zip code to find out how much tutors in your area are making.</div>
-			<div class="show-prices"></div>
-			<?php
-				$variablename = new Forms($app->connect);
-				$variablename->formname = 'getprices';
-				$variablename->url = $app->request->getPath();
-				$variablename->dependents = $app->dependents;
-				$variablename->csrf_key = $csrf_key;
-				$variablename->csrf_token = $csrf_token;
-				$variablename->button = 'Get Prices';
-				$variablename->classname = 'getprices';
-				$variablename->makeform();
-			?>
+<div class="row">
+	<div class="col s12 m8 l8">
 
+		<div class="blocks">
+			<div class="row">
+				<div class="col s12 m4 l4">
+					<img src="/images/icons/money.png" class="responsive-img" />
+				</div>
+				<div class="col s12 m8 l8">
+					<div class="title">MAKE GOOD MONEY.</div>
+					<div class="copy">Got a car? Turn it into a money machine. The city is buzzing and Uber makes it easy for you to cash in on the action. Plus, you've already got everything you need to get started.</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col s12 m4 l4">
+					<img src="/images/icons/time.png" class="responsive-img" />
+				</div>
+				<div class="col s12 m8 l8">
+					<div class="title">DRIVE WHEN YOU WANT.</div>
+					<div class="copy">Need something outside the 9 to 5? As an independent contractor with Uber, you’ve got freedom and flexibility to drive whenever you have time. Set your own schedule, so you can be there for all of life’s most important moments.</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col s12 m4 l4">
+					<img src="/images/icons/office.png" class="responsive-img" />
+				</div>
+				<div class="col s12 m8 l8">
+					<div class="title">NO OFFICE, NO BOSS.</div>
+					<div class="copy">Whether you’re supporting your family or saving for something big, Uber gives you the freedom to get behind the wheel when it makes sense for you. Choose when you drive, where you go, and who you pick up.</div>
+				</div>
+			</div>
 		</div>
 
 	</div>
-
+	<div class="col s12 m4 l4">
+		&nbsp;
+	</div>
 </div>
 
-<?php if(isset($app->purechat)): ?>
-	<script type='text/javascript' data-cfasync='false'>window.purechatApi = { l: [], t: [], on: function () { this.l.push(arguments); } }; (function () { var done = false; var script = document.createElement('script'); script.async = true; script.type = 'text/javascript'; script.src = 'https://app.purechat.com/VisitorWidget/WidgetScript'; document.getElementsByTagName('HEAD').item(0).appendChild(script); script.onreadystatechange = script.onload = function (e) { if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) { var w = new PCWidget({c: 'a450183c-ea47-4537-89d4-f8b55a44e006', f: true }); done = true; } }; })();</script>
-<?php endif; ?>
+
+<style type="text/css">
+.maintutor header{
+	position: absolute;
+}
+.maintutor main{
+	background: url('/images/subs/become-a-tutor.jpg') top center no-repeat ;
+
+}
+.blocks{
+	padding: 15px;
+}
+.maintutor main .container{
+	padding-top: 100px;
+
+}
+.maintutor h1{
+	color:#fff;
+	line-height: normal;
+}
+.maintutor .block{
+	min-height: 700px;
+}
+.title{
+	font-family: 'Quicksand';
+	font-weight: 700;
+	font-size: 30px;
+}
+</style>
