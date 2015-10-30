@@ -1,7 +1,7 @@
 <?php
 
 	if(isset($dependents->offline)){
-		
+
 		$cdncss = array(
 			'/offline/font-awesome.min.css',
 			'/offline/materialize.min.css',
@@ -12,7 +12,7 @@
 		$cdnjs = array(
 			'/offline/materialize.min.js'
 		);
-		
+
 	}
 	else{
 		$material = '0.97.0';
@@ -32,7 +32,7 @@
 			'//cdnjs.cloudflare.com/ajax/libs/materialize/'.$material.'/js/materialize.min.js'
 		);
 	}
-	
+
 
 	$localcss = array(
 		'jquery.nouislider.min.css',
@@ -50,7 +50,7 @@
 		'customize-avatar.css'
 	);
 
-	
+
 
 	$localjs = array(
 		'functions.js',

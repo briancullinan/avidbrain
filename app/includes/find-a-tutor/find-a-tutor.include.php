@@ -105,7 +105,7 @@
 				$promocode = 'Enter Your Promo Code';
 			}
 			$studentSignup->formname = 'signup';
-			$studentSignup->url = $app->request->getPath();
+			$studentSignup->url = '/signup/student';
 			$studentSignup->dependents = $app->dependents;
 			$studentSignup->csrf_key = $csrf_key;
 			$studentSignup->csrf_token = $csrf_token;

@@ -1,92 +1,293 @@
-<div class="student-signup hide">
-	<p>Welcome to <?php echo $app->dependents->SITE_NAME_PROPPER; ?>! We are a trusted community marketplace that connects students and qualified tutors for online and in-person tutoring sessions. All tutors are interviewed and background checked to ensure safety and effectiveness. </p>
+<div class="new-signup">
 
-	<div class="signup-how-it-works center-align">
-		<div class="how-it-works" data-status="closed">
-	    	<span>How It Works</span>
+	<div class="row">
+		<div class="col s12 m6 l8">
+			<div class="tutor-signup-title"><h1>Looking For A Tutor?</h1></div>
+			<div class="tutor-signup-sub"><h2>You've Come To The Right Place</h2></div>
+			<p class="signup-copy">
+				Welcome to AvidBrain, the easiest way to find a qualified tutor, who is interviewed and background checked. <br><br>
+				Sign up and create your account in minutes.
+			</p>
+
+			<div class="blocks">
+
+				<div class="row">
+					<div class="col s12 m4 l4">
+						<div class="center-align"><img src="/images/icons/money.png" class="responsive-img" /></div>
+					</div>
+					<div class="col s12 m8 l8">
+						<div class="page-title">
+							Free Job Posts
+						</div>
+						<div class="copy">
+							Post a job and tutors will come to you, no searching needed.
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col s12 m4 l4">
+						<div class="center-align"><img src="/images/icons/money.png" class="responsive-img" /></div>
+					</div>
+					<div class="col s12 m8 l8">
+						<div class="page-title">
+							Find The Price That Fits You
+						</div>
+						<div class="copy">
+							With over 2,000 tutors available, you can pick and choose the best tutor to fit your price range.
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col s12 m4 l4">
+						<div class="center-align"><img src="/images/icons/money.png" class="responsive-img" /></div>
+					</div>
+					<div class="col s12 m8 l8">
+						<div class="page-title">
+							Safe & Secure
+						</div>
+						<div class="copy">
+							something about being safe and secure...
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+
+
+		</div>
+		<div class="col s12 m6 l4">
+			<div class="block tutor-block">
+
+				<form class="form-post" action="/signup/student" method="post" id="studentsignup">
+					<div class="signup-title">
+						Student Signup
+					</div>
+
+					<div class="new-inputs">
+						<div class="row">
+
+							<div class="col s12 m6 l6">
+								<div class="input-wrapper" id="ts_first_name"><input type="text" name="studentsignup[student][first_name]" autofocus="autofocus" placeholder="First Name" /></div>
+							</div>
+
+							<div class="col s12 m6 l6">
+								<div class="input-wrapper" id="ts_last_name"><input type="text" name="studentsignup[student][last_name]" placeholder="Last Name" /></div>
+							</div>
+
+						</div>
+					</div>
+
+					<div class="new-inputs">
+						<div class="row">
+
+							<div class="col s12 m12 l12">
+								<div class="input-wrapper" id="ts_email"><input type="email" name="studentsignup[student][email]" placeholder="Email Address" /></div>
+							</div>
+
+						</div>
+					</div>
+
+					<div class="new-inputs">
+						<div class="row">
+
+							<div class="col s12 m12 l12">
+								<div class="input-wrapper" id="ts_phone"><input type="tel" name="studentsignup[student][phone]" placeholder="Phone Number" /></div>
+							</div>
+
+						</div>
+					</div>
+
+					<?php if(isset($app->isvalidpromo)): ?>
+						<div class="promocode-activated">
+							<div class="promocode-activated-message">
+								Promo Code Applied: <span>$<?php echo $app->isvalidpromo->value; ?>.00</span>
+							</div>
+						</div>
+					<?php endif; ?>
+
+					<div class="new-inputs">
+						<div class="row">
+
+							<div class="col s12 m12 l12">
+								<div class="input-wrapper" id="ts_promocode"><input type="text" name="studentsignup[student][promocode]" placeholder="Promo Code (Optional)" value="<?php if(isset($promocode)){ echo $promocode; } ?>" /></div>
+							</div>
+
+						</div>
+					</div>
+
+					<div class="new-inputs">
+						<div class="row">
+
+							<div class="col s12 m12 l12">
+								<div class="input-wrapper" id="ts_password"><input type="password" name="studentsignup[student][password]" placeholder="Password (At least 6 characters)" /></div>
+							</div>
+
+						</div>
+					</div>
+
+					<div class="new-inputs">
+						<div class="row">
+
+							<div class="col s12 m12 l12">
+								<div class="input-wrapper" id="ts_zipcode"><input type="text" name="studentsignup[student][zipcode]" placeholder="Your Zip Code" /></div>
+							</div>
+
+						</div>
+					</div>
+
+					<div class="new-inputs">
+						<div class="row">
+							<div class="col s12 m12 l12">
+								<button class="btn btn-l btn-block">
+									Submit
+								</button>
+							</div>
+						</div>
+				  	</div>
+
+					<div class="new-inputs">
+						<div class="row">
+							<div class="col s12 m12 l12">
+								<div class="the-disclaimer">
+									By signing up I agree that AvidBrain may contact me by email, phone, or SMS at the email address or number I provide. I have read, understand and agree to the <a href="/terms-of-use" target="_blank">Terms of Service</a>.
+								</div>
+							</div>
+						</div>
+				  	</div>
+
+					<input type="hidden" name="studentsignup[target]" value="studentsignup"  />
+					<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
+				</form>
+
+			</div>
+
+			<h3>Student Benefits</h3>
+
+			<ul class="collection">
+				<li class="collection-item">
+					<div class="row">
+						<div class="col s2 m2 l2">
+							<i class="fa fa-search light-green-text accent-2-text"></i>
+						</div>
+						<div class="col s10 m10 l10">
+							Choose a tutor that works for you
+						</div>
+					</div>
+				</li>
+				<li class="collection-item">
+					<div class="row">
+						<div class="col s2 m2 l2">
+							<i class="fa fa-calendar-o  light-green-text accent-2-text"></i>
+						</div>
+						<div class="col s10 m10 l10">
+							Choose your schedule
+						</div>
+					</div>
+				</li>
+				<li class="collection-item">
+					<div class="row">
+						<div class="col s2 m2 l2">
+							<i class="fa fa-wifi light-green-text accent-2-text"></i>
+						</div>
+						<div class="col s10 m10 l10">
+							Be tutored online or in person
+						</div>
+					</div>
+				</li>
+				<li class="collection-item">
+					<div class="row">
+						<div class="col s2 m2 l2">
+							<i class="fa fa-exchange  light-green-text accent-2-text"></i>
+						</div>
+						<div class="col s10 m10 l10">
+							Network with other students
+						</div>
+					</div>
+				</li>
+				<li class="collection-item">
+					<div class="row">
+						<div class="col s2 m2 l2">
+							<i class="fa fa-check light-green-text accent-2-text"></i>
+						</div>
+						<div class="col s10 m10 l10">
+							No long term contracts
+						</div>
+					</div>
+				</li>
+				<li class="collection-item">
+					<div class="row">
+						<div class="col s2 m2 l2">
+							<i class="fa fa-globe light-green-text accent-2-text"></i>
+						</div>
+						<div class="col s10 m10 l10">
+							Tutors are available nationwide
+						</div>
+					</div>
+				</li>
+				<li class="collection-item">
+					<div class="row">
+						<div class="col s2 m2 l2">
+							<i class="fa fa-dollar light-green-text accent-2-text"></i>
+						</div>
+						<div class="col s10 m10 l10">
+							No sign up cost
+						</div>
+					</div>
+				</li>
+				<li class="collection-item">
+					<div class="row">
+						<div class="col s2 m2 l2">
+							<i class="fa fa-user light-green-text accent-2-text"></i>
+						</div>
+						<div class="col s10 m10 l10">
+							Tutors are interviewed and background checked
+						</div>
+					</div>
+				</li>
+				<li class="collection-item">
+					<div class="row">
+						<div class="col s2 m2 l2">
+							<i class="fa fa-thumbs-up  light-green-text accent-2-text"></i>
+						</div>
+						<div class="col s10 m10 l10">
+							First hour guaranteed*
+						</div>
+					</div>
+				</li>
+			</ul>
+
+			<small>*If you are not completely satisfied with your initial session, we will refund you the cost of the first hour.</small>
+
+
+
 		</div>
 	</div>
-</div>
 
-<?php if(isset($app->isvalidpromo)): ?>
-<div class="center-align">
-	<div class="green white-text signup-promo">
-		Signup now with promo code: <span><?php echo $app->isvalidpromo->promocode; ?></span> and get $<?php echo numbers($app->isvalidpromo->value,1); ?> off your next tutoring session.
-	</div>
-</div>
-<?php endif;?>
-
-<div class="row">
-
-	<div class="col s12 m12 l6 <?php if(isset($promocode)){ echo 'active-promo';} ?>">
-		<h2>Become A Student</h2>
-		<?php
-
-
-			$studentSignup = new Forms($app->connect);
-			if(isset($promocode) && $promocode=='promocode'){
-				$studentSignup->classname = 'promocode';
-				//unset($promocode);
-				$promocode = 'Enter Your Promo Code';
-			}
-			$studentSignup->formname = 'signup';
-			$studentSignup->url = $app->request->getPath();
-			$studentSignup->dependents = $app->dependents;
-			$studentSignup->csrf_key = $csrf_key;
-			$studentSignup->csrf_token = $csrf_token;
-			if(isset($promocode)){
-
-				$mycode = new stdClass();
-				$mycode->promocode = $promocode;
-
-			}
-
-			if(isset($app->mylocation->zipcode)){
-				if(empty($mycode)){
-					$mycode = new stdClass();
-				}
-				$mycode->zipcode = $app->mylocation->zipcode;
-			}
-
-			if(isset($mycode)){
-				$studentSignup->formvalues = $mycode;
-			}
-
-			$studentSignup->makeform();
-
-		?>
-	</div>
-
-	<div class="col s12 m12 l6">
-		<h2>Student Benefits</h2>
-
-		<?php include($app->dependents->APP_PATH.'includes/signup/student/student-benefits.php'); ?>
-
-		<br><br>
-		<div class="how-it-works center-align" data-status="closed">
-	    	<span>How It Works</span>
-		</div>
-
-	</div>
+	<?php
+		//https://www.iconfinder.com/iconsets/anchor
+	?>
 
 </div>
 
-<div class="why-tutoring hide">
-	<h2>Why Tutoring</h2>
-	<strong>Tutoring provides personalized, one-on-one attention.</strong>
-	<p>In today's schools, the majority of teachers are because they enjoy helping students learn. However, teachers are limited by time and resources in regards to how much time they can spend giving attention to individual students. Teachers must show a strong balance between answering individual questions and focusing on the group as a whole. Because of this, your student might not be receiving the individual attention they need. With one-on-one tutoring, the tutor is dedicated 100% to your child's specific needs. Tutors are able to tailor sessions to best be able to help your student with his or her individual goals and challenges.</p>
-	<strong>Tutoring creates extra study time (focused and on-task). </strong>
-	<p>Another reason tutoring works is that it gives the student a set day or days each week to dedicate extra time to his or her schoolwork.</p>
-	<strong>Tutoring provides opportunities for advancement.</strong>
-	<p>As globalization increases, it is of the upmost importance that students gain a competitive ad. Some students feel they are already excelling in their classes, yet they want more of a competitive edge. A tutor can help with this.</p>
-</div>
 
-<?php if(isset($app->purechat)): ?>
-	<script type='text/javascript' data-cfasync='false'>window.purechatApi = { l: [], t: [], on: function () { this.l.push(arguments); } }; (function () { var done = false; var script = document.createElement('script'); script.async = true; script.type = 'text/javascript'; script.src = 'https://app.purechat.com/VisitorWidget/WidgetScript'; document.getElementsByTagName('HEAD').item(0).appendChild(script); script.onreadystatechange = script.onload = function (e) { if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) { var w = new PCWidget({c: 'a450183c-ea47-4537-89d4-f8b55a44e006', f: true }); done = true; } }; })();</script>
-<?php endif; ?>
-
-<?php if(isset($promocode) && $promocode=='facebook'): ?>
-<a href="https://www.facebook.com/dialog/feed?app_id=184683071273&link=https%3A%2F%2Fwww.avidbrain.com%2Ffacebook&picture=https%3A%2F%2Fwww.avidbrain.com%2Fimages%2Fshare%2Ffacebookpromo.jpg&name=Signup%20now%20and%20get%20%2430%20off%20your%20first%20lesson.&caption=%20&description=Looking%20for%20a%20tutor%3F%20Look%20no%20further.%20Signup%20now%20with%20avidbrain%20and%20get%20%2430%20off%20your%20next%20tutoring%20session.&redirect_uri=http%3A%2F%2Fwww.facebook.com%2F" target="_blank" class="share-on-facebook">
-	<i class="fa fa-facebook"></i> Share On Facebook
-</a>
-<?php endif; ?>
+<style type="text/css">
+.promocode-activated{
+	width: 100%;
+	float: left;
+	margin-bottom: 20px;
+	padding: 0px 13px;
+}
+.promocode-activated-message{
+	background: #333;
+	padding: 10px;
+	color:#bdff00;
+	text-align: center;
+	font-size: 16px;
+}
+.promocode-activated-message span{
+	color:#fff;
+}
+</style>

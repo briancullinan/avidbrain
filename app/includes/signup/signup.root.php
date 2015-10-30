@@ -10,7 +10,7 @@
 	$app->childen = $childen;
 	$navtitle = (object)array('slug'=>'/signup','text'=>'Signup');
 	$app->navtitle = $navtitle;
-	
+
 	if($app->target->key!='/signup/tutor'){
-		$app->secondary = $app->target->secondaryNav;
+		//$app->secondary = $app->target->secondaryNav;
 	}

@@ -689,14 +689,17 @@ background-attachment: fixed;
 
 
 /*New Tutor Signup*/
-.maintutor header{
+.maintutor header, .mainstudent header{
 	position: absolute;
 }
 .maintutor main{
 	background: url('/images/subs/become-a-tutor3.jpg') top left no-repeat ;
 }
-.maintutor main .container{
-	max-width: 1200px;
+.mainstudent main{
+	background: url('/images/subs/become-a-student.jpg') top left no-repeat ;
+}
+.maintutor main .container, .mainstudent main .container{
+	max-width: 1200pxmainstudent
 }
 .new-inputs{
 	margin-bottom: 20px;
@@ -730,11 +733,10 @@ background-attachment: fixed;
 	padding-top: 100px;
 
 }
-.maintutor h1, .maintutor h2{
+.new-signup h1, .new-signup h2{
 	display:inline-block;
 	color:#fff;
 	line-height: normal;
-	background: #333;
 	padding: 5px 10px;
 }
 .tutor-signup-title{
@@ -751,15 +753,16 @@ background-attachment: fixed;
 
 
 
-.maintutor h1{
+.new-signup h1{
 	font-size: 50px;
+	background: rgba(34, 34, 34, 0.8);
 }
-.maintutor h2{
+.new-signup h2{
 	font-size: 40px;
 	color:#ccc;
-	background: #444;
+	background: rgba(51, 51, 51, 0.8);
 }
-.maintutor h3{
+.new-signup h3{
 	margin-top: 15px;
 }
 .signup-copy{
@@ -767,8 +770,8 @@ background-attachment: fixed;
 	font-size: 20px;
 	min-height: 470px;
 }
-.maintutor .block{
-	min-height: 700px;
+.new-signup .block{
+	min-height: 400px;
 }
 .signup-title{
 	text-align: center;
@@ -782,7 +785,7 @@ background-attachment: fixed;
 	font-size: 30px;
 	line-height: normal;
 }
-.maintutor [type="checkbox"].filled-in:checked+label:after {
+.new-signup [type="checkbox"].filled-in:checked+label:after {
     top: 0;
     width: 20px;
     height: 20px;
@@ -794,7 +797,7 @@ background-attachment: fixed;
 	font-size: 11px;
 	color:#999;
 }
-.maintutor #toast-container{
+.new-signup #toast-container{
 
 }
 .spacer-block{
