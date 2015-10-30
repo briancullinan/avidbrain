@@ -1,8 +1,20 @@
 <?php
 
+    function ghost($connect){
+        $start = "ghost-";
+        $middle = unique_username($connect,1);
+        $end = "@avidbrain.com";
+
+        return $start.$middle.$end;
+    }
+
     if(isset($app->postjob->type) && $app->postjob->type=='update' && isset($id)){
 
         $update = array();
+
+        if(empty($app->postjob->zipcode)){
+            new Flash(array('action'=>'required','formID'=>'findasubject','message'=>'Zipcode Required <i class="fa fa-warning"></i>'));
+        }
 
         if(isset($app->postjob->newemail) && !empty($app->postjob->newemail)){
             $isuserreal = doesuserexist($app->connect,$app->postjob->newemail);
@@ -10,9 +22,44 @@
                 new Flash(array('action'=>'required','formID'=>'findasubject','message'=>'Invalid User: <span>'.$app->postjob->newemail.'</span>'));
             }
             else{
+
+                if(isset($app->thejob->email)){
+                    if (strpos($app->thejob->email, 'ghost-') !== false){
+                        $app->connect->delete('avid___user',array('email'=>$app->thejob->email));
+                        $app->connect->delete('avid___user_profile',array('email'=>$app->thejob->email));
+                        $app->connect->delete('avid___user_account_settings',array('email'=>$app->thejob->email));
+                    }
+                }
                 $update['email'] = $app->postjob->newemail;
                 $update['anonymous'] = NULL;
             }
+        }
+        else{
+            $email = ghost($app->connect);
+            $zipcodeinfo = get_zipcode_data($app->connect,$app->postjob->zipcode);
+            $newUser = array(
+                // avid___user
+                'email'=>$email,
+                'usertype'=>'student',
+                'state'=>$zipcodeinfo->state_long,
+                'state_long'=>$zipcodeinfo->state_long,
+                'state_slug'=>$zipcodeinfo->state_slug,
+                'city'=>$zipcodeinfo->city,
+                'city_slug'=>$zipcodeinfo->city_slug,
+                'zipcode'=>$zipcodeinfo->zipcode,
+                '`lat`'=>$zipcodeinfo->lat,
+                '`long`'=>$zipcodeinfo->long,
+                'username'=>unique_username($app->connect,1),
+                'status'=>NULL
+            );
+            $newUserProfile = array('email'=>$email);
+            $newUserSettings = array('email'=>$email);
+            $app->connect->insert('avid___user',$newUser);
+            $app->connect->insert('avid___user_profile',$newUserProfile);
+            $app->connect->insert('avid___user_account_settings',$newUserSettings);
+
+            $update['email'] = $email;
+
         }
 
         $update['job_description'] = $app->postjob->job_description;
@@ -43,7 +90,10 @@
             //new Flash(array('action'=>'required','formID'=>'findasubject','message'=>'Duplicate posting for <span>'.$app->postjob->subject_name.'</span>'));
         }
 
-        if(empty($app->postjob->subject_name)){
+        if(empty($app->postjob->zipcode)){
+            new Flash(array('action'=>'required','formID'=>'findasubject','message'=>'Zipcode Required <i class="fa fa-warning"></i>'));
+        }
+        elseif(empty($app->postjob->subject_name)){
             new Flash(array('action'=>'required','formID'=>'findasubject','message'=>'Subject Required <i class="fa fa-warning"></i>'));
         }
         elseif(empty($app->postjob->job_description)){
@@ -70,8 +120,10 @@
             $app->postjob->id = NULL;
         }
 
+        $email = ghost($app->connect);
+
         $newjob = array(
-            'email'=>$app->user->email,
+            'email'=>$email,
             'subject_name'=>$app->postjob->subject_name,
             'subject_slug'=>$app->postjob->subject_slug,
             'parent_slug'=>$app->postjob->parent_slug,
@@ -86,7 +138,27 @@
             'anonymous'=>1
         );
 
-
+        $zipcodeinfo = get_zipcode_data($app->connect,$app->postjob->zipcode);
+        $newUser = array(
+            // avid___user
+            'email'=>$email,
+            'usertype'=>'student',
+            'state'=>$zipcodeinfo->state_long,
+            'state_long'=>$zipcodeinfo->state_long,
+            'state_slug'=>$zipcodeinfo->state_slug,
+            'city'=>$zipcodeinfo->city,
+            'city_slug'=>$zipcodeinfo->city_slug,
+            'zipcode'=>$zipcodeinfo->zipcode,
+            '`lat`'=>$zipcodeinfo->lat,
+            '`long`'=>$zipcodeinfo->long,
+            'username'=>unique_username($app->connect,1),
+            'status'=>NULL
+        );
+        $newUserProfile = array('email'=>$email);
+        $newUserSettings = array('email'=>$email);
+        $app->connect->insert('avid___user',$newUser);
+        $app->connect->insert('avid___user_profile',$newUserProfile);
+        $app->connect->insert('avid___user_account_settings',$newUserSettings);
 
         $app->connect->insert('avid___jobs',$newjob);
         $jobid = $app->connect->lastInsertId();

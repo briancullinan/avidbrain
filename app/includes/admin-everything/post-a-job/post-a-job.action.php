@@ -8,9 +8,15 @@
     }
 
     if(isset($id)){
-        $sql = "SELECT * FROM avid___jobs WHERE anonymous IS NOT NULL AND id = :id";
+        $sql = "
+            SELECT jobs.*, user.zipcode FROM avid___jobs jobs
+                LEFT JOIN
+                avid___user user on user.email = jobs.email
+            WHERE anonymous IS NOT NULL AND jobs.id = :id
+        ";
         $prepare = array(':id'=>$id);
         $results = $app->connect->executeQuery($sql,$prepare)->fetch();
+        //notify($results);
         if(isset($results->id)){
             $app->thejob = $results;
         }
