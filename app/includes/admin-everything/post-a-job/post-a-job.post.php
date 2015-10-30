@@ -140,7 +140,7 @@
 
 
             if(isset($data[0]) && $app->dependents->MODE == 'production'){
-                
+
                 $subject = 'A student has posted a new job';
                 $message = '<br><h2>'.$app->postjob->subject_name.' Student</h2>';
 
@@ -151,9 +151,6 @@
                 $message.= '<p><a href="'.$app->dependents->DOMAIN.'/jobs/apply/'.$jobid.'">View Job Posting</a></p>';
 
                 $message.= '<p>If you do not want to receive these emails, you can change your options in the Account Settings Page</p>';
-
-                notify($message);
-
 
                 foreach($data as $sendEmail){
                     $app->mailgun->to = $sendEmail->email;
