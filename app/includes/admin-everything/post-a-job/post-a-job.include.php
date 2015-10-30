@@ -1,6 +1,8 @@
 <div class="row">
 	<div class="col s12 m3 l3">
-        
+
+		<?php echo $app->dependents->MODE; ?>
+
 		<a href="/admin-everything/post-a-job" class="btn btn-block">Post New Job</a>
 		<div class="block block-list">
             <?php if(isset($app->postedjobs)): ?>
