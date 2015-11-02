@@ -72,6 +72,14 @@
 	.signup-copy{
 		min-height: 400px;
 	}
+
+	.maintutor main, .mainstudent main{
+		background-position: -50px -170px;
+	}
+	.signup-copy{
+		min-height: 240px;
+	}
+
 }
 
 @media only screen and (max-width: 992px){

@@ -102,7 +102,8 @@
 					<?php if(isset($app->isvalidpromo)): ?>
 						<div class="promocode-activated">
 							<div class="promocode-activated-message">
-								Promo Code Applied: <span>$<?php echo $app->isvalidpromo->value; ?>.00</span>
+								<strong>Promo Code Applied</strong> <br/>
+								<span>$<?php echo $app->isvalidpromo->value; ?>.00 Off Your First Tutoring Session</span>
 							</div>
 						</div>
 					<?php endif; ?>
