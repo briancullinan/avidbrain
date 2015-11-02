@@ -33,5 +33,9 @@
 			$app->titleAdd = 'Phoenix';
 			$app->target->css.=' phoenix ';
 		}
+		elseif($promocode=='cl_la'){
+			$app->titleAdd = 'Los Angeles';
+			$app->target->css.=' losangeles ';
+		}
 
 	}

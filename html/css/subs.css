@@ -721,6 +721,9 @@ background-attachment: fixed;
 .maintutor.phoenix main{
 	background-image: url('/images/subs/phoenix.jpg');
 }
+.maintutor.losangeles main{
+	background-image: url('/images/subs/losengeles.jpg');
+}
 
 .mainstudent main{
 	background: url('/images/subs/become-a-student.jpg') top left no-repeat ;
