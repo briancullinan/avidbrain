@@ -58,7 +58,15 @@
 
 	$data = make_search_key_cache($data,$app->connect);
 
-	if($count>0){
+	if(empty($data)){
+		$math = ceil(($count/$offsets->perpage));
+		if($math>0){
+			$goback = str_replace($app->number,$math,$app->request->getPath());
+			$app->redirect($goback);
+			exit;
+		}
+	}
+	elseif($count>0){
 
 		$app->searchResults = $data;
 

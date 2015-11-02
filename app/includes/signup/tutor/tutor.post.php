@@ -152,7 +152,8 @@
 			'over18'=>true,
 			'legalresident'=>true,
 			'tutoredbefore'=>$tutoredbefore,
-			'linkedinprofile'=>$app->tutorsignup->tutor->linkedinprofile
+			'linkedinprofile'=>$app->tutorsignup->tutor->linkedinprofile,
+			'howdidyouhear'=>$app->tutorsignup->tutor->howdidyouhear
 		);
 
 		$insert = $app->connect->insert('signup_avidbrain.signup___signups',$prepare);

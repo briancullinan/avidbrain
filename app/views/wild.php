@@ -1,7 +1,4 @@
 <!DOCTYPE html>
-<!-- <?php echo $app->dependents->headerinfo; ?>
-
--->
 <html>
 <head>
 	<title><?php if(isset($app->meta->title)){ echo strip_tags($app->meta->title);}else{ echo $app->dependents->SITE_NAME; } ?></title>

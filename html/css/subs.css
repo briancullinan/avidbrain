@@ -693,7 +693,12 @@ background-attachment: fixed;
 	position: absolute;
 }
 .maintutor main{
-	background: url('/images/subs/become-a-tutor3.jpg') top left no-repeat ;
+	/*background: url('/images/subs/become-a-tutor3.jpg') top left no-repeat ;*/
+	background-image: url('/images/subs/become-a-tutor3.jpg');
+	background-repeat: repeat-x;
+	background-position: top left;
+	background-attachment: scroll;
+
 }
 .mainstudent main{
 	background: url('/images/subs/become-a-student.jpg') top left no-repeat ;
@@ -708,6 +713,9 @@ background-attachment: fixed;
 
 	padding: 0px;
 }
+.new-inputs label{
+	color: #333;
+}
 .new-inputs .input-wrapper{
 	border: 1px solid #dcdcdc;
     padding: 8px 12px;
@@ -721,6 +729,22 @@ background-attachment: fixed;
 	padding: 0px;
 	line-height: normal;
 	font-size: .8em;
+}
+.promocode-activated{
+	width: 100%;
+	float: left;
+	margin-bottom: 20px;
+	padding: 0px 13px;
+}
+.promocode-activated-message{
+	background: #333;
+	padding: 10px;
+	color:#bdff00;
+	text-align: center;
+	font-size: 16px;
+}
+.promocode-activated-message span{
+	color:#fff;
 }
 .tutor-block{
 	background: #f1f1f1;
@@ -755,20 +779,23 @@ background-attachment: fixed;
 
 .new-signup h1{
 	font-size: 50px;
-	background: rgba(34, 34, 34, 0.8);
+	padding: 0px;
+	text-shadow: 2px 2px 5px #000;
 }
 .new-signup h2{
 	font-size: 40px;
-	color:#ccc;
-	background: rgba(51, 51, 51, 0.8);
+	padding: 0px;
+	text-shadow: 2px 2px 5px #000;
 }
 .new-signup h3{
 	margin-top: 15px;
+	padding: 0px;
 }
 .signup-copy{
 	color:#fff;
 	font-size: 20px;
 	min-height: 470px;
+	text-shadow: 2px 2px 5px #000;
 }
 .new-signup .block{
 	min-height: 400px;
@@ -793,6 +820,7 @@ background-attachment: fixed;
     background-color: #00ADFF;
     z-index: 0;
 }
+
 .the-disclaimer{
 	font-size: 11px;
 	color:#999;
@@ -803,4 +831,9 @@ background-attachment: fixed;
 .spacer-block{
 	width: 100%;
 	height:370px;
+}
+
+
+.input-wrapper.required-field{
+	border: solid 1px #333;
 }

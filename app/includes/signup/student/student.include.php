@@ -5,8 +5,7 @@
 			<div class="tutor-signup-title"><h1>Looking For A Tutor?</h1></div>
 			<div class="tutor-signup-sub"><h2>You've Come To The Right Place</h2></div>
 			<p class="signup-copy">
-				Welcome to AvidBrain, the easiest way to find a qualified tutor, who is interviewed and background checked. <br><br>
-				Sign up and create your account in minutes.
+				Welcome to AvidBrain, the easiest way to find a tutor.
 			</p>
 
 			<div class="blocks">
@@ -17,38 +16,38 @@
 					</div>
 					<div class="col s12 m8 l8">
 						<div class="page-title">
-							Free Job Posts
+							Fair Pricing
 						</div>
 						<div class="copy">
-							Post a job and tutors will come to you, no searching needed.
+							No more paying for outrageously expensive package deals! Get the help you want for the price you want. We have tutors at everyone’s budget!
 						</div>
 					</div>
 				</div>
 
-				<div class="row">
-					<div class="col s12 m4 l4">
-						<div class="center-align"><img src="/images/icons/money.png" class="responsive-img" /></div>
-					</div>
-					<div class="col s12 m8 l8">
-						<div class="page-title">
-							Find The Price That Fits You
+					<div class="row">
+						<div class="col s12 m4 l4">
+							<div class="center-align"><img src="/images/icons/convenient.png" class="responsive-img" /></div>
 						</div>
-						<div class="copy">
-							With over 2,000 tutors available, you can pick and choose the best tutor to fit your price range.
+						<div class="col s12 m8 l8">
+							<div class="page-title">
+								Convenient
+							</div>
+							<div class="copy">
+								Get help when you need it! With thousands of tutors on AvidBrain, there is always someone here to help!
+							</div>
 						</div>
 					</div>
-				</div>
 
 				<div class="row">
 					<div class="col s12 m4 l4">
-						<div class="center-align"><img src="/images/icons/money.png" class="responsive-img" /></div>
+						<div class="center-align"><img src="/images/icons/knowledge.png" class="responsive-img" /></div>
 					</div>
 					<div class="col s12 m8 l8">
 						<div class="page-title">
-							Safe & Secure
+							Knowledgable Tutors
 						</div>
 						<div class="copy">
-							something about being safe and secure...
+							Our tutors are the best in the industry! They are interview and background checked to make sure all of our students are in an effective and safe environment.
 						</div>
 					</div>
 				</div>
@@ -271,23 +270,3 @@
 	?>
 
 </div>
-
-
-<style type="text/css">
-.promocode-activated{
-	width: 100%;
-	float: left;
-	margin-bottom: 20px;
-	padding: 0px 13px;
-}
-.promocode-activated-message{
-	background: #333;
-	padding: 10px;
-	color:#bdff00;
-	text-align: center;
-	font-size: 16px;
-}
-.promocode-activated-message span{
-	color:#fff;
-}
-</style>

@@ -745,3 +745,12 @@ footer{
 	color: #fff;
 	cursor: pointer;
 }
+
+::-webkit-input-placeholder{color: #999;}
+input:focus::-webkit-input-placeholder,textarea:focus::-webkit-input-placeholder{color: #ccc;}
+:-moz-placeholder{color: #999;}
+input:focus:-moz-placeholder,textarea:focus:-moz-placeholder{color: #ccc;}
+::-moz-placeholder{color: #999;}
+input:focus::-moz-placeholder,textarea:focus::-moz-placeholder{color: #ccc;}
+:-ms-input-placeholder{color: #999;}
+input:focus:-ms-input-placeholder,textarea:focus:-ms-input-placeholder{color: #ccc;}
