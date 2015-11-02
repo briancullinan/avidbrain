@@ -21,10 +21,14 @@
 			4096=>'E_RECOVERABLE_ERROR: Catchable fatal error. It indicates that a probably dangerous error occurred, but did not leave the Engine in an unstable state. If the error is not caught by a user defined handle (see also set_error_handler()), the application aborts as it was an E_ERROR.',
 			8192=>'E_DEPRECATED: Run-time notices. Enable this to receive warnings about code that will not work in future versions.',
 			16384=>'E_USER_DEPRECATED: User-generated warning message. This is like an E_DEPRECATED, except it is generated in PHP code by using the PHP function trigger_error().',
-			32767=>'E_ALL: All errors and warnings, as supported, except of level E_STRICT prior to PHP 5.4.0.'
+			32767=>'E_ALL: All errors and warnings, as supported, except of level E_STRICT prior to PHP 5.4.0.',
+			666 =>'Unknow Error'
 		);
 		if(isset($number)){
 			return $errornumbers[$number];
+		}
+		else{
+			return $errornumbers[666];
 		}
 
 	}
@@ -33,6 +37,7 @@
 	register_shutdown_function("fatalHandler",$app);
 
 	function errorHandler($errno=NULL, $errstr=NULL, $errfile = '', $errline = 0, $errcontext = NULL,$isajax=NULL,$app=NULL) {
+
 
 		$erros = array(
 			'Error Number'=>geterrortype($errno),
@@ -52,6 +57,7 @@
 			foreach($erros as $key=> $mitem){
 				$message.= '<p>'.$key.': '.$mitem.'</p>';
 			}
+
 			$app->mailgun->to = 'david@avidbrain.com';
 			$app->mailgun->subject = 'AvidBrain Error';
 			$app->mailgun->message = $message;
@@ -77,6 +83,7 @@
 		}
 	}
 	function fatalHandler($app) {
+
 
 		if(isset($app->dependents->DEBUG) && $app->dependents->DEBUG == true){
 			$app->whoops->handleShutdown();
