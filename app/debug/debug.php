@@ -22,9 +22,9 @@
 			8192=>'E_DEPRECATED: Run-time notices. Enable this to receive warnings about code that will not work in future versions.',
 			16384=>'E_USER_DEPRECATED: User-generated warning message. This is like an E_DEPRECATED, except it is generated in PHP code by using the PHP function trigger_error().',
 			32767=>'E_ALL: All errors and warnings, as supported, except of level E_STRICT prior to PHP 5.4.0.',
-			666 =>'Unknow Error'
+			666 =>'UNKNOWN_ERROR: There was no error number provided.'
 		);
-		if(isset($number)){
+		if(isset($number) && !empty($errornumbers[$number])){
 			return $errornumbers[$number];
 		}
 		else{

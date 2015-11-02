@@ -11,7 +11,7 @@ RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^ index.php [QSA,L]
 
-Deny from 172.248.214.252
+#Deny from 172.248.214.252
 
 ## BELOW EVERYTHING ----------------------------------------------------------------------------------------------------
 
