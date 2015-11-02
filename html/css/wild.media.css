@@ -79,6 +79,15 @@
 	.signup-copy{
 		min-height: 240px;
 	}
+	.user-dropdown-container{
+		margin-top: 2px;
+	}
+	.dropdown-button{
+		margin-top: 0px;
+	}
+	.activate-menu .menu-new{
+		right: -10px;
+	}
 
 }
 

@@ -1,7 +1,7 @@
 <div class="new-signup">
 	<div class="row">
 		<div class="col s12 m6 l8">
-			<div class="tutor-signup-title"><h1>We're Looking For Tutors</h1></div>
+			<div class="tutor-signup-title"><h1>We're Looking For <?php echo $app->titleAdd; ?> Tutors</h1></div>
 			<div class="tutor-signup-sub"><h2>Just Like You</h2></div>
 			<p class="signup-copy">
 				Teach with AvidBrain and earn money as an independent contractor. Get paid bi-weekly for teaching something you love.
@@ -126,7 +126,8 @@
 						<div class="row">
 
 							<div class="col s12 m12 l12">
-								<div class="input-wrapper" id="ts_promocode"><input type="text" name="tutorsignup[tutor][promocode]" placeholder="Promo Code (Optional)" value="<?php if(isset($promocode)){ echo $promocode; } ?>" /></div>
+								<?php if(isset($app->titleAdd) && !empty($app->titleAdd)){ echo '<div class="input-wrapper-text">Promo Code</div>';} ?>
+								<div class="input-wrapper <?php if(isset($app->titleAdd) && !empty($app->titleAdd)){ echo 'active-wrapper';} ?>" id="ts_promocode"><input <?php if(isset($app->titleAdd) && !empty($app->titleAdd)){ echo 'readonly="readonly"';} ?> type="text" name="tutorsignup[tutor][promocode]" placeholder="Promo Code (Optional)" value="<?php if(isset($promocode)){ echo $promocode; } ?>" /></div>
 							</div>
 
 						</div>
