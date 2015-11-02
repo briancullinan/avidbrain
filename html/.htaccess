@@ -102,3 +102,6 @@ DirectoryIndex index.php index.html 404.php
    ExpiresByType image/png "access plus 14 days"
    ExpiresByType text/css "access plus 14 days"
 </IfModule>
+
+
+ErrorDocument 403 /

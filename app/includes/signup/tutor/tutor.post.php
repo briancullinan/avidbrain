@@ -1,4 +1,5 @@
 <?php
+
 	if(isset($app->getprices)){
 
 		//notify($app->getprices);
