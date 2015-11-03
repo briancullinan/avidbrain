@@ -39,7 +39,11 @@
         ?>
 		<tr>
             <td>
-                <?php echo $history->type; ?>
+                <?php if(isset($history->session_id)): ?>
+                    <a href="/sessions/view/<?php echo $history->session_id; ?>"><?php echo $history->type; ?></a>
+                <?php else: ?>
+                    <?php echo $history->type; ?>
+                <?php endif; ?>
             </td>
             <td>
                 <?php echo $history->payrate; ?>%

@@ -21,13 +21,17 @@
 			<?php endif; ?>
 
 		</div>
-		<div class="col s12 m8 l8">
+		<div class="col s12 m8 l8 <?php if(isset($app->previousRate)){ echo 'pay-class';} ?>">
 			<?php if(isset($app->setupsessionwith)): ?>
 				<h3>Setup a tutoring session with <span class="blue-text"><?php echo the_users_name($app->setupsessionwith); ?></span> </h3>
-
 				<?php
 					$formvalues = new stdClass();
-					$formvalues->session_rate = $app->user->hourly_rate;
+					if(isset($app->previousRate)){
+						$formvalues->session_rate = $app->previousRate;
+					}
+					else{
+						$formvalues->session_rate = $app->user->hourly_rate;
+					}
 
 					$setupsession = new Forms($app->connect);
 					$setupsession->formname = 'setupsession';
@@ -49,8 +53,4 @@
 	</div>
 </div>
 
-<?php
-
-	$loadModal = 'what-is-a-whiteboard';
-
-?>
+<?php $loadModal = 'what-is-a-whiteboard'; ?>

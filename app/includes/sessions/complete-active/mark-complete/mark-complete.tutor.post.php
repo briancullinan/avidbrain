@@ -91,6 +91,8 @@
 				$amountAfterDiscount = $amount;
 			}
 
+			$amount = $amountAfterDiscount;
+
 			//notify($amountAfterDiscount);
 
 			$payment = array(

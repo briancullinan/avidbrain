@@ -99,3 +99,6 @@
 		$app->meta = new stdClass();
 		$app->meta->title = 'Payment History';
 	}
+
+
+	//notify($app->history);

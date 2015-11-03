@@ -877,3 +877,22 @@ background-attachment: fixed;
 .input-wrapper.required-field{
 	border: solid 1px #333;
 }
+
+
+.pay-class #field_setupsession_session_rate input{
+	background: #efefef;
+	margin-top: 5px;
+	color: #222;
+	border-bottom: solid 2px #09f;
+	font-size: 18px;
+}
+.pay-class #field_setupsession_session_rate:after{
+	content: "Previous Session Rate";
+	font-size: 12px;
+	position: absolute;
+	background: #09f;
+	color: #fff;
+	padding: 4px;
+	top:37px;
+	z-index: 3333;
+}

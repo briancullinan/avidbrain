@@ -36,7 +36,7 @@
 			$data	=	$data->addSelect('subjects.subject_name');
 			$data	=	$data->innerJoin('user','avid___user_subjects','subjects','user.email = subjects.email');
 			$data	=	$data->andWhere('subjects.subject_name LIKE :subject_name');
-			$data	=	$data->andWhere('subjects.status = :verified')->setParameter(':verified','verified');
+			//$data	=	$data->andWhere('subjects.status = :verified')->setParameter(':verified','verified');
 			$data	=	$data->setParameter(':subject_name',"%".$app->search->search."%");
 		}
 		if(isset($app->search->category)){
@@ -44,7 +44,7 @@
 			$data	=	$data->addSelect('subjects.parent_slug');
 			$data	=	$data->innerJoin('user','avid___user_subjects','subjects','user.email = subjects.email');
 			$data	=	$data->andWhere('subjects.parent_slug LIKE :subject_name');
-			$data	=	$data->andWhere('subjects.status = :verified')->setParameter(':verified','verified');
+			//$data	=	$data->andWhere('subjects.status = :verified')->setParameter(':verified','verified');
 			$data	=	$data->setParameter(':subject_name',"%".$app->search->category."%");
 		}
 

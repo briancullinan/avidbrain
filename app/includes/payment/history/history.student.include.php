@@ -33,7 +33,11 @@
 			?>
 			<tr>
 				<td>
-					<?php echo $paymenthistory->type; ?>
+					<?php if(isset($paymenthistory->session_id)): ?>
+						<a href="/sessions/view/<?php echo $paymenthistory->session_id; ?>"><?php echo $paymenthistory->type; ?></a>
+					<?php else: ?>
+						<?php echo $paymenthistory->type; ?>
+					<?php endif; ?>
 				</td>
 				<td>
 					$<?php echo numbers(($paymenthistory->amount/100)); ?>
