@@ -1276,3 +1276,7 @@
 		}
 
 	}
+
+	function moneytime($total,$totalpayout,$additional){
+		return (round((($total - $totalpayout) + $additional),2)*100);
+	}

@@ -158,6 +158,15 @@
 		$newstudentEmail.= '<p> URL: '.$url.' </p>';
 		$newstudentEmail.= '<p> Referrer: '.$referrer.' </p>';
 
+		if(isset($serverinfo->REMOTE_ADDR)){
+			$iplookip = ipaddresslookup($serverinfo->REMOTE_ADDR);
+			if(!empty($iplookip)){
+				foreach($iplookip as $ip => $lookup){
+					$newstudentEmail.= '<p> '.$ip.': '.$lookup.' </p>';
+				}
+			}
+		}
+
 		if($app->dependents->DOMAIN=='http://avidbrain.dev'){
 			$toemails = 'david@avidbrain.com';
 		}
@@ -363,6 +372,16 @@
 			$newstudentEmail.= '<p> IP Address: '.$remoteAddress.' </p>';
 			$newstudentEmail.= '<p> URL: '.$url.' </p>';
 			$newstudentEmail.= '<p> Referrer: '.$referrer.' </p>';
+
+			if(isset($serverinfo->REMOTE_ADDR)){
+				$newstudentEmail.= '<p> IP Address Lookup </p>';
+				$iplookip = ipaddresslookup($serverinfo->REMOTE_ADDR);
+				if(!empty($iplookip)){
+					foreach($iplookip as $ip => $lookup){
+						$newstudentEmail.= '<p> '.$ip.': '.$lookup.' </p>';
+					}
+				}
+			}
 
 			if($app->dependents->DOMAIN=='http://avidbrain.dev'){
 				$toemails = 'david@avidbrain.com';

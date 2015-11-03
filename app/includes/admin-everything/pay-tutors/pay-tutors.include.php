@@ -232,7 +232,7 @@
 
 					<input type="hidden" name="paytutorcheck[type]" value="check" />
 					<input type="hidden" name="paytutorcheck[email]" value="<?php echo $app->paytutor->email; ?>" />
-					<input type="hidden" name="paytutorcheck[amount]" value="<?php echo (round(((($total - $totalpayout) + $additional)),1)*100); ?>" />
+					<input type="hidden" name="paytutorcheck[amount]" value="<?php echo moneytime($total,$totalpayout,$additional);  ?>" />
 
 					<input type="hidden" name="paytutorcheck[target]" value="paytutorcheck"  />
 					<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">

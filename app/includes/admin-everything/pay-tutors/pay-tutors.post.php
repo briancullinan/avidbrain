@@ -1,5 +1,7 @@
 <?php
 
+	//notify($app->paytutorcheck);
+
 	if(isset($app->paytutorcheck) && isset($app->paytutorcheck->email)){
 
 		if(isset($app->paytutorcheck->paybgcheck)){
@@ -25,6 +27,8 @@
 			'paidout'=>1
 		);
 
+		notify($payment);
+
 		$app->connect->insert('avid___user_payments',$payment);
 
 		foreach($app->paytutorcheck->sessionid as $key => $setaspaid){
@@ -44,6 +48,7 @@
 
 	}
 	elseif(isset($app->paytutorsessioninfo)){
+		notify('xxx');
 
 		if(isset($app->paytutor->managed_id)){
 			$userAccountInfo = $app->paytutor->managed_id;
