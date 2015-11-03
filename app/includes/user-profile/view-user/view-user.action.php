@@ -70,6 +70,7 @@
 
 	if(isset($data->loggedinprofile) && $data->loggedinprofile=='yes' && empty($app->user->email)){
 		$app->target->include = str_replace('.include.','.invisible.include.',$app->target->include);
+		$invisible = true;
 		$app->target->css.= " invisible-profile ";
 	}
 
@@ -123,7 +124,7 @@
 	if(isset($data->promocode) && isset($app->user->email) && $data->promocode == $app->user->email){
 		// Do Nothing
 	}
-	elseif(isset($data->hidden) && empty($data->thisisme)){
+	elseif(isset($data->hidden) && empty($data->thisisme) && empty($invisible)){
 		$app->target->include = str_replace('.include.','.hidden.include.',$app->target->include);
 		$app->secondary = NULL;
 	}
@@ -335,7 +336,12 @@
 	}
 
 	$app->meta = new stdClass();
-	$app->meta->title = $myname.$var.' / '.$app->currentuser->city.', '.ucwords($app->currentuser->state_long).' '.$app->dependents->SITE_NAME_PROPPER.' Tutor';
+	if(isset($invisible)){
+		$app->meta->title = $app->currentuser->city.', '.ucwords($app->currentuser->state_long).'   Tutor';
+	}
+	else{
+		$app->meta->title = $myname.$var.' / '.$app->currentuser->city.', '.ucwords($app->currentuser->state_long).' '.$app->dependents->SITE_NAME_PROPPER.' Tutor';
+	}
 	$app->meta->h1 = false;
 	$app->meta->keywords = $keywords;
 	$app->meta->description = truncate($app->currentuser->personal_statement_verified,100);

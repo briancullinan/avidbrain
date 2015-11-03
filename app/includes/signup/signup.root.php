@@ -1,4 +1,22 @@
 <?php
+	if($app->dependents->DEBUG==true && $app->request->getPath()=='/signup/tutor'){
+		class tutorsignup{
+
+			function __construct(){
+				if(isset($_SESSION['temptutor']['email']) && isset($_SESSION['temptutor']['token'])){
+					notify($_SESSION['temptutor']);
+				}
+			}
+
+			public function CLASSY(){
+
+			}
+
+		}
+
+		new tutorsignup();
+		$app->target->post = str_replace('.post.','.new.post.',$app->target->post);
+	}
 
 	$childen = array();
 	$childen['student'] = (object) array('name'=>'Student','slug'=>'/signup/student');
