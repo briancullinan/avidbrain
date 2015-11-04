@@ -81,6 +81,42 @@
 
 		</div>
 		<div class="col s12 m6 l4">
+			<div class="complete-signup" data-status="closed">
+				Complete Signup Process
+			</div>
+			<div class="complete-signup-form">
+				<div class="complete-signup-form-text">Already start the signup process? Log in and complete it now.</div>
+				<form method="post" action="/signup/tutor" class="form-post" id="signuplogin">
+					<div class="new-inputs">
+						<div class="row">
+
+							<div class="col s12 m6 l6">
+								<div class="input-wrapper" id="li_email"><input type="password" name="li[email]" placeholder="Your Email Address" /></div>
+							</div>
+
+							<div class="col s12 m6 l6">
+								<div class="input-wrapper" id="li_password"><input type="password" name="li[password]" placeholder="Your Password" /></div>
+							</div>
+
+						</div>
+
+						<div class="new-inputs login-button">
+							<div class="row">
+								<div class="col s12 m12 l12">
+									<button class="btn blue btn-block">
+										Log In
+									</button>
+								</div>
+							</div>
+					  	</div>
+
+					</div>
+
+					<input type="hidden" name="li[target]" value="li"  />
+					<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
+
+				</form>
+			</div>
 			<div class="block tutor-block">
 
 				<form class="form-post" action="/signup/tutor" method="post" id="tutorsignup">
@@ -324,3 +360,58 @@
 	?>
 
 </div>
+
+
+<style type="text/css">
+.complete-signup{
+	background: #000;
+	text-align: center;
+	padding: 10px;
+	border: solid 2px #444;
+	border-bottom: none;
+	color: #ccc;
+	cursor: pointer;
+}
+.complete-signup:hover{
+	background: #333;
+	color: #fff;
+}
+.complete-signup-form{
+	background: #ccc;
+	float: left;
+	width: 100%;
+	display: none;
+}
+.complete-signup-form-text{
+
+	padding: 10px 10px 0px 10px;
+	text-align: center;
+	font-size: 12px;
+}
+.new-inputs.login-button, .new-inputs.login-button .row, .complete-signup-form .new-inputs{
+	margin-bottom: 0px;
+}
+</style>
+
+
+<script type="text/javascript">
+
+	$(document).ready(function() {
+		$('.complete-signup').on('click',function(){
+			var datastatus = $(this).attr('data-status');
+			if(datastatus=='closed'){
+				$(this).attr('data-status','open');
+				$('.complete-signup-form').slideDown(function(){
+					$('#li_email input').focus();
+				});
+			}
+			else if(datastatus=='open'){
+				$(this).attr('data-status','closed');
+				$('.complete-signup-form').slideUp(function(){
+					$('#ts_first_name input').focus();
+				});
+			}
+		});
+	});
+
+</script>
