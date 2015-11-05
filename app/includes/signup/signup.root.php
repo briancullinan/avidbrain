@@ -1,4 +1,12 @@
 <?php
+
+	function isitset($var=NULL){
+		if(isset($var) && !empty($var)){
+			return $var;
+		}
+	}
+	
+
 	if($app->dependents->DEBUG==true){
 		class tutorsignup{
 

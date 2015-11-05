@@ -808,12 +808,14 @@ $(document).ready(function() {
 	});
 
 	// Tutor Signup
-	$('.right-info').html('<ul class="header-nav"><li class="show"><a href="/logout">Log Out</a></li></ul>');
-
-	$('.auto-magic input, .auto-magic textarea, .auto-magic select').on('change',function(){
-		var myformid = '#'+$(this).closest('form').attr('id');
-		$(myformid).submit();
-	});
+	var newsignup = $('.newsignup').attr('class');
+	if(newsignup){
+		$('.right-info').html('<ul class="header-nav"><li class="show"><a href="/logout">Log Out</a></li></ul>');
+		$('.auto-magic input, .auto-magic textarea, .auto-magic select').on('change',function(){
+			var myformid = '#'+$(this).closest('form').attr('id');
+			$(myformid).submit();
+		});
+	}
 
 	var containerwidth = $('.new-signup').outerWidth();
 	$('#containerwidth').val(containerwidth);
