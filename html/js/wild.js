@@ -807,6 +807,16 @@ $(document).ready(function() {
 		}, 500);
 	});
 
+	// Tutor Signup
+	$('.right-info').html('<ul class="header-nav"><li class="show"><a href="/logout">Log Out</a></li></ul>');
+
+	$('.auto-magic input, .auto-magic textarea, .auto-magic select').on('change',function(){
+		var myformid = '#'+$(this).closest('form').attr('id');
+		$(myformid).submit();
+	});
+
+	var containerwidth = $('.new-signup').outerWidth();
+	$('#containerwidth').val(containerwidth);
 
 });
 $(window).on('scroll', function() {

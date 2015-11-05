@@ -896,3 +896,30 @@ background-attachment: fixed;
 	top:37px;
 	z-index: 3333;
 }
+
+
+/*New Signup*/
+.newsignup main{
+    background: #efefef;
+}
+.newsignup main .container{
+
+}
+.newsignup main .container h1{
+    color: #000;
+    text-shadow: none;
+}
+.newsignup .header-nav li{
+    display: none;
+}
+.newsignup .header-nav li.show{
+    display: block;
+}
+.newsignup .header-nav li.show a{
+    color: #96FF00;
+}
+.your-cropped-photo{
+	text-align: center;
+	margin-bottom: 15px;
+	font-size: 16px;
+}

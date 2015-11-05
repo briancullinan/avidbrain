@@ -1,5 +1,43 @@
 <?php
 
+	if(isset($method) && isset($action)){
+		if($action=='trash'){
+
+			$upload = $app->dependents->APP_PATH.'uploads/tutorphotos/'.$app->newtutor->upload;
+			$cropped = $app->dependents->APP_PATH.'uploads/tutorphotos/'.$app->newtutor->cropped;
+
+			try{
+				unlink($upload);
+				unlink($cropped);
+			}
+			catch(Exception $e){
+			}
+
+			$app->connect->update('avid___new_temps',array('upload'=>NULL,'cropped'=>NULL),array('email'=>$app->newtutor->email));
+
+			$app->redirect('/signup/tutor');
+		}
+		elseif($action=='crop'){
+
+			$app->connect->update('avid___new_temps',array('cropped'=>NULL),array('email'=>$app->newtutor->email));
+
+			$app->redirect('/signup/tutor');
+
+		}
+		elseif($action=='rotateright'){
+
+			$cropped = $app->dependents->APP_PATH.'uploads/tutorphotos/'.$app->newtutor->cropped;
+			$img = $app->imagemanager->make($cropped)->rotate(-90)->save();
+			$app->redirect('/signup/tutor');
+
+		}
+		elseif($action=='rotateleft'){
+			$cropped = $app->dependents->APP_PATH.'uploads/tutorphotos/'.$app->newtutor->cropped;
+			$img = $app->imagemanager->make($cropped)->rotate(90)->save();
+			$app->redirect('/signup/tutor');
+		}
+	}
+
 	$app->meta = new stdClass();
 	$app->meta->title = 'Tutor Signup - '.$app->dependents->SITE_NAME_PROPPER;
 	$app->meta->h1 = false;

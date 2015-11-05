@@ -1,5 +1,5 @@
 <?php
-	if($app->dependents->DEBUG==true && $app->request->getPath()=='/signup/tutor'){
+	if($app->dependents->DEBUG==true){
 		class tutorsignup{
 
 			protected $connect;
@@ -42,7 +42,22 @@
 		$app->newtutor = new tutorsignup($app->connect,$app->crypter);
 		if(isset($app->newtutor->id)){
 			$app->target->css.=" new-signup ";
-			$app->target->include = str_replace('.include.','.new.include.',$app->target->include);
+
+			if(isset($app->newtutor->upload) && empty($app->newtutor->cropped)){
+				$app->target->include = str_replace('.include.','.crop.include.',$app->target->include);
+			}
+			else{
+				$app->target->include = str_replace('.include.','.new.include.',$app->target->include);
+			}
+		}
+
+		$sql = "SELECT * FROM avid___available_subjects WHERE subject_name IS NOT NULL GROUP BY parent_slug";
+		$prepare = array(':usertype'=>'tutor');
+		$app->allsubs = $app->connect->executeQuery($sql,$prepare)->fetchAll();
+		if(isset($method) && $method=='category' && isset($action)){
+			$sql = "SELECT * FROM avid___available_subjects WHERE parent_slug = :parent_slug AND subject_name IS NOT NULL";
+			$prepare = array(':parent_slug'=>$action);
+			$app->allcats = $app->connect->executeQuery($sql,$prepare)->fetchAll();
 		}
 
 		$app->target->post = str_replace('.post.','.new.post.',$app->target->post);

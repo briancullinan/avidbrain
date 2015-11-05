@@ -15,6 +15,9 @@
 	$routes['facebook'] = (object)array('url'=>'/facebook','slug'=>'facebook','route'=>'/facebook/','include'=>'signup/student/','protected'=>NULL,'permissions'=>array());
 	$routes['facebook'] = (object)array('url'=>'/facebook','slug'=>'student','route'=>'/facebook/','params'=>array('promocode'=>'facebook'),'include'=>'signup/student','protected'=>NULL,'permissions'=>array());
 
+	$routes['image'] = (object)array('url'=>'/image','slug'=>'image','route'=>'/image/:location/:id/','include'=>'image','protected'=>NULL,'permissions'=>array());
+	$routes['image-extras'] = (object)array('url'=>'/image','slug'=>'image','route'=>'/image/:location/:id/:extras/','include'=>'image','protected'=>NULL,'permissions'=>array());
+
 	$routes['subjects-match'] = (object)array('url'=>'/subjects-match','slug'=>'subjects-match','route'=>'/subjects/:subject/','include'=>'subjects-match','protected'=>NULL,'permissions'=>array());
 
 	if($app->dependents->SITE_NAME=='amozek'){
@@ -204,6 +207,7 @@
 	$routes['signup-student'] = (object)array('url'=>'/signup/student','slug'=>'student','route'=>'/signup/student/','include'=>'signup/student','protected'=>NULL,'permissions'=>array());
 	$routes['signup-student-promocode'] = (object)array('url'=>'/signup/student','slug'=>'student','route'=>'/signup/student/:promocode/','include'=>'signup/student','protected'=>NULL,'permissions'=>array());
 	//$routes['signup-recruiter'] = (object)array('url'=>'/signup/recruiter','slug'=>'recruiter','route'=>'/signup/recruiter/','include'=>'signup/recruiter','protected'=>NULL,'permissions'=>array());
+	$routes['signup-tutor-action'] = (object)array('url'=>'/signup/tutor','slug'=>'tutor','route'=>'/signup/tutor/:method/:action/','include'=>'signup/tutor','protected'=>NULL,'permissions'=>array());
 	$routes['signup-tutor'] = (object)array('url'=>'/signup/tutor','slug'=>'tutor','route'=>'/signup/tutor/','include'=>'signup/tutor','protected'=>NULL,'permissions'=>array());
 	$routes['signup-tutor-promocode'] = (object)array('url'=>'/signup/tutor','slug'=>'tutor','route'=>'/signup/tutor/:promocode/','include'=>'signup/tutor','protected'=>NULL,'permissions'=>array());
 	$routes['qa-signup'] = (object)array('url'=>'/signup/qa','slug'=>'qa','route'=>'/signup/qa/','include'=>'signup/qa','protected'=>NULL,'permissions'=>array());

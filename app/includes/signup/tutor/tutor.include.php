@@ -193,16 +193,6 @@
 
 					<div class="new-inputs">
 						<div class="row">
-
-							<div class="col s12 m12 l12">
-								<div class="input-wrapper" id="ts_linkedinprofile"><input type="text" name="tutorsignup[tutor][linkedinprofile]" placeholder="Linked In Profile / Your Website (Optional)" /></div>
-							</div>
-
-						</div>
-					</div>
-
-					<div class="new-inputs">
-						<div class="row">
 							<div class="col s12 m12 l12" id="ts_taughttutored">
 								<select name="tutorsignup[tutor][howdidyouhear]" class="browser-default">
 									<option>How Did You Hear About Us?</option>

@@ -10,6 +10,10 @@
 	-moz-border-radius: 5px;
 	border-radius: 5px;
 }
+.button.button-block{
+	display: block;
+	margin-bottom: 5px;
+}
 .button:hover{
 	background: #333;
 	color: #fff;
