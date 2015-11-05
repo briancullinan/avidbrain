@@ -391,31 +391,35 @@
     <div class="row">
     	<div class="col s12 m6 l6">
 
-            <form method="post" action="/signup/tutor/" class="form-post">
-                <p>Would you like to be interviewed by our staff?</p>
+            <?php if(isset($alldone)): ?>
+                <form method="post" action="/signup/tutor/" class="form-post">
+                    <p>Would you like to be interviewed by our staff?</p>
 
-                <div class="new-inputs">
-                    <input name="finishapplication[yesinterview]" <?php if(isitset($app->newtutor->timeday)){ echo 'checked="checked"'; } ?> class="filled-in" type="checkbox" value="yes" id="yesinterview" />
-                    <label for="yesinterview">
-                        Yes, I would love to have an interview
-                    </label>
-                </div>
+                    <div class="new-inputs">
+                        <input name="finishapplication[yesinterview]" <?php if(isitset($app->newtutor->timeday)){ echo 'checked="checked"'; } ?> class="filled-in" type="checkbox" value="yes" id="yesinterview" />
+                        <label for="yesinterview">
+                            Yes, I would love to have an interview
+                        </label>
+                    </div>
 
-                <div class="new-inputs">
-                    <label>If Yes. What time / day would be best for you?</label>
-                    <div class="input-wrapper" id="finishapplication_timeday"><input type="text" name="finishapplication[timeday]" placeholder="What time / day would be best for you?" <?php echo 'value="'.isitset($app->newtutor->timeday).'"'; ?> /></div>
-                </div>
+                    <div class="new-inputs">
+                        <label>If Yes. What time / day would be best for you?</label>
+                        <div class="input-wrapper" id="finishapplication_timeday"><input type="text" name="finishapplication[timeday]" placeholder="What time / day would be best for you?" <?php echo 'value="'.isitset($app->newtutor->timeday).'"'; ?> /></div>
+                    </div>
 
-                <input type="hidden" name="finishapplication[target]" value="finishapplication"  />
-                <input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
+                    <input type="hidden" name="finishapplication[target]" value="finishapplication"  />
+                    <input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
 
 
-                <input type="hidden" name="finishapplication[alldone]" value="alldone"  />
-                <button class="btn" type="submit">
-                    Submit My Profile For Review
-                </button>
+                    <input type="hidden" name="finishapplication[alldone]" value="alldone"  />
+                    <button class="btn" type="submit">
+                        Submit My Profile For Review
+                    </button>
 
-            </form>
+                </form>
+            <?php else: ?>
+                FINSHETHEM
+            <?php endif; ?>
 
 
     	</div>
