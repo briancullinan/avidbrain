@@ -187,6 +187,8 @@
 						$app->thetutor->mysubs_testpreparation
 					);
 				?>
+
+				<form method="post" action="/admin-everything/new-tutor-approvals/<?php echo $id; ?>">
 				<div class="title">Subjects I Teach / Tutor</div>
 				<?php foreach($thesubjectarray as  $subjects): ?>
 					<div class="row">
@@ -196,9 +198,15 @@
 								$key = key($json);
 								if(!empty($key)){
 
-									foreach($json->$key as $subid){
+									foreach($json->$key as $key=> $subid){
 										$subdata = subinfo($app->connect,$subid);
 										echo '<div class="col s12 m4 l4 infos">';
+											echo '<input type="hidden" name="approveprofile['.$key.'][email]" value="'.$app->thetutor->email.'" />';
+											echo '<input type="hidden" name="approveprofile['.$key.'][subject_slug]" value="'.$subdata->subject_slug.'" />';
+											echo '<input type="hidden" name="approveprofile['.$key.'][parent_slug]" value="'.$subdata->parent_slug.'" />';
+											echo '<input type="hidden" name="approveprofile['.$key.'][last_modified]" value="'.thedate().'" />';
+											echo '<input type="hidden" name="approveprofile['.$key.'][usertype]" value="tutor" />';
+											echo '<input type="hidden" name="approveprofile['.$key.'][subject_name]" value="'.$subdata->subject_name.'" />';
 											echo '<div class="infos-title">'.$subdata->subject_name.'</div>';
 											echo '<div class="infos-text">'.$subdata->subject_parent.'</div>';
 										echo '</div>';
@@ -271,7 +279,7 @@
 
 				<?php //printer($app->thetutor); ?>
 
-				<form method="post" action="/admin-everything/new-tutor-approvals/<?php echo $id; ?>">
+
 
 					<button type="button" class="btn green white-text confirm-submit">
 						Approve Profile
