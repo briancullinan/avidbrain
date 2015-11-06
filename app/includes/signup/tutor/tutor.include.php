@@ -91,7 +91,7 @@
 						<div class="row">
 
 							<div class="col s12 m6 l6">
-								<div class="input-wrapper" id="li_email"><input type="password" name="li[email]" placeholder="Your Email Address" /></div>
+								<div class="input-wrapper" id="li_email"><input type="email" name="li[email]" placeholder="Your Email Address" /></div>
 							</div>
 
 							<div class="col s12 m6 l6">

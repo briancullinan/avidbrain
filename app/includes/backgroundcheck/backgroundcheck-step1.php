@@ -13,30 +13,32 @@
 	<div class="red white-text alert" role="alert"><i class="fa fa-warning"></i> Please submit your <strong>full legal name.</strong></div>
 
 	<div class="row">
-		<div class="input-field col s12 m4 l4">
-			<input placeholder="Please enter your first name" name="backgroundcheckstep1[first_name]" value="<?php if(isset($app->newtutor->first_name)){ echo $app->newtutor->first_name; } ?>" id="first_name" type="text" class="validate">
-			<label for="first_name">First Name <i class="fa fa-asterisk red-text"></i></label>
+		<div class="col s12 m4 l4 new-inputs">
+
+            <label for="first_name">First Name <i class="fa fa-asterisk red-text"></i></label>
+            <div class="input-wrapper"><input placeholder="Please enter your first name" name="backgroundcheckstep1[first_name]" value="<?php if(isset($app->newtutor->first_name)){ echo $app->newtutor->first_name; } ?>" id="first_name" type="text" class="validate"></div>
+
 		</div>
-		<div class="input-field col s12 m4 l4">
-			<input placeholder="" name="backgroundcheckstep1[middle_name]" value="<?php if(isset($app->newtutor->middle_name)){ echo $app->newtutor->middle_name; } ?>" id="middle_name" type="text" class="validate">
-			<label for="middle_name">Middle Name</label>
+		<div class="col s12 m4 l4 new-inputs">
+            <label for="middle_name">Middle Name</label>
+			<div class="input-wrapper"><input placeholder="" name="backgroundcheckstep1[middle_name]" value="<?php if(isset($app->newtutor->middle_name)){ echo $app->newtutor->middle_name; } ?>" id="middle_name" type="text" class="validate"></div>
 		</div>
-		<div class="input-field col s12 m4 l4">
-			<input placeholder="Please enter last name" name="backgroundcheckstep1[last_name]" value="<?php if(isset($app->newtutor->last_name)){ echo $app->newtutor->last_name; } ?>" id="last_name" type="text" class="validate">
-			<label for="last_name">Last Name <i class="fa fa-asterisk red-text"></i></label>
+		<div class="new-inputs col s12 m4 l4">
+            <label for="last_name">Last Name <i class="fa fa-asterisk red-text"></i></label>
+			<div class="input-wrapper"><input placeholder="Please enter last name" name="backgroundcheckstep1[last_name]" value="<?php if(isset($app->newtutor->last_name)){ echo $app->newtutor->last_name; } ?>" id="last_name" type="text" class="validate"></div>
 		</div>
 	</div>
 
     <div class="row">
-        <div class="input-field col s12 m12 l12">
-            <input placeholder="Please enter social security number" maxlength="11" name="backgroundcheckstep1[ssn]" value="<?php if(isset($app->newtutor->ssn)){ echo $app->crypter->decrypt($app->newtutor->ssn); } ?>" id="ssn" type="text" class="validate">
+        <div class="new-inputs col s12 m12 l12">
             <label for="ssn">Social Security Number <i class="fa fa-asterisk red-text"></i></label>
+            <div class="input-wrapper"><input placeholder="Please enter social security number" maxlength="11" name="backgroundcheckstep1[ssn]" value="<?php if(isset($app->newtutor->ssn)){ echo $app->crypter->decrypt($app->newtutor->ssn); } ?>" id="ssn" type="text" class="validate"></div>
         </div>
     </div>
 
 	<div class="row">
-		<div class="input-field col s12 m8 l8">
-			<div class="labelclass">Birthday <i class="fa fa-asterisk red-text"></i></div>
+		<div class="new-inputs col s12 m8 l8">
+			<label for="birthdate">Birth Day <i class="fa fa-asterisk red-text"></i></label>
 			<?php
 				$dob = NULL;
 				if(isset($app->newtutor->dob)){
@@ -50,7 +52,7 @@
 			?>
 
 			<div class="row">
-				<div class="col s12 m4 l4"id="birthmonth">
+				<div class="col s12 m4 l4" id="birthmonth">
 					<select name="backgroundcheckstep1[dob][month]" class="validate   validate-required  browser-default">
 						<?php
 							$months = array(
@@ -112,22 +114,22 @@
 			</div>
 
 		</div>
-		<div class="input-field col s12 m4 l4">
-			<input placeholder="Please enter zipcode" maxlength="5" name="backgroundcheckstep1[zipcode]" value="<?php if(isset($app->newtutor->zipcode)){ echo $app->newtutor->zipcode; } ?>" id="zipcode" type="text" class="validate">
-			<label for="zipcode">Zipcode <i class="fa fa-asterisk red-text"></i></label>
+		<div class="new-inputs col s12 m4 l4">
+            <label for="zipcode">Zipcode <i class="fa fa-asterisk red-text"></i></label>
+			<div class="input-wrapper"><input placeholder="Please enter zipcode" maxlength="5" name="backgroundcheckstep1[zipcode]" value="<?php if(isset($app->newtutor->zipcode)){ echo $app->newtutor->zipcode; } ?>" id="zipcode" type="text" class="validate"></div>
 		</div>
 	</div>
 
 	<h3>Contact Info</h3>
 
 	<div class="row">
-		<div class="input-field col s12 m6 l6">
-			<input placeholder="Please enter your phone number" name="backgroundcheckstep1[phone]"  value="<?php if(isset($app->newtutor->phone)){ echo $app->newtutor->phone; } ?>" id="phone" type="tel" class="validate">
-			<label for="phone">Phone Number <i class="fa fa-asterisk red-text"></i></label>
+		<div class="new-inputs col s12 m6 l6">
+            <label for="phone">Phone Number <i class="fa fa-asterisk red-text"></i></label>
+			<div class="input-wrapper"><input placeholder="Please enter your phone number" name="backgroundcheckstep1[phone]"  value="<?php if(isset($app->newtutor->phone)){ echo $app->newtutor->phone; } ?>" id="phone" type="tel" class="validate"></div>
 		</div>
-		<div class="input-field col s12 m6 l6">
-			<input placeholder="Please enter email address" readonly="readonly" value="<?php echo $app->newtutor->email; ?>" id="email" type="text" class="validate">
-			<label for="email">Email Address</label>
+		<div class="new-inputs col s12 m6 l6">
+            <label for="email">Email Address</label>
+			<div class="input-wrapper"><input placeholder="Please enter email address" readonly="readonly" value="<?php echo $app->newtutor->email; ?>" id="email" type="text" class="validate"></div>
 		</div>
 	</div>
 

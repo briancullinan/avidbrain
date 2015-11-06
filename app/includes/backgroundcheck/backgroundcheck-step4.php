@@ -87,9 +87,9 @@
 
 
 	<div class="row">
-		<div class="input-field col s12 m12 l12">
-			<input placeholder="Type in your name" name="backgroundcheckstep4[electronic_signature]" value="<?php if(isset($app->newtutor->electronic_signature)){ echo $app->crypter->decrypt($app->newtutor->electronic_signature); } ?>"  id="electronic_signature" type="text" class="validate">
+		<div class="new-inputs col s12 m12 l12">
 			<label for="electronic_signature">Electronic Signature</label>
+			<div class="input-wrapper"><input placeholder="Type in your name" name="backgroundcheckstep4[electronic_signature]" value="<?php if(isset($app->newtutor->electronic_signature)){ echo $app->crypter->decrypt($app->newtutor->electronic_signature); } ?>"  id="electronic_signature" type="text" class="validate"></div>
 		</div>
 	</div>
 

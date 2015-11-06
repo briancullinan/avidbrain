@@ -64,7 +64,7 @@
     </div>
 </div>
 
-<h3>
+<h3 id="tutorinfo">
     Tutoring Information
 </h3>
 <div class="box">
@@ -177,7 +177,7 @@
     </div>
 </div>
 
-<h3>
+<h3 id="addaphoto">
     Add A Photo
 </h3>
 <div class="box">
@@ -233,7 +233,7 @@
     </div>
 </div>
 
-<h3>
+<h3 id="mysubjects">
     Subjects You Teach &amp; Tutor
 </h3>
 <div class="box">
@@ -261,7 +261,7 @@
             	</div>
             	<div class="col s12 m8 l8">
             		<?php if(isset($app->allcats)): ?>
-                        <form method="post" action="/signup/tutor/" class="form-post">
+                        <form method="post" action="/signup/tutor/">
                             <input type="hidden" name="mysubjects[parent_slug]" value="<?php echo $app->allcats[0]->parent_slug; ?>" />
                             <?php foreach($app->allcats as $sub):  ?>
 
@@ -356,10 +356,9 @@
                         }
                         elseif(isset($promocode) && $promocode=='step6'){
                             include($app->dependents->APP_PATH.'includes/backgroundcheck/backgroundcheck-step6.php');
-                        }
-
-                        if(isset($app->newtutor->charge_id) && empty($app->newtutor->canditate_id)){
-                            include($app->dependents->APP_PATH.'includes/backgroundcheck/backgroundcheck-step6.action.php');
+                            if(isset($app->newtutor->charge_id) && empty($app->newtutor->canditate_id)){
+                                include($app->dependents->APP_PATH.'includes/backgroundcheck/backgroundcheck-step6.action.php');
+                            }
                         }
                     ?>
                 </div>
@@ -384,6 +383,7 @@
     </div>
 </div>
 
+<?php if(isset($app->newtutor->aboutme) && isset($app->newtutor->tutorinfo) && isset($app->newtutor->addaphoto) && isset($app->newtutor->subjectsitutor)): ?>
 <h3>
     Finishing Your Application
 </h3>
@@ -391,12 +391,12 @@
     <div class="row">
     	<div class="col s12 m6 l6">
 
-            <?php if(isset($alldone)): ?>
+
                 <form method="post" action="/signup/tutor/" class="form-post">
                     <p>Would you like to be interviewed by our staff?</p>
 
                     <div class="new-inputs">
-                        <input name="finishapplication[yesinterview]" <?php if(isitset($app->newtutor->timeday)){ echo 'checked="checked"'; } ?> class="filled-in" type="checkbox" value="yes" id="yesinterview" />
+                        <input name="finishapplication[yesinterview]" <?php if(isitset($app->newtutor->timeday)){ echo 'checked="checked"'; } ?> class="filled-in" type="checkbox" value="1" id="yesinterview" />
                         <label for="yesinterview">
                             Yes, I would love to have an interview
                         </label>
@@ -417,9 +417,6 @@
                     </button>
 
                 </form>
-            <?php else: ?>
-                FINSHETHEM
-            <?php endif; ?>
 
 
     	</div>
@@ -436,6 +433,20 @@
     	</div>
     </div>
 </div>
+<?php else: ?>
+    <div class="box">
+        <?php if(empty($app->newtutor->aboutme)): ?>
+            Please finish the About Yourself section before continuing.
+        <?php elseif(empty($app->newtutor->tutorinfo)): ?>
+            Please finish the Tutoring Information section before continuing.
+        <?php elseif(empty($app->newtutor->addaphoto)): ?>
+            Please Add A Photo before continuing.
+        <?php elseif(empty($app->newtutor->subjectsitutor)): ?>
+            Please list at least one subject you tutor before continuing.
+        <?php endif; ?>
+    </div>
+<?php endif; ?>
+
 
 
 <style type="text/css">

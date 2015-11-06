@@ -4,7 +4,8 @@
 		'student-signup',
 		'tutor-signup',
 		'find-me-a-tutor',
-		'easy-signup'
+		'easy-signup',
+		'new-tutor-signup'
 	);
 
 	$app->meta = new stdClass();

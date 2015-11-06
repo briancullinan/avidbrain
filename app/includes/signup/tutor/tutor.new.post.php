@@ -96,6 +96,9 @@
 		$sql = "SELECT * FROM avid___new_temps WHERE email = :email";
 		$prepare = array(':email'=>$app->li->email);
 		$results = $app->connect->executeQuery($sql,$prepare)->fetch();
+		if(!empty($results->complete)){
+			new Flash(array('action'=>'required','message'=>'Your Application Is Under Review','formID'=>'signuplogin','field'=>'li_password'));
+		}
 
 		if(isset($results->id) && password_verify($app->li->password,$results->password)){
 			$token = password_hash(uniqid().$results->email.time(),PASSWORD_BCRYPT);
@@ -140,12 +143,13 @@
 			'city'=>$zipcodedata->city,
 			'city_slug'=>$zipcodedata->city_slug,
 			'`lat`'=>$zipcodedata->lat,
-			'`long`'=>$zipcodedata->long
+			'`long`'=>$zipcodedata->long,
+			'aboutme'=>1
 		);
 
 		$app->connect->update('avid___new_temps',$updateaboutme,array('email'=>$app->newtutor->email));
 
-		new Flash(array('action'=>'alert','message'=>'About Me Saved'));
+		new Flash(array('action'=>'jump-to','location'=>'/signup/tutor#tutorinfo','message'=>'About Me Saved'));
 
 	}
 	elseif(isset($app->tutoringinfo)){
@@ -170,12 +174,14 @@
 			'hourly_rate'=>$app->tutoringinfo->hourly_rate,
 			'online_tutor'=>$app->tutoringinfo->online_tutor,
 			'travel_distance'=>$app->tutoringinfo->travel_distance,
-			'`references`'=>$app->tutoringinfo->references
+			'`references`'=>$app->tutoringinfo->references,
+			'tutorinfo'=>1
 		);
 
 		$app->connect->update('avid___new_temps',$updatetutoringinfo,array('email'=>$app->newtutor->email));
 
-		new Flash(array('action'=>'alert','message'=>'Tutoring Information Saved'));
+		new Flash(array('action'=>'jump-to','location'=>'/signup/tutor#addaphoto','message'=>'Tutoring Information Saved'));
+		//new Flash(array('action'=>'alert','message'=>'Tutoring Information Saved'));
 	}
 	elseif(isset($app->uploadphoto) && $upload = makefileupload((object)$_FILES['uploadphoto'],'file')){
 
@@ -221,8 +227,8 @@
 		if($height > 500 || $width > 500){
 			$cropped = $app->imagemanager->make($myfile)->crop($app->crop->w, $app->crop->h, $app->crop->x, $app->crop->y)->resize(500,500)->save($croppedfile);
 		}
-		$app->connect->update('avid___new_temps',array('cropped'=>$croppedfileName),array('email'=>$app->newtutor->email));
-		$app->redirect('/signup/tutor');
+		$app->connect->update('avid___new_temps',array('addaphoto'=>1,'cropped'=>$croppedfileName),array('email'=>$app->newtutor->email));
+		$app->redirect('/signup/tutor#mysubjects');
 
 	}
 	elseif(isset($app->mysubjects)){
@@ -235,11 +241,11 @@
 
 		$mysubjects = json_encode(array($parentslug=>$app->mysubjects));
 
-		$app->connect->update('avid___new_temps',array('mysubs_'.$parentslug=>$mysubjects),array('email'=>$app->newtutor->email));
+		$app->connect->update('avid___new_temps',array('subjectsitutor'=>1,'mysubs_'.$parentslug=>$mysubjects),array('email'=>$app->newtutor->email));
 
-		new Flash(array('action'=>'alert','message'=>'Subjects Saved'));
+		//new Flash(array('action'=>'alert','message'=>'Subjects Saved'));
 
-		//$app->redirect('/signup/tutor/category/'.$jump.'#jt-'.$jump);
+		$app->redirect('/signup/tutor/category/'.$jump.'#jt-'.$jump);
 	}
 	elseif(isset($app->backgroundcheckstep1)){
 
@@ -411,12 +417,16 @@
 	}
 	elseif(isset($app->finishapplication)){
 
+		if(isset($app->newtutor->complete) && !empty($app->newtutor->complete)){
+			notify('UHOH~!');
+		}
+
 		if(empty($app->finishapplication->alldone)){
 			new Flash(array('action'=>'alert','message'=>'Please Complete Everything Before Submitting'));
 		}
 
 		//$app->finishapplication
-		$app->connect->update('avid___new_temps',array('timeday'=>$app->finishapplication->timeday,'yesinterview'=>$app->finishapplication->yesinterview),array('email'=>$app->newtutor->email));
+		$app->connect->update('avid___new_temps',array('complete'=>1,'timeday'=>$app->finishapplication->timeday,'yesinterview'=>$app->finishapplication->yesinterview),array('email'=>$app->newtutor->email));
 
 		$_SESSION['csrf_token'] = NULL;
 		$_SESSION['slim.flash'] = NULL;
@@ -425,6 +435,25 @@
 		unset($_SESSION);
 		session_destroy();
 
-		new Flash(array('action'=>'jump-to','formID'=>'signuplogin','location'=>'/','message'=>'Application Sent'));
+		$message = '';
+		$message.='<p> <strong> Name: </strong> '.$app->newtutor->first_name.' '.$app->newtutor->last_name.' </p>';
+		$message.='<p> <strong> Location: </strong> '.$app->newtutor->city.', '.$app->newtutor->state_long.' </p>';
+		$message.='<p> <strong> How Did You Hear About Us?: </strong> '.$app->newtutor->howdidyouhear.' </p>';
+		$message.='<p> <strong> Short Description: </strong> '.$app->newtutor->short_description.' </p>';
+		$message.='<p> <strong> Personal Statement: </strong> '.$app->newtutor->personal_statement.' </p>';
+		if(!empty($app->newtutor->yesinterview)){
+			$message.='<p> <strong> I would like to have an interview: </strong> '.$app->newtutor->timeday.' </p>';
+		}
+		if(!empty($app->newtutor->candidate_id)){
+			$message.='<p> <strong> Background Check Purchased  </strong> </p>';
+		}
+
+		$app->mailgun->to = 'david@avidbrain.com';
+		$app->mailgun->subject = 'A new tutor has completed their initial profile';
+		$app->mailgun->message = $message;
+		$app->mailgun->send();
+
+
+		new Flash(array('action'=>'jump-to','formID'=>'signuplogin','location'=>'/confirmation/new-tutor-signup','message'=>'Application Sent'));
 
 	}

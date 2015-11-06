@@ -54,7 +54,13 @@
             'ssn'=>$app->crypter->decrypt($app->newtutor->ssn)
         );
 
+
         $createCanditate = curlieque($userinfo,$candidates);
+        if(isset($createCanditate->error)){
+            $_SESSION['slim.flash']['error'] = $createCanditate->error;
+            redirect('/signup/tutor');
+            exit;
+        }
 
         if(isset($createCanditate->id)){
             $report = array(
@@ -63,7 +69,15 @@
                 'object' =>'package',
                 'candidate_id' => $createCanditate->id
             );
-            $report = curlieque($report,$reports);
+
+
+            try{
+            	$report = curlieque($report,$reports);
+            }
+            catch(Exception $e){
+            	echo '<pre>'; print_r($e); echo '</pre>';
+                exit;
+            }
 
             $app->connect->update('avid___new_temps',array('candidate_id'=>$createCanditate->id),array('email'=>$app->newtutor->email));
             $app->redirect('/signup/tutor/#finish');
