@@ -140,7 +140,7 @@
 						</div>
 					</div>
 					<div class="col s12 m4 l4">
-						<div class="title"> Canelation Policy </div>
+						<div class="title"> Cancelation Policy </div>
 						<div>
 							<?php echo $app->thetutor->cancellation_policy; ?>
 						</div>
@@ -201,12 +201,12 @@
 									foreach($json->$key as $key=> $subid){
 										$subdata = subinfo($app->connect,$subid);
 										echo '<div class="col s12 m4 l4 infos">';
-											echo '<input type="hidden" name="approveprofile['.$key.'][email]" value="'.$app->thetutor->email.'" />';
-											echo '<input type="hidden" name="approveprofile['.$key.'][subject_slug]" value="'.$subdata->subject_slug.'" />';
-											echo '<input type="hidden" name="approveprofile['.$key.'][parent_slug]" value="'.$subdata->parent_slug.'" />';
-											echo '<input type="hidden" name="approveprofile['.$key.'][last_modified]" value="'.thedate().'" />';
-											echo '<input type="hidden" name="approveprofile['.$key.'][usertype]" value="tutor" />';
-											echo '<input type="hidden" name="approveprofile['.$key.'][subject_name]" value="'.$subdata->subject_name.'" />';
+											echo '<input type="hidden" name="approveprofile['.$subdata->parent_slug.'---'.$subdata->subject_slug.'][email]" value="'.$app->thetutor->email.'" />';
+											echo '<input type="hidden" name="approveprofile['.$subdata->parent_slug.'---'.$subdata->subject_slug.'][subject_slug]" value="'.$subdata->subject_slug.'" />';
+											echo '<input type="hidden" name="approveprofile['.$subdata->parent_slug.'---'.$subdata->subject_slug.'][parent_slug]" value="'.$subdata->parent_slug.'" />';
+											echo '<input type="hidden" name="approveprofile['.$subdata->parent_slug.'---'.$subdata->subject_slug.'][last_modified]" value="'.thedate().'" />';
+											echo '<input type="hidden" name="approveprofile['.$subdata->parent_slug.'---'.$subdata->subject_slug.'][usertype]" value="tutor" />';
+											echo '<input type="hidden" name="approveprofile['.$subdata->parent_slug.'---'.$subdata->subject_slug.'][subject_name]" value="'.$subdata->subject_name.'" />';
 											echo '<div class="infos-title">'.$subdata->subject_name.'</div>';
 											echo '<div class="infos-text">'.$subdata->subject_parent.'</div>';
 										echo '</div>';

@@ -30,7 +30,7 @@
                             <?php
                                 $gender = isitset($app->newtutor->gender);
 
-                                foreach(array(NULL=>"Don't Show My Gender",'male'=>'Male','female'=>'Female') as $key => $value){
+                                foreach(array('dontshow'=>"Don't Show My Gender",'male'=>'Male','female'=>'Female') as $key => $value){
                                     $activate = NULL;
                                     if(isset($gender) && $gender==$key){
                                         $activate = ' selected="selected" ';
@@ -131,7 +131,7 @@
                             <option value="--"> -- </option>
                             <?php
                                 $cancellation_policy = isitset($app->newtutor->cancellation_policy);
-                                foreach(array(''=>'No Cancelation Policy',1=>'1 Hour',2=>'2 Hours',6=>'6 Hours',12=>'12 Hours',24=>'24 Hours') as $key => $value){
+                                foreach(array(0=>'No Cancelation Policy',1=>'1 Hour',2=>'2 Hours',6=>'6 Hours',12=>'12 Hours',24=>'24 Hours') as $key => $value){
                                     $activate = NULL;
                                     if(isset($cancellation_policy) && $cancellation_policy==$key){
                                         $activate = ' selected="selected" ';
@@ -150,7 +150,7 @@
                             <option value="--"> -- </option>
                             <?php
                                 $cancellation_rate = isitset($app->newtutor->cancellation_rate);
-                                foreach(array(NULL=>'No Cancelation Rate',10=>'$10.00',20=>'$20.00',30=>'$30.00',40=>'$40.00',50=>'$50.00') as $key => $value){
+                                foreach(array(0=>'No Cancelation Rate',10=>'$10.00',20=>'$20.00',30=>'$30.00',40=>'$40.00',50=>'$50.00') as $key => $value){
                                     $activate = NULL;
                                     if(isset($cancellation_rate) && $cancellation_rate==$key){
                                         $activate = ' selected="selected" ';

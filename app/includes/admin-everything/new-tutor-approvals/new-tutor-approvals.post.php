@@ -1,6 +1,16 @@
 <?php
     if(isset($app->approveprofile)){
 
+        if($app->thetutor->cancellation_policy==0){
+            $app->thetutor->cancellation_policy = NULL;
+        }
+        if($app->thetutor->cancellation_rate==0){
+            $app->thetutor->cancellation_rate = NULL;
+        }
+        if($app->thetutor->gender=='dontshow'){
+            $app->thetutor->gender = NULL;
+        }
+
         unset($app->approveprofile->id);
         unset($app->approveprofile->target);
 
@@ -40,11 +50,13 @@
         }
 
 
-        foreach($app->approveprofile as $insertSub){
-            $insertSub = (array)$insertSub;
-            $insertSub['status'] = 'needs-review';
-            $insertSub['sortorder'] = 0;
-            $app->connect->insert('avid___user_subjects',$insertSub);
+        $insertallthesubs = array();
+        $allthesubs = $app->approveprofile;
+        foreach($allthesubs as $insert){
+            $insertallthesubs = (array)$insert;
+            $insertallthesubs['status'] = 'needs-review';
+            $insertallthesubs['sortorder'] = 0;
+            $app->connect->insert('avid___user_subjects',$insertallthesubs);
         }
 
         $user = array(
