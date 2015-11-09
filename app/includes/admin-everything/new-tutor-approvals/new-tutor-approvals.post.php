@@ -4,11 +4,46 @@
         unset($app->approveprofile->id);
         unset($app->approveprofile->target);
 
-        $username = unique_username($app->connect,4);
-        $url = make_my_url($app->thetutor,$username);
+        $updates = new stdClass();
+        $updates->username = unique_username($app->connect,4);
+        $updates->url = make_my_url($app->thetutor,$updates->username);
+        $updates->approved_upload = $app->dependents->DOCUMENT_ROOT.'profiles/approved/'.$updates->username.getfiletype($app->thetutor->upload);
 
+        $uploads = $app->dependents->APP_PATH.'uploads';
+        $oldPath = $uploads.'/tutorphotos/'.$app->thetutor->upload;
+        $newPath = $uploads.'/photos/'.$app->thetutor->upload;
+
+        try{
+        	rename($oldPath,$newPath);
+        }
+        catch(Exception $e){
+        	//echo '<pre>'; print_r($e); echo '</pre>';
+        }
+
+        $oldPath = $uploads.'/tutorphotos/'.$app->thetutor->cropped;
+        $newPath = $uploads.'/photos/'.$app->thetutor->cropped;
+
+
+        try{
+            copy($oldPath,$updates->approved_upload);
+        }
+        catch(Exception $e){
+            //echo '<pre>'; print_r($e); echo '</pre>';
+        }
+
+
+        try{
+            rename($oldPath,$newPath);
+        }
+        catch(Exception $e){
+            //echo '<pre>'; print_r($e); echo '</pre>';
+        }
+
+        
         foreach($app->approveprofile as $insertSub){
             $insertSub = (array)$insertSub;
+            $insertSub['status'] = 'needs-review';
+            $insertSub['sortorder'] = 0;
             $app->connect->insert('avid___user_subjects',$insertSub);
         }
 
@@ -31,8 +66,8 @@
             '`long`'=>$app->thetutor->long,
             'status'=>NULL,
             'hidden'=>NULL,
-            'username'=>$username,
-            'url'=>$url
+            'username'=>$updates->username,
+            'url'=>$updates->url
         );
 
         $app->connect->insert('avid___user',$user);

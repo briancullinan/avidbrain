@@ -7,20 +7,26 @@
 
 	$app->connect->delete('avid___user_needsprofilereview',$deleteRequest);
 
-	$cropped = croppedfile($app->currentuser->my_upload);
-	$fileName = str_replace($app->dependents->APP_PATH.'uploads/photos/','',$cropped);
-	$approvedfile = $app->dependents->DOCUMENT_ROOT.'profiles/approved/'.$fileName;
-	if(file_exists($approvedfile)){
-		unlink($approvedfile);
-	}
-	if(file_exists($app->currentuser->my_upload)){
-		unlink($app->currentuser->my_upload);
+	$path = $app->dependents->APP_PATH.'uploads/photos/';
+	$pathApproved = $app->dependents->DOCUMENT_ROOT.'profiles/approved/';
+	$myfile = $app->currentuser->my_upload;
+
+	$upload = $path.$myfile;
+	$cropped = croppedfile($path.$myfile);
+	$approved = $pathApproved.$myfile;
+
+	if(file_exists($upload)){
+		unlink($upload);
 	}
 	if(file_exists($cropped)){
 		unlink($cropped);
 	}
+	if(file_exists($approved)){
+		unlink($approved);
+	}
 
 	$app->showmyphotoas = NULL;
 	$app->currentuser->my_upload = NULL;
+	$app->currentuser->my_upload_status = NULL;
 	$app->currentuser->save();
 	$app->redirect($app->currentuser->url.'/my-photos');

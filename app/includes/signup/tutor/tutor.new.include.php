@@ -26,6 +26,7 @@
                     <label>What is your gender?</label>
                     <div class="input-wrapper-select" id="aboutme_gender">
                         <select name="aboutme[gender]" class="browser-default">
+                            <option value="--"> -- </option>
                             <?php
                                 $gender = isitset($app->newtutor->gender);
 
@@ -86,9 +87,10 @@
                     <label>How far are you willing to travel?</label>
                     <div class="input-wrapper-select" id="tutoringinfo_travel_distance">
                         <select name="tutoringinfo[travel_distance]" class="browser-default">
+                            <option value="--"> -- </option>
                             <?php
                                 $travel_distance = isitset($app->newtutor->travel_distance);
-                                foreach(array(0,5,10,20,25,50,100) as $key => $value){
+                                foreach(array(1,5,10,20,25,50,100) as $key => $value){
                                     $activate = NULL;
                                     if(isset($travel_distance) && $travel_distance==$key){
                                         $activate = ' selected="selected" ';
@@ -104,6 +106,7 @@
                     <label>Do you tutor: online, in-person or both?</label>
                     <div class="input-wrapper-select" id="tutoringinfo_online_tutor">
                         <select name="tutoringinfo[online_tutor]" class="browser-default">
+                            <option value="--"> -- </option>
                             <?php
                                 $online_tutor = isitset($app->newtutor->online_tutor);
                                 foreach(array('online'=>'Online','offline'=>'In-Person','both'=>'Both') as $key => $value){
@@ -122,6 +125,7 @@
                     <label>How long is your cancelation policy?</label>
                     <div class="input-wrapper-select" id="tutoringinfo_cancellation_policy">
                         <select name="tutoringinfo[cancellation_policy]" class="browser-default">
+                            <option value="--"> -- </option>
                             <?php
                                 $cancellation_policy = isitset($app->newtutor->cancellation_policy);
                                 foreach(array(''=>'No Cancelation Policy',1=>'1 Hour',2=>'2 Hours',6=>'6 Hours',12=>'12 Hours',24=>'24 Hours') as $key => $value){
@@ -140,6 +144,7 @@
                     <label>What is your cancelation fee?</label>
                     <div class="input-wrapper-select" id="tutoringinfo_cancellation_rate">
                         <select name="tutoringinfo[cancellation_rate]" class="browser-default">
+                            <option value="--"> -- </option>
                             <?php
                                 $cancellation_rate = isitset($app->newtutor->cancellation_rate);
                                 foreach(array(NULL=>'No Cancelation Rate',10=>'$10.00',20=>'$20.00',30=>'$30.00',40=>'$40.00',50=>'$50.00') as $key => $value){
@@ -233,10 +238,10 @@
     </div>
 </div>
 
-<h3 id="mysubjects">
+<h3>
     Subjects You Teach &amp; Tutor
 </h3>
-<div class="box">
+<div class="box" id="mysubjects">
     <div class="row">
     	<div class="col s12 m6 l6">
             <?php
@@ -254,7 +259,7 @@
             <div class="row">
             	<div class="col s12 m4 l4">
                     <?php foreach($app->allsubs as $category): ?>
-                        <a id="jt-<?php echo $category->parent_slug; ?>" class="btn btn-block <?php if(isset($action) && $action==$category->parent_slug){ echo ' active ';} ?>" href="/signup/tutor/category/<?php echo $category->parent_slug; ?>#jt-<?php echo $category->parent_slug; ?>">
+                        <a id="jt-<?php echo $category->parent_slug; ?>" class="btn btn-block <?php if(isset($action) && $action==$category->parent_slug){ echo ' active ';} ?>" href="/signup/tutor/category/<?php echo $category->parent_slug; ?>#mysubjects">
                             <?php echo $category->subject_parent; ?>
                         </a>
                     <?php endforeach; ?>

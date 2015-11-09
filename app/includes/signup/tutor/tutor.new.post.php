@@ -131,6 +131,9 @@
 		elseif(empty($app->aboutme->personal_statement)){
 			new Flash(array('action'=>'required','message'=>'Personal Statement Required','formID'=>'aboutme','field'=>'aboutme_personal_statement'));
 		}
+		elseif($app->aboutme->gender=='--'){
+			new Flash(array('action'=>'required','message'=>'Please select an option','formID'=>'tutoringinfo','field'=>'aboutme_gender'));
+		}
 
 		$updateaboutme = array(
 			'zipcode'=>$app->aboutme->zipcode,
@@ -166,6 +169,18 @@
 		}
 		elseif(empty($app->tutoringinfo->references)){
 			new Flash(array('action'=>'required','message'=>'Please provide 3 references','formID'=>'tutoringinfo','field'=>'tutoringinfo_references'));
+		}
+		elseif($app->tutoringinfo->travel_distance=='--'){
+			new Flash(array('action'=>'required','message'=>'Please select an option','formID'=>'tutoringinfo','field'=>'tutoringinfo_travel_distance'));
+		}
+		elseif($app->tutoringinfo->online_tutor=='--'){
+			new Flash(array('action'=>'required','message'=>'Please select an option','formID'=>'tutoringinfo','field'=>'tutoringinfo_online_tutor'));
+		}
+		elseif($app->tutoringinfo->cancellation_policy=='--'){
+			new Flash(array('action'=>'required','message'=>'Please select an option','formID'=>'tutoringinfo','field'=>'tutoringinfo_cancellation_policy'));
+		}
+		elseif($app->tutoringinfo->cancellation_rate=='--'){
+			new Flash(array('action'=>'required','message'=>'Please select an option','formID'=>'tutoringinfo','field'=>'tutoringinfo_cancellation_rate'));
 		}
 
 		$updatetutoringinfo = array(
@@ -245,7 +260,7 @@
 
 		//new Flash(array('action'=>'alert','message'=>'Subjects Saved'));
 
-		$app->redirect('/signup/tutor/category/'.$jump.'#jt-'.$jump);
+		$app->redirect('/signup/tutor/category/'.$jump.'#mysubjects');
 	}
 	elseif(isset($app->backgroundcheckstep1)){
 

@@ -16,7 +16,7 @@
 	$routes['facebook'] = (object)array('url'=>'/facebook','slug'=>'student','route'=>'/facebook/','params'=>array('promocode'=>'facebook'),'include'=>'signup/student','protected'=>NULL,'permissions'=>array());
 
 	$routes['image'] = (object)array('url'=>'/image','slug'=>'image','route'=>'/image/:location/:id/','include'=>'image','protected'=>NULL,'permissions'=>array());
-	$routes['image-extras'] = (object)array('url'=>'/image','slug'=>'image','route'=>'/image/:location/:id/:extras/','include'=>'image','protected'=>NULL,'permissions'=>array());
+	$routes['image-extras'] = (object)array('url'=>'/image','slug'=>'image','route'=>'/image/:location/:extras/:id/','include'=>'image','protected'=>NULL,'permissions'=>array());
 
 	$routes['subjects-match'] = (object)array('url'=>'/subjects-match','slug'=>'subjects-match','route'=>'/subjects/:subject/','include'=>'subjects-match','protected'=>NULL,'permissions'=>array());
 

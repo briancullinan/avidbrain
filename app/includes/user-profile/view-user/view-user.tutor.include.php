@@ -23,8 +23,8 @@
 				<div class="col s12 m5 l4">
 					<div class="tutor-left">
 
-						<div class="profile-image center-align avatar">
-							<?php $app->currentuser->dontshow = 1; echo show_avatar($app->currentuser,$app->user,$app->dependents); ?>
+						<div class="user-photograph">
+							<?php include($app->dependents->APP_PATH.'includes/user-profile/view-user/photograph.php'); ?>
 						</div>
 
 						<?php if(isset($app->childen)): ?>

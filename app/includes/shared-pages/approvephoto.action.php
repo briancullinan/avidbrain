@@ -17,10 +17,13 @@
 		$app->mailgun->send();
 	}
 
-	$filePath = croppedfile($app->currentuser->my_upload);
-	$fileName = str_replace($app->dependents->APP_PATH.'uploads/photos/','',$filePath);
-	$newfile = $app->dependents->DOCUMENT_ROOT.'profiles/approved/'.$fileName;
-	copy($filePath, $newfile);
+	$photos = $app->dependents->APP_PATH.'uploads/photos/';
+	$approved = $app->dependents->DOCUMENT_ROOT.'profiles/approved/';
+
+	$myfile = $app->currentuser->my_upload;
+	$cropped = croppedfile($myfile);
+
+	copy($photos.$cropped, $approved.$cropped);
 
 	$app->currentuser->my_upload_status = 'verified';
 	$app->currentuser->save();

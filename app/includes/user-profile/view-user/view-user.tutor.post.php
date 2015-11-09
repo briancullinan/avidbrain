@@ -10,6 +10,7 @@
 
 	if(isset($app->customizeavatar)){
 
+		/*
 		unset($app->customizeavatar->target);
 
 		$jsonencode = json_encode($app->customizeavatar);
@@ -24,6 +25,7 @@
 				)
 			);
 		}
+		*/
 
 	}
 
@@ -112,11 +114,15 @@
 		}
 		elseif(isset($app->upload) && $upload = makefileupload((object)$_FILES['upload'],'file')){
 
+			//notify('snakes');
+
 			if(isset($upload->tmp_name)){
 
 				$uploaddir = $app->dependents->APP_PATH.'uploads/photos/';
-				//$uploadfile = $uploaddir.'/'.$app->currentuser->email.getfiletype($upload->name);
-				$uploadfile = $uploaddir.str_replace('/','--',$app->currentuser->url).getfiletype($upload->name);
+
+				$type = getfiletype($upload->name);
+				$filename = $app->user->username.$type;
+				$uploadfile = $uploaddir.$filename;
 
 				$img = $app->imagemanager->make($upload->tmp_name)->save($uploadfile);
 				$width = $img->width();
@@ -139,7 +145,7 @@
 					})->save();
 				}
 
-				$app->currentuser->my_upload = $uploadfile;
+				$app->currentuser->my_upload = $filename;
 				$app->currentuser->my_upload_status = 'needs-review';
 				$app->currentuser->save();
 				$app->redirect($app->currentuser->url.'/my-photos/crop-photo');

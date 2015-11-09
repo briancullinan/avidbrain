@@ -2,7 +2,7 @@
 
 @media only screen and (max-width: 500px){
 
-	
+
 	.sub-active navigation, navigation{
 		width: 100%;
 	}
@@ -40,7 +40,7 @@
 	.trigger-user{
 		z-index: 555;
 	}
-	
+
 	navigation logo{
 		display: none;
 	}
@@ -57,9 +57,9 @@
 		min-height: 300px;
 	}
 	.toast{
-		
+
 	}
-	
+
 	.howie-howitworks-img{
 		display: none;
 	}
@@ -90,7 +90,7 @@
 		font-size: 12px;
 		margin-top: -10px;
 	}
-	
+
 }
 @media only screen and (min-width: 993px){
 	.trigger{

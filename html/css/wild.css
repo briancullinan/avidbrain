@@ -646,9 +646,14 @@ footer{
 	padding: 10px 0px;
 }
 .row .col.my-info-img{
-	padding: 5px;
-	padding-bottom: 0px;
+	text-align: left;
+    padding: 5px;
+    padding-bottom: 0px;
 }
+.row .col.my-info-img img{
+    max-height: 80px;
+}
+
 .my-info-drop{
 	padding: 5px;
 	padding-bottom: 10px;

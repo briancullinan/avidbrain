@@ -55,7 +55,7 @@
 		<a class="button" href="<?php echo $app->currentuser->url; ?>/my-photos/rotate-right"><i class="fa fa-rotate-right"></i> Rotate Right</a>
 		<a class="button" href="<?php echo $app->currentuser->url; ?>/my-photos/rotate-left"><i class="fa fa-rotate-left"></i> Rotate Left</a>
 
-		<?php if(isset($app->user->usertype) && $app->user->usertype=='admin' && file_exists(croppedfile($app->currentuser->my_upload)) && isset($app->currentuser->username)): ?>
+		<?php if(isset($app->user->usertype) && $app->user->usertype=='admin'): ?>
 			<?php if(isset($app->currentuser->my_upload) && $app->currentuser->my_upload_status=='needs-review'): ?>
 				<a class="button" href="<?php echo $app->currentuser->url; ?>/my-photos/approvephoto"><i class="fa fa-check"></i> <i class="fa fa-photo"></i> Approve Photo</a>
 			<?php else: ?>
@@ -69,12 +69,15 @@
 				Your photo needs to be approved before it's public. <a class="btn black btn-s" href="/request-profile-review">Request Photo Review</a>
 			</div>
 			<?php endif; ?>
-			<img class="responsive-img" src="<?php echo $app->currentuser->url.'/thumbnail'; ?>">
+			<div class="user-photograph">
+				<?php include($app->dependents->APP_PATH.'includes/user-profile/view-user/photograph.php'); ?>
+			</div>
 
 			<?php if(isset($app->user->usertype) && $app->user->usertype=='admin' && isset($app->currentuser->my_upload)): ?>
 				<div>
 					<div>Full Photo</div>
-					<a href="<?php echo $app->currentuser->url.'/photo'; ?>" target="_blank"><img class="responsive-img" src="<?php echo $app->currentuser->url.'/photo'; ?>"></a>
+
+					<a href="/image/photograph/<?php echo $app->currentuser->username; ?>" target="_blank"><img class="responsive-img" src="/image/photograph/<?php echo $app->currentuser->username; ?>"></a>
 				</div>
 			<?php endif; ?>
 

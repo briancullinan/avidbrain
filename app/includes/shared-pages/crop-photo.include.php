@@ -1,7 +1,9 @@
 <h1>Crop Your Photo</h1>
 <p>Please crop your photo for your profile. Only cropped photos will be approved.</p>
 <p>
-	<div id="cropbox" data-image="<?php echo $app->currentuser->url.'/photo'; ?>"><img src="<?php echo $app->currentuser->url.'/photo'; ?>"></div>
+	<div id="cropbox" data-image="/image/photograph/<?php echo $app->user->username; ?>">
+		<img src="/image/photograph/<?php echo $app->user->username; ?>" />
+	</div>
 </p>
 <form id="cropform" action="<?php echo $app->currentuser->url; ?>/my-photos/crop-photo" method="post">
 	<input type="hidden" id="x" name="crop[x]" />
