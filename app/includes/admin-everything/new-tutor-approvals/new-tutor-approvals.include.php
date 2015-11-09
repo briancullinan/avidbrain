@@ -64,7 +64,7 @@
 					<div class="col s12 m6 l6">
 						<div class="title"> Photo </div>
 						<div>
-							<div class="profile-image avatar maxus"><img src="/image/tutorphotos/<?php echo $app->thetutor->id; ?>/cropped" class="responsive-img" /></div>
+							<div class="profile-image avatar maxus"><img src="/image/tutorphotos/cropped/<?php echo $app->thetutor->id; ?>" class="responsive-img" /></div>
 						</div>
 					</div>
 					<div class="col s12 m6 l6">

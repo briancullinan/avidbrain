@@ -24,7 +24,7 @@
 					<div class="tutor-left">
 
 						<div class="user-photograph">
-							<?php include($app->dependents->APP_PATH.'includes/user-profile/view-user/photograph.php'); ?>
+							<img src="<?php echo userphotographs($app->user,$app->currentuser,$app->dependents); ?>" />
 						</div>
 
 						<?php if(isset($app->childen)): ?>

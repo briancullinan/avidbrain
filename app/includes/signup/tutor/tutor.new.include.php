@@ -86,16 +86,19 @@
                 <div class="new-inputs">
                     <label>How far are you willing to travel?</label>
                     <div class="input-wrapper-select" id="tutoringinfo_travel_distance">
+                        <?php
+                            $travel_distance = isitset($app->newtutor->travel_distance);
+
+                        ?>
                         <select name="tutoringinfo[travel_distance]" class="browser-default">
                             <option value="--"> -- </option>
                             <?php
-                                $travel_distance = isitset($app->newtutor->travel_distance);
-                                foreach(array(1,5,10,20,25,50,100) as $key => $value){
+                                foreach(array(1,5,10,20,25,50,100) as $value){
                                     $activate = NULL;
-                                    if(isset($travel_distance) && $travel_distance==$key){
+                                    if(isset($travel_distance) && $travel_distance==$value){
                                         $activate = ' selected="selected" ';
                                     }
-                                    echo '<option '.$activate.' value="'.$key.'">'.$value.' Miles</option>';
+                                    echo '<option '.$activate.' value="'.$value.'">'.$value.' Miles</option>';
                                 }
                             ?>
                         </select>
@@ -199,7 +202,7 @@
                         <a href="/signup/tutor/action/rotateleft" class="button button-block"><i class="fa fa-rotate-left"></i> Rotate Left</a>
                     </div>
                 	<div class="col s12 m8 l8">
-                		<div class="profile-image avatar"><img src="/image/tutorphotos/<?php echo $app->newtutor->id; ?>/cropped" class="responsive-img" /></div>
+                		<div class="profile-image avatar"><img src="/image/tutorphotos/cropped/<?php echo $app->newtutor->id; ?>" class="responsive-img" /></div>
                 	</div>
                 </div>
 

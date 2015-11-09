@@ -1280,3 +1280,35 @@
 	function moneytime($total,$totalpayout,$additional){
 		return (round((($total - $totalpayout) + $additional),2)*100);
 	}
+
+
+	function userphotographs($user,$currentuser,$dependents){
+		$userphotographs = NULL;
+		if(isset($user->usertype) && $user->usertype=='admin' && isset($currentuser->my_upload)){
+			$userphotographs = '/image/photograph/cropped/'.$currentuser->username;
+		}
+		elseif(isset($user->username) && isset($currentuser->username) && $user->username==$currentuser->username || isset($user->username) && empty($currentuser->username)){
+			if(isset($user->my_upload)){
+				$userphotographs = '/image/photograph/cropped/'.$user->username;
+			}
+		}
+		else{
+			if(isset($currentuser->my_upload) && file_exists($dependents->DOCUMENT_ROOT.'profiles/approved/'.croppedfile($currentuser->my_upload))){
+				$userphotographs = '/profiles/approved/'.croppedfile($currentuser->my_upload);
+			}
+			elseif(isset($currentuser->my_avatar)){
+				$userphotographs = $currentuser->my_avatar;
+			}
+		}
+
+		if(isset($user->usertype) && $user->usertype=='admin' && empty($userphotographs)){
+			$userphotographs = $user->my_avatar;
+		}
+		elseif(empty($userphotographs) && isset($currentuser->my_avatar)){
+			$userphotographs = $currentuser->my_avatar;
+		}
+
+		return $userphotographs;
+
+
+	}

@@ -10,22 +10,22 @@
         $updates->approved_upload = $app->dependents->DOCUMENT_ROOT.'profiles/approved/'.$updates->username.getfiletype($app->thetutor->upload);
 
         $uploads = $app->dependents->APP_PATH.'uploads';
-        $oldPath = $uploads.'/tutorphotos/'.$app->thetutor->upload;
+        $oldPath = $uploads.'/photos/'.$app->thetutor->upload;
         $newPath = $uploads.'/photos/'.$app->thetutor->upload;
 
         try{
-        	rename($oldPath,$newPath);
+        	#rename($oldPath,$newPath);
         }
         catch(Exception $e){
         	//echo '<pre>'; print_r($e); echo '</pre>';
         }
 
-        $oldPath = $uploads.'/tutorphotos/'.$app->thetutor->cropped;
+        $oldPath = $uploads.'/photos/'.$app->thetutor->cropped;
         $newPath = $uploads.'/photos/'.$app->thetutor->cropped;
 
 
         try{
-            copy($oldPath,$updates->approved_upload);
+            #copy($oldPath,$updates->approved_upload);
         }
         catch(Exception $e){
             //echo '<pre>'; print_r($e); echo '</pre>';
@@ -33,13 +33,13 @@
 
 
         try{
-            rename($oldPath,$newPath);
+            #rename($oldPath,$newPath);
         }
         catch(Exception $e){
             //echo '<pre>'; print_r($e); echo '</pre>';
         }
 
-        
+
         foreach($app->approveprofile as $insertSub){
             $insertSub = (array)$insertSub;
             $insertSub['status'] = 'needs-review';

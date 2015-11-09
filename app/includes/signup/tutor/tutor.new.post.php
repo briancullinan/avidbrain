@@ -202,7 +202,7 @@
 
 		$uploadfile = getfiletype($upload->name);
 		$filename = $app->newtutor->email.$uploadfile;
-		$uploadPath = $app->dependents->APP_PATH.'uploads/tutorphotos/';
+		$uploadPath = $app->dependents->APP_PATH.'uploads/photos/';
 
 		$img = $app->imagemanager->make($upload->tmp_name)->save($uploadPath.$filename);
 		$app->connect->update('avid___new_temps',array('upload'=>$filename),array('email'=>$app->newtutor->email));
@@ -233,11 +233,13 @@
 
 		$croppedfile = croppedfile($app->newtutor->upload);
 		$croppedfileName = $croppedfile;
-		$myfile = $app->dependents->APP_PATH.'uploads/tutorphotos/'.$app->newtutor->upload;
-		$croppedfile = $app->dependents->APP_PATH.'uploads/tutorphotos/'.$croppedfile;
+		$myfile = $app->dependents->APP_PATH.'uploads/photos/'.$app->newtutor->upload;
+		$croppedfile = $app->dependents->APP_PATH.'uploads/photos/'.$croppedfile;
 		$cropped = $app->imagemanager->make($myfile)->crop($app->crop->w, $app->crop->h, $app->crop->x, $app->crop->y)->save($croppedfile); //->resize(250,250)
 		$height = $app->imagemanager->make($croppedfile)->height();
 		$width = $app->imagemanager->make($croppedfile)->width();
+
+		
 
 		if($height > 500 || $width > 500){
 			$cropped = $app->imagemanager->make($myfile)->crop($app->crop->w, $app->crop->h, $app->crop->x, $app->crop->y)->resize(500,500)->save($croppedfile);

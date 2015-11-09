@@ -3,8 +3,8 @@
 	if(isset($method) && isset($action)){
 		if($action=='trash'){
 
-			$upload = $app->dependents->APP_PATH.'uploads/tutorphotos/'.$app->newtutor->upload;
-			$cropped = $app->dependents->APP_PATH.'uploads/tutorphotos/'.$app->newtutor->cropped;
+			$upload = $app->dependents->APP_PATH.'uploads/photos/'.$app->newtutor->upload;
+			$cropped = $app->dependents->APP_PATH.'uploads/photos/'.$app->newtutor->cropped;
 
 			try{
 				unlink($upload);
@@ -26,13 +26,13 @@
 		}
 		elseif($action=='rotateright'){
 
-			$cropped = $app->dependents->APP_PATH.'uploads/tutorphotos/'.$app->newtutor->cropped;
+			$cropped = $app->dependents->APP_PATH.'uploads/photos/'.$app->newtutor->cropped;
 			$img = $app->imagemanager->make($cropped)->rotate(-90)->save();
 			$app->redirect('/signup/tutor');
 
 		}
 		elseif($action=='rotateleft'){
-			$cropped = $app->dependents->APP_PATH.'uploads/tutorphotos/'.$app->newtutor->cropped;
+			$cropped = $app->dependents->APP_PATH.'uploads/photos/'.$app->newtutor->cropped;
 			$img = $app->imagemanager->make($cropped)->rotate(90)->save();
 			$app->redirect('/signup/tutor');
 		}

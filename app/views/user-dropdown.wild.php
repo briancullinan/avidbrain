@@ -45,7 +45,7 @@
 	<li class="my-info-drop">
 		<div class="row valign-wrapper">
 			<div class="col s5 m5 l5 my-info-img">
-				<?php include($app->dependents->APP_PATH.'includes/user-profile/view-user/photograph.php'); ?>
+				<img src="<?php echo userphotographs($app->user,$app->currentuser,$app->dependents); ?>" />
 			</div>
 			<div class="col s7 m7 l7 ">
 

@@ -70,7 +70,7 @@
 			</div>
 			<?php endif; ?>
 			<div class="user-photograph">
-				<?php include($app->dependents->APP_PATH.'includes/user-profile/view-user/photograph.php'); ?>
+				<img class="responsive-img" src="/image/photograph/cropped/<?php echo $app->currentuser->username; ?>">
 			</div>
 
 			<?php if(isset($app->user->usertype) && $app->user->usertype=='admin' && isset($app->currentuser->my_upload)): ?>

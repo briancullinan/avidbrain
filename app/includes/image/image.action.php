@@ -25,6 +25,15 @@
         }
     }
 
+    if($location=='tutorphotos'){
+        $sql = "SELECT upload FROM avid___new_temps WHERE id = :id";
+        $prepare = array(':id'=>$id);
+        $results = $app->connect->executeQuery($sql,$prepare)->fetch();
+        if(isset($results->upload)){
+            $upload = PHOTOS.$results->upload;
+        }
+    }
+
     if(empty($upload)){
         notify('UH OH!');
     }
