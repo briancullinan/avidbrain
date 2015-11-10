@@ -123,7 +123,12 @@
 
 /* Jobs */
 .closed-job{
-	opacity: .5;
+	background: #e3e3e3;
+	border: solid 2px #ccc;
+	opacity: .8;
+}
+.closed-job .block-bottom{
+	color: #ccc;
 }
 .jobs-block{
 	margin-bottom: 25px;

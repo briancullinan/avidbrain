@@ -30,10 +30,15 @@
 
 	<div class="row">
 		<div class="col s12 m4 l3 center-align">
-			<?php
-				$userinfo = $searchResults;
-				include($app->dependents->APP_PATH.'includes/user-profile/user-block.php');
-			?>
+
+			<div class="user-photograph">
+				<a href="<?php echo $searchResults->url; ?>">
+					<img src="<?php echo userphotographs($app->user,$searchResults,$app->dependents); ?>" />
+				</a>
+			</div>
+			<div class="user-name">
+				<a href="<?php echo $searchResults->url; ?>"><?php echo ucwords(short($searchResults)); ?></a>
+			</div>
 
 			<?php if(isset($searchResults->city)): ?>
 			<div class="tutor-location">

@@ -1,5 +1,6 @@
 <?php
 	$fix = array(
+		'changeimagenames'=>'Change Image Names',
 		'check-username-doubles'=>'Check Username Doubles',
 		'fix-username'=>'Fix Username',
 		'rename'=>'Rename Photos',
@@ -281,6 +282,46 @@
 				printer('UPDATE');
 			}
 
+		}
+		elseif($action=='changeimagenames'){
+
+			$sql = "UPDATE avid___user_profile SET my_upload = REPLACE(my_upload, '/var/www/avidbrain.com/app/uploads/photos/', '') WHERE my_upload LIKE '%/var/www/avidbrain.com/app/uploads/photos/%'";
+			$app->connect->executeQuery($sql,array());
+
+			$sql = "
+			SELECT profile.email,profile.my_upload,user.username FROM avid___user_profile profile
+
+			INNER JOIN avid___user user on user.email = profile.email
+
+			WHERE my_upload IS NOT NULL
+
+			";
+			$prepare = array();
+			$results = $app->connect->executeQuery($sql,$prepare)->fetchAll();
+			$uploads = $app->dependents->APP_PATH.'uploads/photos/';
+			$approved = $app->dependents->DOCUMENT_ROOT.'profiles/approved/';
+
+			foreach($results as $changename){
+
+				$getfiletype = getfiletype($changename->my_upload);
+				$newname = $changename->username.$getfiletype;
+
+
+				if(file_exists($uploads.$changename->my_upload)){
+					rename($uploads.$changename->my_upload,$uploads.$newname);
+				}
+				if(file_exists($uploads.croppedfile($changename->my_upload))){
+					rename($uploads.croppedfile($changename->my_upload),$uploads.croppedfile($newname));
+				}
+				if(file_exists($approved.croppedfile($changename->my_upload))){
+					rename($approved.croppedfile($changename->my_upload),$approved.croppedfile($newname));
+				}
+
+				$app->connect->update('avid___user_profile',array('my_upload'=>$newname),array('email'=>$changename->email));
+				//$changename->my_upload
+
+			}
+			echo 'ALL DONE';
 		}
 		elseif($action=='xxx'){
 			notify('xxx');

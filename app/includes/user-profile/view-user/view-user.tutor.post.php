@@ -300,14 +300,10 @@
 			if(isset($app->editprofile->zipcode)){
 				$zipData = get_zipcode_data($app->connect,$app->editprofile->zipcode);
 
+
 				if($zipData==false){
 					new Flash(array('action'=>'required','message'=>"Invalid Zip Code"));
 				}
-
-				$directory = $app->dependents->APP_PATH.'uploads/photos/';
-
-				$oldurl = str_replace('/','--',$app->currentuser->url);
-				$olduploads = glob($directory.$oldurl.'*');
 
 				$app->currentuser->url = update_zipcode($app->currentuser,$zipData);
 				$app->currentuser->city = $zipData->city;
@@ -320,25 +316,8 @@
 				$app->currentuser->lat = $zipData->lat;
 				$app->currentuser->long = $zipData->long;
 
-				$newupload = str_replace('/','--',$app->currentuser->url);
+				$oldurl = true;
 
-				$checkforapproved = str_replace($directory,'',$app->currentuser->my_upload);
-				$approvedDir = $app->dependents->DOCUMENT_ROOT.'profiles/approved/'.$checkforapproved;
-				$newname = str_replace($oldurl,$newupload,$approvedDir);
-				$newname = croppedfile($newname);
-				if(file_exists(croppedfile($approvedDir))){
-					rename(croppedfile($approvedDir), $newname);
-				}
-
-				if(is_array($olduploads)){
-					foreach($olduploads as $oldname){
-						$newname = str_replace($oldurl,$newupload,$oldname);
-						rename($oldname,$newname);
-					}
-				}
-				if(isset($app->currentuser->my_upload)){
-					$app->currentuser->my_upload = str_replace($oldurl,$newupload,$app->currentuser->my_upload);
-				}
 			}
 
 

@@ -1,11 +1,30 @@
 <?php if(isset($app->jobsessions[0])): ?>
 
-	<?php foreach($app->jobsessions as $jobsessions): #printer($jobsessions);  ?>
-		<div class="block message-blocks">	
+	<?php foreach($app->jobsessions as $jobsessions): //printer($jobsessions,1);  ?>
+		<div class="block message-blocks">
 			<div class="in-box">
 				<div class="row">
 					<div class="col s12 m2 l2">
-						<?php $userinfo = $jobsessions; include($app->dependents->APP_PATH."includes/user-profile/user-block.php"); ?>
+
+						<?php
+						    $results = NULL;
+						    $fromuser = $jobsessions->to_user;
+						    $sql = "SELECT user.username,user.url,user.first_name,user.last_name,profile.my_avatar,profile.my_upload,profile.my_upload_status FROM avid___user user INNER JOIN avid___user_profile profile on profile.email = user.email WHERE user.email = :email LIMIT 1";
+						    $prepare = array(':email'=>$fromuser);
+						    $results = $app->connect->executeQuery($sql,$prepare)->fetch();
+						?>
+
+						<?php if(isset($results->username)): ?>
+						    <div class="user-photograph">
+						        <a href="<?php echo $results->url; ?>">
+						            <img src="<?php echo userphotographs($app->user,$results,$app->dependents); ?>" />
+						        </a>
+						    </div>
+						    <div class="user-name">
+						        <a href="<?php echo $results->url; ?>"><?php echo ucwords(short($results)); ?></a>
+						    </div>
+						<?php endif; ?>
+
 					</div>
 					<div class="col s12 m10 l10">
 						<div class="message-subject">
@@ -21,7 +40,7 @@
 						</div>
 					</div>
 				</div>
-			</div>	
+			</div>
 		</div>
 	<?php endforeach; ?>
 	<?php echo $app->pagination; ?>

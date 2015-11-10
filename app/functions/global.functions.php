@@ -942,6 +942,7 @@
 			IF(COUNT(user.sessiontoken) = 0, NULL, 1) as activenow,
 			user.last_active,
 			user.url,
+			user.username,
 			user.usertype,
 			user.customer_id,
 			user.first_name,
@@ -1281,7 +1282,6 @@
 		return (round((($total - $totalpayout) + $additional),2)*100);
 	}
 
-
 	function userphotographs($user,$currentuser,$dependents){
 		$userphotographs = NULL;
 		if(isset($user->usertype) && $user->usertype=='admin' && isset($currentuser->my_upload)){
@@ -1310,5 +1310,16 @@
 
 		return $userphotographs;
 
+
+	}
+
+	function correct_email($myemail,$standardClass){
+
+		if(isset($standardClass->from_user) && isset($myemail) && $standardClass->from_user==$myemail && isset($standardClass->to_user)){
+			return $standardClass->to_user;
+		}
+		elseif(isset($standardClass->from_user) && isset($myemail) && $standardClass->to_user==$myemail && isset($standardClass->from_user)){
+			return $standardClass->from_user;
+		}
 
 	}

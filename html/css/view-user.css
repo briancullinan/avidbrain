@@ -730,7 +730,11 @@ input.reset-input.hourly_rate{
 .user-block .profile-image{
 	position: relative;
 }
-.user-name, .user-name a{
+.user-name{
+	display: block;
+	text-align: center;
+}
+.user-name a{
 	font-size: 16px;
 	padding: 2px 5px;
 	color: #222;
@@ -906,8 +910,6 @@ input.reset-input.hourly_rate{
 
 /*New User Image*/
 .user-photograph{
-	margin-bottom: 15px;
-	padding: 10px;
 	display: block;
 	text-align: center;
 }
@@ -921,5 +923,5 @@ input.reset-input.hourly_rate{
 	box-shadow: 0 0 10px #999;
 }
 .user-photograph img.the-avatar{
-	
+	border: none;
 }

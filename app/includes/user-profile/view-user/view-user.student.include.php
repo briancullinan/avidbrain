@@ -14,16 +14,8 @@
 				<div class="col s12 m4 l4">
 					<div class="tutor-left">
 
-						<div class="profile-image center-align avatar">
-
-							<?php $app->currentuser->dontshow = 1; echo show_avatar($app->currentuser,$app->user,$app->dependents); ?>
-
-							<?php if(isset($app->user->email) && $app->user->email == $app->currentuser->promocode): ?>
-							<div class="alert blue white-text">
-								Your Student
-							</div>
-							<?php endif; ?>
-
+						<div class="user-photograph">
+							<img src="<?php echo userphotographs($app->user,$app->currentuser,$app->dependents); ?>" />
 						</div>
 
 						<?php if(isset($app->childen)): ?>

@@ -15,19 +15,45 @@
 	<?php endif; ?>
 	<div class="row">
 		<div class="col s12 m2 l2">
+
 			<?php
+			    $results = NULL;
+			    $fromuser = $app->viewmessage->from_user;
+			    if(empty($message->usertype) && parent_company_email($fromuser)){
+			        $sql = "SELECT * FROM avid___admins WHERE email = :email LIMIT 1";
+			        $prepare = array(':email'=>$fromuser);
+			        $admininfo = $app->connect->executeQuery($sql,$prepare)->fetch();
 
-				if(empty($app->viewmessage->usertype) && parent_company_email($app->viewmessage->from_user)){
-					$email = $app->viewmessage->from_user;
-					include($app->dependents->APP_PATH.'includes/user-profile/staff-block.php');
-				}
-				else{
-					$userinfo = $app->viewmessage;
-					$userinfo->dontshow = 1;
-					include($app->dependents->APP_PATH.'includes/user-profile/user-block.php');
-				}
-
+			    }
+			    else{
+			        $sql = "SELECT user.username,user.url,user.first_name,user.last_name,profile.my_avatar,profile.my_upload,profile.my_upload_status FROM avid___user user INNER JOIN avid___user_profile profile on profile.email = user.email WHERE user.email = :email LIMIT 1";
+			        $prepare = array(':email'=>$fromuser);
+			        $results = $app->connect->executeQuery($sql,$prepare)->fetch();
+			    }
 			?>
+
+			<?php if(isset($results->username)): ?>
+			    <div class="user-photograph">
+			        <a href="<?php echo $results->url; ?>">
+			            <img src="<?php echo userphotographs($app->user,$results,$app->dependents); ?>" />
+			        </a>
+			    </div>
+			    <div class="user-name">
+			        <a href="<?php echo $results->url; ?>"><?php echo ucwords(short($results)); ?></a>
+			    </div>
+			<?php elseif(isset($admininfo)): ?>
+			    <div class="user-photograph">
+			        <a href="<?php echo $admininfo->url; ?>">
+			            <img src="<?php echo $admininfo->my_avatar; ?>" />
+			        </a>
+			    </div>
+			    <div class="user-name">
+			        <a href="<?php echo $admininfo->url; ?>"><?php echo ucwords(short($admininfo)); ?></a>
+			    </div>
+			<?php endif; ?>
+
+
+
 		</div>
 		<div class="col s12 m4 l3">
 		<?php if($app->viewmessage->to_user==$app->user->email): ?>

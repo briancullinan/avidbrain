@@ -29,36 +29,6 @@
 		else{
 
 			$newurl = make_my_url($app->user,$checkusername);
-
-			//notify($app->user->my_upload);
-
-			if(isset($app->user->my_upload) && !empty($app->user->my_upload)){
-
-				$uploads = $app->dependents->APP_PATH.'uploads/photos/';
-				$approved = $app->dependents->DOCUMENT_ROOT.'profiles/approved/';
-
-				$my_upload = $app->user->my_upload;
-				$my_upload_without = str_replace($uploads,'',$my_upload);
-
-				$old_upload_name = $my_upload;
-				$new_upload_name = str_replace($app->user->username,$checkusername,$my_upload_without);
-				$old_cropped = str_replace('.','.crop.',$my_upload_without);
-				$new_cropped = str_replace($app->user->username,$checkusername,$old_cropped);
-
-				$old_approved = $approved.str_replace('.','.crop.',$my_upload_without);
-				$new_approved = $approved.str_replace($checkusername,$checkusername.'.crop',$new_upload_name);
-
-				if(file_exists($uploads.$old_cropped)){
-					rename($uploads.$old_cropped,$uploads.$new_cropped);
-				}
-
-				rename($old_upload_name,$uploads.$new_upload_name);
-				$app->user->my_upload = $uploads.$new_upload_name;
-			}
-
-			if(isset($old_approved) && file_exists($old_approved)){
-				rename($old_approved,$new_approved);
-			}
 			$app->user->url = $newurl;
 			$app->user->username = $checkusername;
 			$app->user->save();

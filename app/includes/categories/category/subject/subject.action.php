@@ -124,6 +124,16 @@
 	}
 
 	$app->meta = new stdClass();
+
+	if(empty($data) && empty($app->zero)){
+		$zero = new stdClass();
+		$zero->subject_name = ucwords($subject);
+		$zero->subject_parent = ucwords(str_replace('-',' ',$category));
+		//notify('makesomethingup');
+		$app->zero = $zero;
+	}
+
+
 	$app->meta->title = $app->zero->subject_name.' Tutor'.$s;
 	$app->meta->h1 = '<span>'.$count.'</span> '.$app->zero->subject_name.' Tutor'.$s;
 	if(isset($app->zero->keywords)){

@@ -6,6 +6,7 @@
 
 
 	$cachedKey = "featured-homepage-tutor";
+	//$app->connect->cache->clean();
 	//$app->connect->cache->delete($cachedKey);
 	$featuredhomepagetutor = $app->connect->cache->get($cachedKey);
 	if($featuredhomepagetutor == null) {
@@ -39,11 +40,9 @@
 			':email'=>$featuredEmail
 		);
 		$featuredTutor = $app->connect->executeQuery($sql,$prepare)->fetch();
-		$myphoto = 'https://www.avidbrain.com/profiles/avatars/default-avatar.png';
+		$myphoto = '/profiles/avatars/default-avatar.png';
 		if(isset($featuredTutor->my_upload)){
-			$myphoto = explode('/photos/',$featuredTutor->my_upload);
-			$myphoto = $myphoto[1];
-			$myphoto = 'https://www.avidbrain.com/profiles/approved/'.croppedfile($myphoto);
+			$myphoto = '/profiles/approved/'.croppedfile($featuredTutor->my_upload);
 		}
 		$featuredTutor->myphoto = $myphoto;
 

@@ -230,7 +230,7 @@
 				<div class="featured-tutor-inside">
 					<div class="row">
 						<div class="col s12 m4 l4">
-							<div class="profile-image center-align avatar">
+							<div class="user-photograph">
 								<a href="<?php echo $app->featuredhomepagetutor->url; ?>"><img class="avatarbg responsive-img " src="<?php echo $app->featuredhomepagetutor->myphoto; ?>" /></a>
 							</div>
 							<?php if(isset($app->featuredhomepagetutor->starscore)): ?>

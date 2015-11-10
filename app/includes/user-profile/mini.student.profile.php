@@ -13,15 +13,19 @@
 					 }
 ?>
 <div class="tutor-results">
-	
+
 	<div class="row">
 		<div class="col s12 m3 l3 center-align">
-			<?php
-				$userinfo = $searchResults;
-				//$userinfo->dontshow = 1;
-				include('user-block.php');
-			?>
-			
+
+			<div class="user-photograph">
+				<a href="<?php echo $searchResults->url; ?>">
+					<img src="<?php echo userphotographs($app->user,$searchResults,$app->dependents); ?>" />
+				</a>
+			</div>
+			<div class="user-name">
+				<a href="<?php echo $searchResults->url; ?>"><?php echo ucwords(short($searchResults)); ?></a>
+			</div>
+
 			<?php if(isset($searchResults->city)): ?>
 			<div class="tutor-location">
 				<i class="mdi-action-room"></i> <?php echo $searchResults->city; ?>, <?php echo ucwords($searchResults->state_long); ?>
@@ -32,31 +36,31 @@
 				<?php echo number_format(round($searchResults->distance), 0, '', ','); ?> Miles Away
 			</div>
 			<?php endif; ?>
-			
+
 			<?php
 				if(isset($userinfo->promocode) && isset($app->user->email) && $userinfo->promocode==$app->user->email){
 					echo '<div class="badge blue white-text your-student">Your Student</div>';
 				}
 			?>
-			
+
 		</div>
 		<div class="col s12 m9 l9">
 			<div class="row">
 				<div class="col s12 m7 l9">
-					
+
 					<?php //printer($subjects); ?>
-					
+
 					<?php if(isset($searchResults->short_description_verified)): ?>
 						<div class="short-description"><?php echo $searchResults->short_description_verified; ?></div>
 					<?php endif; ?>
 					<?php if(isset($searchResults->personal_statement_verified)): ?>
 						<div class="personal-statement"><?php echo truncate($searchResults->personal_statement_verified,300); ?></div>
 					<?php endif; ?>
-					
+
 					<?php if(empty($searchResults->short_description_verified) && empty($searchResults->personal_statement_verified)): ?>
-						
+
 					<?php endif; ?>
-					
+
 					<?php if(isset($searchResults->ineedhelp[0])): ?>
 					<div class="short-description">I'm Looking For Help With</div>
 						<div class="tutor-results-subjects">
@@ -66,7 +70,7 @@
 							<?php endforeach; ?>
 						</div>
 					<?php endif; ?>
-				
+
 				</div>
 				<div class="col s12 m5 l3">
 					<?php if(isset($app->user->email) && $app->user->email == $searchResults->email): ?>
@@ -79,5 +83,5 @@
 			</div>
 		</div>
 	</div>
-	
+
 </div>

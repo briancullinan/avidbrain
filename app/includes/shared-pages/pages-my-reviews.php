@@ -60,10 +60,26 @@
 		<div class="block review">
 			<div class="row">
 				<div class="col s12 m3 l3">
+
 					<?php
-						$userinfo = $my_testimonials;
-						$userinfo->dontshow = 1;
-						include($app->dependents->APP_PATH."includes/user-profile/user-block.php"); ?>
+					    $results = NULL;
+					    $fromuser = $my_testimonials->to_user;
+					    $sql = "SELECT user.username,user.url,user.first_name,user.last_name,profile.my_avatar,profile.my_upload,profile.my_upload_status FROM avid___user user INNER JOIN avid___user_profile profile on profile.email = user.email WHERE user.email = :email LIMIT 1";
+					    $prepare = array(':email'=>$fromuser);
+					    $results = $app->connect->executeQuery($sql,$prepare)->fetch();
+					?>
+
+					<?php if(isset($results->username)): ?>
+					    <div class="user-photograph">
+					        <a href="<?php echo $results->url; ?>">
+					            <img src="<?php echo userphotographs($app->user,$results,$app->dependents); ?>" />
+					        </a>
+					    </div>
+					    <div class="user-name">
+					        <a href="<?php echo $results->url; ?>"><?php echo ucwords(short($results)); ?></a>
+					    </div>
+					<?php endif; ?>
+
 				</div>
 				<div class="col s12 m9 l9">
 					<?php if(isset($my_testimonials->session_subject)): ?>

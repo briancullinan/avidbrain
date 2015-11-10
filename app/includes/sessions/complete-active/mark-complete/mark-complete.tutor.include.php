@@ -1,6 +1,24 @@
 <div class="row">
 	<div class="col s12 m4 l4">
-		<?php $userinfo = $app->markcomplete; include($app->dependents->APP_PATH."includes/user-profile/user-block.php"); ?>
+
+		<?php
+		    $results = NULL;
+		    $fromuser = $app->markcomplete->to_user;
+		    $sql = "SELECT user.username,user.url,user.first_name,user.last_name,profile.my_avatar,profile.my_upload,profile.my_upload_status FROM avid___user user INNER JOIN avid___user_profile profile on profile.email = user.email WHERE user.email = :email LIMIT 1";
+		    $prepare = array(':email'=>$fromuser);
+		    $results = $app->connect->executeQuery($sql,$prepare)->fetch();
+		?>
+
+		<?php if(isset($results->username)): ?>
+		    <div class="user-photograph">
+		        <a href="<?php echo $results->url; ?>">
+		            <img src="<?php echo userphotographs($app->user,$results,$app->dependents); ?>" />
+		        </a>
+		    </div>
+		    <div class="user-name">
+		        <a href="<?php echo $results->url; ?>"><?php echo ucwords(short($results)); ?></a>
+		    </div>
+		<?php endif; ?>
 
 		<div class="confirm-payment hide"></div>
 

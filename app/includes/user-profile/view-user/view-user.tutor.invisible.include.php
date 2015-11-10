@@ -1,8 +1,8 @@
 <div class="private-profile">
 
     <div class="profile-image center-align avatar">
-        <div class="hidden-avatar">
-            <?php $app->currentuser->dontshow = 1; echo show_avatar($app->currentuser,$app->user,$app->dependents); ?>
+        <div class="user-photograph">
+            <img src="<?php echo userphotographs($app->user,$app->currentuser,$app->dependents); ?>" />
         </div>
     </div>
 
