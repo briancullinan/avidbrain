@@ -15,6 +15,11 @@
 	$routes['facebook'] = (object)array('url'=>'/facebook','slug'=>'facebook','route'=>'/facebook/','include'=>'signup/student/','protected'=>NULL,'permissions'=>array());
 	$routes['facebook'] = (object)array('url'=>'/facebook','slug'=>'student','route'=>'/facebook/','params'=>array('promocode'=>'facebook'),'include'=>'signup/student','protected'=>NULL,'permissions'=>array());
 
+	// Background Check
+	$routes['background-check'] = (object)array('url'=>'/background-check','slug'=>'background-check','route'=>'/background-check/','include'=>'background-check','protected'=>true,'permissions'=>array('tutor'));
+
+
+
 	$routes['image'] = (object)array('url'=>'/image','slug'=>'image','route'=>'/image/:location/:id/','include'=>'image','protected'=>NULL,'permissions'=>array());
 	$routes['image-extras'] = (object)array('url'=>'/image','slug'=>'image','route'=>'/image/:location/:extras/:id/','include'=>'image','protected'=>NULL,'permissions'=>array());
 

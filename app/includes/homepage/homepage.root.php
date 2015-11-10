@@ -23,31 +23,41 @@
 
 		$cacheapianalytics = $app->connect->cache->get($googleAPIcachename);
 		if($cacheapianalytics == null) {
-			$starting = explode(' ',$app->user->signup_date);
-			$starting = $starting[0];
-			$p12FilePath = $app->dependents->APP_PATH.'dependents/google-api.p12';
-			$serviceClientId = '572852330695-0hbkh6fr4okvdvqk6tncit8154aqbtne.apps.googleusercontent.com';
-			$serviceAccountName = '572852330695-0hbkh6fr4okvdvqk6tncit8154aqbtne@developer.gserviceaccount.com';
-			$scopes = array('https://www.googleapis.com/auth/analytics.readonly');
-			$googleAssertionCredentials = new Google_Auth_AssertionCredentials($serviceAccountName,$scopes,file_get_contents($p12FilePath));
-			$client = new Google_Client();
-			$client->setAssertionCredentials($googleAssertionCredentials);
-			$client->setClientId($serviceClientId);
-			$client->setApplicationName("Project");
-			$analytics = new Google_Service_Analytics($client);
-			$analyticsViewId    = 'ga:101662413';
-			$startDate          = $starting;
-			$endDate            = date('Y-m-d');
-			$metrics            = 'ga:pageviews';
-			$data = $analytics->data_ga->get($analyticsViewId, $startDate, $endDate, $metrics, array(
-			    'dimensions'    => 'ga:pagePath',
-			    'filters'       => 'ga:pagePath=='.$app->user->url,
-			    'sort'          => '-ga:pageviews',
-			));
-			$pageviews = $data->totalsForAllResults;
-			$returnedData = $pageviews['ga:pageviews'];
-		    $cacheapianalytics = $returnedData;
-		    $app->connect->cache->set($googleAPIcachename, $returnedData, 3600);
+
+			$cacheapianalytics = NULL;
+
+			try{
+				$starting = explode(' ',$app->user->signup_date);
+				$starting = $starting[0];
+				$p12FilePath = $app->dependents->APP_PATH.'dependents/google-api.p12';
+				$serviceClientId = '572852330695-0hbkh6fr4okvdvqk6tncit8154aqbtne.apps.googleusercontent.com';
+				$serviceAccountName = '572852330695-0hbkh6fr4okvdvqk6tncit8154aqbtne@developer.gserviceaccount.com';
+				$scopes = array('https://www.googleapis.com/auth/analytics.readonly');
+				$googleAssertionCredentials = new Google_Auth_AssertionCredentials($serviceAccountName,$scopes,file_get_contents($p12FilePath));
+				$client = new Google_Client();
+				$client->setAssertionCredentials($googleAssertionCredentials);
+				$client->setClientId($serviceClientId);
+				$client->setApplicationName("Project");
+				$analytics = new Google_Service_Analytics($client);
+				$analyticsViewId    = 'ga:101662413';
+				$startDate          = $starting;
+				$endDate            = date('Y-m-d');
+				$metrics            = 'ga:pageviews';
+				$data = $analytics->data_ga->get($analyticsViewId, $startDate, $endDate, $metrics, array(
+				    'dimensions'    => 'ga:pagePath',
+				    'filters'       => 'ga:pagePath=='.$app->user->url,
+				    'sort'          => '-ga:pageviews',
+				));
+				$pageviews = $data->totalsForAllResults;
+				$returnedData = $pageviews['ga:pageviews'];
+			    $cacheapianalytics = $returnedData;
+			    $app->connect->cache->set($googleAPIcachename, $returnedData, 3600);
+			}
+			catch(Exception $e){
+				// Do Nothing
+			}
+
+
 		}
 
 		return $cacheapianalytics;

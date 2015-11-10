@@ -5,21 +5,21 @@
 		var $sessiontoken;
 		var $connect;
 		var $crypter;
-		
+
 		public function __construct($connect=NULL,$crypter=NULL){
-			
+
 			if(isset($_SESSION['user']['email']) && isset($_SESSION['user']['sessiontoken'])){
-				
+
 				if(isset($connect)){
 					$this->connect = $connect;
 				}
 				if(isset($crypter)){
 					$this->crypter = $crypter;
 				}
-				
+
 				$this->email = $this->crypter->decrypt($_SESSION['user']['email']);
 				$this->sessiontoken = $this->crypter->decrypt($_SESSION['user']['sessiontoken']);
-				
+
 				if(parent_company_email($this->email)==true){
 					$this->table = 'avid___admins';
 					$select = "user.*";
@@ -42,8 +42,16 @@
 						$data	=	$data->setParameter(':sessiontoken',$this->sessiontoken);
 						$data	=	$data->innerJoin('user','avid___user_profile','profile','profile.email = user.email');
 						$userResults	=	$data->execute()->fetch();
+						if(isset($userResults->email) && isset($userResults->usertype) && $userResults->usertype=='tutor'){
+							$sql = "SELECT * FROM avid___needs_bgcheck WHERE email = :email";
+							$prepare = array(':email'=>$userResults->email);
+							$results = $this->connect->executeQuery($sql,$prepare)->fetch();
+							if(isset($results->email)){
+								$userResults->needs_bgcheck = true;
+							}
+						}
 				}
-					
+
 					if(isset($userResults->id)){
 						//self::get_my_settings();
 						foreach($userResults as $key=>$value){
@@ -60,39 +68,35 @@
 							redirect('/logout');
 						}
 					}
-					
-					
-					
-					//notify($this);
 			}
 			else{
 				foreach($this as $key=>$value){
 					unset($this->$key);
 				}
 			}
-			
+
 		}
-		
+
 		public function lastActive(){
-			
+
 			$lastactive = $this->email.'---lastactive';
 			$lastactivesetvar = $this->connect->cache->get($lastactive);
 			if($lastactivesetvar == null) {
-				
+
 				$thedate = thedate();
 				$updatelastactive = array('last_active'=>$thedate);
 				$this->connect->update('avid___user',$updatelastactive,array('email'=>$this->email));
-				
+
 			    $returnedData = $thedate;
 			    $lastactivesetvar = $returnedData;
 			    $this->connect->cache->set($lastactive, $returnedData, 120);
 			}
-			
+
 			$this->last_active = $lastactivesetvar;
 			//notify($this);
-			
+
 		}
-		
+
 		public function settings(){
 			$settings = $this->connect->executeQuery("SELECT * FROM avid___user_account_settings WHERE email = :email",array(':email'=>$this->email))->fetch();
 			unset($settings->email);
@@ -101,13 +105,13 @@
 				return $settings;
 			}
 		}
-		
+
 		public function short(){
 			return '<span><i class="fa fa-at"></i></span>'.explode('@',$this->email)[0];
 		}
-		
+
 		public function payment(){
-			
+
 			if(parent_company_email($this->email)){
 				$payment = true;
 				$this->creditcardonfile = true;
@@ -119,28 +123,28 @@
 			elseif($this->usertype=='student' && isset($this->customer_id)){
 				$payment = $this->customer_id;
 			}
-			
+
 			if(isset($payment)){
 				$this->payment = $payment;
 			}
-			
+
 			if(isset($this->payment)){
-				
+
 				$stripecreditcard = $this->connect->cache->get($this->payment);
-				
+
 				if($stripecreditcard == null) {
 					$returnedData = get_creditcard($this->payment);
 					$this->connect->cache->set($this->payment, $returnedData, 3600);
 				}
-				
+
 				if(isset($stripecreditcard)){
 					$this->creditcardonfile = $stripecreditcard;
 				}
 			}
-			
-			
+
+
 		}
-		
+
 		public function creditcard(){
 			if(isset($this->payment) && $this->usertype == 'student'){
 				try{
@@ -163,9 +167,9 @@
 				return 'tutor-card';
 			}
 		}
-		
+
 		public function save(){
-			
+
 			$userValues = array(
 				'password'=>$this->password,
 				'sessiontoken'=>$this->sessiontoken,
@@ -200,7 +204,7 @@
 				'anotheragency'=>$this->anotheragency,
 				'anotheragency_rate'=>$this->anotheragency_rate
 			);
-			
+
 			$profileValues = array(
 				'hourly_rate'=>$this->hourly_rate,
 				'birthday'=>$this->birthday,
@@ -225,18 +229,18 @@
 				'custom_avatar'=>$this->custom_avatar,
 				'showmyphotoas'=>$this->showmyphotoas
 			);
-			
+
 			//notify($this);
-			
+
 			$this->connect->update('avid___user', $userValues, array('email' => $this->email));
 			$this->connect->update('avid___user_profile', $profileValues, array('email' => $this->email));
 		}
-	
+
 	}
-	
-	
+
+
 	class activeUser extends User{
-		
+
 		public function __construct($connect=NULL,$data=NULL){
 			if(isset($connect)){
 				$this->connect = $connect;
@@ -247,5 +251,5 @@
 				}
 			}
 		}
-		
+
 	}

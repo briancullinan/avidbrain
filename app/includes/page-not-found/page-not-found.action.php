@@ -7,7 +7,7 @@
 
 	$select = '
 		settings.*,
-		user.usertype,user.first_name,user.last_name,user.city,user.state_long,user.url,user.state_slug,user.city_slug,
+		user.username,user.usertype,user.first_name,user.last_name,user.city,user.state_long,user.url,user.state_slug,user.city_slug,
 		profile.my_upload,profile.my_upload_status,profile.hourly_rate,profile.my_avatar,profile.short_description_verified,profile.personal_statement_verified
 	';
 

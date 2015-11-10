@@ -35,4 +35,6 @@
 			unset($mystudents[$key]);
 		}
 	}
-	$app->mystudents = $mystudents;
+	if(!empty($mystudents)){
+		$app->mystudents = $mystudents;
+	}

@@ -410,6 +410,9 @@ notifications.moderate{
 notifications.moderate a{
 
 }
+notifications.background-check{
+    background: rgba(204, 204, 204, 0.76);
+}
 
 main .liu.active-notification{
 	padding-top: 130px;

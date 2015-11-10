@@ -17,6 +17,13 @@
 		}
 	}
 
+	if(isset($app->user->needs_bgcheck)){
+		$notications = new stdClass();
+		$notications->status = 'background-check';
+		$notications->message = '<a class="btn btn-s" href="/background-check">Complete Background Check</a>';
+		$app->notifications = $notications;
+	}
+
 	if(isset($app->user->status) && $app->user->status=='needs-review' && $app->user->usertype=='student' && isset($app->user->welcome)){
 
 		#$notications = new stdClass();
