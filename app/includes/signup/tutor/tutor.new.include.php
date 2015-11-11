@@ -48,7 +48,7 @@
     	</div>
     	<div class="col s12 m6 l6">
 
-            <div class="help">
+            <div class="help-info">
                 <div class="title">Help</div>
                 <p>Please provide your zip code, a short description, and in-depth description and your gender.</p>
 
@@ -169,7 +169,7 @@
             </form>
     	</div>
     	<div class="col s12 m6 l6">
-            <div class="help">
+            <div class="help-info">
                 <div class="title">Help</div>
 
                 <p>The average <span class="blue-text">hourly rate</span> for tutoring is $40.00, but it can range widly from $15.00 an hour all the way up to $300.00 an hour.</p>
@@ -226,7 +226,7 @@
             <?php endif; ?>
     	</div>
     	<div class="col s12 m6 l6">
-            <div class="help">
+            <div class="help-info">
                 <div class="title">Help</div>
                 <p>Please provide a <span class="blue-text">photo</span> of yourself. A photo is required, to ensure that we have the highest quality tutor profiles.</p>
 
@@ -291,7 +291,7 @@
             </div>
     	</div>
     	<div class="col s12 m5 l5">
-            <div class="help">
+            <div class="help-info">
                 <div class="title">Help</div>
                 <p>List all the <span class="blue-text">subjects</span> that you teach or tutor.</p>
 
@@ -381,7 +381,7 @@
 
     	</div>
     	<div class="col s12 m4 l4">
-            <div class="help">
+            <div class="help-info">
                 <div class="title">Help</div>
                 <p>Everyone single one of our tutors has to pass a <span class="blue-text">background check</span> before they can interact with students.  </p>
                 <p>We don't require the background check to complete a profile and become a tutor, but once a student has contact you, or you would like to apply to a job post you must pass the background check. </p>
@@ -429,7 +429,7 @@
 
     	</div>
     	<div class="col s12 m6 l6">
-            <div class="help">
+            <div class="help-info">
                 <div class="title">Help</div>
                 <p>If you would like to have an interview, just let us know and we can set one up.</p>
 

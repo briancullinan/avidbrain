@@ -8,6 +8,13 @@
 			<a href="/request-profile-review" class="btn red">Request Profile Review</a>
 		</div>
 	</div>
+<?php elseif(isset($app->user->needs_bgcheck)): ?>
+
+	<p>AvidBrain Requires that all tutors have a background check before they are allowed to interact with students. You may apply to a job post, but you can't read or reply to the student if they agree to tutoring.</p>
+
+	<a href="/background-check" class="btn green">
+		Complete Your Background Check
+	</a>
 
 <?php elseif(isset($app->user->email) && isset($app->user->creditcardonfile) && empty($app->user->status)): ?>
 	<?php

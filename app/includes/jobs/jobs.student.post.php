@@ -117,15 +117,19 @@
             $newjobmessage.= '<p> '.short($app->user).' has a credit card on file. </p>';
         }
 
-
-        $app->mailgun->to = 'keith@avidbrain.com,jake.stoll@avidbrain.com,david@avidbrain.com';
+        if($app->dependents->DEBUG==true){
+            $app->mailgun->to = 'david@avidbrain.com';
+        }
+        else{
+            $app->mailgun->to = 'keith@avidbrain.com,jake.stoll@avidbrain.com,david@avidbrain.com';
+        }
         $app->mailgun->subject = 'New Job Post -- Please verify';
         $app->mailgun->message = $newjobmessage;
         $app->mailgun->send();
 
 
         if(isset($data[0]) && $app->dependents->MODE == 'production'){
-            
+
             $subject = 'A student has posted a new job';
             $message = '<br><h2>'.$app->postjob->subject_name.' Student</h2>';
 

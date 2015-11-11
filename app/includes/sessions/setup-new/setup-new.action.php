@@ -21,6 +21,10 @@
 	$app->alltheusers = $data;
 	//printer($app->alltheusers,1);
 
+	if(isset($app->user->needs_bgcheck)){
+		unset($app->alltheusers);
+	}
+
 
 	if(isset($username)){
 		foreach($app->alltheusers as $check){

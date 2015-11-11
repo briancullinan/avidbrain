@@ -44,6 +44,8 @@
 		</div>
 	<?php endforeach; ?>
 	<?php echo $app->pagination; ?>
+<?php elseif(isset($app->user->needs_bgcheck)): ?>
+	You have waiting session, <a href="/background-check">complete your background</a> check to view them.
 <?php else: ?>
 	You have no job sessions to setup, <a href="/jobs">find another job</a>
 <?php endif; ?>

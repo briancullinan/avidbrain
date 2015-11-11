@@ -13,6 +13,10 @@
 	$offsets = new offsets((isset($number) ? $number : NULL),$app->dependents->pagination->items_per_page);
 	$data	=	$data->setMaxResults($offsets->perpage)->setFirstResult($offsets->offsetStart)->orderBy('id','DESC')->execute()->fetchAll();
 
+	if(isset($app->user->needs_bgcheck)){
+		unset($data);
+	}
+
 	if(isset($data[0])){
 		$app->jobsessions = $data;
 

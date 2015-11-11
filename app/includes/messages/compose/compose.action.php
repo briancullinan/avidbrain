@@ -18,7 +18,9 @@
 
 	$data	=	$data->execute()->fetchAll();
 
-	$app->alltheusers = $data;
+	if(isset($data[0])){
+		$app->alltheusers = $data;
+	}
 
 
 	if(isset($username)){
@@ -31,4 +33,8 @@
 		if(empty($app->composemessage)){
 			$app->redirect('/messages/compose');
 		}
+	}
+
+	if(isset($app->user->needs_bgcheck)){
+		unset($app->alltheusers);
 	}

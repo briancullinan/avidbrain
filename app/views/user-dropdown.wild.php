@@ -17,6 +17,10 @@
 	//$dropdownnav[] = (object)array('url'=>'/','text'=>'<i class="fa fa-home"></i> Home','class'=>'dll-home');
 	//$dropdownnav[] = (object)array('class'=>'divider');
 
+	if(isset($app->user->needs_bgcheck)){
+		$dropdownnav[] = (object)array('url'=>'/background-check','text'=>'Complete Background Check','class'=>'bgcheck');
+	}
+
 
 	if($app->user->usertype=='admin'){
 		$dropdownnav[] = (object)array('url'=>'/admin-everything','text'=>'<i class="fa fa-gear"></i> Admin Everything');

@@ -1,5 +1,18 @@
 <?php
 	if(isset($app->application) && isset($app->user->usertype) && $app->user->usertype=='tutor'){
+		function removeitall($string){
+			$pattern = "/[^@\s]*@[^@\s]*\.[^@\s]*/";
+			$replacement = "";//[removed]
+			$string = preg_replace($pattern, $replacement, $string);
+
+			$pattern = "/[a-zA-Z]*[:\/\/]*[A-Za-z0-9\-_]+\.+[A-Za-z0-9\.\/%&=\?\-_]+/i";
+			$replacement = "";//[removed]
+			$string = preg_replace($pattern, $replacement, $string);
+
+			return $string;
+		}
+		$app->application->message = removeitall($app->application->message);
+
 
 
 		// check if user is a ghost

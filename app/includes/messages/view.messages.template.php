@@ -71,6 +71,8 @@
 	</div>
 	<?php endforeach; ?>
 	<?php echo $app->pagination; ?>
+<?php elseif(isset($app->user->needs_bgcheck)): ?>
+	You have waiting messages, <a href="/background-check">complete your background</a> check to view them.
 <?php else: ?>
 	There are no messages
 <?php endif; ?>
