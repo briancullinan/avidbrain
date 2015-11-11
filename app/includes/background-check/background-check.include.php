@@ -34,11 +34,11 @@
                 if(isset($step) && file_exists($file.$step.'.php')){
                     include($file.$step.'.php');
                 }
-				elseif($step=='complete'){
+				elseif(isset($step) && $step=='complete'){
 					echo 'OKALLDONE';
 				}
                 else{
-                    echo 'Invalid Entry';
+                    echo 'Please choose a step from the left';
                 }
 
 				if(isset($app->newtutor->step5)){

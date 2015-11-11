@@ -3,6 +3,8 @@
 
 <?php if(isset($app->newtutor->step5)): ?>
     Thank you for purchasing a background check.
+<?php elseif(empty($app->newtutor->step1) || empty($app->newtutor->step2) || empty($app->newtutor->step3) || empty($app->newtutor->step4)): ?>
+    Please fill out all steps before continuing.
 <?php else: ?>
     <p>Background checks are <span class="green-text">$29.99</span>, which is non-refundable.</p>
 
