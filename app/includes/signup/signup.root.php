@@ -5,47 +5,9 @@
 			return $var;
 		}
 	}
-	
+
 
 	if($app->dependents->DEBUG==true){
-		class tutorsignup{
-
-			protected $connect;
-			protected $crypter;
-
-			function __construct($connect=NULL,$crypter=NULL){
-				if(isset($connect)){
-					$this->connect = $connect;
-				}
-				if(isset($crypter)){
-					$this->crypter = $crypter;
-				}
-				if(isset($_SESSION['temptutor']['email']) && isset($_SESSION['temptutor']['token'])){
-					$this->email = $this->crypter->decrypt($_SESSION['temptutor']['email']);
-					$this->token = $this->crypter->decrypt($_SESSION['temptutor']['token']);
-
-					$sql = "SELECT * FROM avid___new_temps WHERE email = :email and token = :token";
-					$prepare = array(':email'=>$this->email,':token'=>$this->token);
-					$results = $this->connect->executeQuery($sql,$prepare)->fetch();
-
-					if(isset($results->id)){
-						foreach($results as $key=>$value){
-							$this->$key = $value;
-						}
-					}
-					else{
-						redirect('/logout');
-					}
-					unset($this->connect);
-					unset($this->crypter);
-				}
-			}
-
-			public function CLASSY(){
-
-			}
-
-		}
 
 		$app->newtutor = new tutorsignup($app->connect,$app->crypter);
 		if(isset($app->newtutor->id)){

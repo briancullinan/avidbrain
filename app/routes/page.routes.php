@@ -17,6 +17,7 @@
 
 	// Background Check
 	$routes['background-check'] = (object)array('url'=>'/background-check','slug'=>'background-check','route'=>'/background-check/','include'=>'background-check','protected'=>true,'permissions'=>array('tutor'));
+	$routes['background-check-step'] = (object)array('url'=>'/background-check','slug'=>'background-check','route'=>'/background-check/:step/','include'=>'background-check','protected'=>true,'permissions'=>array('tutor'));
 
 
 

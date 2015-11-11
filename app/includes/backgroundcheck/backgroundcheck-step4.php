@@ -93,6 +93,10 @@
 		</div>
 	</div>
 
+	<?php if(isset($app->newtutor->location) && $app->newtutor->location=='completecheck'): ?>
+		<input type="hidden" name="backgroundcheckstep4[location]" value="completecheck"  />
+	<?php endif; ?>
+
 	<input type="hidden" name="backgroundcheckstep4[target]" value="backgroundcheckstep4"  />
 	<input type="hidden" name="backgroundcheckstep4[statescheck]" id="statescheck" value=""  />
 	<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">

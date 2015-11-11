@@ -239,7 +239,7 @@
 		$height = $app->imagemanager->make($croppedfile)->height();
 		$width = $app->imagemanager->make($croppedfile)->width();
 
-		
+
 
 		if($height > 500 || $width > 500){
 			$cropped = $app->imagemanager->make($myfile)->crop($app->crop->w, $app->crop->h, $app->crop->x, $app->crop->y)->resize(500,500)->save($croppedfile);
@@ -322,7 +322,15 @@
 				'step1'=>1
 			);
 			$app->connect->update('avid___new_temps',$update,array('email'=>$app->newtutor->email));
-			new Flash(array('action'=>'jump-to','message'=>'Application Info Saved','formID'=>'backgroundcheckstep1','location'=>'/signup/tutor/step2#steps'));
+
+			if(isset($app->backgroundcheckstep1->location) && $app->backgroundcheckstep1->location=='completecheck'){
+				$url = '/background-check/step2';
+			}
+			else{
+				$url = '/signup/tutor/step2#steps';
+			}
+
+			new Flash(array('action'=>'jump-to','message'=>'Application Info Saved','formID'=>'backgroundcheckstep1','location'=>$url));
 		// END
 
 	}
@@ -333,7 +341,15 @@
 		}
 
 		$app->connect->update('avid___new_temps',array('step2'=>1),array('email'=>$app->newtutor->email));
-		new Flash(array('action'=>'jump-to','message'=>'Summary of Your Rights Acknowledged','formID'=>'backgroundcheckstep1','location'=>'/signup/tutor/step3#steps'));
+
+		if(isset($app->backgroundcheckstep2->location) && $app->backgroundcheckstep2->location=='completecheck'){
+			$url = '/background-check/step3';
+		}
+		else{
+			$url = '/signup/tutor/step3#steps';
+		}
+
+		new Flash(array('action'=>'jump-to','message'=>'Summary of Your Rights Acknowledged','formID'=>'backgroundcheckstep1','location'=>$url));
 
 	}
 	elseif(isset($app->backgroundcheckstep3)){
@@ -343,7 +359,15 @@
 		}
 
 		$app->connect->update('avid___new_temps',array('step3'=>1),array('email'=>$app->newtutor->email));
-		new Flash(array('action'=>'jump-to','message'=>'Background Investigation Agreement Saved','formID'=>'backgroundcheckstep1','location'=>'/signup/tutor/step4#steps'));
+
+		if(isset($app->backgroundcheckstep3->location) && $app->backgroundcheckstep3->location=='completecheck'){
+			$url = '/background-check/step4';
+		}
+		else{
+			$url = '/signup/tutor/step4#steps';
+		}
+
+		new Flash(array('action'=>'jump-to','message'=>'Background Investigation Agreement Saved','formID'=>'backgroundcheckstep1','location'=>$url));
 
 	}
 	elseif(isset($app->backgroundcheckstep4)){
@@ -363,7 +387,15 @@
 		}
 
 		$app->connect->update('avid___new_temps',$step4,array('email'=>$app->newtutor->email));
-		new Flash(array('action'=>'jump-to','message'=>'Disclosure Regarding Background Investigation Acknowledged','formID'=>'backgroundcheckstep1','location'=>'/signup/tutor/step5#steps'));
+
+		if(isset($app->backgroundcheckstep4->location) && $app->backgroundcheckstep4->location=='completecheck'){
+			$url = '/background-check/step5';
+		}
+		else{
+			$url = '/signup/tutor/step5#steps';
+		}
+
+		new Flash(array('action'=>'jump-to','message'=>'Disclosure Regarding Background Investigation Acknowledged','formID'=>'backgroundcheckstep1','location'=>$url));
 
 	}
 	elseif(isset($app->stripe)){
@@ -409,12 +441,12 @@
 		  // Something else happened, completely unrelated to Stripe
 		}
 
+		$url = '/signup/tutor/step6#steps';
+
 			if(isset($err['message'])){
-				echo $err['message'].' Please <a href="/signup/tutor/step5#steps">Refresh Page</a> and Try Again.';
+				echo $err['message'].' Please <a href="'.$url.'">Refresh Page</a> and Try Again.';
 				exit;
 			}
-
-
 
 		if(isset($chargeCard->id)){
 
@@ -424,7 +456,8 @@
 			);
 
 			$app->connect->update('avid___new_temps',$step5,array('email'=>$app->newtutor->email));
-			$app->redirect('/signup/tutor/step6#steps');
+
+			$app->redirect($url);
 		}
 		else{
 			echo 'Error';

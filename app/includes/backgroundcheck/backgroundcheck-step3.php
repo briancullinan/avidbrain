@@ -20,6 +20,10 @@
       <label for="agreement3">I acknowledge receipt of the Disclosure Regarding Background Investigation and certify that I have read and understand this document  </label>
     </p>
 
+	<?php if(isset($app->newtutor->location) && $app->newtutor->location=='completecheck'): ?>
+		<input type="hidden" name="backgroundcheckstep3[location]" value="completecheck"  />
+	<?php endif; ?>
+
 	<input type="hidden" name="backgroundcheckstep3[target]" value="backgroundcheckstep3"  />
 	<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
 

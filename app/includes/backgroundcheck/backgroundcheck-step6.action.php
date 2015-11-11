@@ -1,5 +1,6 @@
 <?php
-    if(empty($app->newtutor->candidate_id)){
+
+    if(empty($app->newtutor->candidate_id) && isset($app->newtutor->charge_id)){
         define('checkrPass',NULL);//490604533e55e6c996bdf6db6c17dcdd8315a1d6
 
         if($app->dependents->DEBUG==true){
@@ -54,11 +55,18 @@
             'ssn'=>$app->crypter->decrypt($app->newtutor->ssn)
         );
 
+        if(isset($app->newtutor->location) && $app->newtutor->location=='completecheck'){
+            $url = '/background-check/complete';
+        }
+        else{
+            $url = '/signup/tutor/#finish';
+        }
+
 
         $createCanditate = curlieque($userinfo,$candidates);
         if(isset($createCanditate->error)){
             $_SESSION['slim.flash']['error'] = $createCanditate->error;
-            redirect('/signup/tutor');
+            redirect($url);
             exit;
         }
 
@@ -80,7 +88,8 @@
             }
 
             $app->connect->update('avid___new_temps',array('candidate_id'=>$createCanditate->id),array('email'=>$app->newtutor->email));
-            $app->redirect('/signup/tutor/#finish');
+            $app->connect->delete('avid___needs_bgcheck',array('email'=>$app->newtutor->email));
+            $app->redirect($url);
         }
 
     }

@@ -242,14 +242,24 @@
       <label for="agreement2">I acknowledge receipt of the Summary of Your Rights Under the Fair Credit Reporting Act (FCRA) and certify that I have read and understand this document </label>
     </p>
 
+	<?php if(isset($app->newtutor->location) && $app->newtutor->location=='completecheck'): ?>
+		<input type="hidden" name="backgroundcheckstep2[location]" value="completecheck"  />
+	<?php endif; ?>
+
 	<input type="hidden" name="backgroundcheckstep2[target]" value="backgroundcheckstep2"  />
 	<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
 
 	<div class="row">
 		<div class="col s12 m6 l6">
+			<?php if(isset($app->newtutor->location) && $app->newtutor->location=='completecheck'): ?>
+			<a href="/background-check/step1" class="btn green">
+				Previous
+			</a>
+			<?php else: ?>
 			<a href="/signup/tutor/step1#steps" class="btn green">
 				Previous
 			</a>
+			<?php endif; ?>
 		</div>
 		<div class="col s12 m6 l6 right-align">
 			<button type="submit" class="btn green">
@@ -257,5 +267,4 @@
 			</button>
 		</div>
 	</div>
-
 </form>

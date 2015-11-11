@@ -21,6 +21,7 @@
 	$data	=	$data->andWhere('user.hidden IS NULL');
 	$data	=	$data->andWhere('profile.hourly_rate IS NOT NULL');
 	$data	=	$data->andWhere('user.lock IS NULL');
+	$data	=	$data->andWhere('user.last_active >= DATE_SUB(CURDATE(), INTERVAL 3 MONTH)');
 	$data	=	$data->innerJoin('user','avid___user_account_settings','settings','user.email = settings.email');
 	if(empty($app->user->email)){
 		$data	=	$data->andWhere('settings.loggedinprofile = "no"');
