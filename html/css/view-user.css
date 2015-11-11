@@ -925,3 +925,6 @@ input.reset-input.hourly_rate{
 .user-photograph img.the-avatar{
 	border: none;
 }
+.message-blocks .user-photograph img{
+	max-height: 125px;
+}
