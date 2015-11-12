@@ -26,7 +26,7 @@ tour.addStep('step0', {
 
 tour.addStep('myStep', {
 	title: "Add a short description",
-	text: "This short description is used to help tutors see what you need help in.",
+	text: "This short description is used to help tutors see what you need help in. <br><span class='red-text'>You can edit right now.</span>",
 	attachTo: '#addshortdescription bottom',
 	classes: 'shepherd shepherd-open shepherd-theme-arrows shepherd-transparent-text',
 	buttons: [
@@ -43,7 +43,7 @@ tour.addStep('myStep', {
 
 tour.addStep('myStep', {
 	title: "Add a lengthy description",
-	text: "Go into detail about your self and what you really need from a tutor. <br />Some things to include in this section are: <br/><ul><li>Grade Level</li><li>Online or in person</li><li>Tutoring Goals</li><li>Frequency</li></ul>",
+	text: "Go into detail about your self and what you really need from a tutor. <br />Some things to include in this section are: <br/><ul><li>Grade Level</li><li>Online or in person</li><li>Tutoring Goals</li><li>Frequency</li></ul><br><span class='red-text'>You can edit right now.</span>",
 	attachTo: '#addpersonalstatement bottom',
 	classes: 'shepherd shepherd-open shepherd-theme-arrows shepherd-transparent-text',
 	buttons: [

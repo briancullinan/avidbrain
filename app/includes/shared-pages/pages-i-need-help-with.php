@@ -140,7 +140,8 @@
 		</div>
 	<?php endforeach; ?>
 <?php elseif(isset($app->currentuser->thisisme)): ?>
-	You don't have any job posts. <a class="btn btn-s blue" href="/jobs">Add One Now</a>
+	<p>You don't have any tutoring request.</p>
+	<a class="btn btn-s blue" href="/jobs">Add One Now, <strong>It's Free</strong></a>
 
 	<?php
 		$sql = "SELECT * FROM avid___user_subjects WHERE email = :email";

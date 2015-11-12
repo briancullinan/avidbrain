@@ -42,12 +42,21 @@
 						$data	=	$data->setParameter(':sessiontoken',$this->sessiontoken);
 						$data	=	$data->innerJoin('user','avid___user_profile','profile','profile.email = user.email');
 						$userResults	=	$data->execute()->fetch();
+
 						if(isset($userResults->email) && isset($userResults->usertype) && $userResults->usertype=='tutor'){
-							$sql = "SELECT * FROM avid___needs_bgcheck WHERE email = :email";
+
+							// is this a new tutor?
+							//avid___new_temps
+							$sql = "SELECT email FROM avid___new_temps WHERE email = :email";
 							$prepare = array(':email'=>$userResults->email);
 							$results = $this->connect->executeQuery($sql,$prepare)->fetch();
 							if(isset($results->email)){
-								$userResults->needs_bgcheck = true;
+								$sql = "SELECT status FROM avid___bgcheckstatus WHERE email = :email AND status = :status";
+								$prepare = array(':email'=>$userResults->email,':status'=>'clear');
+								$results = $this->connect->executeQuery($sql,$prepare)->fetch();
+								if(empty($results->status)){
+									$userResults->needs_bgcheck = true;
+								}
 							}
 						}
 				}

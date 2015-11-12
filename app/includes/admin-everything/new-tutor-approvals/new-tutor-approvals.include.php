@@ -22,9 +22,22 @@
 				</div>
 
 				<?php if(!empty($app->thetutor->charge_id) && !empty($app->thetutor->candidate_id)): ?>
+
 						<div class="alert red white-text">
 							I've Paid &amp; Sent For My Background Check
 						</div>
+						<?php
+							$sql = "SELECT status FROM avid___bgcheckstatus WHERE email = :email";
+							$prepare = array(':email'=>$app->thetutor->email);
+							$results = $app->connect->executeQuery($sql,$prepare)->fetchAll();
+							if(isset($results[0])){
+								echo '<div class="bgcheck-status">';
+								foreach($results as $status){
+									echo '<span class="bgcheck '.$status->status.'">'.$status->status.'</span>';
+								}
+								echo '</div>';
+							}
+						?>
 				<?php endif; ?>
 
 				<?php if(!empty($app->thetutor->yesinterview)): ?>
@@ -316,5 +329,25 @@
 .infos-text{
 	color:#999;
 	font-size: 12px;
+}
+.bgcheck-status{
+	background: #efefef;
+	padding: 10px;
+	margin-bottom: 10px;
+	float: left;
+	width: 100%;
+	margin-top: -10px;
+}
+.bgcheck-status .bgcheck{
+	display: inline-block;
+	margin-right: 10px;
+	padding: 2px 10px;
+	color: #fff;
+}
+.bgcheck.clear{
+	background: green;
+}
+.bgcheck.pending{
+	background: orange;
 }
 </style>

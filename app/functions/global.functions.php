@@ -1292,6 +1292,14 @@
 				$userphotographs = '/image/photograph/cropped/'.$user->username;
 			}
 		}
+		elseif(empty($app->user) && isset($currentuser->my_upload) && isset($currentuser->my_upload_status) && $currentuser->my_upload_status =='verified'){
+			$filetype = getfiletype($currentuser->my_upload);
+			$thefile = $currentuser->username.$filetype;
+			$checkfile = '/profiles/approved/'.croppedfile($thefile);
+			if(file_exists($dependents->DOCUMENT_ROOT.'profiles/approved/'.$checkfile)){
+				$userphotographs = $checkfile;
+			}
+		}
 		else{
 			if(isset($currentuser->my_upload) && file_exists($dependents->DOCUMENT_ROOT.'profiles/approved/'.croppedfile($currentuser->my_upload))){
 				$userphotographs = '/profiles/approved/'.croppedfile($currentuser->my_upload);

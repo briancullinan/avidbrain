@@ -35,15 +35,7 @@
 
 
         try{
-            #copy($oldPath,$updates->approved_upload);
-        }
-        catch(Exception $e){
-            //echo '<pre>'; print_r($e); echo '</pre>';
-        }
-
-
-        try{
-            #rename($oldPath,$newPath);
+            copy($oldPath,croppedfile($updates->approved_upload));
         }
         catch(Exception $e){
             //echo '<pre>'; print_r($e); echo '</pre>';
