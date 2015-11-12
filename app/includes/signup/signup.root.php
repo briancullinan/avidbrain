@@ -6,9 +6,7 @@
 		}
 	}
 
-
-	if($app->dependents->DEBUG==true){
-
+	if($app->target->key=='/signup/tutor'){
 		$app->newtutor = new tutorsignup($app->connect,$app->crypter);
 		if(isset($app->newtutor->id)){
 			$app->target->css.=" new-signup ";

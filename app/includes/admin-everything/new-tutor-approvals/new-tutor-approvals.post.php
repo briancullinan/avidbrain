@@ -116,6 +116,21 @@
 
         $app->connect->update('avid___new_temps',array('activated'=>1),array('email'=>$app->thetutor->email));
 
+        $subject = 'AvidBrain Application Approval';
+        $message = '<p>Congratulations <strong>'.$app->thetutor->first_name.' '.$app->thetutor->last_name.'</strong>, your profile has been approved. You can now login and find students.</p>';
+        $message.= '<p> Your username is your email address and your password is what you used to signup with. <br/> If you can\'t remember your password you can <a href="'.$app->dependents->DOMAIN.'/help/forgot-password">reset it here</a>. </p>';
+        $message.= '<p> <a href="'.$app->dependents->DOMAIN.'/login">Login</a> </p>';
+
+        if(empty($app->thetutor->candidate_id)){
+            $message.= '<br><p> Since you haven\'t completed the background check you can apply to jobs and view students, but you can\'t message them or setup a tutoring session. </p>';
+        }
+
+
+        $app->mailgun->to = $app->thetutor->email;
+        $app->mailgun->subject = $subject;
+        $app->mailgun->message = $message;
+        $app->mailgun->send();
+
         $app->redirect('/admin-everything/new-tutor-approvals');
 
     }

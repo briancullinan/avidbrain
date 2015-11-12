@@ -53,7 +53,7 @@
 						</div>
 					</div>
 					<div class="col s12 m4 l4">
-						<div class="title"> Phone </div>
+						<div class="title"> Signup Date </div>
 						<div>
 							<?php echo formatdate($app->thetutor->signupdate); ?>
 						</div>

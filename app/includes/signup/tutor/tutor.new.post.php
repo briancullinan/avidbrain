@@ -132,7 +132,7 @@
 			new Flash(array('action'=>'required','message'=>'Personal Statement Required','formID'=>'aboutme','field'=>'aboutme_personal_statement'));
 		}
 		elseif($app->aboutme->gender=='--'){
-			new Flash(array('action'=>'required','message'=>'Please select an option','formID'=>'tutoringinfo','field'=>'aboutme_gender'));
+			new Flash(array('action'=>'required','message'=>'Please select an option','formID'=>'aboutme','field'=>'aboutme_gender'));
 		}
 
 		$updateaboutme = array(
@@ -500,6 +500,14 @@
 
 		$app->mailgun->to = 'david@avidbrain.com';
 		$app->mailgun->subject = 'A new tutor has completed their initial profile';
+		$app->mailgun->message = $message;
+		$app->mailgun->send();
+
+		$message = '';
+		$message.='<p> Thank you for completing the signup process, we will take a look at your application and get back to you shortly. </p>';
+
+		$app->mailgun->to = $app->newtutor->email;
+		$app->mailgun->subject = 'AvidBrain Tutor Signup';
 		$app->mailgun->message = $message;
 		$app->mailgun->send();
 

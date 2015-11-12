@@ -335,13 +335,18 @@
 		elseif(isset($app->mysubjects)){
 
 
+			$redirect = $app->currentuser->url.'/my-subjects/'.$app->mysubjects->parent_slug.'/'.$app->mysubjects->subject_slug;
+
+
+
+
 			if(isset($app->mysubjects->description_verified) && $app->user->usertype=='tutor'){
 
 				$sql = "UPDATE avid___user_subjects SET description_verified = NULL, status = :status, description = :description, last_modified = :last_modified WHERE email = :email AND id = :id";
 				$prepeare = array(':description'=>$app->mysubjects->description_verified,':email'=>$app->currentuser->email,':last_modified'=>thedate(),':id'=>$app->mysubjects->id,':status'=>'needs-review');
 				$results = $app->connect->executeQuery($sql,$prepeare);
 
-				$app->redirect($app->currentuser->url.'/my-subjects/');
+				$app->redirect($redirect);
 
 			}
 			elseif(isset($app->mysubjects->description_verified) && isset($somethingelse)){
@@ -349,7 +354,7 @@
 				$prepeare = array(':description_verified'=>$app->mysubjects->description_verified,':email'=>$app->currentuser->email,':last_modified'=>thedate(),':id'=>$app->mysubjects->id);
 				$results = $app->connect->executeQuery($sql,$prepeare);
 
-				$app->redirect($app->currentuser->url.'/my-subjects/');
+				$app->redirect($redirect);
 			}
 
 
@@ -404,7 +409,7 @@
 				}
 			}
 
-			$app->redirect($app->currentuser->url.'/my-subjects/');
+			$app->redirect($redirect);
 
 		}
 		else{

@@ -93,7 +93,7 @@
                         <select name="tutoringinfo[travel_distance]" class="browser-default">
                             <option value="--"> -- </option>
                             <?php
-                                foreach(array(1,5,10,20,25,50,100) as $value){
+                                foreach(array(0,5,10,20,25,50,100) as $value){
                                     $activate = NULL;
                                     if(isset($travel_distance) && $travel_distance==$value){
                                         $activate = ' selected="selected" ';
