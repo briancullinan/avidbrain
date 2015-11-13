@@ -47,12 +47,12 @@
 
 							// is this a new tutor?
 							//avid___new_temps
-							$sql = "SELECT email FROM avid___new_temps WHERE email = :email";
+							$sql = "SELECT candidate_id,email FROM avid___new_temps WHERE email = :email";
 							$prepare = array(':email'=>$userResults->email);
 							$results = $this->connect->executeQuery($sql,$prepare)->fetch();
-							if(isset($results->email)){
-								$sql = "SELECT status FROM avid___bgcheckstatus WHERE email = :email AND status = :status";
-								$prepare = array(':email'=>$userResults->email,':status'=>'clear');
+							if(isset($results->candidate_id)){
+								$sql = "SELECT status FROM avid___bgcheckstatus WHERE candidate_id = :candidate_id AND status = :status";
+								$prepare = array(':candidate_id'=>$results->candidate_id,':status'=>'clear');
 								$results = $this->connect->executeQuery($sql,$prepare)->fetch();
 								if(empty($results->status)){
 									$userResults->needs_bgcheck = true;
