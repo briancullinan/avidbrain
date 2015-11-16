@@ -1,4 +1,5 @@
 <?php
+
     if(isset($app->approveprofile)){
 
         if($app->thetutor->cancellation_policy==0){
@@ -71,7 +72,8 @@
             'status'=>NULL,
             'hidden'=>NULL,
             'username'=>$updates->username,
-            'url'=>$updates->url
+            'url'=>$updates->url,
+            'emptybgcheck'=>1
         );
 
         $app->connect->insert('avid___user',$user);
@@ -106,7 +108,7 @@
 
         $app->connect->insert('avid___user_account_settings',$settings);
 
-        $app->connect->update('avid___new_temps',array('activated'=>1),array('email'=>$app->thetutor->email));
+        $app->connect->update('avid___new_temps',array('activated'=>1,'approval_status'=>'approved'),array('email'=>$app->thetutor->email));
 
         $subject = 'AvidBrain Application Approval';
         $message = '<p>Congratulations <strong>'.$app->thetutor->first_name.' '.$app->thetutor->last_name.'</strong>, your profile has been approved. You can now login and find students.</p>';
@@ -124,5 +126,12 @@
         $app->mailgun->send();
 
         $app->redirect('/admin-everything/new-tutor-approvals');
+
+    }
+    elseif(isset($app->rejectprofile)){
+
+        $app->connect->update('avid___new_temps',array('approval_status'=>'rejected'),array('email'=>$app->thetutor->email));
+
+        $app->redirect('/admin-everything/new-tutor-approvals/'.$id);
 
     }

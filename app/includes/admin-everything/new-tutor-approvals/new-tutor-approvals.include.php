@@ -1,6 +1,7 @@
 <div class="row">
 	<div class="col s12 m3 l2">
         <?php if(isset($app->newtutors)): ?>
+			<div>New Tutors</div>
             <div class="block block-list">
     			<?php foreach($app->newtutors as $link): ?>
     			<a <?php if(isset($id) && $id==$link->id){ echo 'class="active"';} ?> href="/admin-everything/new-tutor-approvals/<?php echo $link->id; ?>">
@@ -9,10 +10,39 @@
     			<?php endforeach; ?>
     		</div>
         <?php endif; ?>
+
+		<?php if(isset($app->rejectedtutors)): ?>
+			<div>Rejected Tutors</div>
+            <div class="block block-list">
+    			<?php foreach($app->rejectedtutors as $link): ?>
+    			<a <?php if(isset($id) && $id==$link->id){ echo 'class="active"';} ?> href="/admin-everything/new-tutor-approvals/<?php echo $link->id; ?>">
+                    <?php echo $link->first_name; ?> <?php echo $link->last_name; ?>
+                </a>
+    			<?php endforeach; ?>
+    		</div>
+        <?php endif; ?>
+
+
+		<?php if(isset($app->approvedtutors)): ?>
+			<div>Approved Tutors</div>
+            <div class="block block-list">
+    			<?php foreach($app->approvedtutors as $link): ?>
+    			<a <?php if(isset($id) && $id==$link->id){ echo 'class="active"';} ?> href="/admin-everything/new-tutor-approvals/<?php echo $link->id; ?>">
+                    <?php echo $link->first_name; ?> <?php echo $link->last_name; ?>
+                </a>
+    			<?php endforeach; ?>
+    		</div>
+        <?php endif; ?>
+
 	</div>
 	<div class="col s12 m9 l10">
 		<?php if(isset($app->thetutor)): ?>
             <div class="block">
+
+				<?php if($app->thetutor->approval_status=='rejected'): ?>
+					<div class="red padd5 center-align white-text">Application Rejected</div>
+					<br>
+				<?php endif; ?>
 
 				<div class="some-info">
 					<?php if(!empty($app->thetutor->over18)){ echo "<span class=' blue white-text'>I'm Over 18</span>";} ?>
@@ -300,6 +330,16 @@
 
 					<input type="hidden" name="approveprofile[id]" value="<?php echo $id; ?>"  />
 					<input type="hidden" name="approveprofile[target]" value="approveprofile"  />
+					<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
+				</form>
+				<br>
+				<form method="post" action="/admin-everything/new-tutor-approvals/<?php echo $id; ?>">
+					<button type="button" class="btn red white-text confirm-submit">
+						Reject Profile
+					</button>
+
+					<input type="hidden" name="rejectprofile[id]" value="<?php echo $id; ?>"  />
+					<input type="hidden" name="rejectprofile[target]" value="rejectprofile"  />
 					<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
 				</form>
 

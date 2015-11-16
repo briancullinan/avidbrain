@@ -105,6 +105,17 @@
 	$dependents->SITE_NAME = $sitename;
 	$dependents->SITE_NAME_PROPPER = $sitenamePropper;
 
+	define('checkrPass',NULL);//490604533e55e6c996bdf6db6c17dcdd8315a1d6
+
+	if($dependents->DEBUG==true){
+		// 4 = Testing
+		define('checkrUsername','490604533e55e6c996bdf6db6c17dcdd8315a1d6');
+	}
+	else{
+		// 5 = Production
+		define('checkrUsername','5a055e0454d2727daebad2a56ba51aaad0c05031');
+	}
+
 //	echo $dependents->DOMAIN; exit;
 
 	//echo '<pre>'; print_r($dependents); echo '</pre>';

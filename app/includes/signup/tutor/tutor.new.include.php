@@ -304,92 +304,105 @@
     </div>
 </div>
 
-<h3>
-    Background Check  <span class="green-text">(Optional)</span>
-</h3>
+<h3>Background Check</h3>
 <div class="box">
-    <div class="row">
-    	<div class="col s12 m8 l8" id="steps">
+    <div class="title">Required Background Check</div>
+    <p>Everyone single one of our tutors has to pass a <span>background check</span> before they can interact with students.  </p>
+    <p>We don't require the background check to complete a profile and become a tutor, but once a student has contacted you, or you would like to apply to a job post you must pass the background check. </p>
+    <p>When you apply for the background check, you are purchasing the actual background check, which is <span class="green-text">$29.99 (Non-Refundable)</span>, you may request a copy of the background check at any time from our provider Checkr.</p>
 
-            <?php if(isset($app->newtutor->candidate_id)): ?>
-                <div class="bgcheck-success">You've successfully submited your background check.</div>
-            <?php elseif(isset($app->newtutor->step1)): ?>
-                <div>Background Check Steps</div>
-                <ul class="breadcrumb">
-
-                    <li><a href="/signup/tutor/step1#steps">Step 1</a></li>
-
-
-                    <?php if(isset($app->newtutor->step1)): ?>
-                        <li><a href="/signup/tutor/step2#steps">Step 2</a></li>
-                    <?php endif; ?>
-
-                    <?php if(isset($app->newtutor->step2)): ?>
-                        <li><a href="/signup/tutor/step3#steps">Step 3</a></li>
-                    <?php endif; ?>
-
-                    <?php if(isset($app->newtutor->step3)): ?>
-                        <li><a href="/signup/tutor/step4#steps">Step 4</a></li>
-                    <?php endif; ?>
-
-                    <?php if(isset($app->newtutor->step4)): ?>
-                        <li><a href="/signup/tutor/step5#steps">Step 5</a></li>
-                    <?php endif; ?>
-
-                    <?php if(isset($app->newtutor->step5)): ?>
-                        <li><a href="/signup/tutor/step6#steps">Step 6</a></li>
-                    <?php endif; ?>
-
-                    <li><a href="#">&nbsp;</a></li>
-                </ul>
-                <div class="the-background-check-complete">
-                    <?php
-                        if(isset($promocode) && $promocode=='step1' || empty($promocode) && isset($app->newtutor->step1)){
-                            include($app->dependents->APP_PATH.'includes/backgroundcheck/backgroundcheck-step1.php');
-                        }
-                        elseif(isset($promocode) && $promocode=='step2'){
-                            include($app->dependents->APP_PATH.'includes/backgroundcheck/backgroundcheck-step2.php');
-                        }
-                        elseif(isset($promocode) && $promocode=='step3'){
-                            include($app->dependents->APP_PATH.'includes/backgroundcheck/backgroundcheck-step3.php');
-                        }
-                        elseif(isset($promocode) && $promocode=='step4'){
-                            include($app->dependents->APP_PATH.'includes/backgroundcheck/backgroundcheck-step4.php');
-                        }
-                        elseif(isset($promocode) && $promocode=='step5' && empty($app->newtutor->charge_id)){
-                            include($app->dependents->APP_PATH.'includes/backgroundcheck/backgroundcheck-step5.php');
-                        }
-                        elseif(isset($promocode) && $promocode=='step5' && isset($app->newtutor->charge_id)){
-                            include($app->dependents->APP_PATH.'includes/backgroundcheck/backgroundcheck-step5.complete.php');
-                        }
-                        elseif(isset($promocode) && $promocode=='step6'){
-                            include($app->dependents->APP_PATH.'includes/backgroundcheck/backgroundcheck-step6.php');
-                            if(isset($app->newtutor->charge_id) && empty($app->newtutor->canditate_id)){
-                                include($app->dependents->APP_PATH.'includes/backgroundcheck/backgroundcheck-step6.action.php');
-                            }
-                        }
-                    ?>
-                </div>
-            <?php else: ?>
-                <div class="start-background-check" data-status="closed">
-                    Begin Background Check
-                </div>
-                <div class="the-background-check-steps">
-                    <?php include($app->dependents->APP_PATH.'includes/backgroundcheck/backgroundcheck-step1.php'); ?>
-                </div>
-            <?php endif; ?>
-
-    	</div>
-    	<div class="col s12 m4 l4">
-            <div class="help-info">
-                <div class="title">Help</div>
-                <p>Everyone single one of our tutors has to pass a <span class="blue-text">background check</span> before they can interact with students.  </p>
-                <p>We don't require the background check to complete a profile and become a tutor, but once a student has contact you, or you would like to apply to a job post you must pass the background check. </p>
-                <p>$29.99 (Non-Refundable). You are purchasing a background check on yourself, you get to keep the background check and do whatever you would like with it.</p>
-            </div>
-    	</div>
-    </div>
 </div>
+
+<?php
+    /*
+    <h3>
+        Background Check  <span class="green-text">(Optional)</span>
+    </h3>
+    <div class="box">
+        <div class="row">
+        	<div class="col s12 m8 l8" id="steps">
+
+                <?php if(isset($app->newtutor->candidate_id)): ?>
+                    <div class="bgcheck-success">You've successfully submited your background check.</div>
+                <?php elseif(isset($app->newtutor->step1)): ?>
+                    <div>Background Check Steps</div>
+                    <ul class="breadcrumb">
+
+                        <li><a href="/signup/tutor/step1#steps">Step 1</a></li>
+
+
+                        <?php if(isset($app->newtutor->step1)): ?>
+                            <li><a href="/signup/tutor/step2#steps">Step 2</a></li>
+                        <?php endif; ?>
+
+                        <?php if(isset($app->newtutor->step2)): ?>
+                            <li><a href="/signup/tutor/step3#steps">Step 3</a></li>
+                        <?php endif; ?>
+
+                        <?php if(isset($app->newtutor->step3)): ?>
+                            <li><a href="/signup/tutor/step4#steps">Step 4</a></li>
+                        <?php endif; ?>
+
+                        <?php if(isset($app->newtutor->step4)): ?>
+                            <li><a href="/signup/tutor/step5#steps">Step 5</a></li>
+                        <?php endif; ?>
+
+                        <?php if(isset($app->newtutor->step5)): ?>
+                            <li><a href="/signup/tutor/step6#steps">Step 6</a></li>
+                        <?php endif; ?>
+
+                        <li><a href="#">&nbsp;</a></li>
+                    </ul>
+                    <div class="the-background-check-complete">
+                        <?php
+                            if(isset($promocode) && $promocode=='step1' || empty($promocode) && isset($app->newtutor->step1)){
+                                include($app->dependents->APP_PATH.'includes/backgroundcheck/backgroundcheck-step1.php');
+                            }
+                            elseif(isset($promocode) && $promocode=='step2'){
+                                include($app->dependents->APP_PATH.'includes/backgroundcheck/backgroundcheck-step2.php');
+                            }
+                            elseif(isset($promocode) && $promocode=='step3'){
+                                include($app->dependents->APP_PATH.'includes/backgroundcheck/backgroundcheck-step3.php');
+                            }
+                            elseif(isset($promocode) && $promocode=='step4'){
+                                include($app->dependents->APP_PATH.'includes/backgroundcheck/backgroundcheck-step4.php');
+                            }
+                            elseif(isset($promocode) && $promocode=='step5' && empty($app->newtutor->charge_id)){
+                                include($app->dependents->APP_PATH.'includes/backgroundcheck/backgroundcheck-step5.php');
+                            }
+                            elseif(isset($promocode) && $promocode=='step5' && isset($app->newtutor->charge_id)){
+                                include($app->dependents->APP_PATH.'includes/backgroundcheck/backgroundcheck-step5.complete.php');
+                            }
+                            elseif(isset($promocode) && $promocode=='step6'){
+                                include($app->dependents->APP_PATH.'includes/backgroundcheck/backgroundcheck-step6.php');
+                                if(isset($app->newtutor->charge_id) && empty($app->newtutor->canditate_id)){
+                                    include($app->dependents->APP_PATH.'includes/backgroundcheck/backgroundcheck-step6.action.php');
+                                }
+                            }
+                        ?>
+                    </div>
+                <?php else: ?>
+                    <div class="start-background-check" data-status="closed">
+                        Begin Background Check
+                    </div>
+                    <div class="the-background-check-steps">
+                        <?php include($app->dependents->APP_PATH.'includes/backgroundcheck/backgroundcheck-step1.php'); ?>
+                    </div>
+                <?php endif; ?>
+
+        	</div>
+        	<div class="col s12 m4 l4">
+                <div class="help-info">
+                    <div class="title">Help</div>
+                    <p>Everyone single one of our tutors has to pass a <span class="blue-text">background check</span> before they can interact with students.  </p>
+                    <p>We don't require the background check to complete a profile and become a tutor, but once a student has contact you, or you would like to apply to a job post you must pass the background check. </p>
+                    <p>$29.99 (Non-Refundable). You are purchasing a background check on yourself, you get to keep the background check and do whatever you would like with it.</p>
+                </div>
+        	</div>
+        </div>
+    </div>
+    */
+?>
 
 <?php if(isset($app->newtutor->aboutme) && isset($app->newtutor->tutorinfo) && isset($app->newtutor->addaphoto) && isset($app->newtutor->subjectsitutor)): ?>
 <h3>

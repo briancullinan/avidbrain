@@ -11,17 +11,24 @@
                     '/background-check/step6'=>'Step 6'
                 );
 				$steparras=array(1,2,3,4,5,6);
+				if(isset($app->newtutor->candidate_id)){
+					unset($steparras);
+				}
             ?>
-            <?php foreach($steparras as $steps): ?>
-                <a <?php if($app->request->getPath()=='/background-check/step'.$steps){ echo 'class="active"';} ?> href="/background-check/step<?php echo $steps; ?>">
-                    <?php
-						$stepname = 'step'.$steps;
-						if(!empty($app->newtutor->$stepname)){
-							echo '<i class="fa fa-check"></i> ';
-						}
-					?>Step <?php echo $steps; ?>
-                </a>
-            <?php endforeach; ?>
+			<?php if(isset($steparras)): ?>
+				<?php foreach($steparras as $steps): ?>
+	                <a <?php if($app->request->getPath()=='/background-check/step'.$steps){ echo 'class="active"';} ?> href="/background-check/step<?php echo $steps; ?>">
+	                    <?php
+							$stepname = 'step'.$steps;
+							if(!empty($app->newtutor->$stepname)){
+								echo '<i class="fa fa-check"></i> ';
+							}
+						?>Step <?php echo $steps; ?>
+	                </a>
+	            <?php endforeach; ?>
+			<?php else: ?>
+				<span class="green white-text padd5">All Done</span>
+			<?php endif; ?>
         </div>
 	</div>
 	<div class="col s12 m9 l9">
@@ -31,11 +38,19 @@
 
                 $file = $app->dependents->APP_PATH.'includes/backgroundcheck/backgroundcheck-'; //include(step1.php');
 
-                if(isset($step) && file_exists($file.$step.'.php')){
+				if(isset($app->newtutor->candidate_id)){
+					echo 'We will process your background check and let you know within 7-10 working days.';
+				}
+                elseif(isset($step) && file_exists($file.$step.'.php')){
                     include($file.$step.'.php');
                 }
 				elseif(isset($step) && $step=='complete'){
-					echo 'OKALLDONE';
+					if(isset($app->user->reportstatus)){
+						echo 'Report Status: '.ucwords($app->user->reportstatus);
+					}
+					else{
+						echo 'We will process your background check and let you know within 7-10 working days.';
+					}
 				}
                 else{
                     echo 'Please choose a step from the left';

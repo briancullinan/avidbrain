@@ -42,20 +42,37 @@
 						$data	=	$data->setParameter(':sessiontoken',$this->sessiontoken);
 						$data	=	$data->innerJoin('user','avid___user_profile','profile','profile.email = user.email');
 						$userResults	=	$data->execute()->fetch();
+						if(!empty($userResults->emptybgcheck)){
+							$userResults->needs_bgcheck = true;
+						}
 
 						if(isset($userResults->email) && isset($userResults->usertype) && $userResults->usertype=='tutor'){
 
-							// is this a new tutor?
-							//avid___new_temps
-							$sql = "SELECT candidate_id,email FROM avid___new_temps WHERE email = :email";
+							$sql="
+								SELECT
+									temps.candidate_id,temps.step1,temps.step2,temps.step3,temps.step4,temps.step5,temps.approval_status,temps.email,temps.charge_id,temps.candidate_id,temps.report_ids
+								FROM avid___user user
+
+									LEFT JOIN
+
+									avid___new_temps temps on temps.email = user.email
+
+								WHERE
+									user.email = :email
+							";
+
+
+
 							$prepare = array(':email'=>$userResults->email);
 							$results = $this->connect->executeQuery($sql,$prepare)->fetch();
-							if(isset($results->candidate_id)){
-								$sql = "SELECT status FROM avid___bgcheckstatus WHERE candidate_id = :candidate_id AND status = :status";
-								$prepare = array(':candidate_id'=>$results->candidate_id,':status'=>'clear');
-								$results = $this->connect->executeQuery($sql,$prepare)->fetch();
-								if(empty($results->status)){
-									$userResults->needs_bgcheck = true;
+
+							if(!empty($results->report_ids)){
+								$report = get_report($results->report_ids);
+								if(!empty($report->status)){
+									$userResults->reportstatus = $report->status;
+								}
+								if($report->status=='clear'){
+									$this->connect->update('avid___user',array('emptybgcheck'=>NULL),array('email'=>$userResults->email));
 								}
 							}
 						}

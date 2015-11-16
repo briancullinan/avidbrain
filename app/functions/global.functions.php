@@ -1331,3 +1331,43 @@
 		}
 
 	}
+
+	function curlieque($userInfo,$apiURL){
+		$host = $apiURL;
+		$process = curl_init($host);
+		curl_setopt($process, CURLOPT_HEADER, 1);
+		curl_setopt($process, CURLOPT_USERPWD, checkrUsername.":".checkrPass);
+		curl_setopt($process, CURLOPT_TIMEOUT, 30);
+		curl_setopt($process, CURLOPT_POST, 1);
+		curl_setopt($process, CURLOPT_POSTFIELDS, $userInfo);
+		curl_setopt($process, CURLOPT_RETURNTRANSFER, TRUE);
+		$return = curl_exec($process);
+		curl_close($process);
+		//return $return;
+
+		$realdata = NULL;
+
+		if(isset($return)){
+			$data = explode('{',$return);
+			if(isset($data[1])){
+				$realdata = '{'.$data[1];
+				$realdata = json_decode($realdata);
+			}
+			else{
+				$realdata = json_decode($return);
+			}
+		}
+
+		return $realdata;
+	}
+
+	function get_report($reportID){
+		$curl = curl_init();
+		curl_setopt($curl, CURLOPT_URL, 'https://api.checkr.com/v1/reports/'.$reportID.'/');
+		curl_setopt($curl, CURLOPT_USERPWD, checkrUsername.":".checkrPass);
+		curl_setopt($curl, CURLOPT_TIMEOUT, 30);
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
+		$return = curl_exec($curl);
+		curl_close($curl);
+		return json_decode($return);
+	}
