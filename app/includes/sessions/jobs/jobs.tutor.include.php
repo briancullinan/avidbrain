@@ -36,7 +36,11 @@
 							<p><a href="/jobs/apply/<?php echo $jobsessions->jobid; ?>">View Job Posting</a></p>
 						</div>
 						<div>
-							<a class="btn blue" href="/sessions/setup/<?php echo $jobsessions->id; ?>">Setup Tutoring Session</a>
+							<?php if(isset($app->user->needs_bgcheck)): ?>
+								Please complete your <a href="/background-check" class="green-text">background check</a>, to setup a session with <?php echo short($results); ?>
+							<?php else: ?>
+								<a class="btn blue" href="/sessions/setup/<?php echo $jobsessions->id; ?>">Setup Tutoring Session</a>
+							<?php endif; ?>
 						</div>
 					</div>
 				</div>
@@ -44,8 +48,6 @@
 		</div>
 	<?php endforeach; ?>
 	<?php echo $app->pagination; ?>
-<?php elseif(isset($app->user->needs_bgcheck)): ?>
-	You have waiting session, <a href="/background-check">complete your background</a> check to view them.
 <?php else: ?>
 	You have no job sessions to setup, <a href="/jobs">find another job</a>
 <?php endif; ?>

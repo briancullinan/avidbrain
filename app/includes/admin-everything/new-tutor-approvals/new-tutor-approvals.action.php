@@ -26,3 +26,13 @@
         $prepare = array(':id'=>$id);
         $app->thetutor = $app->connect->executeQuery($sql,$prepare)->fetch();
     }
+
+
+    if(isset($action)){
+
+        $file = $app->dependents->APP_PATH.'uploads/resumes/'.$app->thetutor->my_resume;
+        header('Content-type: application/pdf');
+        header('Content-Disposition: inline; filename="the.pdf"');
+        @readfile($file);
+        exit;
+    }

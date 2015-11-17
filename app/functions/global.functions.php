@@ -1283,6 +1283,46 @@
 	}
 
 	function userphotographs($user,$currentuser,$dependents){
+
+		if(isset($currentuser->my_upload) && isset($currentuser->username) && isset($currentuser->my_upload_status) && $currentuser->my_upload_status=='verified'){
+			$filetype = getfiletype($currentuser->my_upload);
+			$thefile = $currentuser->username.$filetype;
+			$checkfile = '/profiles/approved/'.croppedfile($thefile);
+			if(file_exists($dependents->DOCUMENT_ROOT.$checkfile)){
+				$userphotographs = $checkfile;
+			}
+		}
+
+		if(isset($user->usertype) && $user->usertype=='tutor'){
+			// LOGGED IN TUTOR
+		}
+		elseif(isset($user->usertype) && $user->usertype=='student'){
+			// LOGGED IN STUDENT
+		}
+		else{
+			// LOGGED OUT
+		}
+
+		if(isset($user->usertype) && $user->usertype=='admin' && isset($currentuser->my_upload)){
+			return '/image/photograph/cropped/'.$currentuser->username;
+		}
+		elseif(isset($user->username) && isset($currentuser->username) && $user->username==$currentuser->username || isset($user->username) && empty($currentuser->username)){
+			return '/image/photograph/cropped/'.$user->username;
+		}
+		elseif(empty($app->user) && isset($userphotographs)){
+			return $userphotographs;
+		}
+		elseif(empty($app->user) && empty($userphotographs) && isset($currentuser->my_avatar)){
+			return $currentuser->my_avatar;
+		}
+
+		// if(isset($currentuser->my_upload) && isset($currentuser->my_upload_status) && $currentuser->my_upload_status=='verified'){
+		// 	$verifiedphoto = true;
+		// }
+		// //my_upload_status
+		//
+		// return 'zebra';
+		/*
 		$userphotographs = NULL;
 		if(isset($user->usertype) && $user->usertype=='admin' && isset($currentuser->my_upload)){
 			$userphotographs = '/image/photograph/cropped/'.$currentuser->username;
@@ -1317,7 +1357,7 @@
 		}
 
 		return $userphotographs;
-
+		*/
 
 	}
 

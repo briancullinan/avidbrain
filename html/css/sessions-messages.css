@@ -41,6 +41,9 @@
 .view-message .avatar img{
 	max-height: 155px;
 }
+.removed, span.removed, .block .title span.removed{
+	color: #999;
+}
 .message-subject{
 	font-size: 18px;
 	font-weight: bold;

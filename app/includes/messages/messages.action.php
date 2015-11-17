@@ -18,13 +18,7 @@
 	$data	=	$data->setMaxResults($offsets->perpage)->setFirstResult($offsets->offsetStart);
 	$data	=	$data->execute()->fetchAll();
 
-	if(isset($app->user->needs_bgcheck)){
-		$count = 0;
-	}
 
-	if($count>0){
-		$app->messages = $data;
-	}
 
 	$pagify = new Pagify();
 	$config = array(
@@ -38,3 +32,16 @@
 
 	$app->meta = new stdClass();
 	$app->meta->title = 'View All Messages';
+
+
+	if(isset($app->user->needs_bgcheck)){
+		foreach($data as $key => $scrub){
+			$data[$key]->subject = '<span class="removed">Subject Removed</span>';
+			$data[$key]->message = '<span class="removed">Message Removed</span>';
+		}
+	}
+
+
+	if($count>0){
+		$app->messages = $data;
+	}

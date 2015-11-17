@@ -14,7 +14,7 @@
 	$data	=	$data->setMaxResults($offsets->perpage)->setFirstResult($offsets->offsetStart)->orderBy('id','DESC')->execute()->fetchAll();
 
 	if(isset($app->user->needs_bgcheck)){
-		unset($data);
+		//notify($data);
 	}
 
 	if(isset($data[0])){

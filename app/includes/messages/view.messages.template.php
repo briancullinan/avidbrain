@@ -62,17 +62,20 @@
 					<div class="message-message">
 						<?php echo truncate($message->message,400); ?>
 					</div>
+					<?php if(isset($app->user->needs_bgcheck)): ?>
+						<br>Please complete your <a href="/background-check" class="green-text">background check</a>, to view this message.
+					<?php else: ?>
 					<div class="message-view-full">
 						<a class="blue white-text" href="/messages/view-message/<?php echo $message->id; ?>">View Full Message</a>
 					</div>
+					<?php endif; ?>
 				</div>
 			</div>
 		</div>
 	</div>
 	<?php endforeach; ?>
 	<?php echo $app->pagination; ?>
-<?php elseif(isset($app->user->needs_bgcheck)): ?>
-	You have waiting messages, <a href="/background-check">complete your background</a> check to view them.
+
 <?php else: ?>
 	There are no messages
 <?php endif; ?>

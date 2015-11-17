@@ -81,6 +81,11 @@
 		$_SESSION['temptutor']['email'] = $app->crypter->encrypt($app->tutorsignup->tutor->email);
 		$_SESSION['temptutor']['token'] = $app->crypter->encrypt($token);
 
+		$app->mailgun->to = $app->tutorsignup->tutor->email;
+		$app->mailgun->subject = 'AvidBrain Tutor Signup';
+		$app->mailgun->message = 'Thank you for signing up with AvidBrain. You may login by going to <a href="'.$app->dependents->DOMAIN.'/signup/tutor">Tutor Login</a>';
+		$app->mailgun->send();
+
 		new Flash(array('action'=>'jump-to','formID'=>'tutorsignup','location'=>'/signup/tutor','message'=>'Step 1 Complete'));
 
 	}
@@ -198,6 +203,16 @@
 		new Flash(array('action'=>'jump-to','location'=>'/signup/tutor#addaphoto','message'=>'Tutoring Information Saved'));
 		//new Flash(array('action'=>'alert','message'=>'Tutoring Information Saved'));
 	}
+	elseif(isset($app->uploadresume) && $upload = makefileupload((object)$_FILES['uploadresume'],'file')){
+		$uploadfile = getfiletype($upload->name);
+		$filename = $app->newtutor->email.$uploadfile;
+		$uploadPath = $app->dependents->APP_PATH.'uploads/resumes/'.$filename;
+
+
+		move_uploaded_file($upload->tmp_name, $uploadPath);
+
+		$app->connect->update('avid___new_temps',array('my_resume'=>$filename),array('email'=>$app->newtutor->email));
+	}
 	elseif(isset($app->uploadphoto) && $upload = makefileupload((object)$_FILES['uploadphoto'],'file')){
 
 		$uploadfile = getfiletype($upload->name);
@@ -256,7 +271,22 @@
 		unset($app->mysubjects->parent_slug);
 		unset($app->mysubjects->target);
 
-		$mysubjects = json_encode(array($parentslug=>$app->mysubjects));
+		$thesubinfo = array($parentslug=>$app->mysubjects)[$parentslug];
+
+		$make = array();
+		foreach($thesubinfo as $key=> $build){
+			if(empty($build->remove)){
+				if(!empty($build->id)){
+					$make[$key]['id'] = $build->id;
+				}
+				if($build->description){
+					$make[$key]['description'] = $build->description;
+				}
+			}
+		}
+
+		$mysubjects = json_encode($make);
+
 
 		$app->connect->update('avid___new_temps',array('subjectsitutor'=>1,'mysubs_'.$parentslug=>$mysubjects),array('email'=>$app->newtutor->email));
 

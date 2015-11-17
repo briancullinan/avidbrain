@@ -36,315 +36,255 @@
 
 	</div>
 	<div class="col s12 m9 l10">
-		<?php if(isset($app->thetutor)): ?>
-            <div class="block">
+		<?php if(isset($app->thetutor->activated)): ?>
+			Activated
+		<?php else: ?>
+			<?php if(isset($app->thetutor)): ?>
+	            <div class="block">
 
-				<?php if($app->thetutor->approval_status=='rejected'): ?>
-					<div class="red padd5 center-align white-text">Application Rejected</div>
-					<br>
-				<?php endif; ?>
+					<?php if($app->thetutor->approval_status=='rejected'): ?>
+						<div class="red padd5 center-align white-text">Application Rejected</div>
+						<br>
+					<?php endif; ?>
 
-				<div class="some-info">
-					<?php if(!empty($app->thetutor->over18)){ echo "<span class=' blue white-text'>I'm Over 18</span>";} ?>
-					<?php if(!empty($app->thetutor->legalresident)){ echo "<span class=' blue white-text'>I'm Am A Legal US Resident</span>";} ?>
-					<?php if(!empty($app->thetutor->tutoredbefore)){ echo "<span class=' blue white-text'>I Have Tought or Tutored Before</span>";} ?>
-					<?php if(!empty($app->thetutor->howdidyouhear)){ echo "<span class=' blue white-text'>I Heard About AvidBrain From: ".$app->thetutor->howdidyouhear."</span>";} ?>
-				</div>
-
-				<?php if(!empty($app->thetutor->charge_id) && !empty($app->thetutor->candidate_id)): ?>
-
-						<div class="alert red white-text">
-							I've Paid &amp; Sent For My Background Check
-						</div>
-						<?php
-							$sql = "SELECT status FROM avid___bgcheckstatus WHERE email = :email";
-							$prepare = array(':email'=>$app->thetutor->email);
-							$results = $app->connect->executeQuery($sql,$prepare)->fetchAll();
-							if(isset($results[0])){
-								echo '<div class="bgcheck-status">';
-								foreach($results as $status){
-									echo '<span class="bgcheck '.$status->status.'">'.$status->status.'</span>';
-								}
-								echo '</div>';
-							}
-						?>
-				<?php endif; ?>
-
-				<?php if(!empty($app->thetutor->yesinterview)): ?>
-				<div class="row infos">
-
-					<div class="col s12 m12 l12">
-						<div class="title"> I would like to have an interview: </div>
-						<div>
-							Please call me: <?php echo $app->thetutor->timeday ?>
-						</div>
+					<div class="some-info">
+						<?php if(!empty($app->thetutor->over18)){ echo "<span class=' blue white-text'>I'm Over 18</span>";} ?>
+						<?php if(!empty($app->thetutor->legalresident)){ echo "<span class=' blue white-text'>I'm Am A Legal US Resident</span>";} ?>
+						<?php if(!empty($app->thetutor->tutoredbefore)){ echo "<span class=' blue white-text'>I Have Tought or Tutored Before</span>";} ?>
+						<?php if(!empty($app->thetutor->howdidyouhear)){ echo "<span class=' blue white-text'>I Heard About AvidBrain From: ".$app->thetutor->howdidyouhear."</span>";} ?>
+						<?php if(!empty($app->thetutor->my_resume)){ echo "<span class=' blue white-text'><a target='_blank' href='/admin-everything/new-tutor-approvals/".$id."/download'>Download Resume</a></span>";} //".$app->thetutor->my_resume." ?>
 					</div>
-				</div>
-				<?php endif; ?>
 
-				<div class="row infos">
-					<div class="col s12 m4 l4">
-						<div class="title"> Email </div>
-						<div>
-							<?php echo $app->thetutor->email; ?>
-						</div>
-					</div>
-					<div class="col s12 m4 l4">
-						<div class="title"> Phone </div>
-						<div>
-							<?php echo $app->thetutor->phone; ?>
-						</div>
-					</div>
-					<div class="col s12 m4 l4">
-						<div class="title"> Signup Date </div>
-						<div>
-							<?php echo formatdate($app->thetutor->signupdate); ?>
-						</div>
-					</div>
-				</div>
+					<?php if(!empty($app->thetutor->charge_id) && !empty($app->thetutor->candidate_id)): ?>
 
-				<div class="row infos">
-					<div class="col s12 m6 l6">
-						<div class="title"> Photo </div>
-						<div>
-							<div class="profile-image avatar maxus"><img src="/image/tutorphotos/cropped/<?php echo $app->thetutor->id; ?>" class="responsive-img" /></div>
-						</div>
-					</div>
-					<div class="col s12 m6 l6">
-						<div class="title"> Name </div>
-						<div>
-							<?php echo $app->thetutor->first_name.' '.$app->thetutor->middle_name.' '.$app->thetutor->last_name; ?>
-						</div>
-					</div>
-				</div>
-
-				<div class="row infos">
-					<div class="col s12 m12 l12">
-						<div class="title"> Why do you want to tutor with AvidBrain? </div>
-						<div>
-							<?php echo $app->thetutor->whytutor; ?>
-						</div>
-					</div>
-				</div>
-
-				<div class="row infos">
-					<div class="col s12 m12 l12">
-						<div class="title"> Location info </div>
-						<div>
-							<?php echo $app->thetutor->city; ?> - <?php echo $app->thetutor->state_long; ?>, <?php echo $app->thetutor->zipcode; ?>
-						</div>
-					</div>
-				</div>
-
-				<div class="row infos">
-					<div class="col s12 m12 l12">
-						<div class="title"> Short Description </div>
-						<div>
-							<?php echo $app->thetutor->short_description; ?>
-						</div>
-					</div>
-				</div>
-
-				<div class="row infos">
-					<div class="col s12 m12 l12">
-						<div class="title"> Detailed Description </div>
-						<div>
-							<?php echo $app->thetutor->personal_statement; ?>
-						</div>
-					</div>
-				</div>
-
-				<div class="row infos">
-					<div class="col s12 m4 l4">
-						<div class="title"> Hourly Rate </div>
-						<div>
-							$<?php echo numbers($app->thetutor->hourly_rate); ?>
-						</div>
-					</div>
-					<div class="col s12 m4 l4">
-						<div class="title"> Gender </div>
-						<div>
-							<?php echo $app->thetutor->gender; ?>
-						</div>
-					</div>
-					<div class="col s12 m4 l4">
-						<div class="title"> Travel Distance </div>
-						<div>
-							<?php echo $app->thetutor->travel_distance; ?> Miles
-						</div>
-					</div>
-				</div>
-
-				<div class="row infos">
-					<div class="col s12 m4 l4">
-						<div class="title"> Tutor Type </div>
-						<div>
-							<?php echo online_tutor($app->thetutor->online_tutor); ?>
-						</div>
-					</div>
-					<div class="col s12 m4 l4">
-						<div class="title"> Cancelation Policy </div>
-						<div>
-							<?php echo $app->thetutor->cancellation_policy; ?>
-						</div>
-					</div>
-					<div class="col s12 m4 l4">
-						<div class="title"> Canelation Rate </div>
-						<div>
-							$<?php echo numbers($app->thetutor->cancellation_rate); ?>
-						</div>
-					</div>
-				</div>
-
-				<div class="row infos">
-					<div class="col s12 m12 l12">
-						<div class="title"> 3 References </div>
-						<div>
-							<?php echo nl2br($app->thetutor->references); ?>
-						</div>
-					</div>
-				</div>
-
-				<?php
-					//$computer = json_decode($app->thetutor->mysubs_computer)->computer;
-					function subinfo($connect,$id){
-						$sql = "SELECT * FROM avid___available_subjects WHERE id = :id";
-						$prepare = array(':id'=>$id);
-						return $connect->executeQuery($sql,$prepare)->fetch();
-					}
-					$thesubjectarray = array(
-						$app->thetutor->mysubs_art,
-						$app->thetutor->mysubs_business,
-						$app->thetutor->mysubs_collegeprep,
-						$app->thetutor->mysubs_computer,
-						$app->thetutor->mysubs_elementaryeducation,
-						$app->thetutor->mysubs_english,
-						$app->thetutor->mysubs_games,
-						$app->thetutor->mysubs_history,
-						$app->thetutor->mysubs_language,
-						$app->thetutor->mysubs_math,
-						$app->thetutor->mysubs_music,
-						$app->thetutor->mysubs_science,
-						$app->thetutor->mysubs_specialneeds,
-						$app->thetutor->mysubs_sportsandrecreation,
-						$app->thetutor->mysubs_testpreparation
-					);
-				?>
-
-				<form method="post" action="/admin-everything/new-tutor-approvals/<?php echo $id; ?>">
-				<div class="title">Subjects I Teach / Tutor</div>
-				<?php foreach($thesubjectarray as  $subjects): ?>
-					<div class="row">
-						<?php
-							if(!empty($subjects)){
-								$json = json_decode($subjects);
-								$key = key($json);
-								if(!empty($key)){
-
-									foreach($json->$key as $key=> $subid){
-										$subdata = subinfo($app->connect,$subid);
-										echo '<div class="col s12 m4 l4 infos">';
-											echo '<input type="hidden" name="approveprofile['.$subdata->parent_slug.'---'.$subdata->subject_slug.'][email]" value="'.$app->thetutor->email.'" />';
-											echo '<input type="hidden" name="approveprofile['.$subdata->parent_slug.'---'.$subdata->subject_slug.'][subject_slug]" value="'.$subdata->subject_slug.'" />';
-											echo '<input type="hidden" name="approveprofile['.$subdata->parent_slug.'---'.$subdata->subject_slug.'][parent_slug]" value="'.$subdata->parent_slug.'" />';
-											echo '<input type="hidden" name="approveprofile['.$subdata->parent_slug.'---'.$subdata->subject_slug.'][last_modified]" value="'.thedate().'" />';
-											echo '<input type="hidden" name="approveprofile['.$subdata->parent_slug.'---'.$subdata->subject_slug.'][usertype]" value="tutor" />';
-											echo '<input type="hidden" name="approveprofile['.$subdata->parent_slug.'---'.$subdata->subject_slug.'][subject_name]" value="'.$subdata->subject_name.'" />';
-											echo '<div class="infos-title">'.$subdata->subject_name.'</div>';
-											echo '<div class="infos-text">'.$subdata->subject_parent.'</div>';
-										echo '</div>';
+							<div class="alert red white-text">
+								I've Paid &amp; Sent For My Background Check
+							</div>
+							<?php
+								$sql = "SELECT status FROM avid___bgcheckstatus WHERE email = :email";
+								$prepare = array(':email'=>$app->thetutor->email);
+								$results = $app->connect->executeQuery($sql,$prepare)->fetchAll();
+								if(isset($results[0])){
+									echo '<div class="bgcheck-status">';
+									foreach($results as $status){
+										echo '<span class="bgcheck '.$status->status.'">'.$status->status.'</span>';
 									}
-
+									echo '</div>';
 								}
-							}
-						?>
-					</div>
-				<?php endforeach; ?>
+							?>
+					<?php endif; ?>
 
-				<?php
-				/*
-				<?php foreach(array('mysubs_art','mysubs_computer') as $subjects): ?>
+					<?php if(!empty($app->thetutor->yesinterview)): ?>
+					<div class="row infos">
+
+						<div class="col s12 m12 l12">
+							<div class="title"> I would like to have an interview: </div>
+							<div>
+								Please call me: <?php echo $app->thetutor->timeday ?>
+							</div>
+						</div>
+					</div>
+					<?php endif; ?>
+
+					<div class="row infos">
+						<div class="col s12 m4 l4">
+							<div class="title"> Email </div>
+							<div>
+								<?php echo $app->thetutor->email; ?>
+							</div>
+						</div>
+						<div class="col s12 m4 l4">
+							<div class="title"> Phone </div>
+							<div>
+								<?php echo $app->thetutor->phone; ?>
+							</div>
+						</div>
+						<div class="col s12 m4 l4">
+							<div class="title"> Signup Date </div>
+							<div>
+								<?php echo formatdate($app->thetutor->signupdate); ?>
+							</div>
+						</div>
+					</div>
+
+					<div class="row infos">
+						<div class="col s12 m6 l6">
+							<div class="title"> Photo </div>
+							<div>
+								<div class="profile-image avatar maxus"><img src="/image/tutorphotos/cropped/<?php echo $app->thetutor->id; ?>" class="responsive-img" /></div>
+							</div>
+						</div>
+						<div class="col s12 m6 l6">
+							<div class="title"> Name </div>
+							<div>
+								<?php echo $app->thetutor->first_name.' '.$app->thetutor->middle_name.' '.$app->thetutor->last_name; ?>
+							</div>
+						</div>
+					</div>
+
+					<div class="row infos">
+						<div class="col s12 m12 l12">
+							<div class="title"> Why do you want to tutor with AvidBrain? </div>
+							<div>
+								<?php echo $app->thetutor->whytutor; ?>
+							</div>
+						</div>
+					</div>
+
+					<div class="row infos">
+						<div class="col s12 m12 l12">
+							<div class="title"> Location info </div>
+							<div>
+								<?php echo $app->thetutor->city; ?> - <?php echo $app->thetutor->state_long; ?>, <?php echo $app->thetutor->zipcode; ?>
+							</div>
+						</div>
+					</div>
+
+					<div class="row infos">
+						<div class="col s12 m12 l12">
+							<div class="title"> Short Description </div>
+							<div>
+								<?php echo $app->thetutor->short_description; ?>
+							</div>
+						</div>
+					</div>
+
+					<div class="row infos">
+						<div class="col s12 m12 l12">
+							<div class="title"> Detailed Description </div>
+							<div>
+								<?php echo nl2br($app->thetutor->personal_statement); ?>
+							</div>
+						</div>
+					</div>
+
+					<div class="row infos">
+						<div class="col s12 m4 l4">
+							<div class="title"> Hourly Rate </div>
+							<div>
+								$<?php echo numbers($app->thetutor->hourly_rate); ?>
+							</div>
+						</div>
+						<div class="col s12 m4 l4">
+							<div class="title"> Gender </div>
+							<div>
+								<?php echo $app->thetutor->gender; ?>
+							</div>
+						</div>
+						<div class="col s12 m4 l4">
+							<div class="title"> Travel Distance </div>
+							<div>
+								<?php echo $app->thetutor->travel_distance; ?> Miles
+							</div>
+						</div>
+					</div>
+
+					<div class="row infos">
+						<div class="col s12 m4 l4">
+							<div class="title"> Tutor Type </div>
+							<div>
+								<?php echo online_tutor($app->thetutor->online_tutor); ?>
+							</div>
+						</div>
+						<div class="col s12 m4 l4">
+							<div class="title"> Cancelation Policy </div>
+							<div>
+								<?php echo $app->thetutor->cancellation_policy; ?>
+							</div>
+						</div>
+						<div class="col s12 m4 l4">
+							<div class="title"> Canelation Rate </div>
+							<div>
+								$<?php echo numbers($app->thetutor->cancellation_rate); ?>
+							</div>
+						</div>
+					</div>
+
+					<div class="row infos">
+						<div class="col s12 m12 l12">
+							<div class="title"> 3 References </div>
+							<div>
+								<?php echo nl2br($app->thetutor->references); ?>
+							</div>
+						</div>
+					</div>
+
 					<?php
-						if($json = json_decode($app->thetutor->$subjects)){
-							foreach($json as $value){
-								printer($value);
-							}
-						};
+						//$computer = json_decode($app->thetutor->mysubs_computer)->computer;
+						function subinfo($connect,$id){
+							$sql = "SELECT * FROM avid___available_subjects WHERE id = :id";
+							$prepare = array(':id'=>$id);
+							return $connect->executeQuery($sql,$prepare)->fetch();
+						}
+						$thesubjectarray = array(
+							'art'=>$app->thetutor->mysubs_art,
+							'business'=>$app->thetutor->mysubs_business,
+							'college-prep'=>$app->thetutor->mysubs_collegeprep,
+							'computer'=>$app->thetutor->mysubs_computer,
+							'elementary-education'=>$app->thetutor->mysubs_elementaryeducation,
+							'english'=>$app->thetutor->mysubs_english,
+							'games'=>$app->thetutor->mysubs_games,
+							'history'=>$app->thetutor->mysubs_history,
+							'language'=>$app->thetutor->mysubs_language,
+							'math'=>$app->thetutor->mysubs_math,
+							'music'=>$app->thetutor->mysubs_music,
+							'science'=>$app->thetutor->mysubs_science,
+							'special-needs'=>$app->thetutor->mysubs_specialneeds,
+							'sports-and-recreation'=>$app->thetutor->mysubs_sportsandrecreation,
+							'test-preparation'=>$app->thetutor->mysubs_testpreparation
+						);
 					?>
-				<?php endforeach; ?>
 
-				<div class="row infos">
-					<div class="col s12 m12 l12">
-						<div class="title"> xxx </div>
+					<form method="post" action="/admin-everything/new-tutor-approvals/<?php echo $id; ?>">
+					<div class="title">Subjects I Teach / Tutor</div>
+					<?php foreach($thesubjectarray as $key=> $subjects): ?>
 						<div>
-							<?php echo $app->thetutor->xxx; ?>
+							<?php
+								if($data = json_decode($subjects)){
+									foreach($data as $subject){
+										$subdata = subinfo($app->connect,$subject->id);
+										echo '<div>';
+							                echo '<input type="hidden" name="approveprofile['.$subdata->parent_slug.'---'.$subdata->subject_slug.'][email]" value="'.$app->thetutor->email.'" />';
+							                echo '<input type="hidden" name="approveprofile['.$subdata->parent_slug.'---'.$subdata->subject_slug.'][subject_slug]" value="'.$subdata->subject_slug.'" />';
+							                echo '<input type="hidden" name="approveprofile['.$subdata->parent_slug.'---'.$subdata->subject_slug.'][parent_slug]" value="'.$subdata->parent_slug.'" />';
+							                echo '<input type="hidden" name="approveprofile['.$subdata->parent_slug.'---'.$subdata->subject_slug.'][last_modified]" value="'.thedate().'" />';
+							                echo '<input type="hidden" name="approveprofile['.$subdata->parent_slug.'---'.$subdata->subject_slug.'][usertype]" value="tutor" />';
+							                echo '<input type="hidden" name="approveprofile['.$subdata->parent_slug.'---'.$subdata->subject_slug.'][subject_name]" value="'.$subdata->subject_name.'" />';
+							                echo '<div class="infos-title">'.$subdata->subject_name.'</div>';
+							                echo '<div class="infos-text">'.$subdata->subject_parent.'</div>';
+											if(isset($subject->description)){
+												echo '<textarea name="approveprofile['.$subdata->parent_slug.'---'.$subdata->subject_slug.'][description]" class="materialize-textarea">'.$subject->description.'</textarea>';
+											}
+							            echo '</div>';
+									}
+								}
+							?>
 						</div>
-					</div>
+					<?php endforeach; ?>
+
+
+						<button type="button" class="btn green white-text confirm-submit">
+							Approve Profile
+						</button>
+
+						<input type="hidden" name="approveprofile[id]" value="<?php echo $id; ?>"  />
+						<input type="hidden" name="approveprofile[target]" value="approveprofile"  />
+						<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
+					</form>
+					<br>
+					<form method="post" action="/admin-everything/new-tutor-approvals/<?php echo $id; ?>">
+						<button type="button" class="btn red white-text confirm-submit">
+							Reject Profile
+						</button>
+
+						<input type="hidden" name="rejectprofile[id]" value="<?php echo $id; ?>"  />
+						<input type="hidden" name="rejectprofile[target]" value="rejectprofile"  />
+						<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
+					</form>
+
 				</div>
-
-				<div class="row infos">
-					<div class="col s12 m6 l6">
-						<div class="title"> xxx </div>
-						<div>
-							<?php echo $app->thetutor->xxx; ?>
-						</div>
-					</div>
-					<div class="col s12 m6 l6">
-						<div class="title"> xxx </div>
-						<div>
-							<?php echo $app->thetutor->xxx ?>
-						</div>
-					</div>
-				</div>
-
-				<div class="row infos">
-					<div class="col s12 m4 l4">
-						<div class="title"> xxx </div>
-						<div>
-							<?php echo $app->thetutor->xxx; ?>
-						</div>
-					</div>
-					<div class="col s12 m4 l4">
-						<div class="title"> xxx </div>
-						<div>
-							<?php echo $app->thetutor->xxx; ?>
-						</div>
-					</div>
-					<div class="col s12 m4 l4">
-						<div class="title"> xxx </div>
-						<div>
-							<?php echo $app->thetutor->xxx; ?>
-						</div>
-					</div>
-				</div>
-				*/
-				?>
-
-				<?php //printer($app->thetutor); ?>
-
-
-
-					<button type="button" class="btn green white-text confirm-submit">
-						Approve Profile
-					</button>
-
-					<input type="hidden" name="approveprofile[id]" value="<?php echo $id; ?>"  />
-					<input type="hidden" name="approveprofile[target]" value="approveprofile"  />
-					<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
-				</form>
-				<br>
-				<form method="post" action="/admin-everything/new-tutor-approvals/<?php echo $id; ?>">
-					<button type="button" class="btn red white-text confirm-submit">
-						Reject Profile
-					</button>
-
-					<input type="hidden" name="rejectprofile[id]" value="<?php echo $id; ?>"  />
-					<input type="hidden" name="rejectprofile[target]" value="rejectprofile"  />
-					<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
-				</form>
-
-			</div>
-        <?php endif; ?>
+	        <?php endif; ?>
+		<?php endif; ?>
 	</div>
 </div>
 
@@ -362,6 +302,9 @@
 	padding: 5px;
 	display: inline-block;
 	margin-bottom: 5px;
+}
+.some-info a{
+	color: #fff;
 }
 .infos-title{
 	font-weight: bold;

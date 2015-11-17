@@ -92,7 +92,7 @@
 			<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
 			<input type="hidden" name="MAX_FILE_SIZE" value="5000000" />
 			<input name="upload[file]" class="hide" id="upload-trigger" type="file" />
-			<button id="select-photo" class="btn grey darken-1" type="button">
+			<button id="select-photo" class="btn grey darken-1" type="button" data-text = "Uploading Photo">
 				<i class="fa fa-upload"></i> Upload Photo
 			</button>
 		</form>

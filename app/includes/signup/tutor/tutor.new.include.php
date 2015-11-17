@@ -65,6 +65,33 @@
     </div>
 </div>
 
+<h3>Upload Your Resume</h3>
+<div class="box">
+    <div class="row">
+    	<div class="col s12 m6 l6">
+            <?php if(!empty($app->newtutor->my_resume)): ?>
+                <div class="green center-align white-text padd5">Thank your for uploading your resume</div>
+            <?php else: ?>
+                <form enctype="multipart/form-data" action="/signup/tutor" method="post" id="upload-photo-form">
+                    <input type="hidden" name="uploadresume[target]" value="uploadresume"  />
+                    <input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
+                    <input type="hidden" name="MAX_FILE_SIZE" value="5000000" />
+                    <input name="uploadresume[file]" class="hide" id="upload-trigger" type="file" />
+                    <button id="select-photo" class="btn grey darken-1 btn-block" type="button" data-text = "Uploading Resume">
+                        <i class="fa fa-upload"></i> Upload Resume
+                    </button>
+                </form>
+            <?php endif; ?>
+    	</div>
+    	<div class="col s12 m6 l6">
+    		<div class="help-info">
+                <div class="title">Help</div>
+                <p>Please upload your resume, so we can review it.</p>
+            </div>
+    	</div>
+    </div>
+</div>
+
 <h3 id="tutorinfo">
     Tutoring Information
 </h3>
@@ -219,7 +246,7 @@
         			<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
         			<input type="hidden" name="MAX_FILE_SIZE" value="5000000" />
         			<input name="uploadphoto[file]" class="hide" id="upload-trigger" type="file" />
-        			<button id="select-photo" class="btn grey darken-1 btn-block" type="button">
+        			<button id="select-photo" class="btn grey darken-1 btn-block" type="button" data-text = "Uploading Photo">
         				<i class="fa fa-upload"></i> Upload Photo
         			</button>
         		</form>
@@ -249,13 +276,14 @@
     	<div class="col s12 m6 l6">
             <?php
                 if(isset($action)){
+
                     $fixname = str_replace('-','',$action);
                     $name = NULL;
                     $name = 'mysubs_'.$fixname;
                     $name = $app->newtutor->$name;
-                    if(!empty($name)){
-                        $myvals = (array)json_decode($name)->$fixname;
 
+                    if(!empty($name)){
+                        $myvals = json_decode($name);
                     }
                 }
             ?>
@@ -273,11 +301,25 @@
                             <input type="hidden" name="mysubjects[parent_slug]" value="<?php echo $app->allcats[0]->parent_slug; ?>" />
                             <?php foreach($app->allcats as $sub):  ?>
 
-                            <div>
-                                <input <?php if(isset($myvals) && in_array($sub->id, $myvals)){ echo 'checked="checked"'; } ?> name="mysubjects[]" class="filled-in" type="checkbox" value="<?php echo $sub->id; ?>" id="<?php echo $sub->id; ?>" />
-                                <label for="<?php echo $sub->id; ?>">
+                                <?php
+                                    $description = NULL;
+                                    $id = $sub->id;
+                                    if(isset($myvals->$id)){
+                                        if(isset($myvals->$id->description)){
+                                            $description = $myvals->$id->description;
+                                        }
+                                    }
+                                    //if(isset($myvals) && in_array($sub->id, $myvals)){ echo 'checked="checked"'; }
+                                ?>
+
+                            <div class="activate-subject new-inputs">
+                                <input <?php if(isset($myvals->$id)){ echo 'checked="checked"';} ?> name="mysubjects[<?php echo $sub->id; ?>][id]" class="filled-in" type="checkbox" value="<?php echo $sub->id; ?>" id="<?php echo $sub->id; ?>" />
+                                <label for="<?php echo $sub->id; ?>" <?php if(isset($myvals->$id)){ echo 'data-status="open"';}else{ echo 'data-status="closed"'; } ?>>
                                     <?php echo $sub->subject_name; ?>
                                 </label>
+                                <div class="input-wrapper <?php if(empty($myvals->$id)){ echo 'hide'; } ?>">
+                                    <textarea name="mysubjects[<?php echo $sub->id; ?>][description]" class="materialize-textarea"><?php if(isset($description)){ echo $description; } ?></textarea>
+                                </div>
                             </div>
 
                             <?php endforeach; ?>
@@ -296,8 +338,6 @@
                 <p>List all the <span class="blue-text">subjects</span> that you teach or tutor.</p>
 
                 <p>Click on a category on the left and then check off all the subjects you tutor.</p>
-
-                <p>Once your profile is approved you can log into the site and add more detailed descriptions for all the subjects.</p>
 
             </div>
     	</div>
@@ -404,7 +444,7 @@
     */
 ?>
 
-<?php if(isset($app->newtutor->aboutme) && isset($app->newtutor->tutorinfo) && isset($app->newtutor->addaphoto) && isset($app->newtutor->subjectsitutor)): ?>
+<?php if(isset($app->newtutor->aboutme) && isset($app->newtutor->tutorinfo) && isset($app->newtutor->addaphoto) && isset($app->newtutor->subjectsitutor) && isset($app->newtutor->my_resume)): ?>
 <h3>
     Finishing Your Application
 </h3>
@@ -489,6 +529,20 @@
             var target = '.the-background-check-steps';
 			showmehideme(this,"$('"+target+"').slideDown();","$('"+target+"').slideUp();");
 		});
+        $('.activate-subject label').on('click',function(){
+            var status = $(this).attr('data-status');
+            var thisfor = $(this).attr('for');
+            if(status=='closed'){
+                $(this).attr('data-status','open');
+                $(this).parent().find('.input-wrapper').removeClass('hide');
+                $(this).parent().find('.remove').remove();
+            }
+            else if(status=='open'){
+                $(this).attr('data-status','closed');
+                $(this).parent().find('.input-wrapper').addClass('hide');
+                $(this).parent().append('<div class="remove"><input type="hidden" name="mysubjects['+thisfor+'][remove]" value="remove" /></div>');
+            }
+        });
 	});
 
 </script>

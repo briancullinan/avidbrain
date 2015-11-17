@@ -49,6 +49,9 @@
             $insertallthesubs = (array)$insert;
             $insertallthesubs['status'] = 'needs-review';
             $insertallthesubs['sortorder'] = 0;
+            if(isset($insert->description)){
+                $insertallthesubs['description'] = $insert->description;
+            }
             $app->connect->insert('avid___user_subjects',$insertallthesubs);
         }
 

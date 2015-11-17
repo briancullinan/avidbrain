@@ -244,9 +244,10 @@ $(document).ready(function() {
 			$('#myavatar').submit();
 		});
 		$('#select-photo').on('click',function(){
+			var uploadtext = $(this).attr('data-text');
 			$('#upload-trigger').click();
 			$('#upload-trigger').on('change',function(){
-				$('#select-photo').removeClass('grey').html('<i class="fa fa-refresh fa-spin"></i> Uploading Photo');
+				$('#select-photo').removeClass('grey').html('<i class="fa fa-refresh fa-spin"></i> '+uploadtext);
 				setTimeout(function(){
 					$('#upload-photo-form').submit();
 				}, 1000);

@@ -56,7 +56,9 @@
 
 		</div>
 		<div class="col s12 m4 l3">
-		<?php if($app->viewmessage->to_user==$app->user->email): ?>
+		<?php if(isset($app->user->needs_bgcheck)): ?>
+			&nbsp;
+		<?php elseif($app->viewmessage->to_user==$app->user->email): ?>
 
 			<form method="post" class="form-post button-form-switch" action="<?php echo $app->request->getPath(); ?>">
 
@@ -132,8 +134,9 @@
 	</div>
 </div>
 
-
-<?php if(isset($action) && $action=='reply' && $app->viewmessage->location=='inbox'): ?>
+<?php if(isset($app->user->needs_bgcheck)): ?>
+	&nbsp;
+<?php elseif(isset($action) && $action=='reply' && $app->viewmessage->location=='inbox'): ?>
 
 	<?php if(isset($app->user->creditcardonfile)): ?>
 
@@ -155,7 +158,7 @@
 
 			$messagingsystem = new Forms($app->connect);
 			$messagingsystem->formname = 'messagingsystem';
-			$messagingsystem->url = $userinfo->url;
+			$messagingsystem->url = $results->url;
 			$messagingsystem->dependents = $app->dependents;
 			$messagingsystem->csrf_key = $csrf_key;
 			$messagingsystem->csrf_token = $csrf_token;

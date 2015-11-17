@@ -62,16 +62,19 @@
 							";
 
 
-
 							$prepare = array(':email'=>$userResults->email);
 							$results = $this->connect->executeQuery($sql,$prepare)->fetch();
 
+
 							if(!empty($results->report_ids)){
+
 								$report = get_report($results->report_ids);
 								if(!empty($report->status)){
 									$userResults->reportstatus = $report->status;
 								}
+								
 								if($report->status=='clear'){
+									$this->connect->delete('avid___new_temps',array('email'=>$userResults->email));
 									$this->connect->update('avid___user',array('emptybgcheck'=>NULL),array('email'=>$userResults->email));
 								}
 							}
