@@ -15,6 +15,9 @@
 	$routes['facebook'] = (object)array('url'=>'/facebook','slug'=>'facebook','route'=>'/facebook/','include'=>'signup/student/','protected'=>NULL,'permissions'=>array());
 	$routes['facebook'] = (object)array('url'=>'/facebook','slug'=>'student','route'=>'/facebook/','params'=>array('promocode'=>'facebook'),'include'=>'signup/student','protected'=>NULL,'permissions'=>array());
 
+	$routes['partners'] = (object)array('url'=>'/partners','slug'=>'partners','route'=>'/partners/','include'=>'partners','protected'=>NULL,'permissions'=>array());
+	
+
 	// Background Check
 	$routes['background-check'] = (object)array('url'=>'/background-check','slug'=>'background-check','route'=>'/background-check/','include'=>'background-check','protected'=>true,'permissions'=>array('tutor'));
 	$routes['background-check-step'] = (object)array('url'=>'/background-check','slug'=>'background-check','route'=>'/background-check/:step/','include'=>'background-check','protected'=>true,'permissions'=>array('tutor'));
