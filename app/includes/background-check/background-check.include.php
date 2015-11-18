@@ -32,6 +32,12 @@
         </div>
 	</div>
 	<div class="col s12 m9 l9">
+		<?php if(isset($app->newtutor->comp)): ?>
+			<div class="block green white-text">
+				<div><strong> <i class="fa fa-check"></i> Free Background Check</strong></div>
+				We've comped your background check $29.99, so now all you have to do is complete the process and be on your way.
+			</div>
+		<?php endif; ?>
         <div class="block">
             <?php
 				//notify($app->newtutor);

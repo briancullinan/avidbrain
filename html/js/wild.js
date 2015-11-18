@@ -276,6 +276,12 @@ $(document).ready(function() {
 		}
 		var setcropbox = $('#cropbox').attr('data-image');
 		if(setcropbox){
+			var boxwidth = $('#cropbox').outerWidth();
+			var imgwidth = $('#cropbox img').attr('data-width');
+			if(!imgwidth){
+				window.location = '/tutors/orma/west-virginia/crispiebits/my-photos/crop-photo/'+boxwidth;
+			}
+
 			image.src = setcropbox;
 		}
 

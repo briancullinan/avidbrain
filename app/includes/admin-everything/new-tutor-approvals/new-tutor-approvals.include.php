@@ -37,12 +37,31 @@
 	</div>
 	<div class="col s12 m9 l10">
 		<?php if(isset($app->thetutor->activated)): ?>
-			Activated
+			<div>Account Activated</div>
+			<a href="<?php echo $app->thetutor->url; ?>" target="_blank">View Profile</a>
 		<?php else: ?>
 			<?php if(isset($app->thetutor)): ?>
 	            <div class="block">
 
-					<?php if($app->thetutor->approval_status=='rejected'): ?>
+					<?php if(isset($app->thetutor->comper)): ?>
+						<div class="green white-text padd5 center-align">Background Check Comped</div><br>
+					<?php else: ?>
+						<form method="post" action="<?php echo $app->request->getPath(); ?>">
+
+							<input type="hidden" name="compbackgroundcheck[email]" value="<?php echo $app->thetutor->email; ?>"  />
+							<input type="hidden" name="compbackgroundcheck[target]" value="compbackgroundcheck"  />
+							<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
+
+							<div class="form-submit">
+								<button class="btn green confirm-submit" type="button">
+									Comp Background Check $29.99
+								</button>
+							</div>
+
+						</form><br>
+					<?php endif; ?>
+
+					<?php if(isset($app->thetutor->approval_status) && $app->thetutor->approval_status=='rejected'): ?>
 						<div class="red padd5 center-align white-text">Application Rejected</div>
 						<br>
 					<?php endif; ?>
@@ -126,7 +145,7 @@
 						<div class="col s12 m12 l12">
 							<div class="title"> Why do you want to tutor with AvidBrain? </div>
 							<div>
-								<?php echo $app->thetutor->whytutor; ?>
+								<?php echo nl2br($app->thetutor->whytutor); ?>
 							</div>
 						</div>
 					</div>

@@ -1,5 +1,18 @@
 <?php
-    if(isset($app->stripe)){
+
+    if(isset($app->completebackgroundcheck) && isset($app->newtutor->comp)){
+
+        $step5 = array(
+            'step5'=>'1',
+            'charge_id'=>'111222333444'
+        );
+
+        $app->connect->update('avid___new_temps',$step5,array('email'=>$app->newtutor->email));
+
+        $app->redirect('/background-check/step6');
+
+    }
+    elseif(isset($app->stripe)){
         $payment = array(
 			'amount'=>'2999',
 			'currency'=>'usd',

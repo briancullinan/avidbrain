@@ -12,7 +12,7 @@
 	$app->setCookie('searching',$jsonSearch, '2 days');
 
 	$data	=	$app->connect->createQueryBuilder();
-	$data	=	$data->select('user.email');
+	$data	=	$data->select('user.email,user.emptybgcheck');
 	$data	=	$data->innerJoin('user','avid___user_profile','profile','user.email = profile.email');
 	$data	=	$data->from('avid___user','user');
 

@@ -97,6 +97,13 @@
 			new Flash(array('action'=>'required','message'=>'Password Required','formID'=>'signuplogin','field'=>'li_password'));
 		}
 
+		$sql = "SELECT id,email,url FROM avid___user WHERE email = :email";
+		$prepare = array(':email'=>$app->li->email);
+		$isauser = $app->connect->executeQuery($sql,$prepare)->fetch();
+		if(isset($isauser->id)){
+			new Flash(array('action'=>'jump-to','message'=>'Please Login','formID'=>'signuplogin','location'=>'/login'));
+		}
+
 		// Check to see if the user exists
 		$sql = "SELECT * FROM avid___new_temps WHERE email = :email";
 		$prepare = array(':email'=>$app->li->email);
@@ -205,43 +212,72 @@
 	}
 	elseif(isset($app->uploadresume) && $upload = makefileupload((object)$_FILES['uploadresume'],'file')){
 		$uploadfile = getfiletype($upload->name);
-		$filename = $app->newtutor->email.$uploadfile;
-		$uploadPath = $app->dependents->APP_PATH.'uploads/resumes/'.$filename;
+
+		$allowed = array(
+			'text/plain',
+			'application/pdf',
+			'text/rtf',
+			'application/vnd.oasis.opendocument.text',
+			'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+		);
+		if(!in_array($upload->type, $allowed)){
+			notify(array('action'=>'required','postdata'=>'buffalo','message'=>'Invalid File Type'));
+		}
+		else{
+			//.pdf, .doc, .docx, .rtf, .odt
+			$filename = $app->newtutor->email.$uploadfile;
+			$uploadPath = $app->dependents->APP_PATH.'uploads/resumes/'.$filename;
 
 
-		move_uploaded_file($upload->tmp_name, $uploadPath);
+			move_uploaded_file($upload->tmp_name, $uploadPath);
 
-		$app->connect->update('avid___new_temps',array('my_resume'=>$filename),array('email'=>$app->newtutor->email));
+			$app->connect->update('avid___new_temps',array('my_resume'=>$filename),array('email'=>$app->newtutor->email));
+
+			$app->redirect('/signup/tutor');
+		}
 	}
 	elseif(isset($app->uploadphoto) && $upload = makefileupload((object)$_FILES['uploadphoto'],'file')){
 
-		$uploadfile = getfiletype($upload->name);
-		$filename = $app->newtutor->email.$uploadfile;
-		$uploadPath = $app->dependents->APP_PATH.'uploads/photos/';
 
-		$img = $app->imagemanager->make($upload->tmp_name)->save($uploadPath.$filename);
-		$app->connect->update('avid___new_temps',array('upload'=>$filename),array('email'=>$app->newtutor->email));
 
-		//---------------------------------------------------------------------------
-
-		$width = $img->width();
-		$height = $img->height();
-		$mime = $img->mime();
-
-		$resize = NULL;
-
-		if($width>$app->uploadphoto->width){
-			$resize = $app->uploadphoto->width;
+		$allowed = array(
+			'image/png',
+			'image/jpeg',
+			'image/jpg',
+			'image/gif'
+		);
+		if(!in_array($upload->type, $allowed)){
+			notify(array('action'=>'required','postdata'=>'buffalo','message'=>'Invalid File Type'));
 		}
+		else{
+			$uploadfile = getfiletype($upload->name);
+			$filename = $app->newtutor->email.$uploadfile;
+			$uploadPath = $app->dependents->APP_PATH.'uploads/photos/';
 
-		if(isset($resize)){
-			$img->resize($resize, NULL, function ($constraint) {
-				$constraint->aspectRatio();
-			})->save();
+			$img = $app->imagemanager->make($upload->tmp_name)->save($uploadPath.$filename);
+			$app->connect->update('avid___new_temps',array('upload'=>$filename),array('email'=>$app->newtutor->email));
+
+			//---------------------------------------------------------------------------
+
+			$width = $img->width();
+			$height = $img->height();
+			$mime = $img->mime();
+
+			$resize = NULL;
+
+			if($width>$app->uploadphoto->width){
+				$resize = $app->uploadphoto->width;
+			}
+
+			if(isset($resize)){
+				$img->resize($resize, NULL, function ($constraint) {
+					$constraint->aspectRatio();
+				})->save();
+			}
+			//---------------------------------------------------------------------------
+
+			$app->redirect('/signup/tutor');
 		}
-		//---------------------------------------------------------------------------
-
-		$app->redirect('/signup/tutor');
 
 	}
 	elseif(isset($app->crop)){

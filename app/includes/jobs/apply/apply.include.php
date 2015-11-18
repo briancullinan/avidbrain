@@ -129,7 +129,7 @@
 					<form method="post" class="form-post" action="<?php echo $app->request->getPath(); ?>">
 
 						<div class="input-field">
-							<textarea id="applicationmessage" name="application[message]" class="materialize-textarea" placeholder="Explain why you would be the perfect candidate to teach  <?php echo $app->job->subject_name; ?> to <?php echo the_users_name($app->job); ?> "></textarea>
+							<textarea id="applicationmessage" name="application[message]" class="materialize-textarea" placeholder="Explain why you would be the perfect candidate to teach  <?php echo $app->job->subject_name; ?> "></textarea>
 							<label for="applicationmessage">Message</label>
 						</div>
 

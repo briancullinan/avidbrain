@@ -28,6 +28,20 @@
 		}
 		else{
 
+			if(isset($app->user->my_upload)){
+
+				$filetype = getfiletype($app->user->my_upload);
+				$thefile = $app->user->username.$filetype;
+				$checkfile = croppedfile($thefile);
+				$location = $app->dependents->DOCUMENT_ROOT.'/profiles/approved/';
+				if(file_exists($location.$checkfile)){
+					$oldFile = $checkfile;
+					$nakedFile = str_replace('.crop'.$filetype,'',$checkfile);
+					$newFile = $checkusername.'.crop'.$filetype;
+					rename($location.$oldFile,$location.$newFile);
+				}
+			}
+
 			$newurl = make_my_url($app->user,$checkusername);
 			$app->user->url = $newurl;
 			$app->user->username = $checkusername;

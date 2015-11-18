@@ -1,4 +1,9 @@
 <?php
+    $lookfor = 'width----';
+    if(isset($extras) && strpos($extras, $lookfor) !== false){
+        $extras = str_replace($lookfor,'',$extras);
+        $width = $extras;
+    }
 
     define('PHOTOS',$app->dependents->APP_PATH.'uploads/photos/');
     define('APPROVED',$app->dependents->DOCUMENT_ROOT.'profiles/approved/');
@@ -47,7 +52,13 @@
     }
 
     if(isset($upload)){
+
         $img = $app->imagemanager->make($upload);
+        if(isset($width)){
+            $img->resize($width, NULL, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+        }
         header('Content-Type: image/png');
         echo $img->response();
         exit;

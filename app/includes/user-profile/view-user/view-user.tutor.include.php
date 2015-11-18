@@ -95,8 +95,9 @@
 
 						<div class="badges">
 							<?php
-								//printer($app->currentuser);
-								echo badge('background_check',$app->currentuser);
+								if(empty($app->currentuser->emptybgcheck)){
+									echo badge('background_check',$app->currentuser);
+								}
 								if(activenow($app->currentuser)){
 									echo badge('imonline',$app->currentuser);
 								}

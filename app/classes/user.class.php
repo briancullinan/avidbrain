@@ -72,10 +72,10 @@
 								if(!empty($report->status)){
 									$userResults->reportstatus = $report->status;
 								}
-								
+
 								if($report->status=='clear'){
-									$this->connect->delete('avid___new_temps',array('email'=>$userResults->email));
-									$this->connect->update('avid___user',array('emptybgcheck'=>NULL),array('email'=>$userResults->email));
+									$userResults->bgcheckstatus = 'clear';
+									redirect('/background-check-complete/'.$userResults->username);
 								}
 							}
 						}

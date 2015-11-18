@@ -86,6 +86,7 @@
     	<div class="col s12 m6 l6">
     		<div class="help-info">
                 <div class="title">Help</div>
+                <p>Allowable file types: .pdf, .doc, .docx, .rtf, .odt</p>
                 <p>Please upload your resume, so we can review it.</p>
             </div>
     	</div>
@@ -256,6 +257,8 @@
             <div class="help-info">
                 <div class="title">Help</div>
                 <p>Please provide a <span class="blue-text">photo</span> of yourself. A photo is required, to ensure that we have the highest quality tutor profiles.</p>
+
+                <p>Allowable file types: .jpg, .png, .gif</p>
 
                 <p>A photo can speak a thousand words, make sure you're saying the right thing.</p>
 
@@ -535,6 +538,7 @@
             if(status=='closed'){
                 $(this).attr('data-status','open');
                 $(this).parent().find('.input-wrapper').removeClass('hide');
+                $(this).parent().find('.input-wrapper textarea').focus();
                 $(this).parent().find('.remove').remove();
             }
             else if(status=='open'){

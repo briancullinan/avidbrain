@@ -119,7 +119,12 @@
         $message.= '<p> <a href="'.$app->dependents->DOMAIN.'/login">Login</a> </p>';
 
         if(empty($app->thetutor->candidate_id)){
-            $message.= '<br><p> Since you haven\'t completed the background check you can apply to jobs and view students, but you can\'t message them or setup a tutoring session. </p>';
+            //$message.= '<br><p> Since you haven\'t completed the background check you can apply to jobs and view students, but you can\'t message them or setup a tutoring session. </p>';
+            $message.= '<br><p> Once you login you can apply to jobs and view student profiles, but you won\'t be able to inteact with them untill you complete your background check. </p>';
+        }
+
+        if(isset($app->thetutor->comper)){
+            $message.= '<br><p> Your background check application fee of $29.99 has been comped by AvidBrain. </p>';
         }
 
 
@@ -137,4 +142,16 @@
 
         $app->redirect('/admin-everything/new-tutor-approvals/'.$id);
 
+    }
+    elseif(isset($app->compbackgroundcheck)){
+
+        $comp = array(
+            'email'=>$app->compbackgroundcheck->email,
+            'date'=>thedate(),
+            'comper'=>$app->user->email
+        );
+
+        $app->connect->insert('avid___compedbgcheck',$comp);
+
+        $app->redirect('/admin-everything/new-tutor-approvals/'.$id);
     }

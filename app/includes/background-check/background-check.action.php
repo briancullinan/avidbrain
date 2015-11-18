@@ -13,3 +13,11 @@
 
     $app->newtutor = new tutorsignup($app->connect,$app->crypter);
     $app->newtutor->location = 'completecheck';
+
+
+    $sql = "SELECT * FROM avid___compedbgcheck WHERE email = :email";
+    $prepare = array(':email'=>$app->user->email);
+    $compedBGcheck = $app->connect->executeQuery($sql,$prepare)->fetch();
+    if(isset($compedBGcheck->id)){
+        $app->newtutor->comp = $compedBGcheck;
+    }

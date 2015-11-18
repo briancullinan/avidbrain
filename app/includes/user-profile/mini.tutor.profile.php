@@ -91,7 +91,10 @@
 
 	<div class="badges mini-badges">
 		<?php
-			echo badge('background_check',$searchResults);
+			if(empty($searchResults->emptybgcheck)){
+				echo badge('background_check',$searchResults);
+			}
+
 			if(activenow($searchResults)){
 				echo badge('imonline',$searchResults);
 			}
