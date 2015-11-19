@@ -38,6 +38,7 @@
 				We've comped your background check $29.99, so now all you have to do is complete the process and be on your way.
 			</div>
 		<?php endif; ?>
+			<h1>Background Check Application</h1>
         <div class="block">
             <?php
 				//notify($app->newtutor);

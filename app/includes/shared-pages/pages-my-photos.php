@@ -44,7 +44,9 @@
 
 	<?php if(isset($app->currentuser->my_upload)): ?>
 
-		<?php if(isset($app->currentuser->my_upload) && $app->currentuser->my_upload_status=='verified'): ?>
+		<?php if(isset($app->currentuser->my_upload) && $app->currentuser->my_upload_status!='verified' && isset($app->user->usertype) && $app->user->usertype=='admin'): ?>
+			<div class="alert red white-text">Please Dis-Approve Photo, Then Re-Approve Photo</div>
+		<?php elseif(isset($app->currentuser->my_upload) && $app->currentuser->my_upload_status=='verified'): ?>
 			<div class="alert blue white-text">
 				Your photo has been verified, if you delete it, it will have to be re-verified before it's public.
 			</div>

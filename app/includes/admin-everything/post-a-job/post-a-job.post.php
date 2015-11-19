@@ -8,6 +8,8 @@
         return $start.$middle.$end;
     }
 
+    //notify($app->postjob);
+
     if(isset($app->postjob->type) && $app->postjob->type=='update' && isset($id)){
 
         $update = array();
@@ -70,6 +72,9 @@
         $update['subject_id'] = $app->postjob->subject_id;
         $update['subject_name'] = $app->postjob->subject_name;
         $update['subject_slug'] = $app->postjob->subject_slug;
+        $update['notes'] = $app->postjob->notes;
+
+
 
         $app->connect->update('avid___jobs',$update,array('id'=>$id));
 
@@ -135,7 +140,8 @@
             'open'=>1,
             'price_range_low'=>$app->postjob->price_range_low,
             'price_range_high'=>$app->postjob->price_range_high,
-            'anonymous'=>1
+            'anonymous'=>1,
+            'notes'=>$app->postjob->notes
         );
 
         $zipcodeinfo = get_zipcode_data($app->connect,$app->postjob->zipcode);

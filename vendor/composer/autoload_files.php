@@ -9,8 +9,8 @@ return array(
     $vendorDir . '/danielstjules/stringy/src/Create.php',
     $vendorDir . '/illuminate/support/helpers.php',
     $vendorDir . '/react/promise/src/functions_include.php',
-    $vendorDir . '/guzzlehttp/psr7/src/functions_include.php',
     $vendorDir . '/nikic/php-parser/lib/bootstrap.php',
-    $vendorDir . '/twilio/sdk/Services/Twilio.php',
+    $vendorDir . '/guzzlehttp/psr7/src/functions_include.php',
     $vendorDir . '/phpfastcache/phpfastcache/phpfastcache.php',
+    $vendorDir . '/twilio/sdk/Services/Twilio.php',
 );

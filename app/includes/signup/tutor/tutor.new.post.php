@@ -282,19 +282,51 @@
 	}
 	elseif(isset($app->crop)){
 
-		$croppedfile = croppedfile($app->newtutor->upload);
-		$croppedfileName = $croppedfile;
-		$myfile = $app->dependents->APP_PATH.'uploads/photos/'.$app->newtutor->upload;
-		$croppedfile = $app->dependents->APP_PATH.'uploads/photos/'.$croppedfile;
-		$cropped = $app->imagemanager->make($myfile)->crop($app->crop->w, $app->crop->h, $app->crop->x, $app->crop->y)->save($croppedfile); //->resize(250,250)
-		$height = $app->imagemanager->make($croppedfile)->height();
-		$width = $app->imagemanager->make($croppedfile)->width();
+		if(isset($app->crop->fullwidth)){
+			$filetype = getfiletype($app->newtutor->upload);
+			$thefile = $app->newtutor->email.$filetype;
+			$checkfile = $thefile;
+			$location = $app->dependents->APP_PATH.'uploads/photos/';
+			if(file_exists($location.$checkfile)){
+				$file = $checkfile;
+			}
+
+			$img = $app->imagemanager->make($location.$file);
+			$cropped = croppedfile($location.$file);
+			$croppedfileName = $cropped;
 
 
+	        if(isset($app->crop->fullwidth)){
+	            $img->resize($app->crop->fullwidth, NULL, function ($constraint) {
+	                $constraint->aspectRatio();
+	            });
 
-		if($height > 500 || $width > 500){
-			$cropped = $app->imagemanager->make($myfile)->crop($app->crop->w, $app->crop->h, $app->crop->x, $app->crop->y)->resize(500,500)->save($croppedfile);
+				$img->crop($app->crop->w, $app->crop->h, $app->crop->x, $app->crop->y)->save($cropped);
+
+				$height = $img->height();
+				$width = $img->width();
+
+				if($height > 500 || $width > 500){
+					$img->resize(500,500)->save($cropped);
+				}
+	        }
 		}
+		else{
+			$croppedfile = croppedfile($app->newtutor->upload);
+			$croppedfileName = $croppedfile;
+			$myfile = $app->dependents->APP_PATH.'uploads/photos/'.$app->newtutor->upload;
+			$croppedfile = $app->dependents->APP_PATH.'uploads/photos/'.$croppedfile;
+			$cropped = $app->imagemanager->make($myfile)->crop($app->crop->w, $app->crop->h, $app->crop->x, $app->crop->y)->save($croppedfile); //->resize(250,250)
+			$height = $app->imagemanager->make($croppedfile)->height();
+			$width = $app->imagemanager->make($croppedfile)->width();
+
+
+
+			if($height > 500 || $width > 500){
+				$cropped = $app->imagemanager->make($myfile)->crop($app->crop->w, $app->crop->h, $app->crop->x, $app->crop->y)->resize(500,500)->save($croppedfile);
+			}
+		}
+
 		$app->connect->update('avid___new_temps',array('addaphoto'=>1,'cropped'=>$croppedfileName),array('email'=>$app->newtutor->email));
 		$app->redirect('/signup/tutor#mysubjects');
 

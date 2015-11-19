@@ -1,7 +1,16 @@
 <?php
 	if(isset($app->resetpassword)){
 
+		$location = NULL;
 		$doesuser = doesuserexist($app->connect,$app->resetpassword->email);
+
+		$sql = "SELECT email,password FROM avid___new_temps WHERE email = :email";
+		$prepare = array(':email'=>$app->resetpassword->email);
+		$new_temps = $app->connect->executeQuery($sql,$prepare)->fetch();
+		if(isset($new_temps->email)){
+			$doesuser = true;
+			$location = 'temptutor';
+		}
 
 		if($doesuser==true){
 			$query = "SELECT email FROM avid___user WHERE `email` = :email LIMIT 1";
@@ -22,7 +31,7 @@
 
 			}
 
-			$location = NULL;
+
 			if(isset($resetuserpass->email)){
 				$location = 'user';
 				$emailuser = $resetuserpass->email;

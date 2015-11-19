@@ -20,23 +20,14 @@
         $updates->url = make_my_url($app->thetutor,$updates->username);
         $updates->approved_upload = $app->dependents->DOCUMENT_ROOT.'profiles/approved/'.$updates->username.getfiletype($app->thetutor->upload);
 
+        notify('RENAME EMAIL TO USERNAME FILE !GO!');
+
+        // MOVE FILE TO APPROVED CROPPED
         $uploads = $app->dependents->APP_PATH.'uploads';
         $oldPath = $uploads.'/photos/'.$app->thetutor->upload;
-        $newPath = $uploads.'/photos/'.$app->thetutor->upload;
 
         try{
-        	#rename($oldPath,$newPath);
-        }
-        catch(Exception $e){
-        	//echo '<pre>'; print_r($e); echo '</pre>';
-        }
-
-        $oldPath = $uploads.'/photos/'.$app->thetutor->cropped;
-        $newPath = $uploads.'/photos/'.$app->thetutor->cropped;
-
-
-        try{
-            copy($oldPath,croppedfile($updates->approved_upload));
+            copy(croppedfile($oldPath),croppedfile($updates->approved_upload));
         }
         catch(Exception $e){
             //echo '<pre>'; print_r($e); echo '</pre>';
@@ -47,7 +38,7 @@
         $allthesubs = $app->approveprofile;
         foreach($allthesubs as $insert){
             $insertallthesubs = (array)$insert;
-            $insertallthesubs['status'] = 'needs-review';
+            $insertallthesubs['status'] = 'verified';
             $insertallthesubs['sortorder'] = 0;
             if(isset($insert->description)){
                 $insertallthesubs['description'] = $insert->description;

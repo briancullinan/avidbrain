@@ -83,7 +83,7 @@ $(document).ready(function() {
 		});
 
 		if($('.block-list-user.active').attr('class')){
-			$(".new-order-list").animate({ scrollTop: $('.block-list-user.active').offset().top -200 }, 1000);
+			$(".new-order-list").animate({ scrollTop: $('.block-list-user.active').offset().top -230 }, 1000);
 		}
 
 
@@ -279,7 +279,8 @@ $(document).ready(function() {
 			var boxwidth = $('#cropbox').outerWidth();
 			var imgwidth = $('#cropbox img').attr('data-width');
 			if(!imgwidth){
-				window.location = '/tutors/orma/west-virginia/crispiebits/my-photos/crop-photo/'+boxwidth;
+				window.location = window.location.pathname+'/'+boxwidth;
+				//window.location = '/tutors/orma/west-virginia/crispiebits/my-photos/crop-photo/'+boxwidth;
 			}
 
 			image.src = setcropbox;

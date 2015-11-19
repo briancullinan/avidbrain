@@ -195,7 +195,7 @@
 						<div class="row">
 							<div class="col s12 m12 l12" id="ts_taughttutored">
 								<select name="tutorsignup[tutor][howdidyouhear]" class="browser-default">
-									<option>How Did You Hear About Us?</option>
+									<option value="">How Did You Hear About Us?</option>
 									<?php
 										foreach(array('Facebook','Twitter','Craigslist','Indeed','Google','Bing','Friend') as $value){
 											echo '<option value="'.$value.'">'.$value.'</option>';

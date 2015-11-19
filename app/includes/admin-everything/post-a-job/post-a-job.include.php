@@ -2,10 +2,10 @@
 	<div class="col s12 m3 l3">
 
 		<a href="/admin-everything/post-a-job" class="btn btn-block">Post New Job</a>
-		<div class="block block-list">
+		<div class="block block-list new-order-list">
             <?php if(isset($app->postedjobs)): ?>
             	<?php foreach($app->postedjobs as $postedjobs): ?>
-            		<a <?php if(isset($id) && $id == $postedjobs->id){ echo 'class="active"';} ?> href="/admin-everything/post-a-job/<?php echo $postedjobs->id; ?>">
+            		<a class="block-list-user <?php if(isset($id) && $id == $postedjobs->id){ echo ' active ';} ?>" href="/admin-everything/post-a-job/<?php echo $postedjobs->id; ?>">
                         <?php echo $postedjobs->subject_name; ?>
                     </a>
             	<?php endforeach; ?>
@@ -103,6 +103,12 @@
                     </div>
                 </div>
 
+				<div class="input-field">
+                    <textarea id="notes" name="postjob[notes]" class="materialize-textarea"><?php if(isset($app->thejob->notes)){ echo $app->thejob->notes; } ?></textarea>
+                    <label for="job_description">
+                        Notes
+                    </label>
+                </div>
 
 				<div>
 					<input type="checkbox" id="assigntoaccount" />

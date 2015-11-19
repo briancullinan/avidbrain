@@ -13,28 +13,34 @@
 			$thefile = $app->user->username.$filetype;
 			$checkfile = $thefile;
 			$location = $app->dependents->APP_PATH.'uploads/photos/';
+
+			
 			if(file_exists($location.$checkfile)){
 				$file = $checkfile;
 			}
 
-			$img = $app->imagemanager->make($location.$file);
-			$cropped = croppedfile($location.$file);
+			if(isset($file)){
+				$img = $app->imagemanager->make($location.$file);
+				$cropped = croppedfile($location.$file);
 
+				if(isset($app->crop->fullwidth)){
+					$img->resize($app->crop->fullwidth, NULL, function ($constraint) {
+						$constraint->aspectRatio();
+					});
 
-	        if(isset($app->crop->fullwidth)){
-	            $img->resize($app->crop->fullwidth, NULL, function ($constraint) {
-	                $constraint->aspectRatio();
-	            });
+					$img->crop($app->crop->w, $app->crop->h, $app->crop->x, $app->crop->y)->save($cropped);
 
-				$img->crop($app->crop->w, $app->crop->h, $app->crop->x, $app->crop->y)->save($cropped);
+					$height = $img->height();
+					$width = $img->width();
 
-				$height = $img->height();
-				$width = $img->width();
-
-				if($height > 500 || $width > 500){
-					$img->resize(500,500)->save($cropped);
+					if($height > 500 || $width > 500){
+						$img->resize(500,500)->save($cropped);
+					}
 				}
-	        }
+			}
+			else{
+				notify('FILE MISSING');
+			}
 		}
 		else{
 			$cropped = $app->imagemanager->make($myupload)->crop($app->crop->w, $app->crop->h, $app->crop->x, $app->crop->y)->save($croppedfile); //->resize(250,250)
@@ -57,5 +63,6 @@
 			}
 		}
 
+		$app->connect->update('avid___user_profile',array('my_upload_status'=>NULL),array('email'=>$app->user->email));
 		$app->redirect($app->currentuser->url.'/my-photos');
 	}
