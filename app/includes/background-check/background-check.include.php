@@ -41,7 +41,9 @@
 			<h1>Background Check Application</h1>
         <div class="block">
             <?php
-				//notify($app->newtutor);
+				if(isset($app->user->reportstatus)){
+					echo '<div class="background-check-status">Your Background Check Status: <span class="'.$app->user->reportstatus.'">'.ucwords($app->user->reportstatus).'</span></div>';
+				}
 
                 $file = $app->dependents->APP_PATH.'includes/backgroundcheck/backgroundcheck-'; //include(step1.php');
 
@@ -71,10 +73,3 @@
         </div>
 	</div>
 </div>
-
-
-<style type="text/css">
-.bgsteps i{
-	color: #57ce0d;
-}
-</style>

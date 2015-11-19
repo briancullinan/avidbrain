@@ -828,6 +828,48 @@ $(document).ready(function() {
 	var containerwidth = $('.new-signup').outerWidth();
 	$('#containerwidth').val(containerwidth);
 
+	var accountsettings = $('#accountsettings').attr('class');
+	if(accountsettings=='thesettings'){
+		
+		var thetoken = $('#csrf').val();
+
+		$("#newusername").keyup(function() {
+
+			setTimeout($.proxy(function() {
+
+				var swapnumber = $(this).val().replace('(','').replace(')','').replace(/[^a-z0-9]/gi, "").toLowerCase();
+				$('#newusername').val(swapnumber);
+
+				var thedata = $(this).val();
+				$.ajax({
+					type: 'POST',
+					url: '/account-settings',
+					data: {username:thedata,csrf_token:thetoken},
+					success: function(response){
+						if(response.censor==true){
+							$('#newusername').val(response.clean);
+						}
+						else if(response=='error'){
+							$('#checkusername .name-status').addClass('invalid-name').removeClass('valid-name').html('<i class="fa fa-warning"></i> Invalid Name');
+							$('.submit-me').html('');
+						}
+						else if(response=='success'){
+							$('#checkusername .name-status').removeClass('invalid-name').addClass('valid-name').html('<i class="fa fa-check"></i> Valid Name');
+							$('.submit-me').html('<button class="btn green white-text" type="submit">Submit</button>');
+						}
+						else if(response=='yourname'){
+							$('#checkusername .name-status').addClass('valid-name').removeClass('invalid-name').html('<i class="fa fa-check"></i> Your Name ');
+							$('.submit-me').html('');
+						}
+
+					}
+				});
+
+			}, this), 10);
+
+		});
+	}
+
 });
 $(window).on('scroll', function() {
     scrollPosition = $(this).scrollTop();

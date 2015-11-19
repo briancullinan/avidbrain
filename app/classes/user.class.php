@@ -68,7 +68,15 @@
 
 							if(!empty($results->report_ids)){
 
-								$report = get_report($results->report_ids);
+								$cachedKey = "backgroundcheckstatus---".$userResults->email;
+								//$cachedVar = $this->connect->cache->delete($cachedKey);
+								$report = $this->connect->cache->get($cachedKey);
+								if($report == null) {
+									$results = get_report($results->report_ids);
+								    $report = $results;
+								    $this->connect->cache->set($cachedKey, $results, 3600);
+								}
+
 								if(!empty($report->status)){
 									$userResults->reportstatus = $report->status;
 								}
@@ -77,6 +85,8 @@
 									$userResults->bgcheckstatus = 'clear';
 									redirect('/background-check-complete/'.$userResults->username);
 								}
+							
+
 							}
 						}
 				}

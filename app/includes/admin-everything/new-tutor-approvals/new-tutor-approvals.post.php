@@ -19,8 +19,21 @@
         $updates->username = unique_username($app->connect,4);
         $updates->url = make_my_url($app->thetutor,$updates->username);
         $updates->approved_upload = $app->dependents->DOCUMENT_ROOT.'profiles/approved/'.$updates->username.getfiletype($app->thetutor->upload);
+        $updates->file = $updates->username.getfiletype($app->thetutor->upload);
+        $updates->crop = croppedfile($updates->file);
+        $updates->oldupload = $app->thetutor->upload;
+        $updates->olduploadCrop = croppedfile($app->thetutor->upload);
+        $updates->olduploadlocation = $app->dependents->APP_PATH.'uploads/photos/';
 
-        notify('RENAME EMAIL TO USERNAME FILE !GO!');
+
+
+
+
+        $oldFull = $updates->olduploadlocation.$updates->oldupload;
+        $newFull = $updates->olduploadlocation.$updates->file;
+
+        $oldCropped = $updates->olduploadlocation.$updates->olduploadCrop;
+        $newCropped = $updates->olduploadlocation.$updates->crop;
 
         // MOVE FILE TO APPROVED CROPPED
         $uploads = $app->dependents->APP_PATH.'uploads';
@@ -28,6 +41,20 @@
 
         try{
             copy(croppedfile($oldPath),croppedfile($updates->approved_upload));
+        }
+        catch(Exception $e){
+            //echo '<pre>'; print_r($e); echo '</pre>';
+        }
+
+        try{
+            rename($oldFull,$newFull);
+        }
+        catch(Exception $e){
+            //echo '<pre>'; print_r($e); echo '</pre>';
+        }
+
+        try{
+            rename($oldCropped,$newCropped);
         }
         catch(Exception $e){
             //echo '<pre>'; print_r($e); echo '</pre>';
@@ -86,7 +113,7 @@
             'online_tutor'=>$app->thetutor->online_tutor,
             'cancellation_policy'=>$app->thetutor->cancellation_policy,
             'cancellation_rate'=>$app->thetutor->cancellation_rate,
-            'my_upload'=>$app->thetutor->upload,
+            'my_upload'=>$updates->file,
             'my_upload_status'=>'verified'
         );
 

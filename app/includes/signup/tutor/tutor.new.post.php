@@ -573,6 +573,13 @@
 			new Flash(array('action'=>'alert','message'=>'Please Complete Everything Before Submitting'));
 		}
 
+		if(empty($app->finishapplication->timeday)){
+			$app->finishapplication->timeday = NULL;
+		}
+		if(empty($app->finishapplication->yesinterview)){
+			$app->finishapplication->yesinterview = NULL;
+		}
+
 		//$app->finishapplication
 		$app->connect->update('avid___new_temps',array('complete'=>1,'timeday'=>$app->finishapplication->timeday,'yesinterview'=>$app->finishapplication->yesinterview),array('email'=>$app->newtutor->email));
 
