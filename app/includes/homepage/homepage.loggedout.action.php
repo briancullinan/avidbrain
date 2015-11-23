@@ -12,16 +12,24 @@
 	if($featuredhomepagetutor == null) {
 
 		$featuredEmail = array(
-			#'ross.leonmiller@gmail.com',
-			'whereiskatima@gmail.com',
-			'teallen04@yahoo.com',
-			'acooper29@nycap.rr.com',
-			'dr.thatch.tutor@gmail.com',
-			#'hidehi.rosenberg@gmail.com',
-			'mosam@inbox.com',
-			'sonya.marrus@gmail.com',
-			#'joelyn.k.foy@gmail.com'
+			'goldmanteaches@gmail.com',
+			'higaatty@yahoo.com',
+			'iykay_4d@yahoo.com',
+			'jessicajtutor@gmail.com'
 		);
+
+		/*
+		#'ross.leonmiller@gmail.com',
+		'whereiskatima@gmail.com',
+		'teallen04@yahoo.com',
+		'acooper29@nycap.rr.com',
+		'dr.thatch.tutor@gmail.com',
+		#'hidehi.rosenberg@gmail.com',
+		'mosam@inbox.com',
+		'sonya.marrus@gmail.com',
+		#'joelyn.k.foy@gmail.com'
+		*/
+
 		shuffle($featuredEmail);
 		$featuredEmail = $featuredEmail[0];
 
