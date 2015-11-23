@@ -210,7 +210,7 @@
 						<div class="row">
 							<div class="col s12 m12 l12" id="ts_taughttutored">
 								<input type="checkbox" class="filled-in" name="tutorsignup[tutor][taughttutored]" id="taughttutored" />
-								<label for="taughttutored">I have tought or tutored before</label>
+								<label for="taughttutored">I have taught or tutored before</label>
 							</div>
 						</div>
 				  	</div>
