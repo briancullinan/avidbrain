@@ -18,7 +18,11 @@
             new Flash(array('action'=>'required','formID'=>'findasubject','message'=>'Zipcode Required <i class="fa fa-warning"></i>'));
         }
 
-        if(isset($app->postjob->newemail) && !empty($app->postjob->newemail)){
+
+        if(isset($app->thejob->email)){
+
+        }
+        elseif(isset($app->postjob->newemail) && !empty($app->postjob->newemail)){
             $isuserreal = doesuserexist($app->connect,$app->postjob->newemail);
             if($isuserreal==false){
                 new Flash(array('action'=>'required','formID'=>'findasubject','message'=>'Invalid User: <span>'.$app->postjob->newemail.'</span>'));
@@ -73,6 +77,7 @@
         $update['subject_name'] = $app->postjob->subject_name;
         $update['subject_slug'] = $app->postjob->subject_slug;
         $update['notes'] = $app->postjob->notes;
+        $update['type'] = $app->postjob->jobtype;
 
 
 
@@ -82,6 +87,8 @@
 
     }
     elseif(isset($app->postjob)){
+
+
 
         $doesexist = NULL;
         if(isset($app->postjob->subject_slug)){
@@ -115,8 +122,8 @@
         if(empty($app->postjob->subject_slug)){
             $app->postjob->subject_slug = NULL;
         }
-        if(empty($app->postjob->type)){
-            $app->postjob->type = NULL;
+        if(empty($app->postjob->jobtype)){
+            $app->postjob->jobtype = NULL;
         }
         if(empty($app->postjob->skill_level)){
             $app->postjob->skill_level = NULL;
@@ -135,7 +142,7 @@
             'subject_id'=>$app->postjob->id,
             'date'=>thedate(),
             'job_description'=>$app->postjob->job_description,
-            'type'=>$app->postjob->type,
+            'type'=>$app->postjob->jobtype,
             'skill_level'=>$app->postjob->skill_level,
             'open'=>1,
             'price_range_low'=>$app->postjob->price_range_low,
@@ -143,6 +150,8 @@
             'anonymous'=>1,
             'notes'=>$app->postjob->notes
         );
+
+
 
         $zipcodeinfo = get_zipcode_data($app->connect,$app->postjob->zipcode);
         $newUser = array(
@@ -162,6 +171,8 @@
         );
         $newUserProfile = array('email'=>$email);
         $newUserSettings = array('email'=>$email);
+
+
         $app->connect->insert('avid___user',$newUser);
         $app->connect->insert('avid___user_profile',$newUserProfile);
         $app->connect->insert('avid___user_account_settings',$newUserSettings);
@@ -197,13 +208,13 @@
             $data	=	$data->setParameter(':pricerangeUpper',$app->postjob->price_range_high);
             ////
 
-            if($app->postjob->type=='both'){
+            if($app->postjob->jobtype=='both'){
 
             }
-            elseif($app->postjob->type=='online'){
+            elseif($app->postjob->jobtype=='online'){
                 $data   =   $data->andWhere('profile.online_tutor = :online_tutor')->setParameter(':online_tutor','online');
             }
-            elseif($app->postjob->type=='offline'){
+            elseif($app->postjob->jobtype=='offline'){
                 $data   =   $data->andWhere('profile.online_tutor = :online_tutor')->setParameter(':online_tutor','offline');
             }
 
@@ -218,7 +229,7 @@
 
 
             if(isset($data[0]) && $app->dependents->MODE == 'production'){
-
+                
                 $subject = 'A student has posted a new job';
                 $message = '<br><h2>'.$app->postjob->subject_name.' Student</h2>';
 

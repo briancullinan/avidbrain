@@ -39,14 +39,14 @@
             <div class="green-text">(Posts are not attatched to an account, untill you attatch it.)</div>
             <form class="form-post" method="post" action="<?php echo $app->request->getPath(); ?>">
 
-				<?php if(empty($app->thejob->zipcode)): ?>
+				<?php #if(empty($app->thejob->zipcode)): ?>
 				<div class="input-field">
-                    <input type="text" id="zipcode" name="postjob[zipcode]" value="" />
+                    <input type="text" id="zipcode" name="postjob[zipcode]" value="<?php if(isset($app->thejob->zipcode)){ echo $app->thejob->zipcode; } ?>" />
                     <label for="zipcode">
                         Zip Code
                     </label>
                 </div>
-				<?php endif; ?>
+				<?php #endif; ?>
 
                 <div class="input-field">
                     <input type="text" name="postjob[subject_name]" id="findasubject" class="autogenerate--subject" data-name="postjob" value="<?php if(isset($app->thejob->subject_name)){ echo $app->thejob->subject_name; } ?>" <?php if(isset($app->thejob->subject_name)){ echo 'readonly="readonly"'; } ?> />
@@ -81,7 +81,7 @@
                             <label class="select-label" for="textarea1">
                                 What type of tutor are you looking for?
                             </label>
-                            <select name="postjob[type]" class="browser-default">
+                            <select name="postjob[jobtype]" class="browser-default">
                                 <?php foreach($app->jobOptions['type'] as $key => $type): ?>
                                 <option <?php if(isset($app->thejob->type) && $app->thejob->type == $type){ echo 'selected="selected"';} ?> value="<?php echo $type; ?>"><?php echo $key; ?></option>
                                 <?php endforeach; ?>
