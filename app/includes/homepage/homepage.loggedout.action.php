@@ -12,10 +12,19 @@
 	if($featuredhomepagetutor == null) {
 
 		$featuredEmail = array(
-			//'goldmanteaches@gmail.com',
 			'higaatty@yahoo.com',
 			'iykay_4d@yahoo.com',
-			//'jessicajtutor@gmail.com'
+			'maddydf@msn.com',
+			'mmedin74@calstatela.edu'
+		);
+
+		$nextSet = array(
+			'comingaliveat55@gmail.com',
+			'mlundy@gmail.com',
+			'priya.trivium@gmail.com',
+			'chelseaniccum@me.com',
+			'jmusman@gwmail.gwu.edu',
+			'dk2833@columbia.edu'
 		);
 
 		/*
