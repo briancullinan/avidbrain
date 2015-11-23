@@ -603,7 +603,7 @@
 			$message.='<p> <strong> Background Check Purchased  </strong> </p>';
 		}
 
-		$app->mailgun->to = 'david@avidbrain.com';
+		$app->mailgun->to = 'keith@avidbrain.com,jake.stoll@avidbrain.com,david@avidbrain.com';
 		$app->mailgun->subject = 'A new tutor has completed their initial profile';
 		$app->mailgun->message = $message;
 		$app->mailgun->send();
