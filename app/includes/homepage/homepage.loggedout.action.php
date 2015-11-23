@@ -7,7 +7,7 @@
 
 	$cachedKey = "featured-homepage-tutor";
 	//$app->connect->cache->clean();
-	$app->connect->cache->delete($cachedKey);
+	//$app->connect->cache->delete($cachedKey);
 	$featuredhomepagetutor = $app->connect->cache->get($cachedKey);
 	if($featuredhomepagetutor == null) {
 
