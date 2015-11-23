@@ -12,7 +12,7 @@
 	if($featuredhomepagetutor == null) {
 
 		$featuredEmail = array(
-			'goldmanteaches@gmail.com',
+			//'goldmanteaches@gmail.com',
 			'higaatty@yahoo.com',
 			'iykay_4d@yahoo.com',
 			//'jessicajtutor@gmail.com'
