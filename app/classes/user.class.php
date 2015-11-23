@@ -30,6 +30,7 @@
 					  ->andWhere('user.sessiontoken = :sessiontoken')
 					  ->setParameter(":sessiontoken",$this->sessiontoken)
 					  ->execute()->fetch();
+					  
 				}
 				else{
 					$this->table = 'avid___user';
@@ -85,7 +86,7 @@
 									$userResults->bgcheckstatus = 'clear';
 									redirect('/background-check-complete/'.$userResults->username);
 								}
-							
+
 
 							}
 						}
