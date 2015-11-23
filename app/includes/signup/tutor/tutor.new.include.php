@@ -50,13 +50,13 @@
 
             <div class="help-info">
                 <div class="title">Help</div>
-                <p>Please provide your zip code, a short description, and in-depth description and your gender.</p>
+                <p>Please provide your zip code, a short description, an in-depth description and your gender.</p>
 
                 <p>Your <span class="blue-text">Zip Code</span> is needed to determine what city / state your profile will be associated with.</p>
 
-                <p> Write a short  <span class="blue-text">short description</span> about yorself, so you can catch the eye of students. </p>
+                <p> Write a   <span class="blue-text">short description</span> about yourself, so you can catch the eye of students. </p>
 
-                <p> Write an <span class="blue-text">in-depth description</span> about what you tutor, why you tutor, or just write about yourself. The more detailed you are the better change a student will contact you. </p>
+                <p> Write an <span class="blue-text">in-depth description</span> about what you tutor, why you tutor, or just write about yourself. The more detailed you are the better chance a student will contact you. </p>
 
                 <p> You can choose to show <span class="blue-text">your gender,</span> but it's not required. Some students may want to search by gender, and if you don't list yours you won't show up in the results. </p>
             </div>
@@ -72,12 +72,12 @@
             <?php if(!empty($app->newtutor->my_resume)): ?>
                 <div class="green center-align white-text padd5">Thank your for uploading your resume</div>
             <?php else: ?>
-                <form enctype="multipart/form-data" action="/signup/tutor" method="post" id="upload-photo-form">
+                <form enctype="multipart/form-data" action="/signup/tutor" method="post" id="upload-resume-form">
                     <input type="hidden" name="uploadresume[target]" value="uploadresume"  />
                     <input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
                     <input type="hidden" name="MAX_FILE_SIZE" value="5000000" />
-                    <input name="uploadresume[file]" class="hide" id="upload-trigger" type="file" />
-                    <button id="select-photo" class="btn grey darken-1 btn-block" type="button" data-text = "Uploading Resume">
+                    <input name="uploadresume[file]" class="hide upload-trigger" type="file" />
+                    <button class="select-item btn grey darken-1 btn-block" type="button" data-text = "Uploading Resume">
                         <i class="fa fa-upload"></i> Upload Resume
                     </button>
                 </form>
@@ -200,12 +200,12 @@
             <div class="help-info">
                 <div class="title">Help</div>
 
-                <p>The average <span class="blue-text">hourly rate</span> for tutoring is $40.00, but it can range widly from $15.00 an hour all the way up to $300.00 an hour.</p>
+                <p>The average <span class="blue-text">hourly rate</span> for tutoring is $40.00, but it can range widly from $15.00/Hour all the way up to $300.00/Hour.</p>
                 <p>We require that you provide <span class="blue-text">3 references</span>, to ensure the highest quality tutors. If you don't have any references, please explain why.</p>
                 <p>How far are you  <span class="blue-text">willing to travel</span> to meetup with a student?</p>
                 <p>You can tutor <span class="blue-text">Online, In-Person or Both.</span> We provide an online Whiteboard solution you can use to tutor students online. Or if you prefer you can setup an in-person meeting with them at your desired location.</p>
-                <p>You can provide a <span class="blue-text">cancelation policy</span> if you would like to require a student to notify you that they have to cancel.</p>
-                <p>If a student cancels without letting you know you can charge them a  <span class="blue-text">cancelation fee.</span></p>
+                <p>You can provide a <span class="blue-text">cancellation policy</span> if you would like to require a student to notify you that they have to cancel.</p>
+                <p>If a student cancels without letting you know you can charge them a  <span class="blue-text">cancellation fee.</span></p>
 
 
             </div>
@@ -241,16 +241,17 @@
                 <p>
                     Add a photo of yourself, preferably a head-shot.
                 </p>
+
                 <form enctype="multipart/form-data" action="/signup/tutor" method="post" id="upload-photo-form">
-        			<input type="hidden" name="uploadphoto[width]" value="" id="containerwidth"    />
-        			<input type="hidden" name="uploadphoto[target]" value="upload"  />
-        			<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
-        			<input type="hidden" name="MAX_FILE_SIZE" value="5000000" />
-        			<input name="uploadphoto[file]" class="hide" id="upload-trigger" type="file" />
-        			<button id="select-photo" class="btn grey darken-1 btn-block" type="button" data-text = "Uploading Photo">
-        				<i class="fa fa-upload"></i> Upload Photo
-        			</button>
-        		</form>
+                    <input type="hidden" name="uploadphoto[width]" value="" id="containerwidth"    />
+                    <input type="hidden" name="uploadphoto[target]" value="uploadphoto"  />
+                    <input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
+                    <input type="hidden" name="MAX_FILE_SIZE" value="5000000" />
+                    <input name="uploadphoto[file]" class="hide upload-trigger" type="file" />
+                    <button class="select-item btn grey darken-1 btn-block" type="button" data-text = "Uploading Photo">
+                        <i class="fa fa-upload"></i> Upload Photo
+                    </button>
+                </form>
             <?php endif; ?>
     	</div>
     	<div class="col s12 m6 l6">
@@ -341,6 +342,7 @@
                 <p>List all the <span class="blue-text">subjects</span> that you teach or tutor.</p>
 
                 <p>Click on a category on the left and then check off all the subjects you tutor.</p>
+                <p>You can write about why you tutor each subject, but it's not required.</p>
 
             </div>
     	</div>
@@ -351,8 +353,8 @@
 <div class="box">
     <div class="title">Required Background Check</div>
     <p>Everyone single one of our tutors has to pass a <span>background check</span> before they can interact with students.  </p>
-    <p>We don't require the background check to complete a profile and become a tutor, but once a student has contacted you, or you would like to apply to a job post you must pass the background check. </p>
-    <p>When you apply for the background check, you are purchasing the actual background check, which is <span class="green-text">$29.99 (Non-Refundable)</span>, you may request a copy of the background check at any time from our provider Checkr.</p>
+    <p>We don't require the background check to complete a profile and become a tutor, but once a student has contacted you, and you want to setup a tutoring session, it's required. </p>
+    <p>When you apply for the background check, you are purchasing a background check, which is <span class="green-text">$29.99 (Non-Refundable)</span>, you may request a copy of the background check at any time from our provider <a href="https://checkr.com/" target="_blank">Checkr</a>.</p>
 
 </div>
 
@@ -474,9 +476,9 @@
                     <input type="hidden" name="finishapplication[target]" value="finishapplication"  />
                     <input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
 
-
+                    <div class="alert red white-text">Once you submit your profile for review, you will be logged out, and we will review your application.</div>
                     <input type="hidden" name="finishapplication[alldone]" value="alldone"  />
-                    <button class="btn" type="submit">
+                    <button class="btn confirm-submit" type="button">
                         Submit My Profile For Review
                     </button>
 
@@ -489,9 +491,7 @@
                 <div class="title">Help</div>
                 <p>If you would like to have an interview, just let us know and we can set one up.</p>
 
-                <p>By being interviewed you get a special <span class="blue-text">intervewed badge</span> on your profile. </p>
-
-                <p>Once you submit your profile for review, you will be logged out, and we will contact you shortly.</p>
+                <?php //<p>By being interviewed you get a special <span class="blue-text">intervewed badge</span> on your profile. </p> ?>
 
             </div>
     	</div>

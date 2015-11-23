@@ -1,5 +1,15 @@
 <div class="row">
 	<div class="col s12 m4 l4">
+
+		<?php if(isset($app->user->needs_bgcheck)): ?>
+			<h3>Background Check</h3>
+			<div class="block">
+				<p>Before you can tutor a student you have to complete a background check. While it's not required to apply to job posts, it is required to message a student, or setup a tutoring session.</p>
+
+				<a href="background-check" class="btn green white-text btn-block">Background Check</a>
+			</div>
+		<?php endif; ?>
+
 		<h3>Profile Info</h3>
 		<div class="block">
 			<div class="page-views">Total Page Views <span><?php echo page_views($app); ?></span></div>

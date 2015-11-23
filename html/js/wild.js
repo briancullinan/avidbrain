@@ -243,13 +243,14 @@ $(document).ready(function() {
 		$('#myavatar input').on('click',function(){
 			$('#myavatar').submit();
 		});
-		$('#select-photo').on('click',function(){
+		$('.select-item').on('click',function(){
+			var closestformid = '#'+$(this).closest('form').attr('id');
 			var uploadtext = $(this).attr('data-text');
-			$('#upload-trigger').click();
-			$('#upload-trigger').on('change',function(){
-				$('#select-photo').removeClass('grey').html('<i class="fa fa-refresh fa-spin"></i> '+uploadtext);
+			$(closestformid+' .upload-trigger').click();
+			$(closestformid+' .upload-trigger').on('change',function(){
+				$(closestformid+' .select-item').removeClass('grey').html('<i class="fa fa-refresh fa-spin"></i> '+uploadtext);
 				setTimeout(function(){
-					$('#upload-photo-form').submit();
+					$(closestformid).submit();
 				}, 1000);
 			});
 		});
@@ -830,7 +831,7 @@ $(document).ready(function() {
 
 	var accountsettings = $('#accountsettings').attr('class');
 	if(accountsettings=='thesettings'){
-		
+
 		var thetoken = $('#csrf').val();
 
 		$("#newusername").keyup(function() {
