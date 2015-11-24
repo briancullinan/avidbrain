@@ -1,6 +1,6 @@
 <?php
 
-    $sql = "SELECT first_name,last_name,email,id FROM avid___new_temps ORDER BY ID DESC ";
+    $sql = "SELECT first_name,last_name,email,id FROM avid___new_temps WHERE complete IS NULL ORDER BY ID DESC ";
     $prepare = array();
     $results = $app->connect->executeQuery($sql,$prepare)->fetchAll();
     if(isset($results[0])){

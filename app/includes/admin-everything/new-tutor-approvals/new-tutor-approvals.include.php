@@ -4,7 +4,7 @@
         <?php if(isset($app->everyoneelse)): ?>
 			<div>Haven't Finished</div>
             <div class="block block-list">
-    			<?php foreach($app->everyone as $link): ?>
+    			<?php foreach($app->everyoneelse as $link): ?>
     			<a <?php if(isset($id) && $id==$link->id){ echo 'class="active"';} ?> href="/admin-everything/new-tutor-approvals/<?php echo $link->id; ?>">
                     <?php echo $link->first_name; ?> <?php echo $link->last_name; ?>
                 </a>
