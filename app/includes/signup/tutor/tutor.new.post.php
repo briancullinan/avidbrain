@@ -81,7 +81,7 @@
 		$_SESSION['temptutor']['email'] = $app->crypter->encrypt($app->tutorsignup->tutor->email);
 		$_SESSION['temptutor']['token'] = $app->crypter->encrypt($token);
 
-		$app->mailgun->to = 'david@avidbrain.com';
+		$app->mailgun->to = 'keith@avidbrain.com,jake.stoll@avidbrain.com,david@avidbrain.com';
 		$app->mailgun->subject = 'New Tutor Signup';
 		$app->mailgun->message = 'A New tutor has started their application to become a tutor.';
 		$app->mailgun->send();
@@ -611,7 +611,7 @@
 			$message.='<p> <strong> Background Check Purchased  </strong> </p>';
 		}
 
-		$app->mailgun->to = 'david@avidbrain.com';//'keith@avidbrain.com,jake.stoll@avidbrain.com,david@avidbrain.com';
+		$app->mailgun->to = 'keith@avidbrain.com,jake.stoll@avidbrain.com,david@avidbrain.com';
 		$app->mailgun->subject = 'A new tutor has completed their initial profile';
 		$app->mailgun->message = $message;
 		$app->mailgun->send();
