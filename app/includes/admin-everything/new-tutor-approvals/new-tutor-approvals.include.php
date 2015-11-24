@@ -1,15 +1,26 @@
+<?php //printer($app->thetutor); ?>
 <div class="row">
 	<div class="col s12 m3 l2">
-        <?php if(isset($app->newtutors)): ?>
-			<div>New Tutors</div>
+        <?php if(isset($app->everyone)): ?>
+			<div>everone</div>
             <div class="block block-list">
-    			<?php foreach($app->newtutors as $link): ?>
+    			<?php foreach($app->everyone as $link): ?>
     			<a <?php if(isset($id) && $id==$link->id){ echo 'class="active"';} ?> href="/admin-everything/new-tutor-approvals/<?php echo $link->id; ?>">
                     <?php echo $link->first_name; ?> <?php echo $link->last_name; ?>
                 </a>
     			<?php endforeach; ?>
     		</div>
         <?php endif; ?>
+	        <?php if(isset($app->newtutors)): ?>
+				<div>New Tutors</div>
+	            <div class="block block-list">
+	    			<?php foreach($app->newtutors as $link): ?>
+	    			<a <?php if(isset($id) && $id==$link->id){ echo 'class="active"';} ?> href="/admin-everything/new-tutor-approvals/<?php echo $link->id; ?>">
+	                    <?php echo $link->first_name; ?> <?php echo $link->last_name; ?>
+	                </a>
+	    			<?php endforeach; ?>
+	    		</div>
+	        <?php endif; ?>
 
 		<?php if(isset($app->rejectedtutors)): ?>
 			<div>Rejected Tutors</div>
@@ -72,6 +83,7 @@
 						<?php if(!empty($app->thetutor->tutoredbefore)){ echo "<span class=' blue white-text'>I Have Tought or Tutored Before</span>";} ?>
 						<?php if(!empty($app->thetutor->howdidyouhear)){ echo "<span class=' blue white-text'>I Heard About AvidBrain From: ".$app->thetutor->howdidyouhear."</span>";} ?>
 						<?php if(!empty($app->thetutor->my_resume)){ echo "<span class=' blue white-text'><a target='_blank' href='/admin-everything/new-tutor-approvals/".$id."/download'>Download Resume</a></span>";} //".$app->thetutor->my_resume." ?>
+						<?php if(empty($app->thetutor->my_resume)){echo '<span class="red white-text">NO RESUME</span>'; $ignore = true;} ?>
 					</div>
 
 					<?php if(!empty($app->thetutor->charge_id) && !empty($app->thetutor->candidate_id)): ?>
@@ -130,7 +142,11 @@
 						<div class="col s12 m6 l6">
 							<div class="title"> Photo </div>
 							<div>
-								<div class="profile-image avatar maxus"><img src="/image/tutorphotos/cropped/<?php echo $app->thetutor->id; ?>" class="responsive-img" /></div>
+								<?php if(!empty($app->thetutor->upload)): ?>
+									<div class="profile-image avatar maxus"><img src="/image/tutorphotos/cropped/<?php echo $app->thetutor->id; ?>" class="responsive-img" /></div>
+								<?php else: ?>
+									<div class="alert red white-text">NO PHOTO</div> <?php $ignore = true; ?>
+								<?php endif; ?>
 							</div>
 						</div>
 						<div class="col s12 m6 l6">
@@ -256,6 +272,29 @@
 
 					<form method="post" action="/admin-everything/new-tutor-approvals/<?php echo $id; ?>">
 					<div class="title">Subjects I Teach / Tutor</div>
+
+					<?php
+					if(
+						empty($app->thetutor->mysubs_business) &&
+						empty($app->thetutor->mysubs_collegeprep) &&
+						empty($app->thetutor->mysubs_computer) &&
+						empty($app->thetutor->mysubs_elementaryeducation) &&
+						empty($app->thetutor->mysubs_english) &&
+						empty($app->thetutor->mysubs_games) &&
+						empty($app->thetutor->mysubs_history) &&
+						empty($app->thetutor->mysubs_language) &&
+						empty($app->thetutor->mysubs_math) &&
+						empty($app->thetutor->mysubs_music) &&
+						empty($app->thetutor->mysubs_science) &&
+						empty($app->thetutor->mysubs_specialneeds) &&
+						empty($app->thetutor->mysubs_sportsandrecreation) &&
+						empty($app->thetutor->mysubs_testpreparation)
+					){
+						$nosubs = true;
+						echo '<div class="padd5 red white-text">NO SUBJECTS</div><br>';
+					}
+					?>
+
 					<?php foreach($thesubjectarray as $key=> $subjects): ?>
 						<div>
 							<?php
@@ -281,15 +320,21 @@
 						</div>
 					<?php endforeach; ?>
 
-
+						<?php if(empty($ignore)): ?>
 						<button type="button" class="btn green white-text confirm-submit">
 							Approve Profile
 						</button>
+						<?php endif; ?>
 
 						<input type="hidden" name="approveprofile[id]" value="<?php echo $id; ?>"  />
 						<input type="hidden" name="approveprofile[target]" value="approveprofile"  />
 						<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
 					</form>
+
+
+
+
+					<?php if(empty($ignore)): ?>
 					<br>
 					<form method="post" action="/admin-everything/new-tutor-approvals/<?php echo $id; ?>">
 						<button type="button" class="btn red white-text confirm-submit">
@@ -300,6 +345,50 @@
 						<input type="hidden" name="rejectprofile[target]" value="rejectprofile"  />
 						<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
 					</form>
+					<?php else: ?>
+
+						<?php
+							//printer($app->thetutor);
+							$body = '';
+
+								$body = '<p>Hello, '.ucwords($app->thetutor->first_name).'. It looks like you haven\'t finished your application. </p>';
+								$body.= '<div>Please Complete The Following: </div>';
+								$body.= '<ul>';
+
+
+							if(empty($app->thetutor->zipcode)){
+								$body.= '<li>Enter your <strong>Zip Code</strong></li>';
+							}
+
+							if(isset($nosubs)){
+								$body.= '<li>Add the subjects that you would like to tutor</li>';
+							}
+							if(empty($app->thetutor->hourly_rate)){
+								$body.= '<li>Add an <strong>Hourly Rate</strong></li>';
+							}
+							if(empty($app->thetutor->resume)){
+								$body.= '<li>Upload your <strong>Resume</strong></li>';
+							}
+							if(empty($app->thetutor->upload)){
+								$body.= '<li>Upload a <strong>Photo</strong></li>';
+							}
+							if(empty($app->thetutor->references)){
+								$body.= '<li>List 3 <strong>References</strong></li>';
+							}
+
+
+							$body.= '</ul>';
+
+							$body.= '<p>You can login and complete your application by going here: https://www.avidbrain.com/signup/tutor and clicking the <strong>Complete Signup Proccess</strong> button.</p>';
+						?>
+
+						<div class="red white-text padd5">
+							Incomplete Application. Please Email
+							<a class="yellow-text" href="mailto:<?php echo $app->thetutor->email; ?>?subject=Incomplete Profile&amp;body=<?php echo $body; ?>">
+								<?php echo ucwords($app->thetutor->first_name); ?>
+							</a>
+						</div>
+					<?php endif; ?>
 
 				</div>
 	        <?php endif; ?>

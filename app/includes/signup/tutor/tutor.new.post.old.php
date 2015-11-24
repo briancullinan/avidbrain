@@ -169,7 +169,7 @@
 
 		$app->connect->update('avid___new_temps',$updateaboutme,array('email'=>$app->newtutor->email));
 
-		new Flash(array('action'=>'jump-to','location'=>'/signup/tutor','message'=>'About Me Saved'));
+		new Flash(array('action'=>'jump-to','location'=>'/signup/tutor#tutorinfo','message'=>'About Me Saved'));
 
 	}
 	elseif(isset($app->tutoringinfo)){
@@ -183,9 +183,6 @@
 		}
 		elseif(!is_numeric($app->tutoringinfo->hourly_rate)){
 			new Flash(array('action'=>'required','message'=>'Invalid Number','formID'=>'tutoringinfo','field'=>'tutoringinfo_hourly_rate'));
-		}
-		elseif($app->tutoringinfo->hourly_rate<30){
-			new Flash(array('action'=>'required','message'=>'$30 Minimum Hourly Rate','formID'=>'tutoringinfo','field'=>'tutoringinfo_hourly_rate'));
 		}
 		elseif(empty($app->tutoringinfo->references)){
 			new Flash(array('action'=>'required','message'=>'Please provide 3 references','formID'=>'tutoringinfo','field'=>'tutoringinfo_references'));
@@ -215,7 +212,7 @@
 
 		$app->connect->update('avid___new_temps',$updatetutoringinfo,array('email'=>$app->newtutor->email));
 
-		new Flash(array('action'=>'jump-to','location'=>'/signup/tutor','message'=>'Tutoring Information Saved'));
+		new Flash(array('action'=>'jump-to','location'=>'/signup/tutor#addaphoto','message'=>'Tutoring Information Saved'));
 		//new Flash(array('action'=>'alert','message'=>'Tutoring Information Saved'));
 	}
 	elseif(isset($app->uploadresume) && $upload = makefileupload((object)$_FILES['uploadresume'],'file')){
@@ -611,7 +608,7 @@
 			$message.='<p> <strong> Background Check Purchased  </strong> </p>';
 		}
 
-		$app->mailgun->to = 'david@avidbrain.com';//'keith@avidbrain.com,jake.stoll@avidbrain.com,david@avidbrain.com';
+		$app->mailgun->to = 'keith@avidbrain.com,jake.stoll@avidbrain.com,david@avidbrain.com';
 		$app->mailgun->subject = 'A new tutor has completed their initial profile';
 		$app->mailgun->message = $message;
 		$app->mailgun->send();

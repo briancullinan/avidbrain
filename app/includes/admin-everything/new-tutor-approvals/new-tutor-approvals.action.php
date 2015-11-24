@@ -1,7 +1,13 @@
 <?php
 
-    $sql = "SELECT first_name,last_name,email,id FROM avid___new_temps WHERE complete IS NOT NULL AND  activated IS NULL AND approval_status IS NULL ORDER BY id ASC";
     $sql = "SELECT first_name,last_name,email,id FROM avid___new_temps ";
+    $prepare = array();
+    $results = $app->connect->executeQuery($sql,$prepare)->fetchAll();
+    if(isset($results[0])){
+        $app->everyone = $results;
+    }
+
+    $sql = "SELECT first_name,last_name,email,id FROM avid___new_temps WHERE complete IS NOT NULL AND  activated IS NULL AND approval_status IS NULL ORDER BY id ASC";
     $prepare = array();
     $results = $app->connect->executeQuery($sql,$prepare)->fetchAll();
     if(isset($results[0])){
@@ -33,12 +39,14 @@
 
         avid___compedbgcheck comp on comp.email = temps.email
 
-        WHERE temps.id = :id AND complete IS NOT NULL";
+        WHERE temps.id = :id ";
 
 
 
         $prepare = array(':id'=>$id);
         $app->thetutor = $app->connect->executeQuery($sql,$prepare)->fetch();
+
+        //notify('snakes');
     }
 
 
