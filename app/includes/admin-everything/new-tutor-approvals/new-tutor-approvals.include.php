@@ -1,8 +1,8 @@
 <?php //printer($app->thetutor); ?>
 <div class="row">
 	<div class="col s12 m3 l2">
-        <?php if(isset($app->everyone)): ?>
-			<div>everone</div>
+        <?php if(isset($app->everyoneelse)): ?>
+			<div>Haven't Finished</div>
             <div class="block block-list">
     			<?php foreach($app->everyone as $link): ?>
     			<a <?php if(isset($id) && $id==$link->id){ echo 'class="active"';} ?> href="/admin-everything/new-tutor-approvals/<?php echo $link->id; ?>">

@@ -1,10 +1,10 @@
 <?php
 
-    $sql = "SELECT first_name,last_name,email,id FROM avid___new_temps ";
+    $sql = "SELECT first_name,last_name,email,id FROM avid___new_temps WHERE complete IS NULL ORDER BY ID DESC ";
     $prepare = array();
     $results = $app->connect->executeQuery($sql,$prepare)->fetchAll();
     if(isset($results[0])){
-        $app->everyone = $results;
+        $app->everyoneelse = $results;
     }
 
     $sql = "SELECT first_name,last_name,email,id FROM avid___new_temps WHERE complete IS NOT NULL AND  activated IS NULL AND approval_status IS NULL ORDER BY id ASC";
