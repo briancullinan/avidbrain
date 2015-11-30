@@ -159,7 +159,12 @@
 		$newstudentEmail.= '<p> Referrer: '.$referrer.' </p>';
 
 		if(isset($serverinfo->REMOTE_ADDR)){
-			$iplookip = ipaddresslookup($serverinfo->REMOTE_ADDR);
+			try{
+				$iplookip = ipaddresslookup($serverinfo->REMOTE_ADDR);
+			}
+			catch(Exception $e){
+				//echo '<pre>'; print_r($e); echo '</pre>';
+			}
 			if(!empty($iplookip)){
 				foreach($iplookip as $ip => $lookup){
 					$newstudentEmail.= '<p> '.$ip.': '.$lookup.' </p>';

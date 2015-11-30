@@ -23,7 +23,7 @@
 			        $sql = "SELECT * FROM avid___admins WHERE email = :email LIMIT 1";
 			        $prepare = array(':email'=>$fromuser);
 			        $admininfo = $app->connect->executeQuery($sql,$prepare)->fetch();
-
+					$results = $admininfo;
 			    }
 			    else{
 			        $sql = "SELECT user.username,user.url,user.first_name,user.last_name,profile.my_avatar,profile.my_upload,profile.my_upload_status FROM avid___user user INNER JOIN avid___user_profile profile on profile.email = user.email WHERE user.email = :email LIMIT 1";

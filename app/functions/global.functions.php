@@ -1360,3 +1360,15 @@
 		curl_close($curl);
 		return json_decode($return);
 	}
+
+	function ipaddresslookup($ipaddress){
+		$curl = curl_init();
+		curl_setopt_array($curl, array(
+			CURLOPT_RETURNTRANSFER => 1,
+			CURLOPT_URL => 'http://www.telize.com/geoip/'.$ipaddress,
+			CURLOPT_POST => 1
+		));
+		$resp = json_decode(curl_exec($curl));
+		curl_close($curl);
+		return $resp;
+	}
