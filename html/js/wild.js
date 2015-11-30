@@ -279,9 +279,9 @@ $(document).ready(function() {
 		if(setcropbox){
 			var boxwidth = $('#cropbox').outerWidth();
 			var imgwidth = $('#cropbox img').attr('data-width');
+			var path = window.location.pathname;
 			if(!imgwidth){
-				window.location = window.location.pathname+'/'+boxwidth;
-				//window.location = '/tutors/orma/west-virginia/crispiebits/my-photos/crop-photo/'+boxwidth;
+				window.location = path+boxwidth;
 			}
 
 			image.src = setcropbox;

@@ -1,3 +1,5 @@
+<p class="pageids" id="submitapplication">&nbsp;</p>
+
 <div class="signup-title-text">
     Step 7 <span>Submit Application</span>
 </div>

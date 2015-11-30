@@ -42,6 +42,9 @@
 		elseif(empty($app->tutorsignup->tutor->legalresident)){
 			new Flash(array('action'=>'required','message'=>'Please verify your U.S. Work Status','formID'=>'tutorsignup','field'=>'ts_legalresident'));
 		}
+		elseif(empty($app->tutorsignup->tutor->stats)){
+			new Flash(array('action'=>'required','message'=>'Make sure you have all your information ready','formID'=>'tutorsignup','field'=>'ts_stats'));
+		}
 
 		$query = "SELECT email FROM signup_avidbrain.signup___signups WHERE email = :email ";
 		$prepare = array(':email'=>$app->tutorsignup->tutor->email);
@@ -81,7 +84,14 @@
 		$_SESSION['temptutor']['email'] = $app->crypter->encrypt($app->tutorsignup->tutor->email);
 		$_SESSION['temptutor']['token'] = $app->crypter->encrypt($token);
 
-		$app->mailgun->to = 'keith@avidbrain.com,jake.stoll@avidbrain.com,david@avidbrain.com';
+		if($app->dependents->DEBUG==true){
+			$emails = 'david@avidbrain.com';
+		}
+		else{
+			$emails = 'keith@avidbrain.com,jake.stoll@avidbrain.com,david@avidbrain.com';
+		}
+
+		$app->mailgun->to = $emails;
 		$app->mailgun->subject = 'New Tutor Signup';
 		$app->mailgun->message = 'A New tutor has started their application to become a tutor.';
 		$app->mailgun->send();
@@ -169,7 +179,7 @@
 
 		$app->connect->update('avid___new_temps',$updateaboutme,array('email'=>$app->newtutor->email));
 
-		new Flash(array('action'=>'jump-to','location'=>'/signup/tutor','message'=>'About Me Saved'));
+		new Flash(array('action'=>'jump-to','location'=>'/signup/tutor/#uploadresume','message'=>'About Me Saved'));
 
 	}
 	elseif(isset($app->tutoringinfo)){
@@ -184,8 +194,8 @@
 		elseif(!is_numeric($app->tutoringinfo->hourly_rate)){
 			new Flash(array('action'=>'required','message'=>'Invalid Number','formID'=>'tutoringinfo','field'=>'tutoringinfo_hourly_rate'));
 		}
-		elseif($app->tutoringinfo->hourly_rate<30){
-			new Flash(array('action'=>'required','message'=>'$30 Minimum Hourly Rate','formID'=>'tutoringinfo','field'=>'tutoringinfo_hourly_rate'));
+		elseif($app->tutoringinfo->hourly_rate<10){
+			new Flash(array('action'=>'required','message'=>'$10 Minimum Hourly Rate','formID'=>'tutoringinfo','field'=>'tutoringinfo_hourly_rate'));
 		}
 		elseif(empty($app->tutoringinfo->references)){
 			new Flash(array('action'=>'required','message'=>'Please provide 3 references','formID'=>'tutoringinfo','field'=>'tutoringinfo_references'));
@@ -215,7 +225,7 @@
 
 		$app->connect->update('avid___new_temps',$updatetutoringinfo,array('email'=>$app->newtutor->email));
 
-		new Flash(array('action'=>'jump-to','location'=>'/signup/tutor','message'=>'Tutoring Information Saved'));
+		new Flash(array('action'=>'jump-to','location'=>'/signup/tutor/#uploadaphoto','message'=>'Tutoring Information Saved'));
 		//new Flash(array('action'=>'alert','message'=>'Tutoring Information Saved'));
 	}
 	elseif(isset($app->uploadresume) && $upload = makefileupload((object)$_FILES['uploadresume'],'file')){
@@ -241,7 +251,7 @@
 
 			$app->connect->update('avid___new_temps',array('my_resume'=>$filename),array('email'=>$app->newtutor->email));
 
-			$app->redirect('/signup/tutor');
+			$app->redirect('/signup/tutor/#tutoringinformation');
 		}
 	}
 	elseif(isset($app->uploadphoto) && $upload = makefileupload((object)$_FILES['uploadphoto'],'file')){
@@ -284,7 +294,7 @@
 			}
 			//---------------------------------------------------------------------------
 
-			$app->redirect('/signup/tutor');
+			$app->redirect('/signup/tutor/');
 		}
 
 	}
@@ -336,7 +346,7 @@
 		}
 
 		$app->connect->update('avid___new_temps',array('addaphoto'=>1,'cropped'=>$croppedfileName),array('email'=>$app->newtutor->email));
-		$app->redirect('/signup/tutor#mysubjects');
+		$app->redirect('/signup/tutor/#mysubjects');
 
 	}
 	elseif(isset($app->mysubjects)){
@@ -611,7 +621,14 @@
 			$message.='<p> <strong> Background Check Purchased  </strong> </p>';
 		}
 
-		$app->mailgun->to = 'keith@avidbrain.com,jake.stoll@avidbrain.com,david@avidbrain.com';
+		if($app->dependents->DEBUG==true){
+			$emails = 'david@avidbrain.com';
+		}
+		else{
+			$emails = 'keith@avidbrain.com,jake.stoll@avidbrain.com,david@avidbrain.com';
+		}
+
+		$app->mailgun->to = $emails;
 		$app->mailgun->subject = 'A new tutor has completed their initial profile';
 		$app->mailgun->message = $message;
 		$app->mailgun->send();

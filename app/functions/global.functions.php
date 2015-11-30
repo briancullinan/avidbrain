@@ -348,6 +348,8 @@
 						select count(*) as email from avid___users_temp where email = :email
 							union all
 						select count(*) as email from avid___users_temp_tutors where email = :email
+							union all
+						select count(*) as email from avid___new_temps where email = :email
 				) as count
 		";
 		$prepare = array(':email'=>$email);

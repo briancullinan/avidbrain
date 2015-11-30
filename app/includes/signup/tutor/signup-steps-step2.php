@@ -1,3 +1,5 @@
+<p class="pageids" id="uploadresume">&nbsp;</p>
+
 <div class="signup-title-text">
     Step 3 <span>Upload Your Resume</span>
 </div>

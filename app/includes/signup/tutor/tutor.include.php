@@ -82,7 +82,7 @@
 		</div>
 		<div class="col s12 m6 l4">
 			<div class="complete-signup" data-status="closed">
-				Complete Signup Process
+				<span>Complete Signup Process <i class="fa fa-sign-in"></i> </span>
 			</div>
 			<div class="complete-signup-form">
 				<div class="complete-signup-form-text">Already start the signup process? Log in and complete it now.</div>
@@ -235,6 +235,29 @@
 
 					<div class="new-inputs">
 						<div class="row">
+							<div class="col s12 m12 l12" id="ts_stats">
+								<input type="checkbox" class="filled-in" name="tutorsignup[tutor][stats]" id="stats" />
+								<label for="stats">I have all these items:
+
+									<ul>
+										<li>
+											Resume
+										</li>
+										<li>
+											Photo of Myself
+										</li>
+										<li>
+											3 References
+										</li>
+									</ul>
+
+								</label>
+							</div>
+						</div>
+				  	</div>
+
+					<div class="new-inputs">
+						<div class="row">
 							<div class="col s12 m12 l12">
 								<button class="btn btn-l btn-block">
 									Submit
@@ -356,11 +379,17 @@
 .complete-signup{
 	background: #000;
 	text-align: center;
-	padding: 10px;
+	padding: 5px;
 	border: solid 2px #444;
 	border-bottom: none;
 	color: #ccc;
 	cursor: pointer;
+}
+.complete-signup span{
+	background: #444;
+	border: solid 1px #777;
+	display: inline-block;
+	padding: 5px 10px;
 }
 .complete-signup:hover{
 	background: #333;

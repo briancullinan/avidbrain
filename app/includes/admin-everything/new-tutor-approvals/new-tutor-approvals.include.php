@@ -387,7 +387,11 @@
 							<a class="yellow-text" href="mailto:<?php echo $app->thetutor->email; ?>?subject=Incomplete Profile&amp;body=<?php echo $body; ?>">
 								<?php echo ucwords($app->thetutor->first_name); ?>
 							</a>
+
 						</div>
+
+						<div  class="copyme"><?php echo $body; ?></div>
+
 					<?php endif; ?>
 
 				</div>
@@ -397,6 +401,10 @@
 </div>
 
 <style type="text/css">
+.copyme{
+	padding: 10px;
+	border: solid 1px #ccc;
+}
 .maxus img{
 	max-height: 220px;
 }

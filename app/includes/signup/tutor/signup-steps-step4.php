@@ -1,7 +1,8 @@
+<p class="pageids" id="uploadaphoto">&nbsp;</p>
+
 <div class="signup-title-text">
     Step 5 <span>Add A Photo</span>
 </div>
-
 
 <div class="box">
     <div class="row">
