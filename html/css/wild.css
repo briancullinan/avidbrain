@@ -437,6 +437,11 @@ main .liu.active-notification{
     text-align: center;
     margin: auto;
 }
+.logo-affiliate{
+    float: left;
+    margin-left: 10px;
+}
+
 .logo a{
 	display: block;
 	line-height: normal;

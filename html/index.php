@@ -83,6 +83,7 @@
 
 	$app->crypter = new Crypter($app->dependents->SALT, MCRYPT_RIJNDAEL_256);
 	$app->user = new User($app->connect,$app->crypter);
+	$app->affiliate = new Affiliate($app->connect,$app->crypter);
 	$app->mailgun = new Email($app->dependents);
 	$app->sendmessage = new SendMessage($app->connect);
 	$app->twilio = new Services_Twilio($app->dependents->twilio->id, $app->dependents->twilio->auth_token);
@@ -118,7 +119,7 @@
 
 	use MatthiasMullie\Minify;
 	//$minifyme = true;
-	$app->minify = true;
+	//$app->minify = true;
 	if(isset($minifyme)){
 
 		if(in_array('wild.functions.js', $app->header->localjs)){

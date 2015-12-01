@@ -462,6 +462,13 @@
 				$logout = $connection->executeQuery($query,$prepare);
 			}
 		}
+		elseif(isset($_SESSION['affiliate']['email'])){
+
+			$email = $crypter->decrypt($_SESSION['affiliate']['email']);
+			$query = "UPDATE avid___affiliates SET token = :token WHERE `email` = :email ";
+			$prepare = array(':email'=>$email,':token'=>NULL);
+			$logout = $connection->executeQuery($query,$prepare);
+		}
 
 		$_SESSION['csrf_token'] = NULL;
 		$_SESSION['slim.flash'] = NULL;

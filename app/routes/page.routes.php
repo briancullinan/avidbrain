@@ -16,7 +16,7 @@
 	$routes['facebook'] = (object)array('url'=>'/facebook','slug'=>'student','route'=>'/facebook/','params'=>array('promocode'=>'facebook'),'include'=>'signup/student','protected'=>NULL,'permissions'=>array());
 
 	$routes['partners'] = (object)array('url'=>'/partners','slug'=>'partners','route'=>'/partners/','include'=>'partners','protected'=>NULL,'permissions'=>array());
-	
+
 
 	// Background Check
 	$routes['background-check'] = (object)array('url'=>'/background-check','slug'=>'background-check','route'=>'/background-check/','include'=>'background-check','protected'=>true,'permissions'=>array('tutor'));
@@ -56,6 +56,7 @@
 	$routes['login'] = (object)array('url'=>'/login','slug'=>'login','route'=>'/login/','include'=>'login','protected'=>NULL,'permissions'=>array());
 	$routes['loginwa'] = (object)array('url'=>'/login/qa','slug'=>'qa','route'=>'/login/qa/','include'=>'login/qa','protected'=>NULL,'permissions'=>array());
 	$routes['loginwa-authenticate'] = (object)array('url'=>'/login/qa/authenticate','slug'=>'authenticate','route'=>'/login/qa/authenticate/','include'=>'login/qa/authenticate','protected'=>NULL,'permissions'=>array());
+	$routes['login-affiliates'] = (object)array('url'=>'/login/affiliates','slug'=>'affiliates','route'=>'/login/affiliates/','include'=>'login/affiliates','protected'=>NULL,'permissions'=>array());
 
 	$routes['myaccount'] = (object)array('url'=>'/myaccount','slug'=>'myaccount','route'=>'/myaccount/','include'=>'myaccount','protected'=>true,'permissions'=>array());
 
@@ -221,6 +222,9 @@
 	$routes['signup-tutor-promocode'] = (object)array('url'=>'/signup/tutor','slug'=>'tutor','route'=>'/signup/tutor/:promocode/','include'=>'signup/tutor','protected'=>NULL,'permissions'=>array());
 	$routes['qa-signup'] = (object)array('url'=>'/signup/qa','slug'=>'qa','route'=>'/signup/qa/','include'=>'signup/qa','protected'=>NULL,'permissions'=>array());
 
+	$routes['signup-affiliate'] = (object)array('url'=>'/signup/affiliate','slug'=>'affiliate','route'=>'/signup/affiliate/','include'=>'signup/affiliate','protected'=>NULL,'permissions'=>array());
+	$routes['signup-affiliate-code'] = (object)array('url'=>'/signup/affiliate/code','slug'=>'code','route'=>'/signup/affiliate/:code/','include'=>'signup/affiliate/code','protected'=>NULL,'permissions'=>array());
+
 	// Resources
 	$routes['resources'] = (object)array('url'=>'/resources','slug'=>'resources','route'=>'/resources/','include'=>'resources','protected'=>true,'permissions'=>array());
 	$routes['resources-type'] = (object)array('url'=>'/resources/type','slug'=>'type','route'=>'/resources/:type/','include'=>'resources/type','protected'=>true,'permissions'=>array());
@@ -232,6 +236,21 @@
 	$routes['terms-of-use-student-payment-policy'] = (object)array('url'=>'/terms-of-use/student-payment-policy','slug'=>'student-payment-policy','route'=>'/terms-of-use/student-payment-policy/','include'=>'terms-of-use/student-payment-policy','protected'=>NULL,'permissions'=>array());
 
 	// DOUBLE DOUBLE TOIL & TROUBLE
+
+	$routes['affiliates'] = (object)array('url'=>'/affiliates','slug'=>'affiliates','route'=>'/affiliates/','include'=>'affiliates','protected'=>NULL,'permissions'=>array());
+
+	if(isset($app->affiliate->email)){
+
+		unset($routes);
+		$routes['homepage'] = (object)array('url'=>'/affiliates','slug'=>'homepage','route'=>'/','include'=>'affiliates/homepage','template'=>'affiliate.php');
+		$routes['affiliates'] = (object)array('url'=>'/affiliates','slug'=>'affiliates','route'=>'/affiliates/','include'=>'affiliates','template'=>'affiliate.php');
+		$routes['affiliates-information'] = (object)array('url'=>'/affiliates/information','slug'=>'information','route'=>'/affiliates/information/','include'=>'affiliates/information','template'=>'affiliate.php');
+		$routes['affiliates-get-paid'] = (object)array('url'=>'/affiliates/get-paid','slug'=>'get-paid','route'=>'/affiliates/get-paid/','include'=>'affiliates/get-paid','template'=>'affiliate.php');
+		$routes['affiliates-account-settings'] = (object)array('url'=>'/affiliates/account-settings','slug'=>'account-settings','route'=>'/affiliates/account-settings/','include'=>'affiliates/account-settings','template'=>'affiliate.php');
+		#$routes['affiliates-xxx'] = (object)array('url'=>'/affiliates/xxx','slug'=>'xxx','route'=>'/affiliates/xxx/','include'=>'affiliates/xxx','template'=>'affiliate.php');
+		$routes['logout'] = (object)array('url'=>'/logout','slug'=>'logout','route'=>'/logout/','include'=>'logout','protected'=>NULL,'permissions'=>array());
+	}
+
 	if(isset($app->user->usertype) && $app->user->usertype=='admin'){
 
 
