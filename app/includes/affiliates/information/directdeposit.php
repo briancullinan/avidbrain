@@ -1,5 +1,3 @@
-
-
 <?php
 	if(empty($app->affiliate->account_id)){
 		include('stripe-add-account.php');

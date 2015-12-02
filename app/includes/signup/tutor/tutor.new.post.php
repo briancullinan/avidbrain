@@ -179,10 +179,19 @@
 
 		$app->connect->update('avid___new_temps',$updateaboutme,array('email'=>$app->newtutor->email));
 
-		new Flash(array('action'=>'jump-to','location'=>'/signup/tutor/#uploadresume','message'=>'About Me Saved'));
+		new Flash(array('action'=>'jump-to','location'=>'/signup/tutor/uploadresume','message'=>'About Me Saved'));
 
 	}
 	elseif(isset($app->tutoringinfo)){
+
+		if(isset($app->tutoringinfo->hourly_rate)){
+			$period = strpos($app->tutoringinfo->hourly_rate, '.');
+			$comma = strpos($app->tutoringinfo->hourly_rate, ',');
+		}
+
+		if($period!=false || $comma!=false){
+			new Flash(array('action'=>'required','message'=>'Please enter a number only, no commas or periods','formID'=>'tutoringinfo','field'=>'tutoringinfo_hourly_rate'));
+		}
 
 		if(isset($app->tutoringinfo->hourly_rate)){
 			$app->tutoringinfo->hourly_rate = preg_replace("/[^0-9]/","",$app->tutoringinfo->hourly_rate);
@@ -225,7 +234,7 @@
 
 		$app->connect->update('avid___new_temps',$updatetutoringinfo,array('email'=>$app->newtutor->email));
 
-		new Flash(array('action'=>'jump-to','location'=>'/signup/tutor/#uploadaphoto','message'=>'Tutoring Information Saved'));
+		new Flash(array('action'=>'jump-to','location'=>'/signup/tutor/uploadaphoto','message'=>'Tutoring Information Saved'));
 		//new Flash(array('action'=>'alert','message'=>'Tutoring Information Saved'));
 	}
 	elseif(isset($app->uploadresume) && $upload = makefileupload((object)$_FILES['uploadresume'],'file')){
@@ -251,7 +260,7 @@
 
 			$app->connect->update('avid___new_temps',array('my_resume'=>$filename),array('email'=>$app->newtutor->email));
 
-			$app->redirect('/signup/tutor/#tutoringinformation');
+			$app->redirect('/signup/tutor/tutoringinformation');
 		}
 	}
 	elseif(isset($app->uploadphoto) && $upload = makefileupload((object)$_FILES['uploadphoto'],'file')){
@@ -346,7 +355,7 @@
 		}
 
 		$app->connect->update('avid___new_temps',array('addaphoto'=>1,'cropped'=>$croppedfileName),array('email'=>$app->newtutor->email));
-		$app->redirect('/signup/tutor/#mysubjects');
+		$app->redirect('/signup/tutor/mysubjects');
 
 	}
 	elseif(isset($app->mysubjects)){

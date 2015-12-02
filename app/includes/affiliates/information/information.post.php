@@ -83,25 +83,23 @@
 
 		$account = \Stripe\Account::retrieve($app->affiliate->managed_id);
 
-		$countNeeded = $account->verification->fields_needed;
+        if(isset($account->verification->fields_needed)){
+            $countNeeded = $account->verification->fields_needed;
+        }
 
 		if(count($countNeeded)>0){
 			$account->tos_acceptance->date = time();
 			$account->tos_acceptance->ip = $_SERVER['REMOTE_ADDR'];
-
-			//$app->fields_needed->tos_acceptance = $termsofservice;
-
 			$account->legal_entity->dob->day = $app->fields_needed->legal_entity->dob->day;
 			$account->legal_entity->dob->month = $app->fields_needed->legal_entity->dob->month;
 			$account->legal_entity->dob->year = $app->fields_needed->legal_entity->dob->year;
-
 			$account->legal_entity->address->city = $app->fields_needed->legal_entity->address->city;
 			$account->legal_entity->address->line1 = $app->fields_needed->legal_entity->address->line1;
 			$account->legal_entity->address->postal_code = $app->fields_needed->legal_entity->address->postal_code;
 			$account->legal_entity->address->state = $app->fields_needed->legal_entity->address->state;
-			//$account->legal_entity->address->xxx = $app->fields_needed->address->xxx;
-
-			$account->legal_entity->ssn_last_4 = $app->fields_needed->legal_entity->ssn_last_4;
+			if(empty($account->legal_entity->ssn_last_4)){
+                $account->legal_entity->ssn_last_4 = $app->fields_needed->legal_entity->ssn_last_4;
+            }
 
 			$account->save();
 
@@ -133,4 +131,33 @@
 
 
 		$app->redirect('/affiliates/information');
+    }
+    elseif(isset($app->cutchecks)){
+        
+        foreach($app->cutchecks as $key=> $check){
+			$app->cutchecks->$key = $app->crypter->encrypt($check);
+		}
+
+		$cutchecksdata = array(
+			'email'=>$app->affiliate->email,
+			'address_line_1'=>$app->cutchecks->address_line_1,
+			'address_line_2'=>$app->cutchecks->address_line_2,
+			'city'=>$app->cutchecks->city,
+			'first_name'=>$app->cutchecks->first_name,
+			'last_name'=>$app->cutchecks->last_name,
+			'notes'=>$app->cutchecks->notes,
+			'state'=>$app->cutchecks->state,
+			'zipcode'=>$app->cutchecks->zipcode
+		);
+
+		if(isset($app->cutchecksinfo)){
+			$app->connect->update('avid___user_checks',$cutchecksdata,array('email'=>$app->affiliate->email));
+		}
+		else{
+			$app->connect->insert('avid___user_checks',$cutchecksdata);
+		}
+
+		new Flash(
+			array('action'=>'jump-to','location'=>'/affiliates/information','message'=>'Mailing Address Updated')
+		);
     }

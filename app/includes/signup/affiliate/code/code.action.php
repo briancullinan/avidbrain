@@ -1,4 +1,9 @@
 <?php
+
+    $app->meta = new stdClass();
+    $app->meta->title = 'Affiliate Login';
+    
+
     if(isset($code)){
         $sql = "SELECT * FROM avid___affiliates WHERE validation_code = :validation_code";
         $prepare = array(':validation_code'=>$code);

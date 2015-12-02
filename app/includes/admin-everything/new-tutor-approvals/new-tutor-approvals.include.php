@@ -197,7 +197,7 @@
 						<div class="col s12 m4 l4">
 							<div class="title"> Hourly Rate </div>
 							<div>
-								$<?php echo numbers($app->thetutor->hourly_rate); ?>
+								$<?php echo $app->thetutor->hourly_rate; ?>
 							</div>
 						</div>
 						<div class="col s12 m4 l4">
@@ -222,13 +222,13 @@
 							</div>
 						</div>
 						<div class="col s12 m4 l4">
-							<div class="title"> Cancelation Policy </div>
+							<div class="title"> Cancellation Policy </div>
 							<div>
 								<?php echo $app->thetutor->cancellation_policy; ?>
 							</div>
 						</div>
 						<div class="col s12 m4 l4">
-							<div class="title"> Canelation Rate </div>
+							<div class="title"> Cancellation Rate </div>
 							<div>
 								$<?php echo numbers($app->thetutor->cancellation_rate); ?>
 							</div>

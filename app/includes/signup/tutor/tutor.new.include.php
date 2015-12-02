@@ -1,6 +1,5 @@
 <h1>Welcome <span><?php echo $app->newtutor->first_name.' '.$app->newtutor->last_name; ?></span></h1>
 
-
 <div class="row">
 	<div class="col s12 m4 l2 signupsidebar">
         <div class="signup-title-text">Steps</div>
@@ -141,6 +140,10 @@
 }
 </style>
 
+<?php if(isset($promocode)): ?>
+	<div class="scrollto" data-scroll="<?php echo $promocode; ?>"></div>
+<?php endif; ?>
+
 <script type="text/javascript">
     function showmehideme(data,show,hide){
         var datastatus = $(data).attr('data-status');
@@ -155,12 +158,11 @@
     }
 	$(document).ready(function() {
 
+		var scroller = $('.scrollto').attr('data-scroll');
 
-		// var options = [
-		// 	{selector: '.signuporder', offset: 200, callback: 'alesdf' },
-		// 	{selector: '.signuporder-more', offset: 200, callback: 'alert("middle")' },
-		// ];
-		// Materialize.scrollFire(options);
+		if(scroller){
+			$('html,body').animate({ scrollTop: $("#"+scroller).offset().top -20 }, 1000);
+		}
 
 
 		$('.start-background-check').on('click',function(){

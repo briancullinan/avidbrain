@@ -30,7 +30,7 @@
 					  ->andWhere('user.sessiontoken = :sessiontoken')
 					  ->setParameter(":sessiontoken",$this->sessiontoken)
 					  ->execute()->fetch();
-					  
+
 				}
 				else{
 					$this->table = 'avid___user';
@@ -75,7 +75,7 @@
 								if($report == null) {
 									$results = get_report($results->report_ids);
 								    $report = $results;
-								    $this->connect->cache->set($cachedKey, $results, 3600);
+								    $this->connect->cache->set($cachedKey, $results, 1200);
 								}
 
 								if(!empty($report->status)){
