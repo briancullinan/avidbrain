@@ -46,12 +46,14 @@
 			new Flash(array('action'=>'required','message'=>'Make sure you have all your information ready','formID'=>'tutorsignup','field'=>'ts_stats'));
 		}
 
-		$query = "SELECT email FROM signup_avidbrain.signup___signups WHERE email = :email ";
-		$prepare = array(':email'=>$app->tutorsignup->tutor->email);
-		$signupcount = $app->connect->executeQuery($query,$prepare)->rowCount();
-		if($signupcount>0){
-			new Flash(array('action'=>'required','message'=>'Email address already used to signup','formID'=>'tutorsignup','field'=>'ts_email'));
-		}
+		// $query = "SELECT * FROM signup_avidbrain.signup___signups WHERE email = :email ";
+		// $prepare = array(':email'=>$app->tutorsignup->tutor->email);
+		// $signupcount = $app->connect->executeQuery($query,$prepare)->fetch();
+		// if($signupcount->status && $signupcount->status!='Pass'){
+		// 	new Flash(array('action'=>'required','message'=>'Email address already used to signup','formID'=>'tutorsignup','field'=>'ts_email'));
+		// }
+
+		//notify('snakes');
 
 		$password = password_hash($app->tutorsignup->tutor->password, PASSWORD_BCRYPT);
 		$tutoredbefore = NULL;

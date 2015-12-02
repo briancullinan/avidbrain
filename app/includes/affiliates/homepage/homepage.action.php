@@ -1,5 +1,9 @@
 <?php
 
+    function total_affiliate($count){
+        return ($count*20);
+    }
+
     $sql = "
         SELECT
             user.email,user.promocode,user.usertype,user.first_name,user.signup_date,
@@ -15,6 +19,8 @@
             promocode = :promocode
                 AND
             sessions.session_status = :status
+                AND
+            user.usertype = 'student'
     ";
 
     $prepare = array(
@@ -24,9 +30,8 @@
 
     $results = $app->connect->executeQuery($sql,$prepare)->fetchAll();
     if(isset($results[0])){
-        $app->signupswithsessions = $results;
+        $app->studentsiwthsessions = $results;
     }
-
 
     $sql = "
         SELECT
@@ -35,9 +40,34 @@
         FROM
             avid___user user
 
-        LEFT JOIN
+        INNER JOIN
 
-            avid___sessions sessions on user.email = sessions.to_user
+            avid___sessions sessions on user.email = sessions.from_user
+
+        WHERE
+            promocode = :promocode
+                AND
+            sessions.session_status = :status
+                AND
+            user.usertype = 'tutor'
+    ";
+
+    $prepare = array(
+        ':promocode'=>$app->affiliate->mycode,
+        ':status'=>'complete'
+    );
+
+    $results = $app->connect->executeQuery($sql,$prepare)->fetchAll();
+    if(isset($results[0])){
+        $app->tutorswithsessions = $results;
+    }
+
+
+    $sql = "
+        SELECT
+            user.email,user.promocode,user.usertype,user.first_name,user.signup_date
+        FROM
+            avid___user user
 
         WHERE
             promocode = :promocode
@@ -51,3 +81,16 @@
     if(isset($results[0])){
         $app->signups = $results;
     }
+
+
+    $one = array();
+    if(isset($app->studentsiwthsessions)){
+        $one = $app->studentsiwthsessions;
+    }
+    $two = array();
+    if(isset($app->tutorswithsessions)){
+        $two = $app->tutorswithsessions;
+    }
+
+    $three = array_merge($one,$two);
+    $app->count = count($three);
