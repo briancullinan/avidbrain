@@ -74,16 +74,15 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 
 		<?php
 			$affiliateDrop = array(
-				'information'=>'Your Information',
-				'get-paid'=>'Get Paid',
-				'account-settings'=>'Account Settings'
+				'/'=>'Dashboard',
+				'/affiliates/information'=>'Your Information'
 			);
 		?>
 
 		<ul id="user-dropdown" class="dropdown-content">
 			<?php foreach($affiliateDrop as $key => $value): ?>
-				<li <?php if($app->request->getPath()=='/affiliates/'.$key){ echo 'class="active"';} ?>>
-					<a href="/affiliates/<?php echo $key; ?>">
+				<li <?php if($app->request->getPath()==$key){ echo 'class="active"';} ?>>
+					<a href="<?php echo $key; ?>">
 						<?php echo $value; ?>
 					</a>
 				</li>

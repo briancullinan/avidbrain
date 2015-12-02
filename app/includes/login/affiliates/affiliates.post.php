@@ -5,7 +5,10 @@
         $sql = "SELECT * FROM avid___affiliates WHERE email = :email";
         $prepare = array(':email'=>$app->login->email);
         $results = $app->connect->executeQuery($sql,$prepare)->fetch();
-        if(isset($results->id)){
+        if(isset($results->id) && empty($results->active)){
+            new Flash(array('action'=>'required','formID'=>'login','message'=>'Please verify your email before loggin in'));
+        }
+        elseif(isset($results->id)){
 
             if(password_verify($app->login->password, $results->password)){
 
