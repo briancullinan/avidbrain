@@ -161,6 +161,16 @@
 					<div class="new-inputs">
 						<div class="row">
 
+							<?php if(isset($promocode)): ?>
+							<div class="affiliatetracking" data-tracker="<?php echo $promocode; ?>"></div>
+							<?php endif; ?>
+							<?php
+								$affiliatetracking = $app->getCookie('affiliatetracking');
+								if(!empty($affiliatetracking)){
+									$promocode = $affiliatetracking;
+								}
+							?>
+
 							<div class="col s12 m12 l12">
 								<?php if(isset($app->titleAdd) && !empty($app->titleAdd)){ echo '<div class="input-wrapper-text">Promo Code</div>';} ?>
 								<div class="input-wrapper <?php if(isset($app->titleAdd) && !empty($app->titleAdd)){ echo 'active-wrapper';} ?>" id="ts_promocode"><input <?php if(isset($app->titleAdd) && !empty($app->titleAdd)){ echo 'readonly="readonly"';} ?> type="text" name="tutorsignup[tutor][promocode]" placeholder="Promo Code (Optional)" value="<?php if(isset($promocode)){ echo $promocode; } ?>" /></div>

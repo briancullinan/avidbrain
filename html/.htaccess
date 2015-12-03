@@ -24,6 +24,7 @@ RedirectMatch 301 /VIP /signup/students/promocode
 RedirectMatch 301 /vip /signup/students/promocode
 RedirectMatch 301 /promo /signup/students/amozek
 RedirectMatch 301 /PROMO /signup/students/amozek
+Redirect 301 /laguna /signup/students/laguna
 
 
 Redirect 301 /terms-of-service /terms-of-use

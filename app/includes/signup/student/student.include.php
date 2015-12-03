@@ -108,6 +108,16 @@
 						</div>
 					<?php endif; ?>
 
+					<?php if(isset($promocode)): ?>
+					<div class="affiliatetracking" data-tracker="<?php echo $promocode; ?>"></div>
+					<?php endif; ?>
+					<?php
+						$affiliatetracking = $app->getCookie('affiliatetracking');
+						if(!empty($affiliatetracking)){
+							$promocode = $affiliatetracking;
+						}
+					?>
+
 					<div class="new-inputs">
 						<div class="row">
 

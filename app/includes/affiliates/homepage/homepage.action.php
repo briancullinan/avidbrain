@@ -21,6 +21,8 @@
             sessions.session_status = :status
                 AND
             user.usertype = 'student'
+
+        GROUP BY user.email
     ";
 
     $prepare = array(
@@ -50,6 +52,8 @@
             sessions.session_status = :status
                 AND
             user.usertype = 'tutor'
+
+        GROUP BY user.email
     ";
 
     $prepare = array(

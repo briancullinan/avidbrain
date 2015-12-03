@@ -1,5 +1,10 @@
 $(document).ready(function() {
 
+	var affiliatetracking = $('.affiliatetracking').attr('data-tracker');
+	if(affiliatetracking){
+		Cookies.set('affiliatetracking', affiliatetracking, { expires: 7 });
+	}
+
 	$('.form-post, .post-form').on('submit',function(){
 
 		$('.form-post .form-submit button').attr('disabled','disabled').addClass('disabled');
@@ -807,7 +812,10 @@ $(document).ready(function() {
 		}
 	}
 
-	$('.complete-session .form-submit button').fadeOut(function(){$(this).click();});
+	//$('.complete-session .form-submit button').fadeOut(function(){$(this).click();});
+	if($('.complete-session .form-submit button')){
+		$('.complete-session .form-submit button').click();
+	}
 
 	$('.header-nav .modal-trigger').on('click',function(){
 		setTimeout(function(){
