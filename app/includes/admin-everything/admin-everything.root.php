@@ -13,6 +13,7 @@
 	$children['monitor-messages'] = (object) array('name'=>'Monitor Messages','slug'=>'/admin-everything/monitor-messages');
 	$children['manage-subjects'] = (object) array('name'=>'Manage Subjects','slug'=>'/admin-everything/manage-subjects');
 	$children['pay-tutors'] = (object) array('name'=>'Pay Tutors','slug'=>'/admin-everything/pay-tutors');
+	$children['pay-affiliates'] = (object) array('name'=>'Pay Affiliates','slug'=>'/admin-everything/pay-affiliates');
 //	$children['pay-recruiters'] = (object) array('name'=>'Pay Recruiters','slug'=>'/admin-everything/pay-recruiters');
 	$children['contested-sessions'] = (object) array('name'=>'Contested Sessions','slug'=>'/admin-everything/contested-sessions');
 	$children['create-tutor'] = (object) array('name'=>'Create Tutor','slug'=>'/admin-everything/create-tutor');
@@ -34,7 +35,7 @@
 		unset($children['pay-tutors']);
 		unset($children['post-a-job']);
 		unset($children['stats']);
-		
+
 	}
 
 	$app->childen = $children;

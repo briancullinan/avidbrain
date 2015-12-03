@@ -270,6 +270,10 @@
 		$routes['admin-help-requests'] = (object)array('url'=>'/admin-everything/help-requests','slug'=>'help-requests','route'=>'/admin-everything/help-requests/','include'=>'admin-everything/help-requests','protected'=>true,'permissions'=>array('admin'));
 		$routes['admin-pay-recruiters'] = (object)array('url'=>'/admin-everything/pay-recruiters','slug'=>'pay-recruiters','route'=>'/admin-everything/pay-recruiters/','include'=>'admin-everything/pay-recruiters','protected'=>true,'permissions'=>array('admin'));
 		$routes['admin-pay-tutors'] = (object)array('url'=>'/admin-everything/pay-tutors','slug'=>'pay-tutors','route'=>'/admin-everything/pay-tutors/','include'=>'admin-everything/pay-tutors','protected'=>true,'permissions'=>array('admin'));
+		$routes['admin-pay-affiliates'] = (object)array('url'=>'/admin-everything/pay-affiliates','slug'=>'pay-affiliates','route'=>'/admin-everything/pay-affiliates/','include'=>'admin-everything/pay-affiliates','protected'=>true,'permissions'=>array('admin'));
+		$routes['admin-pay-affiliates-id'] = (object)array('url'=>'/admin-everything/pay-affiliates','slug'=>'pay-affiliates','route'=>'/admin-everything/pay-affiliates/:id/','include'=>'admin-everything/pay-affiliates','protected'=>true,'permissions'=>array('admin'));
+
+
 		$routes['admin-pay-tutors-id'] = (object)array('url'=>'/admin-everything/pay-tutors','slug'=>'pay-tutors','route'=>'/admin-everything/pay-tutors/:id/','include'=>'admin-everything/pay-tutors','protected'=>true,'permissions'=>array('admin'));
 		$routes['admin-manage-subjects'] = (object)array('url'=>'/admin-everything/manage-subjects','slug'=>'manage-subjects','route'=>'/admin-everything/manage-subjects/','include'=>'admin-everything/manage-subjects','protected'=>true,'permissions'=>array('admin'));
 		$routes['admin-manage-subjects-cat'] = (object)array('url'=>'/admin-everything/manage-subjects','slug'=>'manage-subjects','route'=>'/admin-everything/manage-subjects/:category/','include'=>'admin-everything/manage-subjects','protected'=>true,'permissions'=>array('admin'));
