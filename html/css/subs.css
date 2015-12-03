@@ -1,5 +1,9 @@
 @charset "utf-8";
 
+table.condensed tr td{
+	padding: 5px;
+}
+
 .howitworks-img{
 	border: solid 10px transparent;
 }

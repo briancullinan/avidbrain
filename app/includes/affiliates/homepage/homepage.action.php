@@ -69,12 +69,18 @@
 
     $sql = "
         SELECT
-            user.email,user.promocode,user.usertype,user.first_name,user.signup_date
+            user.email,user.promocode,user.usertype,user.first_name,user.signup_date,
+            payments.id
         FROM
             avid___user user
 
+        LEFT JOIN
+            avid___affiliates_payments payments on user.email = payments.paid_email
+
         WHERE
             promocode = :promocode
+
+        ORDER BY user.id DESC
     ";
 
     $prepare = array(
@@ -82,6 +88,7 @@
     );
 
     $results = $app->connect->executeQuery($sql,$prepare)->fetchAll();
+    
     if(isset($results[0])){
         $app->signups = $results;
     }
