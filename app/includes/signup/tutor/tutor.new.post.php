@@ -46,6 +46,7 @@
 			new Flash(array('action'=>'required','message'=>'Make sure you have all your information ready','formID'=>'tutorsignup','field'=>'ts_stats'));
 		}
 
+
 		// $query = "SELECT * FROM signup_avidbrain.signup___signups WHERE email = :email ";
 		// $prepare = array(':email'=>$app->tutorsignup->tutor->email);
 		// $signupcount = $app->connect->executeQuery($query,$prepare)->fetch();
@@ -93,9 +94,16 @@
 			$emails = 'keith@avidbrain.com,jake.stoll@avidbrain.com,david@avidbrain.com';
 		}
 
+
+		$message = '<p>A New tutor has started their application to become a tutor.</p>';
+		$message.='<p>Name: '.$app->tutorsignup->tutor->first_name.' '.$app->tutorsignup->tutor->last_name.' </p>';
+		$message.='<p>Email: '.$app->tutorsignup->tutor->email.' </p>';
+		$message.='<p>Phone: '.$app->tutorsignup->tutor->phone.' </p>';
+		$message.='<p>Why Tutor: '.$app->tutorsignup->tutor->reasons.' </p>';
+
 		$app->mailgun->to = $emails;
 		$app->mailgun->subject = 'New Tutor Signup';
-		$app->mailgun->message = 'A New tutor has started their application to become a tutor.';
+		$app->mailgun->message = $message;
 		$app->mailgun->send();
 
 		$app->mailgun->to = $app->tutorsignup->tutor->email;

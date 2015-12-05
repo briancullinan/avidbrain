@@ -83,9 +83,13 @@
 
 		$account = \Stripe\Account::retrieve($app->affiliate->managed_id);
 
+
+
         if(isset($account->verification->fields_needed)){
             $countNeeded = $account->verification->fields_needed;
         }
+
+
 
 		if(count($countNeeded)>0){
 			$account->tos_acceptance->date = time();
@@ -97,9 +101,9 @@
 			$account->legal_entity->address->line1 = $app->fields_needed->legal_entity->address->line1;
 			$account->legal_entity->address->postal_code = $app->fields_needed->legal_entity->address->postal_code;
 			$account->legal_entity->address->state = $app->fields_needed->legal_entity->address->state;
-			if(empty($account->legal_entity->ssn_last_4)){
-                $account->legal_entity->ssn_last_4 = $app->fields_needed->legal_entity->ssn_last_4;
-            }
+			//if(empty($account->legal_entity->ssn_last_4)){
+                //$account->legal_entity->ssn_last_4 = $app->fields_needed->legal_entity->ssn_last_4;
+            //}
 
 			$account->save();
 
@@ -133,7 +137,7 @@
 		$app->redirect('/affiliates/information');
     }
     elseif(isset($app->cutchecks)){
-        
+
         foreach($app->cutchecks as $key=> $check){
 			$app->cutchecks->$key = $app->crypter->encrypt($check);
 		}

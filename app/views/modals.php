@@ -20,8 +20,11 @@
 			<div class="col s12 m4 l4">
 				<a href="/help/forgot-password" class="btn red btn-block">Forgot Password?</a>
 				<a href="/signup" class="btn btn-block blue">Signup</a>
+				<a href="/signup/tutor" class="btn btn-block green">Complete Tutor Signup</a>
 
-				<a href="/login/affiliates" class="btn orange btn-block">Affiliate Login</a>
+				<?php
+					//<a href="/login/affiliates" class="btn orange btn-block">Affiliate Login</a>
+				?>
 			</div>
 		</div>
 

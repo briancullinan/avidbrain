@@ -36,7 +36,7 @@
             </table>
 
         <?php else: ?>
-            You have no Signups
+            <div>You have no Signups</div>
         <?php endif; ?>
 
         <?php if(isset($app->studentsiwthsessions)): ?>
@@ -65,8 +65,7 @@
 
             </table>
 
-        <?php else: ?>
-            You have no Signups with Sessions
+
         <?php endif; ?>
 
 
@@ -96,8 +95,7 @@
 
             </table>
 
-        <?php else: ?>
-            You have no Signups with Sessions
+        
         <?php endif; ?>
 
 	</div>
