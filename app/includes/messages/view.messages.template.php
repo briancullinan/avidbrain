@@ -30,7 +30,7 @@
 						<div class="user-name">
 							<a href="<?php echo $results->url; ?>"><?php echo ucwords(short($results)); ?></a>
 						</div>
-					<?php elseif(isset($admininfo)): ?>
+					<?php elseif(isset($admininfo->url)): ?>
 						<div class="user-photograph">
 							<a href="<?php echo $admininfo->url; ?>">
 								<img src="<?php echo $admininfo->my_avatar; ?>" />

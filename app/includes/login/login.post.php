@@ -1,5 +1,42 @@
 <?php
 
+	if(isset($app->login->email)){
+
+		// Where do I belong?
+
+		$sql = "SELECT * FROM avid___new_temps WHERE email = :email";
+		$prepared = array(':email'=>$app->login->email);
+		$temps = $app->connect->executeQuery($sql,$prepared)->fetch();
+
+		if(!empty($temps->activated)){
+			//notify('RON SWONSON');
+		}
+		elseif(isset($temps->email)){
+			if(empty($app->login->email)){
+			    new Flash(array('action'=>'required','message'=>'Email Address Required','formID'=>'signuplogin','field'=>'li_email'));
+			}
+			elseif(empty($app->login->password)){
+			    new Flash(array('action'=>'required','message'=>'Password Required','formID'=>'signuplogin','field'=>'li_password'));
+			}
+
+			if(isset($temps->id) && password_verify($app->login->password,$temps->password)){
+
+			    $token = password_hash(uniqid().$temps->email.time(),PASSWORD_BCRYPT);
+			    $_SESSION['temptutor']['email'] = $app->crypter->encrypt($temps->email);
+			    $_SESSION['temptutor']['token'] = $app->crypter->encrypt($token);
+
+			    $app->connect->update('avid___new_temps',array('token'=>$token),array('email'=>$temps->email));
+
+			    new Flash(array('action'=>'jump-to','formID'=>'signuplogin','location'=>'/signup/tutor','message'=>'You are now logged in'));
+			}
+			else{
+			    new Flash(array('action'=>'required','message'=>'Invalid Password','formID'=>'signuplogin','field'=>'li_password'));
+			}
+		}
+
+	}
+
+
 	if(isset($app->login)){
 
 		$authenticate = new Authenticate($app->connect);

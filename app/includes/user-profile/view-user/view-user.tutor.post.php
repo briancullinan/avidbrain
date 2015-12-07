@@ -32,6 +32,28 @@
 	if(isset($app->user->usertype) && $app->user->usertype=='admin'){
 
 
+		if(isset($app->adminmodulecomper)){
+
+			$comp = array(
+	            'email'=>$app->adminmodulecomper->email,
+	            'date'=>thedate(),
+	            'comper'=>$app->user->first_name.' '.$app->user->last_name
+	        );
+
+
+			$message = '<p>Hello, '.$app->currentuser->first_name.' '.$app->currentuser->last_name.'</p>';
+			$message.='<p>Your background check application fee of $29.99 has been comped by AvidBrain.</p>';
+
+			$app->mailgun->to = $app->adminmodulecomper->email;
+			$app->mailgun->subject = 'Free Background Check';
+			$app->mailgun->message = $message;
+			$app->mailgun->send();
+
+			$app->connect->insert('avid___compedbgcheck',$comp);
+
+	        $app->redirect($app->currentuser->url);
+
+		}
 
 		if(isset($app->needsprofilereview)){
 

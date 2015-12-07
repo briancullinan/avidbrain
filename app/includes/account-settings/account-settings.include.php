@@ -10,7 +10,7 @@
 				<div class="switch">
 					<label>
 						No
-						<input <?php if($app->user->settings->getemails=='yes'){ echo 'checked="checked"';} ?> name="accountsettings[getemails]" type="checkbox">
+						<input <?php if(isset($app->user->settings->getemails) && $app->user->settings->getemails=='yes'){ echo 'checked="checked"';} ?> name="accountsettings[getemails]" type="checkbox">
 						<span class="lever"></span>
 						Yes
 					</label>

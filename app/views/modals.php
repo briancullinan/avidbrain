@@ -261,6 +261,30 @@
 			<h4>Admin Module</h4>
 			<br>
 
+			<?php
+
+				$sql = "SELECT * FROM avid___compedbgcheck WHERE email = :email";
+				$prepare = array(':email'=>$app->currentuser->email);
+				$comped = $app->connect->executeQuery($sql,$prepare)->fetch();
+
+
+				if(isset($app->currentuser->emptybgcheck) && empty($comped)):
+			?>
+			<form method="post" action="<?php echo $app->request->getPath(); ?>">
+
+				<button class="btn confirm-submit" type="button">Comp Background Check</button>
+
+				<input type="text" name="adminmodulecomper[email]" value="<?php echo $app->currentuser->email; ?>" />
+				
+				<input type="text" name="adminmodulecomper[date]" value="<?php echo thedate(); ?>" />
+
+
+
+				<input type="hidden" name="adminmodulecomper[target]" value="adminmodulecomper"  />
+				<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
+			</form>
+			<?php endif; ?>
+
 			<?php if(isset($app->currentuser->email)): ?>
 			<div>
 				<?php echo $app->currentuser->email; ?>
