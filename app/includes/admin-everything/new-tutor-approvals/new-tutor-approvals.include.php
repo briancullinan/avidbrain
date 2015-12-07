@@ -3,7 +3,7 @@
 	<div class="col s12 m3 l2">
         <?php if(isset($app->everyoneelse)): ?>
 			<div>Haven't Finished</div>
-            <div class="block block-list">
+            <div class="block block-list new-order-list">
     			<?php foreach($app->everyoneelse as $link): ?>
     			<a <?php if(isset($id) && $id==$link->id){ echo 'class="active"';} ?> href="/admin-everything/new-tutor-approvals/<?php echo $link->id; ?>">
                     <?php echo $link->first_name; ?> <?php echo $link->last_name; ?>
@@ -13,7 +13,7 @@
         <?php endif; ?>
 	        <?php if(isset($app->newtutors)): ?>
 				<div>New Tutors</div>
-	            <div class="block block-list">
+	            <div class="block block-list new-order-list">
 	    			<?php foreach($app->newtutors as $link): ?>
 	    			<a <?php if(isset($id) && $id==$link->id){ echo 'class="active"';} ?> href="/admin-everything/new-tutor-approvals/<?php echo $link->id; ?>">
 	                    <?php echo $link->first_name; ?> <?php echo $link->last_name; ?>
@@ -24,7 +24,7 @@
 
 		<?php if(isset($app->rejectedtutors)): ?>
 			<div>Rejected Tutors</div>
-            <div class="block block-list">
+            <div class="block block-list new-order-list">
     			<?php foreach($app->rejectedtutors as $link): ?>
     			<a <?php if(isset($id) && $id==$link->id){ echo 'class="active"';} ?> href="/admin-everything/new-tutor-approvals/<?php echo $link->id; ?>">
                     <?php echo $link->first_name; ?> <?php echo $link->last_name; ?>
