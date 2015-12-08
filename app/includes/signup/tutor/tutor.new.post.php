@@ -364,6 +364,10 @@
 			}
 		}
 
+		$croppedfileName = str_replace($app->dependents->APP_PATH.'uploads/photos/','',$croppedfileName);///var/www/amozek.dev/app/uploads/photos/
+
+		
+
 		$app->connect->update('avid___new_temps',array('addaphoto'=>1,'cropped'=>$croppedfileName),array('email'=>$app->newtutor->email));
 		$app->redirect('/signup/tutor/mysubjects');
 
