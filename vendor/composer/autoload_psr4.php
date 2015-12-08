@@ -6,6 +6,9 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Symfony\\Polyfill\\Util\\' => array($vendorDir . '/symfony/polyfill-util'),
+    'Symfony\\Polyfill\\Php56\\' => array($vendorDir . '/symfony/polyfill-php56'),
+    'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
     'Symfony\\Component\\Translation\\' => array($vendorDir . '/symfony/translation'),
     'Symfony\\Component\\Finder\\' => array($vendorDir . '/symfony/finder'),
     'SuperClosure\\' => array($vendorDir . '/jeremeamia/SuperClosure/src'),
@@ -14,9 +17,10 @@ return array(
     'Snipe\\BanBuilder\\' => array($vendorDir . '/snipe/banbuilder/src'),
     'React\\Promise\\' => array($vendorDir . '/react/promise/src'),
     'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-message/src'),
+    'PhpParser\\' => array($vendorDir . '/nikic/php-parser/lib/PhpParser'),
     'MatthiasMullie\\PathConverter\\' => array($vendorDir . '/matthiasmullie/path-converter/src'),
     'MatthiasMullie\\Minify\\' => array($vendorDir . '/matthiasmullie/minify/src'),
-    'Intervention\\Image\\' => array($vendorDir . '/intervention/image/src/Intervention/Image', $vendorDir . '/intervention/imagecache/src/Intervention/Image'),
+    'Intervention\\Image\\' => array($vendorDir . '/intervention/imagecache/src/Intervention/Image', $vendorDir . '/intervention/image/src/Intervention/Image'),
     'Illuminate\\Support\\' => array($vendorDir . '/illuminate/support'),
     'Illuminate\\Filesystem\\' => array($vendorDir . '/illuminate/filesystem'),
     'Illuminate\\Contracts\\' => array($vendorDir . '/illuminate/contracts'),

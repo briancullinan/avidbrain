@@ -366,7 +366,7 @@
 							if(empty($app->thetutor->hourly_rate)){
 								$body.= '<li>Add an <strong>Hourly Rate</strong></li>';
 							}
-							if(empty($app->thetutor->resume)){
+							if(empty($app->thetutor->my_resume)){
 								$body.= '<li>Upload your <strong>Resume</strong></li>';
 							}
 							if(empty($app->thetutor->upload)){

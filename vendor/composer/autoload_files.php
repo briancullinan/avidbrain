@@ -7,10 +7,11 @@ $baseDir = dirname($vendorDir);
 
 return array(
     $vendorDir . '/danielstjules/stringy/src/Create.php',
+    $vendorDir . '/symfony/polyfill-mbstring/bootstrap.php',
     $vendorDir . '/illuminate/support/helpers.php',
     $vendorDir . '/react/promise/src/functions_include.php',
-    $vendorDir . '/nikic/php-parser/lib/bootstrap.php',
     $vendorDir . '/guzzlehttp/psr7/src/functions_include.php',
+    $vendorDir . '/symfony/polyfill-php56/bootstrap.php',
     $vendorDir . '/phpfastcache/phpfastcache/phpfastcache.php',
     $vendorDir . '/twilio/sdk/Services/Twilio.php',
 );

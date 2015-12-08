@@ -723,3 +723,11 @@
 			new Flash(array('action'=>'custom','message'=>'<div class="blue white-text">'.$app->getprices->subject.' tutors in '.$zipData->city.' make an average: $'.numbers($cachedpricequote).' an hour</div>','target'=>'.show-prices'));
 		}
 	}
+	elseif(isset($app->myresume->resume_text)){
+
+		$app->connect->update('avid___new_temps',array('resume_text'=>$app->myresume->resume_text,'my_resume'=>$app->myresume->resume_text),array('email'=>$app->newtutor->email));
+
+		#notify($app->myresume->resume_text);
+		$app->redirect('/signup/tutor/tutoringinformation');
+		#new Flash(array('action'=>'jump-to','formID'=>'signuplogin','location'=>'/confirmation/new-tutor-signup','message'=>'Application Sent'));
+	}
