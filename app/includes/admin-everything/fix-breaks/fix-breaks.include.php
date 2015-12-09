@@ -1,5 +1,6 @@
 <?php
 	$fix = array(
+		'import-promocode-students'=>'Import Promocodes',
 		'changeimagenames'=>'Change Image Names',
 		'check-username-doubles'=>'Check Username Doubles',
 		'fix-username'=>'Fix Username',
@@ -323,6 +324,36 @@
 			}
 			echo 'ALL DONE';
 		}
+		elseif($action=='import-promocode-students'){
+			$sql = "
+				SELECT
+					user.promocode as tutor_email,
+					user.email as student_email
+				FROM
+					avid___user user
+
+				LEFT JOIN
+					avid___approved_tutors approved on user.email = approved.student_email
+
+				INNER JOIN
+
+					avid___user user2 on user2.email = user.promocode
+
+				WHERE
+					user.promocode IS NOT NULL
+						AND
+					user.usertype = 'student'
+						AND
+					approved.id IS NULL
+			";
+			$prepare = array();
+			$results = $app->connect->executeQuery($sql,$prepare)->fetchAll();
+			if(isset($results[0])){
+				foreach($results as $insert){
+					$app->connect->insert('avid___approved_tutors',array('tutor_email'=>$insert->tutor_email,'student_email'=>$insert->student_email,'date'=>thedate()));
+				}
+			}
+		}
 		elseif($action=='xxx'){
 			notify('xxx');
 			$sql = "SELECT * FROM avid___user WHERE usertype = :usertype";
@@ -330,6 +361,7 @@
 			$results = $app->connect->executeQuery($sql,$prepare)->fetchAll();
 			notify($results);
 		}
+		//
 
 	}
 ?>
