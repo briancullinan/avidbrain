@@ -1,5 +1,5 @@
 <?php
-
+    $app->redirect('/signup');
     $app->meta = new stdClass();
     $app->meta->title = 'AvidBrain Affiliate Program';
     $app->meta->h1 = 'Affiliate Program';
