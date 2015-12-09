@@ -268,6 +268,17 @@
 		$password = password_hash($app->studentsignup->student->password, PASSWORD_DEFAULT);
 		$validation_code = random_numbers_guarantee($app->connect,16);
 
+		if(isset($app->studentsignup->student->promocode)){
+			$sql = "SELECT email FROM avid___user WHERE email = :promocode";
+			$prepare = array(':promocode'=>$app->studentsignup->student->promocode);
+			$results = $app->connect->executeQuery($sql,$prepare)->fetch();
+			if(isset($results->email)){
+
+				$app->connect->insert('avid___approved_tutors',array('tutor_email'=>$results->email,'student_email'=>$app->studentsignup->student->email,'date'=>thedate()));
+
+			}
+		}
+
 		$inserttemp = array(
 			'email'=>$app->studentsignup->student->email,
 			'password'=>$password,
