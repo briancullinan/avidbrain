@@ -1,15 +1,15 @@
 <?php
-	
+
 	if(isset($id)){
 		$app->path = str_replace($id,'',$app->request->getPath());
 	}
-	
+
 	if($app->target->key!='/sessions/disputed'){
 		$app->target->include = $app->target->user->include;
 		$app->target->post = $app->target->user->post;
-		//$app->target->actions = $app->target->user->action;	
+		//$app->target->actions = $app->target->user->action;
 	}
-	
+
 	$sql = "
 		SELECT * FROM avid___sessions WHERE
 			from_user = :myemail AND pending IS  NULL AND payment_details = 'Credit Card Error'
@@ -21,12 +21,12 @@
 		':myemail'=>$app->user->email
 	);
 	$brokensessions = $app->connect->executeQuery($sql,$prepare)->rowCount();
-	
-	
+
+
 	$sql = "SELECT id FROM avid___sessions WHERE dispute IS NOT NULL AND from_user = :email OR dispute IS NOT NULL AND to_user = :email";
 	$prepeare = array(':email'=>$app->user->email);
 	$dispute = $app->connect->executeQuery($sql,$prepeare)->rowCount();
-	
+
 	$childen = array();
 	if($app->user->usertype=='tutor'){
 		$childen['/sessions/setup-new/'] = (object) array('name'=>'Setup Session','slug'=>'/sessions/setup-new');
@@ -44,15 +44,15 @@
 	if($app->path=='/sessions/view/'){
 		$childen['/sessions/view/'] = (object) array('name'=>'View Session','slug'=>'/sessions/view/'.$id);
 	}
-	if($dispute>0){	
+	if($dispute>0){
 		$childen['/sessions/disputed/'] = (object) array('name'=>'Disputed','slug'=>'/sessions/disputed');
 	}
-	if($brokensessions>0){	
+	if($brokensessions>0){
 		$childen['/sessions/broken-sessions/'] = (object) array('name'=>'Broken Sessions','slug'=>'/sessions/broken-sessions');
 	}
-	
+
 	$app->childen = $childen;
 	$navtitle = (object)array('slug'=>'/sessions','text'=>'Sessions');
 	$app->navtitle = $navtitle;
-	
+
 	$app->secondary = $app->target->secondaryNav;

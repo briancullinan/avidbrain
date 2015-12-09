@@ -1,48 +1,93 @@
 <?php
 
-	$data	=	$app->connect->createQueryBuilder();
-	$data	=	$data->select(everything().', user.username, user.promocode, user.email, user.customer_id')->from('avid___user','user');
-	$data	=	$data->where('user.promocode = :myemail AND user.usertype = :usertype');
-	$data	=	$data->orWhere('messages.to_user = :myemail AND user.usertype = :usertype');
-	$data	=	$data->orWhere('messagesFrom.from_user = :myemail AND user.usertype = :usertype');
-	$data	=	$data->setParameter(':myemail',$app->user->email);
-	$data	=	$data->setParameter(':usertype','student');
+	$sql = "
+		SELECT
+			messages.from_user as email,
+			user.first_name,
+			user.last_name,
+			user.username,
+			user.promocode
+
+		FROM
+			avid___messages messages
+
+		INNER JOIN
+
+			avid___user user on user.email = messages.from_user
+
+		WHERE
+			messages.to_user = :myemail
+				AND
+			messages.from_user NOT LIKE '%@avidbrain.com%'
+
+				GROUP BY messages.from_user
 
 
-	$data	=	$data->leftJoin('user','avid___messages','messagesFrom','messagesFrom.to_user = user.email');
-	$data	=	$data->leftJoin('user','avid___messages','messages','messages.from_user = user.email');
-	$data	=	$data->leftJoin('user','avid___user_profile','profile','profile.email = user.email');
-	$data	=	$data->leftJoin('user','avid___user_account_settings','settings','settings.email = user.email');
-	$data	=	$data->groupBy('user.url');
-	$data	=	$data->orderBy('user.promocode,user.usertype');
+	";
 
-	$data	=	$data->execute()->fetchAll();
+	$prepared = array(
+		':myemail'=>$app->user->email
+	);
 
-	$app->alltheusers = $data;
-	//printer($app->alltheusers,1);
+	$allmessages = $app->connect->executeQuery($sql,$prepared)->fetchAll();
 
-	if(isset($app->user->needs_bgcheck)){
-		unset($app->alltheusers);
+
+
+
+	$allowed = array();
+	foreach($allmessages as $key=> $email){
+		$sql = "
+			SELECT
+				count(messages.id) as count, to_user, from_user
+			FROM
+				avid___messages messages
+			WHERE
+				from_user = :email
+					AND
+				to_user = :myemail
+		";
+		$prepared = array(
+			':email'=>$email->email,
+			':myemail'=>$app->user->email
+		);
+		$count = $app->connect->executeQuery($sql,$prepared)->fetch();
+
+		if(isset($count->count) && $count->count < 2){
+			unset($allmessages[$key]);
+		}
+		else{
+			$allowed[] = $email->username;
+		}
 	}
 
+	if(isset($username) && in_array($username, $allowed)){
 
-	if(isset($username)){
-		foreach($app->alltheusers as $check){
-			if(isset($check->username) && $check->username==$username){
-				$app->setupsessionwith = $check;
-				break;
-			}
-		}
-		if(isset($app->setupsessionwith->email)){
-			$sql = "SELECT session_rate FROM avid___sessions WHERE to_user = :email ORDER BY id DESC";
-			$prepare = array(':email'=>$app->setupsessionwith->email);
-			$results = $app->connect->executeQuery($sql,$prepare)->fetch();
-			if(isset($results->session_rate)){
-				$app->previousRate = $results->session_rate;
-			}
+		$sql = "
+			SELECT
+				user.username,
+				user.promocode,
+				user.email,
+				user.customer_id,
+				user.url
+			FROM
+				avid___user user
+
+			WHERE
+				user.username = :username
+		";
+		$prepared = array(':username'=>$username);
+		$app->thestudent = $app->connect->executeQuery($sql,$prepared)->fetch();
+
+		$sql = "SELECT session_rate FROM avid___sessions WHERE to_user = :email ORDER BY id DESC LIMIT 1";
+		$prepare = array(':email'=>$app->thestudent->email);
+		$results = $app->connect->executeQuery($sql,$prepare)->fetch();
+
+
+		if(isset($results->session_rate)){
+			$app->thestudent->previousrate = $results->session_rate;
 		}
 
-		if(empty($app->setupsessionwith)){
-			$app->redirect('/messages/compose');
-		}
+
 	}
+
+	$app->setupsessionusers = $allmessages;

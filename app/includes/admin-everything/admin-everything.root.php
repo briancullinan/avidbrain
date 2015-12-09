@@ -11,6 +11,7 @@
 	$children['profile-approvals'] = (object) array('name'=>'Profile Approvals','slug'=>'/admin-everything/profile-approvals');
 	$children['help-requests'] = (object) array('name'=>'Help Requests','slug'=>'/admin-everything/help-requests');
 	$children['monitor-messages'] = (object) array('name'=>'Monitor Messages','slug'=>'/admin-everything/monitor-messages');
+	$children['spam-messages'] = (object) array('name'=>'Spam Messages','slug'=>'/admin-everything/spam-messages');
 	$children['manage-subjects'] = (object) array('name'=>'Manage Subjects','slug'=>'/admin-everything/manage-subjects');
 	$children['pay-tutors'] = (object) array('name'=>'Pay Tutors','slug'=>'/admin-everything/pay-tutors');
 	$children['pay-affiliates'] = (object) array('name'=>'Pay Affiliates','slug'=>'/admin-everything/pay-affiliates');

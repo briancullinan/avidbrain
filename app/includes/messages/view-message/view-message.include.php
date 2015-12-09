@@ -84,19 +84,15 @@
 				<?php endif; ?>
 
 
-				<?php
-				/*
 				<?php if(isset($app->viewmessage->status__flagged)): ?>
 				<button class="btn blue darken-2 btn-s btn-block" data-name="inboxaction[value]" data-value="un-flag">
-					<i class="fa fa-flag"></i> Un-Flag
+					<i class="fa fa-flag"></i> Un-Flag Spam
 				</button>
 				<?php else: ?>
 				<button class="btn blue btn-s btn-block" data-name="inboxaction[value]" data-value="flag">
-					<i class="fa fa-flag"></i> Flag
+					<i class="fa fa-flag"></i> Flag as Spam
 				</button>
 				<?php endif; ?>
-				*/
-				?>
 
 				<?php if(isset($app->viewmessage->status__starred)): ?>
 				<button class="btn orange darken-2 btn-s btn-block" data-name="inboxaction[value]" data-value="un-star">
