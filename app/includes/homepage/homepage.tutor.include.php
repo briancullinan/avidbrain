@@ -40,7 +40,7 @@
 
 	<div class="col s12 m4 l4">
 			<?php if(isset($app->mystudents)): ?>
-				<h3>Your Active Students</h3>
+				<h3>Your Students</h3>
 
 				<div class="new-order-list">
 					<?php foreach($app->mystudents as $item): ?>

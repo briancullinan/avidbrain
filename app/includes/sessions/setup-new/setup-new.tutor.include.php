@@ -1,8 +1,8 @@
 <div class="row">
 	<div class="col s12 m3 l3">
-        <?php if(isset($app->setupsessionusers)): ?>
+        <?php if(isset($app->approvedstudents)): ?>
 			<div class="new-order-list">
-				<?php foreach($app->setupsessionusers as $key=> $item): ?>
+				<?php foreach($app->approvedstudents as $key=> $item): ?>
 					<div class="block-list-user <?php if(isset($username) && $username == $item->username){ echo 'active';} ?>">
 						<a class="block-list" href="/sessions/setup-new/<?php echo $item->username; ?>">
 							<?php echo $item->first_name.' '.$item->last_name; ?>
@@ -17,13 +17,13 @@
         <?php endif; ?>
 	</div>
 	<div class="col s12 m9 l9">
-		<?php if(isset($app->thestudent)): ?>
+		<?php if(isset($app->validuser)): ?>
 
-			<h3>Setup a tutoring session with <span class="blue-text"><?php echo the_users_name($app->setupsessionwith); ?></span> </h3>
+			<h3>Setup a tutoring session with <span class="blue-text"><?php echo the_users_name($app->validuser); ?></span> </h3>
 			<?php
 				$formvalues = new stdClass();
-				if(isset($app->thestudent->previousrate)){
-					$formvalues->session_rate = $app->thestudent->previousrate;
+				if(isset($app->validuser->previousrate)){
+					$formvalues->session_rate = $app->validuser->previousrate;
 				}
 				else{
 					$formvalues->session_rate = $app->user->hourly_rate;

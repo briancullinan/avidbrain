@@ -286,7 +286,16 @@ $(document).ready(function() {
 			var imgwidth = $('#cropbox img').attr('data-width');
 			var path = window.location.pathname;
 			if(!imgwidth){
-				window.location = path+boxwidth;
+
+				var lastchar = path.slice(-1);
+				if(lastchar!='/'){
+					var final = path+'/'+boxwidth
+				}
+				else{
+					var final = path+boxwidth
+				}
+
+				 window.location = final;
 			}
 
 			image.src = setcropbox;

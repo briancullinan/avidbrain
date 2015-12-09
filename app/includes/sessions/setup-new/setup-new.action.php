@@ -2,92 +2,78 @@
 
 	$sql = "
 		SELECT
-			messages.from_user as email,
+			approved.*,
 			user.first_name,
 			user.last_name,
-			user.username,
-			user.promocode
-
+			user.promocode,
+			user.customer_id,
+			user.url,
+			user.username
 		FROM
-			avid___messages messages
+			avid___approved_tutors approved
 
 		INNER JOIN
-
-			avid___user user on user.email = messages.from_user
+			avid___user user on user.email = approved.student_email
 
 		WHERE
-			messages.to_user = :myemail
-				AND
-			messages.from_user NOT LIKE '%@avidbrain.com%'
-
-				GROUP BY messages.from_user
-
-
+			approved.tutor_email = :tutor_email
 	";
-
-	$prepared = array(
-		':myemail'=>$app->user->email
-	);
-
-	$allmessages = $app->connect->executeQuery($sql,$prepared)->fetchAll();
+	$prepare = array(':tutor_email'=>$app->user->email);
+	$approvedstudents = $app->connect->executeQuery($sql,$prepare)->fetchAll();
 
 
-
-
-	$allowed = array();
-	foreach($allmessages as $key=> $email){
-		$sql = "
-			SELECT
-				count(messages.id) as count, to_user, from_user
-			FROM
-				avid___messages messages
-			WHERE
-				from_user = :email
-					AND
-				to_user = :myemail
-		";
-		$prepared = array(
-			':email'=>$email->email,
-			':myemail'=>$app->user->email
-		);
-		$count = $app->connect->executeQuery($sql,$prepared)->fetch();
-
-		if(isset($count->count) && $count->count < 2){
-			unset($allmessages[$key]);
-		}
-		else{
-			$allowed[] = $email->username;
-		}
+	if(isset($approvedstudents[0])){
+		$app->approvedstudents = $approvedstudents;
 	}
 
-	if(isset($username) && in_array($username, $allowed)){
+
+	if(isset($username)){
 
 		$sql = "
 			SELECT
 				user.username,
-				user.promocode,
 				user.email,
+				user.first_name,
+				user.last_name,
+				user.promocode,
 				user.customer_id,
-				user.url
+				approved.student_email as approved_email
 			FROM
 				avid___user user
 
+			INNER JOIN
+
+				avid___approved_tutors approved on user.email = approved.student_email
+
 			WHERE
 				user.username = :username
+					AND
+				user.usertype = 'student'
+					AND
+				approved.tutor_email = :myemail
 		";
-		$prepared = array(':username'=>$username);
-		$app->thestudent = $app->connect->executeQuery($sql,$prepared)->fetch();
+		$prepare = array(':username'=>$username,':myemail'=>$app->user->email);
+		$validuser = $app->connect->executeQuery($sql,$prepare)->fetch();
+		if(isset($validuser->approved_email)){
 
-		$sql = "SELECT session_rate FROM avid___sessions WHERE to_user = :email ORDER BY id DESC LIMIT 1";
-		$prepare = array(':email'=>$app->thestudent->email);
-		$results = $app->connect->executeQuery($sql,$prepare)->fetch();
+			$sql = "
+				SELECT
+					sessions.session_rate
+				FROM
+					avid___sessions sessions
+				WHERE
+					to_user = :to_user
+						AND
+					from_user = :from_user
+				ORDER BY ID DESC
+				LIMIT 1
+			";
+			$prepare = array(':to_user'=>$validuser->email,':from_user'=>$app->user->email);
+			$sessioninfo = $app->connect->executeQuery($sql,$prepare)->fetch();
+			if(isset($sessioninfo->session_rate)){
+				$validuser->previousrate = $sessioninfo->session_rate;
+			}
 
-
-		if(isset($results->session_rate)){
-			$app->thestudent->previousrate = $results->session_rate;
+			$app->validuser = $validuser;
 		}
-
-
 	}
-
-	$app->setupsessionusers = $allmessages;

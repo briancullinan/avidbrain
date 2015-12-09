@@ -27,6 +27,41 @@
 							<img src="<?php echo userphotographs($app->user,$app->currentuser,$app->dependents); ?>" />
 						</div>
 
+						<?php if(isset($app->user->usertype) && $app->user->usertype=='student'): ?>
+							<?php
+								$sql = "SELECT * FROM avid___approved_tutors WHERE tutor_email = :tutor_email AND student_email = :student_email LIMIT 1 ";
+								$prepare = array(':tutor_email'=>$app->currentuser->email,':student_email'=>$app->user->email);
+								$results = $app->connect->executeQuery($sql,$prepare)->fetch();
+							?>
+							<div>
+								<?php if(isset($results->id)): ?>
+									<form method="post" action="<?php echo $app->request->getPath(); ?>">
+
+										<input type="hidden" name="approvedtutors[status]" value="remove"  />
+										<input type="hidden" name="approvedtutors[target]" value="approvedtutors"  />
+										<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
+
+										<div class="form-submit">
+											<button type="button" class="btn btn-block purple confirm-submit"><i class="fa fa-remove"></i> Remove Tutor to Approved Tutors</button>
+										</div>
+
+									</form>
+								<?php else: ?>
+									<form method="post" action="<?php echo $app->request->getPath(); ?>">
+
+										<input type="hidden" name="approvedtutors[status]" value="save"  />
+										<input type="hidden" name="approvedtutors[target]" value="approvedtutors"  />
+										<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
+
+										<div class="form-submit">
+											<button type="button" class="btn btn-block pink confirm-submit"><i class="fa fa-heart"></i> Save Tutor to Approved Tutors</button>
+										</div>
+
+									</form>
+								<?php endif; ?>
+							</div>
+						<?php endif; ?>
+
 						<?php if(isset($app->childen)): ?>
 							<div class="my-links" id="mylinks">
 								<div class="my-links-title">

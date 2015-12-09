@@ -5,7 +5,7 @@
 		#notify($app->thestudent);
 		#notify($app->setupsession);
 
-		if(crediterror($app->connect,$app->thestudent->email)==true){
+		if(crediterror($app->connect,$app->validuser->email)==true){
 			new Flash(
 				array(
 					'action'=>'alert',
@@ -14,14 +14,14 @@
 			);
 		}
 
-		$creditcard = get_creditcard($app->thestudent->customer_id);
+		$creditcard = get_creditcard($app->validuser->customer_id);
 
 		if($creditcard==NULL){
 
 			#notify('OHNO');
 
 			$html = '<p class="confirm-payment-box orange white-text"> '.short($app->thestudent).' has no credit card on file. Please request they add it, so you can proceed. </p>';
-			$html.= '<p><a class="btn btn-block" href="'.$app->thestudent->url.'/send-message" target="_blank">Send Message</a></p>';
+			$html.= '<p><a class="btn btn-block" href="'.$app->validuser->url.'/send-message" target="_blank">Send Message</a></p>';
 			new Flash(
 				array('action'=>'confirm-payment','html'=>$html,'message'=>'Please Confirm','secret'=>random_all(12))
 			);
@@ -62,7 +62,7 @@
 			'session_timestamp'=>sessionTimestamp($app->setupsession),
 			'jobsetup'=>NULL,
 			'pending'=>1,
-			'to_user'=>$app->thestudent->email,
+			'to_user'=>$app->validuser->email,
 			'from_user'=>$app->user->email,
 			'creation_date'=>thedate(),
 			'pending'=>1
@@ -100,16 +100,16 @@
 
 		$message.='<p><a class="btn" href="/sessions/view/'.$lastid.'">View Session Details</a></p>';
 
-		if(isset($app->thestudent->getemails) && $app->thestudent->getemails=='yes'){
+		if(isset($app->validuser->getemails) && $app->validuser->getemails=='yes'){
 
-			$app->mailgun->to = $app->thestudent->email;
+			$app->mailgun->to = $app->validuser->email;
 			$app->mailgun->subject = $subject;
 			$app->mailgun->message = $message;
 			$app->mailgun->send();
 
 		}
 
-		$app->sendmessage->to_user = $app->thestudent->email;
+		$app->sendmessage->to_user = $app->validuser->email;
 		$app->sendmessage->from_user = $app->user->email;
 		$app->sendmessage->location = 'inbox';
 		$app->sendmessage->send_date = thedate();

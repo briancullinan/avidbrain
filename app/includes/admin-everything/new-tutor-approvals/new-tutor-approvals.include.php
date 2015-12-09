@@ -157,6 +157,16 @@
 						</div>
 					</div>
 
+					<?php if(!empty($app->thetutor->resume_text)): ?>
+					<div>
+						<div class="title"> My Resume Text </div>
+						<?php
+							echo nl2br($app->thetutor->resume_text);
+						?>
+						<br><br>
+					</div>
+					<?php endif; ?>
+
 					<div class="row infos">
 						<div class="col s12 m12 l12">
 							<div class="title"> Why do you want to tutor with AvidBrain? </div>
