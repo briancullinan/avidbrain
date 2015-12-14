@@ -92,6 +92,19 @@
 						}
 				}
 
+
+				if(isset($userResults->usertype) && $userResults->usertype=='student'){
+
+					$sql = "SELECT active FROM avid___user_verification WHERE email = :email";
+					$prepare = array(':email'=>$userResults->email);
+					$validate = $this->connect->executeQuery($sql,$prepare)->fetch();
+
+					if(isset($validate->active) && $validate->active==1){
+						$userResults->validateactive = true;
+					}
+
+				}
+
 					if(isset($userResults->id)){
 						//self::get_my_settings();
 						foreach($userResults as $key=>$value){

@@ -80,9 +80,23 @@
 			<div class="block">
 				<div class="title">Activating Messaging</div>
 
-				<p>In order to communicate with tutors and students we require a valid credit card on file. We won't charge you anything, it just adds an additional level of authenticity to our accounts.</p>
+				<?php //<p>In order to communicate with tutors and students we require a valid credit card on file. We won't charge you anything, it just adds an additional level of authenticity to our accounts.</p> ?>
 
-				<div> <a href="/payment/credit-card" class="btn btn-block blue">Activate Messaging</a> </div>
+				<p>There are two ways to activate messaging.</p>
+
+
+				<div class="row">
+					<div class="col s12 m6 l6">
+						<div> <a href="/payment/credit-card" class="btn btn-block blue">Credit Card Verification</a> </div>
+						<div>Just verify your credit card and you are set. We don't charge your card, just verify who you are.</div>
+					</div>
+					<div class="col s12 m6 l6">
+						<div> <a href="/payment/phone" class="btn btn-block green">Phone Verification</a> </div>
+						<div>Get an SMS code on your phone and verify your identiy.</div>
+					</div>
+				</div>
+
+
 			</div>
 		<?php elseif($app->user->usertype=='student' && isset($app->user->creditcardonfile)): ?>
 			<div class="block">

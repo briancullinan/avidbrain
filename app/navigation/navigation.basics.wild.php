@@ -1,6 +1,6 @@
 <?php
 
-	if(isset($app->user->usertype) && $app->user->usertype=='student' && empty($app->user->customer_id)){
+	if(isset($app->user->usertype) && $app->user->usertype=='student' && empty($app->user->customer_id) && empty($app->user->validateactive)){
 		$data	=	$app->connect->createQueryBuilder();
 		$data	=	$data->select('settings.*,waiting.*, user.first_name, user.last_name, user.url')->from('avid___waiting_to_email','waiting');
 		$data	=	$data->where('waiting.from_user = :myemail')->setParameter(':myemail',$app->user->email);

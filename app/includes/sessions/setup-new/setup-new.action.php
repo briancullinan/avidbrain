@@ -37,6 +37,7 @@
 				user.last_name,
 				user.promocode,
 				user.customer_id,
+				user.url,
 				approved.student_email as approved_email
 			FROM
 				avid___user user

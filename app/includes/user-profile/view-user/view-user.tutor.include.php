@@ -42,7 +42,7 @@
 										<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
 
 										<div class="form-submit">
-											<button type="button" class="btn btn-block purple confirm-submit"><i class="fa fa-remove"></i> Remove Tutor to Approved Tutors</button>
+											<button type="button" class="btn btn-block purple confirm-submit"><i class="fa fa-remove"></i> Remove Tutor from Approved Tutors List</button>
 										</div>
 
 									</form>
@@ -54,8 +54,10 @@
 										<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
 
 										<div class="form-submit">
-											<button type="button" class="btn btn-block pink confirm-submit"><i class="fa fa-heart"></i> Save Tutor to Approved Tutors</button>
+											<button type="button" class="btn btn-block pink confirm-submit"><i class="fa fa-heart"></i> Add Tutor to Approved Tutors List</button>
 										</div>
+
+										<div class="approved-tutors-list">Only tutors on this list can setup a tutoring session with you</div>
 
 									</form>
 								<?php endif; ?>

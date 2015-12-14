@@ -1040,3 +1040,11 @@ margin-bottom: 15px;
 	text-align: center;
 	padding: 12px;
 }
+
+.approved-tutors-list{
+	margin-bottom: 10px;
+	background: #fff;
+	margin-top: -5px;
+	padding: 5px;
+	text-align: center;
+}

@@ -2,23 +2,23 @@
 
 
 <?php if(isset($app->user->creditcard)): ?>
-	
+
 	<div class="row">
 		<div class="col s12 m4 l4">
 			<?php include('credit-safety.php'); ?>
 		</div>
 		<div class="col s12 m8 l8">
-			
+
 			<?php if(isset($doihaveerrors->id)): ?>
 				<h2>Payment Errors</h2>
 				<div class="block">
 					<p><?php echo $doihaveerrors->message; ?></p>
 					<p>Please delete your current card from the system and add a current & active credit card.</p>
 					<p>If you don't fix this issue within <span class="red-text">7 Days</span> your profile will be locked, and if you owe a tutor any amount of money you will be sent to collections.</p>
-					
+
 				</div>
 			<?php endif; ?>
-			
+
 			<h3>Your Credit Card Info</h3>
 			<ul class="collection">
 				<li class="collection-item">
@@ -62,13 +62,13 @@
 					</div>
 				</li>
 			</ul>
-			
+
 			<p></p>
 			<div>
 				<a class="btn red confirm-click" href="#" data-target="/payment/credit-card/deletecard">Delete Card</a>
 				<?php //<a class="btn green" id="updatecard" href="#updatecard">Update Card</a> ?>
 			</div>
-			
+
 
 				<form class="hide" id="updatecreditcard" action="" method="POST">
 					<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
@@ -83,11 +83,11 @@
 						data-allow-remember-me = "false"
 					></script>
 				</form>
-			
-			
+
+
 		</div>
 	</div>
-	
+
 <?php else: ?>
 
 	<div class="row">
@@ -95,13 +95,13 @@
 			<?php include('credit-safety.php'); ?>
 		</div>
 		<div class="col s12 m8 l8">
-			
+
 			<h3>Authorize A Credit Card</h3>
 			<div class="block">
 				<div class="row">
 					<div class="col s12 m8 l8">
 						<div>Click the authorize card to add your credit card to the secure online payment system.</div> <br>
-						<p>A credit card is required to message someone, but it won't be charged unless you have a tutoring session.</p>
+						<?php //<p>A credit card is required to message someone, but it won't be charged unless you have a tutoring session.</p> ?>
 					</div>
 					<div class="col s12 m4 l4 center-align">
 						<br>
@@ -129,5 +129,5 @@
 			</div>
 		</div>
 	</div>
-	
+
 <?php endif; ?>

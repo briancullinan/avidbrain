@@ -12,6 +12,7 @@
 					</div>
 				<?php endforeach; ?>
 			</div>
+			<div class="setup-additional"></div>
 		<?php else: ?>
 			You have no students
         <?php endif; ?>

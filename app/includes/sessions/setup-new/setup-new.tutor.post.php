@@ -18,12 +18,10 @@
 
 		if($creditcard==NULL){
 
-			#notify('OHNO');
-
-			$html = '<p class="confirm-payment-box orange white-text"> '.short($app->thestudent).' has no credit card on file. Please request they add it, so you can proceed. </p>';
+			$html = '<p class="confirm-payment-box orange white-text"> '.short($app->validuser).' has no credit card on file. Please request they add it, so you can proceed. </p>';
 			$html.= '<p><a class="btn btn-block" href="'.$app->validuser->url.'/send-message" target="_blank">Send Message</a></p>';
 			new Flash(
-				array('action'=>'confirm-payment','html'=>$html,'message'=>'Please Confirm','secret'=>random_all(12))
+				array('action'=>'custom','target'=>'.setup-additional','html'=>$html,'message'=>$html)
 			);
 
 		}

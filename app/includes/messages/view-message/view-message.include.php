@@ -134,7 +134,7 @@
 	&nbsp;
 <?php elseif(isset($action) && $action=='reply' && $app->viewmessage->location=='inbox'): ?>
 
-	<?php if(isset($app->user->creditcardonfile)): ?>
+	<?php if(isset($app->user->creditcardonfile) || isset($app->user->validateactive)): ?>
 
 		<?php
 
