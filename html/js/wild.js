@@ -5,6 +5,12 @@ $(document).ready(function() {
 		Cookies.set('affiliatetracking', affiliatetracking, { expires: 7 });
 	}
 
+	$('.searchbox, #setupsession_session_subject, #getprices_subject').autocomplete({
+		serviceUrl: '/get-subjects/',
+		type:'GET',
+		minChars:3
+	});
+
 	$('.form-post, .post-form').on('submit',function(){
 
 		$('.form-post .form-submit button').attr('disabled','disabled').addClass('disabled');
@@ -477,9 +483,7 @@ $(document).ready(function() {
 		    }
 		});
 
-		$('.searchbox, #setupsession_session_subject, #getprices_subject').autocomplete({
-		    serviceUrl: '/get-subjects'
-		});
+
 
 		$('.find-a-subject').autocomplete({
 		    serviceUrl: '/get-subjects',

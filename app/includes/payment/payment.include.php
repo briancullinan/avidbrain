@@ -69,6 +69,14 @@
 				<div><a href="/help/faqs/tutors">View Full Pay Table</a></div>
 
 			</div>
+		<?php elseif(isset($app->user->validateactive) && empty($app->user->creditcardonfile)): ?>
+
+			<div class="block">
+				<div class="title">Add A Credit Card</div>
+				<div>
+					<div> <a href="/payment/credit-card" class="btn btn-block blue">Credit Card Authorization</a> </div>
+				</div>
+			</div>
 		<?php elseif($app->user->usertype=='student' && empty($app->user->creditcardonfile)): ?>
 			<?php if(isset($app->notifications->type) && $app->notifications->type=='messages-waiting'): ?>
 			<div class="block messages-waiting">

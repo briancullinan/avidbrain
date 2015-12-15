@@ -1211,6 +1211,17 @@
 	}
 
 	function calculate_payrate($connect,$sessioninfo,$userinfo){
+		$payrate = array();
+		if(isset($sessioninfo->promocode) && $sessioninfo->promocode==$userinfo->email){
+			return 95;
+		}
+		else{
+			return whats_my_rate($connect,$userinfo);
+		}
+
+	}
+
+	function calculate_payrateGO($connect,$sessioninfo,$userinfo){
 
 		if(isset($sessioninfo->promocode) && $sessioninfo->promocode==$userinfo->email){
 			return 95;
@@ -1228,6 +1239,63 @@
 	}
 
 	function whats_my_rate($connect,$userinfo){
+
+		$rate = array();
+
+		if(isset($userinfo->top1000)){
+			$rate['top1000'] = 80;
+		}
+
+		if(isset($userinfo->anotheragency_rate)){
+			$rate['agency'] = intval($userinfo->anotheragency_rate);
+		}
+
+		$final = 70;
+		$rateTable = array(
+			70=>range(0,50),
+			75=>range(51,200),
+			80=>range(201,1000),
+			85=>range(1001,2000),
+			90=>range(2001,9000),
+			95=>range(9001,99999)
+		);
+
+		$sql = "SELECT
+				sum(session_length) as total
+			FROM
+				avid___sessions
+			WHERE
+				from_user = :from_user
+					AND
+				session_length IS NOT NULL
+		";
+
+		$prepare = array(':from_user'=>$userinfo->email);
+		$totalMinutes = $connect->executeQuery($sql,$prepare)->fetch();
+		$totalHours = floor($totalMinutes->total / 60);
+
+		$rate['time']['minutes'] = $totalMinutes->total;
+		$rate['time']['hours'] = $totalHours;
+
+		unset($rate['time']);
+
+		foreach($rateTable as $key =>$ratetime){
+			if(in_array($totalHours, $ratetime)){
+				$final = $key;
+				break;
+			}
+		}
+
+		$rate['final'] = $final;
+
+		arsort($rate);
+
+		return array_values($rate)[0];
+	}
+
+
+	function whats_my_rateGO($connect,$userinfo){
+
 		if(isset($userinfo->top1000)){
 			return 80;
 		}

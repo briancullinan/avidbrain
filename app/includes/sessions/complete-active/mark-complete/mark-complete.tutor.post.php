@@ -63,6 +63,7 @@
 			}
 
 			$payrate = calculate_payrate($app->connect,$app->markcomplete,$app->user);
+			
 
 			$creditcard = get_creditcard($app->markcomplete->customer_id);
 			if($creditcard==NULL){

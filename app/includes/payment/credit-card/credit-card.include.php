@@ -100,8 +100,7 @@
 			<div class="block">
 				<div class="row">
 					<div class="col s12 m8 l8">
-						<div>Click the authorize card to add your credit card to the secure online payment system.</div> <br>
-						<?php //<p>A credit card is required to message someone, but it won't be charged unless you have a tutoring session.</p> ?>
+						<div>Click the authorize card to add your credit card to the secure online payment system.</div> 
 					</div>
 					<div class="col s12 m4 l4 center-align">
 						<br>

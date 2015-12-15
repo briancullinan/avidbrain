@@ -1,13 +1,15 @@
 <?php
 
+
+
 	if(isset($app->approvedtutors->status)){
 		if($app->approvedtutors->status=='save'){
 			$app->connect->insert('avid___approved_tutors',array('student_email'=>$app->user->email,'tutor_email'=>$app->currentuser->email,'date'=>thedate()));
-			$app->redirect($app->currentuser->url);
+			$app->redirect($app->request->getPath());
 		}
 		elseif($app->approvedtutors->status=='remove'){
 			$app->connect->delete('avid___approved_tutors',array('student_email'=>$app->user->email,'tutor_email'=>$app->currentuser->email));
-			$app->redirect($app->currentuser->url);
+			$app->redirect($app->request->getPath());
 		}
 	}
 
