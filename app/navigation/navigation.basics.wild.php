@@ -168,7 +168,7 @@
 	$footerlinks['/tutors-by-location'] = (object) array('name'=>'Tutors By Location');
 	$footerlinks['/attributions'] = (object) array('name'=>'Attributions');
 	$footerlinks['/partners'] = (object) array('name'=>'Partners');
-	$footerlinks['/signup/affiliate'] = (object) array('name'=>'Affiliates');
+	//$footerlinks['/signup/affiliate'] = (object) array('name'=>'Affiliates');
 	$footerlinks['/sitemap'] = (object) array('name'=>'Sitemap');
 
 

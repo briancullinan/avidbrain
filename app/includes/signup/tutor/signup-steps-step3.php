@@ -14,10 +14,14 @@
                     <div class="input-wrapper" id="tutoringinfo_hourly_rate"><input type="text" name="tutoringinfo[hourly_rate]" placeholder="What is your hourly rate?" <?php echo 'value="'.isitset($app->newtutor->hourly_rate).'"'; ?> /></div>
                 </div>
 
-                <div class="new-inputs">
-                    <label>Please provide 3 References (Emails, or Phone Numbers) <span class="signup-required"><i class="fa fa-asterisk"></i></span></label>
-                    <div class="input-wrapper" id="tutoringinfo_references"><textarea class="materialize-textarea" name="tutoringinfo[references]" placeholder="Please provide 3 References"><?php echo isitset($app->newtutor->references); ?></textarea></div>
-                </div>
+                <?php
+                    /*
+                    <div class="new-inputs">
+                        <label>Please provide 3 References (Emails, or Phone Numbers) <span class="signup-required"><i class="fa fa-asterisk"></i></span></label>
+                        <div class="input-wrapper" id="tutoringinfo_references"><textarea class="materialize-textarea" name="tutoringinfo[references]" placeholder="Please provide 3 References"><?php echo isitset($app->newtutor->references); ?></textarea></div>
+                    </div>
+                    */
+                ?>
 
                 <div class="new-inputs">
                     <label>How far are you willing to travel? <span class="signup-required"><i class="fa fa-asterisk"></i></span></label>

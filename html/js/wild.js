@@ -892,6 +892,22 @@ $(document).ready(function() {
 		});
 	}
 
+	$('.complete-signup').on('click',function(){
+		var datastatus = $(this).attr('data-status');
+		if(datastatus=='closed'){
+			$(this).attr('data-status','open');
+			$('.complete-signup-form').slideDown(function(){
+				$('#li_email input').focus();
+			});
+		}
+		else if(datastatus=='open'){
+			$(this).attr('data-status','closed');
+			$('.complete-signup-form').slideUp(function(){
+				$('#ts_first_name input').focus();
+			});
+		}
+	});
+
 });
 $(window).on('scroll', function() {
     scrollPosition = $(this).scrollTop();

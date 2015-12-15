@@ -1,11 +1,24 @@
 <div class="new-signup">
 	<div class="row">
 		<div class="col s12 m6 l8">
-			<div class="tutor-signup-title"><h1>We're Looking For <?php echo $app->titleAdd; ?> Tutors</h1></div>
+			<div class="tutor-signup-title">
+				<h1>We're Looking For <?php echo $app->titleAdd; ?> <?php if(isset($app->replace)){ echo $app->replace; }else{ echo ' Tutors ';} ?> </h1>
+			</div>
 			<div class="tutor-signup-sub"><h2>Just Like You</h2></div>
 			<p class="signup-copy">
-				Teach with AvidBrain and earn money as an independent contractor. Get paid bi-weekly for teaching something you love.
+				<?php if(isset($app->replacetext)){ echo $app->replacetext; }else{ echo 'Teach with AvidBrain and earn money as an independent contractor. Get paid bi-monthly for teaching something you love.';} ?>
 			</p>
+
+			<?php if(isset($promocode) && $promocode == 'AvidTeach'): ?>
+				<h3>So What Benefits do Teachers Get?</h3>
+				<p>Anyone who signs up using our teacher promo page gets benefits that all teachers deserve!</p>
+				<div><strong>Free background check</strong></div>
+				<p>Let AvidBrain cover your start up costs on AvidBrain, so you can focus on what you do best- Teaching!</p>
+				<div><strong>Make More</strong></div>
+				<p>Start off taking home 80% of your take home pay as soon as you start.</p>
+				<div><strong>Earn in other ways</strong></div>
+				<p>Have teacher friends that may also want to tutor? Become an affiliate and make $20 for every other teacher that signs up and has a session.</p>
+			<?php endif; ?>
 
 			<div class="blocks">
 				<div class="row">
@@ -50,7 +63,7 @@
 					</div>
 				</div>
 
-				<div class="row">
+				<div class="row see-how-much">
 					<div class="col s12 m4 l4">
 						<div class="center-align"><img src="/images/icons/see.png" class="responsive-img" /></div>
 					</div>
@@ -170,10 +183,17 @@
 									$promocode = $affiliatetracking;
 								}
 							?>
+							<?php if(isset($app->promoactivate->text)): ?>
+								<div class="promo-activate">
+									<div class="<?php echo $app->promoactivate->class; ?>">
+										<?php echo $app->promoactivate->text; ?>
+									</div>
+								</div>
+							<?php endif; ?>
 
 							<div class="col s12 m12 l12">
 								<?php if(isset($app->titleAdd) && !empty($app->titleAdd)){ echo '<div class="input-wrapper-text">Promo Code</div>';} ?>
-								<div class="input-wrapper <?php if(isset($app->titleAdd) && !empty($app->titleAdd)){ echo 'active-wrapper';} ?>" id="ts_promocode"><input <?php if(isset($app->titleAdd) && !empty($app->titleAdd)){ echo 'readonly="readonly"';} ?> type="text" name="tutorsignup[tutor][promocode]" placeholder="Promo Code (Optional)" value="<?php if(isset($promocode)){ echo $promocode; } ?>" /></div>
+								<div class="input-wrapper <?php if(isset($app->promoactivate->class)){ echo $app->promoactivate->class; } ?> <?php if(isset($app->titleAdd) && !empty($app->titleAdd)){ echo 'active-wrapper';} ?>" id="ts_promocode"><input <?php if(isset($app->titleAdd) && !empty($app->titleAdd)){ echo 'readonly="readonly"';} ?> type="text" name="tutorsignup[tutor][promocode]" placeholder="Promo Code (Optional)" value="<?php if(isset($promocode)){ echo $promocode; } ?>" /></div>
 							</div>
 
 						</div>
@@ -243,28 +263,31 @@
 						</div>
 				  	</div>
 
-					<div class="new-inputs">
-						<div class="row">
-							<div class="col s12 m12 l12" id="ts_stats">
-								<input type="checkbox" class="filled-in" name="tutorsignup[tutor][stats]" id="stats" />
-								<label for="stats">I have all these items:
+					<?php
+						/*
 
-									<ul>
-										<li>
-											Resume
-										</li>
-										<li>
-											Photo of Myself
-										</li>
-										<li>
-											3 References
-										</li>
-									</ul>
+						<div class="new-inputs">
+							<div class="row">
+								<div class="col s12 m12 l12" id="ts_stats">
+									<input type="checkbox" class="filled-in" name="tutorsignup[tutor][stats]" id="stats" />
+									<label for="stats">I have all these items:
 
-								</label>
+										<ul>
+											<li>
+												Photo of Myself
+											</li>
+											<li>
+												3 References
+											</li>
+										</ul>
+
+									</label>
+								</div>
 							</div>
-						</div>
-				  	</div>
+					  	</div>
+
+						*/
+					?>
 
 					<div class="new-inputs">
 						<div class="row">
@@ -339,108 +362,45 @@
 
 			</ul>
 
-			<h3>Application Process</h3>
-			<ul class="collection">
+			<div class="application-process">
+				<h3>Application Process</h3>
+				<ul class="collection">
 
-				<li class="collection-item">
-					<div class="row">
-						<div class="col s1 m1 l1"><i class="fa fa-check light-green-text accent-2-text"></i></div>
-						<div class="col s11 m11 l11"> Submit your application and resume </div>
-					</div>
-				</li>
-				<li class="collection-item">
-					<div class="row">
-						<div class="col s1 m1 l1"><i class="fa fa-check light-green-text accent-2-text"></i></div>
-						<div class="col s11 m11 l11"> Schedule a phone interview with one of our staff members </div>
-					</div>
-				</li>
-				<li class="collection-item">
-					<div class="row">
-						<div class="col s1 m1 l1"><i class="fa fa-check light-green-text accent-2-text"></i></div>
-						<div class="col s11 m11 l11"> Mandatory Background Check <span class="green-text">($29.99)</span> </div>
-					</div>
-				</li>
-				<li class="collection-item">
-					<div class="row">
-						<div class="col s1 m1 l1"><i class="fa fa-check light-green-text accent-2-text"></i></div>
-						<div class="col s11 m11 l11"> Profile Creation </div>
-					</div>
-				</li>
-				<li class="collection-item">
-					<div class="row">
-						<div class="col s1 m1 l1"><i class="fa fa-check light-green-text accent-2-text"></i></div>
-						<div class="col s11 m11 l11"> Start Tutoring </div>
-					</div>
-				</li>
+					<li class="collection-item">
+						<div class="row">
+							<div class="col s1 m1 l1"><i class="fa fa-check light-green-text accent-2-text"></i></div>
+							<div class="col s11 m11 l11"> Submit your application and resume </div>
+						</div>
+					</li>
+					<li class="collection-item">
+						<div class="row">
+							<div class="col s1 m1 l1"><i class="fa fa-check light-green-text accent-2-text"></i></div>
+							<div class="col s11 m11 l11"> Schedule a phone interview with one of our staff members </div>
+						</div>
+					</li>
+					<li class="collection-item">
+						<div class="row">
+							<div class="col s1 m1 l1"><i class="fa fa-check light-green-text accent-2-text"></i></div>
+							<div class="col s11 m11 l11"> Mandatory Background Check <span class="green-text">($29.99)</span> </div>
+						</div>
+					</li>
+					<li class="collection-item">
+						<div class="row">
+							<div class="col s1 m1 l1"><i class="fa fa-check light-green-text accent-2-text"></i></div>
+							<div class="col s11 m11 l11"> Profile Creation </div>
+						</div>
+					</li>
+					<li class="collection-item">
+						<div class="row">
+							<div class="col s1 m1 l1"><i class="fa fa-check light-green-text accent-2-text"></i></div>
+							<div class="col s11 m11 l11"> Start Tutoring </div>
+						</div>
+					</li>
 
-			</ul>
+				</ul>
+			</div>
 
 		</div>
 	</div>
 
-	<?php
-		//https://www.iconfinder.com/iconsets/anchor
-	?>
-
 </div>
-
-
-<style type="text/css">
-.complete-signup{
-	background: #000;
-	text-align: center;
-	padding: 5px;
-	border: solid 2px #444;
-	border-bottom: none;
-	color: #ccc;
-	cursor: pointer;
-}
-.complete-signup span{
-	background: #444;
-	border: solid 1px #777;
-	display: inline-block;
-	padding: 5px 10px;
-}
-.complete-signup:hover{
-	background: #333;
-	color: #fff;
-}
-.complete-signup-form{
-	background: #ccc;
-	float: left;
-	width: 100%;
-	display: none;
-}
-.complete-signup-form-text{
-
-	padding: 10px 10px 0px 10px;
-	text-align: center;
-	font-size: 12px;
-}
-.new-inputs.login-button, .new-inputs.login-button .row, .complete-signup-form .new-inputs{
-	margin-bottom: 0px;
-}
-</style>
-
-
-<script type="text/javascript">
-
-	$(document).ready(function() {
-		$('.complete-signup').on('click',function(){
-			var datastatus = $(this).attr('data-status');
-			if(datastatus=='closed'){
-				$(this).attr('data-status','open');
-				$('.complete-signup-form').slideDown(function(){
-					$('#li_email input').focus();
-				});
-			}
-			else if(datastatus=='open'){
-				$(this).attr('data-status','closed');
-				$('.complete-signup-form').slideUp(function(){
-					$('#ts_first_name input').focus();
-				});
-			}
-		});
-	});
-
-</script>

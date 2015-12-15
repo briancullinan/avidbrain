@@ -725,6 +725,9 @@ background-attachment: fixed;
 .maintutor.phoenix main{
 	background-image: url('/images/subs/phoenix.jpg');
 }
+.maintutor.holidays main{
+	background-image: url('/images/subs/holidays.jpg');
+}
 .maintutor.losangeles main{
 	background-image: url('/images/subs/losengeles.jpg');
 }
@@ -749,6 +752,20 @@ background-attachment: fixed;
 	border: 1px solid #dcdcdc;
     padding: 8px 12px;
 	background: #fff;
+}
+.input-wrapper.holidays-activate{
+	background: red;
+}
+.input-wrapper.holidays-activate input{
+	font-size: 22px;
+	text-align: center;
+	color: #fff;
+}
+.promo-activate{
+	padding:0px 13px;
+}
+.promo-activate .holidays-activate{
+
 }
 .input-wrapper.active-wrapper{
 	-moz-box-shadow:inset 0 0 10px #000;
@@ -1047,4 +1064,44 @@ margin-bottom: 15px;
 	margin-top: -5px;
 	padding: 5px;
 	text-align: center;
+}
+
+
+.complete-signup{
+	background: #000;
+	text-align: center;
+	padding: 5px;
+	border: solid 2px #444;
+	border-bottom: none;
+	color: #ccc;
+	cursor: pointer;
+}
+.complete-signup span{
+	background: #444;
+	border: solid 1px #777;
+	display: inline-block;
+	padding: 5px 10px;
+}
+.complete-signup:hover{
+	background: #333;
+	color: #fff;
+}
+.complete-signup-form{
+	background: #ccc;
+	float: left;
+	width: 100%;
+	display: none;
+}
+.complete-signup-form-text{
+
+	padding: 10px 10px 0px 10px;
+	text-align: center;
+	font-size: 12px;
+}
+.new-inputs.login-button, .new-inputs.login-button .row, .complete-signup-form .new-inputs{
+	margin-bottom: 0px;
+}
+
+.avidteach .see-how-much, .avidteach .application-process{
+	display: none;
 }

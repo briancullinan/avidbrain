@@ -1,6 +1,11 @@
 @charset "utf-8";
 
 @media only screen and (max-width: 500px){
+
+	.avidteach .signup-copy{
+		font-size: 17px;
+	}
+
 	.logo-affiliate img{
 		max-height: 40px;
 	}
@@ -95,6 +100,11 @@
 }
 
 @media only screen and (max-width: 992px){
+
+	.avidteach .signup-copy{
+		font-size: 17px;
+	}
+
 	.logo.logo-main{
 		display: none;
 	}

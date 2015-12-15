@@ -2,6 +2,10 @@
 
 	if(isset($app->tutorsignup->tutor)){
 
+		if(isset($app->tutorsignup->tutor->promocode)){
+			$app->tutorsignup->tutor->promocode = strtolower($app->tutorsignup->tutor->promocode);
+		}
+
 		if(isset($app->tutorsignup->tutor->phone)){
 			$app->tutorsignup->tutor->phone = preg_replace("/[^0-9,.]/", "", $app->tutorsignup->tutor->phone);
 		}
@@ -42,19 +46,41 @@
 		elseif(empty($app->tutorsignup->tutor->legalresident)){
 			new Flash(array('action'=>'required','message'=>'Please verify your U.S. Work Status','formID'=>'tutorsignup','field'=>'ts_legalresident'));
 		}
-		elseif(empty($app->tutorsignup->tutor->stats)){
-			new Flash(array('action'=>'required','message'=>'Make sure you have all your information ready','formID'=>'tutorsignup','field'=>'ts_stats'));
+
+		if(isset($app->tutorsignup->tutor->promocode) && $app->tutorsignup->tutor->promocode=='holidays'){
+			$sql = "
+				SELECT
+					user.promocode
+				FROM
+					avid___user user
+				WHERE
+					user.promocode = :promocode
+			";
+			$prepare = array(
+				':promocode'=>$app->tutorsignup->tutor->promocode
+			);
+			$howmany = $app->connect->executeQuery($sql,$prepare)->rowCount();
+			if($howmany < 100){
+				$app->tutorsignup->tutor->promocode = 'get80';
+			}
 		}
-
-
-		// $query = "SELECT * FROM signup_avidbrain.signup___signups WHERE email = :email ";
-		// $prepare = array(':email'=>$app->tutorsignup->tutor->email);
-		// $signupcount = $app->connect->executeQuery($query,$prepare)->fetch();
-		// if($signupcount->status && $signupcount->status!='Pass'){
-		// 	new Flash(array('action'=>'required','message'=>'Email address already used to signup','formID'=>'tutorsignup','field'=>'ts_email'));
-		// }
-
-		//notify('snakes');
+		elseif(isset($app->tutorsignup->tutor->promocode) && $app->tutorsignup->tutor->promocode=='avidteach'){
+			$sql = "
+				SELECT
+					user.promocode
+				FROM
+					avid___user user
+				WHERE
+					user.promocode = :promocode
+			";
+			$prepare = array(
+				':promocode'=>$app->tutorsignup->tutor->promocode
+			);
+			$howmany = $app->connect->executeQuery($sql,$prepare)->rowCount();
+			if($howmany < 100){
+				$app->tutorsignup->tutor->promocode = 'get80--free-backgroundcheck';
+			}
+		}
 
 		$password = password_hash($app->tutorsignup->tutor->password, PASSWORD_BCRYPT);
 		$tutoredbefore = NULL;
@@ -216,9 +242,9 @@
 		elseif($app->tutoringinfo->hourly_rate<10){
 			new Flash(array('action'=>'required','message'=>'$10 Minimum Hourly Rate','formID'=>'tutoringinfo','field'=>'tutoringinfo_hourly_rate'));
 		}
-		elseif(empty($app->tutoringinfo->references)){
-			new Flash(array('action'=>'required','message'=>'Please provide 3 references','formID'=>'tutoringinfo','field'=>'tutoringinfo_references'));
-		}
+		// elseif(empty($app->tutoringinfo->references)){
+		// 	new Flash(array('action'=>'required','message'=>'Please provide 3 references','formID'=>'tutoringinfo','field'=>'tutoringinfo_references'));
+		// }
 		elseif($app->tutoringinfo->travel_distance=='--'){
 			new Flash(array('action'=>'required','message'=>'Please select an option','formID'=>'tutoringinfo','field'=>'tutoringinfo_travel_distance'));
 		}
@@ -238,7 +264,7 @@
 			'hourly_rate'=>$app->tutoringinfo->hourly_rate,
 			'online_tutor'=>$app->tutoringinfo->online_tutor,
 			'travel_distance'=>$app->tutoringinfo->travel_distance,
-			'`references`'=>$app->tutoringinfo->references,
+			//'`references`'=>$app->tutoringinfo->references,
 			'tutorinfo'=>1
 		);
 
@@ -366,7 +392,7 @@
 
 		$croppedfileName = str_replace($app->dependents->APP_PATH.'uploads/photos/','',$croppedfileName);///var/www/amozek.dev/app/uploads/photos/
 
-		
+
 
 		$app->connect->update('avid___new_temps',array('addaphoto'=>1,'cropped'=>$croppedfileName),array('email'=>$app->newtutor->email));
 		$app->redirect('/signup/tutor/mysubjects');
@@ -652,7 +678,7 @@
 		}
 
 		$app->mailgun->to = $emails;
-		$app->mailgun->subject = 'A new tutor has completed their initial profile';
+		$app->mailgun->subject = 'A new tutor has completed their tutor profile';
 		$app->mailgun->message = $message;
 		$app->mailgun->send();
 
@@ -665,7 +691,7 @@
 		$app->mailgun->send();
 
 
-		new Flash(array('action'=>'jump-to','formID'=>'signuplogin','location'=>'/confirmation/new-tutor-signup','message'=>'Application Sent'));
+		new Flash(array('action'=>'jump-to','formID'=>'signuplogin','location'=>'/confirmation/new-tutor-signup','message'=>'Application Submitted For Approval'));
 
 	}
 	elseif(isset($app->getprices)){

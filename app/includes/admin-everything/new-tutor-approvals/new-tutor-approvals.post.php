@@ -117,6 +117,14 @@
             'my_upload_status'=>'verified'
         );
 
+        if(isset($app->thetutor->promocode) && $app->thetutor->promocode=='get80--free-backgroundcheck'){
+            $profile['top1000'] = 1;
+            $app->thetutor->promocode = 'AvidTeach';
+        }
+        elseif(isset($app->thetutor->promocode) && $app->thetutor->promocode=='get80'){
+            $profile['top1000'] = 1;
+        }
+
         $app->connect->insert('avid___user_profile',$profile);
 
         if(empty($app->thetutor->candidate_id)){

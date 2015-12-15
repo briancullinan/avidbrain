@@ -226,8 +226,8 @@
 	$routes['signup-tutor-promocode'] = (object)array('url'=>'/signup/tutor','slug'=>'tutor','route'=>'/signup/tutor/:promocode/','include'=>'signup/tutor','protected'=>NULL,'permissions'=>array());
 	$routes['qa-signup'] = (object)array('url'=>'/signup/qa','slug'=>'qa','route'=>'/signup/qa/','include'=>'signup/qa','protected'=>NULL,'permissions'=>array());
 
-	$routes['signup-affiliate'] = (object)array('url'=>'/signup/affiliate','slug'=>'affiliate','route'=>'/signup/affiliate/','include'=>'signup/affiliate','protected'=>NULL,'permissions'=>array());
-	$routes['signup-affiliate-code'] = (object)array('url'=>'/signup/affiliate/code','slug'=>'code','route'=>'/signup/affiliate/:code/','include'=>'signup/affiliate/code','protected'=>NULL,'permissions'=>array());
+	//$routes['signup-affiliate'] = (object)array('url'=>'/signup/affiliate','slug'=>'affiliate','route'=>'/signup/affiliate/','include'=>'signup/affiliate','protected'=>NULL,'permissions'=>array());
+	//$routes['signup-affiliate-code'] = (object)array('url'=>'/signup/affiliate/code','slug'=>'code','route'=>'/signup/affiliate/:code/','include'=>'signup/affiliate/code','protected'=>NULL,'permissions'=>array());
 
 	// Resources
 	$routes['resources'] = (object)array('url'=>'/resources','slug'=>'resources','route'=>'/resources/','include'=>'resources','protected'=>true,'permissions'=>array());
@@ -287,7 +287,8 @@
 		$routes['admin-stats'] = (object)array('url'=>'/admin-everything/stats','slug'=>'stats','route'=>'/admin-everything/stats/','include'=>'admin-everything/stats','protected'=>true,'permissions'=>array('admin'));
 		$routes['admin-stats-page'] = (object)array('url'=>'/admin-everything/stats','slug'=>'stats','route'=>'/admin-everything/stats/:page/','include'=>'admin-everything/stats','protected'=>true,'permissions'=>array('admin'));
 		$routes['admin-newtutor-approvals'] = (object)array('url'=>'/admin-everything/new-tutor-approvals','slug'=>'new-tutor-approvals','route'=>'/admin-everything/new-tutor-approvals/','include'=>'admin-everything/new-tutor-approvals','protected'=>true,'permissions'=>array('admin'));
-		$routes['admin-newtutor-approvals-page'] = (object)array('url'=>'/admin-everything/new-tutor-approvals','slug'=>'new-tutor-approvals','route'=>'/admin-everything/new-tutor-approvals/:id/','include'=>'admin-everything/new-tutor-approvals','protected'=>true,'permissions'=>array('admin'));
+		$routes['admin-newtutor-approvals-action'] = (object)array('url'=>'/admin-everything/new-tutor-approvals','slug'=>'new-tutor-approvals','route'=>'/admin-everything/new-tutor-approvals/:action/','include'=>'admin-everything/new-tutor-approvals','protected'=>true,'permissions'=>array('admin'));
+		$routes['admin-newtutor-approvals-page'] = (object)array('url'=>'/admin-everything/new-tutor-approvals','slug'=>'new-tutor-approvals','route'=>'/admin-everything/new-tutor-approvals/:action/:id/','include'=>'admin-everything/new-tutor-approvals','protected'=>true,'permissions'=>array('admin'));
 		$routes['admin-newtutor-approvals-page-action'] = (object)array('url'=>'/admin-everything/new-tutor-approvals','slug'=>'new-tutor-approvals','route'=>'/admin-everything/new-tutor-approvals/:id/:action/','include'=>'admin-everything/new-tutor-approvals','protected'=>true,'permissions'=>array('admin'));
 		//$routes['admin-stats-page'] = (object)array('url'=>'/admin-everything/stats/page','slug'=>'page','route'=>'/admin-everything/stats/:page/','include'=>'admin-everything/stats/page','protected'=>true,'permissions'=>array('admin'));
 

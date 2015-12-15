@@ -12,24 +12,28 @@
 
 
                 <form method="post" action="/signup/tutor/" class="form-post">
-                    <p>Would you like to be interviewed by our staff?</p>
+                    <?php
+                        /*
+                        <p>Would you like to be interviewed by our staff?</p>
 
-                    <div class="new-inputs">
-                        <input name="finishapplication[yesinterview]" <?php if(isitset($app->newtutor->timeday)){ echo 'checked="checked"'; } ?> class="filled-in" type="checkbox" value="1" id="yesinterview" />
-                        <label for="yesinterview">
-                            Yes, I would love to have an interview
-                        </label>
-                    </div>
+                        <div class="new-inputs">
+                            <input name="finishapplication[yesinterview]" <?php if(isitset($app->newtutor->timeday)){ echo 'checked="checked"'; } ?> class="filled-in" type="checkbox" value="1" id="yesinterview" />
+                            <label for="yesinterview">
+                                Yes, I would love to have an interview
+                            </label>
+                        </div>
 
-                    <div class="new-inputs">
-                        <label>If Yes. What time / day would be best for you?</label>
-                        <div class="input-wrapper" id="finishapplication_timeday"><input type="text" name="finishapplication[timeday]" placeholder="What time / day would be best for you?" <?php echo 'value="'.isitset($app->newtutor->timeday).'"'; ?> /></div>
-                    </div>
+                        <div class="new-inputs">
+                            <label>If Yes. What time / day would be best for you?</label>
+                            <div class="input-wrapper" id="finishapplication_timeday"><input type="text" name="finishapplication[timeday]" placeholder="What time / day would be best for you?" <?php echo 'value="'.isitset($app->newtutor->timeday).'"'; ?> /></div>
+                        </div>
+                        */
+                    ?>
 
                     <input type="hidden" name="finishapplication[target]" value="finishapplication"  />
                     <input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
 
-                    <div class="alert red white-text">Once you submit your profile for review, you will be logged out, and we will review your application.</div>
+
                     <input type="hidden" name="finishapplication[alldone]" value="alldone"  />
                     <button class="btn confirm-submit" type="button">
                         Submit My Profile For Review
@@ -40,18 +44,20 @@
 
     	</div>
     	<div class="col s12 m6 l6">
-            <div class="help-info">
-                <div class="title">Help</div>
-                <p>If you would like to have an interview, just let us know and we can set one up.</p>
+            <p class="alert red white-text"> Once you submit your profile for review, you will be logged out, and we will review your application. </p>
+            <?php
+                /*
 
-            </div>
-            <div class="require-check">
-                <div class="title">Required Background Check</div>
-                <p>Everyone single one of our tutors has to pass a <span>background check</span> before they can interact with students.  </p>
-                <p>We don't require the background check to complete a profile and become a tutor, but once a student has contacted you, and you want to setup a tutoring session, it's required. </p>
-                <p>When you apply for the background check, you are purchasing a background check, which is <span class="green-text">$29.99 (Non-Refundable)</span>, you may request a copy of the background check at any time from our provider <a href="https://checkr.com/" target="_blank">Checkr</a>.</p>
+                <div class="require-check">
+                    <div class="title">Required Background Check</div>
+                    <p>Everyone single one of our tutors has to pass a <span>background check</span> before they can interact with students.  </p>
+                    <p>We don't require the background check to complete a profile and become a tutor, but once a student has contacted you, and you want to setup a tutoring session, it's required. </p>
+                    <p>When you apply for the background check, you are purchasing a background check, which is <span class="green-text">$29.99 (Non-Refundable)</span>, you may request a copy of the background check at any time from our provider <a href="https://checkr.com/" target="_blank">Checkr</a>.</p>
 
-            </div>
+                </div>
+
+                */
+            ?>
     	</div>
     </div>
 </div>

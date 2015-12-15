@@ -75,5 +75,24 @@
 			$app->titleAdd = 'Los Angeles';
 			$app->target->css.=' losangeles ';
 		}
+		elseif($promocode=='holidays'){
+			$app->titleAdd = NULL;
+			$promoactivate = new stdClass();
+			$promoactivate->class = ' holidays-activate ';
+			$promoactivate->text = 'Get 80% Pay';
+			$app->promoactivate = $promoactivate;
+			$app->target->css.=' holidays ';
+		}
+		elseif($promocode=='avidteach'){
+			//$app->titleAdd = 'avidteach';
+			$app->replace = ' Teachers ';
+			$app->replacetext = 'Year after year we see teachers work harder and get paid less. At AvidBrain we want to change this, that is why we are excited to lauch AvidTeach: our new program to introduce teachers to AvidBrain and empower them with the skills they already have. <strong>Over the next 18 months, we will on-board 50,000 members of the  education community to the AvidBrain platform.</strong>';
+			$promoactivate = new stdClass();
+			$promoactivate->class = ' holidays-activate ';
+			$promoactivate->text = 'Get 80% Pay';
+			$app->promoactivate = $promoactivate;
+			$app->target->css.=' avidteach ';
+		}
+
 
 	}

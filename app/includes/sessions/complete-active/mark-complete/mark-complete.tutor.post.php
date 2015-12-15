@@ -63,7 +63,7 @@
 			}
 
 			$payrate = calculate_payrate($app->connect,$app->markcomplete,$app->user);
-			
+
 
 			$creditcard = get_creditcard($app->markcomplete->customer_id);
 			if($creditcard==NULL){
@@ -182,7 +182,7 @@
 				$chargeCard->id = NULL;
 			}
 
-
+				$session['charge_id'] = $chargeCard->id;
 			//
 				// Update Session
 				$app->connect->update('avid___sessions',$session,array('id'=>$app->markcomplete->id,'from_user'=>$app->user->email));
