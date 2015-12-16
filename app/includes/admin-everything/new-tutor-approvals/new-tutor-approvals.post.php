@@ -166,7 +166,7 @@
 
         $app->connect->update('avid___new_temps',array('approval_status'=>'rejected'),array('email'=>$app->thetutor->email));
 
-        $app->redirect('/admin-everything/new-tutor-approvals/'.$id);
+        $app->redirect('/admin-everything/new-tutor-approvals/');
 
     }
     elseif(isset($app->compbackgroundcheck)){
