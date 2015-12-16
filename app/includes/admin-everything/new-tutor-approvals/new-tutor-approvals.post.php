@@ -164,6 +164,8 @@
     }
     elseif(isset($app->rejectprofile)){
 
+        notify('toast');
+
         $app->connect->update('avid___new_temps',array('approval_status'=>'rejected'),array('email'=>$app->thetutor->email));
 
         $app->redirect('/admin-everything/new-tutor-approvals/');
