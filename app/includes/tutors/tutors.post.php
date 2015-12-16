@@ -1,5 +1,7 @@
 <?php
 
+
+
 	$app->filterbylocation = 'tutorssearch';
 
 	if(isset($app->search->target)){
@@ -68,7 +70,7 @@
 					, round(((acos(sin((" . $cachedZipcode->lat . "*pi()/180)) * sin((user.lat*pi()/180))+cos((" . $cachedZipcode->lat . "*pi()/180)) * cos((user.lat*pi()/180)) * cos(((" .$cachedZipcode->long. "- user.long)* pi()/180))))*180/pi())*60*1.1515)
 				";
 
-				$asDistance = ' as distance, user.city_slug, user.state_slug ';
+				$asDistance = ' as distance ';
 
 				$additional.= $getDistance.$asDistance;
 
@@ -80,27 +82,35 @@
 	}
 
 
-	if(isset($app->search->search)){
+	if(!empty($app->search->search)){
 
-		$searchkeyword = $app->search->search;
+		$additional.= "
 
-		$additional.=", subjects.subject_name ";
+			, subjects.subject_name
+
+		";
 
 		$subjectJoin = "
 
 			INNER JOIN
-
-				avid___user_subjects subjects on user.email = subjects.email AND subjects.subject_name LIKE :searchSubject
+				avid___user_subjects subjects
+					on subjects.email = user.email
 
 		";
+
+		$additionalWhere.="
+			AND
+				subjects.subject_name LIKE :searchSubject
+		";
+
+		$searchkeyword = $app->search->search;
 		$prepared[':searchSubject'] = "%$searchkeyword%";
+
+		//notify($additionalWhere);
 	}
 
-	//$additional = rtrim($additional,', ');
-	//$additional = trim($additional, ", ");
-	//notify($additional);
-
 	$orderBy = NULL;
+	$starsJoin = NULL;
 
 	if(isset($app->filterby)){
 		if($app->filterby=='highestrate'){
@@ -113,7 +123,44 @@
 			$orderBy = "ORDER BY user.last_active DESC";
 		}
 		elseif($app->filterby=='higheststarscore'){
-			notify('GET SOME STARS');
+			$additional.= "
+			,
+
+			round(
+				(
+					SELECT
+						sum(sessions.review_score) as sum
+					FROM
+						avid___sessions sessions
+					WHERE
+						sessions.from_user = user.email
+				) /
+
+				(
+					SELECT
+						count(sessions.review_score) as count
+					FROM
+						avid___sessions sessions
+					WHERE
+						sessions.from_user = user.email
+				) ,2) as star_score
+
+			";
+
+			$additionalWhere.= "
+
+				AND
+				(
+					SELECT
+						sum(sessions.review_score) as sum
+					FROM
+						avid___sessions sessions
+					WHERE
+						sessions.from_user = user.email
+				) IS NOT NULL
+			";
+
+			$orderBy = "ORDER BY star_score DESC";
 		}
 		elseif(!empty($app->search->zipcode) && $app->filterby=='furthestdistance'){
 			$orderBy = "ORDER BY distance DESC";
@@ -143,16 +190,28 @@
 		SELECT
 			SQL_CALC_FOUND_ROWS
 				user.first_name,
+				user.last_name,
+				user.username,
 				user.email,
 				user.url,
 				user.last_active,
 				user.usertype,
 				user.last_active,
+				user.emptybgcheck,
+				user.city_slug,
+				user.state_slug,
+				user.city,
+				user.state_long,
+				user.zipcode,
+
+
 				profile.hourly_rate,
 				profile.my_avatar,
 				profile.my_avatar_status,
 				profile.my_upload,
-				profile.my_upload_status
+				profile.my_upload_status,
+				profile.short_description_verified,
+				profile.personal_statement_verified
 
 				$additional
 
@@ -160,6 +219,8 @@
 			avid___user user
 
 		$subjectJoin
+
+		$starsJoin
 
 		INNER JOIN
 
@@ -195,7 +256,11 @@
 	";
 
 	//notify($sql);
+
 	$alltheresults = $app->connect->executeQuery($sql,$prepared)->fetchAll();
+
+	//notify($alltheresults);
+
 	$howmany = $app->connect->executeQuery("SELECT FOUND_ROWS() as count",array())->fetch();
 	$app->count = $howmany->count;
 	if($app->count>0){

@@ -608,7 +608,14 @@
 			$message.='<p> <strong> Background Check Purchased  </strong> </p>';
 		}
 
-		$app->mailgun->to = 'keith@avidbrain.com,jake.stoll@avidbrain.com,david@avidbrain.com';
+		if($app->dependents->DEBUG==true){
+			$emails = 'david@avidbrain.com';
+		}
+		else{
+			$emails = 'keith@avidbrain.com,jake.stoll@avidbrain.com,david@avidbrain.com';
+		}
+
+		$app->mailgun->to = $emails;
 		$app->mailgun->subject = 'A new tutor has completed their initial profile';
 		$app->mailgun->message = $message;
 		$app->mailgun->send();
