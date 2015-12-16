@@ -1,299 +1,186 @@
 <?php
 
-
-
-	$app->filterbylocation = 'tutorssearch';
-
-	if(isset($app->search->target)){
-		unset($app->search->target);
+	if(isset($app->search) && !empty($app->search)){
+		foreach($app->search as $keys => $unset){
+			if(empty($unset)){
+				unset($app->search->$keys);
+			}
+		}
 	}
 
 	$jsonSearch = json_encode($app->search);
 	$app->setCookie('searching',$jsonSearch, '2 days');
 
-	$prepared = array();
-	$prepared[':usertype'] = 'tutor';
+	$data	=	$app->connect->createQueryBuilder();
+	$data	=	$data->select('user.email,user.emptybgcheck');
+	$data	=	$data->innerJoin('user','avid___user_profile','profile','user.email = profile.email');
+	$data	=	$data->from('avid___user','user');
 
-	$additional = NULL;
-	$additionalWhere = NULL;
-	$subjectJoin = NULL;
-	$having = NULL;
-
-
-	if(isset($app->search->advanced) && $app->search->advanced=='on' || isset($app->search->advanced) && $app->search->advanced==true){
-
-		if(!empty($app->search->name)){
-			$additionalWhere.= "\n AND CONCAT(user.first_name,' ',user.last_name) LIKE :name";
-			$additional.= ', user.first_name ';//CONCAT(user.first_name," ",user.last_name)
-			$searchname = $app->search->name;
-			$prepared[':name'] = "%$searchname%";
-		}
-
-		if(!empty($app->search->gender)){
-			$additionalWhere.= "\n AND profile.gender = :gender";
-			$additional.= ', profile.gender';
-			$searchgender = $app->search->gender;
-			$prepared[':gender'] = $searchgender;
-		}
-
-		if(isset($app->search->pricerangeLower) && isset($app->search->pricerangeUpper)){
-
-			$additionalWhere.= "\n AND profile.hourly_rate BETWEEN :pricerangeLower and :pricerangeUpper ";
-			$prepared[':pricerangeLower'] = $app->search->pricerangeLower;
-			$prepared[':pricerangeUpper'] = $app->search->pricerangeUpper;
-		}
+	$data	=	$data->where('user.usertype = :usertype')->setParameter(":usertype","tutor");
+	$data	=	$data->andWhere('user.status IS NULL');
+	$data	=	$data->andWhere('user.hidden IS NULL');
+	$data	=	$data->andWhere('profile.hourly_rate IS NOT NULL');
+	$data	=	$data->andWhere('user.lock IS NULL');
+	$data	=	$data->andWhere('user.last_active >= DATE_SUB(CURDATE(), INTERVAL 8 MONTH)');
+	$data	=	$data->innerJoin('user','avid___user_account_settings','settings','user.email = settings.email');
+	if(empty($app->user->email)){
+		$data	=	$data->andWhere('settings.loggedinprofile = "no"');
 	}
 
-	if(!empty($app->search->zipcode)){
+	//notify($app->dependents);
 
-		if(empty($app->search->distance)){
-			$app->search->distance = 15;
+	//echo $variableJones;
+
+
+		$arrays = array();
+		if(isset($app->search->search)){
+			$data	=	$data->addSelect('subjects.subject_name');
+			$data	=	$data->innerJoin('user','avid___user_subjects','subjects','user.email = subjects.email');
+			$data	=	$data->andWhere('subjects.subject_name LIKE :subject_name');
+			//$data	=	$data->andWhere('subjects.status = :verified')->setParameter(':verified','verified');
+			$data	=	$data->setParameter(':subject_name',"%".$app->search->search."%");
+		}
+		if(isset($app->search->category)){
+			//notify('category');
+			$data	=	$data->addSelect('subjects.parent_slug');
+			$data	=	$data->innerJoin('user','avid___user_subjects','subjects','user.email = subjects.email');
+			$data	=	$data->andWhere('subjects.parent_slug LIKE :subject_name');
+			//$data	=	$data->andWhere('subjects.status = :verified')->setParameter(':verified','verified');
+			$data	=	$data->setParameter(':subject_name',"%".$app->search->category."%");
 		}
 
-		$cachedKey = "cachedzipcode----".$app->search->zipcode;
-		$cachedZipcode = $app->connect->cache->get($cachedKey);
-		if($cachedZipcode == null) {
+
+		if(isset($app->search->zipcode)){
 			$zipcodedata = get_zipcode_data($app->connect,$app->search->zipcode);
-		    $results = $zipcodedata;
-		    $cachedZipcode = $results;
-		    $app->connect->cache->set($cachedKey, $results, 3600);
-		}
-
-		if(empty($cachedZipcode)){
-			new Flash(
-				array('action'=>'alert','message'=>'Invalid Zipcode')
-			);
-		}
-
-		if(isset($cachedZipcode->lat)){
-				$getDistance = "
-					, round(((acos(sin((" . $cachedZipcode->lat . "*pi()/180)) * sin((user.lat*pi()/180))+cos((" . $cachedZipcode->lat . "*pi()/180)) * cos((user.lat*pi()/180)) * cos(((" .$cachedZipcode->long. "- user.long)* pi()/180))))*180/pi())*60*1.1515)
-				";
-
-				$asDistance = ' as distance ';
-
-				$additional.= $getDistance.$asDistance;
-
-				$having = "HAVING distance <= :distance";
-
-
-				$prepared[':distance'] = $app->search->distance;
+			if(empty($app->search->distance)){
+				$app->search->distance = 15;
 			}
-	}
+
+			if(empty($zipcodedata)){
+				new Flash(
+					array('action'=>'alert','message'=>'Invalid Zipcode')
+				);
+			}
+			else{
+				if(isset($zipcodedata->lat)){
+					$getDistance = "
+						round(((acos(sin((" . $zipcodedata->lat . "*pi()/180)) * sin((user.lat*pi()/180))+cos((" . $zipcodedata->lat . "*pi()/180)) * cos((user.lat*pi()/180)) * cos(((" .$zipcodedata->long. "- user.long)* pi()/180))))*180/pi())*60*1.1515)
+					";
+
+					$app->getDistance = true;
+
+					$asDistance = ' as distance ';
+					$data	=	$data->addSelect($getDistance.$asDistance)->setParameter(':distance',$app->search->distance)->having("distance <= :distance");
+				}
+			}
+		}
+
+		if(isset($app->search->advanced) && $app->search->advanced=='on' || isset($app->search->advanced) && $app->search->advanced==true){
+
+			if(isset($app->search->name)){
+				//
+				$data	=	$data->addSelect('user.first_name, user.last_name');
+				$data	=	$data->andWhere('CONCAT(user.first_name," ",user.last_name) LIKE "%'.$app->search->name.'%"');
+			}
+			if(isset($app->search->gender)){
+				//
+				$data	=	$data->addSelect('profile.gender')->andWhere('profile.gender = :gender AND profile.gender IS NOT NULL')->setParameter(':gender',$app->search->gender);
+				//notify('genders');
+
+			}
+			if(isset($app->search->pricerangeLower) && isset($app->search->pricerangeUpper)){
+				//
+				$data	=	$data->addSelect('profile.hourly_rate');
+				$data	=	$data->andWhere('profile.hourly_rate BETWEEN :pricerangeLower and :pricerangeUpper');
+				$data	=	$data->andWhere('profile.hourly_rate IS NOT NULL');
+				$data	=	$data->setParameter(':pricerangeLower',$app->search->pricerangeLower);
+				$data	=	$data->setParameter(':pricerangeUpper',$app->search->pricerangeUpper);
+			}
+		}
 
 
-	if(!empty($app->search->search)){
+	$data	=	$data->groupBy('user.email');
 
-		$additional.= "
-
-			, subjects.subject_name
-
-		";
-
-		$subjectJoin = "
-
-			INNER JOIN
-				avid___user_subjects subjects
-					on subjects.email = user.email
-
-		";
-
-		$additionalWhere.="
-			AND
-				subjects.subject_name LIKE :searchSubject
-		";
-
-		$searchkeyword = $app->search->search;
-		$prepared[':searchSubject'] = "%$searchkeyword%";
-
-		//notify($additionalWhere);
-	}
-
-	$orderBy = NULL;
-	$starsJoin = NULL;
-
+	// Count * Offset
 	if(isset($app->filterby)){
-		if($app->filterby=='highestrate'){
-			$orderBy = "ORDER BY profile.hourly_rate DESC";
+
+		if($app->filterby=='closestdistance' && isset($getDistance)){
+			$data	=	$data->orderBy('distance','ASC');
+		}
+		elseif($app->filterby=='furthestdistance' && isset($getDistance)){
+			$data	=	$data->orderBy('distance','DESC');
+		}
+		elseif($app->filterby=='highestrate'){
+			$data	=	$data->orderBy('profile.hourly_rate','DESC');
 		}
 		elseif($app->filterby=='lowestrate'){
-			$orderBy = "ORDER BY profile.hourly_rate ASC";
+			$data	=	$data->orderBy('profile.hourly_rate','ASC');
+			$data	=	$data->andWhere('profile.hourly_rate IS NOT NULL');
 		}
 		elseif($app->filterby=='lastactive'){
-			$orderBy = "ORDER BY user.last_active DESC";
+			$data	=	$data->addSelect('user.last_active');
+			$data	=	$data->orderBy('user.last_active','DESC');
 		}
 		elseif($app->filterby=='higheststarscore'){
-			$additional.= "
-			,
 
-			round(
-				(
-					SELECT
-						sum(sessions.review_score) as sum
-					FROM
-						avid___sessions sessions
-					WHERE
-						sessions.from_user = user.email
-				) /
-
-				(
-					SELECT
-						count(sessions.review_score) as count
-					FROM
-						avid___sessions sessions
-					WHERE
-						sessions.from_user = user.email
-				) ,2) as star_score
-
-			";
-
-			$additionalWhere.= "
-
-				AND
-				(
-					SELECT
-						sum(sessions.review_score) as sum
-					FROM
-						avid___sessions sessions
-					WHERE
-						sessions.from_user = user.email
-				) IS NOT NULL
-			";
-
-			$orderBy = "ORDER BY star_score DESC";
-		}
-		elseif(!empty($app->search->zipcode) && $app->filterby=='furthestdistance'){
-			$orderBy = "ORDER BY distance DESC";
-		}
-		elseif(!empty($app->search->zipcode) && $app->filterby=='closestdistance'){
-			$orderBy = "ORDER BY distance ASC";
+			$data->addSelect('sessions.review_score')->from('avid___sessions','sessions');
+			$data	=	$data->andWhere('sessions.review_score IS NOT NULL AND sessions.from_user = user.email');
+			$data	=	$data->orderBy('sessions.review_score','DESC');
 		}
 		else{
-
+			$data	=	$data->orderBy('user.last_active');
 		}
+
 	}
-
-
-	$offsets = new offsets($app->number,10);
-
-
-
-	$limitOffset = "
-		LIMIT
-			".$offsets->perpage."
-		OFFSET
-			".$offsets->offsetStart."
-	";
-
-	$sql = "
-
-		SELECT
-			SQL_CALC_FOUND_ROWS
-				user.first_name,
-				user.last_name,
-				user.username,
-				user.email,
-				user.url,
-				user.last_active,
-				user.usertype,
-				user.last_active,
-				user.emptybgcheck,
-				user.city_slug,
-				user.state_slug,
-				user.city,
-				user.state_long,
-				user.zipcode,
-
-
-				profile.hourly_rate,
-				profile.my_avatar,
-				profile.my_avatar_status,
-				profile.my_upload,
-				profile.my_upload_status,
-				profile.short_description_verified,
-				profile.personal_statement_verified
-
-				$additional
-
-		FROM
-			avid___user user
-
-		$subjectJoin
-
-		$starsJoin
-
-		INNER JOIN
-
-			avid___user_profile profile on profile.email = user.email
-
-
-		WHERE
-
-			user.usertype = :usertype
-				AND
-			user.status IS NULL
-				AND
-			user.hidden IS NULL
-				AND
-			profile.hourly_rate IS NOT NULL
-				AND
-			user.lock IS NULL
-				AND
-			user.last_active >= DATE_SUB(CURDATE(), INTERVAL 6 MONTH)
-
-			$additionalWhere
-
-		GROUP BY
-			user.email
-
-		$having
-
-		$orderBy
-
-		$limitOffset
-
-
-	";
-
-	//notify($sql);
-
-	$alltheresults = $app->connect->executeQuery($sql,$prepared)->fetchAll();
-
-	//notify($alltheresults);
-
-	$howmany = $app->connect->executeQuery("SELECT FOUND_ROWS() as count",array())->fetch();
-	$app->count = $howmany->count;
-	if($app->count>0){
-		$pagify = new Pagify();
-		$config = array(
-			'total'    => $app->count,
-			'url'      => $app->target->pagebase,
-			'page'     => $offsets->number,
-			'per_page' => $offsets->perpage
-		);
-
-		$pagify->initialize($config);
-		$app->pagination = $pagify->get_links();
-
-		$app->searchResults = $alltheresults;
+	elseif(isset($getDistance)){
+		$data	=	$data->orderBy('distance','ASC');
 	}
 	else{
-
+		$data	=	$data->orderBy('user.last_active');
 	}
 
+	//notify($data);
 
-	$filtertype = array(
-		'closestdistance'=>'Closest Distance',
-		'furthestdistance'=>'Furthest Distance',
-		'highestrate'=>'Highest Hourly Rate',
-		'lowestrate'=>'Lowest Hourly Rate',
-		'lastactive'=>'Last Active',
-		'higheststarscore'=>'Highest Star Score'
+	$offsets = new offsets($app->number,$app->dependents->pagination->items_per_page);
+	$count	=	$data->execute()->rowCount();
+	$data	=	$data->setMaxResults($offsets->perpage)->setFirstResult($offsets->offsetStart);
+	$data	=	$data->addSelect(user_select().','.profile_select().','.account_settings().',user.id');
+
+	$app->searchResults = make_search_key_cache($data,$app->connect);
+	//notify($app->searchResults);
+
+	if(empty($app->search->search) && isset($app->search->category)){
+		$app->search->search = $app->search->category;
+	}
+
+	$middle = NULL;
+	if(isset($app->search->search)){
+		$middle = $app->search->search;
+	}
+
+	$pagify = new Pagify();
+	$config = array(
+		'total'    => $count,
+		'url'      => $app->target->pagebase,
+		'page'     => $offsets->number,
+		'per_page' => $offsets->perpage
 	);
+	$pagify->initialize($config);
+	$app->pagination = $pagify->get_links();
 
-	if(empty($getDistance)){
-		unset($filtertype['closestdistance']);
-		unset($filtertype['furthestdistance']);
+	$count = $count;
+
+	$s=NULL;
+	if($count!=1){
+		$s='s';
 	}
 
-	$app->filtertype = $filtertype;
+
+	$app->meta = new stdClass();
+	$app->meta->title = $app->dependents->SITE_NAME_PROPPER.' '.$middle.' Tutor'.$s;
+	$app->meta->h1 = '<span>'.numbers($count,1).'</span> '.ucwords($middle).' Tutor'.$s;
+	#$app->meta->keywords = 'examplekeys';
+	#$app->meta->description = 'exampledescribers';
+
+
+	$app->filterbylocation = 'tutorssearch';
