@@ -164,14 +164,10 @@
     }
     elseif(isset($app->rejectprofile)){
 
-        notify($app->thetutor);
+        
 
         $reject = array('approval_status'=>'rejected');
         $whoami = array('email'=>$app->thetutor->email);
-
-        printer($reject);
-        printer($whoami);
-        exit;
 
         $app->connect->update('avid___new_temps',$reject,$whoami);
 

@@ -345,7 +345,7 @@
 
 						<?php if(empty($ignore)): ?>
 						<br>
-						<form method="post" action="/admin-everything/new-tutor-approvals/<?php echo $id; ?>">
+						<form method="post" action="<form method="post" action="<?php echo $app->request->getPath(); ?>">">
 							<button type="button" class="btn red white-text confirm-submit">
 								Reject Profile
 							</button>
