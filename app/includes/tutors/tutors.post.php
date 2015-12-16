@@ -1,10 +1,13 @@
 <?php
 
+	$app->filterbylocation = 'tutorssearch';
+
 	if(isset($app->search->target)){
 		unset($app->search->target);
 	}
 
-	//notify($app->search);
+	$jsonSearch = json_encode($app->search);
+	$app->setCookie('searching',$jsonSearch, '2 days');
 
 	$prepared = array();
 	$prepared[':usertype'] = 'tutor';
@@ -12,9 +15,10 @@
 	$additional = NULL;
 	$additionalWhere = NULL;
 	$subjectJoin = NULL;
+	$having = NULL;
 
 
-	if(isset($app->search->advanced) && $app->search->advanced=='on'){
+	if(isset($app->search->advanced) && $app->search->advanced=='on' || isset($app->search->advanced) && $app->search->advanced==true){
 
 		if(!empty($app->search->name)){
 			$additionalWhere.= "\n AND CONCAT(user.first_name,' ',user.last_name) LIKE :name";
@@ -38,10 +42,49 @@
 		}
 	}
 
+	if(!empty($app->search->zipcode)){
+
+		if(empty($app->search->distance)){
+			$app->search->distance = 15;
+		}
+
+		$cachedKey = "cachedzipcode----".$app->search->zipcode;
+		$cachedZipcode = $app->connect->cache->get($cachedKey);
+		if($cachedZipcode == null) {
+			$zipcodedata = get_zipcode_data($app->connect,$app->search->zipcode);
+		    $results = $zipcodedata;
+		    $cachedZipcode = $results;
+		    $app->connect->cache->set($cachedKey, $results, 3600);
+		}
+
+		if(empty($cachedZipcode)){
+			new Flash(
+				array('action'=>'alert','message'=>'Invalid Zipcode')
+			);
+		}
+
+		if(isset($cachedZipcode->lat)){
+				$getDistance = "
+					, round(((acos(sin((" . $cachedZipcode->lat . "*pi()/180)) * sin((user.lat*pi()/180))+cos((" . $cachedZipcode->lat . "*pi()/180)) * cos((user.lat*pi()/180)) * cos(((" .$cachedZipcode->long. "- user.long)* pi()/180))))*180/pi())*60*1.1515)
+				";
+
+				$asDistance = ' as distance, user.city_slug, user.state_slug ';
+
+				$additional.= $getDistance.$asDistance;
+
+				$having = "HAVING distance <= :distance";
+
+
+				$prepared[':distance'] = $app->search->distance;
+			}
+	}
+
 
 	if(isset($app->search->search)){
 
 		$searchkeyword = $app->search->search;
+
+		$additional.=", subjects.subject_name ";
 
 		$subjectJoin = "
 
@@ -58,17 +101,58 @@
 	//notify($additional);
 
 	$orderBy = NULL;
-	$orderBy = "ORDER BY profile.hourly_rate DESC";
-	$orderBy = "ORDER BY profile.hourly_rate ASC";
+
+	if(isset($app->filterby)){
+		if($app->filterby=='highestrate'){
+			$orderBy = "ORDER BY profile.hourly_rate DESC";
+		}
+		elseif($app->filterby=='lowestrate'){
+			$orderBy = "ORDER BY profile.hourly_rate ASC";
+		}
+		elseif($app->filterby=='lastactive'){
+			$orderBy = "ORDER BY user.last_active DESC";
+		}
+		elseif($app->filterby=='higheststarscore'){
+			notify('GET SOME STARS');
+		}
+		elseif(!empty($app->search->zipcode) && $app->filterby=='furthestdistance'){
+			$orderBy = "ORDER BY distance DESC";
+		}
+		elseif(!empty($app->search->zipcode) && $app->filterby=='closestdistance'){
+			$orderBy = "ORDER BY distance ASC";
+		}
+		else{
+
+		}
+	}
+
+
+	$offsets = new offsets($app->number,10);
+
+
+
+	$limitOffset = "
+		LIMIT
+			".$offsets->perpage."
+		OFFSET
+			".$offsets->offsetStart."
+	";
 
 	$sql = "
 
 		SELECT
 			SQL_CALC_FOUND_ROWS
+				user.first_name,
 				user.email,
 				user.url,
 				user.last_active,
-				profile.hourly_rate
+				user.usertype,
+				user.last_active,
+				profile.hourly_rate,
+				profile.my_avatar,
+				profile.my_avatar_status,
+				profile.my_upload,
+				profile.my_upload_status
 
 				$additional
 
@@ -94,26 +178,57 @@
 				AND
 			user.lock IS NULL
 				AND
-			user.last_active >= DATE_SUB(CURDATE(), INTERVAL 8 MONTH)
+			user.last_active >= DATE_SUB(CURDATE(), INTERVAL 6 MONTH)
 
 			$additionalWhere
 
 		GROUP BY
 			user.email
 
+		$having
+
 		$orderBy
 
-		LIMIT 10
+		$limitOffset
 
 
 	";
 
 	//notify($sql);
-
-
 	$alltheresults = $app->connect->executeQuery($sql,$prepared)->fetchAll();
 	$howmany = $app->connect->executeQuery("SELECT FOUND_ROWS() as count",array())->fetch();
-	//notify($howmany->count);
+	$app->count = $howmany->count;
+	if($app->count>0){
+		$pagify = new Pagify();
+		$config = array(
+			'total'    => $app->count,
+			'url'      => $app->target->pagebase,
+			'page'     => $offsets->number,
+			'per_page' => $offsets->perpage
+		);
+
+		$pagify->initialize($config);
+		$app->pagination = $pagify->get_links();
+
+		$app->searchResults = $alltheresults;
+	}
+	else{
+
+	}
 
 
-	notify($alltheresults);
+	$filtertype = array(
+		'closestdistance'=>'Closest Distance',
+		'furthestdistance'=>'Furthest Distance',
+		'highestrate'=>'Highest Hourly Rate',
+		'lowestrate'=>'Lowest Hourly Rate',
+		'lastactive'=>'Last Active',
+		'higheststarscore'=>'Highest Star Score'
+	);
+
+	if(empty($getDistance)){
+		unset($filtertype['closestdistance']);
+		unset($filtertype['furthestdistance']);
+	}
+
+	$app->filtertype = $filtertype;
