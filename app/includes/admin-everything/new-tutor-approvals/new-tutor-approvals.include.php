@@ -9,7 +9,7 @@
 ?>
 
 <div class="row">
-	<div class="col s12 m3 l3">
+	<div class="col s12 m4 l3">
 		<ul class="block">
 			<?php foreach($thetypes as $key=> $types): ?>
 				<li <?php if(isset($action) && $action==$key){ echo 'class="active"';} ?>>
@@ -33,7 +33,7 @@
 		<?php endif; ?>
 
 	</div>
-	<div class="col s12 m9 l9">
+	<div class="col s12 m8 l9">
 		<?php if(isset($app->thetutor)): ?>
 			<?php //printer($app->thetutor->promocode); ?>
 			<!-- -->
@@ -44,6 +44,10 @@
 				<?php if(isset($app->thetutor)): ?>
 		            <div class="block">
 
+						<?php if(!empty($app->thetutor->promocode)): ?>
+							<div class="promocode">Promo Code: <span><?php echo $app->thetutor->promocode; ?></span></div>
+						<?php endif; ?>
+
 						<?php if(isset($app->thetutor->comper)): ?>
 							<div class="green white-text padd5 center-align">Background Check Comped</div><br>
 						<?php else: ?>
@@ -53,7 +57,7 @@
 								<input type="hidden" name="compbackgroundcheck[target]" value="compbackgroundcheck"  />
 								<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
 
-								<div class="form-submit">
+								<div class="form-submit <?php if(isset($app->thetutor->promocode) && $app->thetutor->promocode=='get80--free-backgroundcheck'){echo ' promote-me '; } ?>">
 									<button class="btn green confirm-submit" type="button">
 										Comp Background Check $29.99
 									</button>
@@ -410,6 +414,30 @@
 
 
 <style type="text/css">
+.promote-me{
+	position: relative;;
+}
+.promote-me:before{
+	width: 19px;
+	height: 26px;
+	position: absolute;
+	left: -32px;
+	top:7px;
+	color: #ccc;
+	display:inline-block;font:normal normal normal 14px/1 FontAwesome;font-size:inherit;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;transform:translate(0, 0);
+	content:"\f061";
+	font-size: 22px;
+}
+.promocode{
+	background: #efefef;
+	padding: 5px;
+	margin-bottom: 10px;
+}
+.promocode span{
+	background: #7800ff;
+	color: #fff;
+	padding: 5px;
+}
 ul.block li.active a{
 	background: #333;
 	color: #fff;

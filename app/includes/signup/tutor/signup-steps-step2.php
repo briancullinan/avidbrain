@@ -1,7 +1,7 @@
 <p class="pageids" id="uploadresume">&nbsp;</p>
 
 <div class="signup-title-text">
-    Step 3 <span>Your Skills</span>
+    Step 3 <span>List what makes you a great tutor</span>
 </div>
 
 <div class="box">
@@ -14,7 +14,7 @@
 
 
                 <div class="new-inputs">
-                    <label>List your skills to be a tutor</label>
+                    <label>What makes you a great tutor?</label>
                     <div class="input-wrapper" id="resume_text"><textarea class="materialize-textarea" name="myresume[resume_text]"><?php echo isitset($app->newtutor->resume_text); ?></textarea></div>
                 </div>
 

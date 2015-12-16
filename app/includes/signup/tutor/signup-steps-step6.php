@@ -44,7 +44,7 @@
 
     	</div>
     	<div class="col s12 m6 l6">
-            <p class="alert red white-text"> Once you submit your profile for review, you will be logged out, and we will review your application. </p>
+            <p class="alert red white-text"> <span class="padd5">Once you submit your profile for review, you will be logged out, and we will review your application.</span> </p>
             <?php
                 /*
 

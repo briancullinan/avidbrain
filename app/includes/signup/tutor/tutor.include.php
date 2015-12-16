@@ -10,86 +10,135 @@
 			</p>
 
 			<?php if(isset($promocode) && $promocode == 'AvidTeach'): ?>
-				<h3>So What Benefits do Teachers Get?</h3>
-				<p>Anyone who signs up using our teacher promo page gets benefits that all teachers deserve!</p>
-				<div><strong>Free background check</strong></div>
-				<p>Let AvidBrain cover your start up costs on AvidBrain, so you can focus on what you do best- Teaching!</p>
-				<div><strong>Make More</strong></div>
-				<p>Start off taking home 80% of your take home pay as soon as you start.</p>
-				<div><strong>Earn in other ways</strong></div>
-				<p>Have teacher friends that may also want to tutor? Become an affiliate and make $20 for every other teacher that signs up and has a session.</p>
+
+
+				<div class="blocks">
+
+					<div class="row">
+						<div class="col s12 m4 l4">
+							&nbsp;
+						</div>
+						<div class="col s12 m8 l8">
+							<h3>So What Benefits Do Teachers Get?</h3>
+							<p>Anyone who signs up using our teacher promo page gets benefits that all teachers deserve!</p>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col s12 m4 l4">
+							<div class="center-align"><img src="/images/icons/money.png" class="responsive-img" /></div>
+						</div>
+						<div class="col s12 m8 l8">
+							<div class="page-title">
+								Free background check
+							</div>
+							<div class="copy">
+								Let AvidBrain cover your start up costs on AvidBrain, so you can focus on what you do best- Teaching!
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col s12 m4 l4">
+							<div class="center-align"><img src="/images/icons/choose.png" class="responsive-img" /></div>
+						</div>
+						<div class="col s12 m8 l8">
+							<div class="page-title">
+								Make More
+							</div>
+							<div class="copy">
+								Start off taking home 80% of your take home pay as soon as you start.
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col s12 m4 l4">
+							<div class="center-align"><img src="/images/icons/convenient.png" class="responsive-img" /></div>
+						</div>
+						<div class="col s12 m8 l8">
+							<div class="page-title">
+								Earn in other ways
+							</div>
+							<div class="copy">
+								Have teacher friends that may also want to tutor? Become an affiliate and make $20 for every other teacher that signs up and has a session.
+							</div>
+						</div>
+					</div>
+				</div>
+
+			<?php else: ?>
+				<div class="blocks">
+					<div class="row">
+						<div class="col s12 m4 l4">
+							<div class="center-align"><img src="/images/icons/money.png" class="responsive-img" /></div>
+						</div>
+						<div class="col s12 m8 l8">
+							<div class="page-title">
+								Make Extra Money
+							</div>
+							<div class="copy">
+								Are you an expert in a subject? Turn it into a revenue stream. School is in session and AvidBrain makes it easy for you to cash in on the action.
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col s12 m4 l4">
+							<div class="center-align"><img src="/images/icons/choose.png" class="responsive-img" /></div>
+						</div>
+						<div class="col s12 m8 l8">
+							<div class="page-title">
+								Choose Subjects You Love
+							</div>
+							<div class="copy">
+								Love chemistry but hate math? No problem! At AvidBrain you choose what subjects you want to tutor in. You also choose how you want to tutor them. So if you have a better way to teach a concept to help a student, Go For It!
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col s12 m4 l4">
+							<div class="center-align"><img src="/images/icons/time.png" class="responsive-img" /></div>
+						</div>
+						<div class="col s12 m8 l8">
+							<div class="page-title">
+								Tutor When You Want
+							</div>
+							<div class="copy">
+								Looking to work on the weekends, or maybe even after work? As an independent contractor for AvidBrain you have the freedom to set your own schedule and work when you want to.
+							</div>
+						</div>
+					</div>
+
+					<div class="row see-how-much">
+						<div class="col s12 m4 l4">
+							<div class="center-align"><img src="/images/icons/see.png" class="responsive-img" /></div>
+						</div>
+						<div class="col s12 m8 l8">
+							<div class="page-title">
+								See How Much You Can Make
+							</div>
+
+							<div class="getprices">
+								<?php
+								    $variablename = new Forms($app->connect);
+								    $variablename->formname = 'getprices';
+								    $variablename->url = $app->request->getPath();
+								    $variablename->dependents = $app->dependents;
+								    $variablename->csrf_key = $csrf_key;
+								    $variablename->csrf_token = $csrf_token;
+								    $variablename->button = 'Get Prices';
+								    $variablename->classname = 'getprices';
+								    $variablename->makeform();
+								?>
+							</div>
+							<div class="show-prices">&nbsp;</div>
+
+						</div>
+					</div>
+				</div>
 			<?php endif; ?>
-
-			<div class="blocks">
-				<div class="row">
-					<div class="col s12 m4 l4">
-						<div class="center-align"><img src="/images/icons/money.png" class="responsive-img" /></div>
-					</div>
-					<div class="col s12 m8 l8">
-						<div class="page-title">
-							Make Extra Money
-						</div>
-						<div class="copy">
-							Are you an expert in a subject? Turn it into a revenue stream. School is in session and AvidBrain makes it easy for you to cash in on the action.
-						</div>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col s12 m4 l4">
-						<div class="center-align"><img src="/images/icons/choose.png" class="responsive-img" /></div>
-					</div>
-					<div class="col s12 m8 l8">
-						<div class="page-title">
-							Choose Subjects You Love
-						</div>
-						<div class="copy">
-							Love chemistry but hate math? No problem! At AvidBrain you choose what subjects you want to tutor in. You also choose how you want to tutor them. So if you have a better way to teach a concept to help a student, Go For It!
-						</div>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col s12 m4 l4">
-						<div class="center-align"><img src="/images/icons/time.png" class="responsive-img" /></div>
-					</div>
-					<div class="col s12 m8 l8">
-						<div class="page-title">
-							Tutor When You Want
-						</div>
-						<div class="copy">
-							Looking to work on the weekends, or maybe even after work? As an independent contractor for AvidBrain you have the freedom to set your own schedule and work when you want to.
-						</div>
-					</div>
-				</div>
-
-				<div class="row see-how-much">
-					<div class="col s12 m4 l4">
-						<div class="center-align"><img src="/images/icons/see.png" class="responsive-img" /></div>
-					</div>
-					<div class="col s12 m8 l8">
-						<div class="page-title">
-							See How Much You Can Make
-						</div>
-
-						<div class="getprices">
-							<?php
-							    $variablename = new Forms($app->connect);
-							    $variablename->formname = 'getprices';
-							    $variablename->url = $app->request->getPath();
-							    $variablename->dependents = $app->dependents;
-							    $variablename->csrf_key = $csrf_key;
-							    $variablename->csrf_token = $csrf_token;
-							    $variablename->button = 'Get Prices';
-							    $variablename->classname = 'getprices';
-							    $variablename->makeform();
-							?>
-						</div>
-						<div class="show-prices">&nbsp;</div>
-
-					</div>
-				</div>
-			</div>
 
 
 		</div>
