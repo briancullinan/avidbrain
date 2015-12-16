@@ -164,7 +164,7 @@
     }
     elseif(isset($app->rejectprofile)){
 
-
+        notify($app->thetutor);
 
         $reject = array('approval_status'=>'rejected');
         $whoami = array('email'=>$app->thetutor->email);
