@@ -177,35 +177,35 @@ badge a{
 badge a i{
 	color: #fff;
 }
-.collection-item.badge-new-user, badge.badge-new-user .badge-icon{
+.collection-item.badge-new-user, badge.badge-new-user .badge-icon, .badge-new-user .action-badge-icon{
 	background:#ffb300;
 	color:#fff;
 }
-.collection-item.badge-instructor, badge.badge-instructor .badge-icon{
+.collection-item.badge-instructor, badge.badge-instructor .badge-icon, .badge-instructor .action-badge-icon{
 	background:#e91e63;
 	color:#fff;
 }
-.collection-item.badge-teachers-assistant, badge.badge-teachers-assistant .badge-icon{
+.collection-item.badge-teachers-assistant, badge.badge-teachers-assistant .badge-icon, .badge-teachers-assistant .action-badge-icon{
 	background:#9c27b0;
 	color:#fff;
 }
-.collection-item.badge-teacher, badge.badge-teacher .badge-icon{
+.collection-item.badge-teacher, badge.badge-teacher .badge-icon, .badge-teacher .action-badge-icon{
 	background:#673ab7;
 	color:#fff;
 }
-.collection-item.badge-assistant-professor, badge.badge-assistant-professor .badge-icon{
+.collection-item.badge-assistant-professor, badge.badge-assistant-professor .badge-icon, .badge-assistant-professor .action-badge-icon{
 	background:#3f51b5;
 	color:#fff;
 }
-.collection-item.badge-associate-professor, badge.badge-associate-professor .badge-icon{
+.collection-item.badge-associate-professor, badge.badge-associate-professor .badge-icon, .badge-associate-professor .action-badge-icon{
 	background:#2196f3;
 	color:#fff;
 }
-.collection-item.badge-professor, badge.badge-professor .badge-icon{
+.collection-item.badge-professor, badge.badge-professor .badge-icon, .badge-professor .action-badge-icon{
 	background:#4caf50;
 	color:#fff;
 }
-.collection-item.badge-mad-scientist, badge.badge-mad-scientist .badge-icon{
+.collection-item.badge-mad-scientist, badge.badge-mad-scientist .badge-icon, .badge-mad-scientist .action-badge-icon{
 	background:#c6ff00;
 	color:#111;
 	border: solid 1px #81d500;

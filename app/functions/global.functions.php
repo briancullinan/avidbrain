@@ -620,7 +620,8 @@
 		}
 	}
 
-	function badge_type($hours){
+	function badge_type($hours,$new=NULL){
+
 		$hours = round($hours);
 		$ranges = array();
 		$ranges[] = (object)array('rank'=>'New User','range'=>range(0,50),'class'=>'badge-new-user','icon'=>'fa fa-check');
@@ -632,6 +633,7 @@
 		$ranges[] = (object)array('rank'=>'Professor','range'=>range(6001,12000),'class'=>'badge-professor','icon'=>'fa fa-university');
 		$ranges[] = (object)array('rank'=>'Mad Scientist','range'=>range(12001,99999),'class'=>'badge-mad-scientist','icon'=>'fa fa-flask');
 
+
 		foreach($ranges as $key=> $badgeamount){
 			if(in_array($hours, $badgeamount->range)){
 				$type = $badgeamount;
@@ -639,7 +641,12 @@
 			}
 		}
 
-		return '<badge class="rank '.$type->class.'"> <a href="#myrank" class="modal-trigger"><span class="badge-icon"><i class="'.$type->icon.'"></i></span> <span class="badge-text">'.$type->rank.'</span></a> </badge>';
+		if(isset($new)){
+			return $type;
+		}
+		else{
+			return '<badge class="rank '.$type->class.'"> <a href="#myrank" class="modal-trigger"><span class="badge-icon"><i class="'.$type->icon.'"></i></span> <span class="badge-text">'.$type->rank.'</span></a> </badge>';
+		}
 	}
 
 	function badge($type,$info){
@@ -1446,4 +1453,14 @@
 		$resp = json_decode(curl_exec($curl));
 		curl_close($curl);
 		return $resp;
+	}
+
+	function batter_badges($classname,$icon,$text){
+
+		$fancypants = '<div class="action-badge '.$classname.'">';
+		$fancypants.= '<div class="action-badge-icon"><i class="'.$icon.'"></i></div>';
+		$fancypants.= '<div class="action-badge-text">'.$text.'</div>';
+		$fancypants.= '</div>';
+
+		return $fancypants;
 	}
