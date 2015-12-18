@@ -36,9 +36,9 @@
 			new Flash(array('action'=>'required','message'=>'State Required','formID'=>'verifyaccount','field'=>'state'));
 		}
 
-		if(empty($app->fields_needed->legal_entity->ssn_last_4)){
-			new Flash(array('action'=>'required','message'=>'Last 4 Digits of your Social Security Number Required','formID'=>'verifyaccount','field'=>'ssn'));
-		}
+		#if(empty($app->fields_needed->legal_entity->ssn_last_4)){
+		#	new Flash(array('action'=>'required','message'=>'Last 4 Digits of your Social Security Number Required','formID'=>'verifyaccount','field'=>'ssn'));
+		#}
 
 		$account = \Stripe\Account::retrieve($app->user->managed_id);
 
@@ -60,7 +60,7 @@
 			$account->legal_entity->address->state = $app->fields_needed->legal_entity->address->state;
 			//$account->legal_entity->address->xxx = $app->fields_needed->address->xxx;
 
-			$account->legal_entity->ssn_last_4 = $app->fields_needed->legal_entity->ssn_last_4;
+			//$account->legal_entity->ssn_last_4 = $app->fields_needed->legal_entity->ssn_last_4;
 
 			$account->save();
 

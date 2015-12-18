@@ -175,7 +175,7 @@
 			$orderBy = "ORDER BY distance ASC";
 		}
 		else{
-
+			$orderBy = "ORDER BY user.last_active DESC";
 		}
 	}
 	else{
@@ -269,7 +269,7 @@
 
 	";
 
-	
+
 
 	$alltheresults = $app->connect->executeQuery($sql,$prepared)->fetchAll();
 	//notify($alltheresults);

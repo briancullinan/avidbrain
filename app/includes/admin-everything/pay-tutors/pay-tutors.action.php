@@ -2,7 +2,7 @@
 
 	$data	=	$app->connect->createQueryBuilder();
 	$data	=	$data->select('sessions.id, user.first_name, user.last_name, user.url, user.id, user.account_id, sessions.from_user ')->from('avid___sessions','sessions');
-	$data	=	$data->where('sessions.paidout IS NULL AND sessions.session_status IS NOT NULL AND sessions.session_cost IS NOT NULL');
+	$data	=	$data->where('sessions.paidout IS NULL AND sessions.session_status IS NOT NULL AND sessions.session_cost IS NOT NULL AND from_user != "krezendes85@gmail.com" AND from_user NOT LIKE "%---fraud%"');
 	$data	=	$data->setParameter(':usertype','tutor');
 	$data	=	$data->leftJoin('sessions','avid___user_profile','profile','profile.email = sessions.from_user');
 	$data	=	$data->leftJoin('sessions','avid___user','user','user.email = sessions.from_user');
@@ -14,9 +14,26 @@
 
 		foreach($tutorswithsessions as $key=> $getSum){
 
-			$sql = "SELECT SUM(session_cost) as cost FROM avid___sessions WHERE from_user = :from_user AND paidout IS NULL AND session_status IS NOT NULL AND session_cost IS NOT NULL";
+			$sql = "
+				SELECT
+					SUM(session_cost) as cost
+				FROM
+					avid___sessions
+				WHERE
+					from_user = :from_user
+						AND
+					paidout IS NULL
+						AND
+					session_status IS NOT NULL
+						AND
+					session_cost IS NOT NULL
+						AND
+					from_user != 'krezendes85@gmail.com'
+			";
 			$prepare = array(':from_user'=>$getSum->from_user);
 			$results = $app->connect->executeQuery($sql,$prepare)->fetch();
+
+			//notify($results);
 
 			if(isset($results->cost)){
 				$tutorswithsessions[$key]->cost = $results->cost;
@@ -30,6 +47,8 @@
 		$app->tutorswithsessions = $tutorswithsessions;
 	}
 
+	//
+
 
 
 	if(isset($id)){
@@ -42,7 +61,7 @@
 
 		if(isset($data->id)){
 
-			$sql = "SELECT * FROM avid___sessions WHERE paidout IS NULL AND from_user = :from_user AND dispute IS NULL AND session_status IS NOT NULL AND session_cost != 0";
+			$sql = "SELECT * FROM avid___sessions WHERE paidout IS NULL AND from_user = :from_user AND dispute IS NULL AND session_status IS NOT NULL AND session_cost != 0 ORDER BY ID DESC";
 			$prepare = array(':from_user'=>$data->email);
 			$results = $app->connect->executeQuery($sql,$prepare)->fetchAll();
 

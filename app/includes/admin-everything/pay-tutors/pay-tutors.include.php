@@ -114,6 +114,9 @@
 						Pay Rate
 					</td>
 					<td>
+						Money Made
+					</td>
+					<td>
 						Cost
 					</td>
 					<td>
@@ -123,6 +126,7 @@
 						Date
 					</td>
 				</tr>
+				<?php $finaltotalpay = 0; ?>
 				<?php foreach($app->paytutor->sessions as $sessionpay): ?>
 				<?php
 					#printer($sessionpay);
@@ -145,6 +149,22 @@
 					</td>
 					<td>
 						<?php echo $sessionpay->payrate; if(!empty($sessionpay->payrate)){ echo '%';} ?>
+					</td>
+					<td>
+						<?php
+						    if(isset($sessionpay->taxes)){
+						        $taxremoval = (((stripe_transaction($sessionpay->session_cost)) - $sessionpay->session_cost)/100);
+						        $totalCost = $sessionpay->session_cost/100;
+						        $final = ceil($totalCost - $taxremoval);
+						        $finalPercent = (($final * $sessionpay->payrate)/100);
+						    }
+						    else{
+						        $finalPercent = (($sessionpay->amount * $sessionpay->payrate)/10000);
+						    }
+							$finaltotalpay = ($finaltotalpay + $finalPercent);
+						?>
+
+						$<?php echo numbers($finalPercent); ?>
 					</td>
 					<td>
 						$<?php echo ($sessionpay->session_cost/100); ?>
@@ -177,6 +197,7 @@
 			</table>
 
 			<?php
+
 				$total = (array_sum($totalgross) / 100);
 				$totalpayout = (array_sum($totalpay) / 100);
 			?>
@@ -189,12 +210,12 @@
 				</div>
 				<div class="col s12 m4 l4">
 					<div class="alert blue white-text">
-						Total Net: $<?php echo numbers(($total - $totalpayout)); ?>
+						Total Net: $<?php echo $finaltotalpay; ?>
 					</div>
 				</div>
 				<div class="col s12 m4 l4">
 					<div class="alert green white-text">
-						AvidBrain Profit: $<?php echo numbers($totalpayout); ?>
+						AvidBrain Profit: $<?php echo ($total-$finaltotalpay) ?>
 					</div>
 				</div>
 			</div>
@@ -232,13 +253,13 @@
 
 					<input type="hidden" name="paytutorcheck[type]" value="check" />
 					<input type="hidden" name="paytutorcheck[email]" value="<?php echo $app->paytutor->email; ?>" />
-					<input type="hidden" name="paytutorcheck[amount]" value="<?php echo moneytime($total,$totalpayout,$additional);  ?>" />
+					<input type="hidden" name="paytutorcheck[amount]" value="<?php echo $finaltotalpay;  ?>" />
 
 					<input type="hidden" name="paytutorcheck[target]" value="paytutorcheck"  />
 					<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
 
-					<button type="submit" class="btn blue">
-						Pay $<?php echo numbers((($total - $totalpayout) + $additional)); ?> via Snail Mail <i class="fa fa-envelope"></i>
+					<button type="button" class="btn blue confirm-submit">
+						Pay $<?php echo $finaltotalpay; ?> via Snail Mail <i class="fa fa-envelope"></i>
 					</button>
 
 				</form>
@@ -259,14 +280,14 @@
 					<input type="hidden" name="paytutorsessioninfo[type]" value="directdeposit" />
 					<input type="hidden" name="paytutorsessioninfo[email]" value="<?php echo $app->paytutor->email; ?>" />
 					<input type="hidden" name="paytutorsessioninfo[account_id]" value="<?php echo $app->paytutor->account_id; ?>" />
-					<input type="hidden" name="paytutorsessioninfo[amount]" value="<?php echo (round(((($total - $totalpayout) + $additional)),1)*100); ?>" />
+					<input type="hidden" name="paytutorsessioninfo[amount]" value="<?php echo ($finaltotalpay*100); ?>" />
 
 					<input type="hidden" name="paytutorsessioninfo[target]" value="paytutorsessioninfo"  />
 					<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
 
 
-					<button type="submit" class="btn green">
-						Pay $<?php echo numbers((($total - $totalpayout) + $additional)); ?> via Direct Deposit
+					<button type="button" class="btn green confirm-submit">
+						Pay $<?php echo $finaltotalpay; ?> via Direct Deposit
 					</button>
 
 				</form>
