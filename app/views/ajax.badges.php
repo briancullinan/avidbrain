@@ -15,7 +15,7 @@
         $prepare = array(':url'=>$app->url);
         $results = $app->connect->executeQuery($sql,$prepare)->fetch();
 
-        $return = '';
+        $return = array();
 
         if(isset($results->email)){
             $email = $results->email;
@@ -33,12 +33,16 @@
 
             $prepare = array(':email'=>$email);
             $results = $app->connect->executeQuery($sql,$prepare)->fetch();
+            if(empty($results->sum)){
+                $results->sum = 0;
+            }
 
             if(isset($results->sum) && !empty($results->sum)){
-                $return.= batter_badges('hours-tutors','mdi-action-alarm',$results->sum.'+ Hours Tutored');
-                $badge_type =  badge_type($results->sum,1);
-                $return.= batter_badges('tutor-rank '.$badge_type->class,$badge_type->icon,$badge_type->rank);
+                $return['hourstutors'] = batter_badges('hours-tutors','mdi-action-alarm',$results->sum.'+ Hours Tutored');
             }
+
+            $badge_type = badge_type($results->sum,1);
+            $return['tutorrank'] = batter_badges('tutor-rank '.$badge_type->class,$badge_type->icon,$badge_type->rank);
 
             $sql = "
                 SELECT
@@ -58,7 +62,7 @@
                 if($results->count!=1){
                     $plural = 's';
                 }
-                $return.= batter_badges('total-reviews','mdi-action-speaker-notes',$results->count.' Review'.$plural);
+                $return['totalreviews'] = batter_badges('total-reviews','mdi-action-speaker-notes',$results->count.' Review'.$plural);
             }
 
 
@@ -79,7 +83,7 @@
                 if($results->student_count!=1){
                     $plural = 's';
                 }
-                $return.= batter_badges('total-students','fa fa-user',$results->student_count.' Student'.$plural);
+                $return['totalstudents'] = batter_badges('total-students','fa fa-user',$results->student_count.' Student'.$plural);
             }
 
             notify($return);

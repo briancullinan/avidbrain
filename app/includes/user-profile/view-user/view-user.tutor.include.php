@@ -132,19 +132,24 @@
 
 						<div class="badges">
 							<?php
-								if(empty($app->currentuser->emptybgcheck)){
-									echo badge('background_check',$app->currentuser);
-								}
-								if(activenow($app->currentuser)){
-									echo badge('imonline',$app->currentuser);
-								}
-								echo badge('average_score',$app->currentuser);
-								echo badge('review_count',$app->currentuser);
-								echo badge('hours_tutored',$app->currentuser);
-								echo badge('student_count',$app->currentuser);
-								echo badge('fancy_hours_badge',$app->currentuser);
-								echo badge('negotiable_rate',$app->currentuser);
+							if(empty($app->currentuser->emptybgcheck)){
+								echo batter_badges('background-check','mdi-action-assignment-ind','<a class="modal-trigger" href="#bgcheck_modal">Background Check</a>');
+							}
+
+							if(!empty($app->currentuser->star_score)){
+								$score = ($searchResults->star_score*1);
+								echo batter_badges('star-score-average','fa fa-star', $score.'/5 Stars');
+
+							}
+
+							if(isset($app->currentuser->negotiableprice) && $app->currentuser->negotiableprice=='yes'){
+								echo batter_badges('negotiable-price','fa fa-dollar','My Rates Are Negotiable');
+							}
+
 							?>
+
+							<div class="ajax-badges" id="<?php echo str_replace('/','',$app->currentuser->url); ?>" data-url="<?php echo $app->currentuser->url; ?>"></div>
+
 						</div>
 
 					</div>
@@ -231,5 +236,6 @@
 	</div>
 
 
-
+	<div class="hide" id="csrf_key"><?php echo $csrf_key; ?></div>
+	<div class="hide" id="csrf_token"><?php echo $csrf_token; ?></div>
 <?php $app->modal = 'tutormodal'; ?>

@@ -119,7 +119,7 @@
 
 	use MatthiasMullie\Minify;
 	//$minifyme = true;
-	//$app->minify = true;
+	$app->minify = true;
 	if(isset($minifyme)){
 
 		if(in_array('wild.functions.js', $app->header->localjs)){

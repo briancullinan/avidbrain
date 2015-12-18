@@ -908,6 +908,23 @@ $(document).ready(function() {
 		}
 	});
 
+	$( ".ajax-badges" ).each(function( index ) {
+		var badgeurl = $(this).attr('data-url');
+		var badgeid = '#'+$(this).attr('id');
+		$.ajax({
+			type: 'POST',
+			url: '/badges',
+			data: {url:badgeurl,csrf_key:$('#csrf_key').html(),csrf_token:$('#csrf_token').html()},
+			success: function(response){
+
+				$.each( response, function( key, value,index ) {
+					$(badgeid).append('<div class="action-badge '+key+'">'+value+'</div>');
+					$(badgeid+' .'+key).hide().fadeIn();
+				});
+			}
+		});
+	});
+
 });
 $(window).on('scroll', function() {
     scrollPosition = $(this).scrollTop();

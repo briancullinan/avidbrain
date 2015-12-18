@@ -86,7 +86,9 @@
 
 		$additional.= "
 
+			, subjects.subject_slug
 			, subjects.subject_name
+			, subjects.parent_slug
 
 		";
 
@@ -100,7 +102,8 @@
 
 		$additionalWhere.="
 			AND
-				subjects.subject_name LIKE :searchSubject
+				CONCAT(subjects.subject_name,' ',subjects.subject_slug,' ',subjects.parent_slug) LIKE :searchSubject
+
 		";
 
 		$searchkeyword = $app->search->search;
@@ -266,11 +269,11 @@
 
 	";
 
-
+	
 
 	$alltheresults = $app->connect->executeQuery($sql,$prepared)->fetchAll();
-
 	//notify($alltheresults);
+
 
 	$howmany = $app->connect->executeQuery("SELECT FOUND_ROWS() as count",array())->fetch();
 	$app->count = $howmany->count;

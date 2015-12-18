@@ -76,7 +76,7 @@
 	$routes['get-subjects-query'] = (object)array('url'=>'/get-subjects','slug'=>'get-subjects','route'=>'/get-subjects/:query/','include'=>'get-subjects','protected'=>NULL,'permissions'=>array(),'template'=>'get.subjects.php');
 	$routes['my-location'] = (object)array('url'=>'/my-location','slug'=>'my-location','route'=>'/my-location/','include'=>'my-location','protected'=>NULL,'permissions'=>array(),'type'=>array('POST'));
 
-	$routes['ajax-badges'] = (object)array('url'=>'/ajax-badges','slug'=>'ajax-badges','route'=>'/ajax-badges/','include'=>'ajax-badges','protected'=>NULL,'permissions'=>array(),'template'=>'ajax.badges.php');
+	$routes['badges'] = (object)array('url'=>'/badges','slug'=>'badges','route'=>'/badges/','include'=>'badges','protected'=>NULL,'permissions'=>array(),'template'=>'ajax.badges.php','type'=>array('POST'));
 
 
 	// Tutored Categories
