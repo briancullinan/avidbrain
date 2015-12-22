@@ -13,9 +13,10 @@
 	ini_set('session.use_trans_sid','off');
 	ini_set('session.cache_limiter','nocache');
 	ini_set('session.hash_function','sha256');
+	session_start();
 	session_regenerate_id();
 	session_cache_limiter(false);
-	session_start();
+
 		require '../vendor/autoload.php';
 		require('../app/dependents/dependents.php');
 	$app = new \Slim\Slim();
@@ -56,6 +57,7 @@
 		$app->add(new HttpBasicAuth('avidbrain', 'tutornode'));
 	}
 	$app->add(new CSRFNINJA());
+
 
 	//killallcookies();
 

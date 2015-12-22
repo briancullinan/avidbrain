@@ -61,7 +61,7 @@
 				</div>
 				<div class="col s12 m8 l9">
 					<div class="row no-bottom">
-						<div class="col s12 m12 l8">
+						<div class="col s12 m12 l8 my-info">
 							<?php if(isset($searchResults->short_description_verified)): ?>
 								<div class="im-a-tutor-short"><a href="<?php echo $searchResults->url; ?>"><?php echo $searchResults->short_description_verified; ?></a></div>
 							<?php endif; ?>
