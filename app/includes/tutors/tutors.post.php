@@ -1,7 +1,5 @@
 <?php
 
-
-
 	$app->filterbylocation = 'tutorssearch';
 
 	if(isset($app->search->target)){
@@ -311,3 +309,26 @@
 	}
 
 	$app->filtertype = $filtertype;
+
+
+	$app->meta = new stdClass();
+	$app->meta->title = 'AvidBrain Tutors - Find Online Tutors';
+	$app->meta->h1 = false;
+
+	$app->metah1 = NULL;
+
+
+	$plurals = NULL;
+	if($app->count!=1){
+		$plurals = 's';
+	}
+	$numbers = NULL;
+	if(isset($app->count)){
+		$numbers = numbers($app->count,1);
+	}
+	$kewordsearch = NULL;
+	if(!empty($app->search->search)){
+		$kewordsearch = ucwords($app->search->search);
+	}
+
+	$app->metah1 = $numbers.' <span class="blue-text">'.$kewordsearch.' Tutor'.$plurals.'</span>';
