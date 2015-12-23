@@ -1,4 +1,13 @@
 <?php
+
+	printer('HAMBONEJONES');
+
+?>
+
+<?php
+	/*
+
+
 	$query = $app->connect->createQueryBuilder();
 	$subjects = $query->select('*')
 					 ->from('avid___user_subjects')
@@ -109,3 +118,6 @@
 
 
 </div>
+
+	*/
+?>

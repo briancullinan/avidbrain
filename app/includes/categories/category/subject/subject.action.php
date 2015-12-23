@@ -133,6 +133,10 @@
 		$app->zero = $zero;
 	}
 
+	if(isset($app->zero->subject_name)){
+		$app->zero->subject_name = str_replace('-',' ',$app->zero->subject_name);
+		$app->zero->subject_name = ucwords($app->zero->subject_name);
+	}
 
 	$app->meta->title = $app->zero->subject_name.' Tutor'.$s;
 	$app->meta->h1 = '<span>'.$count.'</span> '.$app->zero->subject_name.' Tutor'.$s;
@@ -153,6 +157,8 @@
 	if(isset($cachedsubjectinfo->description)){
 		$app->pagedescription = $cachedsubjectinfo->description;
 	}
+
+//	notify($app->zero->subject_name);
 
 	$searching = new stdClass();
 	$searching->search = $app->zero->subject_name;

@@ -1,156 +1,366 @@
 <?php
 
+$allowed_parent_slugs = array(
+	'art',
+	'business',
+	'college-prep',
+	'computer',
+	'elementary-education',
+	'english',
+	'games',
+	'history',
+	'language',
+	'math',
+	'music',
+	'science',
+	'special-needs',
+	'sports-and-recreation',
+	'test-preparation',
+	//'liberal-arts'
+);
+if(!in_array($parent_slug, $allowed_parent_slugs)){
+	$app->redirect('/tutors');
+}
 
-	$allowed_parent_slugs = array(
-		'art',
-		'business',
-		'college-prep',
-		'computer',
-		'elementary-education',
-		'english',
-		'games',
-		'history',
-		'language',
-		'math',
-		'music',
-		'science',
-		'special-needs',
-		'sports-and-recreation',
-		'test-preparation',
-		//'liberal-arts'
-	);
-	if(!in_array($parent_slug, $allowed_parent_slugs)){
-		$app->redirect('/tutors');
+$app->filterby = $app->getCookie('filterby');
+$app->secondary = $app->target->secondary;
+
+$broadMatch = $parent_slug;
+$app->broadMatchCap = ucwords(str_replace('-',' ',$broadMatch));
+$app->filterbylocation = 'maincats-'.$broadMatch.'-tutors';
+
+$cachedBroadMatch = 'broadmatch---'.$broadMatch.'---'.$app->filterby;
+
+
+//notify($broadMatch);
+
+	// COPIED FROM TUTORS.POST
+
+	$prepared = array();
+	$prepared[':usertype'] = 'tutor';
+
+	$additional = NULL;
+	$additionalWhere = NULL;
+	$subjectJoin = NULL;
+	$having = NULL;
+
+
+	if(isset($app->search->advanced) && $app->search->advanced=='on' || isset($app->search->advanced) && $app->search->advanced==true){
+
+		if(!empty($app->search->name)){
+			$additionalWhere.= "\n AND CONCAT(user.first_name,' ',user.last_name) LIKE :name";
+			$additional.= ', user.first_name ';//CONCAT(user.first_name," ",user.last_name)
+			$searchname = $app->search->name;
+			$prepared[':name'] = "%$searchname%";
+		}
+
+		if(!empty($app->search->gender)){
+			$additionalWhere.= "\n AND profile.gender = :gender";
+			$additional.= ', profile.gender';
+			$searchgender = $app->search->gender;
+			$prepared[':gender'] = $searchgender;
+		}
+
+		if(isset($app->search->pricerangeLower) && isset($app->search->pricerangeUpper)){
+
+			$additionalWhere.= "\n AND profile.hourly_rate BETWEEN :pricerangeLower and :pricerangeUpper ";
+			$prepared[':pricerangeLower'] = $app->search->pricerangeLower;
+			$prepared[':pricerangeUpper'] = $app->search->pricerangeUpper;
+		}
 	}
 
-	$app->filterby = $app->getCookie('filterby');
-	$app->secondary = $app->target->secondary;
+	if(!empty($app->search->zipcode)){
 
-	$broadMatch = $parent_slug;
-	$app->broadMatchCap = ucwords(str_replace('-',' ',$broadMatch));
-	$app->filterbylocation = 'maincats-'.$broadMatch.'-tutors';
+		if(empty($app->search->distance)){
+			$app->search->distance = 15;
+		}
 
-	$cachedBroadMatch = 'broadmatch---'.$broadMatch.'---'.$app->filterby;
-	$offsets = new offsets((isset($number) ? $number : 1),$app->dependents->pagination->items_per_page);
+		$cachedKey = "cachedzipcode----".$app->search->zipcode;
+		$cachedZipcode = $app->connect->cache->get($cachedKey);
+		if($cachedZipcode == null) {
+			$zipcodedata = get_zipcode_data($app->connect,$app->search->zipcode);
+		    $results = $zipcodedata;
+		    $cachedZipcode = $results;
+		    $app->connect->cache->set($cachedKey, $results, 3600);
+		}
 
-	//notify($app->filterby);
+		if(empty($cachedZipcode)){
+			new Flash(
+				array('action'=>'alert','message'=>'Invalid Zipcode')
+			);
+		}
 
-	$userSelect = "
-		user.last_active,
-		user.state,
-		user.state_long,
-		user.state_slug,
-		user.city,
-		user.city_slug,
-		user.zipcode,
-		user.first_name,
-		user.last_name,
-		user.url,
-		user.email,
-		user.usertype,
+		if(isset($cachedZipcode->lat)){
+				$getDistance = "
+					, round(((acos(sin((" . $cachedZipcode->lat . "*pi()/180)) * sin((user.lat*pi()/180))+cos((" . $cachedZipcode->lat . "*pi()/180)) * cos((user.lat*pi()/180)) * cos(((" .$cachedZipcode->long. "- user.long)* pi()/180))))*180/pi())*60*1.1515)
+				";
 
-		profile.short_description_verified,
-		profile.personal_statement_verified,
-		profile.my_avatar,
-		profile.my_avatar_status,
-		profile.my_upload,
-		profile.my_upload_status,
-		profile.hourly_rate,
-		subjects.parent_slug
+				$asDistance = ' as distance ';
+
+				$additional.= $getDistance.$asDistance;
+
+				$having = "HAVING distance <= :distance";
+
+
+				$prepared[':distance'] = $app->search->distance;
+			}
+	}
+
+
+	if(!empty($broadMatch)){
+
+		$additional.= "
+
+			, subjects.subject_slug
+			, subjects.subject_name
+			, subjects.parent_slug
+
+		";
+
+		$subjectJoin = "
+
+			INNER JOIN
+				avid___user_subjects subjects
+					on subjects.email = user.email
+
+		";
+
+		$additionalWhere.="
+			AND
+				CONCAT(subjects.subject_name,' ',subjects.subject_slug,' ',subjects.parent_slug) LIKE :searchSubject
+
+		";
+
+		$searchkeyword = $broadMatch;
+		$prepared[':searchSubject'] = "%$searchkeyword%";
+
+		//notify($additionalWhere);
+	}
+
+	$orderBy = NULL;
+	$starsJoin = NULL;
+
+	$additional.= "
+	,
+
+	round(
+		(
+			SELECT
+				sum(sessions.review_score) as sum
+			FROM
+				avid___sessions sessions
+			WHERE
+				sessions.from_user = user.email
+		) /
+
+		(
+			SELECT
+				count(sessions.review_score) as count
+			FROM
+				avid___sessions sessions
+			WHERE
+				sessions.from_user = user.email
+		) ,2) as star_score
+
 	";
 
-	$data	=	$app->connect->createQueryBuilder();
-	$data	=	$data->select('user.id')->from('avid___user','user');
-	$data	=	$data->where('user.usertype = :usertype');
 
-	// AND WHERE
-	$data	=	$data->andWhere('user.status IS NULL');
-	$data	=	$data->andWhere('user.hidden IS NULL');
-	$data	=	$data->andWhere('user.lock IS NULL');
-	$data	=	$data->andWhere('profile.hourly_rate IS NOT NULL');
-	if(empty($app->user->email)){
-		$data	=	$data->andWhere('settings.loggedinprofile = "no"');
-	}
 
-	$data	=	$data->andWhere('subjects.parent_slug = :parent_slug');
-
-	// PARMAMETERS
-	$data	=	$data->setParameter(':usertype','tutor');
-	$data	=	$data->setParameter(':parent_slug',$broadMatch);
-
-		$data	=	$data->innerJoin('user','avid___user_profile','profile','user.email = profile.email');
-		$data	=	$data->innerJoin('user','avid___user_subjects','subjects','user.email = subjects.email');
-		$data	=	$data->leftJoin('user','avid___sessions','sessions','user.email = sessions.from_user');
-		$data	=	$data->leftJoin('user','avid___user_account_settings','settings','user.email = settings.email');
-
-		$data = $data->addSelect(' (SELECT round((sum(sessions.session_length) / 60))  FROM avid___sessions sessions WHERE sessions.from_user = user.email) AS hours' );
-		$data = $data->addSelect(' (SELECT count(sessions.id)  FROM avid___sessions sessions WHERE sessions.review_name IS NOT NULL AND sessions.from_user = user.email) AS count' );
-		$data = $data->addSelect(' (SELECT sum(sessions.review_score)  FROM avid___sessions sessions WHERE sessions.review_name IS NOT NULL AND sessions.from_user = user.email) AS score' );
-		$data = $data->addSelect(' (SELECT (sum(sessions.review_score) / count(sessions.id))  FROM avid___sessions sessions WHERE sessions.review_name IS NOT NULL AND sessions.from_user = user.email) AS average' );
-
-		//notify($app->filterby);
-		// ORDER BY --++--++--++
+	if(isset($app->filterby)){
+		if($app->filterby=='highestrate'){
+			$orderBy = "ORDER BY profile.hourly_rate DESC";
+		}
+		elseif($app->filterby=='lowestrate'){
+			$orderBy = "ORDER BY profile.hourly_rate ASC";
+		}
+		elseif($app->filterby=='lastactive'){
 			$orderBy = "ORDER BY user.last_active DESC";
-			$data	=	$data->orderBy('user.last_active','DESC');
-			if(isset($app->filterby)){
-				if($app->filterby=='highestrate'){
-					$orderBy = "ORDER BY profile.hourly_rate DESC";
-					$data	=	$data->orderBy('profile.hourly_rate','DESC');
-				}
-				elseif($app->filterby=='lowestrate'){
-					$orderBy = "ORDER BY profile.hourly_rate ASC";
-					$data	=	$data->orderBy('profile.hourly_rate','ASC');
-				}
-				elseif($app->filterby=='lastactive'){
-					$orderBy = "ORDER BY user.last_active DESC";
-					$data	=	$data->orderBy('user.last_active','DESC');
-				}
-				elseif($app->filterby=='higheststarscore'){
+		}
+		elseif($app->filterby=='higheststarscore'){
 
-					$data =	$data->andWhere('sessions.review_name IS NOT NULL');
-					$data	=	$data->orderBy('(average/count)','ASC');
+			$additionalWhere.= "
 
-				}
-			}
-		// ORDER BY --++--++--++
+				AND
+				(
+					SELECT
+						sum(sessions.review_score) as sum
+					FROM
+						avid___sessions sessions
+					WHERE
+						sessions.from_user = user.email
+				) IS NOT NULL
+			";
 
-		// GROUP
-		$data	=	$data->groupBy('user.email');
-
-
-	$count	=	$data->execute()->rowCount();
-	$data	=	$data->addSelect($userSelect);
-	$data	=	$data->setMaxResults($offsets->perpage)->setFirstResult($offsets->offsetStart);
-	$data = make_search_key_cache($data,$app->connect);
-	//$data	=	$data->execute()->fetchAll();
-
-	//notify($data);
-
-	if($count>0){
-		$app->broadmatch = $data;
+			$orderBy = "ORDER BY star_score DESC";
+		}
+		elseif(!empty($app->search->zipcode) && $app->filterby=='furthestdistance'){
+			$orderBy = "ORDER BY distance DESC";
+		}
+		elseif(!empty($app->search->zipcode) && $app->filterby=='closestdistance'){
+			$orderBy = "ORDER BY distance ASC";
+		}
+		else{
+			$orderBy = "ORDER BY user.last_active DESC";
+		}
+	}
+	else{
+		$orderBy = "ORDER BY user.last_active DESC";
 	}
 
-	// PAGINATION
-	$pagify = new Pagify();
-	$config = array(
-		'total'    => $count,
-		'url'      => '/'.$parent_slug.'-tutors/page/',
-		'page'     => $offsets->number,
-		'per_page' => $offsets->perpage
+	if(empty($number)){
+		$number = 1;
+	}
+
+	$offsets = new offsets($number,10);
+
+
+
+	$limitOffset = "
+		LIMIT
+			".$offsets->perpage."
+		OFFSET
+			".$offsets->offsetStart."
+	";
+
+	$sql = "
+
+		SELECT
+			SQL_CALC_FOUND_ROWS
+				user.first_name,
+				user.last_name,
+				user.username,
+				user.email,
+				user.url,
+				user.last_active,
+				user.usertype,
+				user.last_active,
+				user.emptybgcheck,
+				user.city_slug,
+				user.state_slug,
+				user.city,
+				user.state_long,
+				user.zipcode,
+
+
+				profile.hourly_rate,
+				profile.my_avatar,
+				profile.my_avatar_status,
+				profile.my_upload,
+				profile.my_upload_status,
+				profile.short_description_verified,
+				profile.personal_statement_verified,
+
+				settings.negotiableprice
+
+				$additional
+
+		FROM
+			avid___user user
+
+		$subjectJoin
+
+		$starsJoin
+
+		INNER JOIN
+
+			avid___user_profile profile on profile.email = user.email
+
+		INNER JOIN
+
+			avid___user_account_settings settings on settings.email = user.email
+
+		WHERE
+
+			user.usertype = :usertype
+				AND
+			user.status IS NULL
+				AND
+			user.hidden IS NULL
+				AND
+			profile.hourly_rate IS NOT NULL
+				AND
+			user.lock IS NULL
+				AND
+			user.last_active >= DATE_SUB(CURDATE(), INTERVAL 6 MONTH)
+
+			$additionalWhere
+
+		GROUP BY
+			user.email
+
+		$having
+
+		$orderBy
+
+		$limitOffset
+
+
+	";
+
+
+
+	$alltheresults = $app->connect->executeQuery($sql,$prepared)->fetchAll();
+	//notify($alltheresults);
+	//notify($offsets);
+	$allthecount = count($alltheresults);
+
+	$howmany = $app->connect->executeQuery("SELECT FOUND_ROWS() as count",array())->fetch();
+	$app->count = $howmany->count;
+	if($allthecount>0){
+		$pagify = new Pagify();
+		$config = array(
+			'total'    => $app->count,
+			'url'      => '/'.$parent_slug.'-tutors/page/',
+			'page'     => $offsets->number,
+			'per_page' => $offsets->perpage
+		);
+
+		$pagify->initialize($config);
+		$app->pagination = $pagify->get_links();
+
+		$app->searchResults = $alltheresults;
+	}
+	else{
+
+	}
+
+
+	$filtertype = array(
+		'closestdistance'=>'Closest Distance',
+		'furthestdistance'=>'Furthest Distance',
+		'highestrate'=>'Highest Hourly Rate',
+		'lowestrate'=>'Lowest Hourly Rate',
+		'lastactive'=>'Last Active',
+		'higheststarscore'=>'Highest Star Score'
 	);
-	$pagify->initialize($config);
-	$app->pagination = $pagify->get_links();
+
+	if(empty($getDistance)){
+		unset($filtertype['closestdistance']);
+		unset($filtertype['furthestdistance']);
+	}
+
+	$app->filtertype = $filtertype;
+
+
+	$plurals = NULL;
+	if($app->count!=1){
+		$plurals = 's';
+	}
+	$numbers = NULL;
+	if(isset($app->count)){
+		$numbers = numbers($app->count,1);
+	}
+	$kewordsearch = NULL;
+	if(!empty($broadMatch)){
+		$kewordsearch = str_replace('-',' ',$broadMatch);
+		$kewordsearch = ucwords($kewordsearch);
+
+	}
 
 	$app->meta = new stdClass();
-	$app->meta->title = 'AvidBrain '.$app->broadMatchCap.' Tutors';
-	$app->meta->h1 = $app->broadMatchCap.' Tutors';
-	#$app->meta->keywords = 'examplekeys';
-	#$app->meta->description = 'exampledescribers';
-	//$app->broadMatchCap.' Tutors'
+	$app->meta->title = $kewordsearch.' Tutors - Find Online Tutors';
+	$app->meta->h1 = false;
 
+	$app->metah1 = NULL;
 
-	$file = $app->dependents->DOCUMENT_ROOT.'images/categories/'.$broadMatch.'.jpg';
-	if(file_exists($file)){
-		$app->meta->h1 = false;
-		$app->wideconent = '<div class="widecontent '.$broadMatch.' valign-wrapper"> <div class="valign">'.$app->broadMatchCap.' Tutors</div> </div>';
-	}
+	$app->metah1 = $numbers.' <span class="blue-text">'.$kewordsearch.' Tutor'.$plurals.'</span>';
