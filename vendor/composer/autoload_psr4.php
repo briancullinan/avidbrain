@@ -13,7 +13,6 @@ return array(
     'Symfony\\Component\\Finder\\' => array($vendorDir . '/symfony/finder'),
     'SuperClosure\\' => array($vendorDir . '/jeremeamia/SuperClosure/src'),
     'Stripe\\' => array($vendorDir . '/stripe/stripe-php/lib'),
-    'Stringy\\' => array($vendorDir . '/danielstjules/stringy/src'),
     'Snipe\\BanBuilder\\' => array($vendorDir . '/snipe/banbuilder/src'),
     'React\\Promise\\' => array($vendorDir . '/react/promise/src'),
     'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-message/src'),
@@ -30,6 +29,7 @@ return array(
     'GuzzleHttp\\Psr7\\' => array($vendorDir . '/guzzlehttp/psr7/src'),
     'GuzzleHttp\\' => array($vendorDir . '/guzzlehttp/guzzle/src'),
     'Doctrine\\Common\\Cache\\' => array($vendorDir . '/doctrine/cache/lib/Doctrine/Common/Cache'),
+    'Doctrine\\Common\\' => array($vendorDir . '/doctrine/common/lib/Doctrine/Common'),
     'Carbon\\' => array($vendorDir . '/nesbot/carbon/src/Carbon'),
     'Abraham\\TwitterOAuth\\' => array($vendorDir . '/abraham/twitteroauth/src'),
 );

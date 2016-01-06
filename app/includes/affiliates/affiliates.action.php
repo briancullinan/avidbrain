@@ -1,2 +1,2 @@
 <?php
-    $app->redirect('/');
+    //$app->redirect('/');
