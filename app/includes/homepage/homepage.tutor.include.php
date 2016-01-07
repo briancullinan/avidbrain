@@ -1,6 +1,13 @@
 <div class="row">
 	<div class="col s12 m4 l4">
 
+		<?php if(isset($settings) && $settings->affiliateprogram == 'yes'): ?>
+			<h3>Affiliate Program</h3>
+			<div class="block">
+				Thank you for activating your affiliate account, words....<a href="/affiliates">Affiliates</a>
+			</div>
+		<?php endif; ?>
+
 		<?php if(isset($app->user->needs_bgcheck)): ?>
 			<h3>Background Check</h3>
 			<div class="block">

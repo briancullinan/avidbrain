@@ -63,7 +63,7 @@
 
         <h3>Affiliate Tools</h3>
         <div class="block">
-            AFFAILIATE TOOOLS.com
+            Need some help or want some ideas on how to make money with our affiliate progam? Visit our <a href="/affiliate-tools">Affiliate Tools Page</a>
         </div>
 
 	</div>

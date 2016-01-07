@@ -104,6 +104,8 @@
 
 	if(isset($app->user->email)){
 
+		//notify('ARE I FILIATE?');
+
 		if(isset($app->user->usertype) && $app->user->usertype=='admin'){
 			$app->redirect('/admin-everything');
 			///$app->target->include = str_replace('.include.','.admin.',$app->target->include);

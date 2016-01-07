@@ -37,6 +37,10 @@
 		}
 
 		$dropdownnav[] = (object)array('url'=>'/account-settings','text'=>'Account Settings','class'=>'dll-acts');
+		$settings = $app->user->settings();
+		if($settings->affiliateprogram=='yes'){
+			$dropdownnav[] = (object)array('url'=>'/affiliates','text'=>'Affiliate Nose Jones','class'=>'dll-affiliates');
+		}
 		$dropdownnav[] = (object)array('url'=>'/payment','text'=>'Payment','class'=>'dll-pay');
 
 	}
