@@ -1,6 +1,6 @@
 <?php
 
-    $app->redirect('/login');
+    //$app->redirect('/login');
 
     $app->meta = new stdClass();
     $app->meta->title = 'Affilate Login';

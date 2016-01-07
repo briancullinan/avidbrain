@@ -26,19 +26,7 @@
             new Flash(array('action'=>'required','message'=>'Email address already used to signup','formID'=>'affsignup','field'=>'aff_email'));
         }
 
-        function randomaffiliate($connect,$count){
-            $string = random_all($count);
-            //$string = random_numbers($count);
-            $sql = "SELECT mycode FROM avid___affiliates WHERE mycode = :mycode";
-            $prepare = array(':mycode'=>$string);
-            $results = $connect->executeQuery($sql,$prepare)->fetch();
-            if(isset($results->mycode)){
-                $count = ($count + 1);
-                return randomaffiliate($connect,$count);
-            }
-
-            return $string;
-        }
+        
 
         $newaffiliate = array(
             'email'=>$app->affsignup->email,

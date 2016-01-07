@@ -229,8 +229,8 @@
 	$routes['signup-tutor-promocode'] = (object)array('url'=>'/signup/tutor','slug'=>'tutor','route'=>'/signup/tutor/:promocode/','include'=>'signup/tutor','protected'=>NULL,'permissions'=>array());
 	$routes['qa-signup'] = (object)array('url'=>'/signup/qa','slug'=>'qa','route'=>'/signup/qa/','include'=>'signup/qa','protected'=>NULL,'permissions'=>array());
 
-	//$routes['signup-affiliate'] = (object)array('url'=>'/signup/affiliate','slug'=>'affiliate','route'=>'/signup/affiliate/','include'=>'signup/affiliate','protected'=>NULL,'permissions'=>array());
-	//$routes['signup-affiliate-code'] = (object)array('url'=>'/signup/affiliate/code','slug'=>'code','route'=>'/signup/affiliate/:code/','include'=>'signup/affiliate/code','protected'=>NULL,'permissions'=>array());
+	$routes['signup-affiliate'] = (object)array('url'=>'/signup/affiliate','slug'=>'affiliate','route'=>'/signup/affiliate/','include'=>'signup/affiliate','protected'=>NULL,'permissions'=>array());
+	$routes['signup-affiliate-code'] = (object)array('url'=>'/signup/affiliate/code','slug'=>'code','route'=>'/signup/affiliate/:code/','include'=>'signup/affiliate/code','protected'=>NULL,'permissions'=>array());
 
 	// Resources
 	$routes['resources'] = (object)array('url'=>'/resources','slug'=>'resources','route'=>'/resources/','include'=>'resources','protected'=>true,'permissions'=>array());
