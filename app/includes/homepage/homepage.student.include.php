@@ -6,6 +6,13 @@
 
 		<div class="col s12 m6 l4">
 
+				<?php if(isset($settings) && $settings->affiliateprogram == 'yes'): ?>
+					<h3>Affiliate Program</h3>
+					<div class="block">
+						Thank you for activating your affiliate account, words....<a href="/affiliates">Affiliates</a>
+					</div>
+				<?php endif; ?>
+
 				<?php if(isset($app->mytutors)): ?>
 				<h3>Your Tutors</h3>
 

@@ -25,9 +25,21 @@
 				<div class="hr"></div>
 				<p>It looks like your session occurred <br> <span class="notice red white-text"><?php echo $app->setup->dateDiff->text; ?> ago </span> </p>
 
-				<a class="btn blue btn-l btn-block btn-notice" href="/sessions/complete-active/mark-complete/<?php echo $app->setup->id; ?>">
-					Click To Complete Session
-				</a>
+				<?php
+
+					$sessionCost = ($app->setup->session_rate * ($app->setup->proposed_length/60));
+
+				?>
+
+				<?php if($sessionCost >= 30): ?>
+					<a class="btn blue btn-l btn-block btn-notice" href="/sessions/complete-active/mark-complete/<?php echo $app->setup->id; ?>">
+						Click To Complete Session
+					</a>
+				<?php else: ?>
+					<div class="alert purple white-text">
+						You session must be at least $30 to continue. <br> Right now it's estimated at $<?php echo numbers($sessionCost); ?>
+					</div>
+				<?php endif; ?>
 
 				<?php if(!empty($app->setup->roomid)): ?>
 				<a href="/resources/whiteboard/<?php echo $app->setup->roomid; ?>" class="btn btn-block">
