@@ -14,6 +14,7 @@
 		<?php if(isset($app->affiliateuser)): ?>
 
 			<?php
+				//printer($app->affiliateuser);
 				$pay = (count($app->affiliateuser->everything)*20);
 			?>
 
@@ -57,6 +58,8 @@
 						<?php endif; ?>
 
 					</form>
+				<?php else: ?>
+					No Payment Method On File
 				<?php endif; ?>
 			<?php else: ?>
 				Nothing To Pay

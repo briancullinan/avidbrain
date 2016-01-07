@@ -1,20 +1,43 @@
 <?php
+
     $sql = "
         SELECT
             affiliates.email,
-            affiliates.id,
             affiliates.first_name,
             affiliates.last_name,
-            affiliates.mycode
+            affiliates.mycode,
+            user.promocode,
+            user.email as useremail,
+            sessions.id,
+            payments.trasfer_id,
+            affiliates.id
 
         FROM
             avid___affiliates affiliates
 
-        GROUP BY email
+        INNER JOIN
+            avid___user user on user.promocode = affiliates.mycode
+
+        INNER JOIN
+
+            avid___sessions sessions on sessions.to_user = user.email OR sessions.from_user = user.email
+
+        LEFT JOIN
+
+            avid___affiliates_payments payments on payments.sessionid = sessions.id
+
+        WHERE
+
+            payments.trasfer_id IS NULL
+
+
+        GROUP BY affiliates.email
 
     ";
-    $prepare = array(':usertype'=>'tutor');
+    $prepare = array();
     $results = $app->connect->executeQuery($sql,$prepare)->fetchAll();
+
+    //notify($results);
 
     if(count($results)>0){
         $app->payaffiliates = $results;

@@ -165,7 +165,7 @@
 
 	$routes['payment-credit-card'] = (object)array('url'=>'/payment/credit-card','slug'=>'credit-card','route'=>'/payment/credit-card/','include'=>'payment/credit-card','protected'=>true,'permissions'=>array('student'));
 	$routes['payment-credit-card-action'] = (object)array('url'=>'/payment/credit-card','slug'=>'credit-card','route'=>'/payment/credit-card/:action/','include'=>'payment/credit-card','protected'=>true,'permissions'=>array('student'));
-	$routes['payment-get-paid'] = (object)array('url'=>'/payment/get-paid','slug'=>'get-paid','route'=>'/payment/get-paid/','include'=>'payment/get-paid','protected'=>true,'permissions'=>array('tutor'));
+	$routes['payment-get-paid'] = (object)array('url'=>'/payment/get-paid','slug'=>'get-paid','route'=>'/payment/get-paid/','include'=>'payment/get-paid','protected'=>true,'permissions'=>array('tutor','student'));
 
 	$routes['payment-phone'] = (object)array('url'=>'/payment/phone','slug'=>'phone','route'=>'/payment/phone/','include'=>'payment/phone','protected'=>true,'permissions'=>array('student'));
 	//$routes['payment-phone-verify'] = (object)array('url'=>'/payment/phone','slug'=>'phone','route'=>'/payment/phone/','include'=>'payment/phone','protected'=>true,'permissions'=>array('student'));

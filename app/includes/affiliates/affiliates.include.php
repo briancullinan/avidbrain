@@ -31,7 +31,7 @@
                 <div>If you would like to change your payment method <a href="<?php echo $link; ?>">click here</a>.</div>
 
             <?php else: ?>
-                You have not enterd a payment method yet, please go here to continue
+                You have not enterd a payment method yet, <a href="/payment/get-paid">please go here to continue</a>
             <?php endif; ?>
         </div>
 
