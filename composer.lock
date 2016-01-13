@@ -850,7 +850,7 @@
         },
         {
             "name": "illuminate/cache",
-            "version": "v5.2.6",
+            "version": "v5.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/cache.git",
@@ -900,7 +900,7 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v5.2.6",
+            "version": "v5.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -942,16 +942,16 @@
         },
         {
             "name": "illuminate/filesystem",
-            "version": "v5.2.6",
+            "version": "v5.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/filesystem.git",
-                "reference": "693789f11c22b96180dce3a20e6b7c4842299400"
+                "reference": "b32bdddac9a90e5b36de049f4c3bf75c690df9ad"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/filesystem/zipball/693789f11c22b96180dce3a20e6b7c4842299400",
-                "reference": "693789f11c22b96180dce3a20e6b7c4842299400",
+                "url": "https://api.github.com/repos/illuminate/filesystem/zipball/b32bdddac9a90e5b36de049f4c3bf75c690df9ad",
+                "reference": "b32bdddac9a90e5b36de049f4c3bf75c690df9ad",
                 "shasum": ""
             },
             "require": {
@@ -988,20 +988,20 @@
             ],
             "description": "The Illuminate Filesystem package.",
             "homepage": "http://laravel.com",
-            "time": "2015-12-20 15:49:15"
+            "time": "2016-01-02 15:21:57"
         },
         {
             "name": "illuminate/support",
-            "version": "v5.2.6",
+            "version": "v5.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "7be481e742f527a5c4bc84e967bd06a31f50ec0e"
+                "reference": "6d8dec02825299b0ad47712564e9d33104e148c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/7be481e742f527a5c4bc84e967bd06a31f50ec0e",
-                "reference": "7be481e742f527a5c4bc84e967bd06a31f50ec0e",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/6d8dec02825299b0ad47712564e9d33104e148c4",
+                "reference": "6d8dec02825299b0ad47712564e9d33104e148c4",
                 "shasum": ""
             },
             "require": {
@@ -1044,7 +1044,7 @@
             ],
             "description": "The Illuminate Support package.",
             "homepage": "http://laravel.com",
-            "time": "2015-12-29 14:47:47"
+            "time": "2016-01-07 11:02:28"
         },
         {
             "name": "intervention/image",
@@ -1262,16 +1262,16 @@
         },
         {
             "name": "matthiasmullie/minify",
-            "version": "1.3.30",
+            "version": "1.3.32",
             "source": {
                 "type": "git",
                 "url": "https://github.com/matthiasmullie/minify.git",
-                "reference": "0cd5108683e7376e795555ced56229c4c16597aa"
+                "reference": "140c714688908afcecde87338c8309233bdc2519"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/matthiasmullie/minify/zipball/0cd5108683e7376e795555ced56229c4c16597aa",
-                "reference": "0cd5108683e7376e795555ced56229c4c16597aa",
+                "url": "https://api.github.com/repos/matthiasmullie/minify/zipball/140c714688908afcecde87338c8309233bdc2519",
+                "reference": "140c714688908afcecde87338c8309233bdc2519",
                 "shasum": ""
             },
             "require": {
@@ -1315,20 +1315,20 @@
                 "minifier",
                 "minify"
             ],
-            "time": "2016-01-05 07:43:18"
+            "time": "2016-01-11 02:10:11"
         },
         {
             "name": "matthiasmullie/path-converter",
-            "version": "1.0.6",
+            "version": "1.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/matthiasmullie/path-converter.git",
-                "reference": "9f83d0c398dbe70f45f5840d95ffad73d5efd35f"
+                "reference": "83609c1bb251b2540eba912615571a501a0a06a6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/matthiasmullie/path-converter/zipball/9f83d0c398dbe70f45f5840d95ffad73d5efd35f",
-                "reference": "9f83d0c398dbe70f45f5840d95ffad73d5efd35f",
+                "url": "https://api.github.com/repos/matthiasmullie/path-converter/zipball/83609c1bb251b2540eba912615571a501a0a06a6",
+                "reference": "83609c1bb251b2540eba912615571a501a0a06a6",
                 "shasum": ""
             },
             "require": {
@@ -1365,7 +1365,7 @@
                 "paths",
                 "relative"
             ],
-            "time": "2016-01-05 07:45:30"
+            "time": "2016-01-07 00:41:13"
         },
         {
             "name": "nesbot/carbon",
@@ -1467,16 +1467,16 @@
         },
         {
             "name": "phpfastcache/phpfastcache",
-            "version": "3.0.24",
+            "version": "3.0.25",
             "source": {
                 "type": "git",
                 "url": "https://github.com/khoaofgod/phpfastcache.git",
-                "reference": "704197e6c5d579a582ec2fea976a9fc65e1c21db"
+                "reference": "939b5521c4d76897345afaa4c808228feb0474ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/khoaofgod/phpfastcache/zipball/704197e6c5d579a582ec2fea976a9fc65e1c21db",
-                "reference": "704197e6c5d579a582ec2fea976a9fc65e1c21db",
+                "url": "https://api.github.com/repos/khoaofgod/phpfastcache/zipball/939b5521c4d76897345afaa4c808228feb0474ff",
+                "reference": "939b5521c4d76897345afaa4c808228feb0474ff",
                 "shasum": ""
             },
             "require": {
@@ -1519,7 +1519,7 @@
                 "redis",
                 "wincache"
             ],
-            "time": "2015-12-30 00:42:41"
+            "time": "2016-01-10 05:02:56"
         },
         {
             "name": "psr/http-message",

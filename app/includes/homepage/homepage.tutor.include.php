@@ -4,7 +4,7 @@
 		<?php if(isset($settings) && $settings->affiliateprogram == 'yes'): ?>
 			<h3>Affiliate Program</h3>
 			<div class="block">
-				Thank you for activating your affiliate account, words....<a href="/affiliates">Affiliates</a>
+				Thank you for activating your affiliate account, you may now visit <a href="/affiliates">Affiliates</a>
 			</div>
 		<?php endif; ?>
 

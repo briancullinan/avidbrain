@@ -231,7 +231,7 @@
 
 	$routes['signup-affiliate'] = (object)array('url'=>'/signup/affiliate','slug'=>'affiliate','route'=>'/signup/affiliate/','include'=>'signup/affiliate','protected'=>NULL,'permissions'=>array());
 	$routes['signup-affiliate-code'] = (object)array('url'=>'/signup/affiliate/code','slug'=>'code','route'=>'/signup/affiliate/:code/','include'=>'signup/affiliate/code','protected'=>NULL,'permissions'=>array());
-	$routes['affiliate-tools'] = (object)array('url'=>'/affiliate-tools','slug'=>'affiliate-tools','route'=>'/affiliate-tools/','include'=>'affiliates/affiliate-tools','protected'=>NULL,'permissions'=>array());
+	$routes['affiliate-tools'] = (object)array('url'=>'/affiliate-tools','slug'=>'affiliate-tools','route'=>'/affiliate-tools/','include'=>'affiliates/affiliate-tools','protected'=>true,'permissions'=>array());
 
 
 

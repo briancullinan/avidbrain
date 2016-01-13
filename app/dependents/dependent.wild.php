@@ -47,7 +47,8 @@
 		'crop.css',
 		'wild.media.css',
 		'time.picker.css',
-		'shepherd-theme-arrows.css'
+		'shepherd-theme-arrows.css',
+		'newstyles.css'
 
 	);
 

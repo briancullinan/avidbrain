@@ -119,21 +119,23 @@
 			</div>
 		</div>
 
-		<div class="row">
-			<div class="col s6 m8 l8">
-				<div class="switch-text">Sign me up for the <a href="/affiliates">AvidBrain Affiliate Program</a></div>
-			</div>
-			<div class="col s6 m4 l4 right-align">
-				<div class="switch">
-					<label>
-						No
-						<input <?php if($app->user->settings->affiliateprogram=='yes'){ echo 'checked="checked"';} ?> name="accountsettings[affiliateprogram]" type="checkbox">
-						<span class="lever"></span>
-						Yes
-					</label>
+		<?php if(isset($app->enableaffiliates)): ?>
+			<div class="row">
+				<div class="col s6 m8 l8">
+					<div class="switch-text">Sign me up for the <a href="/affiliates">AvidBrain Affiliate Program</a></div>
+				</div>
+				<div class="col s6 m4 l4 right-align">
+					<div class="switch">
+						<label>
+							No
+							<input <?php if($app->user->settings->affiliateprogram=='yes'){ echo 'checked="checked"';} ?> name="accountsettings[affiliateprogram]" type="checkbox">
+							<span class="lever"></span>
+							Yes
+						</label>
+					</div>
 				</div>
 			</div>
-		</div>
+		<?php endif; ?>
 
 		<div class="row">
 			<div class="col s6 m8 l8">
