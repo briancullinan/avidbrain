@@ -255,9 +255,10 @@
 		$routes['homepage'] = (object)array('url'=>'/affiliates','slug'=>'homepage','route'=>'/','include'=>'affiliates/homepage','template'=>'affiliate.php');
 		$routes['affiliates'] = (object)array('url'=>'/affiliates','slug'=>'affiliates','route'=>'/affiliates/','include'=>'affiliates','template'=>'affiliate.php');
 		$routes['affiliates-information'] = (object)array('url'=>'/affiliates/information','slug'=>'information','route'=>'/affiliates/information/','include'=>'affiliates/information','template'=>'affiliate.php');
-		$routes['affiliates-get-paid'] = (object)array('url'=>'/affiliates/get-paid','slug'=>'get-paid','route'=>'/affiliates/get-paid/','include'=>'affiliates/get-paid','template'=>'affiliate.php');
-		$routes['affiliates-account-settings'] = (object)array('url'=>'/affiliates/account-settings','slug'=>'account-settings','route'=>'/affiliates/account-settings/','include'=>'affiliates/account-settings','template'=>'affiliate.php');
-		#$routes['affiliates-xxx'] = (object)array('url'=>'/affiliates/xxx','slug'=>'xxx','route'=>'/affiliates/xxx/','include'=>'affiliates/xxx','template'=>'affiliate.php');
+		//$routes['affiliates-get-paid'] = (object)array('url'=>'/affiliates/get-paid','slug'=>'get-paid','route'=>'/affiliates/get-paid/','include'=>'affiliates/get-paid','template'=>'affiliate.php');
+		//$routes['affiliates-account-settings'] = (object)array('url'=>'/affiliates/account-settings','slug'=>'account-settings','route'=>'/affiliates/account-settings/','include'=>'affiliates/account-settings','template'=>'affiliate.php');
+		$routes['affiliate-tools'] = (object)array('url'=>'/affiliate-tools','slug'=>'affiliate-tools','route'=>'/affiliate-tools/','include'=>'affiliates/affiliate-tools','template'=>'affiliate.php');
+		//$routes['affiliate-tools'] = (object)array('url'=>'/affiliate-tools','slug'=>'affiliate-tools','route'=>'/affiliate-tools/','include'=>'affiliates/affiliate-tools');
 		$routes['logout'] = (object)array('url'=>'/logout','slug'=>'logout','route'=>'/logout/','include'=>'logout','protected'=>NULL,'permissions'=>array());
 	}
 

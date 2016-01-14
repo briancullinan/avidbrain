@@ -48,6 +48,9 @@
 
 		}
 	}
+	elseif(isset($app->affiliate->email)){
+
+	}
 	else{
 		$app->redirect('/signup/affiliate');
 	}
