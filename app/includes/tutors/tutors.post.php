@@ -251,7 +251,7 @@
 				AND
 			user.lock IS NULL
 				AND
-			user.last_active >= DATE_SUB(CURDATE(), INTERVAL 6 MONTH)
+			user.last_active >= DATE_SUB(CURDATE(), INTERVAL 9 MONTH)
 
 			$additionalWhere
 
