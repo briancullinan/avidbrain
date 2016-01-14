@@ -2,7 +2,7 @@
 
 	if(isset($app->user->email)){
 		$app->usersettings = $app->user->settings();
-		if($app->usersettings->affiliateprogram=='yes'){
+		if(isset($app->usersettings->affiliateprogram) && $app->usersettings->affiliateprogram=='yes'){
 			$sql = "SELECT * FROM avid___affiliates WHERE email = :email";
 			$prepare = array(':email'=>$app->user->email);
 			$results = $app->connect->executeQuery($sql,$prepare)->fetch();
