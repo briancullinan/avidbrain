@@ -1,0 +1,80 @@
+<h2>Post New Job</h2>
+
+<form class="form-post" method="post" action="<?php echo $app->request->getPath(); ?>" id="postanewjob">
+
+    <div class="input-field">
+        <input type="text" id="zipcode" name="postanewjob[zipcode]" minlength="5" maxlength="5"  />
+        <label for="zipcode">
+            Zip Code
+        </label>
+    </div>
+
+    <div class="input-field">
+        <input type="text" id="subject" name="postanewjob[subject]" data-name="postanewjob" class="autogenerate--subject" />
+        <label for="subject">
+            Subject
+        </label>
+    </div>
+
+    <div class="input-field">
+        <textarea id="why" name="postanewjob[why]" class="materialize-textarea"></textarea>
+        <label for="why">
+            Explain why you need help
+        </label>
+    </div>
+
+    <div class="input-field input-range jobs-range">
+
+        <div class="jobs-price-range">What is your price range?</div>
+
+        <div class="pricerange slidebox"></div>
+        <div class="slidebox-inputs">
+            <input type="text" name="postanewjob[price_range_low]" id="pricerangeLower" data-value="<?php if(isset($app->thejob->price_range_low)){ echo $app->thejob->price_range_low; }else{ echo '15';} ?>" />
+            <input type="text" name="postanewjob[price_range_high]" id="pricerangeUpper" data-value="<?php if(isset($app->thejob->price_range_high)){ echo $app->thejob->price_range_high; }else{ echo '65';} ?>" />
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col s12 m6 l6">
+            <div class="input-field">
+                <label class="select-label" for="textarea1">
+                    What type of tutor are you looking for?
+                </label>
+                <select name="postanewjob[jobtype]" class="browser-default">
+                    <?php foreach($app->jobOptions['type'] as $key => $type): ?>
+                    <option  value="<?php echo $type; ?>"><?php echo $key; ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+        </div>
+        <div class="col s12 m6 l6">
+            <div class="input-field">
+                <label class="select-label" for="textarea1">
+                    What is your skill level?
+                </label>
+                <select name="postanewjob[skill_level]" class="browser-default">
+                    <option value="">Select Skill Level</option>
+                    <?php foreach($app->jobOptions['skill_level'] as  $skill_level): ?>
+                        <option value="<?php echo $skill_level; ?>"><?php echo $skill_level; ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="input-field">
+        <textarea id="notes" name="postanewjob[notes]" class="materialize-textarea"></textarea>
+        <label for="notes">
+            notes
+        </label>
+    </div>
+
+    <input type="hidden" name="postanewjob[target]" value="postanewjob"  />
+	<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
+
+    <button type="submit" class="btn success">
+        GO
+    </button>
+
+</form>
