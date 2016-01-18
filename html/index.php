@@ -49,6 +49,8 @@
 		$config['mode'] = $app->dependents->MODE;
 	}
 
+	//$app->enableaffiliates = true;
+
 	$app->config($config);
 
 	use \Slim\Extras\Middleware\CSRFNINJA;

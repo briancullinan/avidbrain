@@ -228,15 +228,21 @@
 				<div class="block">
 					<div class="title">Make Check Out To:</div>
 					<div class="row">
-					<?php
-						if(isset($app->paytutor->check)){
-							foreach($app->paytutor->check as $key => $value):
-								echo '<div class="col s12 m4 l4">'.ucwords(str_replace('_',' ',$key)).':</div>';
-								echo '<div class="col s12 m8 l8">'.$app->crypter->decrypt($value).' &nbsp; </div>';
-								//echo ucwords(str_replace('_',' ',$key)).': '.$app->crypter->decrypt($value).'<br>';
-							endforeach;
+
+
+					<textarea onclick="select();" style="min-height:120px;"><?php echo $app->crypter->decrypt($app->paytutor->check->first_name).' '.$app->crypter->decrypt($app->paytutor->check->last_name)."\n";
+						if(!empty($app->paytutor->check->address_line_1)){
+							echo $app->crypter->decrypt($app->paytutor->check->address_line_1)."\n";
 						}
-					?>
+						if(!empty($app->paytutor->check->address_line_2)){
+							echo $app->crypter->decrypt($app->paytutor->check->address_line_2)."\n";
+						}
+						echo $app->crypter->decrypt($app->paytutor->check->city).' '.$app->crypter->decrypt($app->paytutor->check->state).', '.$app->crypter->decrypt($app->paytutor->check->zipcode)."\n";
+						if(!empty($app->paytutor->check->notes)){
+							echo $app->crypter->decrypt($app->paytutor->check->notes)."\n";
+						}
+					?></textarea>
+
 					</div>
 
 				</div>
