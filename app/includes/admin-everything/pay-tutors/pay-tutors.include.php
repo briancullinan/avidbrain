@@ -230,7 +230,7 @@
 					<div class="row">
 
 
-					<textarea onclick="select();" style="min-height:120px;"><?php echo $finaltotalpay."\n"; echo $app->crypter->decrypt($app->paytutor->check->first_name).' '.$app->crypter->decrypt($app->paytutor->check->last_name)."\n";
+					<textarea onclick="select();" style="min-height:120px;"><?php echo numbers($finaltotalpay)."\n"; echo $app->crypter->decrypt($app->paytutor->check->first_name).' '.$app->crypter->decrypt($app->paytutor->check->last_name)."\n";
 						if(!empty($app->paytutor->check->address_line_1)){
 							echo $app->crypter->decrypt($app->paytutor->check->address_line_1)."\n";
 						}
