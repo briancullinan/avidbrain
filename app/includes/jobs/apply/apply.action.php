@@ -1,5 +1,12 @@
 <?php
 
+	if(isset($app->user->email)){
+		$email = $app->user->email;
+	}
+	else{
+		$email = 'xxxxxxx123123123october@avidbrain.com';
+	}
+
 	$sql = "
 		SELECT
 			jobs.*,
@@ -23,7 +30,7 @@
 		WHERE
 			jobs.id = :id
 	";
-	$prepare = array(':id'=>$id,':myemail'=>$app->user->email);
+	$prepare = array(':id'=>$id,':myemail'=>$email);
 	$results = $app->connect->executeQuery($sql,$prepare)->fetch();
 	//notify($results);
 
