@@ -35,8 +35,6 @@
 
     if(empty($app->joblog->id)){
 
-
-
         $prepared = [];
         $additional ='';
         $having = '';
@@ -145,8 +143,6 @@
         $emailMessage.= '<small>If you do not want to receive these emails, you can change your options in the Account Settings Page</small>';
 
 
-
-
         $json = array();
         foreach($results as $convertojson){
             $json[] = (object)array('email'=>$convertojson->email,'name'=>$convertojson->first_name.' '.$convertojson->last_name);
@@ -167,7 +163,6 @@
             // Do Nothing
         }
         else{
-            //notify("FRAMS");
             foreach($results as $sendEamil){
                 $app->mailgun->to = $sendEamil->email;
                 $app->mailgun->subject = $emailText;

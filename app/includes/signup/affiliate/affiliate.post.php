@@ -26,7 +26,7 @@
             new Flash(array('action'=>'required','message'=>'Email address already used to signup','formID'=>'affsignup','field'=>'aff_email'));
         }
 
-        
+
 
         $newaffiliate = array(
             'email'=>$app->affsignup->email,
@@ -44,6 +44,18 @@
         $app->mailgun->to = $app->affsignup->email;
         $app->mailgun->subject = 'AvidBrain Affiliate Signup';
         $app->mailgun->message = $message;
+        $app->mailgun->send();
+
+        if($app->dependents->DEBUG==true){
+			$toemails = 'david@avidbrain.com';
+		}
+		else{
+			$toemails = 'jake.stoll@avidbrain.com,keith@avidbrain.com,david@avidbrain.com';
+		}
+
+        $app->mailgun->to = $toemails;
+        $app->mailgun->subject = 'AvidBrain Affiliate Signup';
+        $app->mailgun->message = 'A new Affiliate has signed up.';
         $app->mailgun->send();
 
         $app->connect->insert('avid___affiliates',$newaffiliate);
