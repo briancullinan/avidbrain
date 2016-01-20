@@ -177,6 +177,9 @@
 	$routes['jobs'] = (object)array('url'=>'/jobs','slug'=>'jobs','route'=>'/jobs/','include'=>'jobs','protected'=>NULL,'permissions'=>array());
 	$routes['jobs-paginate'] = (object)array('url'=>'/jobs/page/number','slug'=>'jobs','route'=>'/jobs/page/:number/','include'=>'jobs','protected'=>NULL,'permissions'=>array());
 	$routes['jobs-import'] = (object)array('url'=>'/jobs/import','slug'=>'import','route'=>'/jobs/import/','include'=>'jobs/import','protected'=>true,'permissions'=>array('student'));
+
+	$routes['jobs-complete'] = (object)array('url'=>'/jobs/completepost','slug'=>'completepost','route'=>'/jobs/completepost/:id/','include'=>'jobs/completepost','protected'=>true,'permissions'=>array('student'));
+
 	$routes['jobs-apply'] = (object)array('url'=>'/jobs/apply','slug'=>'apply','route'=>'/jobs/apply/:id/','include'=>'jobs/apply','protected'=>NULL,'permissions'=>array());
 	$routes['jobs-manage'] = (object)array('url'=>'/jobs/manage','slug'=>'manage','route'=>'/jobs/manage/:id/','include'=>'jobs/manage','protected'=>NULL,'permissions'=>array());
 	$routes['jobs-subject'] = (object)array('url'=>'/jobs','slug'=>'subject','route'=>'/jobs/:subject/','include'=>'jobs/subject','protected'=>NULL,'permissions'=>array());

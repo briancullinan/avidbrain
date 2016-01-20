@@ -43,6 +43,7 @@
 		'view-user.css',
 		'sessions-messages.css',
 		'subs.css',
+		'newjob.css',
 		'customize-avatar.css',
 		'crop.css',
 		'wild.media.css',

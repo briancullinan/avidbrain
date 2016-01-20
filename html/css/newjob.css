@@ -1,0 +1,44 @@
+.job-post{
+	border: solid 1px #ccc;
+}
+.job-post.status-open{
+}
+.job-post.status-closed{
+	opacity: .5;
+}
+.job-post-title, .job-post-title a{
+	font-size: 20px;
+}
+.job-post-title a:hover{
+	color: #333;
+}
+.job-post:hover{
+	border: solid 1px #0099ff;
+}
+.job-post-title{
+	color: #333;
+	margin: 0px;
+	padding: 0px;
+	line-height: normal;
+}
+.job-post-location{
+	padding-bottom: 5px;
+	margin-bottom: 10px;
+	border-bottom: solid 1px #ccc;
+	color: #999;
+}
+.job-post-description{
+	font-size: 14px;
+	padding: 5px;
+	margin-bottom: 15px;
+}
+.apply-now{
+	margin-top: 15px;
+}
+.applicant-count{
+	padding:0px 6px;
+	color: #fff;
+}
+.job-post-distance{
+	float: right;
+}

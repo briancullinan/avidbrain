@@ -122,7 +122,7 @@
 
 					<div class="title">Your Message:</div>
 					<div class="description">
-						<?php echo $app->job->message; ?>
+						<?php echo $app->job->myapplication->message; ?>
 					</div>
 
 				<?php else: ?>
