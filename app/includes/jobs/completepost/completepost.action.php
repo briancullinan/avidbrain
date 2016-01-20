@@ -35,6 +35,8 @@
 
     if(empty($app->joblog->id)){
 
+
+
         $prepared = [];
         $additional ='';
         $having = '';
@@ -165,6 +167,7 @@
             // Do Nothing
         }
         else{
+            //notify("FRAMS");
             foreach($results as $sendEamil){
                 $app->mailgun->to = $sendEamil->email;
                 $app->mailgun->subject = $emailText;

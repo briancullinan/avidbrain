@@ -2096,16 +2096,16 @@
         },
         {
             "name": "twilio/sdk",
-            "version": "4.9.0",
+            "version": "4.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twilio/twilio-php.git",
-                "reference": "654a73821c1421fe2fb0f9dce2f400403015de3e"
+                "reference": "dff645321a5c65457248218f4438070a45a24035"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/654a73821c1421fe2fb0f9dce2f400403015de3e",
-                "reference": "654a73821c1421fe2fb0f9dce2f400403015de3e",
+                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/dff645321a5c65457248218f4438070a45a24035",
+                "reference": "dff645321a5c65457248218f4438070a45a24035",
                 "shasum": ""
             },
             "require": {
@@ -2142,7 +2142,7 @@
                 "sms",
                 "twilio"
             ],
-            "time": "2015-12-17 01:05:48"
+            "time": "2016-01-20 00:23:41"
         },
         {
             "name": "zeuxisoo/slim-whoops",

@@ -141,7 +141,7 @@
         $emailMessage.= '<div><strong>Tutoring Type:</strong> '.online_tutor($app->job->type).'</div>';
         $emailMessage.= '<p><a href="'.$app->dependents->DOMAIN.'/jobs/apply/'.$app->job->id.'">View Job Posting</a></p>';
         $emailMessage.= '<small>If you do not want to receive these emails, you can change your options in the Account Settings Page</small>';
-        
+
 
 
 
@@ -161,11 +161,17 @@
         $app->connect->insert('avid___jobs_log',$insert);
 
 
-        foreach($results as $sendEamil){
-            $app->mailgun->to = $sendEamil->email;
-            $app->mailgun->subject = $emailText;
-            $app->mailgun->message = $emailMessage;
-            $app->mailgun->send();
+        if($app->dependents->DEBUG==true){
+            // Do Nothing
+        }
+        else{
+            //notify("FRAMS");
+            foreach($results as $sendEamil){
+                $app->mailgun->to = $sendEamil->email;
+                $app->mailgun->subject = $emailText;
+                $app->mailgun->message = $emailMessage;
+                $app->mailgun->send();
+            }
         }
 
         $app->redirect($app->request->getPath());

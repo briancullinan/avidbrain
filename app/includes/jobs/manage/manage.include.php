@@ -5,9 +5,15 @@
 	<div class="col s12 m6 l6">
 
 
-
+		<?php if(empty($app->thejob->open)): ?>
+			<div class="alert grey white-text">
+				Job Post Closed
+			</div>
+		<?php endif; ?>
         <div class="block">
+			<?php if(isset($app->thejob->open)): ?>
             <form class="form-post" method="post" action="<?php echo $app->request->getPath(); ?>" id="updatejob">
+			<?php endif; ?>
 
                 <div class="input-field">
                     <input type="text" id="subject" name="updatejob[subject]" data-name="updatejob" class="autogenerate--subject" value="<?php echo $app->thejob->subject_name; ?>" />
@@ -79,12 +85,7 @@
                 <input type="hidden" name="updatejob[email]" value="<?php echo $app->thejob->email; ?>" />
 
                 <br/>
-                <div class="input-field">
-                    <textarea id="notes" name="updatejob[notes]" class="materialize-textarea"><?php echo $app->thejob->notes; ?></textarea>
-                    <label for="notes">
-                        Notes
-                    </label>
-                </div>
+
 
                 <?php if (strpos($app->thejob->email, 'ghost-') !== false): ?>
                     <div class="attatch-to-user">
@@ -104,11 +105,15 @@
                 <input type="hidden" name="updatejob[target]" value="updatejob"  />
             	<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
 
+				<?php if(isset($app->thejob->open)): ?>
                 <button type="submit" class="btn success">
                     Update Job
                 </button>
+				<?php endif; ?>
 
+			<?php if(isset($app->thejob->open)): ?>
             </form>
+			<?php endif; ?>
         </div>
 
 
@@ -152,8 +157,26 @@
 
                 </div>
         	<?php endforeach; ?>
-		<?php elseif(isset($app->thejob->active_applicant_id)): ?>
-			<?php printer($app->thejob->active_applicant_id); ?>
+		<?php elseif(isset($app->thejob->applicantinfo)): //printer($app->thejob->applicantinfo); ?>
+			<h2>Accepted Application</h2>
+			<div class="block">
+				<a href="<?php echo $app->thejob->applicantinfo->url; ?>" target="_blank">
+					<?php echo $app->thejob->applicantinfo->first_name; ?>
+				</a>
+				<div>
+					<?php echo $app->thejob->applicantinfo->message; ?>
+				</div>
+			</div>
+			<?php if(isset($app->thejob->applicantinfo->sessionid)): ?>
+				<div class="block">
+					<div><?php echo $app->thejob->applicantinfo->session_subject; ?></div>
+					<div>$<?php echo $app->thejob->applicantinfo->session_rate; ?>/Hour</div>
+					<div><?php echo formatdate($app->thejob->applicantinfo->session_timestamp); ?></div>
+					<a href="/sessions/view/<?php echo $app->thejob->applicantinfo->sessionid; ?>">
+						View Session Details
+					</a>
+				</div>
+			<?php endif; ?>
         <?php else: ?>
         	You have no applicants
         <?php endif; ?>

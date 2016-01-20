@@ -11,6 +11,6 @@ return array(
     $vendorDir . '/react/promise/src/functions_include.php',
     $vendorDir . '/guzzlehttp/psr7/src/functions_include.php',
     $vendorDir . '/symfony/polyfill-php56/bootstrap.php',
-    $vendorDir . '/twilio/sdk/Services/Twilio.php',
     $vendorDir . '/phpfastcache/phpfastcache/phpfastcache.php',
+    $vendorDir . '/twilio/sdk/Services/Twilio.php',
 );

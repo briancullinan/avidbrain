@@ -9,6 +9,7 @@
         <div class="block">
             <form class="form-post" method="post" action="<?php echo $app->request->getPath(); ?>" id="postanewjob">
 
+				<input type = "hidden" name="postanewjob[jobid]" value="<?php echo random_numbers(11); ?>" />
 
 
                 <div class="input-field">
@@ -69,9 +70,11 @@
                 <input type="hidden" name="postanewjob[target]" value="postanewjob"  />
             	<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
 
+				<div class="form-submit">
                 <button type="submit" class="btn success">
                     Post Job
                 </button>
+				</div>
 
             </form>
         </div>

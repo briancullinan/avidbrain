@@ -45,6 +45,39 @@
 		':myemail'=>$app->user->email
 	);
 	$results = $app->connect->executeQuery($sql,$prepare)->fetch();
+
+	if(!empty($results->active_applicant_id)){
+		$sql = "
+			SELECT
+				applicants.*,
+				user.url,
+				user.first_name,
+				sessions.id as sessionid,
+				sessions.session_rate,
+				sessions.session_subject,
+				sessions.session_timestamp,
+				sessions.session_status
+			FROM
+				avid___jobs_applicants applicants
+			LEFT JOIN
+				avid___user user on user.email = applicants.email
+
+			LEFT JOIN
+				avid___sessions sessions on sessions.jobid = :jobid
+
+			WHERE
+				applicants.id = :id
+		";
+		$prepare = array(
+			':id'=>$results->active_applicant_id,
+			':jobid'=>$id
+		);
+		$applicantinfo = $app->connect->executeQuery($sql,$prepare)->fetch();
+		//notify($applicantinfo);
+		$results->applicantinfo = $applicantinfo;
+
+	}
+
 	if(isset($results->id)){
 		$app->thejob = $results;
 	}

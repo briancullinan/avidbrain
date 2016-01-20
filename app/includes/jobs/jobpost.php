@@ -20,7 +20,7 @@
             </div>
 
             <div class="job-post-description">
-                <?php echo truncate($jobpost->job_description,350); ?>
+                <?php echo nl2br(truncate($jobpost->job_description,350)); ?>
             </div>
 
     	</div>

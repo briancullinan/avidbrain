@@ -41,7 +41,7 @@
                 <label class="select-label" for="textarea1">
                     What type of tutor are you looking for?
                 </label>
-                <select name="postanewjob[jobtype]" class="browser-default">
+                <select name="postanewjob[type]" class="browser-default">
                     <?php foreach($app->jobOptions['type'] as $key => $type): ?>
                     <option  value="<?php echo $type; ?>"><?php echo $key; ?></option>
                     <?php endforeach; ?>

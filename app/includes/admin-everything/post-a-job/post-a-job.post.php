@@ -36,7 +36,7 @@ function ghost($connect){
             'subject_id'=>$app->postanewjob->id,
             'date'=>thedate(),
             'job_description'=>$app->postanewjob->job_description,
-            'type'=>$app->postanewjob->jobtype,
+            'type'=>$app->postanewjob->type,
             'skill_level'=>$app->postanewjob->skill_level,
             'open'=>1,
             'price_range_low'=>$app->postanewjob->price_range_low,
