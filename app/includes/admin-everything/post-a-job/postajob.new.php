@@ -1,6 +1,6 @@
 <h2>Post New Job</h2>
 
-<form class="form-post" method="post" action="<?php echo $app->request->getPath(); ?>" id="postanewjob">
+<form class="form-post block" method="post" action="<?php echo $app->request->getPath(); ?>" id="postanewjob">
 
     <input type = "hidden" name="postanewjob[jobid]" value="<?php echo random_numbers(11); ?>" />
 
