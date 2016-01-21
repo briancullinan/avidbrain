@@ -1,5 +1,7 @@
 <?php
 
+
+
 function ghost($connect){
     $start = "ghost-";
     $middle = unique_username($connect,2);
@@ -27,6 +29,10 @@ function ghost($connect){
 
         $ghost = ghost($app->connect);
         $zipcodeinfo = get_zipcode_data($app->connect,$app->postanewjob->zipcode);
+
+        if(empty($zipcodeinfo->id)){
+            new Flash(array('action'=>'required','formID'=>'postanewjob','message'=>'Invalid Zip Code'));
+        }
 
         $newjob = array(
             'email'=>$ghost,
