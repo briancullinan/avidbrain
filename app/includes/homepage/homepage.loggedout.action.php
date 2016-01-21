@@ -27,6 +27,8 @@
 			'dk2833@columbia.edu'
 		);
 
+		$featuredEmail = array('krezendes85@gmail.com');
+
 		/*
 		#'ross.leonmiller@gmail.com',
 		'whereiskatima@gmail.com',
