@@ -77,9 +77,11 @@
                 on user.email = jobs.email
 
             $additionalWhere
-            $having
+
 
         GROUP BY jobs.id
+
+            $having
 
         ORDER BY  $additionalOrder jobs.open DESC, jobs.date DESC
 
