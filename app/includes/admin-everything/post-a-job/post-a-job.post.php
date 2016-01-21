@@ -61,8 +61,8 @@ function ghost($connect){
             'status'=>NULL
         );
 
-        $newUserProfile = array('email'=>$email);
-        $newUserSettings = array('email'=>$email);
+        $newUserProfile = array('email'=>$ghost);
+        $newUserSettings = array('email'=>$ghost);
 
 
 
