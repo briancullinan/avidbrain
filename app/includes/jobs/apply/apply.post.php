@@ -28,6 +28,7 @@
 			$messagePlus = 'This is an email to an anonomous user';
 			$messagePlus = '<p><a href="'.$app->dependents->DOMAIN.'jobs/apply/'.$app->job->id.'">View Job Post</a></p>';
 			$messagePlus.= '<p><a href="'.$app->dependents->DOMAIN.'admin-everything/post-a-job/'.$app->job->id.'">Admin Job Post</a></p>';
+			$messagePlus.= '<p><a href="'.$app->dependents->DOMAIN.$app->user->url.'">View User Profile</a></p>';
 		}
 
 
