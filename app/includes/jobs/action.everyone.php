@@ -25,12 +25,15 @@
             }
 
             $zipcodedata = get_zipcode_data($app->connect,$app->searchingforjobs->zipcode);
-            $getDistance = ", round(((acos(sin((" . $zipcodedata->lat . "*pi()/180)) * sin((user.lat*pi()/180))+cos((" . $zipcodedata->lat . "*pi()/180)) * cos((user.lat*pi()/180)) * cos(((" .$zipcodedata->long. "- user.long)* pi()/180))))*180/pi())*60*1.1515)";
-            $asDistance = ' as distance ';
-            $additionalSelect.= $getDistance.$asDistance;
-            $having = "HAVING distance <= :distance";
-            $prepare[':distance'] = $app->searchingforjobs->distance;
-            $additionalOrder = "distance ASC, ";
+            if(isset($zipcodedata->id)){
+                $getDistance = ", round(((acos(sin((" . $zipcodedata->lat . "*pi()/180)) * sin((user.lat*pi()/180))+cos((" . $zipcodedata->lat . "*pi()/180)) * cos((user.lat*pi()/180)) * cos(((" .$zipcodedata->long. "- user.long)* pi()/180))))*180/pi())*60*1.1515)";
+                $asDistance = ' as distance ';
+                $additionalSelect.= $getDistance.$asDistance;
+                $having = "HAVING distance <= :distance";
+                $prepare[':distance'] = $app->searchingforjobs->distance;
+                $additionalOrder = "distance ASC, ";    
+            }
+
 
             //notify($additionalWhere);
         }
