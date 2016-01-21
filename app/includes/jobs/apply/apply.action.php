@@ -17,7 +17,8 @@
 			user.zipcode,
 			user.city,
 			user.state,
-			user.state_long
+			user.state_long,
+			user.url
 		FROM
 			avid___jobs jobs
 

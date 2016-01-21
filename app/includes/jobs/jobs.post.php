@@ -20,6 +20,16 @@
 		$app->postanewjob->subject_name = $app->postanewjob->subject;
         $app->postanewjob->job_description = $app->postanewjob->why;
 
+		if(empty($app->postanewjob->subject_slug)){
+			$app->postanewjob->subject_slug = NULL;
+		}
+		if(empty($app->postanewjob->parent_slug)){
+			$app->postanewjob->parent_slug = NULL;
+		}
+		if(empty($app->postanewjob->subject_id)){
+			$app->postanewjob->subject_id = NULL;
+		}
+
 		$newjob = array(
             'email'=>$app->user->email,
             'subject_name'=>$app->postanewjob->subject_name,
@@ -37,7 +47,6 @@
             'notes'=>NULL,
 			'jobid'=>$app->postanewjob->jobid
         );
-
 
 		$app->connect->insert('avid___jobs',$newjob);
         $lastid = $app->connect->lastInsertId();

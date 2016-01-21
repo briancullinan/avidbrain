@@ -1,5 +1,9 @@
 <?php
 
+	if(empty($app->user->email)){
+		$app->redirect('/jobs');
+	}
+
 	$sql = "
 		SELECT
 			*
