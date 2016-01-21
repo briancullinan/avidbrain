@@ -84,7 +84,25 @@
 							</div>
 
 							<div>
-								Proposed Length: <?php echo ($jobsessions->proposed_length/60); ?> Hours
+								<?php
+								$totalMinutes = $jobsessions->proposed_length;
+								$hours = intval($totalMinutes/60);
+								$minutes = $totalMinutes - ($hours * 60);
+								$time = '';
+								if($hours==1){
+									$time.= $hours.' Hour';
+								}
+								if($hours>1){
+									$time.= $hours.' Hours';
+								}
+								if($hours>0 && $minutes>0){
+									$time.= ' &amp; ';
+								}
+								if($minutes>0){
+									$time.= $minutes.' Minutes';
+								}
+								?>
+								Proposed Length: <span class="blue-text"><?php echo $time; ?></span>
 							</div>
 
 							<?php if(isset($jobsessions->session_cost)): ?>

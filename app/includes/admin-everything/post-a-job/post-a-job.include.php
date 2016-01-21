@@ -15,7 +15,7 @@
 	</div>
 	<div class="col s12 m9 l9">
 
-        <div class="block">
+        
 			<?php
 
 	            $jobOptions = array();
@@ -36,7 +36,6 @@
 	                include('postajob.new.php');
 	            }
 	        ?>
-		</div>
 
 	</div>
 </div>

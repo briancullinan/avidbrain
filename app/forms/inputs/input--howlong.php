@@ -3,15 +3,16 @@
 	unset($range[0]);
 	$options = array();
 	$s=NULL;
-	
+
 	//$options[($key*60)] = $value.' Hour'.$s;
 	$options[30] = '30 Minutes';
-	
+
 	foreach($range as $key=> $value){
 		if($key!=1){
 			$s = 's';
 		}
 		$options[($key*60)] = $value.' Hour'.$s;
+		$options[(($key*60)+15)] = $value.' Hour'.$s.' 15 Minutes';
 		$options[(($key*60)+30)] = $value.' Hour'.$s.' 30 Minutes';
 	}
 ?>
