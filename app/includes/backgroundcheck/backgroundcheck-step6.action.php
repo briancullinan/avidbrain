@@ -18,6 +18,12 @@
             'ssn'=>$app->crypter->decrypt($app->newtutor->ssn)
         );
 
+        if(isset($userinfo['middle_name']) && $userinfo['middle_name']=='no_middle_name'){
+            $userinfo['middle_name'] = NULL;
+            $userinfo['no_middle_name'] = true;
+        }
+        //notify($userinfo);
+
         if(isset($app->newtutor->location) && $app->newtutor->location=='completecheck'){
             $url = '/background-check/complete';
         }

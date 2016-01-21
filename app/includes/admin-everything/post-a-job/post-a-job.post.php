@@ -13,6 +13,15 @@ function ghost($connect){
     // IT"S THE JEBS
     if(isset($app->postanewjob)){
 
+        $sql = "SELECT * FROM avid___jobs WHERE jobid = :jobid";
+		$prepare = array(':jobid'=>$app->postanewjob->jobid);
+		$haveiposted = $app->connect->executeQuery($sql,$prepare)->fetch();
+		if(isset($haveiposted->id)){
+			new Flash(array('action'=>'required','formID'=>'postanewjob','message'=>'Double Post'));
+		}
+
+        //notify('potato');
+
         if(empty($app->postanewjob->zipcode)){
             new Flash(array('action'=>'required','formID'=>'postanewjob','message'=>'Zipcode Required <i class="fa fa-warning"></i>'));
         }
@@ -48,7 +57,8 @@ function ghost($connect){
             'price_range_low'=>$app->postanewjob->price_range_low,
             'price_range_high'=>$app->postanewjob->price_range_high,
             'anonymous'=>1,
-            'notes'=>$app->postanewjob->notes
+            'notes'=>$app->postanewjob->notes,
+			'jobid'=>$app->postanewjob->jobid
         );
 
         $newUser = array(
@@ -78,7 +88,7 @@ function ghost($connect){
         $app->connect->insert('avid___jobs',$newjob);
         $lastid = $app->connect->lastInsertId();
 
-        new Flash(array('action'=>'jump-to','location'=>'/admin-everything/post-a-job/send-emails/'.$lastid,'formID'=>'setupsession','message'=>'Job Added'));
+        //new Flash(array('action'=>'jump-to','location'=>'/admin-everything/post-a-job/send-emails/'.$lastid,'formID'=>'setupsession','message'=>'Job Added'));
 
     }
     elseif(isset($app->updatejob)){

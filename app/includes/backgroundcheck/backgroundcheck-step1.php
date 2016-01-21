@@ -10,7 +10,8 @@
 <form method="post" action="/signup/tutor/" class="form-post" id="backgroundcheck-step1">
 
     <h3>Applicant Info</h3>
-	<div class="red white-text alert" role="alert"><i class="fa fa-warning"></i> Please submit your <strong>full legal name.</strong></div>
+	<div class="red white-text alert" role="alert"><i class="fa fa-warning"></i> Please submit your <strong>Full Legal Name.</strong></div>
+    <div class="grey white-text alert" role="alert">If you do not have a middle name, please type NONE</div>
 
 	<div class="row">
 		<div class="col s12 m4 l4 new-inputs">
@@ -20,7 +21,7 @@
 
 		</div>
 		<div class="col s12 m4 l4 new-inputs">
-            <label for="middle_name">Middle Name</label>
+            <label for="middle_name">Middle Name <i class="fa fa-asterisk red-text"></i></label>
 			<div class="input-wrapper"><input placeholder="" name="backgroundcheckstep1[middle_name]" value="<?php if(isset($app->newtutor->middle_name)){ echo $app->newtutor->middle_name; } ?>" id="middle_name" type="text" class="validate"></div>
 		</div>
 		<div class="new-inputs col s12 m4 l4">

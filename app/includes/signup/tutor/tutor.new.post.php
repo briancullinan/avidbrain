@@ -441,12 +441,18 @@
 			}
 
 			//$app->backgroundcheckstep1->birthday = str_replace('-','/',$app->backgroundcheckstep1->birthday);
+			if(isset($app->backgroundcheckstep1->middle_name)){
+				$checknon = strtolower($app->backgroundcheckstep1->middle_name);
+			}
 
 			if(empty($app->backgroundcheckstep1->first_name)){
 				new Flash(array('action'=>'required','message'=>'First Name Required','formID'=>'backgroundcheckstep1','field'=>'first_name'));
 			}
 			elseif(empty($app->backgroundcheckstep1->last_name)){
 				new Flash(array('action'=>'required','message'=>'Last Name Required','formID'=>'backgroundcheckstep1','field'=>'last_name'));
+			}
+			elseif(empty($app->backgroundcheckstep1->middle_name)){
+				new Flash(array('action'=>'required','message'=>'Middle Name Required <span>Type NONE, if you dont have a middle name</span>','formID'=>'backgroundcheckstep1','field'=>'middle_name'));
 			}
 			elseif(empty($app->backgroundcheckstep1->ssn)){
 				new Flash(array('action'=>'required','message'=>'Social Security Number Required','formID'=>'backgroundcheckstep1','field'=>'ssn'));
@@ -475,6 +481,11 @@
 				new Flash(array('action'=>'required','message'=>'Invalid Birth Date','formID'=>'backgroundcheckstep1','field'=>'birthday'));
 			}
 			$birthday = $app->backgroundcheckstep1->dob->year.'-'.$app->backgroundcheckstep1->dob->month.'-'.$app->backgroundcheckstep1->dob->day;
+
+			if(isset($checknon) && $checknon=='none'){
+				//$app->backgroundcheckstep1->middle_name = true;
+				$app->backgroundcheckstep1->middle_name = 'no_middle_name';
+			}
 
 			$update = array(
 				'first_name'=>$app->backgroundcheckstep1->first_name,
