@@ -4,6 +4,10 @@
 		$app->redirect('/jobs');
 	}
 
+	if(isset($app->user->usertype) && $app->user->usertype=='admin'){
+		$app->redirect('/admin-everything/post-a-job/'.$id);
+	}
+
 	$sql = "
 		SELECT
 			*
