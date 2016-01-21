@@ -79,6 +79,8 @@
             $additionalWhere
             $having
 
+        GROUP BY jobs.id
+
         ORDER BY  $additionalOrder jobs.open DESC, jobs.date DESC
 
             $limitOffset
