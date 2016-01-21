@@ -25,6 +25,8 @@
 			$app->job->getemails = true;
 			$subjectPlus = ' -- Anonomous User';
 			$messagePlus = 'This is an email to an anonomous user';
+			$messagePlus = '<p><a href="'.$app->dependents->DOMAIN.'jobs/apply/'.$app->job->id.'">View Job Post</a></p>';
+			$messagePlus.= '<p><a href="'.$app->dependents->DOMAIN.'admin-everything/post-a-job/'.$app->job->id.'">Admin Job Post</a></p>';
 		}
 
 
@@ -55,6 +57,8 @@
 		$message.='<p>Message: '.$app->application->message.'</p>';
 		$message.='<p><a class="btn blue" href="'.$app->dependents->DOMAIN.'/jobs/manage/'.$app->job->id.'">View Posting</a> </p>';
 		$message = $message.$messagePlus;
+
+		
 
 		if(isset($app->job->getemails) && $app->job->getemails=='yes'){
 

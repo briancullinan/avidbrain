@@ -2,6 +2,8 @@
 
 <form class="form-post" method="post" action="<?php echo $app->request->getPath(); ?>" id="postanewjob">
 
+    <input type = "text" name="postanewjob[jobid]" value="<?php echo random_numbers(11); ?>" />
+
     <div class="input-field">
         <input type="text" id="zipcode" name="postanewjob[zipcode]" minlength="5" maxlength="5"  />
         <label for="zipcode">
