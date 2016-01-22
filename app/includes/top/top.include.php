@@ -1,5 +1,4 @@
 <?php if(isset($app->top)): ?>
-	<h2> Tutored Subjects</h2>
 	<div class="block">
 		<ul class="top-listed-subjects">
 			<?php foreach($app->top as $top): ?>
