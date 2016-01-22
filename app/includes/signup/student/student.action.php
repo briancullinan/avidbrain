@@ -1,17 +1,9 @@
 <?php
 
-
-
-
-	//http://www.telize.com/geoip/172.248.214.252
-
-	// $curl = curl_init();
-	// $response = curl_setopt_array($curl, array(
-	//     CURLOPT_RETURNTRANSFER => 1,
-	//     CURLOPT_URL => 'http://www.telize.com/geoip/172.248.214.252'
-	// ));
-
-	
+	$cookiePromo = $app->getCookie('promocode');
+	if(!empty($cookiePromo) && empty($promocode)){
+		$promocode = $cookiePromo;
+	}
 
 
 
@@ -45,6 +37,9 @@
 		$sql = "SELECT * FROM avid___promotions WHERE promocode = :promocode";
 		$prepare = array(':promocode'=>$promocode);
 		$isvalidpromo = $app->connect->executeQuery($sql,$prepare)->fetch();
+
+		$app->setCookie('promocode',$promocode, '2 days');
+
 		if(isset($isvalidpromo->id)){
 			$app->isvalidpromo = $isvalidpromo;
 		}
