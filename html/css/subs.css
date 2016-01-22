@@ -1112,3 +1112,75 @@ margin-bottom: 15px;
 
 
 /*NEW TUTOR PROFILE*/
+
+
+.top-subjects h2{
+	font-size: 22px;
+	padding: 5px;
+}
+.top-subjects{
+	margin-top: 10px;
+}
+h1 span.top-count{
+	font-weight: 700;
+	color: #fff;
+	background: #57ce0d;
+	padding:0px 5px;
+}
+.top-listed-subjects{
+	margin: 0px;
+	padding: 0px;
+}
+.top-listed-subjects li{
+	margin: 0px;
+	padding: 0px;
+	margin-bottom: 2px;
+}
+.top-listed-subjects li a{
+	display: block;
+	padding: 5px;
+}
+.top-listed-subjects li a:hover{
+	background: #efefef;
+}
+.top-listed-subjects li.active a{
+	background: #0099ff;
+	color: #fff;
+}
+.top-listed-subjects li.active a .top-count{
+	background: #57ce0d;
+	color: #fff;
+}
+.top-listed-subjects li .row{
+	margin: 0px;
+}
+.top-count{
+
+	padding:2px 5px;
+	color: #999;
+}
+.top-subjects-signup{
+
+	background: #fff;
+	border: solid 1px #ccc;
+	padding: 10px;
+	margin-bottom: 15px;
+}
+.top-subjects-signup .form-post{
+	float: none;
+}
+.top-subjects-signup-now a{
+	background: #0099ff;
+	font-size: 18px;
+	text-align: center;
+	padding: 10px;
+	color: #fff;
+	display: block;
+}
+.top-subjects-signup-now a:hover{
+	background: #0080d5;
+}
+.top-subjects-signup-now a span{
+	color: #88ff3e;
+	font-weight: bold;
+}

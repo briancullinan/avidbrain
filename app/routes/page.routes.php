@@ -17,6 +17,9 @@
 
 	$routes['partners'] = (object)array('url'=>'/partners','slug'=>'partners','route'=>'/partners/','include'=>'partners','protected'=>NULL,'permissions'=>array());
 
+	$routes['top'] = (object)array('url'=>'/top/','slug'=>'top','route'=>'/top/','include'=>'top','protected'=>NULL,'permissions'=>array());
+	$routes['top-subject'] = (object)array('url'=>'/top/subject/','slug'=>'subject','route'=>'/top/:subject/','include'=>'top/subject','protected'=>NULL,'permissions'=>array());
+
 
 	// Background Check
 	$routes['background-check'] = (object)array('url'=>'/background-check','slug'=>'background-check','route'=>'/background-check/','include'=>'background-check','protected'=>true,'permissions'=>array('tutor'));
