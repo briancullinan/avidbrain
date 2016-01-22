@@ -2,7 +2,6 @@
 
 <h2>Update Job: <span class="blue-text"><?php echo $app->thejob->subject_name; ?></span></h2>
 
-
 <div class="row">
 	<div class="col s12 m9 l9">
 
@@ -122,6 +121,13 @@
 
 	</div>
 	<div class="col s12 m3 l3">
+
+		<div>
+			<a href="/admin-everything/post-a-job/send-emails/<?php echo $app->thejob->id; ?>">
+				View Email Log
+			</a>
+		</div>
+
 		Applicants
 		<?php if(isset($app->thejob->applicants)): ?>
 			<?php foreach($app->thejob->applicants as $applicants): ?>

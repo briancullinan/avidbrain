@@ -88,7 +88,7 @@ function ghost($connect){
         $app->connect->insert('avid___jobs',$newjob);
         $lastid = $app->connect->lastInsertId();
 
-        //new Flash(array('action'=>'jump-to','location'=>'/admin-everything/post-a-job/send-emails/'.$lastid,'formID'=>'setupsession','message'=>'Job Added'));
+        new Flash(array('action'=>'jump-to','location'=>'/admin-everything/post-a-job/send-emails/'.$lastid,'formID'=>'setupsession','message'=>'Job Added'));
 
     }
     elseif(isset($app->updatejob)){
