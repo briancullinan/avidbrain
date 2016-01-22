@@ -31,7 +31,17 @@
                 <div>If you would like to change your payment method <a href="<?php echo $link; ?>">click here</a>.</div>
 
             <?php else: ?>
-                You have not enterd a payment method yet, <a href="/affiliates/information">please go here to continue</a>
+
+				<?php
+					if(isset($app->user->email)){
+						$link = '/payment/get-paid';
+					}
+					else{
+						$link = '/affiliates/information';
+					}
+				?>
+
+                You have not enterd a payment method yet, <a href="<?php echo $link; ?>">please go here to continue</a>
             <?php endif; ?>
         </div>
 
@@ -70,14 +80,14 @@
 	<div class="col s12 m8 l8">
 		<div class="row">
 			<div class="col s12 m3 l3">
+				<h3>Pay</h3>
 				<div class="block">
-		            <div class="title">Total Pay</div>
 		            $<?php echo numbers(total_affiliate($app->affiliatecount)); ?>
 		        </div>
 			</div>
 			<div class="col s12 m9 l9">
 				<?php if(isset($app->signups)): ?>
-		            <h2>All Signups</h2>
+		            <h3>All Signups</h3>
 		            <table class="bordered striped condensed">
 		                <tr class="blue white-text">
 		                    <td>
@@ -111,7 +121,7 @@
 
 		        <?php if(isset($app->studentsiwthsessions)): ?>
 		            <br>
-		            <h2>Students With Sessions</h2>
+		            <h3>Students With Sessions</h3>
 		            <table class="bordered striped condensed">
 		                <tr class="blue white-text">
 		                    <td>
@@ -141,7 +151,7 @@
 
 		        <?php if(isset($app->tutorswithsessions)): ?>
 		            <br>
-		            <h2>Tutors With Sessions</h2>
+		            <h3>Tutors With Sessions</h3>
 		            <table class="bordered striped condensed">
 		                <tr class="blue white-text">
 		                    <td>

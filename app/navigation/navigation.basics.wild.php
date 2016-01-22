@@ -142,6 +142,9 @@
 	}
 
 	$navigation['/help'] = (object) array('name'=>'Help');
+	if(isset($app->enableaffiliates)){
+		$navigation['/affiliates'] = (object) array('name'=>'Affiliate Program');
+	}
 	$navigation['/ab-qa'] = (object) array('name'=>'Q&A Forum','class'=>'qa-link');
 	$navigation['/how-it-works'] = (object) array('name'=>'How It Works');
 	if(isset($app->user->email)){

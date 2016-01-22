@@ -38,13 +38,13 @@
 
 		$dropdownnav[] = (object)array('url'=>'/account-settings','text'=>'Account Settings','class'=>'dll-acts');
 
-		if(isset($app->enableaffiliates)){
-			$settings = $app->user->settings();
-
-			if($settings->affiliateprogram=='yes'){
-				$dropdownnav[] = (object)array('url'=>'/affiliates','text'=>'Affiliates','class'=>'dll-affiliates');
-			}
-		}
+		// if(isset($app->enableaffiliates)){
+		// 	//$settings = $app->user->settings();
+		//
+		// 	if(isset($settings->affiliateprogram) && $settings->affiliateprogram=='yes'){
+		// 		$dropdownnav[] = (object)array('url'=>'/affiliates','text'=>'Affiliates','class'=>'dll-affiliates');
+		// 	}
+		// }
 
 		$dropdownnav[] = (object)array('url'=>'/payment','text'=>'Payment','class'=>'dll-pay');
 

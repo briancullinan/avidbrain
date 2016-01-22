@@ -1,7 +1,55 @@
 <?php
 
 	if(isset($app->user->email)){
+
+
+
+		$sql = "
+			SELECT
+				recruiters.*,
+				user.first_name,
+				user.last_name,
+				user.password,
+				user.account_id,
+				user.managed_id
+			FROM
+				avid___recruiters recruiters
+			LEFT JOIN
+				avid___user user on user.email = recruiters.email
+			WHERE
+				recruiters.email = :email
+		";
+		$prepare = array(
+			':email'=>$app->user->email
+		);
+		$recruiters = $app->connect->executeQuery($sql,$prepare)->fetch();
+		if(isset($recruiters->id)){
+
+			$insert = array(
+				'email'=>$recruiters->email,
+				'mycode'=>$recruiters->promocode,
+				'active'=>1,
+				'password'=>$recruiters->password,
+				'first_name'=>$recruiters->first_name,
+				'last_name'=>$recruiters->last_name
+			);
+
+			if(!empty($recruiters->account_id)){
+				$insert['account_id'] = $recruiters->account_id;
+			}
+			if(!empty($recruiters->managed_id)){
+				$insert['managed_id'] = $recruiters->managed_id;
+			}
+
+			$app->connect->insert('avid___affiliates',$insert);
+			$app->connect->delete('avid___recruiters',array('id'=>$recruiters->id,'email'=>$app->user->email));
+			$app->connect->update('avid___user_account_settings',array('affiliateprogram'=>'yes'),array('email'=>$app->user->email));
+			$app->redirect('/affiliates');
+		}
+
+
 		$app->usersettings = $app->user->settings();
+
 		if(isset($app->usersettings->affiliateprogram) && $app->usersettings->affiliateprogram=='yes'){
 			$sql = "SELECT * FROM avid___affiliates WHERE email = :email";
 			$prepare = array(':email'=>$app->user->email);
@@ -28,6 +76,7 @@
 				}
 
 				$app->connect->insert('avid___affiliates',$insert);
+				$app->redirect('/affiliates');
 			}
 			else{
 
@@ -54,6 +103,11 @@
 	else{
 		$app->redirect('/signup/affiliate');
 	}
+
+	if(isset($app->user->email) && empty($app->affiliate->email)){
+		$app->redirect('/account-settings');
+	}
+
 
 	function get_affiliate($connect,$email){
 		$sql = "SELECT * FROM avid___affiliates WHERE email = :email";
@@ -194,3 +248,5 @@
 	    $app->affiliatecount = count($three);
 
 	}
+
+	//notify($app->affiliate);
