@@ -362,6 +362,62 @@
 
 	}
 
+	function getcitystate($connect,$city,$state){
+
+		$sql = "
+			SELECT
+				*
+			FROM
+				avid___location_data
+			WHERE
+				city = :city AND state = :state
+					OR
+				city = :city AND state_long = :state
+		";
+		$prepare = array(
+			':city'=>$city,
+			':state'=>$state
+		);
+		$zicoddata = $connect->executeQuery($sql,$prepare)->fetch();
+
+		$sql = "SELECT state FROM avid___location_data WHERE state_long LIKE :state";
+		$prepared = array(':state'=>"%$state%");
+		$stateinfo = $connect->executeQuery($sql,$prepared)->fetch();
+		if(isset($stateinfo->state)){
+			$state = strtolower($stateinfo->state);
+		}
+
+		if(empty($zicoddata)){
+
+			$zipto = 'http://api.zippopotam.us/us/'.$state.'/'.strtolower($city);
+
+			$ch = curl_init();
+			curl_setopt($ch, CURLOPT_URL, $zipto);
+			curl_setopt($ch, CURLOPT_HEADER, 0);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+			$output = curl_exec($ch);
+			curl_close($ch);
+
+			if(isset($output)){
+				$output = json_decode($output);
+				if(isset($output->places)){
+					$place = $output->places[0];
+
+					$zicoddata = array(
+						'zipcode'=>$place->{'post code'},
+						'city'=>$place->{'place name'},
+						'state'=>$state,
+						'state_long'=>$state,
+						'lat'=>$place->latitude,
+						'`long`'=>$place->longitude
+					);
+				}
+			}
+
+		}
+		return $zicoddata;
+	}
+
 	function get_zipcode_data($connect,$zipcode){
 
 		if(!is_numeric($zipcode) || strlen($zipcode)!=5){

@@ -137,7 +137,26 @@
 		$app->mailgun->message = 'Thank you for signing up with AvidBrain. You may login by going to <a href="'.$app->dependents->DOMAIN.'/signup/tutor">Tutor Login</a>';
 		$app->mailgun->send();
 
-		new Flash(array('action'=>'jump-to','formID'=>'tutorsignup','location'=>'/signup/tutor','message'=>'Step 1 Complete'));
+		$googleHTML = '<!-- Google Code for Tutor Sign Up Conversion Page -->
+		<script type="text/javascript">
+		/* <![CDATA[ */
+		var google_conversion_id = 945094692;
+		var google_conversion_language = "en";
+		var google_conversion_format = "3";
+		var google_conversion_color = "ffffff";
+		var google_conversion_label = "DbEpCKHBlWMQpIDUwgM";
+		var google_remarketing_only = false;
+		/* ]]> */
+		</script>
+		<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+		</script>
+		<noscript>
+		<div style="display:inline;">
+		<img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/945094692/?label=DbEpCKHBlWMQpIDUwgM&amp;guid=ON&amp;script=0"/>
+		</div>
+		</noscript>';
+
+		new Flash(array('action'=>'jump-to','formID'=>'tutorsignup','location'=>'/signup/tutor','message'=>'Step 1 Complete'.$googleHTML));
 
 	}
 	elseif(isset($app->li)){
