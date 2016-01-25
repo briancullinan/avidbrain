@@ -170,7 +170,7 @@
  	#$app->connect->cache->clean();
  	#echo 'CLEANUP()';
 	#exit;
-
+	// PURE CHAT GO!
 	$app->purechat = true;
 
 	if(isset($app->user->email)){
