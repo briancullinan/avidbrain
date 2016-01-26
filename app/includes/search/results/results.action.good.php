@@ -205,9 +205,5 @@
         $app->connect->cache->set($cachedName, $results, 3600);
     }
 
-    foreach($results->results as $key=> $build){
-        $results->results[$key]->img = userphotographs(NULL,$build,$app->dependents);
-    }
-
     echo json_encode($results);
     exit;
