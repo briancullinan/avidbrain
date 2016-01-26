@@ -17,7 +17,7 @@
         $message.= '<p>Email Address: '.$app->studentsignup->student->email.'</p>';
         $message.= '<p>Address: '.$app->dependents->DOMAIN.$app->request->getPath().'</p>';
 
-        $app->mailgun->to = 'david@avidbrain.com';
+        $app->mailgun->to = 'jake.stoll@avidbrain.com';
         $app->mailgun->subject = 'New Email Signup';
         $app->mailgun->message = $message;
         $app->mailgun->send();
