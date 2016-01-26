@@ -22,6 +22,8 @@
 
 
 
+	$routes['track'] = (object)array('url'=>'/t','slug'=>'t','route'=>'/t/','include'=>'t','protected'=>NULL,'permissions'=>array());
+	$routes['track-students'] = (object)array('url'=>'/t/signup/subject','slug'=>'subject','route'=>'/t/signup/:subject/','include'=>'t/signup/subject','protected'=>NULL,'permissions'=>array());
 
 	// SEARCH
 	#$routes['search'] = (object)array('url'=>'/search','slug'=>'search','route'=>'/search/','include'=>'search','protected'=>NULL,'permissions'=>array());

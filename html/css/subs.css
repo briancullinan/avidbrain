@@ -739,7 +739,7 @@ background-attachment: fixed;
 	background: url('/images/subs/become-a-student.jpg') top left no-repeat ;
 }
 .maintutor main .container, .mainstudent main .container{
-	max-width: 1200pxmainstudent
+	max-width: 1200px;
 }
 .new-inputs{
 	margin-bottom: 20px;
@@ -1183,4 +1183,52 @@ h1 span.top-count{
 .top-subjects-signup-now a span{
 	color: #88ff3e;
 	font-weight: bold;
+}
+
+
+.blockmin-main{
+	min-height: 400px;
+	font-family: 'Quicksand';
+
+    text-shadow: 2px 2px 5px #000;
+	color: #fff;
+}
+.blockmin-main-title1{
+	font-size: 50px;
+}
+.blockmin-main-title2{
+	font-size: 30px;
+}
+.blockmin-main-title3{
+	font-size: 20px;
+}
+.page--maint main{
+    background: url('/images/subs/become-a-student.jpg') top left no-repeat ;
+}
+.page--maint .tutor-block{
+    min-height: inherit;
+}
+.page--maint .tsignup-h3{
+    background: #000;
+    color: #fff;
+    line-height: normal;
+    display: block;
+    padding: 0px;
+    margin: 0px;
+    padding: 10px;
+}
+.block.blockmin{
+	min-height: auto;
+}
+.blockmin-link{
+	margin-bottom: 10px;
+}
+.blockmin-link a{
+	display: block;
+
+	font-size: 18px;
+
+}
+.blockmin-text{
+	font-size: 13px;
 }
