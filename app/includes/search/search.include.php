@@ -4,29 +4,29 @@
 		<div class="block">
 			<form method="post" action="#" class="javascript" id="itsposttime">
 
-				<div class="fixed-input">
+				<div class="input-container">
 					<label>Subject</label>
 					<input type="text" name="subject" class="javascript-subject" />
 				</div>
 
-				<div class="fixed-input">
+				<div class="input-container">
 					<label>Zipcode</label>
 					<input type="text" name="subject" class="javascript-location" />
 				</div>
 
 
-				<div>
+				<div class="input-container">
 					<label>Distance</label>
 					<select id="javascript-distance" class="browser-default">
-						<?php foreach(array(5,20,100,500,1000,5000,10000) as $distance): ?>
-							<option <?php if($distance==20){ echo 'selected="selected"';} ?> value="<?php echo $distance; ?>"><?php echo numbers($distance,1); ?> Miles</option>
+						<?php foreach(array(5,20,50,100,500,1000,5000,10000) as $distance): ?>
+							<option <?php if($distance==50){ echo 'selected="selected"';} ?> value="<?php echo $distance; ?>"><?php echo numbers($distance,1); ?> Miles</option>
 						<?php endforeach; ?>
 					</select>
 				</div>
 
 
 
-				<div class="xxx">
+				<div class="input-container">
 					<label>Gender</label>
 					<select id="javascript-gender" class="browser-default">
 						<?php foreach(array('No Preference'=>'','Male'=>'male','Female'=>'female',) as $key=> $gender): ?>
@@ -39,7 +39,7 @@
 
 
 
-				<div class="xxx">
+				<div class="input-container">
 					<label>Price Range</label>
 					<select id="javascript-pricerange" class="browser-default">
 						<?php
