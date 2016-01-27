@@ -23,18 +23,19 @@
 
 
 	$routes['track'] = (object)array('url'=>'/t','slug'=>'t','route'=>'/t/','include'=>'t','protected'=>NULL,'permissions'=>array());
+	$routes['track-discounts'] = (object)array('url'=>'/t/discount/company','slug'=>'company','route'=>'/t/discount/:company/','include'=>'t/discount/company','protected'=>NULL,'permissions'=>array());
 	$routes['track-students'] = (object)array('url'=>'/t/signup/subject','slug'=>'subject','route'=>'/t/signup/:subject/','include'=>'t/signup/subject','protected'=>NULL,'permissions'=>array());
 
 	// SEARCH
 	//http://handlebarsjs.com/
 	//https://github.com/janl/mustache.js/
-	$routes['search'] = (object)array('url'=>'/search','slug'=>'search','route'=>'/search/','include'=>'search','protected'=>NULL,'permissions'=>array());
+	#$routes['search'] = (object)array('url'=>'/search','slug'=>'search','route'=>'/search/','include'=>'search','protected'=>NULL,'permissions'=>array());
 	#$routes['search--subject'] = (object)array('url'=>'/search','slug'=>'search','route'=>'/search/:subject/','include'=>'search','protected'=>NULL,'permissions'=>array());
 	#$routes['search--subject--location'] = (object)array('url'=>'/search','slug'=>'search','route'=>'/search/:subject/:location/','include'=>'search','protected'=>NULL,'permissions'=>array());
 	#$routes['search--subject--location--distance'] = (object)array('url'=>'/search','slug'=>'search','route'=>'/search/:subject/:location/:distance/','include'=>'search','protected'=>NULL,'permissions'=>array());
 	#$routes['search--subject--location--distance--name'] = (object)array('url'=>'/search','slug'=>'search','route'=>'/search/:subject/:location/:distance/:name/','include'=>'search','protected'=>NULL,'permissions'=>array());
 	#$routes['search--subject--location--distance--name--gender'] = (object)array('url'=>'/search','slug'=>'search','route'=>'/search/:subject/:location/:distance/:name/:gender/','include'=>'search','protected'=>NULL,'permissions'=>array());
-	$routes['search--subject--location--distance--name--gender--pricerange--page--sort'] = (object)array('url'=>'/search/results','slug'=>'results','route'=>'/search/:subject/:location/:distance/:name/:gender/:pricelow/:pricehigh/:page/:sort/','include'=>'search/results','protected'=>NULL,'permissions'=>array());
+	#$routes['search--subject--location--distance--name--gender--pricerange--page--sort'] = (object)array('url'=>'/search/results','slug'=>'results','route'=>'/search/:subject/:location/:distance/:name/:gender/:pricelow/:pricehigh/:page/:sort/','include'=>'search/results','protected'=>NULL,'permissions'=>array());
 
 
 	// Background Check

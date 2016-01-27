@@ -115,6 +115,7 @@
 			$promomessage = '<p>A new student has signed up using your promo code.</p>';
 			$promomessage.= '<p>Date: '.formatdate(thedate()).'</p>';
 			$promomessage.= '<p>User Info: '.$app->signup->first_name.' </p>';
+			$promomessage.= '<p>Promo Code: '.$app->isvalidpromo->promocode.' </p>';
 
 			$app->mailgun->to = $app->isvalidpromo->email;
 			$app->mailgun->subject = 'Promo Code Activated';
@@ -345,6 +346,7 @@
 				$promomessage = '<p>A new student has signed up using your promo code.</p>';
 				$promomessage.= '<p>Date: '.formatdate(thedate()).'</p>';
 				$promomessage.= '<p>User Info: '.$app->studentsignup->student->first_name.' </p>';
+				$promomessage.= '<p>Promo Code: '.$app->isvalidpromo->promocode.' </p>';
 
 				$app->mailgun->to = $app->isvalidpromo->email;
 				$app->mailgun->subject = 'Promo Code Activated';
