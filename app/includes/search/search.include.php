@@ -312,7 +312,7 @@ var encodeHtmlEntity = function(str) {
 			$('.submit-a-form').removeAttr('disabled');
 		},1000);
 
-		makesurefocus(['subject','location','distance','gender','pricelow','pricehigh']);
+		//makesurefocus(['subject','location','distance','gender','pricelow','pricehigh']);
 
 		//console.log(buildtheurl);
 
@@ -347,7 +347,7 @@ var encodeHtmlEntity = function(str) {
 
 	$(document).ready(function() {
 
-		
+
 
 		$('.javascript').on('submit',function(){
 

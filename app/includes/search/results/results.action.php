@@ -223,7 +223,7 @@
 
     foreach($results->results as $key=> $build){
         $results->results[$key]->personal_statement_verified = truncate($build->personal_statement_verified,400);
-        $results->results[$key]->img = userphotographs(NULL,$build,$app->dependents);
+        $results->results[$key]->img = userphotographs($app->user,$build,$app->dependents);
     }
 
     echo json_encode($results);
