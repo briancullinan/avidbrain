@@ -126,6 +126,8 @@
         SELECT
             SQL_CALC_FOUND_ROWS
             user.email,
+            user.username,
+            user.usertype,
             user.last_active,
             user.url,
             user.city,
@@ -221,10 +223,19 @@
 
     }
 
+
+
     foreach($results->results as $key=> $build){
         $results->results[$key]->personal_statement_verified = truncate($build->personal_statement_verified,400);
         $results->results[$key]->img = userphotographs($app->user,$build,$app->dependents);
+        unset($results->results[$key]->my_avatar);
+        unset($results->results[$key]->my_upload);
+        unset($results->results[$key]->my_upload_status);
+        unset($results->results[$key]->email);
+        unset($results->results[$key]->username);
     }
+
+    
 
     echo json_encode($results);
     exit;
