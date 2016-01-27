@@ -347,14 +347,7 @@ var encodeHtmlEntity = function(str) {
 
 	$(document).ready(function() {
 
-		var totalcount = $('.totalcount').val();
-		if(!totalcount){
-			//$('#itsposttime').submit();
-			console.log('toobers');
-			setTimeout(function(){
-				$('.submit-a-form').click();
-			},2000);
-		}
+		
 
 		$('.javascript').on('submit',function(){
 
