@@ -61,7 +61,7 @@
 					</select>
 				</div>
 
-				
+
 				<input type="hidden" name="subject" class="javascript-name" placeholder="Name" />
 
 
@@ -78,6 +78,7 @@
 	</div>
 	<div class="col s12 m9 l9">
 		<div class="results-count"></div>
+		<div class="pagination-container"></div>
 		<div class="results"></div>
 		<div class="pagination-container"></div>
 	</div>
@@ -355,6 +356,10 @@ var encodeHtmlEntity = function(str) {
 
 </script>
 <style type="text/css">
+.pagination-container, .results{
+	width: 100%;
+	float: left;
+}
 .results-count{
 	font-family: 'Quicksand';
     font-weight: 600;
