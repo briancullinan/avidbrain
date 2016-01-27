@@ -204,6 +204,7 @@
         $results->results = $app->connect->executeQuery($sql,$searching)->fetchAll();
         $count = $app->connect->executeQuery("SELECT FOUND_ROWS() as count",array())->fetch();
         $results->count = $count->count;
+        $results->numbers = numbers($count->count,1);
         $app->connect->cache->set($cachedName, $results, 3600);
     }
 

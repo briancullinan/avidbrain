@@ -1275,3 +1275,35 @@ h1 span.top-count{
 .benefits h3{
     color: #fff;
 }
+
+
+.pagination-container, .results{
+	width: 100%;
+	float: left;
+}
+.results-count{
+	font-family: 'Quicksand';
+    font-weight: 600;
+	color: #444;
+	font-size: 55px;
+	line-height: normal;
+	margin-top: -12px;
+}
+.results-count span{
+	color: #2196F3;
+}
+.loading{
+	background: #222;
+	left:0px;
+	top:0px;
+	z-index: 4444;
+	text-align: center;
+	display: block;
+	padding-top: 100px;
+	height: 60px;
+	opacity: .8;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	font-size: 200px;
+}

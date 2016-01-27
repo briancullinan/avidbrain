@@ -63,9 +63,11 @@
 		$localjs['production'] = 'production.functions.js';
 	}
 	$localjs[] = 'functions.js';
+	$localjs[] = 'js.cookie.js';
+	$localjs[] = 'mustache.js';
+	$localjs[] = 'searching.js';
 	$localjs[] = 'wild.js';
 	$localjs[] = 'jquery.nouislider.min.js';
-	$localjs[] = 'js.cookie.js';
 	$localjs[] = 'jcrop.js';
 	$localjs[] = 'sortable.js';
 	$localjs[] = 'jquery.autocomplete.js';
