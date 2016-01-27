@@ -205,7 +205,24 @@
         $app->connect->cache->set($cachedName, $results, 3600);
     }
 
+    if(isset($results->count)){
+        $pagify = new Pagify();
+		$config = array(
+			'total'    => $results->count,
+            'ignoreslash'=>true,
+			'url'      => '/search#',
+			'page'     => $offsets->number,
+			'per_page' => $offsets->perpage
+		);
+        //notify($config);
+
+		$pagify->initialize($config);
+        $results->pagination = $pagify->get_links();
+
+    }
+
     foreach($results->results as $key=> $build){
+        $results->results[$key]->personal_statement_verified = truncate($build->personal_statement_verified,400);
         $results->results[$key]->img = userphotographs(NULL,$build,$app->dependents);
     }
 
