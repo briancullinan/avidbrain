@@ -117,7 +117,7 @@ if(getzipcode){
 else{
 	window.navigator.geolocation.getCurrentPosition(function(pos){
 
-		$.get( "http://maps.googleapis.com/maps/api/geocode/json?latlng=33.495904599999996,-111.9243226&sensor=true", function( data ) {
+		$.get( "https://maps.googleapis.com/maps/api/geocode/json?latlng=33.495904599999996,-111.9243226&sensor=true", function( data ) {
 			var zipcode = data.results[0].address_components[7].long_name;
 			if(zipcode){
 				Cookies.set('getzipcode', zipcode, { expires: 7 });
