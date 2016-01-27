@@ -8,7 +8,12 @@
 					<label>Subject</label>
 					<input type="text" name="subject" class="javascript-subject" />
 				</div>
-				<input type="text" name="subject" class="javascript-location" placeholder="Location" />
+
+				<div class="fixed-input">
+					<label>Zipcode</label>
+					<input type="text" name="subject" class="javascript-location" />
+				</div>
+
 
 				<div>
 					<label>Distance</label>
@@ -32,7 +37,7 @@
 					</select>
 				</div>
 
-				
+
 
 				<div class="xxx">
 					<label>Price Range</label>
@@ -56,10 +61,7 @@
 					</select>
 				</div>
 
-				<?php
-					//<input type="text" name="subject" class="javascript-pricelow" placeholder="Price Low" />
-					//<input type="text" name="subject" class="javascript-pricehigh" placeholder="Price High" />
-				?>
+				
 				<input type="hidden" name="subject" class="javascript-name" placeholder="Name" />
 
 
@@ -95,10 +97,6 @@
 
 <script src="/js/mustache.js"></script>
 <script type="text/javascript">
-
-// window.navigator.geolocation.getCurrentPosition(function(pos){
-//     console.log(pos);
-// });
 
 var getzipcode = Cookies.get('getzipcode');
 
@@ -160,7 +158,7 @@ var encodeHtmlEntity = function(str) {
             var template = '<div class="imatutor" id="activeblock-'+index+'">';
                 template +='<div class="row">';
                     template += '<div class="col s12 m4 l3 center-align">';
-                        template += '<div class="image"> <img src="{{img}}" /> </div>';
+                        template += '<div class="image"> <a href="{{url}}"><img src="{{img}}" /></a> </div>';
                         template += '<div class="user-name"> <a href="{{url}}">{{title}}</a> </div>';
                         template += '<div class="tutor-location"><i class="mdi-action-room"></i> {{location}} </div>';
                         if(item.distance){
@@ -342,7 +340,7 @@ var encodeHtmlEntity = function(str) {
 
 		$('.javascript').on('submit',function(){
 
-			$('.results').html('<div class="loading"><img src="/images/spin.svg"></div>');
+			$('.results').html('<div class="loading"><i class="fa fa-refresh fa-spin"></i></div>');
 			var formtarget = '#'+$(this).attr('id');
 			activate_voltron(formtarget);
 			return false;
@@ -369,20 +367,19 @@ var encodeHtmlEntity = function(str) {
 	color: #2196F3;
 }
 .loading{
-background: #222;
-left:0px;
-top:0px;
-z-index: 4444;
-text-align: center;
-display: block;
-padding-top: 100px;
-height: 60px;
-opacity: .5;
-position: fixed;
-width: 100%;
-height: 100%;
+	background: #222;
+	left:0px;
+	top:0px;
+	z-index: 4444;
+	text-align: center;
+	display: block;
+	padding-top: 100px;
+	height: 60px;
+	opacity: .8;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	font-size: 200px;
 }
-.loading img{
-	max-height: 100%;
-}
+
 </style>
