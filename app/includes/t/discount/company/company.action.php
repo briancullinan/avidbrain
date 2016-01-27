@@ -32,19 +32,19 @@
         'name'=>'American Express',
         'title'=>'AvidBrain Discounts - American Express',
         'h1'=>'Looking For A Tutor?',
-        'content'=>"<div class='discounts-top'>You've Come To The Right Place Welcome to AvidBrain, the easiest way to find a tutor.</div> <div class='discounts-signup-now'>Signup Now & Get <strong>$".$isvalidpromo->value."</strong> Off Your First Session</div>"
+        'content'=>"<div class='discounts-top'>Welcome to AvidBrain, the easiest way to find a tutor.</div> <div class='discounts-signup-now'>Signup Now & Get <strong>$".$isvalidpromo->value."</strong> Off Your First Session</div>"
     ];
     $companyInfo->{'discount-tire'} = (object)[
         'name'=>'Discount Tire',
         'title'=>'AvidBrain Discounts - Discount Tire',
         'h1'=>'Looking For A Tutor?',
-        'content'=>"<div class='discounts-top'>You've Come To The Right Place Welcome to AvidBrain, the easiest way to find a tutor.</div> <div class='discounts-signup-now'>Signup Now & Get <strong>$".$isvalidpromo->value."</strong> Off Your First Session</div>"
+        'content'=>"<div class='discounts-top'>Welcome to AvidBrain, the easiest way to find a tutor.</div> <div class='discounts-signup-now'>Signup Now & Get <strong>$".$isvalidpromo->value."</strong> Off Your First Session</div>"
     ];
     $companyInfo->mathworks = (object)[
         'name'=>'MathWorks',
         'title'=>'AvidBrain Discounts - MathWorks',
         'h1'=>'Looking For A Tutor?',
-        'content'=>"<div class='discounts-top'>You've Come To The Right Place Welcome to AvidBrain, the easiest way to find a tutor.</div> <div class='discounts-signup-now'>Signup Now & Get <strong>$".$isvalidpromo->value."</strong> Off Your First Session</div>"
+        'content'=>"<div class='discounts-top'>Welcome to AvidBrain, the easiest way to find a tutor.</div> <div class='discounts-signup-now'>Signup Now & Get <strong>$".$isvalidpromo->value."</strong> Off Your First Session</div>"
     ];
     $app->company = $companyInfo->$company;
 
