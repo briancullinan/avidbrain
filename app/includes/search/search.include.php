@@ -32,16 +32,7 @@
 					</select>
 				</div>
 
-				<div class="xxx">
-					<label>Gender</label>
-					<select id="javascript-gender" class="browser-default">
-						<?php foreach(array('No Preference'=>'','Male'=>'male','Female'=>'female',) as $key=> $gender): ?>
-							<option value="<?php echo $gender; ?>">
-								<?php echo $key; ?>
-							</option>
-						<?php endforeach; ?>
-					</select>
-				</div>
+				
 
 				<div class="xxx">
 					<label>Price Range</label>

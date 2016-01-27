@@ -216,14 +216,11 @@
 			'page'     => $offsets->number,
 			'per_page' => $offsets->perpage
 		);
-        //notify($config);
 
 		$pagify->initialize($config);
         $results->pagination = $pagify->get_links();
 
     }
-
-
 
     foreach($results->results as $key=> $build){
         $results->results[$key]->personal_statement_verified = truncate($build->personal_statement_verified,400);
@@ -234,8 +231,6 @@
         unset($results->results[$key]->email);
         unset($results->results[$key]->username);
     }
-
-    
 
     echo json_encode($results);
     exit;
