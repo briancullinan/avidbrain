@@ -255,7 +255,7 @@
 
 						<?php
 							//$computer = json_decode($app->thetutor->mysubs_computer)->computer;
-							
+
 							$thesubjectarray = array(
 								'art'=>$app->thetutor->mysubs_art,
 								'business'=>$app->thetutor->mysubs_business,
@@ -305,20 +305,22 @@
 								<?php
 									if($data = json_decode($subjects)){
 										foreach($data as $subject){
-											$subdata = subinfo($app->connect,$subject->id);
-											echo '<div>';
-								                echo '<input type="hidden" name="approveprofile['.$subdata->parent_slug.'---'.$subdata->subject_slug.'][email]" value="'.$app->thetutor->email.'" />';
-								                echo '<input type="hidden" name="approveprofile['.$subdata->parent_slug.'---'.$subdata->subject_slug.'][subject_slug]" value="'.$subdata->subject_slug.'" />';
-								                echo '<input type="hidden" name="approveprofile['.$subdata->parent_slug.'---'.$subdata->subject_slug.'][parent_slug]" value="'.$subdata->parent_slug.'" />';
-								                echo '<input type="hidden" name="approveprofile['.$subdata->parent_slug.'---'.$subdata->subject_slug.'][last_modified]" value="'.thedate().'" />';
-								                echo '<input type="hidden" name="approveprofile['.$subdata->parent_slug.'---'.$subdata->subject_slug.'][usertype]" value="tutor" />';
-								                echo '<input type="hidden" name="approveprofile['.$subdata->parent_slug.'---'.$subdata->subject_slug.'][subject_name]" value="'.$subdata->subject_name.'" />';
-								                echo '<div class="infos-title">'.$subdata->subject_name.'</div>';
-								                echo '<div class="infos-text">'.$subdata->subject_parent.'</div>';
-												if(isset($subject->description)){
-													echo '<textarea name="approveprofile['.$subdata->parent_slug.'---'.$subdata->subject_slug.'][description]" class="materialize-textarea">'.$subject->description.'</textarea>';
-												}
-								            echo '</div>';
+											if(isset($subject->id)){
+												$subdata = subinfo($app->connect,$subject->id);
+												echo '<div>';
+									                echo '<input type="hidden" name="approveprofile['.$subdata->parent_slug.'---'.$subdata->subject_slug.'][email]" value="'.$app->thetutor->email.'" />';
+									                echo '<input type="hidden" name="approveprofile['.$subdata->parent_slug.'---'.$subdata->subject_slug.'][subject_slug]" value="'.$subdata->subject_slug.'" />';
+									                echo '<input type="hidden" name="approveprofile['.$subdata->parent_slug.'---'.$subdata->subject_slug.'][parent_slug]" value="'.$subdata->parent_slug.'" />';
+									                echo '<input type="hidden" name="approveprofile['.$subdata->parent_slug.'---'.$subdata->subject_slug.'][last_modified]" value="'.thedate().'" />';
+									                echo '<input type="hidden" name="approveprofile['.$subdata->parent_slug.'---'.$subdata->subject_slug.'][usertype]" value="tutor" />';
+									                echo '<input type="hidden" name="approveprofile['.$subdata->parent_slug.'---'.$subdata->subject_slug.'][subject_name]" value="'.$subdata->subject_name.'" />';
+									                echo '<div class="infos-title">'.$subdata->subject_name.'</div>';
+									                echo '<div class="infos-text">'.$subdata->subject_parent.'</div>';
+													if(isset($subject->description)){
+														echo '<textarea name="approveprofile['.$subdata->parent_slug.'---'.$subdata->subject_slug.'][description]" class="materialize-textarea">'.$subject->description.'</textarea>';
+													}
+									            echo '</div>';
+											}
 										}
 									}
 								?>
