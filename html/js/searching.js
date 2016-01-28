@@ -151,7 +151,7 @@ var encodeHtmlEntity = function(str) {
 					url: nexturl,
 					data: {csrf_token:thetoken},
 					success: function(response){
-						// Next Available
+						console.log(nexturl);
 					}
 				});
 			},3000);
