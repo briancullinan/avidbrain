@@ -21,6 +21,7 @@
 		</ul>
 
 		<?php if(isset($action) && isset($app->$action)): ?>
+			<?php echo count($app->$action); ?>
 			<ul class="block">
 				<?php foreach($app->$action as $user): ?>
 					<li <?php if(isset($id) && $id==$user->id){ echo 'class="active"';} ?>>
