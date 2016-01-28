@@ -53,8 +53,6 @@ var encodeHtmlEntity = function(str) {
 			}
 
 
-			//console.log(view);
-
             var template = '<div class="imatutor" id="activeblock-'+index+'">';
                 template +='<div class="row">';
                     template += '<div class="col s12 m4 l3 center-align">';
@@ -108,7 +106,6 @@ var encodeHtmlEntity = function(str) {
 
         });
 
-
     }
 
 	function makesurefocus(array){
@@ -119,6 +116,46 @@ var encodeHtmlEntity = function(str) {
 				return false;
 			}
 		});
+	}
+
+	function ajaxposter(buildtheurl,thetoken,nexturl){
+		$.ajax({
+			type: 'POST',
+			url: buildtheurl,
+			data: {csrf_token:thetoken},
+			success: function(response){
+				$('.results-count').html('<span>'+response.numbers+'</span> Tutors Found');
+				$('.loading').fadeOut(function(){$(this).remove()});
+				build_results(response.results,response.count);
+				$('.results-count').append('<input type="hidden" class="totalcount" value="'+response.count+'" />');
+
+				if(response.pagination){
+					$('.pagination-container').html(response.pagination);
+
+					$('.pagination-container a').on('click',function(){
+						var datavalue = $(this).attr('data-value');
+						$('.javascript-page').val(datavalue);
+						$('#itsposttime').submit();
+						$('html, body').animate({ scrollTop: 0 }, 'slow', function () { /**/ });
+					});
+				}
+
+			}
+		});
+
+		if(nexturl){
+
+			setTimeout(function(){
+				$.ajax({
+					type: 'POST',
+					url: nexturl,
+					data: {csrf_token:thetoken},
+					success: function(response){
+						// Next Available
+					}
+				});
+			},3000);
+		}
 	}
 
 	function activate_voltron(formtarget){
@@ -189,41 +226,20 @@ var encodeHtmlEntity = function(str) {
 			buildtheurl += '---/';
 		}
 
+
+		var nextpage = parseInt(page) + 1;
+		nexturl = buildtheurl+nextpage;
 		buildtheurl += page+'/';
 		buildtheurl += sort+'/';
+		nexturl += '/'+sort+'/';
+
 
 		$('.submit-a-form').attr('disabled','disabled');
 		setTimeout(function(){
 			$('.submit-a-form').removeAttr('disabled');
 		},1000);
 
-		//makesurefocus(['subject','location','distance','gender','pricelow','pricehigh']);
-
-		//console.log(buildtheurl);
-
-		$.ajax({
-			type: 'POST',
-			url: buildtheurl,
-			data: {csrf_token:thetoken},
-			success: function(response){
-				$('.results-count').html('<span>'+response.numbers+'</span> Tutors Found');
-				$('.loading').fadeOut(function(){$(this).remove()});
-				build_results(response.results,response.count);
-				$('.results-count').append('<input type="hidden" class="totalcount" value="'+response.count+'" />');
-
-				if(response.pagination){
-					$('.pagination-container').html(response.pagination);
-
-					$('.pagination-container a').on('click',function(){
-						var datavalue = $(this).attr('data-value');
-						$('.javascript-page').val(datavalue);
-						$('#itsposttime').submit();
-						$('html, body').animate({ scrollTop: 0 }, 'slow', function () { /**/ });
-					});
-				}
-
-			}
-		});
+		ajaxposter(buildtheurl,thetoken,nexturl);
 
 
 	}
@@ -232,7 +248,11 @@ var encodeHtmlEntity = function(str) {
 
 	$(document).ready(function() {
 
-
+		$('.submit-a-form').on('click',function(){
+			$('.javascript-page').val(1);
+			//event.preventDefault();
+  			history.pushState({}, '', '#1');
+		});
 
 		$('.javascript').on('submit',function(){
 
