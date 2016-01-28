@@ -21,8 +21,8 @@
 		</ul>
 
 		<?php if(isset($action) && isset($app->$action)): ?>
-			<?php echo count($app->$action); ?>
 			<ul class="block">
+				<div class="blue whit-text"><?php echo count($app->$action); ?></div>
 				<?php foreach($app->$action as $user): ?>
 					<li <?php if(isset($id) && $id==$user->id){ echo 'class="active"';} ?>>
 						<a href="/admin-everything/new-tutor-approvals/<?php echo $action; ?>/<?php echo $user->id; ?>">
