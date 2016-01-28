@@ -255,11 +255,7 @@
 
 						<?php
 							//$computer = json_decode($app->thetutor->mysubs_computer)->computer;
-							function subinfo($connect,$id){
-								$sql = "SELECT * FROM avid___available_subjects WHERE id = :id";
-								$prepare = array(':id'=>$id);
-								return $connect->executeQuery($sql,$prepare)->fetch();
-							}
+							
 							$thesubjectarray = array(
 								'art'=>$app->thetutor->mysubs_art,
 								'business'=>$app->thetutor->mysubs_business,

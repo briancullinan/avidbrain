@@ -20,6 +20,12 @@
     //     exit;
     // }
 
+    function subinfo($connect,$id){
+        $sql = "SELECT * FROM avid___available_subjects WHERE id = :id";
+        $prepare = array(':id'=>$id);
+        return $connect->executeQuery($sql,$prepare)->fetch();
+    }
+
     if(isset($id)){
         $sql = "SELECT temps.*,user.url,comp.id as comper FROM avid___new_temps temps
 
