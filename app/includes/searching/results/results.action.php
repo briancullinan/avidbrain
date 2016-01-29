@@ -38,6 +38,11 @@
     $app->queries = $appget;
     //notify($app->queries);
 
+    if(!empty($subject)){
+        $cachedSubjectInfo = 'cachedsubjectinfo'.$subject;
+        notify($cachedSubjectInfo);
+    }
+
 
     $sortMap = [
         'last_active'=>'user.last_active DESC',

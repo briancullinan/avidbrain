@@ -6,12 +6,15 @@
 
 What are you looking for?
 
-<form method="get" action="/searching/" class="get-searching">
+<form method="post" action="/searching/" class="get-searching form-post">
+
+    <input type="hidden" name="searching[target]" value="searching"  />
+	<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
 
     <div class="searching-container">
         <label for="subject">Subject</label>
         <div class="searching-box" id="search-subject">
-            <input id="subject" type="text" name="subject" <?php if(isset($app->queries->subject)){ echo 'value="'.$app->queries->subject.'"';} ?> />
+            <input id="subject" type="text" name="searching[subject]" <?php if(isset($app->queries->subject)){ echo 'value="'.$app->queries->subject.'"';} ?> />
         </div>
     </div>
 
@@ -20,7 +23,7 @@ What are you looking for?
             <div class="searching-container">
                 <label for="zipcode">Zipcode</label>
                 <div class="searching-box">
-                    <input id="zipcode" type="text" name="zipcode" <?php if(isset($app->queries->zipcode)){ echo 'value="'.$app->queries->zipcode.'"';}elseif(!empty($doihavazipcode)){ echo 'value="'.$doihavazipcode.'"';} ?> />
+                    <input id="zipcode" type="text" name="searching[zipcode]" <?php if(isset($app->queries->zipcode)){ echo 'value="'.$app->queries->zipcode.'"';}elseif(!empty($doihavazipcode)){ echo 'value="'.$doihavazipcode.'"';} ?> />
                 </div>
             </div>
     	</div>
@@ -28,7 +31,7 @@ What are you looking for?
             <div class="searching-container">
                 <label for="distance">Distance</label>
                 <div class="searching-box">
-                    <select id="distance" class="browser-default" name="distance">
+                    <select id="distance" class="browser-default" name="searching[distance]">
                         <?php foreach(array(5,20,50,100,500,1000,5000,10000) as $distance): ?>
                             <option <?php if(isset($app->queries->distance) && $app->queries->distance==$distance){echo 'selected="selected"';}elseif(empty($app->queries->distance) && $distance==50){echo 'selected="selected"';} ?> value="<?php echo $distance; ?>"><?php echo numbers($distance,1); ?> Miles</option>
                         <?php endforeach; ?>
@@ -41,14 +44,14 @@ What are you looking for?
     <div class="searching-container">
         <label for="name">Tutor's Name</label>
         <div class="searching-box">
-            <input id="name" type="text" name="name" <?php if(isset($app->queries->name)){ echo 'value="'.$app->queries->name.'"';} ?> />
+            <input id="name" type="text" name="searching[name]" <?php if(isset($app->queries->name)){ echo 'value="'.$app->queries->name.'"';} ?> />
         </div>
     </div>
 
     <div class="searching-container">
         <label for="gender">Gender</label>
         <div class="searching-box">
-            <select id="gender" class="browser-default" name="gender">
+            <select id="gender" class="browser-default" name="searching[gender]">
                 <?php foreach(array('No Preference'=>'','Male'=>'male','Female'=>'female',) as $key=> $gender): ?>
                     <option <?php if(isset($app->queries->gender) && $app->queries->gender==$gender){echo 'selected="selected"';} ?> value="<?php echo $gender; ?>">
                         <?php echo $key; ?>
@@ -63,7 +66,7 @@ What are you looking for?
             <div class="searching-container">
                 <label for="pricelow">Price Range Low</label>
                 <div class="searching-box">
-                    <select id="pricelow" class="browser-default" name="pricelow">
+                    <select id="pricelow" class="browser-default" name="searching[pricelow]">
                         <?php foreach(range(0,1000,10) as $pricerange): ?>
                             <option <?php if(isset($app->queries->pricelow) && $app->queries->pricelow==$pricerange){echo 'selected="selected"';} ?> value="<?php echo $pricerange; ?>">
                                 $<?php echo numbers($pricerange); ?>
@@ -78,7 +81,7 @@ What are you looking for?
             <div class="searching-container">
                 <label for="pricehigh">Price Range High</label>
                 <div class="searching-box">
-                    <select id="pricehigh" class="browser-default" name="pricehigh">
+                    <select id="pricehigh" class="browser-default" name="searching[pricehigh]">
                         <?php foreach(range(0,1000,10) as $pricerangehigh): ?>
                             <option <?php if(isset($app->queries->pricehigh) && $app->queries->pricehigh==$pricerangehigh){echo 'selected="selected"';}elseif(empty($app->queries->pricehigh) && $pricerangehigh==200){ echo 'selected="selected"';} ?> value="<?php echo $pricerangehigh; ?>">
                                 $<?php echo numbers($pricerangehigh); ?>
@@ -93,18 +96,18 @@ What are you looking for?
     <div class="searching-container hidden">
         <label for="page">Page</label>
         <div class="searching-box">
-            <input id="page" type="text" name="page" value="1" />
+            <input id="page" type="text" name="searching[page]" value="1" />
         </div>
     </div>
 
     <div class="searching-container hidden">
         <label for="sort">Sort Order</label>
         <div class="searching-box">
-            <input id="sort" type="text" name="sort" value="last_active" />
+            <input id="sort" type="text" name="searching[sort]" value="last_active" />
         </div>
     </div>
 
-    <input id="subjectauto" type="hidden" name="subjectauto" <?php if(isset($app->queries->subject)){ echo 'value="'.$app->queries->subject.'"';} ?> />
+    <input id="subjectauto" type="text" name="searching[subjectauto]" <?php if(isset($app->queries->subject_slug)){ echo 'value="'.$app->queries->subject_slug.'"';} ?> />
 
     <br>
     <button class="btn" type="submit">
@@ -163,40 +166,47 @@ What are you looking for?
             }
         });
 
-        $('.get-searching').on('submit',function(){
-
-            var serialized_data = $(this).find("input, select, textarea");
-            var urljump = '/searching';
-            var newurl = {};
-            $.each(serialized_data,function(){
-                var value = $(this).val();
-                var name = $(this).attr('name');
-                if(!value){
-                    value = '---';
-                }
-                if(name=='page'){
-                    value = '['+value+']';
-                }
-                if(name=='sort'){
-                    value = '('+value+')';
-                }
-
-                newurl[name] = value;
-            });
-
-            if(newurl.subjectauto!='---'){
-                var subject = newurl.subjectauto;
-            }
-            else{
-                var subject = newurl.subject;
-            }
-
-            urljump+= '/'+subject+'/'+newurl.zipcode+'/'+newurl.distance+'/'+newurl.name+'/'+newurl.gender+'/'+newurl.pricelow+'/'+newurl.pricehigh+'/'+newurl.page+'/'+newurl.sort;
-
-            window.location = urljump;
-            return false;
-
-        });
+        // $('#subject').autocomplete({
+        //     serviceUrl: '/findmesome',
+		//     onSelect: function (suggestion){
+        //         $('#subjectauto').val(suggestion.data);
+        //     }
+        // });
+        //
+        // $('.get-searching').on('submit',function(){
+        //
+        //     var serialized_data = $(this).find("input, select, textarea");
+        //     var urljump = '/searching';
+        //     var newurl = {};
+        //     $.each(serialized_data,function(){
+        //         var value = $(this).val();
+        //         var name = $(this).attr('name');
+        //         if(!value){
+        //             value = '---';
+        //         }
+        //         if(name=='page'){
+        //             value = '['+value+']';
+        //         }
+        //         if(name=='sort'){
+        //             value = '('+value+')';
+        //         }
+        //
+        //         newurl[name] = value;
+        //     });
+        //
+        //     if(newurl.subjectauto!='---'){
+        //         var subject = newurl.subjectauto;
+        //     }
+        //     else{
+        //         var subject = newurl.subject;
+        //     }
+        //
+        //     urljump+= '/'+subject+'/'+newurl.zipcode+'/'+newurl.distance+'/'+newurl.name+'/'+newurl.gender+'/'+newurl.pricelow+'/'+newurl.pricehigh+'/'+newurl.page+'/'+newurl.sort;
+        //
+        //     window.location = urljump;
+        //     return false;
+        //
+        // });
 
 
 
