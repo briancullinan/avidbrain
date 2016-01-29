@@ -32,7 +32,8 @@
 	//http://handlebarsjs.com/
 	//https://github.com/janl/mustache.js/
 	$routes['search'] = (object)array('url'=>'/search','slug'=>'search','route'=>'/search/','include'=>'search','protected'=>NULL,'permissions'=>array());
-	$routes['searching'] = (object)array('url'=>'/searching','slug'=>'searching','route'=>'/searching/:query+','include'=>'searching','protected'=>NULL,'permissions'=>array());
+	$routes['searching'] = (object)array('url'=>'/searching','slug'=>'searching','route'=>'/searching/','include'=>'searching','protected'=>NULL,'permissions'=>array());
+	$routes['searching-results'] = (object)array('url'=>'/searching/results','slug'=>'results','route'=>'/searching/:query+','include'=>'searching/results','protected'=>NULL,'permissions'=>array());
 	#$routes['search--subject'] = (object)array('url'=>'/search','slug'=>'search','route'=>'/search/:subject/','include'=>'search','protected'=>NULL,'permissions'=>array());
 	#$routes['search--subject--location'] = (object)array('url'=>'/search','slug'=>'search','route'=>'/search/:subject/:location/','include'=>'search','protected'=>NULL,'permissions'=>array());
 	#$routes['search--subject--location--distance'] = (object)array('url'=>'/search','slug'=>'search','route'=>'/search/:subject/:location/:distance/','include'=>'search','protected'=>NULL,'permissions'=>array());
