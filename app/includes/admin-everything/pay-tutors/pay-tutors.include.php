@@ -200,6 +200,13 @@
 
 				$total = (array_sum($totalgross) / 100);
 				$totalpayout = (array_sum($totalpay) / 100);
+
+				#printer($apsdfcheckrefund);
+				#printer($finaltotalpay);
+				if(!empty($additional)){
+					$finaltotalpay = ($additional+$finaltotalpay);
+				}
+				
 			?>
 			<p></p>
 			<div class="row">
