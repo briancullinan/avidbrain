@@ -2,7 +2,7 @@
 
     $map = [
         0=>'subject',
-        1=>'location',
+        1=>'zipcode',
         2=>'distance',
         3=>'name',
         4=>'gender',
@@ -10,6 +10,7 @@
         6=>'pricehigh'
     ];
 
+    $appget = (object)[];
     if(!empty($query)){
         foreach($query as $key=> $assignMap){
             if(strpos($assignMap, "(") !== false || strpos($assignMap, ")") !== false) {
@@ -19,7 +20,11 @@
                 $page = str_replace(array('[',']'),'',$assignMap);
             }
             elseif(!empty($assignMap) && $assignMap!='---'){
-                $$map[$key] = $assignMap;
+                if(isset($map[$key])){
+                    $appget->$map[$key] = $assignMap;
+                    $$map[$key] = $assignMap;
+                }
+
             }
         }
 
@@ -30,6 +35,9 @@
             $page = 1;
         }
     }
+    $app->queries = $appget;
+    //notify($app->queries);
+
 
     $sortMap = [
         'last_active'=>'user.last_active DESC',
@@ -78,11 +86,11 @@
         $where[] = "CONCAT(subjects.subject_name,' ',subjects.subject_slug,' ',subjects.parent_slug) LIKE :subject";
         $joins['subject'] = "INNER JOIN avid___user_subjects subjects on subjects.email = user.email";
     }
-    if(isset($location) && strlen($location)==5){
-        $cachedZipcodeKey = "searchingcachedzipcode-".$location;
+    if(isset($zipcode) && strlen($zipcode)==5){
+        $cachedZipcodeKey = "searchingcachedzipcode-".$zipcode;
         $cachedZipcode = $app->connect->cache->get($cachedZipcodeKey);
         if($cachedZipcode == null) {
-            $cachedZipcode = get_zipcode_data($app->connect,$location);
+            $cachedZipcode = get_zipcode_data($app->connect,$zipcode);
             $app->connect->cache->set($cachedZipcodeKey, $cachedZipcode, 3600);
         }
 
@@ -131,17 +139,9 @@
     }
 
     //printer($preparedStatement);
-    if(!empty($select)){
-        $select = makeNow($select,",");
-        #notify($select);
-    }
-    if(!empty($where)){
-        $where = makeNow($where,"AND");
-        #notify($where);
-    }
-    if(!empty($joins)){
-        $joins = makeNow($joins,NULL);
-    }
+    $select = makeNow($select,",");
+    $where = makeNow($where,"AND");
+    $joins = makeNow($joins,NULL);
 
     //notify($select);
 
