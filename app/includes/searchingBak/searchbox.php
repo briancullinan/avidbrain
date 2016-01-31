@@ -6,7 +6,7 @@
 
 What are you looking for?
 
-<form method="post" action="/searching/" class="get-searching xxx">
+<form method="post" action="/searching/" class="get-searching form-post">
 
     <input type="hidden" name="searching[target]" value="searching"  />
 	<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
@@ -14,7 +14,7 @@ What are you looking for?
     <div class="searching-container">
         <label for="subject">Subject</label>
         <div class="searching-box" id="search-subject">
-            <input id="subject" type="text" name="searching[subject]" <?php if(isset($app->cachedSubjectQuery->subject_name)){ echo 'value="'.$app->cachedSubjectQuery->subject_name.'"';} ?> />
+            <input id="subject" type="text" name="searching[subject]" <?php if(isset($app->queries->subject)){ echo 'value="'.$app->queries->subject.'"';} ?> />
         </div>
     </div>
 
@@ -93,14 +93,14 @@ What are you looking for?
     	</div>
     </div>
 
-    <div class="searching-container hidden-x">
+    <div class="searching-container hidden">
         <label for="page">Page</label>
         <div class="searching-box">
-            <input id="page" type="text" name="searching[page]" <?php if(isset($app->queries->page)){ echo 'value="'.$app->queries->page.'"';} ?> />
+            <input id="page" type="text" name="searching[page]" value="1" />
         </div>
     </div>
 
-    <div class="searching-container hidden-x">
+    <div class="searching-container hidden">
         <label for="sort">Sort Order</label>
         <div class="searching-box">
             <input id="sort" type="text" name="searching[sort]" value="last_active" />
@@ -152,11 +152,6 @@ What are you looking for?
     border: none !important;
     box-shadow: none !important;
 }
-.searching-results{
-    float: left;
-    width: 100%;
-    background: red;
-}
 </style>
 
 
@@ -166,15 +161,10 @@ What are you looking for?
 
         $('#subject').autocomplete({
             serviceUrl: '/findmesome',
-            beforeRender: function(){
-                $('#subjectauto').val('');
-            },
 		    onSelect: function (suggestion){
                 $('#subjectauto').val(suggestion.data);
             }
         });
-
-        //$('#subject')
 
         // $('#subject').autocomplete({
         //     serviceUrl: '/findmesome',

@@ -15,11 +15,9 @@
         foreach($query as $key=> $assignMap){
             if(strpos($assignMap, "(") !== false || strpos($assignMap, ")") !== false) {
                 $sort = str_replace(array('(',')'),'',$assignMap);
-                $appget->sort = $sort;
             }
             elseif(strpos($assignMap, "[") !== false || strpos($assignMap, "]") !== false) {
                 $page = str_replace(array('[',']'),'',$assignMap);
-                $appget->page = $page;
             }
             elseif(!empty($assignMap) && $assignMap!='---'){
                 if(isset($map[$key])){
@@ -38,37 +36,11 @@
         }
     }
     $app->queries = $appget;
+    //notify($app->queries);
 
     if(!empty($subject)){
-
-        $cachedSubjectKey = "cachedsubjectslug--".$subject;
-        $cachedSubjectSlug = $app->connect->cache->get($cachedSubjectKey);
-        if($cachedSubjectSlug == null) {
-            $sql = "
-        		SELECT
-        			subjects.subject_name
-        		FROM
-        			avid___available_subjects subjects
-        		WHERE
-        			subjects.subject_slug = :subjects
-        	";
-        	$prepare = array(
-        		':subjects'=>$subject
-        	);
-        	$cachedSubjectSlug = $app->connect->executeQuery($sql,$prepare)->fetch();
-            $app->connect->cache->set($cachedSubjectKey, $cachedSubjectSlug, 3600);
-        }
-
-        if(isset($cachedSubjectSlug->subject_name)){
-            $subjecttext = $cachedSubjectSlug->subject_name;
-        }
-        else{
-            $subjecttext = ucwords($subject);
-        }
-
-        $cachedSubjectQuery = new stdClass();
-        $cachedSubjectQuery->subject_name = $subjecttext;
-        $app->cachedSubjectQuery = $cachedSubjectQuery;
+        $cachedSubjectInfo = 'cachedsubjectinfo'.$subject;
+        notify($cachedSubjectInfo);
     }
 
 
@@ -231,47 +203,13 @@
         $limitOffset
     ";
 
-    $pagebase = str_replace("[$page]",'',$app->request->getPath());
-
-
-
-    //notify($app->queries);
     #notify($sql);
-    $cachedname = 'NEWCACHE---';
-    foreach($app->queries as $cachekey => $buildcachename){
-        $cachedname.='-'.$buildcachename;
+
+    $results = $app->connect->executeQuery($sql,$preparedStatement)->fetchAll();
+    $count = $app->connect->executeQuery("SELECT FOUND_ROWS() as count",array())->fetch();
+    if(isset($results[0])){
+        $app->searching = $results;
+        $app->count = $count->count;
     }
-    $cachedname = str_replace(array(' '),'',$cachedname);
-    $cachedname = strtolower($cachedname);
-
-    $cachedSearchResults = $app->connect->cache->get($cachedname);
-    if($cachedSearchResults == null) {
-        $cachedSearchResults = new stdClass();
-        $cachedSearchResults->results = $app->connect->executeQuery($sql,$preparedStatement)->fetchAll();
-        $count = $app->connect->executeQuery("SELECT FOUND_ROWS() as count",array())->fetch();
-        $cachedSearchResults->count = $count->count;
-
-        $app->connect->cache->set($cachedname, $cachedSearchResults, 3600);
-    }
-
-    if(isset($cachedSearchResults->count) && $cachedSearchResults->count > 0){
-        $pagify = new Pagify();
-		$config = array(
-            'number_wrap'=>array('[',']'),
-			'total'    => $cachedSearchResults->count,
-			'url'      => $pagebase,
-			'page'     => $offsets->number,
-			'per_page' => $offsets->perpage
-		);
-
-		$pagify->initialize($config);
-        if($page > $pagify->last_page_number){
-            $app->redirect($pagebase.'/['.$pagify->last_page_number.']');
-        }
-        $app->pagination = $pagify->get_links();
-    }
-
-    if(isset($cachedSearchResults->results)){
-        $app->searching = $cachedSearchResults->results;
-        $app->count = $cachedSearchResults->count;
-    }
+    // printer($count);
+    // notify($results);

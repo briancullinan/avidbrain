@@ -1,23 +1,15 @@
 <?php
 
-    $app->setCookie('getzipcode',$app->searching->zipcode, '2 days');
-
     if(isset($app->searching)){
 
         $string = [];
 
 
-        if(empty($app->searching->subjectauto) && !empty($app->searching->subject)){
+        if(empty($app->searching->subjectauto) && isset($app->searching->subject)){
             $string['subject'] = $app->searching->subject;
         }
-        elseif(!empty($app->searching->subjectauto)){
+        elseif(isset($app->searching->subjectauto)){
             $string['subject'] = $app->searching->subjectauto;
-        }
-        elseif(!empty($app->searching->subjectauto) && empty($app->searching->subject)){
-            $string['subject'] = '---';
-        }
-        else{
-            $string['subject'] = '---';
         }
 
         if(!empty($app->searching->zipcode)){
@@ -73,13 +65,11 @@
             $string['page'] = '['.$app->searching->page.']';
         }
         else{
-            $string['page'] = '[1]';
+            $string['page'] = '---';
         }
 
-        $jump = '/searching/'.$string['subject'].'/'.$string['zipcode'].'/'.$string['distance'].'/'.$string['name'].'/'.$string['gender'].'/'.$string['pricelow'].'/'.$string['pricehigh'].'/'.$string['sort'].'/'.$string['page'];
+        $jump = '/searching/'.$string['subject'].'/'.$string['zipcode'].'/'.$string['distance'].'/'.$string['name'].'/'.$string['gender'].'/'.$string['pricelow'].'/'.$string['pricehigh'].'/'.$string['page'].'/'.$string['sort'];
         // urljump+= '/'+subject+'/'+newurl.zipcode+'/'+newurl.distance+'/'+newurl.name+'/'+newurl.gender+'/'+newurl.pricelow+'/'+newurl.pricehigh+'/'+newurl.page+'/'+newurl.sort;
-
-        //notify($jump);
 
         if($app->request->isAjax()){
             new Flash(

@@ -19,6 +19,7 @@ class Pagify{
     private $per_page = 5;
 
     private $ignoreslash = false;
+    private $number_wrap = [];
 
     /**
      * the total number of items
@@ -75,7 +76,7 @@ class Pagify{
      *
      * @var int
      **/
-    private $last_page_number;
+    public $last_page_number;
 
     /**
      * Template variables
@@ -152,6 +153,14 @@ class Pagify{
      **/
     public function get_links()
     {
+        if(isset($this->number_wrap) && isset($this->number_wrap[0]) && isset($this->number_wrap[1])){
+            $pre = $this->number_wrap[0];
+            $post = $this->number_wrap[1];
+            $this->number_wrap = (object)['pre'=>$pre,'post'=>$post];
+        }
+        else{
+            $this->number_wrap = (object)['pre'=>'','post'=>''];
+        }
         $output = $this->tag_open;
         $links = array();
 
@@ -174,31 +183,31 @@ class Pagify{
             // number links before current page
             if ($this->page - $this->range > 0) {
                 for ($i = $this->page - $this->range; $i < $this->page; $i++) {
-                    $links[] = '<li><a data-value="'.$i.'" href="' . $this->url.$i . '">' . $i . '</a></li>';
+                    $links[] = '<li><a data-value="'.$i.'" href="' . $this->url.$this->number_wrap->pre.$i.$this->number_wrap->post. '">' . $i . '</a></li>';
                 }
             }
             else {
                 for ($i = 1; $i < $this->page; $i++) {
-                    $links[] = '<li><a data-value="'.$i.'" href="' . $this->url.$i . '">' . $i . '</a></li>';
+                    $links[] = '<li><a data-value="'.$i.'" href="' . $this->url.$this->number_wrap->pre.$i.$this->number_wrap->post. '">' . $i . '</a></li>';
                 }
             }
 
             // current page
 
             if(isset($this->page)){
-		        $links[] = '<li class="active"><a data-value="'.$i.'" href="#">' . $this->page . '</a></li>';
+		        $links[] = '<li class="active"><a data-value="'.$this->number_wrap->pre.$i.$this->number_wrap->post.'" href="#">' . $this->page . '</a></li>';
             }
 
 
             // number links after current page
             if ($this->page + $this->range <= $this->last_page_number) {
                 for ($i = $this->page + 1; $i <= $this->page + $this->range; $i++) {
-                    $links[] = '<li><a data-value="'.$i.'" href="' . $this->url.$i . '">' . $i . '</a></li>';
+                    $links[] = '<li><a data-value="'.$i.'" href="' . $this->url.$this->number_wrap->pre.$i.$this->number_wrap->post. '">' . $i . '</a></li>';
                 }
             }
             else {
                 for ($i = $this->page + 1; $i <= $this->last_page_number; $i++) {
-                    $links[] = '<li><a data-value="'.$i.'" href="' . $this->url.$i . '">' . $i . '</a></li>';
+                    $links[] = '<li><a data-value="'.$i.'" href="' . $this->url.$this->number_wrap->pre.$i.$this->number_wrap->post. '">' . $i . '</a></li>';
                 }
             }
         }
@@ -244,7 +253,7 @@ class Pagify{
      **/
     public function get_first_link()
     {
-        return '<li class="first_last"><a data-value="1" href="'.$this->url.'1">'.$this->first_link_text.'</a></li>';
+        return '<li class="first_last"><a data-value="1" href="'.$this->url.$this->number_wrap->pre.'1'.$this->number_wrap->post.'">'.$this->first_link_text.'</a></li>';
     }
 
     // ---------------------------------------------------------------
@@ -258,7 +267,7 @@ class Pagify{
      **/
     public function get_last_link()
     {
-        return '<li class="first_last"><a data-value="'.$this->last_page_number.'" href="'.$this->url.$this->last_page_number.'">'.$this->last_link_text.'</a></li>';
+        return '<li class="first_last"><a data-value="'.$this->last_page_number.'" href="'.$this->url.$this->number_wrap->pre.$this->last_page_number.$this->number_wrap->post.'">'.$this->last_link_text.'</a></li>';
     }
 
     // ---------------------------------------------------------------
@@ -272,10 +281,11 @@ class Pagify{
      **/
     public function get_prev_link()
     {
+
         $link = $this->prev_link_tag_open;
         if ($this->page > 1) {
             $prev_page = $this->page - 1;
-            $link .= '<li class="prev_next"><a data-value="'.$prev_page.'" href="'.$this->url.$prev_page.'">'.$this->prev_link_text.'</a></li>';
+            $link .= '<li class="prev_next"><a data-value="'.$prev_page.'" href="'.$this->url.$this->number_wrap->pre.$prev_page.$this->number_wrap->post.'">'.$this->prev_link_text.'</a></li>';
         }
         $link .= $this->prev_link_tag_close;
         return $link;
@@ -295,7 +305,7 @@ class Pagify{
         $link = $this->next_link_tag_open;
         if ($this->page < $this->last_page_number) {
             $next_page = $this->page + 1;
-            $link .= '<li class="prev_next"><a data-value="'.$next_page.'" href="'.$this->url.$next_page.'">'.$this->next_link_text.'</a></li>';
+            $link .= '<li class="prev_next"><a data-value="'.$next_page.'" href="'.$this->url.$this->number_wrap->pre.$next_page.$this->number_wrap->post.'">'.$this->next_link_text.'</a></li>';
         }
         $link .= $this->next_link_tag_close;
         return $link;
