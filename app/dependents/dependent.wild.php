@@ -37,6 +37,7 @@
 		'wild.css',
 		'wild.core.css',
 		'wild.homepage.css',
+		'searching.css',
 		'material.fix.css',
 		'jquery.nouislider.min.css',
 		'forms.css',

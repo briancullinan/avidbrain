@@ -268,3 +268,120 @@ var encodeHtmlEntity = function(str) {
 		});
 
 	});
+
+
+	$(document).ready(function() {
+
+
+		$('.sorting-feature').on('change',function(){
+			$('#sort').val($(this).val());
+			$('.search-button').click();
+		});
+
+		$('.pull-tab').on('click',function(){
+			var pulltab = $(this).attr('data-status');
+			if(pulltab=='closed'){
+				$(this).attr('data-status','open').addClass('open').removeClass('closed');
+				$('.mainresults').addClass('open').removeClass('closed');
+				$(this).find('.fa-arrow-up').removeClass('fa-arrow-up').addClass('fa-arrow-down');
+			}
+			else if(pulltab=='open'){
+				$(this).attr('data-status','closed').addClass('closed').removeClass('open');
+				$('.mainresults').addClass('closed').removeClass('open');
+				$(this).find('.fa-arrow-down').removeClass('fa-arrow-down').addClass('fa-arrow-up');
+			}
+		});
+
+		$('.get-searching').on('submit',function(){
+			$('.search-button').attr('disabled','disabled');
+			//return false;
+		});
+
+		$('.form-reset').on('click',function(){
+			$('.search-button').attr('disabled','disabled');
+			$('.form-reset').attr('disabled','disabled');
+
+			$.each($('.get-searching').find('input,select'),function(index,item){
+				$(this).delay(index * 50).fadeOut(function(){
+					$(this).attr('value','');
+					var datadefault = $(this).attr('data-default');
+					$(this).find('option').removeAttr('selected');
+					if(datadefault){
+						$(this).attr('value',datadefault);
+					}
+				}).fadeIn('fast');
+			});
+
+			setTimeout(function(){
+				$('.search-button').removeAttr('disabled');
+				$('.form-reset').removeAttr('disabled');
+			},1000);
+		});
+
+
+
+		$('#location').autocomplete({
+			serviceUrl: '/suggestlocation',
+			beforeRender: function(){
+				$('.zipcodeactual').val('');
+			},
+			onSelect: function (suggestion){
+				$('.zipcodeactual').val(suggestion.data);
+			}
+		});
+
+		$('#subject').autocomplete({
+			serviceUrl: '/findmesome',
+			beforeRender: function(){
+				$('#subjectauto').val('');
+			},
+			onSelect: function (suggestion){
+				$('#subjectauto').val(suggestion.data);
+			}
+		});
+
+		$( ".my-badges" ).each(function( index ) {
+			var badgeurl = $(this).attr('data-url');
+			var badgeid = '#'+$(this).attr('id');
+			$.ajax({
+				type: 'POST',
+				url: '/badges',
+				data: {url:badgeurl,csrf_key:$('#csrf_key').html(),csrf_token:$('#csrf_token').html()},
+				success: function(response){
+					$.each( response, function( key, value,index ) {
+						$(badgeid).append('<div class="action-badge '+key+'">'+value+'</div>');
+						$(badgeid+' .'+key).hide().fadeIn();
+					});
+				}
+			});
+		});
+
+
+	});
+
+
+
+	function resize_drops(){
+
+		var windowWidth = $( window ).width();
+		if(windowWidth < 800){
+
+			$('.pull-tab').attr('data-status','open').addClass('open').removeClass('closed');
+			$('.mainresults').addClass('open').removeClass('closed');
+			$('.pull-tab').find('.fa-arrow-up').removeClass('fa-arrow-up').addClass('fa-arrow-down');
+
+		}
+		else{
+			$('.pull-tab').attr('data-status','closed').addClass('closed').removeClass('open');
+			$('.mainresults').addClass('closed').removeClass('open');
+			$('.pull-tab').find('.fa-arrow-down').removeClass('fa-arrow-down').addClass('fa-arrow-up');
+		}
+	}
+
+	$(document).ready(function() {
+		resize_drops();
+	});
+
+	$(window).resize(function() {
+		resize_drops();
+	});

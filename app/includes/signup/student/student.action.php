@@ -25,7 +25,6 @@
 	$app->meta->keywords = 'tutors,students,tutor,jobs';
 	$app->meta->description = 'looking for a tutor, signup today and learn anything.';
 
-
 	$sql = "SELECT sum(value) as total_activated FROM avid___promotions_active WHERE activated IS NOT NULL";
 	$results = $app->connect->executeQuery($sql,array())->fetch();
 

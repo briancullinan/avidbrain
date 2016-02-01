@@ -111,7 +111,7 @@
     <div class="searching-container hidden">
         <label for="sort">Sort Order</label>
         <div class="searching-box">
-            <input data-default="last_active" id="sort" type="hidden" name="searching[sort]" value="last_active" />
+            <input data-default="last_active" id="sort" type="hidden" name="searching[sort]" value="<?php if(isset($app->queries->sort)){ echo $app->queries->sort; } ?>" />
         </div>
     </div>
 

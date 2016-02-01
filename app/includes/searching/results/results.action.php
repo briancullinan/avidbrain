@@ -10,11 +10,24 @@
         6=>'pricehigh'
     ];
 
+    $sortable = [];
+    $sortable['last_active'] = 'Last Active';
+    $sortable['hourly_asc'] = 'Hourly Rate $';
+    $sortable['hourly_desc'] = 'Hourly Rate $$$';
+    $sortable['star_score'] = 'Star Score';
+
     $preparedStatement = [];
 
     $appget = (object)[];
+
+
+    // /notify($query);
+
     if(!empty($query)){
         foreach($query as $key=> $assignMap){
+
+            $assignMap = cleanup($assignMap);
+
             if(strpos($assignMap, "(") !== false || strpos($assignMap, ")") !== false) {
                 $sort = str_replace(array('(',')'),'',$assignMap);
                 $appget->sort = $sort;
@@ -88,6 +101,8 @@
         $sortType = $sortMap[$sort];
     }
 
+    //notify($sortType);
+
 
     $having = '';
     $select = [];
@@ -143,7 +158,10 @@
             $select[] = $getDistance.$asDistance;
             $having = "HAVING distance <= :distance";
             $preparedStatement[':distance'] = $distance;
-            //notify($select);
+
+
+            $sortable['distance_asc'] = 'Distance (Nearest)';
+            $sortable['distance_desc'] = 'Distance (Furthest)';
         }
         else{
             $_SESSION['slim.flash']['error'] = 'Invalid Zipcode';
@@ -244,6 +262,12 @@
 
     $pagebase = str_replace("[$page]",'',$app->request->getPath());
 
+
+
+
+
+
+    $app->sortable = $sortable;
 
 
     //notify($app->queries);

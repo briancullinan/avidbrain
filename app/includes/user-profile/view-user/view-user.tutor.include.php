@@ -131,22 +131,6 @@
 						</div>
 
 						<div class="badges">
-							<?php
-							if(empty($app->currentuser->emptybgcheck)){
-								echo batter_badges('background-check','mdi-action-assignment-ind','<a class="modal-trigger" href="#bgcheck_modal">Background Check</a>');
-							}
-
-							if(!empty($app->currentuser->star_score)){
-								$score = ($searchResults->star_score*1);
-								echo batter_badges('star-score-average','fa fa-star', $score.'/5 Stars');
-
-							}
-
-							if(isset($app->currentuser->negotiableprice) && $app->currentuser->negotiableprice=='yes'){
-								echo batter_badges('negotiable-price','fa fa-dollar','My Rates Are Negotiable');
-							}
-
-							?>
 
 							<div class="ajax-badges" id="<?php echo str_replace('/','',$app->currentuser->url); ?>" data-url="<?php echo $app->currentuser->url; ?>"></div>
 

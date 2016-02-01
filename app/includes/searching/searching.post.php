@@ -85,6 +85,8 @@
             $string['page'] = '[1]';
         }
 
+
+
         $jump = '/searching/'.$string['subject'].'/'.$string['location'].'/'.$string['distance'].'/'.$string['name'].'/'.$string['gender'].'/'.$string['pricelow'].'/'.$string['pricehigh'].'/'.$string['sort'].'/'.$string['page'];
         // urljump+= '/'+subject+'/'+newurl.location+'/'+newurl.distance+'/'+newurl.name+'/'+newurl.gender+'/'+newurl.pricelow+'/'+newurl.pricehigh+'/'+newurl.page+'/'+newurl.sort;
 
