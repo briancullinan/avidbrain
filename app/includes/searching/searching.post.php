@@ -1,10 +1,14 @@
 <?php
 
-    $app->setCookie('getzipcode',$app->searching->zipcode, '2 days');
-
     if(isset($app->searching)){
 
+        //notify($app->searching);
+
         $string = [];
+
+        if(isset($app->searching->subject)){
+            $app->searching->subject = str_replace('/','-',$app->searching->subject);
+        }
 
 
         if(empty($app->searching->subjectauto) && !empty($app->searching->subject)){
@@ -20,11 +24,16 @@
             $string['subject'] = '---';
         }
 
-        if(!empty($app->searching->zipcode)){
-            $string['zipcode'] = $app->searching->zipcode;
+        if(!empty($app->searching->zipcodeactual)){
+            $string['location'] = $app->searching->zipcodeactual;
+            $app->setCookie('getzipcode',$app->searching->zipcodeactual, '2 days');
+        }
+        elseif(!empty($app->searching->location)){
+            $string['location'] = $app->searching->location;
+            $app->setCookie('getzipcode',$app->searching->location, '2 days');
         }
         else{
-            $string['zipcode'] = '---';
+            $string['location'] = '---';
         }
 
         if(!empty($app->searching->distance)){
@@ -76,8 +85,8 @@
             $string['page'] = '[1]';
         }
 
-        $jump = '/searching/'.$string['subject'].'/'.$string['zipcode'].'/'.$string['distance'].'/'.$string['name'].'/'.$string['gender'].'/'.$string['pricelow'].'/'.$string['pricehigh'].'/'.$string['sort'].'/'.$string['page'];
-        // urljump+= '/'+subject+'/'+newurl.zipcode+'/'+newurl.distance+'/'+newurl.name+'/'+newurl.gender+'/'+newurl.pricelow+'/'+newurl.pricehigh+'/'+newurl.page+'/'+newurl.sort;
+        $jump = '/searching/'.$string['subject'].'/'.$string['location'].'/'.$string['distance'].'/'.$string['name'].'/'.$string['gender'].'/'.$string['pricelow'].'/'.$string['pricehigh'].'/'.$string['sort'].'/'.$string['page'];
+        // urljump+= '/'+subject+'/'+newurl.location+'/'+newurl.distance+'/'+newurl.name+'/'+newurl.gender+'/'+newurl.pricelow+'/'+newurl.pricehigh+'/'+newurl.page+'/'+newurl.sort;
 
         //notify($jump);
 

@@ -2,13 +2,15 @@
 
     $map = [
         0=>'subject',
-        1=>'zipcode',
+        1=>'location',
         2=>'distance',
         3=>'name',
         4=>'gender',
         5=>'pricelow',
         6=>'pricehigh'
     ];
+
+    $preparedStatement = [];
 
     $appget = (object)[];
     if(!empty($query)){
@@ -119,11 +121,12 @@
         $where[] = "CONCAT(subjects.subject_name,' ',subjects.subject_slug,' ',subjects.parent_slug) LIKE :subject";
         $joins['subject'] = "INNER JOIN avid___user_subjects subjects on subjects.email = user.email";
     }
-    if(isset($zipcode) && strlen($zipcode)==5){
-        $cachedZipcodeKey = "searchingcachedzipcode-".$zipcode;
+
+    if(isset($location)){
+        $cachedZipcodeKey = "searchingcachedzipcode-".$location;
         $cachedZipcode = $app->connect->cache->get($cachedZipcodeKey);
         if($cachedZipcode == null) {
-            $cachedZipcode = get_zipcode_data($app->connect,$zipcode);
+            $cachedZipcode = get_zipcode_data($app->connect,$location);
             $app->connect->cache->set($cachedZipcodeKey, $cachedZipcode, 3600);
         }
 
@@ -133,6 +136,8 @@
 
         if(isset($cachedZipcode->id)){
 
+            $app->cachedZipcode = $cachedZipcode;
+
             $getDistance = "round(((acos(sin((" . $cachedZipcode->lat . "*pi()/180)) * sin((user.lat*pi()/180))+cos((" . $cachedZipcode->lat . "*pi()/180)) * cos((user.lat*pi()/180)) * cos(((" .$cachedZipcode->long. "- user.long)* pi()/180))))*180/pi())*60*1.1515) ";
             $asDistance = ' as distance ';
             $select[] = $getDistance.$asDistance;
@@ -140,6 +145,11 @@
             $preparedStatement[':distance'] = $distance;
             //notify($select);
         }
+        else{
+            $_SESSION['slim.flash']['error'] = 'Invalid Zipcode';
+            //notify('Invalidzopcode');
+        }
+
     }
 
     if(isset($name)){
@@ -159,7 +169,6 @@
     if(isset($pricelow) && isset($pricehigh)){
         $preparedStatement[':pricelow'] = $pricelow;
         $preparedStatement[':pricehigh'] = $pricehigh;
-        $select[] = 'profile.hourly_rate';
         $where[] = "profile.hourly_rate BETWEEN :pricelow and :pricehigh";
     }
 
@@ -178,6 +187,8 @@
 
     //notify($select);
 
+    //$app->connect->cache->clean();
+
 
     $sql = "
         SELECT
@@ -187,12 +198,12 @@
             user.usertype,
             user.last_active,
             user.url,
-            user.city,
-            user.state,
-            user.state_long,
-            user.zipcode,
-            user.first_name,
 
+            user.first_name,
+            user.last_name,
+            CONCAT(user.city,', ',user.state_long,' ',user.zipcode) as location,
+
+            profile.hourly_rate,
             profile.my_avatar,
             profile.my_avatar_status,
             profile.my_upload,
@@ -253,6 +264,15 @@
 
         $app->connect->cache->set($cachedname, $cachedSearchResults, 3600);
     }
+
+
+    foreach($cachedSearchResults->results as $key=>$build){
+        $cachedSearchResults->results[$key]->personal_statement_verified = truncate($build->personal_statement_verified,400);
+        $cachedSearchResults->results[$key]->img = userphotographs($app->user,$build,$app->dependents);
+        $cachedSearchResults->results[$key]->short = short($build);
+    }
+
+    //notify($cachedSearchResults->results);
 
     if(isset($cachedSearchResults->count) && $cachedSearchResults->count > 0){
         $pagify = new Pagify();

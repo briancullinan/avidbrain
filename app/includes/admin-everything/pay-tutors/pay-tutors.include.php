@@ -204,9 +204,9 @@
 				#printer($apsdfcheckrefund);
 				#printer($finaltotalpay);
 				if(!empty($additional)){
-					$finaltotalpay = ($additional+$finaltotalpay);
+					//$finaltotalpay = ($additional+$finaltotalpay);
 				}
-				
+
 			?>
 			<p></p>
 			<div class="row">

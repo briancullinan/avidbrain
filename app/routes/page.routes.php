@@ -22,6 +22,7 @@
 
 
 
+	$routes['suggestlocation'] = (object)array('url'=>'/suggestlocation','slug'=>'suggestlocation','route'=>'/suggestlocation/','include'=>'suggestlocation','protected'=>NULL,'permissions'=>array());
 	$routes['findmesome'] = (object)array('url'=>'/findmesome','slug'=>'findmesome','route'=>'/findmesome/','include'=>'findmesome','protected'=>NULL,'permissions'=>array());
 
 	$routes['track'] = (object)array('url'=>'/t','slug'=>'t','route'=>'/t/','include'=>'t','protected'=>NULL,'permissions'=>array());
