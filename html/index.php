@@ -49,7 +49,7 @@
 		$config['mode'] = $app->dependents->MODE;
 	}
 
-	$app->enableaffiliates = true;
+//	$app->enableaffiliates = true;
 
 	$app->config($config);
 

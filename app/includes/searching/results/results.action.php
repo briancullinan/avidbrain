@@ -319,3 +319,14 @@
         $app->searching = $cachedSearchResults->results;
         $app->count = $cachedSearchResults->count;
     }
+
+
+    $subject = NULL;
+    if(isset($app->cachedSubjectQuery->subject_name)){
+        $subject = $app->cachedSubjectQuery->subject_name;
+    }
+
+
+    $app->meta = new stdClass();
+    $app->meta->title = "$subject Tutors";
+    $app->meta->h1 = false;
