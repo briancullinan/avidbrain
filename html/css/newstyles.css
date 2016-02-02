@@ -7,6 +7,7 @@
 	float: left;
 	width: 100%;
 	color: #333;
+	border: solid 1px #E4E4E4;
 
 }
 .action-badge a{
@@ -16,35 +17,36 @@
 	float: left;
 	width: 20%;
 	text-align: center;
-	padding: 5px;
-	background: #ccc;
+	padding: 10px 0px;
 }
 .action-badge-text{
 	float: left;
 	width: 80%;
-	padding:9px 0px 0px 9px;
+	background: #efefef;
+	padding:15px 10px;
+	color: #333;
 }
 .hours-tutors .action-badge-icon{
 	background: #3f51b5;
 	color: #fff;
 }
-.background-check .action-badge-icon{
+.background-check{
 	background: #57ce0d;
 	color: #fff;
 }
-.star-score-average .action-badge-icon{
+.star-score-average{
 	background: #ff9800;
 	color: #fff;
 }
-.negotiable-price .action-badge-icon{
+.negotiable-price{
 	background: #0069bd;
 	color: #fff;
 }
-.total-reviews .action-badge-icon{
+.total-reviews{
 	background: #2196F3;
 	color: #fff;
 }
-.total-students .action-badge-icon{
+.total-students{
 	background: #8f00dd;
 	color: #fff;
 }
