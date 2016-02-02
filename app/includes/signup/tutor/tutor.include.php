@@ -9,7 +9,7 @@
 				<?php if(isset($app->replacetext)){ echo $app->replacetext; }else{ echo 'Teach with AvidBrain and earn money as an independent contractor. Get paid bi-monthly for teaching something you love.';} ?>
 			</p>
 
-			<?php if(isset($promocode) && $promocode == 'AvidTeach'): ?>
+			<?php if(isset($promocode) && $promocode == 'iteach'): ?>
 
 
 				<div class="blocks">

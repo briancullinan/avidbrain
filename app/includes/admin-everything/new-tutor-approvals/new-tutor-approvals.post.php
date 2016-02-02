@@ -119,7 +119,7 @@
 
         if(isset($app->thetutor->promocode) && $app->thetutor->promocode=='get80--free-backgroundcheck'){
             $profile['top1000'] = 1;
-            $app->thetutor->promocode = 'AvidTeach';
+            $app->thetutor->promocode = 'iteach';
         }
         elseif(isset($app->thetutor->promocode) && $app->thetutor->promocode=='get80'){
             $profile['top1000'] = 1;
@@ -164,7 +164,7 @@
     }
     elseif(isset($app->rejectprofile)){
 
-        
+
 
         $reject = array('approval_status'=>'rejected');
         $whoami = array('email'=>$app->thetutor->email);

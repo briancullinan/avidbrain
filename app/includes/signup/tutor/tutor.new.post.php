@@ -64,7 +64,7 @@
 				$app->tutorsignup->tutor->promocode = 'get80';
 			}
 		}
-		elseif(isset($app->tutorsignup->tutor->promocode) && $app->tutorsignup->tutor->promocode=='avidteach'){
+		elseif(isset($app->tutorsignup->tutor->promocode) && $app->tutorsignup->tutor->promocode=='iteach'){
 			$sql = "
 				SELECT
 					user.promocode

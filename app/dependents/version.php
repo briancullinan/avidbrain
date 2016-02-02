@@ -1,1 +1,1 @@
-<?php $version = 1.0077; ?>
+<?php $version = 1.0078; ?>

@@ -22,13 +22,12 @@
 					</div>
 				</div>
 			</div>
-			<?php //echo $app->pagination; ?>
 			<div class="searching-results">
 				<?php foreach($app->searching as $key=> $searching): ?>
 					<div class="tutoring-block">
 
 						<div class="row">
-							<div class="col s12 m4 l4 center-align">
+							<div class="col s12 m12 l3 center-align">
 								<div>
 									<a href="<?php echo $searching->url; ?>">
 										<img class="responsive-img" src="<?php echo $searching->img; ?>" />
@@ -47,7 +46,7 @@
 								<?php endif; ?>
 								<div class="my-rate">$<?php echo $searching->hourly_rate; ?><span>/ Hour</span></div>
 							</div>
-							<div class="col s12 m8 l8">
+							<div class="col s12 m12 l9">
 								<div class="row">
 									<div class="col s12 m12 l8">
 										<div class="im-a-tutor-short">
@@ -94,7 +93,7 @@
 
 
 	<div class="searching-results-right">
-		<div class="pull-tab" data-status="closed">Search Menu<i class="fa fa-arrow-up"></i></div>
+		<div class="pull-tab" data-status="closed"><i class="fa fa-arrow-up"></i></div>
 		<div class="searching-results-search"><?php include($app->dependents->APP_PATH.'includes/searching/searchbox.php'); ?></div>
 	</div>
 
