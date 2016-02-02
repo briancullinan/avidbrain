@@ -46,7 +46,7 @@
         }
 
         if(empty($sort)){
-            $sort = 'user.last_active';
+            $sort = 'user.last_active DESC';
         }
         if(empty($page)){
             $page = 1;
@@ -268,9 +268,6 @@
 
 
     $app->sortable = $sortable;
-
-
-    //notify($app->queries);
     #notify($sql);
     $cachedname = 'NEWCACHE---';
     foreach($app->queries as $cachekey => $buildcachename){
@@ -326,7 +323,50 @@
         $subject = $app->cachedSubjectQuery->subject_name;
     }
 
+    $location = NULL;
+    if(isset($app->cachedZipcode->id)){
+        $location = 'in '.$app->cachedZipcode->city.' '.ucwords($app->cachedZipcode->state_long);
+    }
+
+    $gendertext = NULL;
+    if(isset($gender)){
+        $gendertext = ucwords($gender);
+    }
+
+    $randoms = ['Private','Online','Top 10'];
+    shuffle($randoms);
+    $randomText = $randoms[0];
+
+    $text = $randomText.' '.$gendertext.' '.$subject.' Tutors '.$location;
+    $text = str_replace('  ',' ',$text);
+    $text = str_replace('  ',' ',$text);
+    //notify($text);
+    //notify($text);
+    $link = $app->request->getPath();
+    //$linkfix = str_replace('/','|',$link);
+    //notify($buildthestring);
+            $sql = "
+    			SELECT
+    				results.*
+    			FROM
+    				avid___search_results results
+    			WHERE
+    				text = :text
+    		";
+    		$prepare = array(
+    			':text'=>$text
+    		);
+            if($app->connect->executeQuery($sql,$prepare)->rowCount()==0 && isset($app->count) && $app->count>0){
+                $insert = [
+                    'text'=>$text,
+                    'link'=>$link
+                ];
+                //notify($insert);
+                $app->connect->insert('avid___search_results',$insert);
+            }
+
 
     $app->meta = new stdClass();
-    $app->meta->title = "$subject Tutors";
+    $app->meta->title = $text.' - AvidBrain Tutors';
+    $app->meta->titletext = '<span>'.numbers($app->count,1).'</span> '.$subject.' Tutors '.$location;
     $app->meta->h1 = false;

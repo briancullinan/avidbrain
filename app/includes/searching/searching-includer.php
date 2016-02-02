@@ -6,7 +6,12 @@
 				<div class="row">
 					<div class="col s12 m8 l8">
 
-							<div class="the-count"><span><?php echo numbers($app->count,1); ?></span> <?php if(isset($app->cachedSubjectQuery->subject_name)){ echo '<strong>'.$app->cachedSubjectQuery->subject_name.'</strong>'; } ?> Tutors Found</div>
+							<div class="the-count">
+								<?php
+									echo $app->meta->titletext;
+									/*<span><?php echo numbers($app->count,1); ?></span> <?php if(isset($app->cachedSubjectQuery->subject_name)){ echo '<strong>'.$app->cachedSubjectQuery->subject_name.'</strong>'; } ?> Tutors Found */
+								?>
+							</div>
 
 					</div>
 					<div class="col s12 m4 l4 right-align">

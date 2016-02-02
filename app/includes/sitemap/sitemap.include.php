@@ -136,6 +136,19 @@
 			<li><a href="/categories/sports-and-recreation">Sports And Recreation Categories</a></li>
 			<li><a href="/categories/test-preparation">Test Preparation Categories</a></li>
 		</ul>
+
+		<?php if(isset($app->searchresults)): ?>
+			<ul>
+				<?php foreach($app->searchresults as $searchresults): ?>
+					<li>
+						<a href="<?php echo $searchresults->link; ?>">
+							<?php echo $searchresults->text; ?>
+						</a>
+					</li>
+				<?php endforeach; ?>
+			</ul>
+		<?php endif; ?>
+
 	</div>
 
 </div>
