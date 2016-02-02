@@ -356,7 +356,7 @@
     		$prepare = array(
     			':text'=>$text
     		);
-            if($app->connect->executeQuery($sql,$prepare)->rowCount()==0 && isset($app->count) && $app->count>0){
+            if($app->connect->executeQuery($sql,$prepare)->rowCount()==0){
                 $insert = [
                     'text'=>$text,
                     'link'=>$link
