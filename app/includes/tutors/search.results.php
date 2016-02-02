@@ -76,25 +76,8 @@
                 <div class="col s12 m12 l4">
                     <a class="btn btn-block blue" href="<?php echo $searchResults->url; ?>">View Profile</a>
                     <a class="btn btn-block" href="<?php echo $searchResults->url; ?>/send-message">Send Message</a>
-                    <div class="badges minisdfadges">
-                        <?php
+                    <div class="badges">
 
-                            if(empty($searchResults->emptybgcheck)){
-                                echo batter_badges('background-check','mdi-action-assignment-ind','<a class="modal-trigger" href="#bgcheck_modal">Background Check</a>');
-                            }
-
-                            if(!empty($searchResults->star_score)){
-                                $score = ($searchResults->star_score*1);
-                                echo batter_badges('star-score-average','fa fa-star', $score.'/5 Stars');
-
-                            }
-
-                            if(isset($searchResults->negotiableprice) && $searchResults->negotiableprice=='yes'){
-                                echo batter_badges('negotiable-price','fa fa-dollar','My Rates Are Negotiable');
-                            }
-
-
-                        ?>
 
                         <div class="ajax-badges" id="<?php echo str_replace('/','',$searchResults->url); ?>" data-url="<?php echo $searchResults->url; ?>"></div>
 
