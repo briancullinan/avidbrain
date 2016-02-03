@@ -96,3 +96,5 @@
 
 
 	}
+
+	$app->promocode = $promocode;

@@ -6,6 +6,11 @@
 		}
 	}
 
+	$cookiePromo = $app->getCookie('promocode');
+	if(!empty($cookiePromo) && empty($promocode)){
+		$promocode = $cookiePromo;
+	}
+
 	if($app->target->key=='/signup/tutor'){
 		$app->newtutor = new tutorsignup($app->connect,$app->crypter);
 		if(isset($app->newtutor->id)){
@@ -44,4 +49,55 @@
 
 	if($app->target->key!='/signup/tutor'){
 		//$app->secondary = $app->target->secondaryNav;
+	}
+
+
+
+	if(isset($promocode)){
+		$sqlAff = "
+			SELECT
+				affiliates.id,
+				affiliates.email,
+				affiliates.mycode as promocode
+			FROM
+				avid___affiliates affiliates
+			WHERE
+				affiliates.mycode = :promocode
+		";
+		$sqlPro = "
+			SELECT
+				promo.id,
+				promo.promocode,
+				promo.value
+			FROM
+				avid___promotions promo
+			WHERE
+				promo.promocode = :promocode
+		";
+		$prepare = array(':promocode'=>$promocode);
+
+		$promotions = $app->connect->executeQuery($sqlPro,$prepare)->fetch();
+		if(isset($promotions->promocode)){
+			$app->activepromo = $promotions;
+			$isvalidpromo = (object)[
+				'id'=>$promotions->id,
+				'promocode'=>$promotions->promocode,
+				'value'=>$promotions->value,
+				'email'=>$promotions->email
+			];
+			$app->isvalidpromo = $isvalidpromo;
+		}
+
+		$affiliates = $app->connect->executeQuery($sqlAff,$prepare)->fetch();
+		if(isset($affiliates->promocode)){
+			$app->activepromo = $affiliates;
+			$app->activepromo->value = 30;
+			$isvalidpromo = (object)[
+				'id'=>$affiliates->id,
+				'promocode'=>$affiliates->promocode,
+				'value'=>30,
+				'email'=>$affiliates->email
+			];
+			$app->isvalidpromo = $isvalidpromo;
+		}
 	}

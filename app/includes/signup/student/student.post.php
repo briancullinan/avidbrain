@@ -129,8 +129,11 @@
 		// Email User
 		// Do Things
 
+		$emailcode = $app->dependents->DOMAIN.'/validate/'.$validation_code;
+
 		$welcomeMessage = '<p>Welcome to AvidBrain</p>';
-		$welcomeMessage.= '<p>Your verification link is: <a href="'.$app->dependents->DOMAIN.'/validate/'.$validation_code.'">Verify Email Address</a></p>';
+		$welcomeMessage.= '<p>Your verification link is: <a href="'.$emailcode.'">Verify Email Address</a></p>';
+		$welcomeMessage.= '<p>Text Link: '.$emailcode.'</p>';
 
 		$app->mailgun->to = $app->signup->email;
 		$app->mailgun->subject = 'Please authenticate your email address';
@@ -316,6 +319,8 @@
 
 			}
 
+
+
 			if(isset($app->isvalidpromo) && isset($app->freesessions->enabled) && $app->freesessions->enabled==true){
 
 				$insertpromo = array(
@@ -360,9 +365,12 @@
 			// Email User
 			// Do Things
 
+			$textlink = $app->dependents->DOMAIN.'/validate/'.$validation_code;
+
 			$welcomeMessage = '<p>Welcome to AvidBrain</p>';
 			$welcomeMessage.= '<p>Your verification link is:  '.$app->dependents->DOMAIN.'/validate/'.$validation_code.'</p>';
-			$welcomeMessage.= '<p><a href="'.$app->dependents->DOMAIN.'/validate/'.$validation_code.'">Verify Email Address</a></p>';
+			$welcomeMessage.= '<p><a href="'.$textlink.'">Verify Email Address</a></p>';
+			$welcomeMessage.= '<p>Text Link: '.$textlink.'</p>';
 
 			$app->mailgun->to = $app->studentsignup->student->email;
 			$app->mailgun->subject = 'Please authenticate your email address';

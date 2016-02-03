@@ -220,29 +220,13 @@
 						</div>
 					</div>
 
+					
+
 					<div class="new-inputs">
 						<div class="row">
 
-							<?php if(isset($promocode)): ?>
-							<div class="affiliatetracking" data-tracker="<?php echo $promocode; ?>"></div>
-							<?php endif; ?>
-							<?php
-								$affiliatetracking = $app->getCookie('affiliatetracking');
-								if(!empty($affiliatetracking)){
-									$promocode = $affiliatetracking;
-								}
-							?>
-							<?php if(isset($app->promoactivate->text)): ?>
-								<div class="promo-activate">
-									<div class="<?php echo $app->promoactivate->class; ?>">
-										<?php echo $app->promoactivate->text; ?>
-									</div>
-								</div>
-							<?php endif; ?>
-
 							<div class="col s12 m12 l12">
-								<?php if(isset($app->titleAdd) && !empty($app->titleAdd)){ echo '<div class="input-wrapper-text">Promo Code</div>';} ?>
-								<div class="input-wrapper <?php if(isset($app->promoactivate->class)){ echo $app->promoactivate->class; } ?> <?php if(isset($app->titleAdd) && !empty($app->titleAdd)){ echo 'active-wrapper';} ?>" id="ts_promocode"><input <?php if(isset($app->titleAdd) && !empty($app->titleAdd)){ echo 'readonly="readonly"';} ?> type="text" name="tutorsignup[tutor][promocode]" placeholder="Promo Code (Optional)" value="<?php if(isset($promocode)){ echo $promocode; } ?>" /></div>
+								<div class="input-wrapper" id="ts_promocode"><input type="text" name="studentsignup[student][promocode]" placeholder="Promo Code (Optional)" value="<?php if(isset($app->promocode)){ echo $app->promocode; } ?>" /></div>
 							</div>
 
 						</div>

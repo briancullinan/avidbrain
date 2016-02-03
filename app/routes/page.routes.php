@@ -22,7 +22,7 @@
 	$routes['top-subject'] = (object)array('url'=>'/top/subject/','slug'=>'subject','route'=>'/top/:subject/','include'=>'top/subject','protected'=>NULL,'permissions'=>array());
 
 
-
+	$routes['affiliate-tracking'] = (object)array('url'=>'/aff/','slug'=>'aff','route'=>'/aff/:trackingid/','include'=>'aff','protected'=>NULL,'permissions'=>array());
 	$routes['suggestlocation'] = (object)array('url'=>'/suggestlocation','slug'=>'suggestlocation','route'=>'/suggestlocation/','include'=>'suggestlocation','protected'=>NULL,'permissions'=>array());
 	$routes['findmesome'] = (object)array('url'=>'/findmesome','slug'=>'findmesome','route'=>'/findmesome/','include'=>'findmesome','protected'=>NULL,'permissions'=>array());
 

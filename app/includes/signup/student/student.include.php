@@ -99,30 +99,23 @@
 						</div>
 					</div>
 
-					<?php if(isset($app->isvalidpromo)): ?>
-						<div class="promocode-activated">
-							<div class="promocode-activated-message">
-								<strong>Promo Code Applied</strong> <br/>
-								<span>$<?php echo $app->isvalidpromo->value; ?>.00 Off Your First Tutoring Session</span>
-							</div>
+
+					<?php if(isset($app->activepromo)): ?>
+					<div class="promocode-activated">
+						<div class="promocode-activated-message">
+							<div>Promo Code Activated</div>
+							<div>$<?php echo numbers($app->activepromo->value); ?></div>
 						</div>
+					</div>
 					<?php endif; ?>
 
-					<?php if(isset($promocode)): ?>
-					<div class="affiliatetracking" data-tracker="<?php echo $promocode; ?>"></div>
-					<?php endif; ?>
-					<?php
-						$affiliatetracking = $app->getCookie('affiliatetracking');
-						if(!empty($affiliatetracking)){
-							$promocode = $affiliatetracking;
-						}
-					?>
+
 
 					<div class="new-inputs">
 						<div class="row">
 
 							<div class="col s12 m12 l12">
-								<div class="input-wrapper" id="ts_promocode"><input type="text" name="studentsignup[student][promocode]" placeholder="Promo Code (Optional)" value="<?php if(isset($promocode)){ echo $promocode; } ?>" /></div>
+								<div class="input-wrapper" id="ts_promocode"><input type="text" name="studentsignup[student][promocode]" placeholder="Promo Code (Optional)" value="<?php if(isset($app->promocode)){ echo $app->promocode; } ?>" /></div>
 							</div>
 
 						</div>

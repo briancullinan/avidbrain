@@ -1,9 +1,6 @@
 $(document).ready(function() {
 
-	var affiliatetracking = $('.affiliatetracking').attr('data-tracker');
-	if(affiliatetracking){
-		Cookies.set('affiliatetracking', affiliatetracking, { expires: 7 });
-	}
+	
 
 	$('.searchbox, #setupsession_session_subject, #getprices_subject').autocomplete({
 		serviceUrl: '/get-subjects/',
