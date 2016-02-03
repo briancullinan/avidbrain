@@ -326,7 +326,10 @@
         $cachedSearchResults->results[$key]->personal_statement_verified = truncate($build->personal_statement_verified,400);
         $cachedSearchResults->results[$key]->img = userphotographs($app->user,$build,$app->dependents);
         $cachedSearchResults->results[$key]->short = short($build);
-        $cachedSearchResults->results[$key]->subjects = getmysubjects($app->connect,$build->email,$subject);
+        if(isset($subject)){
+            $cachedSearchResults->results[$key]->subjects = getmysubjects($app->connect,$build->email,$subject);
+        }
+
     }
 
     if(isset($cachedSearchResults->count) && $cachedSearchResults->count > 0){
