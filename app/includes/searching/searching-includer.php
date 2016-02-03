@@ -69,7 +69,7 @@
 												<div class="subjects-i-tutor-subs">
 													<?php $count = count($searching->subjects); foreach($searching->subjects as $key=> $subjects): ?>
 														<?php
-															if(isset($app->queries->subject) && $app->queries->subject==$subjects->subject_slug){
+															if(isset($app->queries->subject) && strtolower($app->queries->subject) == strtolower($subjects->subject_slug) || isset($app->queries->subject) && strtolower($app->queries->subject) == strtolower($subjects->subject_name)){
 																echo '<strong class="green-text">'.$subjects->subject_name.'</strong>';
 															}
 															else{
