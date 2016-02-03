@@ -148,3 +148,24 @@
 .my-info{
 	margin-bottom: 15px;
 }
+
+
+.message-dates{
+    margin-bottom: 15px;
+    font-size: 13px;
+    color: #666;
+}
+.previous-next-nav-left{
+    float: left;
+}
+.previous-next-nav-right{
+    float: right;
+}
+.previous-next-nav{
+    width: 100%;
+    float: left;
+    margin-bottom: 10px;
+}
+.previous-next-nav a{
+    color: #ccc;
+}

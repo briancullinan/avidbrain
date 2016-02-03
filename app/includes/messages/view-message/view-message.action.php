@@ -1,99 +1,151 @@
 <?php
 
-	$data	=	$app->connect->createQueryBuilder();
-	$data	=	$data->select('messages.*, '.user_select().', '.profile_select().', '.account_settings().'')->from('avid___messages','messages');
-	$data	=	$data->where('messages.id = :id AND messages.to_user = :email')->setParameter(':id',$id)->setParameter(':email',$app->user->email);
-	$data	=	$data->leftJoin('messages','avid___user','user','messages.from_user = user.email');
-	$data	=	$data->leftJoin('messages','avid___user_profile','profile','messages.from_user = profile.email');
-	$data	=	$data->leftJoin('messages','avid___user_account_settings','settings','messages.from_user = settings.email');
-	$data	=	$data->execute()->fetch();
+	$sql = "
+		SELECT
+			messages.id,
+			messages.from_user,
+			messages.to_user,
+			CASE
+			    WHEN messages.from_user = :myemail then messages.from_user
+			    WHEN messages.to_user = :myemail then messages.to_user
+			END as email,
 
-	if(empty($data->id)){
-		$data	=	$app->connect->createQueryBuilder();
-		$data	=	$data->select('messages.*, messages.to_user as from_user, '.user_select().', '.profile_select().', '.account_settings().'')->from('avid___messages','messages');
-		$data	=	$data->where('messages.id = :id AND messages.from_user = :email')->setParameter(':id',$id)->setParameter(':email',$app->user->email);
-		$data	=	$data->leftJoin('messages','avid___user','user','messages.to_user = user.email');
-		$data	=	$data->leftJoin('messages','avid___user_profile','profile','messages.to_user = profile.email');
-		$data	=	$data->leftJoin('messages','avid___user_account_settings','settings','messages.to_user = settings.email');
-		$data	=	$data->execute()->fetch();
-	}
+			CASE
+			    WHEN messages.from_user != :myemail then messages.from_user
+			    WHEN messages.to_user != :myemail then messages.to_user
+			END as messageuser,
 
-	if(isset($data->id)){
+			CASE
+			    WHEN messages.from_user = :myemail then 'from_user'
+			    WHEN messages.to_user = :myemail then 'to_user'
+			END as type,
+			messages.*
+		FROM
+			avid___messages messages
+		WHERE
+			messages.id = :id
+				AND
+			messages.from_user = :myemail
+				OR
+			messages.id = :id
+				AND
+			messages.to_user = :myemail
+	";
+	$prepare = array(
+		':id'=>$id,
+		':myemail'=>$app->user->email
+	);
+	$message = $app->connect->executeQuery($sql,$prepare)->fetch();
+	//notify($message);
+
+
+	if(isset($message->id)){
+		$app->message = $message;
 
 		if(empty($data->status__read)){
 			$app->connect->update('avid___messages',array('status__read'=>1),array('id'=>$id,'to_user'=>$app->user->email));
 		}
 
-		$app->viewmessage = $data;
+		$prevnext = (object)[];
 
-	}
-	else{
-		$app->redirect('/messages');
-	}
+		$sql = "
+			SELECT
+				messages.id as next
+			FROM
+				avid___messages messages
+			WHERE
+				messages.id > :id
+					AND
+				messages.$message->type = :myemail
+			ORDER BY messages.id LIMIT 1
+		";
 
-	if($data->to_user!=$app->user->email){
-
-		$sql = "SELECT id FROM avid___messages WHERE location = :location AND from_user = :to_user AND id > :id ORDER BY id LIMIT 1";
-		$prepeare = array(':to_user'=>$app->user->email,':id'=>$id,':location'=>'inbox');
-		$results = $app->connect->executeQuery($sql,$prepeare)->fetch();
-		if(isset($results->id)){
-			$app->viewmessage->next = $results->id;
+		$prepare = array(
+			':id'=>$id,
+			':myemail'=>$app->user->email
+		);
+		if(!empty($next = $app->connect->executeQuery($sql,$prepare)->fetch())){
+			$prevnext->next = $next->next;
 		}
 
-		$sql = "SELECT id FROM avid___messages WHERE location = :location AND from_user = :to_user AND id < :id ORDER BY id DESC LIMIT 1";
-		$prepeare = array(':to_user'=>$app->user->email,':id'=>$id,':location'=>'inbox');
-		$results = $app->connect->executeQuery($sql,$prepeare)->fetch();
-		if(isset($results->id)){
-			$app->viewmessage->prev = $results->id;
+		$sql = "
+			SELECT
+				messages.id as prev
+			FROM
+				avid___messages messages
+			WHERE
+				messages.id < :id
+					AND
+				messages.$message->type = :myemail
+			ORDER BY messages.id DESC LIMIT 1
+		";
+
+		$prepare = array(
+			':id'=>$id,
+			':myemail'=>$app->user->email
+		);
+		if(!empty($prev = $app->connect->executeQuery($sql,$prepare)->fetch())){
+			$prevnext->prev = $prev->prev;
 		}
 
-	}
-	elseif($data->location=='inbox'){
+		$app->message->prevnext = $prevnext;
 
-		$sql = "SELECT id FROM avid___messages WHERE location = :location AND to_user = :to_user AND id > :id ORDER BY id LIMIT 1";
-		$prepeare = array(':to_user'=>$app->user->email,':id'=>$id,':location'=>'inbox');
-		$results = $app->connect->executeQuery($sql,$prepeare)->fetch();
-		if(isset($results->id)){
-			$app->viewmessage->next = $results->id;
-		}
+		$app->message->user = getmessageuserinfo($app->connect,$app->message->messageuser,$app->user,$app->dependents);
+		//notify($app->message->user);
+		//notify($app->message);
+		// echo $messageuser->name;
+		// echo $messageuser->url;
+		// echo $messageuser->image;
 
-		$sql = "SELECT id FROM avid___messages WHERE location = :location AND to_user = :to_user AND id < :id ORDER BY id DESC LIMIT 1";
-		$prepeare = array(':to_user'=>$app->user->email,':id'=>$id,':location'=>'inbox');
-		$results = $app->connect->executeQuery($sql,$prepeare)->fetch();
-		if(isset($results->id)){
-			$app->viewmessage->prev = $results->id;
-		}
-	}
-	elseif($data->location=='trash'){
-
-		$sql = "SELECT id FROM avid___messages WHERE location = :location AND to_user = :to_user AND id > :id ORDER BY id LIMIT 1";
-		$prepeare = array(':to_user'=>$app->user->email,':id'=>$id,':location'=>'trash');
-		$results = $app->connect->executeQuery($sql,$prepeare)->fetch();
-		if(isset($results->id)){
-			$app->viewmessage->next = $results->id;
-		}
-
-		$sql = "SELECT id FROM avid___messages WHERE location = :location AND to_user = :to_user AND id < :id ORDER BY id DESC LIMIT 1";
-		$prepeare = array(':to_user'=>$app->user->email,':id'=>$id,':location'=>'trash');
-		$results = $app->connect->executeQuery($sql,$prepeare)->fetch();
-		if(isset($results->id)){
-			$app->viewmessage->prev = $results->id;
-		}
 
 	}
 
 
-	$app->meta = new stdClass();
-	$app->meta->title = 'View Message';
+	function getmessageuserinfo($connect,$email,$user,$dependents){
+		$parent_company_email = parent_company_email($email);
+		if($parent_company_email==true){
+			$sql = "
+				SELECT
+					CONCAT(admins.first_name,' ',admins.last_name) as name,
+					admins.url,
+					admins.my_avatar as image,
+					admins.email
+				FROM
+					avid___admins admins
+				WHERE
+					admins.email = :email
+			";
+		}
+		else{
 
-	if(isset($app->user->needs_bgcheck)){
-		$app->viewmessage->subject = '<span class="removed">Subject Removed</span>';
-		$app->viewmessage->message = '<span class="removed">Message Removed</span>';
+			$sql = "
+				SELECT
+					user.email,
+					user.first_name,
+					user.last_name,
+					user.url,
+					profile.my_avatar,
+					profile.my_avatar_status,
+					profile.my_upload,
+					profile.my_upload_status
+				FROM
+					avid___user user
+				INNER JOIN
+					avid___user_profile profile on profile.email = user.email
+				WHERE
+					user.email = :email
+			";
+
+		}
+		$prepare = array(
+			':email'=>$email
+		);
+		$results = $connect->executeQuery($sql,$prepare)->fetch();
+
+		if(isset($results->first_name)){
+			$results->image = userphotographs($user,$email,$dependents);
+	        $results->name = short($results);
+		}
+
+		return $results;
 	}
-
-
-/*
-	2698
-	2693 **
-	2692
-*/
