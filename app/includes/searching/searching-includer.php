@@ -64,10 +64,17 @@
 													Subjects I Tutor
 												</div>
 
+
+
 												<div class="subjects-i-tutor-subs">
 													<?php $count = count($searching->subjects); foreach($searching->subjects as $key=> $subjects): ?>
 														<?php
-															echo $subjects->subject_name;
+															if(isset($app->queries->subject) && $app->queries->subject==$subjects->subject_slug){
+																echo '<strong class="green-text">'.$subjects->subject_name.'</strong>';
+															}
+															else{
+																echo $subjects->subject_name;
+															}
 															if(($key+1)!=$count){
 																echo ', ';
 															}
