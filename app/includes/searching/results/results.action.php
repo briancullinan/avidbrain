@@ -134,8 +134,10 @@
         $preparedStatement[':subject'] = "%$subject%";
         $select[] = "subjects.subject_slug";
         $where[] = "CONCAT(subjects.subject_name,' ',subjects.subject_slug,' ',subjects.parent_slug) LIKE :subject";
+        $where[] = "subjects.status = 'verified'";
         $joins['subject'] = "INNER JOIN avid___user_subjects subjects on subjects.email = user.email";
     }
+    //notify($where);
 
     if(isset($location)){
         $cachedZipcodeKey = "searchingcachedzipcode-".$location;
@@ -286,14 +288,46 @@
         $app->connect->cache->set($cachedname, $cachedSearchResults, 3600);
     }
 
+    function getmysubjects($connect,$email,$subject){
+
+        $cachedKey = 'cachedgetmysubjects--searching-'.$email;
+        $cachedVar = $connect->cache->get($cachedKey);
+        if($cachedVar == null) {
+            $sql = "
+    			SELECT
+    				subjects.subject_slug,
+                    subjects.subject_name,
+                    subjects.parent_slug
+    			FROM
+    				avid___user_subjects subjects
+    			WHERE
+    				subjects.email = :email
+                        AND
+                    subjects.status = 'verified'
+
+                ORDER BY subjects.subject_slug = :subject DESC, subjects.id ASC
+
+                LIMIT 10
+    		";
+    		$prepare = array(
+    			':email'=>$email,
+                ':subject'=>$subject
+    		);
+            $cachedVar = $connect->executeQuery($sql,$prepare)->fetchAll();
+            $connect->cache->set($cachedKey, $cachedVar, 3600);
+        }
+
+        return $cachedVar;
+
+    }
+    //notify();
 
     foreach($cachedSearchResults->results as $key=>$build){
         $cachedSearchResults->results[$key]->personal_statement_verified = truncate($build->personal_statement_verified,400);
         $cachedSearchResults->results[$key]->img = userphotographs($app->user,$build,$app->dependents);
         $cachedSearchResults->results[$key]->short = short($build);
+        $cachedSearchResults->results[$key]->subjects = getmysubjects($app->connect,$build->email,$subject);
     }
-
-    //notify($cachedSearchResults->results);
 
     if(isset($cachedSearchResults->count) && $cachedSearchResults->count > 0){
         $pagify = new Pagify();

@@ -58,7 +58,27 @@
 											<a href="<?php echo $searching->url; ?>"><?php echo $searching->short_description_verified; ?></a>
 										</div>
 										<div class="im-a-tutor-long"><?php echo $searching->personal_statement_verified; ?></div>
-										<br />
+										<?php if(isset($searching->subjects[0])): ?>
+											<div class="subject-i-tutor">
+												<div class="subjects-i-tutor-title">
+													Subjects I Tutor
+												</div>
+
+												<div class="subjects-i-tutor-subs">
+													<?php $count = count($searching->subjects); foreach($searching->subjects as $key=> $subjects): ?>
+														<?php
+															echo $subjects->subject_name;
+															if(($key+1)!=$count){
+																echo ', ';
+															}
+														?>
+													<?php endforeach; ?>
+												</div>
+
+											</div>
+
+										<?php endif; ?>
+
 									</div>
 									<div class="col s12 m12 l4">
 										<div><a href="<?php echo $searching->url; ?>" class="btn btn-block blue">View profile</a></div>
@@ -98,7 +118,7 @@
 
 
 	<div class="searching-results-right">
-		<div class="pull-tab" data-status="closed"><i class="fa fa-arrow-up"></i></div>
+		<div class="pull-tab" data-status="closed"><span>Search</span> <i class="fa fa-arrow-up"></i></div>
 		<div class="searching-results-search"><?php include($app->dependents->APP_PATH.'includes/searching/searchbox.php'); ?></div>
 	</div>
 
