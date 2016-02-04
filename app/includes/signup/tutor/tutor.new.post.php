@@ -90,6 +90,12 @@
 
 		$token = password_hash(uniqid().$app->tutorsignup->tutor->email.time(),PASSWORD_BCRYPT);
 
+		$app->tutorsignup->tutor->promocode = NULL;
+		if(isset($app->isvalidpromo)){
+			$app->tutorsignup->tutor->promocode = $app->isvalidpromo->promocode;
+		}
+
+
 		$prepare = array(
 			'usertype'=>'tutor',
 			'first_name'=>$app->tutorsignup->tutor->first_name,
@@ -103,7 +109,6 @@
 			'over18'=>true,
 			'legalresident'=>true,
 			'tutoredbefore'=>$tutoredbefore,
-			//'linkedinprofile'=>$app->tutorsignup->tutor->linkedinprofile,
 			'howdidyouhear'=>$app->tutorsignup->tutor->howdidyouhear,
 			'token'=>$token
 		);
