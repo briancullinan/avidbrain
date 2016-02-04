@@ -10,6 +10,11 @@
         6=>'pricehigh'
     ];
 
+    if(isset($query[0])){
+        $query[0] = str_replace(array("(",")"),'',$query[0]);
+        $query[0] = str_replace(array("%20"," "),'-',$query[0]);
+    }
+
     $sortable = [];
     $sortable['last_active'] = 'Last Active';
     $sortable['hourly_asc'] = 'Hourly Rate $';
@@ -21,7 +26,7 @@
     $appget = (object)[];
 
 
-    // /notify($query);
+    //notify($query);
 
     if(!empty($query)){
         foreach($query as $key=> $assignMap){
