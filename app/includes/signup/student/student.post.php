@@ -1,5 +1,7 @@
 <?php
 
+	//notify('science');
+
 	if(isset($app->signup)){
 		//
 		if($app->signup->password!=$app->signup->password_confirm){

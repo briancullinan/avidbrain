@@ -28,7 +28,7 @@
 	// }
 
 
-	
+
 	/*
 	if(isset($promocode) && isset($app->freesessions->enabled) && $app->freesessions->enabled==true){
 		$sql = "SELECT * FROM avid___promotions WHERE promocode = :promocode";
@@ -47,4 +47,6 @@
 	$app->meta->h1 = false;
 	//$app->wideconent = '<div class="widecontent studentsignup valign-wrapper"> <div class="valign">Student Signup</div> </div>';
 
-	$app->promocode = $promocode;
+	if(isset($promocode)){
+		$app->promocode = $promocode;
+	}
