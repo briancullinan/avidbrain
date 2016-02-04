@@ -109,7 +109,7 @@
             	<div class="col s12 m4 l4">
                     <div class="howitworks-homepage-img">
                         <span class="fa-stack fa-lg">
-                            <i class="fa fa-circle fa-stack-2x lime-text text-accent-4"></i>
+                            <i class="fa fa-circle fa-stack-2x light-blue-text text-darken-4"></i>
                             <i class="fa fa-check fa-stack-1x "></i>
                         </span>
                     </div>
@@ -124,7 +124,7 @@
                     <div class="howitworks-homepage-img">
                         <span class="fa-stack fa-lg">
                             <i class="fa fa-circle fa-stack-2x light-blue-text text-darken-4"></i>
-                            <i class="fa fa-user fa-stack-1x lime-text text-accent-4"></i>
+                            <i class="fa fa-user fa-stack-1x "></i>
                         </span>
                     </div>
             		<div class="howitworks-homepage-title">
