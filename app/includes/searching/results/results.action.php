@@ -288,7 +288,7 @@
         $app->connect->cache->set($cachedname, $cachedSearchResults, 3600);
     }
 
-    //$app->connect->cache->clean();
+    $app->connect->cache->clean();
 
     function getmysubjects($connect,$email,$subject){
 
@@ -316,6 +316,7 @@
                 ':subject'=>$subject
     		);
             $cachedVar = $connect->executeQuery($sql,$prepare)->fetchAll();
+            //notify($cachedVar);
             $connect->cache->set($cachedKey, $cachedVar, 3600);
         }
 
