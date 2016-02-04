@@ -332,6 +332,9 @@
         if(isset($subject)){
             $cachedSearchResults->results[$key]->subjects = getmysubjects($app->connect,$build->email,$subject);
         }
+        else{
+            $cachedSearchResults->results[$key]->subjects = getmysubjects($app->connect,$build->email,NULL);
+        }
 
     }
 

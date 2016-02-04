@@ -12,7 +12,7 @@
 
 	}
 
-	$app->howitworks = true;
+	//$app->howitworks = true;
 
 	$app->meta = new stdClass();
 	$app->meta->title = $app->dependents->SITE_NAME_PROPPER.' Student Signup';

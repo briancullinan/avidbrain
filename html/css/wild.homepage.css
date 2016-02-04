@@ -1,365 +1,262 @@
-@charset "utf-8";
-main .notoppadd{
-	padding-top: 0px;
+.homepagerandom-1{
+    background: url('/images/subs/find-a-tutor-1.jpg');
 }
-.homepage-wide{
-	float: left;
-	width: 100%;
-	background-image: url('/images/homepage-slides/penandpaper.jpg');
-	background-size: cover;
-	background-position:right top;
-	background-attachment: fixed;
-	min-height: 500px;
-	margin-bottom: 30px;
+.homepagerandom-2{
+    background: url('/images/subs/find-a-tutor-2.jpg');
 }
-.the-subjects-we-offer .block{
-	min-height: 200px;
+.homepagerandom-3{
+    background: url('/images/subs/find-a-tutor-3.jpg');
 }
-.the-subjects-we-offer .block .col{
-	padding: 0px;
+.homepagerandom-4{
+    background: url('/images/subs/find-a-tutor-4.jpg');
 }
-.tswo-title{
-	background-size: cover;
-	background-position: center center;
-	background-color: #efefef;
-	text-align: center;
+.homepagerandom-5{
+    background: url('/images/subs/find-a-tutor-5.jpg');
 }
-.liberalarts{
-	background-image: url('/images/subjects/liberalarts.jpg');
+.homepage-banner{
+
+    background-size: cover;
+    min-height: 400px;
+    padding-top: 80px;
 }
-.math{
-	background-image: url('/images/subjects/new-math.jpg');
+.homepage-box{
+    width: 80%;
+    padding: 20px;
+    margin: 0 auto;
+    margin-top: 40px;
+    text-align: center;
 }
-.science{
-	background-image: url('/images/subjects/new-science.jpg');
-}
-.testprep{
-	background-image: url('/images/subjects/testprep.jpg');
-}
-.tswo-title a{
-	display: block;
-	font-family: 'Quicksand';
-    font-size: 25px;
-    font-weight: 700;
+.homepage-copytext{
+    font-family: 'Quicksand';
     color: #fff;
-    text-shadow: 2px 2px #000;
-    padding:85px 5px;
+    font-size: 50px;
+    text-shadow: 0 0 20px black;
+    font-weight: 700;
+}
+.homepage-search-bar input[type=text]{
+    background: #fff;
+    padding: 0px;
+    margin: 0px;
+    line-height: normal;
+    height: auto;
+    padding:15px 10px;
+    box-sizing: border-box;
+}
+.homepage-search-bar input:active, .homepage-search-bar input:focus{
+
+    -moz-box-shadow: 0 0 20px #57AD57 !important;
+    -webkit-box-shadow: 0 0 20px #57AD57 !important;
+    box-shadow: 0 0 20px #57AD57 !important;
+}
+.spinning{
+    padding: 10px;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.6);
+    font-size: 20px;
+}
+.spinning i{
+    color: #96FF00;
+}
+.content-blocks{
+    float: left;
+    width: 100%;
+}
+.tutor-features i{
+    font-size: 18px;
+}
+.tutor-features.collection .collection-item{
+    padding: 10px;
+}
+.content-blocks-about{
+    font-family: 'Quicksand';
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+.content-blocks-about-next{
+    margin-bottom: 15px;
+}
+.content-blocks-title{
+    font-size: 30px;
+    font-weight: bold;
+    font-family: 'Quicksand';
+    font-weight: 600;
+
+}
+.top-subs a:hover{
+    text-decoration: underline;
+    color: #0084dd;
+}
+.howitworks-homepage-img{
+    text-align: center;
+    font-size: 73px;
+    display: block;
+}
+.howitworks-homepage-title{
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: center;
+}
+.howitworks-homepage-text{
+    margin-bottom: 10px;
+    text-align: center;
+}
+.learn-more-about{
+    margin-top: 15px;
+    text-align: center;
+}
+.learn-more-about a{
+    color: #aeea00;
+}
+.hiw-block{
+    background: #2196F3;
+    color: #fff;
+}
+.hiw-block a{
+    color: #d4ff00;
+}
+.content-block:before{
+    width: 100%;
+    height: 20px;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0.24+0,0+100 */
+    background: -moz-linear-gradient(top, rgba(0,0,0,0.24) 0%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(0,0,0,0.24) 0%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(0,0,0,0.24) 0%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3d000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
+    content: "";
+    position: absolute;
+    left: 0px;
+    top:0px;
+}
+.content-block{
     position: relative;
+    padding: 30px;
+        padding-top: 20px;
+    margin: 1px 0px;
 }
-.tswo-title a:hover{
-	background: rgba(33, 33, 33, 0.5);
+.about-avidbrain{
+    background: #57AD57;
+    background:
+    linear-gradient(
+      rgba(88, 173, 88, 0.9),
+      rgba(88, 173, 88, 0.5)
+    ),
+    url('/images/homepage-slides/penandpaper.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    color: #fff;
 }
-
-.tswo-title .valign{
-	width: 100%;
+.howitworksnewhomepage{
+    background: #0099ff;
+    background:
+    linear-gradient(
+      rgba(0, 153, 255, 0.9),
+      rgba(0, 153, 255, 0.5)
+    ),
+    url('/images/homepage-slides/city.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    color: #fff;
 }
-.tswo-text{
-	padding:0px 10px;
+.about-avidbrain a{
+    color: yellow;
 }
-.tswo-text a{
-	display: inline-block;
-	margin-bottom: 3px;
-	color: #666;
+.tutor-features{
+    color: #333;
 }
-.tswo-text a:hover{
-	color: #0099ff;
+.top-subjects{
+    background: #fff;
 }
-
-.fullsize{
-	width: 100%;
-	margin: 15px 0px;
-	float: left;
+.featured-tutor{
+    background: #333;
+    color: #fff;
 }
-
-.wide-copy{
-	font-size: 35px;
-	line-height: 1.3;
-	font-family: 'Quicksand';
-	text-shadow: 1px 1px 5px black;
-	background: rgba(0, 0, 0, 0.7);
-	margin: 15px 0px;
-	padding: 30px;
+.featured-block-img img{
+border: solid 5px #fff;
 }
-.signup-post-a-job h2{
-	margin-top: 30px;
-	display: block;
-	display: inline-block;
-	width: 100%;
+.featured-block-name{
+    font-size: 32px;
+    margin-bottom: -10px;
+    font-family: 'Quicksand';
 }
-.info-block{
-	background: rgba(33, 33, 33, 0.92);
-	border: solid 1px #333;
-
--webkit-border-radius: 2px;
--moz-border-radius: 2px;
-border-radius: 2px;
-
-	padding: 18px;
-	margin-bottom: 15px;
-	font-size: 22px;
+.featured-block-location{
+    margin-bottom: 10px;
+    color: #ccc;
+    font-size: 14px;
 }
-
-
-/* How It Works */
-.how-it-works-slide{
-	height: 500px;
-	width: 100%;
-	position: absolute;
-	left: 0px;
-	top:0px;
-	margin-top: -500px;
-	background: rgba(255, 255, 255, 0.9);
-	border-bottom: solid 1px #ccc;
-	z-index: 555;
-	text-align: center;
-	overflow: hidden;
-	background:rgba(51, 51, 51, 0.85);
-	color: #fff;
+.featured-block-subjects{
+    margin-bottom: 10px;
+    color: #d4ff00;
+    font-size: 12px;
 }
-.how-it-works-slide h1{
-	padding: 10px;
-	color: #fff;
+.featured-block-about{
+    margin-bottom: 10px;
 }
-.how-it-works-slide a{
-	color: #00ccff;
+.featured-block-view{
+    margin-top: -7px;
 }
-.close-it-works{
-	cursor: pointer;
-	position: absolute;
-	right: 10px;
-	top:0px;
-	font-size: 40px;
-}
-.close-it-works:hover{
-	color: #666;
-}
-.howie-howitworks-img{
-
-}
-.howie-howitworks-title{
-	font-size: 22px;
-}
-.howie-howitworks-text{
-	padding: 0px 15px;
-}
-.howie-howitworks-bottom{
-
-}
-
-.how-it-works-slide.slideDown{
-    animation-name: slideDown;
-    animation-duration: .5s;
-    margin-top: 0px;
-}
-.how-it-works-slide.slideUp{
-    animation-name: slideUp;
-    animation-duration: .5s;
-    margin-top: -500px;
-}
-
-@-webkit-keyframes slideUp {
-    from {margin-top: 0px}
-    to {margin-top: -500px;}
-}
-@-moz-keyframes slideUp {
-    from {margin-top: 0px}
-    to {margin-top: -500px;}
-}
-@-o-keyframes slideUp {
-    from {margin-top: 0px}
-    to {margin-top: -500px;}
-}
-@keyframes slideUp {
-    from {margin-top: 0px}
-    to {margin-top: -500px;}
-}
-
-
-@-webkit-keyframes slideDown {
-    from {margin-top: -500px;}
-    to {margin-top: 0px}
-}
-@-moz-keyframes slideDown {
-    from {margin-top: -500px;}
-    to {margin-top: 0px}
-}
-@-o-keyframes slideDown {
-    from {margin-top: -500px;}
-    to {margin-top: 0px}
-}
-@keyframes slideDown {
-    from {margin-top: -500px;}
-    to {margin-top: 0px;}
-}
-
-.homepage-items h1{
-	position: absolute;
-	font-weight: bold;
-	color: #fff;
-    text-shadow: 0px 0px 20px black;
-    padding: 0px 20px;
-
-	right: 0 ;
-	left : 0 ;
-	z-index: 22;
-	margin-top: 200px;
-}
-.homepage-items .how-it-works{
-	position: absolute;
-
-	right: 0 ;
-	left : 0 ;
-	z-index: 22;
-	margin-top: 330px;
-}
-.homepage-items .how-it-works span{
-
-	margin-top: 30px;
-
-}
-.how-it-works span{
+.featured-block-view a{
     color: #222;
     background: #fff;
+    padding: 2px 10px;
+    font-size: 12px;
+}
+.featured-on{
+
+    background: #6d019d;
+
+      background:
+      linear-gradient(
+        rgba(109, 1, 157, 0.9),
+        rgba(109, 1, 157, 0.5)
+      ),
+      url('/images/homepage-slides/plains.jpg');
+      background-attachment: fixed;
+      background-size: cover;
+      color: #fff;
+}
+
+.featured-logos a{
     display: inline-block;
-    padding: 10px 25px;
-    background: rgba(255, 255, 255, 0.7);
-    font-weight: bold;
-    -moz-box-shadow: 0 0 10px #000;
-	-webkit-box-shadow: 0 0 10px #000;
-	box-shadow: 0 0 10px #000;
-    font-size: 16px;
-    cursor: pointer;
-
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
+    padding: 5px 15px;
 }
-.homepageslide{
-	text-align: center;
-	position: relative;
-	margin: 0px;
+.featured-logos a img{
+    max-height: 30px;
+}
+.topsubslist a:hover{
+    color: #0050d7;
 }
 
-.slider .indicators .indicator-item{
-	background: #fff;
+@media (max-width: 500px){
+    .homepage-copytext{
+        font-size: 28px;
+    }
+    .top-subject-list .content-blocks-title{
+        font-size: 22px;
+    }
+    .topsubslist a{
+        display: block;
+        padding: 5px;
+    }
+    .topsubslist a span{
+        display: none;
+    }
+
+
 }
-.slider .indicators .indicator-item.active{
-	background: #99ff00;
+@media (max-width: 701px) and (min-width:501px){
+    .homepage-copytext{
+        font-size: 32px;
+    }
 }
 
-.homepage-container .indicators{
-	position: relative;
-	z-index: 33;
-	margin-top: -30px;
-}
-
-
-
-/*Featured Tutor*/
-.featured-tutor{
-
-	background-image: url('/images/featured-tutors/mistertutor.jpg');
-	background-size: cover;
-}
-.featured-tutor img.avatarbg{
-	max-height: 300px;
-}
-.featured-tutor-text{
-	text-align: center;
-}
-.featured-tutor-text h2{
-	margin-top: 20px;
-	background: #000;
-	display: inline-block;
-	padding: 5px 15px;
-	color:#fff;
-	font-weight: 700;
-}
-.featured-tutor-container{
-	background: rgba(255, 255, 255, 0.7);
-	background: rgba(0, 0, 0, 0.5);
-	text-align: left;
-	color:#fff;
-}
-.col.featured-col{
-
-	padding:0px;
-}
-.featured-tutor-inside{
-
-	padding: 15px 0px;
-}
-.fullsize .row, .profile-image{
-	margin-bottom: 0px;
-}
-.featured-tutor-name{
-	font-family: 'Quicksand';
-	font-size: 45px;
-	font-weight: 700;
-	line-height: normal;
-}
-.featured-tutor-name a{
-	color: #96FF00;
-}
-.featured-tutor-name a:hover{
-	color: #bdff00;
-}
-.featured-tutor-link{
-	border-top: solid 5px #0099ff;
-	margin-top:10px;
-}
-.featured-tutor-link a{
-	background: #0099ff;
-	display: inline-block;
-	padding: 2px 10px;
-	color: #fff;
-	-webkit-transition: all;
-	-webkit-transition-timing-function: ease-out;
-	-webkit-transition-duration: .2s;
-
-	-moz-transition: all;
-	-moz-transition-timing-function: ease-out;
-	-moz-transition-duration: .2s;
-
-	transition: all;
-	transition-timing-function: ease-out;
-	transition-duration: .2s;
-}
-.featured-tutor-inside:hover{
-	background: rgba(0, 0, 0, 0.6);
-}
-.featured-tutor-inside:hover .featured-tutor-link a{
-	color: #fff;
-	padding: 10px 10px;
-}
-.featured-tutor-subjects{
-	font-family: 'Quicksand';
-	font-size: 20px;
-	margin-bottom: 10px;
-	color:rgba(255, 255, 255, 0.79);
-}
-.featured-tutor-location{
-	font-family: 'Quicksand';
-	font-size: 26px;
-	margin-top: -10px;
-}
-.featured-tutor-score{
-	text-align: center;
-	color:#ffb000;
-	font-size: 25px;
-}
-
-.view-more{
-	width: 100%;
-	text-align: center;
-	float: left;
-	margin-bottom: 15px;
-	margin-top: -15px;
-}
-.view-more a{
-	display: inline-block;
-	background: #ccc;
-	color: #333;
-	font-size: 16px;
-	padding: 5px 15px;
+@media (max-width: 740px){
+    .featured-logos a{
+        display: block;
+        text-align: center;
+    }
+    .howitworks-homepage-img{
+        font-size: 40px;
+    }
 }

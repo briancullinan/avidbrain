@@ -336,6 +336,17 @@ var encodeHtmlEntity = function(str) {
 			}
 		});
 
+		$('#homepageselect').autocomplete({
+			serviceUrl: '/findmesome',
+			beforeRender: function(){
+				$('.spinning').remove();
+			},
+			onSelect: function (suggestion){
+				$('#homepageselect').parent().append('<div class="spinning"> Searching... <i class="fa fa-spinner fa-spin"></i></div>');
+				window.location = '/searching/'+suggestion.data;
+			}
+		});
+
 
 
 

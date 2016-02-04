@@ -1,7 +1,7 @@
 <?php
-	
-	$app->howitworks = true;
-	
+
+	//$app->howitworks = true;
+
 	$app->meta = new stdClass();
 	$app->meta->title = 'Find A Tutor';
 	$app->meta->h1 = false;

@@ -74,13 +74,13 @@
 															if(isset($app->queries->subject) && strtolower($app->queries->subject) == strtolower($subjects->subject_slug) || isset($app->queries->subject) && strtolower($app->queries->subject) == strtolower($subjects->subject_name)){
 																echo '<a href="/searching/'.$subjects->subject_slug.'"><strong class="green-text">'.$subjects->subject_name.'</strong></a>';
 															}
-															elseif($app->queries->subject==$subjects->parent_slug || strtolower($app->queries->subject)==strtolower($subjects->parent_slug)){
+															elseif(isset($app->queries->subject) && $app->queries->subject==$subjects->parent_slug || isset($app->queries->subject) &&  strtolower($app->queries->subject)==strtolower($subjects->parent_slug)){
 																echo '<a href="/searching/'.$subjects->subject_slug.'"><strong class="blue-text">'.$subjects->subject_name.'</strong></a>';
 															}
-															elseif((strpos($subjects->subject_name, $app->queries->subject) !== false)){
+															elseif(isset($app->queries->subject) && (strpos($subjects->subject_name, $app->queries->subject) !== false)){
 																echo '<a href="/searching/'.$subjects->subject_slug.'"><strong class="cyan-text">'.$subjects->subject_name.'</strong></a>';
 															}
-															elseif((strpos($subjects->parent_slug, $app->queries->subject) !== false)){
+															elseif(isset($app->queries->subject) && (strpos($subjects->parent_slug, $app->queries->subject) !== false)){
 																echo '<a href="/searching/'.$subjects->subject_slug.'"><strong class="light-green-text">'.$subjects->subject_name.'</strong></a>';
 															}
 															else{

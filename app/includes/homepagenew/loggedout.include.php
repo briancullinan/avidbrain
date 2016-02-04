@@ -4,7 +4,7 @@
         <div class="homepage-copytext">Teach Something. Learn Anything.</div>
 
         <div class="homepage-search-bar">
-            <input type="text" id="homepageselect" placeholder="What Do You Want To Learn?" />
+            <input type="text" id="homepageselect" class="xxx" placeholder="What Do You Want To Learn?" />
         </div>
     </div>
 
@@ -18,7 +18,7 @@
             	<div class="col s12 m8 l8">
                     <div class="content-blocks-about"><span class="yellow-text">AvidBrain</span> is the leader in on-demand tutoring where all of our tutors are both interviewed and background checked.</div>
                     <div class="content-blocks-about-next">
-                        With over 2,000 tutors available we’ll have you learning in no time at all.
+                        With over 2,000 tutors available we’ll have you learning what you want to learn in no time at all.
                     </div>
             	</div>
             	<div class="col s12 m4 l4">
@@ -86,8 +86,6 @@
         </div>
     </div>
 
-
-
     <div class="content-block howitworksnewhomepage">
         <div class="content-blocks-title">How It Works</div>
         <div class="xxx">
@@ -142,63 +140,17 @@
     </div>
 
     <?php if(isset($app->top)): ?>
-    <div class="content-block top-subject-list">
+    <div class="content-block top-subjects">
         <div class="content-blocks-title">Our Top 15 Tutored Subjects</div>
         <div class="topsubslist">
             <?php $count = count($app->top); foreach($app->top as $key=> $subject): ?>
                 <a href="/searching/<?php echo $subject->subject_slug; ?>">
                     <?php echo $subject->subject_name; ?>
-                <?php if($count!=($key+1)){echo '<span>, </span>';} ?></a>
+                </a><?php if($count!=($key+1)){echo ', ';} ?>
             <?php endforeach; ?>
         </div>
     </div>
     <?php endif; ?>
-
-    <div class="content-block featured-on">
-        <div class="content-blocks-title">Featured On</div>
-        <div class="featured-logos">
-
-            <?php
-                $featured = [];
-                $featured[] = (object)[
-                    'title'=>'12 News NBC',
-                    'link'=>'http://www.12news.com/story/news/local/valley/2016/01/01/avid-brain-tutors-any-subject/78188836/',
-                    'img'=>'12-news-abc.png'
-                ];
-                $featured[] = (object)[
-                    'title'=>'Arizona Republic',
-                    'link'=>'http://www.azcentral.com/story/news/local/scottsdale/2015/11/02/scottsdale-tutoring-company-joins-growing-online-industry-cns/75039918/',
-                    'img'=>'az-replublic.png'
-                ];
-                $featured[] = (object)[
-                    'title'=>'Cronkite News',
-                    'link'=>'http://cronkitenews.azpbs.org/2015/10/30/scottsdale-tutoring-company-joins-growing-online-industry/',
-                    'img'=>'cronkite-news.png'
-                ];
-                $featured[] = (object)[
-                    'title'=>'AZ Big Media',
-                    'link'=>'http://azbigmedia.com/ab/tech/teaching-students-on-the-web',
-                    'img'=>'az-big-media.png'
-                ];
-                $featured[] = (object)[
-                    'title'=>'Phoenix Business Journal',
-                    'link'=>'http://www.bizjournals.com/phoenix/blog/techflash/2016/01/heres-the-64-startups-competing-in-the-2016.html',
-                    'img'=>'phoenix-business-journal.png'
-                ];
-
-            ?>
-
-            <?php foreach($featured as $item): ?>
-                <a href="<?php echo $item->link; ?>" target="_blank">
-                    <img src="/images/featured/<?php echo $item->img; ?>" class="responsive-img"/>
-                </a>
-            <?php endforeach; ?>
-
-
-
-
-        </div>
-    </div>
 
     <div class="content-block featured-tutor">
         <div class="content-blocks-title">Featured Tutor</div>

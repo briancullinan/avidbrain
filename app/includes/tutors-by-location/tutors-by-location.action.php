@@ -1,38 +1,88 @@
 <?php
-	$data	=	$app->connect->createQueryBuilder();
-	$data	=	$data->select('COUNT(user.state_slug) as count, user.*')->from('avid___user','user');
-	$data	=	$data->setParameter(':usertype','tutor');
-	$data	=	$data->where('user.usertype = :usertype');
-	$data	=	$data->andWhere('user.status IS NULL');
-	$data	=	$data->andWhere('user.hidden IS NULL');
-	$data	=	$data->andWhere('user.lock IS NULL');
-	$data	=	$data->andWhere('user.state_slug IS NOT NULL');
-	if(empty($app->user->email)){
-		$data	=	$data->andWhere('settings.loggedinprofile = "no"');
+
+	//$app->connect->cache->clean();
+
+	$sql = "
+		SELECT
+			user.state,
+			user.city_slug,
+			user.state_long,
+			user.state_slug,
+			user.city,
+			user.zipcode,
+			COUNT(user.city) as count
+		FROM
+			avid___user user
+
+		WHERE
+			user.city IS NOT NULL
+				AND
+			user.usertype = 'tutor'
+                AND
+            user.status IS NULL
+                AND
+            user.hidden IS NULL
+                AND
+            user.lock IS NULL
+
+		GROUP BY user.city
+
+		ORDER BY COUNT(user.city) DESC
+
+	";
+
+	$cachedStatecountResults = "cached-state-count-results";
+	$cachedStateReturn = $app->connect->cache->get($cachedStatecountResults);
+	if($cachedStateReturn == null) {
+	    $results = $app->connect->executeQuery($sql,array())->fetchAll();
+	    $cachedStateReturn = $results;
+	    $app->connect->cache->set($cachedStatecountResults, $results, 3600);
 	}
 
 
-	$data	=	$data->innerJoin('user','avid___user_profile','profile','user.email = profile.email');
-	$data	=	$data->innerJoin('user','avid___user_account_settings','settings','user.email = settings.email');
+	$sql = "
+		SELECT
+			user.id,
+			user.state,
+			user.city_slug,
+			user.state_long,
+			user.state_slug,
+			user.city,
+			user.zipcode,
+			COUNT(user.state) as count
+		FROM
+			avid___user user
 
-	$data	=	$data->andWhere('user.state_slug IS NOT NULL');
+		WHERE
+			user.city IS NOT NULL
+				AND
+			user.usertype = 'tutor'
+				AND
+			user.status IS NULL
+				AND
+			user.hidden IS NULL
+				AND
+			user.lock IS NULL
 
-	$data	=	$data->orderBy('COUNT(user.state_slug)','DESC');
-	$data	=	$data->groupBy('user.state_slug');
+		GROUP BY user.state_long
 
-	$data	=	$data->execute()->fetchAll();
+		ORDER BY COUNT(user.state) DESC
 
-	//notify($data);
+	";
 
-
-	$app->tutorsbylocation = $data;
-	$keywords='';
-	foreach($data as $category){
-		$keywords.= $category->state_slug.' tutors,';
+	$cachedCityReturn = "cached-city-return";
+	$cachedcityvalues = $app->connect->cache->get($cachedCityReturn);
+	if($cachedcityvalues == null) {
+	    $results = $app->connect->executeQuery($sql,array())->fetchAll();
+	    $cachedcityvalues = $results;
+	    $app->connect->cache->set($cachedCityReturn, $results, 3600);
 	}
+
+	$app->cities = $cachedcityvalues;
+	$app->states = $cachedStateReturn;
+
 
 	$app->meta = new stdClass();
 	$app->meta->title = $app->dependents->SITE_NAME_PROPPER.' Tutors by Location';
 	$app->meta->h1 = $app->dependents->SITE_NAME_PROPPER.' Tutors by Location';
-	$app->meta->keywords = $keywords;
-	$app->meta->description = 'avid brain tutors are everywhere';
+	
