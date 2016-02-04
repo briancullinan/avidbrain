@@ -288,6 +288,8 @@
         $app->connect->cache->set($cachedname, $cachedSearchResults, 3600);
     }
 
+    //$app->connect->cache->clean();
+
     function getmysubjects($connect,$email,$subject){
 
         $cachedKey = 'cachedgetmysubjects--searching-'.$email;
@@ -305,9 +307,9 @@
                         AND
                     subjects.status = 'verified'
 
-                ORDER BY subjects.subject_slug = :subject DESC, subjects.id ASC
+                ORDER BY subjects.parent_slug = :subject DESC, subjects.subject_slug = :subject DESC, subjects.id ASC
 
-                LIMIT 10
+
     		";
     		$prepare = array(
     			':email'=>$email,

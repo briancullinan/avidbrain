@@ -65,12 +65,20 @@
 												</div>
 
 
+												<?php //printer($searching->subjects); ?>
 
 												<div class="subjects-i-tutor-subs">
-													<?php $count = count($searching->subjects); foreach($searching->subjects as $key=> $subjects): ?>
+													<?php $count = count($searching->subjects); foreach($searching->subjects as $key=> $subjects):  ?>
+
 														<?php
 															if(isset($app->queries->subject) && strtolower($app->queries->subject) == strtolower($subjects->subject_slug) || isset($app->queries->subject) && strtolower($app->queries->subject) == strtolower($subjects->subject_name)){
 																echo '<strong class="green-text">'.$subjects->subject_name.'</strong>';
+															}
+															elseif($app->queries->subject==$subjects->parent_slug || strtolower($app->queries->subject)==strtolower($subjects->parent_slug)){
+																echo '<strong class="blue-text">'.$subjects->subject_name.'</strong>';
+															}
+															elseif((strpos($subjects->subject_name, $app->queries->subject) !== false)){
+																echo '<strong class="cyan-text">'.$subjects->subject_name.'</strong>';
 															}
 															else{
 																echo $subjects->subject_name;
