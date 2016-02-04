@@ -97,4 +97,6 @@
 
 	}
 
-	$app->promocode = $promocode;
+	if(isset($promocode)){
+		$app->promocode = $promocode;
+	}
