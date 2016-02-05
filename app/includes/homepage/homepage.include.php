@@ -145,18 +145,29 @@
         </div>
     </div>
 
-    <?php if(isset($app->top)): ?>
-    <div class="content-block top-subject-list">
-        <div class="content-blocks-title">Our Top 15 Tutored Subjects</div>
-        <div class="topsubslist">
-            <?php $count = count($app->top); foreach($app->top as $key=> $subject): ?>
-                <a href="/searching/<?php echo $subject->subject_slug; ?>">
-                    <?php echo $subject->subject_name; ?>
-                <?php if($count!=($key+1)){echo '<span>, </span>';} ?></a>
-            <?php endforeach; ?>
+    <?php if(isset($app->cachedTestimonial)): ?>
+        <div class="content-block testimonials">
+            <div class="content-blocks-title">Featured Testimonial</div>
+
+            <div class="quote-container">
+                <div class="row">
+                	<div class="col s12 m3 l3 align-center">
+                        <div class="user-photograph"><a href="<?php echo $app->cachedTestimonial->link; ?>"><img src="<?php echo $app->cachedTestimonial->img; ?>" /></a></div>
+                        <div class="featured-name"><a href="<?php echo $app->cachedTestimonial->link; ?>"><?php echo $app->cachedTestimonial->name; ?></a></div>
+                	</div>
+                	<div class="col s12 m9 l9">
+                        <div class="quote-user">
+                            <div class="actual-quote"><span class="open-quote">&ldquo;</span><?php echo $app->cachedTestimonial->quote; ?><span class="close-quote">&rdquo;</span></div>
+                            <div class="actual-quote-from"><?php echo $app->cachedTestimonial->from; ?></div>
+                        </div>
+                	</div>
+                </div>
+            </div>
+
         </div>
-    </div>
     <?php endif; ?>
+
+
 
     <div class="content-block featured-on">
         <div class="content-blocks-title">Featured On</div>
@@ -234,4 +245,18 @@
 
         </div>
     </div>
+
+    <?php if(isset($app->top)): ?>
+    <div class="content-block top-subject-list">
+        <div class="content-blocks-title">Our Top 15 Tutored Subjects</div>
+        <div class="topsubslist">
+            <?php $count = count($app->top); foreach($app->top as $key=> $subject): ?>
+                <a href="/searching/<?php echo $subject->subject_slug; ?>">
+                    <?php echo $subject->subject_name; ?>
+                <?php if($count!=($key+1)){echo '<span>, </span>';} ?></a>
+            <?php endforeach; ?>
+        </div>
+    </div>
+    <?php endif; ?>
+
 </div>

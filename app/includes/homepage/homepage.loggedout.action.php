@@ -46,3 +46,44 @@
 	if(isset($results[0])){
 		$app->top = $results;
 	}
+
+	//$app->connect->cache->clean();
+
+	$cachedTestimonialKey = "cachedtesimonials--homepage";
+	$cachedTestimonial = $app->connect->cache->get($cachedTestimonialKey);
+	if($cachedTestimonial == null) {
+		$sql = "
+			SELECT
+				testimonials.*,
+				user.url,
+				user.first_name,
+				user.last_name,
+				user.username,
+
+				profile.my_avatar,
+	            profile.my_avatar_status,
+	            profile.my_upload,
+	            profile.my_upload_status
+
+			FROM
+				avid___testimonials testimonials
+
+			INNER JOIN
+				avid___user user on user.id = testimonials.userid
+
+			INNER JOIN
+				avid___user_profile profile on user.email = profile.email
+
+			ORDER BY RAND()
+			LIMIT 1
+		";
+		$prepare = array();
+		$results = $app->connect->executeQuery($sql,$prepare)->fetch();
+		$results->link = $app->dependents->DOMAIN.$results->url;
+		$results->name = short($results);
+		$results->img = userphotographs($app->user,$results,$app->dependents);
+	    $cachedTestimonial = $results;
+	    $app->connect->cache->set($cachedTestimonialKey, $results, 3600);
+	}
+
+	$app->cachedTestimonial = $cachedTestimonial;

@@ -229,6 +229,21 @@ border: solid 5px #fff;
       color: #fff;
 }
 
+.testimonials{
+
+    background: #6d019d;
+
+      background:
+      linear-gradient(
+        rgba(60, 60, 60, 0.9),
+        rgba(60, 60, 60, 0.5)
+      ),
+      url('/images/homepage-slides/city.jpg');
+      background-attachment: fixed;
+      background-size: cover;
+      color: #fff;
+}
+
 .featured-logos a{
     display: inline-block;
     padding: 5px 15px;
@@ -238,6 +253,53 @@ border: solid 5px #fff;
 }
 .topsubslist a:hover{
     color: #0050d7;
+}
+.featured-name{
+text-align: center;
+
+}
+.featured-name a{
+    background: #00c230;
+    color: #fff;
+    display: inline-block;
+    padding: 5px 10px;
+
+}
+.featured-name a:hover{
+    background: #009e27;
+}
+.quote-container{
+    margin-top: 15px;
+}
+.quote-user{
+    padding: 10px;
+}
+.actual-quote{
+    font-size: 18px;
+    position: relative;
+}
+.actual-quote-from{
+    font-size: 14px;
+    color: #ccc;
+    text-align: right;
+    padding-right: 40px;
+}
+.open-quote, .close-quote{
+    font-size: 30px;
+    font-weight: 600;
+    font-family: 'Quicksand';
+    display: inline-block;
+    color:#00c230;
+    position: absolute;
+
+}
+.open-quote{
+    margin-left: -20px;
+    margin-top: -15px;
+}
+.close-quote{
+    margin-left: 5px;
+    margin-top: -10px;
 }
 
 @media (max-width: 500px){
