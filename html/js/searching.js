@@ -336,13 +336,23 @@ var encodeHtmlEntity = function(str) {
 			}
 		});
 
+		$('#homepagesearch').on('submit',function(){
+			var searchterm = $('#homepageselect').val();
+			$('.spinning').remove();
+			$('#homepageselect').parent().append('<div class="spinning"> <span>Searching</span> <i class="fa fa-spinner fa-spin"></i></div>');
+			$('.spinning').hide().fadeIn('fast');
+			window.location = '/searching/'+searchterm;
+			return false;
+		});
+
 		$('#homepageselect').autocomplete({
 			serviceUrl: '/findmesome',
 			beforeRender: function(){
 				$('.spinning').remove();
 			},
 			onSelect: function (suggestion){
-				$('#homepageselect').parent().append('<div class="spinning"> Searching... <i class="fa fa-spinner fa-spin"></i></div>');
+				$('#homepageselect').parent().append('<div class="spinning"> <span>Searching</span> <i class="fa fa-spinner fa-spin"></i></div>');
+				$('.spinning').hide().fadeIn('fast');
 				window.location = '/searching/'+suggestion.data;
 			}
 		});

@@ -4,7 +4,10 @@
         <div class="homepage-copytext">Teach Something. Learn Anything.</div>
 
         <div class="homepage-search-bar">
-            <input type="text" id="homepageselect" placeholder="What Do You Want To Learn?" />
+            <form method="post" action="/searching/" id="homepagesearch">
+                <input type="text" id="homepageselect" placeholder="What Do You Want To Learn?" />
+            </form>
+
         </div>
     </div>
 
@@ -16,7 +19,7 @@
         <div class="content-block-item">
             <div class="row">
             	<div class="col s12 m8 l8">
-                    
+
                     <div class="content-blocks-about"><span class="yellow-text">AvidBrain</span> is committed to education and student success!  Our tutors are experienced in the art of learning. As the leader in on-demand tutoring where all of our tutors are both interviewed and background checked. </div>
                     <div class="content-blocks-about-next">With over 2,000 tutors available we’ll have you reaching your learning goals in no time at all.</div>
                     <div class="content-blocks-about-next">AvidBrain works hard behind the scenes so our tutors can focus on their students. Our decisions reflect an understanding about what is most important - student success and tutor happiness.</div>
