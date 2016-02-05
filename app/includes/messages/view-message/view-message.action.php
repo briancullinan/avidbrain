@@ -91,6 +91,9 @@
 		$app->message->prevnext = $prevnext;
 
 		$app->message->user = getmessageuserinfo($app->connect,$app->message->messageuser,$app->user,$app->dependents);
+		if(empty($app->message->user)){
+			$app->message->user = getmessageuserinfo($app->connect,'support@avidbrain.com',$app->user,$app->dependents);
+		}
 		//notify($app->message->user);
 		//notify($app->message);
 		// echo $messageuser->name;
