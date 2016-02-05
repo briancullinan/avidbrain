@@ -51,6 +51,7 @@
 		//$app->secondary = $app->target->secondaryNav;
 	}
 
+//	notify($promocode);
 
 
 	if(isset($promocode)){
@@ -68,7 +69,8 @@
 			SELECT
 				promo.id,
 				promo.promocode,
-				promo.value
+				promo.value,
+				promo.email
 			FROM
 				avid___promotions promo
 			WHERE
@@ -77,6 +79,7 @@
 		$prepare = array(':promocode'=>$promocode);
 
 		$promotions = $app->connect->executeQuery($sqlPro,$prepare)->fetch();
+		//notify($promotions);
 		if(isset($promotions->promocode)){
 			$app->activepromo = $promotions;
 			$isvalidpromo = (object)[
@@ -101,3 +104,6 @@
 			$app->isvalidpromo = $isvalidpromo;
 		}
 	}
+
+
+//	notify($promocode);

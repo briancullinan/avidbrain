@@ -109,8 +109,6 @@
 					</div>
 					<?php endif; ?>
 
-
-
 					<div class="new-inputs">
 						<div class="row">
 

@@ -50,3 +50,6 @@
 	if(isset($promocode)){
 		$app->promocode = $promocode;
 	}
+
+
+	//notify($promocode);
