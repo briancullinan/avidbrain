@@ -147,7 +147,7 @@
 
     <?php if(isset($app->cachedTestimonial)): ?>
         <div class="content-block testimonials">
-            <div class="content-blocks-title">Featured Testimonial</div>
+            <div class="content-blocks-title">Student Testimonials</div>
 
             <div class="quote-container">
                 <div class="row">
@@ -216,7 +216,7 @@
     </div>
 
     <div class="content-block featured-tutor">
-        <div class="content-blocks-title">Featured Tutor</div>
+        <div class="content-blocks-title">Recommended Tutor</div>
         <div class="featured-block">
 
             <div class="row">

@@ -358,6 +358,13 @@ var encodeHtmlEntity = function(str) {
 		});
 
 
+		// setTimeout(function(){
+		// 	$('#homepageselect').focus().val('A');
+		// 	$('#homepageselect').focus().val('Algebra');
+		// 	$('#homepageselect').focus().val('Algebra 1');
+		// },1000);
+
+
 
 
 	});
