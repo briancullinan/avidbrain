@@ -155,6 +155,6 @@
 		$results->mysubjects = $app->connect->executeQuery($sql,$prepare)->fetchAll();
 
 	    $cachedTOPTUTOR = $results;
-	    $app->connect->cache->set($cachedTopTutorKey, $results, 30);
+	    $app->connect->cache->set($cachedTopTutorKey, $results, 120);
 	}
 	$app->cachedTOPTUTOR = $cachedTOPTUTOR;
