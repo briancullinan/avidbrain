@@ -20,7 +20,7 @@
             <div class="row">
             	<div class="col s12 m8 l8">
 
-                    <div class="content-blocks-about"><span class="yellow-text">AvidBrain</span> is committed to education and student success!  Our tutors are experienced in the art of learning. As the leader in on-demand tutoring where all of our tutors are both interviewed and background checked. </div>
+                    <div class="content-blocks-about"><span class="yellow-text">AvidBrain</span> is committed to education and student success!  Our tutors are experienced in the art of learning. As the leader in on-demand tutoring all of our tutors are both interviewed and background checked </div>
                     <div class="content-blocks-about-next">With over 2,000 tutors available we’ll have you reaching your learning goals in no time at all.</div>
                     <div class="content-blocks-about-next">AvidBrain works hard behind the scenes so our tutors can focus on their students. Our decisions reflect an understanding about what is most important - student success and tutor happiness.</div>
 
@@ -151,15 +151,15 @@
 
             <div class="quote-container">
                 <div class="row">
-                	<div class="col s12 m3 l3 align-center">
-                        <div class="user-photograph"><a href="<?php echo $app->cachedTestimonial->link; ?>"><img src="<?php echo $app->cachedTestimonial->img; ?>" /></a></div>
-                        <div class="featured-name"><a href="<?php echo $app->cachedTestimonial->link; ?>"><?php echo $app->cachedTestimonial->name; ?></a></div>
-                	</div>
                 	<div class="col s12 m9 l9">
                         <div class="quote-user">
                             <div class="actual-quote"><span class="open-quote">&ldquo;</span><?php echo $app->cachedTestimonial->quote; ?><span class="close-quote">&rdquo;</span></div>
                             <div class="actual-quote-from"><?php echo $app->cachedTestimonial->from; ?></div>
                         </div>
+                	</div>
+                    <div class="col s12 m3 l3 align-center">
+                        <div class="user-photograph"><a href="<?php echo $app->cachedTestimonial->link; ?>"><img src="<?php echo $app->cachedTestimonial->img; ?>" /></a></div>
+                        <div class="featured-name"><a href="<?php echo $app->cachedTestimonial->link; ?>"><?php echo $app->cachedTestimonial->name; ?></a></div>
                 	</div>
                 </div>
             </div>
@@ -221,23 +221,36 @@
 
             <div class="row">
             	<div class="col s12 m3 l3">
-            		<div class="featured-block-img"><a href="https://www.avidbrain.com/tutors/arizona/scottsdale/323439"><img src="https://www.avidbrain.com/profiles/approved/323439.crop.jpg" class="responsive-img" /></a></div>
+            		<div class="featured-block-img">
+                        <a href="<?php echo $app->cachedTOPTUTOR->url; ?>">
+                            <img src="<?php echo $app->cachedTOPTUTOR->img; ?>" class="responsive-img" />
+                        </a>
+                    </div>
                     <div class="featured-block-view">
-                        <a href="https://www.avidbrain.com/tutors/arizona/scottsdale/323439">View Full Profile</a>
+                        <a href="<?php echo $app->cachedTOPTUTOR->url; ?>">
+                            View Full Profile
+                        </a>
                     </div>
             	</div>
             	<div class="col s12 m9 l9">
                     <div class="featured-block-name">
-                        <a href="https://www.avidbrain.com/tutors/arizona/scottsdale/323439">Keith R.</a>
+                        <a href="<?php echo $app->cachedTOPTUTOR->url; ?>">
+                            <?php echo $app->cachedTOPTUTOR->name; ?>
+                        </a>
                     </div>
                     <div class="featured-block-location">
-                        Scottsdale Arizona
+                        <?php echo ucwords($app->cachedTOPTUTOR->city); ?> <?php echo ucwords($app->cachedTOPTUTOR->state_long); ?>
                     </div>
                     <div class="featured-block-subjects">
-                        SAT, ACT, GMAT, GRE, and MCAT, AP Exams, Algebra 1, Calculus, Test Prep
+                        <?php
+                            $count = count($app->cachedTOPTUTOR->mysubjects);
+                            foreach($app->cachedTOPTUTOR->mysubjects as $key=> $subject){
+                                echo $subject->subject_name;if($count!=($key+1)){ echo ', ';}
+                            }
+                        ?>
                     </div>
                     <div class="featured-block-about">
-                        I have been tutoring/teaching for over 30+ years. Former High School Math &amp; Sciences Teacher. Former college professor in the Math, Chemistry and Business Department. I love to help students succeed. My favorite subjects are standardized exams: SAT, ACT, GMAT, GRE, and MCAT as well as many of the AP exams. I have many former students who have done quite well on their exams and have gone on to top schools.
+                        <?php echo truncate($app->cachedTOPTUTOR->personal_statement_verified,600); ?>
                     </div>
 
             	</div>

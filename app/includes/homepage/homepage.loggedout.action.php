@@ -87,3 +87,74 @@
 	}
 
 	$app->cachedTestimonial = $cachedTestimonial;
+
+//	$app->connect->cache->clean();
+
+	$cachedTopTutorKey = "cachedFeaturedtutor---homepage";
+	$cachedTOPTUTOR = $app->connect->cache->get($cachedTopTutorKey);
+	if($cachedTOPTUTOR == null) {
+
+		$sql = "
+			SELECT
+				user.first_name,
+				user.last_name,
+				user.city,
+				user.state,
+				user.state_long,
+				user.username,
+				user.url,
+				user.email,
+				profile.short_description_verified,
+				profile.personal_statement_verified,
+				profile.my_avatar,
+				profile.my_avatar_status,
+				profile.my_upload,
+				profile.my_upload_status
+			FROM
+				avid___user user
+
+			INNER JOIN
+
+				avid___user_profile profile on profile.email = user.email
+
+			WHERE
+				user.state IS NOT NULL
+					AND
+				profile.my_upload IS NOT NULL
+					AND
+				profile.my_upload_status = 'verified'
+					AND
+				profile.short_description_verified IS NOT NULL
+					AND
+				profile.personal_statement_verified IS NOT NULL
+
+
+			ORDER BY RAND()
+			LIMIT 1
+		";
+		$prepare = array();
+		$results = $app->connect->executeQuery($sql,$prepare)->fetch();
+		$results->name = short($results);
+		$results->img = userphotographs($app->user,$results,$app->dependents);
+
+		$sql = "
+			SELECT
+				subjects.subject_name
+			FROM
+				avid___user_subjects subjects
+			WHERE
+				subjects.email = :email
+					AND
+				subjects.status = 'verified'
+			ORDER BY subjects.sortorder ASC
+			LIMIT 10
+		";
+		$prepare = array(
+			':email'=>$results->email
+		);
+		$results->mysubjects = $app->connect->executeQuery($sql,$prepare)->fetchAll();
+
+	    $cachedTOPTUTOR = $results;
+	    $app->connect->cache->set($cachedTopTutorKey, $results, 30);
+	}
+	$app->cachedTOPTUTOR = $cachedTOPTUTOR;
