@@ -1,4 +1,12 @@
-<div class="homepage-banner homepagerandom-<?php echo rand(1,5); ?>">
+<div class="homepage-banner">
+    <div class="slider">
+		<ul class="slides">
+			<?php
+            echo $app->slider;
+
+            ?>
+		</ul>
+	</div>
 
     <div class="homepage-box">
         <div class="homepage-copytext">Teach Something. Learn Anything.</div>

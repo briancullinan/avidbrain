@@ -158,3 +158,14 @@
 	    $app->connect->cache->set($cachedTopTutorKey, $results, 120);
 	}
 	$app->cachedTOPTUTOR = $cachedTOPTUTOR;
+
+
+	$root = $app->dependents->DOCUMENT_ROOT;
+	$slides = glob($root.'images/homepage-slides/*.jpg');
+	shuffle($slides);
+	$slides = array_slice($slides, -5);
+	$slider = '';
+	foreach($slides as $slide){
+		$slider.='<li><img src="'.str_replace($root,'/',$slide).'" /></li>';
+	}
+	$app->slider = $slider;

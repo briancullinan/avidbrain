@@ -33,7 +33,7 @@
 	// SEARCH
 	//http://handlebarsjs.com/
 	//https://github.com/janl/mustache.js/
-	$routes['search'] = (object)array('url'=>'/search','slug'=>'search','route'=>'/search/','include'=>'search','protected'=>NULL,'permissions'=>array());
+	//$routes['search'] = (object)array('url'=>'/search','slug'=>'search','route'=>'/search/','include'=>'search','protected'=>NULL,'permissions'=>array());
 	$routes['searching'] = (object)array('url'=>'/searching','slug'=>'searching','route'=>'/searching/','include'=>'searching','protected'=>NULL,'permissions'=>array());
 	$routes['searching-results'] = (object)array('url'=>'/searching/results','slug'=>'results','route'=>'/searching/:query+','include'=>'searching/results','protected'=>NULL,'permissions'=>array());
 	#$routes['search--subject'] = (object)array('url'=>'/search','slug'=>'search','route'=>'/search/:subject/','include'=>'search','protected'=>NULL,'permissions'=>array());
@@ -41,7 +41,7 @@
 	#$routes['search--subject--location--distance'] = (object)array('url'=>'/search','slug'=>'search','route'=>'/search/:subject/:location/:distance/','include'=>'search','protected'=>NULL,'permissions'=>array());
 	#$routes['search--subject--location--distance--name'] = (object)array('url'=>'/search','slug'=>'search','route'=>'/search/:subject/:location/:distance/:name/','include'=>'search','protected'=>NULL,'permissions'=>array());
 	#$routes['search--subject--location--distance--name--gender'] = (object)array('url'=>'/search','slug'=>'search','route'=>'/search/:subject/:location/:distance/:name/:gender/','include'=>'search','protected'=>NULL,'permissions'=>array());
-	$routes['search--subject--location--distance--name--gender--pricerange--page--sort'] = (object)array('url'=>'/search/results','slug'=>'results','route'=>'/search/:subject/:location/:distance/:name/:gender/:pricelow/:pricehigh/:page/:sort/','include'=>'search/results','protected'=>NULL,'permissions'=>array());
+	//$routes['search--subject--location--distance--name--gender--pricerange--page--sort'] = (object)array('url'=>'/search/results','slug'=>'results','route'=>'/search/:subject/:location/:distance/:name/:gender/:pricelow/:pricehigh/:page/:sort/','include'=>'search/results','protected'=>NULL,'permissions'=>array());
 
 
 	// Background Check

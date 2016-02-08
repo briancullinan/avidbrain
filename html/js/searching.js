@@ -246,7 +246,10 @@ var encodeHtmlEntity = function(str) {
 
 
 
+
+
 	$(document).ready(function() {
+
 
 		$('.submit-a-form').on('click',function(){
 			$('.javascript-page').val(1);
