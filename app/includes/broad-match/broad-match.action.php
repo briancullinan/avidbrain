@@ -1,8 +1,14 @@
 <?php
 
+
+
 	if(isset($parent_slug)){
-		$app->redirect('/searching/'.$parent_slug);
+		$local = '/searching/'.$parent_slug;
 	}
 	else{
-		$app->redirect('/searching/');
+		$local = '/searching/';
 	}
+
+
+	header("Location: ".$local, true, 301);
+	exit;
