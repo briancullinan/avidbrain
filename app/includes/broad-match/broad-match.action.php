@@ -9,6 +9,6 @@
 		$local = '/searching/';
 	}
 
-
+	header("HTTP/1.1 301 Moved Permanently"); 
 	header("Location: ".$local, true, 301);
 	exit;
