@@ -180,7 +180,7 @@
 
     ";
 
-    notify($sql);
+    //notify($sql);
 
     /*
     GROUP BY jobs.id
