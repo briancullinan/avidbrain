@@ -27,7 +27,7 @@
     position: absolute;
 
     top:100px;
-    z-index: 3333;
+    z-index: 22;
 
     position:absolute;
     left:0;
@@ -263,14 +263,30 @@ border: solid 5px #fff;
       background-size: cover;
       color: #fff;
 }
+.featured-logos{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.featured-logos div{
+    width: 20%;
+    text-align: center;
+    padding: 10px;
+}
+@media (max-width: 600px) {
+    .featured-logos{
+        display: block;
+    }
+    .featured-logos div{
+        text-align: center;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+.featured-logos img{
+    max-height: 40px;
+}
 
-.featured-logos a{
-    display: inline-block;
-    padding: 5px 15px;
-}
-.featured-logos a img{
-    max-height: 30px;
-}
 .topsubslist a:hover{
     color: #0050d7;
 }

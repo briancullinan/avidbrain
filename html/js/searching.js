@@ -344,6 +344,7 @@ var encodeHtmlEntity = function(str) {
 			$('.spinning').remove();
 			$('#homepageselect').parent().append('<div class="spinning"> <span>Searching</span> <i class="fa fa-spinner fa-spin"></i></div>');
 			$('.spinning').hide().fadeIn('fast');
+			searchterm = searchterm.replace("/", "-");
 			window.location = '/searching/'+searchterm;
 			return false;
 		});

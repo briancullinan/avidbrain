@@ -160,12 +160,49 @@
 	$app->cachedTOPTUTOR = $cachedTOPTUTOR;
 
 
-	$root = $app->dependents->DOCUMENT_ROOT;
-	$slides = glob($root.'images/homepage-slides/*.jpg');
-	shuffle($slides);
-	$slides = array_slice($slides, -5);
-	$slider = '';
-	foreach($slides as $slide){
-		$slider.='<li><img src="'.str_replace($root,'/',$slide).'" /></li>';
+	$slides = function($root,$path){
+		$slides = glob($root.$path);
+		shuffle($slides);
+		$slides = array_slice($slides, -5);
+		$slider = '';
+		foreach($slides as $slide){
+			$slider.='<li><img src="'.str_replace($root,'/',$slide).'" /></li>';
+		}
+		return $slider;
+	};
+
+	$app->slider = $slides($app->dependents->DOCUMENT_ROOT,'images/homepage-slides/*.jpg');
+
+
+	$featured = [];
+	$featured[] = (object)[
+		'title'=>'12 News NBC',
+		'link'=>'http://www.12news.com/story/news/local/valley/2016/01/01/avid-brain-tutors-any-subject/78188836/',
+		'img'=>'12-news-abc.png'
+	];
+	$featured[] = (object)[
+		'title'=>'Arizona Republic',
+		'link'=>'http://www.azcentral.com/story/news/local/scottsdale/2015/11/02/scottsdale-tutoring-company-joins-growing-online-industry-cns/75039918/',
+		'img'=>'az-replublic.png'
+	];
+	$featured[] = (object)[
+		'title'=>'Cronkite News',
+		'link'=>'http://cronkitenews.azpbs.org/2015/10/30/scottsdale-tutoring-company-joins-growing-online-industry/',
+		'img'=>'cronkite-news.png'
+	];
+	$featured[] = (object)[
+		'title'=>'AZ Big Media',
+		'link'=>'http://azbigmedia.com/ab/tech/teaching-students-on-the-web',
+		'img'=>'az-big-media.png'
+	];
+	$featured[] = (object)[
+		'title'=>'Phoenix Business Journal',
+		'link'=>'http://www.bizjournals.com/phoenix/blog/techflash/2016/01/heres-the-64-startups-competing-in-the-2016.html',
+		'img'=>'phoenix-business-journal.png'
+	];
+
+	$featuredlogos = '';
+	foreach($featured as $item){
+		$featuredlogos.='<div><a href="'.$item->link.'"><img src="/images/featured/'.$item->img.'" class="responsive-img" /></a></div>';
 	}
-	$app->slider = $slider;
+	$app->featuredlogos = $featuredlogos;
