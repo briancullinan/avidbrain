@@ -47,7 +47,7 @@
 //     $app->top = $results;
 // }
 
-    $app->redirect('/searching/---/');
+    //$app->redirect('/searching/---/');
 
     $app->meta = new stdClass();
     $app->meta->title = 'AvidBrain Top Tutored Subject Search';
