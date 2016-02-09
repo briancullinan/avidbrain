@@ -68,7 +68,7 @@
             }
 
             $cacheKey = 'cacheditemfromemail---badge(backgroundcheck)---'.$email;
-            $sql = "SELECT emptybgcheck FROM avid___user WHERE emptybgcheck IS NULL AND email = :email";
+            $sql = "SELECT emptybgcheck FROM avid___user WHERE emptybgcheck IS NOT NULL AND email = :email";
             $preparedArray = array(':email'=>$email);
             $backgroundcheck = cachedeals($cacheKey,3600,$app->connect,$sql,$preparedArray,'fetch');
             if(empty($backgroundcheck->emptybgcheck)){

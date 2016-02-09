@@ -108,6 +108,36 @@ var encodeHtmlEntity = function(str) {
 
     }
 
+	function somethingFresh(results){
+		var template = $('.template').html();
+		$.each(results.results,function(index,value){
+			var html = Mustache.to_html(template, value);
+			$('.page-results').append(html);
+		});
+		$('.count').html(results.count);
+		$('.numbers').html(results.numbers);
+		$('.pagination').html(results.pagination);
+	}
+
+	function thisisatemplate(data,text) {
+		console.log(data);
+		console.log(text);
+		//$('.template').html(data);
+		//$.getJSON('http://avidbrain.dev/search/algebra/85257/200/---/male/0/100/---/---/',somethingFresh);
+	}
+
+	function maketemplate(data){
+		$('.template').html(data);
+		$('.submit-a-form').removeAttr('disabled');
+	}
+	function activego(one,two,three){
+		var template = $('.template').html();
+		console.log(one);
+		console.log(two);
+		console.log(three);
+		console.log(template);
+	}
+
 	function makesurefocus(array){
 		$.each(array, function( index, value ) {
 			var itemvalue = $('.javascript-'+value).val();
@@ -118,47 +148,46 @@ var encodeHtmlEntity = function(str) {
 		});
 	}
 
+	function ajaxBadger(id,url){
+
+		$('#urlstring--'+id).html('');
+
+		$.ajax({
+			type: 'POST',
+			url: '/badges',
+			data: {url:url,csrf_key:$('#csrf_key').html(),csrf_token:$('#csrf_token').html()},
+			success: function(response){
+				$.each( response, function( key, value,index ) {
+					$('#urlstring--'+id).append('<div class="action-badge '+key+'">'+value+'</div>');
+				});
+			}
+		});
+	}
+
 	function ajaxposter(buildtheurl,thetoken,nexturl){
+
+		var template = $('.template').html();
 		$.ajax({
 			type: 'POST',
 			url: buildtheurl,
 			data: {csrf_token:thetoken},
-			success: function(response){
-				$('.results-count').html('<span>'+response.numbers+'</span> Tutors Found');
-				$('.loading').fadeOut(function(){$(this).remove()});
-				build_results(response.results,response.count);
-				$('.results-count').append('<input type="hidden" class="totalcount" value="'+response.count+'" />');
-
-				if(response.pagination){
-					$('.pagination-container').html(response.pagination);
-
-					$('.pagination-container a').on('click',function(){
-						var datavalue = $(this).attr('data-value');
-						$('.javascript-page').val(datavalue);
-						$('#itsposttime').submit();
-						$('html, body').animate({ scrollTop: 0 }, 'slow', function () { /**/ });
-					});
-				}
-
+			success: function(results){
+				$('.page-results').html('');
+				$.each(results.results,function(index,value){
+					var html = Mustache.to_html(template, value);
+					$('.page-results').append('<div id="xxx-'+index+'">'+html+'<div>');
+					$('#xxx-'+index).hide().delay(index * 100).fadeIn();
+					ajaxBadger(value.urlid,value.url);
+				});
+				$('.count').html(results.count);
+				$('.numbers').html(results.numbers);
+				$('.pagination').html(results.pagination);
 			}
 		});
-
-		if(nexturl){
-
-			setTimeout(function(){
-				$.ajax({
-					type: 'POST',
-					url: nexturl,
-					data: {csrf_token:thetoken},
-					success: function(response){
-						console.log(nexturl);
-					}
-				});
-			},3000);
-		}
 	}
 
 	function activate_voltron(formtarget){
+
 
 		var thetoken = $('#csrf').val();
 		var subject = $('.javascript-subject').val();
@@ -177,6 +206,7 @@ var encodeHtmlEntity = function(str) {
 		var sort = $('.javascript-sort').val();
 
 		var buildtheurl = '/search/';
+
 		if(subject){
 			buildtheurl += subject+'/';
 		}
@@ -233,6 +263,9 @@ var encodeHtmlEntity = function(str) {
 		buildtheurl += sort+'/';
 		nexturl += '/'+sort+'/';
 
+		$('.buildurl').val(buildtheurl);
+		$('.nexturl').val(nexturl);
+
 
 		$('.submit-a-form').attr('disabled','disabled');
 		setTimeout(function(){
@@ -240,7 +273,6 @@ var encodeHtmlEntity = function(str) {
 		},1000);
 
 		ajaxposter(buildtheurl,thetoken,nexturl);
-
 
 	}
 
@@ -250,15 +282,20 @@ var encodeHtmlEntity = function(str) {
 
 	$(document).ready(function() {
 
+		$('.submit-a-form').attr('disabled','disabled');
+
+		$.get('/templates/mustache.template.html', maketemplate);
+
 
 		$('.submit-a-form').on('click',function(){
 			$('.javascript-page').val(1);
   			history.pushState({}, '', '#1');
+			$('.page-results').html('searching <i class="fa fa-spin fa-spinner"></i>');
 		});
 
 		$('.javascript').on('submit',function(){
 
-			$('.results').html('<div class="loading"><i class="fa fa-refresh fa-spin"></i></div>');
+			//$('.results').html('<div class="loading"><i class="fa fa-refresh fa-spin"></i></div>');
 			var formtarget = '#'+$(this).attr('id');
 			activate_voltron(formtarget);
 			return false;
@@ -360,13 +397,6 @@ var encodeHtmlEntity = function(str) {
 				window.location = '/searching/'+suggestion.data;
 			}
 		});
-
-
-		// setTimeout(function(){
-		// 	$('#homepageselect').focus().val('A');
-		// 	$('#homepageselect').focus().val('Algebra');
-		// 	$('#homepageselect').focus().val('Algebra 1');
-		// },1000);
 
 
 

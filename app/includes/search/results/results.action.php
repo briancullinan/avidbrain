@@ -135,6 +135,7 @@
             user.state_long,
             user.zipcode,
             user.first_name,
+            user.last_name,
             profile.hourly_rate,
             profile.my_avatar,
             profile.my_avatar_status,
@@ -226,6 +227,12 @@
     foreach($results->results as $key=> $build){
         $results->results[$key]->personal_statement_verified = truncate($build->personal_statement_verified,400);
         $results->results[$key]->img = userphotographs($app->user,$build,$app->dependents);
+        $results->results[$key]->title = short($build);
+        $results->results[$key]->location = ucwords($build->city).' '.ucwords($build->state_long);
+        $results->results[$key]->statement = truncate($build->personal_statement_verified,100);
+        $results->results[$key]->urlid = str_replace('/','',$build->url);
+
+
         unset($results->results[$key]->my_avatar);
         unset($results->results[$key]->my_upload);
         unset($results->results[$key]->my_upload_status);

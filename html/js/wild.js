@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-	
+
 
 	$('.searchbox, #setupsession_session_subject, #getprices_subject').autocomplete({
 		serviceUrl: '/get-subjects/',
