@@ -180,6 +180,33 @@ transition-duration: .5s;
     font-size: 12px;
 }
 
+.subjects-i-tutor-subs a{
+	color: #999;
+}
+.subjects-i-tutor-subs a:hover{
+	text-decoration: underline;
+}
+.lonely-searchbox{
+
+width: 100%;
+overflow: hidden;
+margin-top: 90px;
+padding: 40px;
+padding-top: 0px;
+}
+.lonely-searchbox h1{
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+.lonely-searchbox .searching-container label{
+    color: #000;
+}
+.mainsearching main .main-searching{
+    margin: 0px;
+    padding: 0px;
+    width: 100% !important;
+}
+
 /*searching-results-search*/
 
 @media only screen and (max-width: 599px){

@@ -113,23 +113,6 @@
 				<?php echo $app->pagination; ?>
 			</div>
 
-		<?php else: ?>
-
-			<?php if(isset($app->top)): ?>
-				<div class="select-a-subject">
-					<h1>Top Tutored Subjects</h1>
-					<div class="block">
-						<ul class="top-listed-subjects">
-							<?php foreach($app->top as $top): ?>
-								<div class="bubble"><a href="/searching/<?php echo $top->subject_slug; ?>">
-									<span class="top-count"><?php echo $top->count; ?></span> <?php echo $top->subject_name; ?> Tutors
-								</a></div>
-							<?php endforeach; ?>
-						</ul>
-					</div>
-				</div>
-			<?php endif; ?>
-
 
 		<?php endif; ?>
 	</div>
@@ -146,13 +129,3 @@
 <input id="csrf" type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
 <div class="hide" id="csrf_key"><?php echo $csrf_key; ?></div>
 <div class="hide" id="csrf_token"><?php echo $csrf_token; ?></div>
-
-
-<style type="text/css">
-.subjects-i-tutor-subs a{
-	color: #999;
-}
-.subjects-i-tutor-subs a:hover{
-	text-decoration: underline;
-}
-</style>
