@@ -44,7 +44,7 @@
 									</a>
 								</div>
 								<div class="searching-location">
-									<i class="fa fa-map-marker green-text"></i> <?php echo $searching->location; ?>
+									<i class="fa fa-map-marker green-text"></i> <?php echo $searching->location_link; ?>
 								</div>
 								<?php if(isset($searching->distance)): ?>
 									<div><?php echo numbers($searching->distance,1); ?> Miles Away</div>

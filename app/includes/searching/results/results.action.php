@@ -226,6 +226,11 @@
 
             user.first_name,
             user.last_name,
+            user.city,
+            user.city_slug,
+            user.state_long,
+            user.state_slug,
+            user.zipcode,
             CONCAT(user.city,', ',user.state_long,' ',user.zipcode) as location,
 
             profile.hourly_rate,
@@ -268,11 +273,9 @@
     ";
 
     $pagebase = str_replace("[$page]",'',$app->request->getPath());
-
-
-
-
-
+    if(isset($tutorPagbase)){
+        $pagebase = $tutorPagbase;
+    }
 
     $app->sortable = $sortable;
     #notify($sql);
@@ -328,12 +331,14 @@
         return $cachedVar;
 
     }
-    //notify();
+
+
 
     foreach($cachedSearchResults->results as $key=>$build){
         $cachedSearchResults->results[$key]->personal_statement_verified = truncate($build->personal_statement_verified,400);
         $cachedSearchResults->results[$key]->img = userphotographs($app->user,$build,$app->dependents);
         $cachedSearchResults->results[$key]->short = short($build);
+        $cachedSearchResults->results[$key]->location_link = '<a href="/searching/---/'.$build->zipcode.'/100/---/---/0/200/(distance_asc)/[1]">'.$build->city.', '.ucwords($build->state_long).'</a>';
         if(isset($subject)){
             $cachedSearchResults->results[$key]->subjects = getmysubjects($app->connect,$build->email,$subject);
         }
@@ -342,6 +347,8 @@
         }
 
     }
+
+    //notify($pagebase);
 
     if(isset($cachedSearchResults->count) && $cachedSearchResults->count > 0){
         $pagify = new Pagify();

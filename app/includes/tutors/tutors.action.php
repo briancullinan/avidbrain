@@ -1,22 +1,9 @@
 <?php
-	
-	
-	$app->filterby = $app->getCookie('filterby');
-	
-	if(empty($number)){
-		$app->number = NULL;
-	}
-	else{
-		$app->number = $number;
-	}
-	
-	if($app->request->isPost()==false){
-		$app->searching = json_decode($app->getCookie('searching'));
-		$app->search = $app->searching;
-		include($app->target->post);
-	}
-	else{
-		$app->searching = $app->search;
-	}
-	
-	$app->advancedsearch = $app->getCookie('advancedsearch');
+    // TOOTERS
+
+    $tutorPagbase = '/searching/---/---/100/---/---/0/200/(last_active)/';
+
+    $query = ['---','---','100','---','---','1','200','(last_active)','[1]'];
+    //notify($query);
+
+    include($app->dependents->APP_PATH.'includes/searching/results/results.action.php');
