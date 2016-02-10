@@ -4,7 +4,7 @@
 
 			<div><img class="responsive-img" src="/images/affiliate.jpg" /></div>
 			<div class="affiliate-text">
-				<p>Whatever walk of life you are in there are several ways anyone can advertise for AvidBrain and make a some extra cash.</p>
+				<p>Whatever walk of life you are in there are several ways anyone can advertise for AvidBrain and make extra cash.</p>
 				<p>Become an AvidBrain affiliate and earn $20 for every student or tutor who signs up and completes a session.</p>
 				<p>Earn Part-time Income By Doing What you Love.</p>
 			</div>
