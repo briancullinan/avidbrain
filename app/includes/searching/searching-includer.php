@@ -8,8 +8,9 @@
 
 							<div class="the-count">
 								<?php
-									echo $app->meta->titletext;
-									/*<span><?php echo numbers($app->count,1); ?></span> <?php if(isset($app->cachedSubjectQuery->subject_name)){ echo '<strong>'.$app->cachedSubjectQuery->subject_name.'</strong>'; } ?> Tutors Found */
+									if(isset($app->meta->titletext)){
+										echo $app->meta->titletext;
+									}
 								?>
 							</div>
 

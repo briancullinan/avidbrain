@@ -1,4 +1,7 @@
 <?php
+
+	//notify('cats');
+
 	#$app->connect->cache->delete("subjectcachename");
 	$allthesubjects = $app->connect->cache->get("subjectcachename");
 	if($allthesubjects == null) {
@@ -10,11 +13,11 @@
 	    $allthesubjects = $data;
 	    $app->connect->cache->set("subjectcachename", $allthesubjects, 3600);
 	}
-	
+
 	if($allthesubjects!=NULL){
 		$app->allthesubjects = $allthesubjects;
 	}
-	
+
 	$app->meta = new stdClass();
 	$app->meta->title = $app->dependents->SITE_NAME_PROPPER.' Tutors - Categories';
 	$app->meta->h1 = $app->dependents->SITE_NAME_PROPPER.' Tutored Categories';
