@@ -298,6 +298,10 @@
 
 		//$routes['admin-xxx'] = (object)array('url'=>'/admin-everything/xxx','slug'=>'xxx','route'=>'/admin-everything/xxx/','include'=>'admin-everything/xxx','protected'=>true,'permissions'=>array('admin'));
 
+		$routes['affiliates'] = (object)array('url'=>'/admin-everything/affiliates','slug'=>'affiliates','route'=>'/admin-everything/affiliates/','include'=>'admin-everything/affiliates','protected'=>true,'permissions'=>array('admin'));
+		$routes['affiliates-action'] = (object)array('url'=>'/admin-everything/affiliates','slug'=>'affiliates','route'=>'/admin-everything/affiliates/:action','include'=>'admin-everything/affiliates','protected'=>true,'permissions'=>array('admin'));
+		$routes['affiliates-action-id'] = (object)array('url'=>'/admin-everything/affiliates','slug'=>'affiliates','route'=>'/admin-everything/affiliates/:action/:id','include'=>'admin-everything/affiliates','protected'=>true,'permissions'=>array('admin'));
+
 		$routes['post-a-job'] = (object)array('url'=>'/admin-everything/post-a-job','slug'=>'post-a-job','route'=>'/admin-everything/post-a-job/','include'=>'admin-everything/post-a-job','protected'=>true,'permissions'=>array('admin'));
 		$routes['post-a-job-id'] = (object)array('url'=>'/admin-everything/post-a-job','slug'=>'post-a-job','route'=>'/admin-everything/post-a-job/:id/','include'=>'admin-everything/post-a-job','protected'=>true,'permissions'=>array('admin'));
 		$routes['post-a-job-log'] = (object)array('url'=>'/admin-everything/post-a-job/send-emails','slug'=>'send-emails','route'=>'/admin-everything/post-a-job/send-emails/:id/','include'=>'admin-everything/post-a-job/send-emails','protected'=>true,'permissions'=>array('admin'));
