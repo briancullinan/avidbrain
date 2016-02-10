@@ -29,8 +29,6 @@
 					session_status IS NOT NULL
 						AND
 					session_cost IS NOT NULL
-						AND
-					from_user != 'krezendes85@gmail.com'
 			";
 			$prepare = array(':from_user'=>$getSum->from_user);
 			$results = $app->connect->executeQuery($sql,$prepare)->fetch();
