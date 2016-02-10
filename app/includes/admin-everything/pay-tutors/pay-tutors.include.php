@@ -78,7 +78,7 @@
 
 			<div>Total Ammount Due</div>
 			<div class="block green white-text">
-				$<?php echo numbers((array_sum($total)/100)); ?>
+				$<?php echo numbers(($app->totalcost/100)); ?>
 			</div>
 
 			<div>Available Balance</div>
@@ -177,23 +177,7 @@
 					</td>
 				</tr>
 				<?php endforeach; ?>
-				<?php $additional = NULL; ?>
-				<?php if(empty($app->bgcheckrefund)): ?>
-				<tr class="green white-text">
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td>$30</td>
-					<td>Background Check</td>
-					<td><?php echo formatdate(thedate()); ?></td>
-				</tr>
-				<?php
-					$additional = 30;
-					#$totalgross[] = 3000;
-					#$totalpay[0] = $totalpay[0] - 3000;
-				?>
-				<?php endif; ?>
+				
 			</table>
 
 			<?php

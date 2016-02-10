@@ -1,95 +1,111 @@
 <?php
 
-	$data	=	$app->connect->createQueryBuilder();
-	$data	=	$data->select('sessions.id, user.first_name, user.last_name, user.url, user.id, user.account_id, sessions.from_user ')->from('avid___sessions','sessions');
-	$data	=	$data->where('sessions.paidout IS NULL AND sessions.session_status IS NOT NULL AND sessions.session_cost IS NOT NULL  AND from_user NOT LIKE "%---fraud%"');
-	$data	=	$data->setParameter(':usertype','tutor');
-	$data	=	$data->leftJoin('sessions','avid___user_profile','profile','profile.email = sessions.from_user');
-	$data	=	$data->leftJoin('sessions','avid___user','user','user.email = sessions.from_user');
-	$data	=	$data->groupBy('sessions.from_user');
-	$tutorswithsessions	=	$data->execute()->fetchAll();
+	// $data	=	$app->connect->createQueryBuilder();
+	// $data	=	$data->select('sessions.id, user.first_name, user.last_name, user.url, user.id, user.account_id, sessions.from_user ')->from('avid___sessions','sessions');
+	// $data	=	$data->where('sessions.paidout IS NULL AND sessions.session_status IS NOT NULL AND sessions.session_cost IS NOT NULL  AND from_user NOT LIKE "%---fraud%"');
+	// $data	=	$data->setParameter(':usertype','tutor');
+	// $data	=	$data->leftJoin('sessions','avid___user_profile','profile','profile.email = sessions.from_user');
+	// $data	=	$data->leftJoin('sessions','avid___user','user','user.email = sessions.from_user');
+	// $data	=	$data->groupBy('sessions.from_user');
+	// $tutorswithsessions	=	$data->execute()->fetchAll();
+	//notify($tutorswithsessions);
 
-	//AND from_user != "krezendes85@gmail.com"
+	$sql = "
+		SELECT
+			sessions.from_user as email,
+			user.first_name,
+			user.last_name,
+			user.url,
+			user.id,
+			user.account_id,
+			SUM(sessions.session_cost) as cost
+		FROM
+			avid___sessions sessions
 
+		LEFT JOIN
 
-	if(isset($tutorswithsessions[0])){
+			avid___user user on user.email = sessions.from_user
 
-		foreach($tutorswithsessions as $key=> $getSum){
+		WHERE
+			sessions.paidout IS NULL
+				AND
+			sessions.session_status IS NOT NULL
+				AND
+			sessions.session_cost IS NOT NULL
+				AND
+			sessions.from_user NOT LIKE '%-fraud%'
 
-			$sql = "
-				SELECT
-					SUM(session_cost) as cost
-				FROM
-					avid___sessions
-				WHERE
-					from_user = :from_user
-						AND
-					paidout IS NULL
-						AND
-					session_status IS NOT NULL
-						AND
-					session_cost IS NOT NULL
-			";
-			$prepare = array(':from_user'=>$getSum->from_user);
-			$results = $app->connect->executeQuery($sql,$prepare)->fetch();
+		GROUP BY sessions.from_user
+	";
+	$prepare = array(
 
-			//notify($results);
-
-			if(isset($results->cost)){
-				$tutorswithsessions[$key]->cost = $results->cost;
-			}
-			else{
-				$tutorswithsessions[$key]->cost = NULL;
-			}
-
+	);
+	$results = $app->connect->executeQuery($sql,$prepare)->fetchAll();
+	if(isset($results[0])){
+		$app->tutorswithsessions = $results;
+		$cost = [];
+		foreach($app->tutorswithsessions as $adding){
+			$cost[] = $adding->cost;
 		}
+		$app->totalcost = array_sum($cost);
 
-		$app->tutorswithsessions = $tutorswithsessions;
+		try{
+			$balance = \Stripe\Balance::retrieve();
+			$app->availableBalance = numbers(($balance->available[0]->amount/100));
+		}
+		catch(\Stripe\Error\Card $e) {
+			notify($e);
+		}
 	}
-
-	//
-
-
 
 	if(isset($id)){
-		$data	=	$app->connect->createQueryBuilder();
-		$data	=	$data->select('user.*,profile.*,settings.*')->from('avid___user','user');
-		$data	=	$data->where('user.id = :id')->setParameter(':id',$id);
-		$data	=	$data->innerJoin('user','avid___user_profile','profile','user.email = profile.email');
-		$data	=	$data->innerJoin('user','avid___user_account_settings','settings','user.email = settings.email');
-		$data	=	$data->execute()->fetch();
+		$sql = "
+			SELECT
+				user.id,
+				user.email,
+				user.first_name,
+				user.last_name,
+				user.url,
+				user.id,
+				user.account_id,
+				user.managed_id,
+				SUM(sessions.session_cost) as cost,
+				profile.getpaid
+			FROM
+				avid___user user
 
-		if(isset($data->id)){
+			INNER JOIN avid___sessions sessions on sessions.from_user = user.email
+
+			INNER JOIN avid___user_profile profile on profile.email = user.email
+
+			WHERE
+				user.id = :id
+					AND
+				sessions.paidout IS NULL
+					AND
+				sessions.session_status IS NOT NULL
+					AND
+				sessions.session_cost IS NOT NULL
+					AND
+				sessions.from_user NOT LIKE '%-fraud%'
+		";
+		$prepare = array(
+			':id'=>$id
+		);
+		$results = $app->connect->executeQuery($sql,$prepare)->fetch();
+		if(isset($results->id)){
 
 			$sql = "SELECT * FROM avid___sessions WHERE paidout IS NULL AND from_user = :from_user AND dispute IS NULL AND session_status IS NOT NULL AND session_cost != 0 ORDER BY ID DESC";
-			$prepare = array(':from_user'=>$data->email);
-			$results = $app->connect->executeQuery($sql,$prepare)->fetchAll();
-
-			$sql = "SELECT * FROM avid___paid_bgchecks WHERE email = :email";
-			$prepare = array(':email'=>$data->email);
-			$bgcheckrefund = $app->connect->executeQuery($sql,$prepare)->fetchAll();
-			$app->bgcheckrefund = $bgcheckrefund;
-
-
-			if(isset($data->id)){
-				$app->paytutor = $data;
-				$app->paytutor->sessions = $results;
-			}
+			$prepare = array(':from_user'=>$results->email);
+			$results->sessions = $app->connect->executeQuery($sql,$prepare)->fetchAll();
 
 			$sql = "SELECT first_name,last_name,address_line_1,address_line_2,city,state,zipcode,notes FROM avid___user_checks WHERE email = :email";
-			$prepare = array(':email'=>$data->email);
-			$results = $app->connect->executeQuery($sql,$prepare)->fetch();
-			if(isset($results->first_name)){
-				$app->paytutor->check = $results;
+			$prepare = array(':email'=>$results->email);
+			$check = $app->connect->executeQuery($sql,$prepare)->fetch();
+			if(isset($check->first_name)){
+				$results->check = $check;
 			}
 
+			$app->paytutor = $results;
 		}
-	}
-
-	try{
-		$balance = \Stripe\Balance::retrieve();
-		$app->availableBalance = numbers(($balance->available[0]->amount/100));
-	}
-	catch(\Stripe\Error\Card $e) {
-		notify($e);
 	}
