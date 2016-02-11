@@ -9,7 +9,6 @@
 			$tutorSignup = new Forms($app->connect);
 			$tutorSignup->formname = 'becomeatutor';
 			$tutorSignup->url = $app->request->getPath();
-			$tutorSignup->dependents = $app->dependents;
 			$tutorSignup->csrf_key = $csrf_key;
 			$tutorSignup->csrf_token = $csrf_token;
 			$tutorSignup->killAjax = true;
@@ -56,7 +55,6 @@
 				$variablename = new Forms($app->connect);
 				$variablename->formname = 'getprices';
 				$variablename->url = $app->request->getPath();
-				$variablename->dependents = $app->dependents;
 				$variablename->csrf_key = $csrf_key;
 				$variablename->csrf_token = $csrf_token;
 				$variablename->button = 'Get Prices';

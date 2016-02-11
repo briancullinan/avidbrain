@@ -12,7 +12,6 @@
 				$getpaid = new Forms($app->connect);
 				$getpaid->formname = 'getpaid';
 				$getpaid->url = '/payment/get-paid';
-				$getpaid->dependents = $app->dependents;
 				$getpaid->csrf_key = $csrf_key;
 				$getpaid->csrf_token = $csrf_token;
 				$getpaid->formvalues = $getpaidme;
@@ -50,7 +49,6 @@
 				$getpaid = new Forms($app->connect);
 				$getpaid->formname = 'cutchecks';
 				$getpaid->url = '/payment/get-paid';
-				$getpaid->dependents = $app->dependents;
 				$getpaid->csrf_key = $csrf_key;
 				$getpaid->csrf_token = $csrf_token;
 				$getpaid->formvalues = $getpaidme;

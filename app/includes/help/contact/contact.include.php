@@ -10,7 +10,6 @@
 			$variablename = new Forms($app->connect);
 			$variablename->formname = 'contactus';
 			$variablename->url = $app->request->getPath();
-			$variablename->dependents = $app->dependents;
 			if(isset($app->user->email)){
 				$myemail = new stdClass();
 				$myemail->name = short($app->user);

@@ -250,7 +250,7 @@
 				<?php if(isset($app->tutorsnearme)): ?>
 					<h2 class="tutors-near-me"><?php echo $app->job->subject_name; ?> Tutors Near You</h2>
 					<?php foreach($app->tutorsnearme as $searchResults): ?>
-						<?php include($app->dependents->APP_PATH."includes/user-profile/micro.tutor.profile.php"); ?>
+						<?php include(APP_PATH."includes/user-profile/micro.tutor.profile.php"); ?>
 					<?php endforeach; ?>
 
 					<a href="/categories/<?php echo $app->job->parent_slug; ?>/<?php echo $app->job->subject_slug; ?>">View More <?php echo $app->job->subject_name; ?> Tutors</a>

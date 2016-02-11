@@ -23,15 +23,15 @@
 <?php
 	if(isset($action)){
 
-		$allcurrentphotos = glob($app->dependents->APP_PATH.'uploads/photos/*');
-		$allcrops = glob($app->dependents->APP_PATH.'uploads/photos/*.crop*');
+		$allcurrentphotos = glob(APP_PATH.'uploads/photos/*');
+		$allcrops = glob(APP_PATH.'uploads/photos/*.crop*');
 
 		if($action=='rename'){
 			foreach($allcurrentphotos as $photo){
 
 				#printer($photo);
 
-				$path = $app->dependents->APP_PATH.'uploads/photos/';
+				$path = APP_PATH.'uploads/photos/';
 				$email = str_replace(array($path,'.crop','.jpg','.JPG','.png','.PNG','.jpeg','.gif'),'',$photo);
 
 				if(filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -50,7 +50,7 @@
 						$prepare = array(':email'=>$email);
 						$results = $app->connect->executeQuery($sql,$prepare)->fetch();
 
-						$newfilenameFull = $app->dependents->DOCUMENT_ROOT.'profiles/approved/'.$newfilename;
+						$newfilenameFull = DOCUMENT_ROOT.'profiles/approved/'.$newfilename;
 						$renameFull = $path.$newfilename;
 
 						if(isset($results->my_upload)){
@@ -72,8 +72,8 @@
 
 				$fullfile = $file;
 
-				$path = $app->dependents->APP_PATH.'uploads/photos/';
-				$approved = $app->dependents->DOCUMENT_ROOT.'profiles/approved/';
+				$path = APP_PATH.'uploads/photos/';
+				$approved = DOCUMENT_ROOT.'profiles/approved/';
 				$file = str_replace(array($path,'.crop','.jpg','.JPG','.png','.PNG','.jpeg','.gif'),'',$file);
 				$emptyfile = str_replace($path,'',$fullfile);
 				$file = explode('--',$file);
@@ -112,7 +112,7 @@
 			foreach($results as $changedatabase){
 
 				$oldfile = $changedatabase->my_upload;
-				$path = $app->dependents->APP_PATH.'uploads/photos/';
+				$path = APP_PATH.'uploads/photos/';
 				$extension = strtolower(str_replace($path.$changedatabase->email,'',$oldfile));
 
 				$newfilename = $path.'--'.$changedatabase->usertype.'s--'.$changedatabase->state_slug.'--'.$changedatabase->city_slug.'--'.$changedatabase->username.$extension;
@@ -299,8 +299,8 @@
 			";
 			$prepare = array();
 			$results = $app->connect->executeQuery($sql,$prepare)->fetchAll();
-			$uploads = $app->dependents->APP_PATH.'uploads/photos/';
-			$approved = $app->dependents->DOCUMENT_ROOT.'profiles/approved/';
+			$uploads = APP_PATH.'uploads/photos/';
+			$approved = DOCUMENT_ROOT.'profiles/approved/';
 
 			foreach($results as $changename){
 

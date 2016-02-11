@@ -13,7 +13,7 @@
         <div class="col s12 m4 l3 center-align">
             <div class="image">
                 <a href="<?php echo $searchResults->url; ?>">
-                    <img src="<?php echo userphotographs($app->user,$searchResults,$app->dependents); ?>" />
+                    <img src="<?php echo userphotographs($app->user,$searchResults); ?>" />
                 </a>
             </div>
             <div class="user-name">

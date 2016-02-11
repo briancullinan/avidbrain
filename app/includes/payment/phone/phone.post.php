@@ -59,7 +59,7 @@
             try{
                 $app->twilio->account->messages->create(array(
     				'To' => $app->validatephone->number,
-    				'From' => $app->dependents->twilio->number,
+    				'From' => TWILIO_NUMBER,
     				'Body' => 'Your authentication code is: '.$random_guaranty
     			));
             }

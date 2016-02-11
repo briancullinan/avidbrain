@@ -82,11 +82,11 @@
 		$insert = $app->connect->insert('avid___users_temp',$inserttemp);
 		
 		$message = '<p>Please login to finish your profile</p>';
-		$message.= '<p>Your verification link is: <a href="'.$app->dependents->DOMAIN.'/activate/'.$validation_code.'">Verify Email Address</a></p>';
+		$message.= '<p>Your verification link is: <a href="'.DOMAIN.'/activate/'.$validation_code.'">Verify Email Address</a></p>';
 		
 		
 		$app->mailgun->to = $app->postjob->email;
-		$app->mailgun->subject = 'Thank you for posting a job at '.$app->dependents->SITE_NAME_PROPPER;
+		$app->mailgun->subject = 'Thank you for posting a job at '.SITENAME_PROPPER;
 		$app->mailgun->message = $message;
 		$app->mailgun->send();
 		

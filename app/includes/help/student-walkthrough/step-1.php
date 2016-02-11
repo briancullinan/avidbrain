@@ -1,5 +1,5 @@
-<h3>Your working relationship with <?php echo $app->dependents->SITE_NAME_PROPPER; ?>.</h3>
-<p>When creating a profile on <?php echo $app->dependents->SITE_NAME_PROPPER; ?>, you’re an independent tutor in control of your tutoring business. You have the full responsibility and flexibility of setting up sessions with students and entering the lesson details into the system. You select which students you would like to work with and how much to charge each student. </p>
+<h3>Your working relationship with <?php echo SITENAME_PROPPER; ?>.</h3>
+<p>When creating a profile on <?php echo SITENAME_PROPPER; ?>, you’re an independent tutor in control of your tutoring business. You have the full responsibility and flexibility of setting up sessions with students and entering the lesson details into the system. You select which students you would like to work with and how much to charge each student. </p>
 
 <div class="walk-order">
 	<a href="/help/tutor-walkthrough/" class="btn left"><i class="fa fa-chevron-left"></i> Back</a>

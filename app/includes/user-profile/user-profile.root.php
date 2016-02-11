@@ -16,9 +16,9 @@
 		}
 		else{
 			include($app->target->action);
-			$app->target->action = $app->dependents->APP_PATH.'includes/shared-pages/'.$category.'.action.php';
-			$app->target->post = $app->dependents->APP_PATH.'includes/shared-pages/'.$category.'.post.php';
-			$app->target->include = $app->dependents->APP_PATH.'includes/shared-pages/'.$category.'.include.php';
+			$app->target->action = APP_PATH.'includes/shared-pages/'.$category.'.action.php';
+			$app->target->post = APP_PATH.'includes/shared-pages/'.$category.'.post.php';
+			$app->target->include = APP_PATH.'includes/shared-pages/'.$category.'.include.php';
 		}
 	}
 	

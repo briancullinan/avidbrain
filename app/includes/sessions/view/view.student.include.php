@@ -56,7 +56,7 @@
 		<?php if(isset($results->username)): ?>
 		    <div class="user-photograph">
 		        <a href="<?php echo $results->url; ?>">
-		            <img src="<?php echo userphotographs($app->user,$results,$app->dependents); ?>" />
+		            <img src="<?php echo userphotographs($app->user,$results); ?>" />
 		        </a>
 		    </div>
 		    <div class="user-name">
@@ -69,7 +69,7 @@
 				<div class="alert red white-text">Canceled Session</div>
 			<?php elseif(isset($app->viewsession->refund_amount) && isset($app->viewsession->dispute_support)): ?>
 				<div class="alert orange white-text">
-					<?php echo $app->dependents->SITE_NAME_PROPPER; ?> Staff has been contacted to help you out.
+					<?php echo SITENAME_PROPPER; ?> Staff has been contacted to help you out.
 				</div>
 			<?php elseif(isset($app->viewsession->refund_amount) && isset($app->viewsession->dispute)): ?>
 
@@ -162,7 +162,6 @@
 					$sessionreviews = new Forms($app->connect);
 					$sessionreviews->formname = 'sessionreviews';
 					$sessionreviews->url = $app->request->getPath();
-					$sessionreviews->dependents = $app->dependents;
 					$sessionreviews->csrf_key = $csrf_key;
 					$sessionreviews->csrf_token = $csrf_token;
 					$sessionreviews->makeform();
@@ -173,7 +172,6 @@
 					$sessionreviews = new Forms($app->connect);
 					$sessionreviews->formname = 'disputeclaim';
 					$sessionreviews->url = $app->request->getPath();
-					$sessionreviews->dependents = $app->dependents;
 					$sessionreviews->csrf_key = $csrf_key;
 					$sessionreviews->csrf_token = $csrf_token;
 					$sessionreviews->makeform();

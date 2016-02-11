@@ -1,6 +1,6 @@
 <div class="homepage-logged-in">
 
-	<h1>Welcome to <?php echo $app->dependents->SITE_NAME_PROPPER; ?></h1>
+	<h1>Welcome to <?php echo SITENAME_PROPPER; ?></h1>
 
 	
 

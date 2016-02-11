@@ -90,9 +90,9 @@
 
 		$app->message->prevnext = $prevnext;
 
-		$app->message->user = getmessageuserinfo($app->connect,$app->message->messageuser,$app->user,$app->dependents);
+		$app->message->user = getmessageuserinfo($app->connect,$app->message->messageuser,$app->user);
 		if(empty($app->message->user)){
-			$app->message->user = getmessageuserinfo($app->connect,'support@avidbrain.com',$app->user,$app->dependents);
+			$app->message->user = getmessageuserinfo($app->connect,'support@avidbrain.com',$app->user);
 		}
 		//notify($app->message->user);
 		//notify($app->message);
@@ -104,7 +104,7 @@
 	}
 
 
-	function getmessageuserinfo($connect,$email,$user,$dependents){
+	function getmessageuserinfo($connect,$email,$user){
 		$parent_company_email = parent_company_email($email);
 		if($parent_company_email==true){
 			$sql = "
@@ -146,7 +146,7 @@
 		$results = $connect->executeQuery($sql,$prepare)->fetch();
 
 		if(isset($results->first_name)){
-			$results->image = userphotographs($user,$email,$dependents);
+			$results->image = userphotographs($user,$email);
 	        $results->name = short($results);
 		}
 

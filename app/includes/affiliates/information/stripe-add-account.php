@@ -1,5 +1,5 @@
 <?php
-	if($app->dependents->DEBUG==true){
+	if(DEBUG==true){
 
 		echo '<div class="padd5 red white-text">';
 		echo '<p>Test TAX ID: 000000000</p>';

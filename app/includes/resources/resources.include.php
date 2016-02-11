@@ -25,8 +25,8 @@
 		<div class="block">
 			<div class="title">Follow Us</div>
 			<div class="description">
-				<p>Follow us on twitter to get the newest news from <?php echo $app->dependents->SITE_NAME; ?>.</p>
-				<p><a target="_blank" href="<?php echo $app->dependents->social->twitter; ?>"><?php echo str_replace('https://twitter.com/','@',$app->dependents->social->twitter); ?></a></p>
+				<p>Follow us on twitter to get the newest news from <?php echo SITENAME; ?>.</p>
+				<p><a target="_blank" href="<?php echo socialTwitter; ?>"><?php echo str_replace('https://twitter.com/','@',socialTwitter); ?></a></p>
 			</div>
 		</div>
 	</div>

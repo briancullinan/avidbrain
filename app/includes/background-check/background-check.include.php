@@ -45,7 +45,7 @@
 					echo '<div class="background-check-status">Your Background Check Status: <span class="'.$app->user->reportstatus.'">'.ucwords($app->user->reportstatus).'</span></div>';
 				}
 
-                $file = $app->dependents->APP_PATH.'includes/backgroundcheck/backgroundcheck-'; //include(step1.php');
+                $file = APP_PATH.'includes/backgroundcheck/backgroundcheck-'; //include(step1.php');
 
 				if(isset($app->newtutor->candidate_id)){
 					echo 'We will process your background check and let you know within 7-10 working days.';

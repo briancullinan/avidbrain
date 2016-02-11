@@ -6,7 +6,7 @@
 		<?php endif; ?>
 		<div class="title">
 			<?php if(isset($subject->status) && $subject->status=='verified'): ?>
-				<i class="mdi-maps-beenhere tooltipped verified-by" data-position="top" data-delay="50" data-tooltip="Verified By <?php echo $app->dependents->SITE_NAME_PROPPER; ?>"></i>
+				<i class="mdi-maps-beenhere tooltipped verified-by" data-position="top" data-delay="50" data-tooltip="Verified By <?php echo SITENAME_PROPPER; ?>"></i>
 				  
 			<?php endif; ?>
 			<span class="blue white-text badge"><?php echo ucwords(str_replace('-',' ',$subject->parent_slug)); ?></span>
@@ -33,7 +33,7 @@
 			
 			<?php if(isset($subject->description_verified)): ?>
 			<div class="alert blue white-text">
-				<?php  echo $subject->subject_name; ?> has bee verified by <?php echo $app->dependents->SITE_NAME_PROPPER; ?>. If you modify it now, it will have to be re-verified before it's public.
+				<?php  echo $subject->subject_name; ?> has bee verified by <?php echo SITENAME_PROPPER; ?>. If you modify it now, it will have to be re-verified before it's public.
 			</div>
 			<?php endif; ?>
 			

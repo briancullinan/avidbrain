@@ -32,7 +32,7 @@
 
 		$subject = the_users_name($app->user).' has accepted your tutoring application.';
 		$message = '<p>You may now setup a tutoring session with '.the_users_name($app->user).'</p>';
-		$message.='<p> <a class="btn" href="'.$app->dependents->DOMAIN.'/sessions/jobs">Setup Session</a> </p>';
+		$message.='<p> <a class="btn" href="'.DOMAIN.'/sessions/jobs">Setup Session</a> </p>';
 
 		$app->mailgun->to = $app->acceptapplication->email;
 		$app->mailgun->subject = $subject;

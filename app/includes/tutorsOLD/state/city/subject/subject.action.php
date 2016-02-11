@@ -1,5 +1,5 @@
 <?php
-	notify($app->dependents->SITE_NAME_PROPPER);
+	notify(SITENAME_PROPPER);
 	$subject = str_replace('-tutors','',$subject);
 	
 	$app->meta = new stdClass();

@@ -61,7 +61,6 @@
 		if(empty($userAccountInfo)){
 			notify('No User Payment Info');
 		}
-		//echo $app->dependents->stripe->STRIPE_SECRET; exit;
 		$transferInfo = array(
 			"amount" => $app->paytutorsessioninfo->amount,
 			"currency" => "usd",

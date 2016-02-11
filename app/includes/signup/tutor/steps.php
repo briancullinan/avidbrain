@@ -399,27 +399,27 @@
                     <div class="the-background-check-complete">
                         <?php
                             if(isset($promocode) && $promocode=='step1' || empty($promocode) && isset($app->newtutor->step1)){
-                                include($app->dependents->APP_PATH.'includes/backgroundcheck/backgroundcheck-step1.php');
+                                include(APP_PATH.'includes/backgroundcheck/backgroundcheck-step1.php');
                             }
                             elseif(isset($promocode) && $promocode=='step2'){
-                                include($app->dependents->APP_PATH.'includes/backgroundcheck/backgroundcheck-step2.php');
+                                include(APP_PATH.'includes/backgroundcheck/backgroundcheck-step2.php');
                             }
                             elseif(isset($promocode) && $promocode=='step3'){
-                                include($app->dependents->APP_PATH.'includes/backgroundcheck/backgroundcheck-step3.php');
+                                include(APP_PATH.'includes/backgroundcheck/backgroundcheck-step3.php');
                             }
                             elseif(isset($promocode) && $promocode=='step4'){
-                                include($app->dependents->APP_PATH.'includes/backgroundcheck/backgroundcheck-step4.php');
+                                include(APP_PATH.'includes/backgroundcheck/backgroundcheck-step4.php');
                             }
                             elseif(isset($promocode) && $promocode=='step5' && empty($app->newtutor->charge_id)){
-                                include($app->dependents->APP_PATH.'includes/backgroundcheck/backgroundcheck-step5.php');
+                                include(APP_PATH.'includes/backgroundcheck/backgroundcheck-step5.php');
                             }
                             elseif(isset($promocode) && $promocode=='step5' && isset($app->newtutor->charge_id)){
-                                include($app->dependents->APP_PATH.'includes/backgroundcheck/backgroundcheck-step5.complete.php');
+                                include(APP_PATH.'includes/backgroundcheck/backgroundcheck-step5.complete.php');
                             }
                             elseif(isset($promocode) && $promocode=='step6'){
-                                include($app->dependents->APP_PATH.'includes/backgroundcheck/backgroundcheck-step6.php');
+                                include(APP_PATH.'includes/backgroundcheck/backgroundcheck-step6.php');
                                 if(isset($app->newtutor->charge_id) && empty($app->newtutor->canditate_id)){
-                                    include($app->dependents->APP_PATH.'includes/backgroundcheck/backgroundcheck-step6.action.php');
+                                    include(APP_PATH.'includes/backgroundcheck/backgroundcheck-step6.action.php');
                                 }
                             }
                         ?>
@@ -429,7 +429,7 @@
                         Begin Background Check
                     </div>
                     <div class="the-background-check-steps">
-                        <?php include($app->dependents->APP_PATH.'includes/backgroundcheck/backgroundcheck-step1.php'); ?>
+                        <?php include(APP_PATH.'includes/backgroundcheck/backgroundcheck-step1.php'); ?>
                     </div>
                 <?php endif; ?>
 

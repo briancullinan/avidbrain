@@ -13,7 +13,7 @@
     //
     // if(isset($action)){
     //
-    //     $file = $app->dependents->APP_PATH.'uploads/resumes/'.$app->thetutor->my_resume;
+    //     $file = APP_PATH.'uploads/resumes/'.$app->thetutor->my_resume;
     //     header('Content-type:'. mime_content_type($file));
     //     header('Content-Disposition: inline; filename="thefile.'.getfiletype($file).'"');
     //     @readfile($file);

@@ -92,7 +92,7 @@
     //$page
 
 
-    $offsets = new offsets((isset($page) ? $page : 1),$app->dependents->pagination->items_per_page);
+    $offsets = new offsets((isset($page) ? $page : 1),PERPAGE);
     //notify($offsets);
 
 	$limitOffset = "
@@ -225,7 +225,7 @@
 
     foreach($results->results as $key=> $build){
         $results->results[$key]->personal_statement_verified = truncate($build->personal_statement_verified,400);
-        $results->results[$key]->img = userphotographs($app->user,$build,$app->dependents);
+        $results->results[$key]->img = userphotographs($app->user,$build);
         unset($results->results[$key]->my_avatar);
         unset($results->results[$key]->my_upload);
         unset($results->results[$key]->my_upload_status);

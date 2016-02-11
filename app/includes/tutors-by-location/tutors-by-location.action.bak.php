@@ -32,7 +32,7 @@
 	}
 
 	$app->meta = new stdClass();
-	$app->meta->title = $app->dependents->SITE_NAME_PROPPER.' Tutors by Location';
-	$app->meta->h1 = $app->dependents->SITE_NAME_PROPPER.' Tutors by Location';
+	$app->meta->title = SITENAME_PROPPER.' Tutors by Location';
+	$app->meta->h1 = SITENAME_PROPPER.' Tutors by Location';
 	$app->meta->keywords = $keywords;
 	$app->meta->description = 'avid brain tutors are everywhere';

@@ -11,7 +11,7 @@
 							$image = $staff->my_avatar;
 						}
 						else{
-							$image = '/images/'.$app->dependents->SITE_NAME.'.png';
+							$image = '/images/'.SITENAME.'.png';
 						}
 					?>
 					<div class="avatar staff"><img class="responsive-img" src="<?php echo $image; ?>" /></div>

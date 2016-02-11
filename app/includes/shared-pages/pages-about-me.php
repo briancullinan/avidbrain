@@ -31,7 +31,7 @@
 			</div>
 		<?php elseif(isset($app->currentuser->short_description_verified) && $app->currentuser->usertype=='tutor'): ?>
 			<div class="alert blue white-text">
-				Your short description has been verified, if you modify it, <?php echo $app->dependents->SITE_NAME_PROPPER; ?> will have to re-verify it, before it's public.
+				Your short description has been verified, if you modify it, <?php echo SITENAME_PROPPER; ?> will have to re-verify it, before it's public.
 			</div>
 		<?php endif; ?>
 
@@ -45,7 +45,7 @@
 			</div>
 		<?php elseif(isset($app->currentuser->personal_statement_verified) && $app->currentuser->usertype=='tutor'): ?>
 			<div class="alert blue white-text">
-				Your personal statement has been verified, if you modify it, <?php echo $app->dependents->SITE_NAME_PROPPER; ?> will have to re-verify it, before it's public.
+				Your personal statement has been verified, if you modify it, <?php echo SITENAME_PROPPER; ?> will have to re-verify it, before it's public.
 			</div>
 		<?php endif; ?>
 

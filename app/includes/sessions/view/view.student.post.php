@@ -26,7 +26,7 @@
 			$message.= '<p>Review: '.$app->sessionreviews->review_text.'</p>';
 		}
 
-		$messageview = '<p> <a href="'.$app->dependents->DOMAIN.'">View More Info</a> </p>';
+		$messageview = '<p> <a href="'.DOMAIN.'">View More Info</a> </p>';
 
 		if(isset($app->viewsession->getemails) && $app->viewsession->getemails=='yes'){
 			$app->mailgun->to = $app->viewsession->from_user;
@@ -136,5 +136,5 @@
 		}
 	}
 	else{
-		notify($app->dependents->SITE_NAME_PROPPER);
+		notify(SITENAME_PROPPER);
 	}

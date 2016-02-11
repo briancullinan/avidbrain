@@ -55,7 +55,7 @@
 
 	$routes['subjects-match'] = (object)array('url'=>'/subjects-match','slug'=>'subjects-match','route'=>'/subjects/:subject/','include'=>'subjects-match','protected'=>NULL,'permissions'=>array());
 
-	if($app->dependents->SITE_NAME=='amozek'){
+	if(SITENAME=='amozek'){
 		$routes['amozek'] = (object)array('url'=>'/amozek','slug'=>'amozek','route'=>'/amozek/','include'=>'amozek','protected'=>NULL,'permissions'=>array());
 	}
 	$routes['qa-login'] = (object)array('url'=>'/qa-login','slug'=>'qa-login','route'=>'/qa-login/','include'=>'qa-login','protected'=>1,'permissions'=>array());
@@ -161,7 +161,7 @@
 
 	// Help
 	$routes['help'] = (object)array('url'=>'/help','slug'=>'help','route'=>'/help/','include'=>'help','protected'=>NULL,'permissions'=>array());
-	if($app->dependents->SITE_NAME=='amozek'){
+	if(SITENAME=='amozek'){
 		$routes['what-is-amozek'] = (object)array('url'=>'/help/what-is-amozek','slug'=>'what-is-amozek','route'=>'/help/what-is-amozek/','include'=>'help/what-is-amozek','protected'=>NULL,'permissions'=>array());
 	}
 	$routes['help-faqs'] = (object)array('url'=>'/help/faqs','slug'=>'faqs','route'=>'/help/faqs/','include'=>'help/faqs','protected'=>NULL,'permissions'=>array());

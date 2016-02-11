@@ -14,7 +14,7 @@
 
 			$app->mailgun->to = 'support@avidbrain.com';
 			$app->mailgun->subject = 'Someone needs their photo reviewed';
-			$app->mailgun->message = "Please review this user: ".$app->dependents->DOMAIN.$app->user->url." <br> Reason: My Photo ";
+			$app->mailgun->message = "Please review this user: ".DOMAIN.$app->user->url." <br> Reason: My Photo ";
 			$app->mailgun->send();
 
 			$insert = $app->connect->insert('avid___user_needsprofilereview',$needsreview);
@@ -37,7 +37,7 @@
 
 			$app->mailgun->to = 'support@avidbrain.com';
 			$app->mailgun->subject = 'Someone needs their profile reviewed';
-			$app->mailgun->message = "Please review this user: ".$app->dependents->DOMAIN.$app->user->url." <br> Reason:  ".$app->requestprofilereview->type;
+			$app->mailgun->message = "Please review this user: ".DOMAIN.$app->user->url." <br> Reason:  ".$app->requestprofilereview->type;
 			$app->mailgun->send();
 
 			$app->user->lock = 1;
@@ -68,7 +68,7 @@
 
 		$app->mailgun->to = 'support@avidbrain.com';
 		$app->mailgun->subject = 'Someone needs their photo reviewed';
-		$app->mailgun->message = "Please review this user: ".$app->dependents->DOMAIN.$app->user->url." <br> Reason: My Photo ";
+		$app->mailgun->message = "Please review this user: ".DOMAIN.$app->user->url." <br> Reason: My Photo ";
 		$app->mailgun->send();
 
 		$insert = $app->connect->insert('avid___user_needsprofilereview',$needsreview);

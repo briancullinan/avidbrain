@@ -12,7 +12,7 @@
         $type = $allowed[$download];
 
         $fileName = $type.'-'.$download.'.jpg';
-        $filePath = $app->dependents->DOCUMENT_ROOT.'images/download/'.$fileName;
+        $filePath = DOCUMENT_ROOT.'images/download/'.$fileName;
         $fileSize = filesize($filePath);
 
 

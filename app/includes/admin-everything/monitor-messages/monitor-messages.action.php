@@ -3,7 +3,7 @@
 	$data	=	$data->select('messages.id')->from('avid___messages','messages');
 	$data	=	$data->orderBy('id','DESC');
 	$count	=	$data->execute()->rowCount();
-	$offsets = new offsets((isset($number) ? $number : NULL),$app->dependents->pagination->items_per_page);
+	$offsets = new offsets((isset($number) ? $number : NULL),PERPAGE);
 	$count	=	$data->execute()->rowCount();
 	$data	=	$data->setMaxResults($offsets->perpage)->setFirstResult($offsets->offsetStart);
 	$data	=	$data->addSelect('messages.*');

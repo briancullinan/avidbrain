@@ -44,7 +44,7 @@
 
 
     // ACTION CALLS
-    $offsets = new offsets((isset($number) ? $number : 1),$app->dependents->pagination->items_per_page);
+    $offsets = new offsets((isset($number) ? $number : 1),PERPAGE);
 
 	$limitOffset = "
 		LIMIT

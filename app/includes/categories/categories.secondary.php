@@ -1,1 +1,1 @@
-<?php include($app->dependents->APP_PATH.'includes/tutors/tutors.secondary.php'); ?>
+<?php include(APP_PATH.'includes/tutors/tutors.secondary.php'); ?>

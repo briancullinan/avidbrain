@@ -228,7 +228,7 @@
             //notify($data);
 
 
-            if(isset($data[0]) && $app->dependents->MODE == 'production'){
+            if(isset($data[0]) && MODE == 'production'){
 
                 $subject = 'A student has posted a new job';
                 $message = '<br><h2>'.$app->postjob->subject_name.' Student</h2>';
@@ -237,7 +237,7 @@
                 $message.= '<p><strong>Date Posted:</strong> '.formatdate(thedate(), 'M. jS, Y @ g:i a').'</p>';
                 $message.= '<p><strong>My Skill Level:</strong> '.$app->postjob->skill_level.'</p>';
                 $message.= '<p><strong>Tutoring Type:</strong> '.online_tutor($app->postjob->type).'</p>';
-                $message.= '<p><a href="'.$app->dependents->DOMAIN.'/jobs/apply/'.$jobid.'">View Job Posting</a></p>';
+                $message.= '<p><a href="'.DOMAIN.'/jobs/apply/'.$jobid.'">View Job Posting</a></p>';
 
                 $message.= '<p>If you do not want to receive these emails, you can change your options in the Account Settings Page</p>';
 

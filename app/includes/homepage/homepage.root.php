@@ -29,7 +29,7 @@
 			try{
 				$starting = explode(' ',$app->user->signup_date);
 				$starting = $starting[0];
-				$p12FilePath = $app->dependents->APP_PATH.'dependents/google-api.p12';
+				$p12FilePath = APP_PATH.'dependents/google-api.p12';
 				$serviceClientId = '572852330695-0hbkh6fr4okvdvqk6tncit8154aqbtne.apps.googleusercontent.com';
 				$serviceAccountName = '572852330695-0hbkh6fr4okvdvqk6tncit8154aqbtne@developer.gserviceaccount.com';
 				$scopes = array('https://www.googleapis.com/auth/analytics.readonly');
@@ -163,7 +163,7 @@
 
 
 	$app->meta = new stdClass();
-	$app->meta->title = 'Find A Tutor, Teacher, Coach, Mentor @ '.$app->dependents->SITE_NAME_PROPPER;
+	$app->meta->title = 'Find A Tutor, Teacher, Coach, Mentor @ '.SITENAME_PROPPER;
 	$app->meta->h1 = false;
 	$app->meta->keywords = 'avidbrain,tutor,teacher,coach,mentor,educator,instructor,professor,scholar,PHD';
 	$app->meta->description = 'Teach Something. Learn Anything.';

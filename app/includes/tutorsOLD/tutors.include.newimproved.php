@@ -30,7 +30,7 @@
 				<div class="col s12 m4 l3 center-align">
 					<div class="image">
 						<a href="<?php echo $searchResults->url; ?>">
-							<img src="<?php echo userphotographs($app->user,$searchResults,$app->dependents); ?>" />
+							<img src="<?php echo userphotographs($app->user,$searchResults); ?>" />
 						</a>
 					</div>
 					<div class="user-name">
@@ -69,23 +69,23 @@
 								<?php
 									//printer($searchResults);
 									if(empty($searchResults->emptybgcheck)){
-										include($app->dependents->APP_PATH.'includes/badges/badge.backgroundcheck.php');
+										include(APP_PATH.'includes/badges/badge.backgroundcheck.php');
 									}
 
 									if(!empty($searchResults->star_score)){
-										include($app->dependents->APP_PATH.'includes/badges/badge.average_score.php');
+										include(APP_PATH.'includes/badges/badge.average_score.php');
 									}
 
 									if(isset($searchResults->negotiableprice) && $searchResults->negotiableprice=='yes'){
-										include($app->dependents->APP_PATH.'includes/badges/badge.negotiable_rate.php');
+										include(APP_PATH.'includes/badges/badge.negotiable_rate.php');
 									}
 
 									//negotiableprice
 
-									#echo($app->dependents->APP_PATH.'includes/badges/badge.review_count.php');
-									#echo($app->dependents->APP_PATH.'includes/badges/badge.hours_tutored.php');
-									#echo($app->dependents->APP_PATH.'includes/badges/badge.student_count.php');
-									#echo($app->dependents->APP_PATH.'includes/badges/badge.fancy_hours_badge.php');
+									#echo(APP_PATH.'includes/badges/badge.review_count.php');
+									#echo(APP_PATH.'includes/badges/badge.hours_tutored.php');
+									#echo(APP_PATH.'includes/badges/badge.student_count.php');
+									#echo(APP_PATH.'includes/badges/badge.fancy_hours_badge.php');
 									#
 								?>
 							</div>

@@ -13,7 +13,7 @@
 		<?php if(isset($results->username)): ?>
 		    <div class="user-photograph">
 		        <a href="<?php echo $results->url; ?>">
-		            <img src="<?php echo userphotographs($app->user,$results,$app->dependents); ?>" />
+		            <img src="<?php echo userphotographs($app->user,$results); ?>" />
 		        </a>
 		    </div>
 		    <div class="user-name">
@@ -45,7 +45,7 @@
 					Contest Dispute
 				</button>
 			<?php else: ?>
-				<!-- <?php echo $app->dependents->SITE_NAME_PROPPER; ?> -->
+				<!-- <?php echo SITENAME_PROPPER; ?> -->
 			<?php endif; ?>
 		</div>
 
@@ -70,7 +70,7 @@
 					<div class="row">
 						<div class="col s12 m6 l6">
 							How much would you like to refund <?php echo short($app->viewsession); ?>? <br>
-							You can refund <span class="notice blue white-text">$1 or $<?php echo numbers($cost); ?></span>, it's up to you. If your student still has problems with the session cost, <?php echo $app->dependents->SITE_NAME_PROPPER; ?> will have to mediate the situation.
+							You can refund <span class="notice blue white-text">$1 or $<?php echo numbers($cost); ?></span>, it's up to you. If your student still has problems with the session cost, <?php echo SITENAME_PROPPER; ?> will have to mediate the situation.
 						</div>
 						<div class="col s12 m6 l6">
 							<p>
@@ -114,7 +114,6 @@
 					$sessionreviews = new Forms($app->connect);
 					$sessionreviews->formname = 'contactus';
 					$sessionreviews->url = $app->request->getPath();
-					$sessionreviews->dependents = $app->dependents;
 					$sessionreviews->csrf_key = $csrf_key;
 					$sessionreviews->csrf_token = $csrf_token;
 

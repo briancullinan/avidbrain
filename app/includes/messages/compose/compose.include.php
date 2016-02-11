@@ -30,7 +30,6 @@
 					$messagingsystem = new Forms($app->connect);
 					$messagingsystem->formname = 'messagingsystem';
 					$messagingsystem->url = $app->composemessage->url;
-					$messagingsystem->dependents = $app->dependents;
 					$messagingsystem->csrf_key = $csrf_key;
 					$messagingsystem->csrf_token = $csrf_token;
 					$messagingsystem->makeform();

@@ -68,7 +68,7 @@
 
 		if(isset($app->setupsession->whiteboard) && $app->setupsession->whiteboard=='yes'){
 			$createRoom = array(
-				'api_key'=>$app->dependents->scribblarAPI,
+				'api_key'=>SCRIBBLAR_ID,
 				'function'=>'rooms.add',
 				'roomname'=>'Tutor with '.short($app->user),
 				'allowguests'=>1,

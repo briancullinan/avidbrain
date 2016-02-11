@@ -32,7 +32,7 @@
 
 			<div class="user-photograph">
 				<a href="<?php echo $searchResults->url; ?>">
-					<img src="<?php echo userphotographs($app->user,$searchResults,$app->dependents); ?>" />
+					<img src="<?php echo userphotographs($app->user,$searchResults); ?>" />
 				</a>
 			</div>
 			<div class="user-name">

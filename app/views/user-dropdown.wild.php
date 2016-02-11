@@ -58,7 +58,7 @@
 	<li class="my-info-drop">
 		<div class="row valign-wrapper">
 			<div class="col s5 m5 l5 my-info-img">
-				<img src="<?php echo userphotographs($app->user,$app->user,$app->dependents); ?>" />
+				<img src="<?php echo userphotographs($app->user,$app->user); ?>" />
 			</div>
 			<div class="col s7 m7 l7 ">
 

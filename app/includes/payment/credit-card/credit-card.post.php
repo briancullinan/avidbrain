@@ -32,7 +32,7 @@
 		    $subject = 'You have a message from a new student';
 		    $message = '<p>A new student has signed up, from your profile.</p>';
 		    $message.= '<p>Message From Student: '.$app->waitingtoemail->send_message.' </p>';
-		    $messageEmail = '<p> <a href="'.$app->dependents->DOMAIN.'/login" target="_blank">Log In To Start Tutoring</a> </p>';
+		    $messageEmail = '<p> <a href="'.DOMAIN.'/login" target="_blank">Log In To Start Tutoring</a> </p>';
 
 		    if(isset($app->waitingtoemail->getemails) && $app->waitingtoemail->getemails=='yes'){
 

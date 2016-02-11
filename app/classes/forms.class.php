@@ -59,20 +59,20 @@
 			else{
 				$action = '/';
 			}
-			
+
 			if(isset($_SESSION['slim.flash']['postdata'])){
 				//notify($_SESSION['slim.flash']['postdata']);
 				$this->formvalues = $_SESSION['slim.flash']['postdata'];
 			}
 			$_SESSION['slim.flash']['postdata'] = NULL;
 			unset($_SESSION['slim.flash']['postdata']);
-			
+
 			if(isset($this->questions) && isset($this->inserts)){
 				$inputs = array();
 				foreach($this->questions as $data){
 					$inputs[] = $data;
 				}
-				
+
 				if(is_array($this->inserts)){
 					foreach($this->inserts as $insertItem){
 						array_unshift($inputs, $insertItem);
@@ -80,7 +80,7 @@
 				}
 				$this->questions = $inputs;
 			}
-			
+
 
 			?>
 
@@ -99,7 +99,7 @@
 									?>
 									<div class="input-field col <?php if(isset($question->class)){ echo $question->class;}else{ echo ' s12 '; } ?> type-<?php echo $question->type; ?>" id="field_<?php echo $this->formname.'_'.$question->name; ?>">
 										<?php
-											$input = $this->dependents->APP_PATH.'forms/inputs/input--'.$question->type.'.php';
+											$input = APP_PATH.'forms/inputs/input--'.$question->type.'.php';
 											if(file_exists($input)){
 												include($input);
 											}

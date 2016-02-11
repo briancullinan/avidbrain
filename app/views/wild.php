@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title><?php if(isset($app->meta->title)){ echo strip_tags($app->meta->title);}else{ echo $app->dependents->SITE_NAME; } ?></title>
+	<title><?php if(isset($app->meta->title)){ echo strip_tags($app->meta->title);}else{ echo SITENAME; } ?></title>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-	<meta name="application-name" content="<?php echo $app->dependents->SITE_NAME; ?>" />
-	<meta name="description" content="<?php if(isset($app->meta->description)){echo $app->meta->description;}else{ echo $app->dependents->SITE_NAME_PROPPER.' Tutoring. Find A Tutor. Become a Tutor.'; } ?>" />
-	<meta name="keywords" content="<?php if(isset($app->meta->keywords)){echo $app->meta->keywords;}else{echo $app->dependents->SITE_NAME_PROPPER.','.$app->dependents->SITE_NAME.',avid,brain,tutor,tutoring,education';} ?>" />
-	<meta name="author" content="<?php echo $app->dependents->SITE_NAME_PROPPER; ?> inc." />
+	<meta name="application-name" content="<?php echo SITENAME; ?>" />
+	<meta name="description" content="<?php if(isset($app->meta->description)){echo $app->meta->description;}else{ echo SITENAME_PROPPER.' Tutoring. Find A Tutor. Become a Tutor.'; } ?>" />
+	<meta name="keywords" content="<?php if(isset($app->meta->keywords)){echo $app->meta->keywords;}else{echo SITENAME_PROPPER.','.SITENAME.',avid,brain,tutor,tutoring,education';} ?>" />
+	<meta name="author" content="<?php echo SITENAME_PROPPER; ?> inc." />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 	<link rel="icon" type="image/png" href="/images/favicon.ico" />
 
@@ -38,7 +38,7 @@ foreach($app->header->headjs as $localjs){
 	echo "\t".'<script src="'.$localjs.'"></script>'."\n";
 }
 
-echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependents->stripe->STRIPE_PUBLIC.'");</script>'."\n";
+echo '	<script type="text/javascript">Stripe.setPublishableKey("'.STRIPE_PUBLIC.'");</script>'."\n";
 
 	$openClosed = NULL;
 	$hideSearch = $app->getCookie('hideSearch');
@@ -147,7 +147,7 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 
 </header>
 
-<?php if(isset($app->howitworks)){ include($app->dependents->APP_PATH.'includes/how-it-works/how-it-works.php'); } ?>
+<?php if(isset($app->howitworks)){ include(APP_PATH.'includes/how-it-works/how-it-works.php'); } ?>
 <main>
 	<?php
 		$containerClass = NULL;
@@ -247,7 +247,7 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 				<?php endif; ?>
 			</div>
 			<div class="col s12 m4 l4">
-				<h5 class="white-text"><?php echo $app->dependents->SITE_NAME_PROPPER; ?> Headquarters</h5>
+				<h5 class="white-text"><?php echo SITENAME_PROPPER; ?> Headquarters</h5>
 				<div class="grey-text">
 					<a href="https://www.google.com/maps/place/Regus+Scottsdale/@33.495696,-111.924473,17z/data=!4m6!1m3!3m2!1s0x872b0bbf1d86c0fd:0xae8864ada3178e8f!2sRegus+Scottsdale!3m1!1s0x872b0bbf1d86c0fd:0xae8864ada3178e8f" target="_blank">7272 E. Indian School Rd. Suite 540  <br>
 					Scottsdale, AZ 85251</a>
@@ -260,7 +260,7 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 						<a href="<?php echo $app->dependents->social->facebook; ?>" target="_blank"><i class="fa fa-facebook"></i></a>
 					</li>
 					<li>
-						<a href="<?php echo $app->dependents->social->twitter; ?>" target="_blank"><i class="fa fa-twitter"></i></a>
+						<a href="<?php echo socialTwitter; ?>" target="_blank"><i class="fa fa-twitter"></i></a>
 					</li>
 					<li>
 						<a href="<?php echo $app->dependents->social->linkedin; ?>" target="_blank"><i class="fa fa-linkedin"></i></a>
@@ -274,7 +274,7 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 			<div class="row">
 				<div class="col s12 m6 l6">
 					<div class="av-versioning">
-						<?php echo $app->dependents->SITE_NAME_PROPPER; ?> inc. &copy; All rights reserved <?php echo date('Y'); ?>
+						<?php echo SITENAME_PROPPER; ?> inc. &copy; All rights reserved <?php echo date('Y'); ?>
 						<span class="version">Version <?php echo $app->dependents->VERSION; ?></span>
 					</div>
 				</div>
@@ -307,7 +307,7 @@ endif;
 ?>
 <?php
 	if(isset($app->setupinstructions)){
-		include($page = $app->dependents->APP_PATH.'includes/shared-pages/setup-instructions.'.$app->user->usertype.'.php');
+		include($page = APP_PATH.'includes/shared-pages/setup-instructions.'.$app->user->usertype.'.php');
 	}
 ?>
 <?php if($app->dependents->DEBUG!=true): ?>

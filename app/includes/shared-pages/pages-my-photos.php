@@ -106,7 +106,7 @@
 	<div class="basic-block">
 		<form method="post" action="<?php echo $app->currentuser->url; ?>" id="myavatar">
 			<div class="row">
-				<?php foreach(get_avatars($app->dependents->DOCUMENT_ROOT) as $avatars): ?>
+				<?php foreach(get_avatars(DOCUMENT_ROOT) as $avatars): ?>
 					<div class="col s6 m4 l4 avatar-clicks <?php if($app->currentuser->my_avatar==$avatars){ echo 'active-avatar';} ?>">
 						<label>
 							<img class="responsive-img circle" src="<?php echo $avatars; ?>" />
@@ -134,7 +134,7 @@
 					<?php
 
 						$customavatar = json_decode($app->currentuser->custom_avatar);
-						include($app->dependents->APP_PATH.'includes/user-profile/custom-avatar.php');
+						include(APP_PATH.'includes/user-profile/custom-avatar.php');
 
 
 					?>

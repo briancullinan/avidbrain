@@ -1,8 +1,8 @@
 <?php
 	
 	$filePath = croppedfile($app->currentuser->my_upload);
-	$fileName = str_replace($app->dependents->APP_PATH.'uploads/photos/','',$filePath);
-	$newfile = $app->dependents->DOCUMENT_ROOT.'profiles/approved/'.$fileName;
+	$fileName = str_replace(APP_PATH.'uploads/photos/','',$filePath);
+	$newfile = DOCUMENT_ROOT.'profiles/approved/'.$fileName;
 	
 	if(file_exists($newfile)){
 		unlink($newfile);

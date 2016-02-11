@@ -120,7 +120,6 @@
 			$messagingsystem = new Forms($app->connect);
 			$messagingsystem->formname = 'messagingsystem';
 			$messagingsystem->url = $app->message->user->url;
-			$messagingsystem->dependents = $app->dependents;
 			$messagingsystem->csrf_key = $csrf_key;
 			$messagingsystem->csrf_token = $csrf_token;
 			$messagingsystem->formvalues = $reply;

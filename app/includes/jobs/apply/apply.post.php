@@ -26,9 +26,9 @@
 			$app->job->getemails = true;
 			$subjectPlus = ' -- Anonomous User';
 			$messagePlus = 'This is an email to an anonomous user';
-			$messagePlus = '<p><a href="'.$app->dependents->DOMAIN.'jobs/apply/'.$app->job->id.'">View Job Post</a></p>';
-			$messagePlus.= '<p><a href="'.$app->dependents->DOMAIN.'admin-everything/post-a-job/'.$app->job->id.'">Admin Job Post</a></p>';
-			$messagePlus.= '<p><a href="'.$app->dependents->DOMAIN.$app->user->url.'">View User Profile</a></p>';
+			$messagePlus = '<p><a href="'.DOMAIN.'jobs/apply/'.$app->job->id.'">View Job Post</a></p>';
+			$messagePlus.= '<p><a href="'.DOMAIN.'admin-everything/post-a-job/'.$app->job->id.'">Admin Job Post</a></p>';
+			$messagePlus.= '<p><a href="'.DOMAIN.$app->user->url.'">View User Profile</a></p>';
 		}
 
 
@@ -55,9 +55,9 @@
 		}
 
 		$subject = 'New Job Application'.$subjectPlus;
-		$message = '<p>'.the_users_name($app->user).' has applied to your <a href="'.$app->dependents->DOMAIN.'/jobs/manage/'.$app->job->id.'">'.$app->job->subject_name.'</a> job posting.</p>';
+		$message = '<p>'.the_users_name($app->user).' has applied to your <a href="'.DOMAIN.'/jobs/manage/'.$app->job->id.'">'.$app->job->subject_name.'</a> job posting.</p>';
 		$message.='<p>Message: '.$app->application->message.'</p>';
-		$message.='<p><a class="btn blue" href="'.$app->dependents->DOMAIN.'/jobs/manage/'.$app->job->id.'">View Posting</a> </p>';
+		$message.='<p><a class="btn blue" href="'.DOMAIN.'/jobs/manage/'.$app->job->id.'">View Posting</a> </p>';
 		$message = $message.$messagePlus;
 
 

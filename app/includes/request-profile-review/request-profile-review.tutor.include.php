@@ -1,6 +1,6 @@
 
 
-<p>We require all profiles to be reviewed before they are public. If you would like to have your profile reviewed by <?php echo $app->dependents->SITE_NAME_PROPPER; ?> Staff.</p>
+<p>We require all profiles to be reviewed before they are public. If you would like to have your profile reviewed by <?php echo SITENAME_PROPPER; ?> Staff.</p>
 
 <?php
 	if($app->user->usertype=='tutor'){
@@ -22,7 +22,7 @@
 	<div class="col s12 m6 l6">
 		<h3>Profile Review</h3>
 		<div class="block">
-			<div>Once you've clicked the button you will be logged out of <?php echo $app->dependents->SITE_NAME_PROPPER; ?> and your account will be locked, so we can review your profile.</div>
+			<div>Once you've clicked the button you will be logged out of <?php echo SITENAME_PROPPER; ?> and your account will be locked, so we can review your profile.</div>
 			<br>
 			<form method="post" action="<?php echo $app->request->getPath(); ?>">
 

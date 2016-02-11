@@ -153,7 +153,7 @@
 
 			if(isset($upload->tmp_name)){
 
-				$uploaddir = $app->dependents->APP_PATH.'uploads/photos/';
+				$uploaddir = APP_PATH.'uploads/photos/';
 
 				$type = getfiletype($upload->name);
 				$filename = $app->user->username.$type;

@@ -7,6 +7,7 @@
 			'/offline/materialize.min.css',
 		);
 		$headjs = array(
+			'https://js.stripe.com/v2',
 			'/offline/jquery-2.1.1.min.js'
 		);
 		$cdnjs = array(

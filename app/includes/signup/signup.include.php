@@ -60,7 +60,7 @@
 
 	<div class="col s12 m12 l6">
 		<h2>Tutor Signup</h2>
-		<p>Would you like to become an <?php echo $app->dependents->SITE_NAME_PROPPER; ?> tutor? Begin the application process and start tutoring ASAP.</p>
+		<p>Would you like to become an <?php echo SITENAME_PROPPER; ?> tutor? Begin the application process and start tutoring ASAP.</p>
 		<ul class="collection">
 			<li class="collection-item">
 				<div class="row">

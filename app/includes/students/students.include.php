@@ -44,7 +44,7 @@
 			if(isset($app->user->usertype) && $app->user->usertype=='tutor'){
 				$searchResults->dontshow = NULL;
 			}
-			include($app->dependents->APP_PATH."includes/user-profile/mini.student.profile.php");
+			include(APP_PATH."includes/user-profile/mini.student.profile.php");
 		?>
 		
 	<?php endforeach; ?>

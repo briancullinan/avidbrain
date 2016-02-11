@@ -22,7 +22,7 @@
 	<h1><?php echo $app->metah1; ?></h1>
 
 	<?php foreach($app->searchResults as $searchResults):?>
-		<?php include($app->dependents->APP_PATH.'includes/tutors/search.results.php'); ?>
+		<?php include(APP_PATH.'includes/tutors/search.results.php'); ?>
 	<?php endforeach; ?>
 
 	<?php echo $app->pagination; ?>
@@ -52,7 +52,6 @@
 					$simpleSignup = new Forms($app->connect);
 					$simpleSignup->formname = 'studentapplication';
 					$simpleSignup->url = $app->request->getPath();
-					$simpleSignup->dependents = $app->dependents;
 					$simpleSignup->csrf_key = $csrf_key;
 					$simpleSignup->csrf_token = $csrf_token;
 					$simpleSignup->makeform();

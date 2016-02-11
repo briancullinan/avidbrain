@@ -2,7 +2,7 @@
 	<div class="col s12 m6 l6">
 		<div class="block">
 
-			<div class="title"> <i class="fa fa-lock green-text"></i> Your security is important to us at <?php echo $app->dependents->SITE_NAME_PROPPER; ?>.</div>
+			<div class="title"> <i class="fa fa-lock green-text"></i> Your security is important to us at <?php echo SITENAME_PROPPER; ?>.</div>
 
 			<p>Security is one of the biggest considerations in everything we do. We allow our customers to be worry free by, encrypting all card numbers on disk with AES-256. Decryption keys are stored on separate machines that are located in secure facilities.</p>
 

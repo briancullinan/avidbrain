@@ -12,7 +12,7 @@
 		<?php if(isset($results->username)): ?>
 		    <div class="user-photograph">
 		        <a href="<?php echo $results->url; ?>">
-		            <img src="<?php echo userphotographs($app->user,$results,$app->dependents); ?>" />
+		            <img src="<?php echo userphotographs($app->user,$results); ?>" />
 		        </a>
 		    </div>
 		    <div class="user-name">
@@ -44,7 +44,6 @@
 					$setupsession = new Forms($app->connect);
 					$setupsession->formname = 'completesession';
 					$setupsession->url = '/sessions/complete-active/'.$id;
-					$setupsession->dependents = $app->dependents;
 					$setupsession->csrf_key = $csrf_key;
 					$setupsession->csrf_token = $csrf_token;
 						$setupsession->formvalues = $app->markcomplete;

@@ -30,7 +30,7 @@
 
 
 	$app->meta = new stdClass();
-	$app->meta->title = $app->dependents->SITE_NAME_PROPPER.' Jobs';
+	$app->meta->title = SITENAME_PROPPER.' Jobs';
 	if(isset($app->user->usertype) && $app->user->usertype=='tutor'){
 		$app->meta->h1 = 'Find A Tutoring Job';
 	}
@@ -40,7 +40,7 @@
 	else{
 		$app->meta->h1 = 'Find A Tutoring Job';
 	}
-	$app->meta->keywords = 'jobs,tutoring,'.$app->dependents->SITE_NAME_PROPPER;
+	$app->meta->keywords = 'jobs,tutoring,'.SITENAME_PROPPER;
 
 	if(isset($app->user->usertype) && $app->user->usertype=='tutor'){
 

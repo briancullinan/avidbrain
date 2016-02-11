@@ -2,7 +2,7 @@
 	if(isset($app->crop)){
 
 		$croppedfile = croppedfile($app->currentuser->my_upload);
-		$path = $app->dependents->APP_PATH.'uploads/photos/';
+		$path = APP_PATH.'uploads/photos/';
 		$myupload = $path.$app->currentuser->my_upload;
 		$croppedfile = $path.$croppedfile;
 
@@ -12,7 +12,7 @@
 			$filetype = getfiletype($app->user->my_upload);
 			$thefile = $app->user->username.$filetype;
 			$checkfile = $thefile;
-			$location = $app->dependents->APP_PATH.'uploads/photos/';
+			$location = APP_PATH.'uploads/photos/';
 
 			
 			if(file_exists($location.$checkfile)){
@@ -53,8 +53,8 @@
 
 			if($app->currentuser->my_upload_status=='verified'){
 
-				$photos = $app->dependents->APP_PATH.'uploads/photos/';
-				$approved = $app->dependents->DOCUMENT_ROOT.'profiles/approved/';
+				$photos = APP_PATH.'uploads/photos/';
+				$approved = DOCUMENT_ROOT.'profiles/approved/';
 				//
 				$myfile = $app->currentuser->my_upload;
 				$cropped = croppedfile($myfile);

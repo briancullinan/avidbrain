@@ -74,11 +74,11 @@
 		$newstudentEmail.= '<p> URL: '.$url.' </p>';
 		$newstudentEmail.= '<p> Referrer: '.$referrer.' </p>';
 		$newstudentEmail.= '<p> Password: '.$randomSix.' </p>';
-		$newstudentEmail.= '<p> Activate Account: <a href="'.$app->dependents->DOMAIN.'/validate/'.$validation_code.'">Click Here</a> </p>';
+		$newstudentEmail.= '<p> Activate Account: <a href="'.DOMAIN.'/validate/'.$validation_code.'">Click Here</a> </p>';
 
 
 
-		if($app->dependents->DOMAIN=='http://avidbrain.dev'){
+		if(DOMAIN=='http://avidbrain.dev'){
 			$toemails = 'david@avidbrain.com';
 		}
 		else{

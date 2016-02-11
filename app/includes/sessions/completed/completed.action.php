@@ -14,7 +14,7 @@
 					
 	
 		$count = $completed->execute()->rowCount();
-		$offsets = new offsets((isset($number) ? $number : NULL),$app->dependents->pagination->items_per_page);
+		$offsets = new offsets((isset($number) ? $number : NULL),PERPAGE);
 		$completed	=	$completed->setMaxResults($offsets->perpage)->setFirstResult($offsets->offsetStart)->orderBy('session_timestamp','DESC')->execute()->fetchAll();
 				
 		if(isset($completed[0])){
@@ -50,7 +50,7 @@
 					
 	
 		$count = $completed->execute()->rowCount();
-		$offsets = new offsets((isset($number) ? $number : NULL),$app->dependents->pagination->items_per_page);
+		$offsets = new offsets((isset($number) ? $number : NULL),PERPAGE);
 		$completed	=	$completed->setMaxResults($offsets->perpage)->setFirstResult($offsets->offsetStart)->orderBy('session_timestamp','DESC')->execute()->fetchAll();
 				
 		if(isset($completed[0])){

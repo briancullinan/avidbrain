@@ -20,7 +20,7 @@
 		$data	=	$data->groupBy('sessions.id');
 	
 	$count = $data->execute()->rowCount();
-	$offsets = new offsets((isset($number) ? $number : NULL),$app->dependents->pagination->items_per_page);
+	$offsets = new offsets((isset($number) ? $number : NULL),PERPAGE);
 	$data	=	$data->setMaxResults($offsets->perpage)->setFirstResult($offsets->offsetStart)->orderBy('session_timestamp,id','DESC')->execute()->fetchAll();
 			
 	if(isset($data[0])){

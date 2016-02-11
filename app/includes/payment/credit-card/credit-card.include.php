@@ -74,11 +74,11 @@
 					<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
 					<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
 						data-email = "<?php echo $app->user->email; ?>"
-						data-key = "<?php echo $app->dependents->stripe->STRIPE_PUBLIC; ?>"
+						data-key = "<?php echo STRIPE_PUBLIC; ?>"
 						data-amount = "00"
 						data-panel-label = "Update Credit Card"
 						data-label = "Update Credit Card"
-						data-name = "<?php echo $app->dependents->SITE_NAME_PROPPER; ?> Authorization"
+						data-name = "<?php echo SITENAME_PROPPER; ?> Authorization"
 						data-description = "Update Credit Card"
 						data-allow-remember-me = "false"
 					></script>
@@ -114,11 +114,11 @@
 							<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
 							<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
 								data-email = "<?php echo $app->user->email; ?>"
-								data-key = "<?php echo $app->dependents->stripe->STRIPE_PUBLIC; ?>"
+								data-key = "<?php echo STRIPE_PUBLIC; ?>"
 								data-amount = "00"
 								data-panel-label = "Authorize Card"
 								data-label = "Authorize Card"
-								data-name = "<?php echo $app->dependents->SITE_NAME_PROPPER; ?> Authorization"
+								data-name = "<?php echo SITENAME_PROPPER; ?> Authorization"
 								data-description = "Authorize Credit Card"
 								data-allow-remember-me = "false"
 							></script>

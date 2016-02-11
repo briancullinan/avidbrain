@@ -29,7 +29,7 @@
         <form id="paybackgroundcheck" action="" method="POST">
             <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                 data-email = "<?php echo $app->newtutor->email; ?>"
-                data-key = "<?php echo $app->dependents->stripe->STRIPE_PUBLIC; ?>"
+                data-key = "<?php echo STRIPE_PUBLIC; ?>"
                 data-amount = "2999"
                 data-panel-label = "Pay"
                 data-label = "Purchase Background Check"

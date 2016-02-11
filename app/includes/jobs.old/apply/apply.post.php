@@ -51,9 +51,9 @@
 		}
 
 		$subject = 'New Job Application'.$subjectPlus;
-		$message = '<p>'.the_users_name($app->user).' has applied to your <a href="'.$app->dependents->DOMAIN.'/jobs/manage/'.$app->job->id.'">'.$app->job->subject_name.'</a> job posting.</p>';
+		$message = '<p>'.the_users_name($app->user).' has applied to your <a href="'.DOMAIN.'/jobs/manage/'.$app->job->id.'">'.$app->job->subject_name.'</a> job posting.</p>';
 		$message.='<p>Message: '.$app->application->message.'</p>';
-		$message.='<p><a class="btn blue" href="'.$app->dependents->DOMAIN.'/jobs/manage/'.$app->job->id.'">View Posting</a> </p>';
+		$message.='<p><a class="btn blue" href="'.DOMAIN.'/jobs/manage/'.$app->job->id.'">View Posting</a> </p>';
 		$message = $message.$messagePlus;
 
 		if(isset($app->job->getemails) && $app->job->getemails=='yes'){

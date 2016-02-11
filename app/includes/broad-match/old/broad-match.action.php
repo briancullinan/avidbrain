@@ -31,7 +31,7 @@
 	$app->filterbylocation = 'maincats-'.$broadMatch.'-tutors';
 
 	$cachedBroadMatch = 'broadmatch---'.$broadMatch.'---'.$app->filterby;
-	$offsets = new offsets((isset($number) ? $number : 1),$app->dependents->pagination->items_per_page);
+	$offsets = new offsets((isset($number) ? $number : 1),PERPAGE);
 
 	//notify($app->filterby);
 
@@ -149,7 +149,7 @@
 	//$app->broadMatchCap.' Tutors'
 
 
-	$file = $app->dependents->DOCUMENT_ROOT.'images/categories/'.$broadMatch.'.jpg';
+	$file = DOCUMENT_ROOT.'images/categories/'.$broadMatch.'.jpg';
 	if(file_exists($file)){
 		$app->meta->h1 = false;
 		$app->wideconent = '<div class="widecontent '.$broadMatch.' valign-wrapper"> <div class="valign">'.$app->broadMatchCap.' Tutors</div> </div>';

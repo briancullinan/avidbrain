@@ -2,7 +2,7 @@
 	<?php foreach($app->helpme as $helpme): ?>
 	
 	<?php
-		$emailVars = "?subject=".$app->dependents->SITE_NAME_PROPPER." Help Request&body=Hello, I'm here with ".$app->dependents->SITE_NAME_PROPPER." Support. <br><br><br> <strong>Your Message:</strong> ".$helpme->message;
+		$emailVars = "?subject=".SITENAME_PROPPER." Help Request&body=Hello, I'm here with ".SITENAME_PROPPER." Support. <br><br><br> <strong>Your Message:</strong> ".$helpme->message;
 	?>
 	
 		<div class="block">

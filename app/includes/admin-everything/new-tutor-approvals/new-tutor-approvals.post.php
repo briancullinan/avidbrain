@@ -18,12 +18,12 @@
         $updates = new stdClass();
         $updates->username = unique_username($app->connect,4);
         $updates->url = make_my_url($app->thetutor,$updates->username);
-        $updates->approved_upload = $app->dependents->DOCUMENT_ROOT.'profiles/approved/'.$updates->username.getfiletype($app->thetutor->upload);
+        $updates->approved_upload = DOCUMENT_ROOT.'profiles/approved/'.$updates->username.getfiletype($app->thetutor->upload);
         $updates->file = $updates->username.getfiletype($app->thetutor->upload);
         $updates->crop = croppedfile($updates->file);
         $updates->oldupload = $app->thetutor->upload;
         $updates->olduploadCrop = croppedfile($app->thetutor->upload);
-        $updates->olduploadlocation = $app->dependents->APP_PATH.'uploads/photos/';
+        $updates->olduploadlocation = APP_PATH.'uploads/photos/';
 
 
 
@@ -36,7 +36,7 @@
         $newCropped = $updates->olduploadlocation.$updates->crop;
 
         // MOVE FILE TO APPROVED CROPPED
-        $uploads = $app->dependents->APP_PATH.'uploads';
+        $uploads = APP_PATH.'uploads';
         $oldPath = $uploads.'/photos/'.$app->thetutor->upload;
 
         try{
@@ -141,8 +141,8 @@
 
         $subject = 'AvidBrain Application Approval';
         $message = '<p>Congratulations <strong>'.$app->thetutor->first_name.' '.$app->thetutor->last_name.'</strong>, your profile has been approved. You can now login and find students.</p>';
-        $message.= '<p> Your username is your email address and your password is what you used to signup with. <br/> If you can\'t remember your password you can <a href="'.$app->dependents->DOMAIN.'/help/forgot-password">reset it here</a>. </p>';
-        $message.= '<p> <a href="'.$app->dependents->DOMAIN.'/login">Login</a> </p>';
+        $message.= '<p> Your username is your email address and your password is what you used to signup with. <br/> If you can\'t remember your password you can <a href="'.DOMAIN.'/help/forgot-password">reset it here</a>. </p>';
+        $message.= '<p> <a href="'.DOMAIN.'/login">Login</a> </p>';
 
         if(empty($app->thetutor->candidate_id)){
             //$message.= '<br><p> Since you haven\'t completed the background check you can apply to jobs and view students, but you can\'t message them or setup a tutoring session. </p>';

@@ -139,7 +139,7 @@
         }
         $emailMessage.= "<div><strong>Zipcode: </strong> ".$app->job->zipcode." </div>";
         $emailMessage.= '<div><strong>Tutoring Type:</strong> '.online_tutor($app->job->type).'</div>';
-        $emailMessage.= '<p><a href="'.$app->dependents->DOMAIN.'/jobs/apply/'.$app->job->id.'">View Job Posting</a></p>';
+        $emailMessage.= '<p><a href="'.DOMAIN.'/jobs/apply/'.$app->job->id.'">View Job Posting</a></p>';
         $emailMessage.= '<small>If you do not want to receive these emails, you can change your options in the Account Settings Page</small>';
 
 
@@ -161,7 +161,7 @@
         $app->connect->insert('avid___jobs_log',$insert);
 
 
-        if($app->dependents->DEBUG==true){
+        if(DEBUG==true){
             // Do Nothing
         }
         else{

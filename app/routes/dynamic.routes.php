@@ -1,5 +1,12 @@
 <?php
 
+	ini_set('display_errors', 1);
+	ini_set('log_errors', 1);
+	error_reporting(E_ALL);
+
+	//show($definedRoute);
+
+
 	if(empty($app->user->email) && isset($definedRoute->protected) && $definedRoute->protected==true){
 
 		$app->map($definedRoute->route, function() use($app,$definedRoute,$template){
@@ -33,11 +40,11 @@
 			$template = $definedRoute->template;
 		}
 		else{
-			$template = $app->settings['template'];
+			$template = TEMPLATE;
 		}
 
 		$app->map($definedRoute->route, function() use($app,$definedRoute,$template){
-			$app->target = buildpaths($definedRoute,$app->dependents->APP_PATH,$app->user);
+			$app->target = buildpaths($definedRoute,APP_PATH,$app->user);
 			$router = $app->router();
 			$getParams = $router->getCurrentRoute()->getParams();
 			if(isset($definedRoute->params)){
@@ -47,7 +54,7 @@
 			}
 			$app->parameters = $getParams;
 
-			include($app->dependents->APP_PATH.'navigation/navigation.basics.wild.php');
+			include(APP_PATH.'navigation/amozek.navigation.php');
 
 			$values = array();
 			$values['app'] = $app;

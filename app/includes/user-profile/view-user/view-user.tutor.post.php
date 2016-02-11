@@ -121,7 +121,7 @@
 		$app->signup->waiting_to_email = true;
 		$app->signup->to_user = $app->currentuser->email;
 
-		include($app->dependents->APP_PATH.'includes/signup/student/student.post.php');
+		include(APP_PATH.'includes/signup/student/student.post.php');
 	}
 
 	if(isset($app->currentuser->email) && isset($app->user->email) && $app->currentuser->email == $app->user->email){
@@ -153,7 +153,7 @@
 
 			if(isset($upload->tmp_name)){
 
-				$uploaddir = $app->dependents->APP_PATH.'uploads/photos/';
+				$uploaddir = APP_PATH.'uploads/photos/';
 
 				$type = getfiletype($upload->name);
 				$filename = $app->user->username.$type;

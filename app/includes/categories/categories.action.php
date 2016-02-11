@@ -19,6 +19,6 @@
 	}
 
 	$app->meta = new stdClass();
-	$app->meta->title = $app->dependents->SITE_NAME_PROPPER.' Tutors - Categories';
-	$app->meta->h1 = $app->dependents->SITE_NAME_PROPPER.' Tutored Categories';
+	$app->meta->title = SITENAME_PROPPER.' Tutors - Categories';
+	$app->meta->h1 = SITENAME_PROPPER.' Tutored Categories';
 	$app->meta->keywords = 'Find a tutor, avidbrain, tutors';

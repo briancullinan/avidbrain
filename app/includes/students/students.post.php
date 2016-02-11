@@ -71,7 +71,7 @@
 	}
 	
 	$count	=	$data->execute()->rowCount();
-	$offsets = new offsets((isset($number) ? $number : NULL),$app->dependents->pagination->items_per_page);
+	$offsets = new offsets((isset($number) ? $number : NULL),PERPAGE);
 		
 	$data	=	$data->addSelect('user.*, '.account_settings().', '.profile_select());	$data	=	$data->setMaxResults($offsets->perpage)->setFirstResult($offsets->offsetStart);
 	if(isset($app->filterby)){
@@ -115,4 +115,4 @@
 	$app->pagination = $pagify->get_links();
 	
 	$app->meta = new stdClass();
-	$app->meta->title = $app->dependents->SITE_NAME_PROPPER.' Students';
+	$app->meta->title = SITENAME_PROPPER.' Students';

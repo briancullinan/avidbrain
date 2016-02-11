@@ -17,8 +17,8 @@
 		$app->mailgun->send();
 	}
 
-	$photos = $app->dependents->APP_PATH.'uploads/photos/';
-	$approved = $app->dependents->DOCUMENT_ROOT.'profiles/approved/';
+	$photos = APP_PATH.'uploads/photos/';
+	$approved = DOCUMENT_ROOT.'profiles/approved/';
 
 	$myfile = $app->currentuser->my_upload;
 	$cropped = croppedfile($myfile);

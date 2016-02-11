@@ -1,9 +1,9 @@
 <?php
 	$app->meta = new stdClass();
-	$app->meta->title = 'Reviews of '.$app->dependents->SITE_NAME_PROPPER;
-	$app->meta->h1 = $app->dependents->SITE_NAME_PROPPER.' Reviews';
-	$app->meta->keywords = 'avidbrain,review,tutor,review,tutoring,reviews,'.$app->dependents->SITE_NAME_PROPPER.'reviews';
-	$app->meta->description = 'Looking for an '.$app->dependents->SITE_NAME_PROPPER.' review, we we will show you all of them';
+	$app->meta->title = 'Reviews of '.SITENAME_PROPPER;
+	$app->meta->h1 = SITENAME_PROPPER.' Reviews';
+	$app->meta->keywords = 'avidbrain,review,tutor,review,tutoring,reviews,'.SITENAME_PROPPER.'reviews';
+	$app->meta->description = 'Looking for an '.SITENAME_PROPPER.' review, we we will show you all of them';
 	
 	
 	$data	=	$app->connect->createQueryBuilder();
@@ -15,7 +15,7 @@
 	$data	=	$data->orderBy('session_timestamp','DESC');
 
 	
-	$offsets = new offsets((isset($number) ? $number : NULL),$app->dependents->pagination->items_per_page);
+	$offsets = new offsets((isset($number) ? $number : NULL),PERPAGE);
 	$count = $data->execute()->rowCount();
 	$alljobs = $data->setMaxResults($offsets->perpage)->setFirstResult($offsets->offsetStart)->execute()->fetchAll();
 	$pagify = new Pagify();

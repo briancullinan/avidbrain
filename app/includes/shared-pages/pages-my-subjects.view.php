@@ -4,7 +4,7 @@
 		<div class="block">
 			<div class="title">
 				<?php if(isset($subject->status) && $subject->status=='verified'): ?>
-					<i class="mdi-maps-beenhere tooltipped verified-by" data-position="top" data-delay="50" data-tooltip="Verified By <?php echo $app->dependents->SITE_NAME_PROPPER; ?>"></i>
+					<i class="mdi-maps-beenhere tooltipped verified-by" data-position="top" data-delay="50" data-tooltip="Verified By <?php echo SITENAME_PROPPER; ?>"></i>
 				<?php endif; ?>
 				<?php echo $subject->subject_name; ?>
 			</div>

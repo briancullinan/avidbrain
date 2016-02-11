@@ -10,7 +10,7 @@
 			$app->userinfo = $results;
 
 			$app->meta = new stdClass();
-			$app->meta->title = $results->first_name.' '.$results->last_name.' - '.$app->dependents->SITE_NAME_PROPPER.' '.$results->short_description;
+			$app->meta->title = $results->first_name.' '.$results->last_name.' - '.SITENAME_PROPPER.' '.$results->short_description;
 			$app->meta->h1 = false;
 		}
 		else{

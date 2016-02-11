@@ -1,8 +1,8 @@
 <div class="container container-nopadd">
 
-	<h1>Welcome to <?php echo $app->dependents->SITE_NAME_PROPPER; ?></h1>
+	<h1>Welcome to <?php echo SITENAME_PROPPER; ?></h1>
 
-	<p>Thank you for activating your <?php echo $app->dependents->SITE_NAME_PROPPER; ?> account.</p>
+	<p>Thank you for activating your <?php echo SITENAME_PROPPER; ?> account.</p>
 
 	<div>
 

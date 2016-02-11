@@ -5,7 +5,7 @@
 	</div>
 
 	<div class="description">
-		<?php echo $app->dependents->SITE_NAME_PROPPER; ?> started as an idea in 2013 when Keith Rezendes and David Glaeseman noticed that the current state of the tutoring industry was not fulfilling the needs of many. As a veteran in the tutoring industry Co-Founder Keith Rezendes could clearly see how he could design a place where students could receive the highest quality tutors for the best value. <?php echo $app->dependents->SITE_NAME_PROPPER; ?> is this type of place! By utilizing the sharing economy, <?php echo $app->dependents->SITE_NAME_PROPPER; ?> can utilize tutors across the United States to share their knowledge and expertise with students who are eager to learn. 
+		<?php echo SITENAME_PROPPER; ?> started as an idea in 2013 when Keith Rezendes and David Glaeseman noticed that the current state of the tutoring industry was not fulfilling the needs of many. As a veteran in the tutoring industry Co-Founder Keith Rezendes could clearly see how he could design a place where students could receive the highest quality tutors for the best value. <?php echo SITENAME_PROPPER; ?> is this type of place! By utilizing the sharing economy, <?php echo SITENAME_PROPPER; ?> can utilize tutors across the United States to share their knowledge and expertise with students who are eager to learn. 
 	</div>
 
 </div>
@@ -17,7 +17,7 @@
 	</div>
 
 	<div class="description">
-		What makes <?php echo $app->dependents->SITE_NAME_PROPPER; ?> unique is that no two tutors are alike. Their pricing, experience, availability and preferred method of tutoring is exclusive to each tutor. Thus, <?php echo $app->dependents->SITE_NAME_PROPPER; ?> makes it easy for each tutor to list their profiles and tell potential students and parents what’s distinctive about them and their services and why they make a good tutor. 
+		What makes <?php echo SITENAME_PROPPER; ?> unique is that no two tutors are alike. Their pricing, experience, availability and preferred method of tutoring is exclusive to each tutor. Thus, <?php echo SITENAME_PROPPER; ?> makes it easy for each tutor to list their profiles and tell potential students and parents what’s distinctive about them and their services and why they make a good tutor. 
 	</div>
 
 </div>
@@ -29,7 +29,7 @@
 	</div>
 
 	<div class="description">
-		<?php echo $app->dependents->SITE_NAME_PROPPER; ?> helps its community stay connected. We encourage tutors to collaborate with other tutors. For example, some of our tutors have partnered to create MCAT, SAT and other prep materials that they can share. At the same time, students can collaborate with each other to share information such as teacher’s recommendation, tutors, classes and school information. 
+		<?php echo SITENAME_PROPPER; ?> helps its community stay connected. We encourage tutors to collaborate with other tutors. For example, some of our tutors have partnered to create MCAT, SAT and other prep materials that they can share. At the same time, students can collaborate with each other to share information such as teacher’s recommendation, tutors, classes and school information. 
 	</div>
 
 </div>
@@ -41,7 +41,7 @@
 	</div>
 
 	<div class="description">
-		<?php echo $app->dependents->SITE_NAME_PROPPER; ?> helps create an atmosphere that is both effective and safe. We verify all tutors by interviewing them and also requiring them to be background checked. We verify that all students have valid payment on file. All profiles are reviewed to ensure that an educational environment is present.
+		<?php echo SITENAME_PROPPER; ?> helps create an atmosphere that is both effective and safe. We verify all tutors by interviewing them and also requiring them to be background checked. We verify that all students have valid payment on file. All profiles are reviewed to ensure that an educational environment is present.
 	</div>
 
 </div>
@@ -53,7 +53,7 @@
 	</div>
 
 	<div class="description">
-		<?php echo $app->dependents->SITE_NAME_PROPPER; ?> tutors are always interviewed and background checked before being admitted to the site, this ensures that tutors are both effective and safe. 
+		<?php echo SITENAME_PROPPER; ?> tutors are always interviewed and background checked before being admitted to the site, this ensures that tutors are both effective and safe. 
 	</div>
 
 </div>
@@ -65,7 +65,7 @@
 	</div>
 
 	<div class="description">
-		Through <?php echo $app->dependents->SITE_NAME_PROPPER; ?>’s secure messaging system, students can get in contact with tutors without having to release their personal information. 
+		Through <?php echo SITENAME_PROPPER; ?>’s secure messaging system, students can get in contact with tutors without having to release their personal information. 
 	</div>
 
 </div>
@@ -77,7 +77,7 @@
 	</div>
 
 	<div class="description">
-		Students can use either a valid credit card, debit card or other payment methods with our convenient payment system. Tutors can receive payment via direct deposit or manual checks sent to them. Payment is ensured by <?php echo $app->dependents->SITE_NAME_PROPPER; ?> for tutors and a refund policy is offered by <?php echo $app->dependents->SITE_NAME_PROPPER; ?> for students. 
+		Students can use either a valid credit card, debit card or other payment methods with our convenient payment system. Tutors can receive payment via direct deposit or manual checks sent to them. Payment is ensured by <?php echo SITENAME_PROPPER; ?> for tutors and a refund policy is offered by <?php echo SITENAME_PROPPER; ?> for students. 
 	</div>
 
 </div>
@@ -97,14 +97,14 @@
 					Multiple Revenue Streams
 				</div>
 				<p>
-					<?php echo $app->dependents->SITE_NAME_PROPPER; ?> is unique in the tutoring industry since we offer multiple revenue streams for our tutors. A tutor does not have to rely on one means to earn money. For example, if you love tutoring but just can’t see yourself in front of a student 8 hours per day, but still want other ways to earn money doing what you love—then <?php echo $app->dependents->SITE_NAME_PROPPER; ?> is for you.
+					<?php echo SITENAME_PROPPER; ?> is unique in the tutoring industry since we offer multiple revenue streams for our tutors. A tutor does not have to rely on one means to earn money. For example, if you love tutoring but just can’t see yourself in front of a student 8 hours per day, but still want other ways to earn money doing what you love—then <?php echo SITENAME_PROPPER; ?> is for you.
 				</p>
 				
 				<div class="title sub-title">
 					Open to Feedback & Suggestions
 				</div>
 				<p>
-					<?php echo $app->dependents->SITE_NAME_PROPPER; ?> is an open private company. We encourage all our tutors and students to give us feedback and we are open to all suggestions on how we can make our system better. We love all ideas, even on how much to pay our tutors. We have weekly staff meetings and many tutors drop by to listen in as well as give their direct feedback on certain features and services.
+					<?php echo SITENAME_PROPPER; ?> is an open private company. We encourage all our tutors and students to give us feedback and we are open to all suggestions on how we can make our system better. We love all ideas, even on how much to pay our tutors. We have weekly staff meetings and many tutors drop by to listen in as well as give their direct feedback on certain features and services.
 				</p>
 				
 				<div class="title sub-title">
@@ -142,7 +142,7 @@
 					Check out our Help Center
 				</div>
 				<p>
-					Visit our Students and Tutors FAQs to learn more about how <?php echo $app->dependents->SITE_NAME_PROPPER; ?> works.
+					Visit our Students and Tutors FAQs to learn more about how <?php echo SITENAME_PROPPER; ?> works.
 				</p>
 				
 				<div class="title sub-title">

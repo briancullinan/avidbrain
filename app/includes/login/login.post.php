@@ -48,7 +48,7 @@
 
 			$app->twilio->account->messages->create(array(
 				'To' => $authenticate->phone,
-				'From' => $app->dependents->twilio->number,
+				'From' => TWILIO_NUMBER,
 				'Body' => 'Your authentication code is: '.$authenticate->code
 			));
 

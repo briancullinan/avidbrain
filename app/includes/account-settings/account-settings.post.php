@@ -7,7 +7,7 @@
 			notify('error');
 		}
 
-		$checkusername = makeslug($app->dependents->ROMANIZE,$app->newusername->username);
+		$checkusername = makeslug(romanize(),$app->newusername->username);
 		$newusername = check_username($app->connect,$checkusername);
 
 		$censor = new CensorWords;
@@ -33,7 +33,7 @@
 				$filetype = getfiletype($app->user->my_upload);
 				$thefile = $app->user->username.$filetype;
 				$checkfile = croppedfile($thefile);
-				$location = $app->dependents->DOCUMENT_ROOT.'/profiles/approved/';
+				$location = DOCUMENT_ROOT.'/profiles/approved/';
 				if(file_exists($location.$checkfile)){
 					$oldFile = $checkfile;
 					$nakedFile = str_replace('.crop'.$filetype,'',$checkfile);
@@ -57,7 +57,7 @@
 		}
 	}
 	elseif(isset($app->username) && !empty(isset($app->username))){
-		$checkusername = makeslug($app->dependents->ROMANIZE,$app->username);
+		$checkusername = makeslug(romanize(),$app->username);
 		$newusername = check_username($app->connect,$checkusername);
 
 		$censor = new CensorWords;

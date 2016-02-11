@@ -1,0 +1,60 @@
+.align-right{
+    text-align: right;
+}
+.align-left{
+    text-align: left;
+}
+.align-center{
+    text-align: center;
+}
+pre{
+    padding: 5px 10px;
+}
+.input-block{
+    line-height: normal;
+    -webkit-transition: all;
+    -webkit-transition-timing-function: ease-out;
+    -webkit-transition-duration: .5s;
+
+    -moz-transition: all;
+    -moz-transition-timing-function: ease-out;
+    -moz-transition-duration: .5s;
+
+    transition: all;
+    transition-timing-function: ease-out;
+    transition-duration: .5s;
+}
+.input-block .fa-asterisk{
+    color: $error;
+}
+.input-block label{
+    width: 100%;
+    margin: 0px;
+}
+.input-block input{
+    background: #fff;
+    font-size: 15px;
+    color: #666;
+}
+.input-block .input-wrapper *{
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    border: none;
+}
+.input-block .input-wrapper *:focus{
+    outline: none;
+}
+.input-block.required .fa-asterisk{
+
+}
+
+pre strong{
+    color: #000;
+    font-weight: bold;
+    font-size: 18px;
+}
+pre.handle-errors strong{
+    color: #33D000;
+    text-transform: capitalize;
+}

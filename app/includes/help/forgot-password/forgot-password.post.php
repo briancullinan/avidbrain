@@ -24,7 +24,7 @@
 
 				$app->mailgun->to = $resetTemp->email;
 				$app->mailgun->subject = 'Please authenticate your email address';
-				$app->mailgun->message = 'Your verification link is: <a href="'.$app->dependents->DOMAIN.'/validate/'.$resetTemp->validation_code.'">Verify Email Address</a>';
+				$app->mailgun->message = 'Your verification link is: <a href="'.DOMAIN.'/validate/'.$resetTemp->validation_code.'">Verify Email Address</a>';
 				$app->mailgun->send();
 
 				new Flash(array('action'=>'kill-form','formID'=>'resetpassword','message'=>'Activation Email Sent'));
@@ -56,8 +56,8 @@
 
 
 			$app->mailgun->to = $app->resetpassword->email;
-			$app->mailgun->subject = $app->dependents->SITE_NAME_PROPPER.' Password Reset';
-			$app->mailgun->message = 'Did you forget your password? Click <a href="'.$app->dependents->DOMAIN.'/help/forgot-password/recovery/'.$random_numbers.'">this link</a> to start the recovery process. If you didn\'t forget your password, just ignore this email.';
+			$app->mailgun->subject = SITENAME_PROPPER.' Password Reset';
+			$app->mailgun->message = 'Did you forget your password? Click <a href="'.DOMAIN.'/help/forgot-password/recovery/'.$random_numbers.'">this link</a> to start the recovery process. If you didn\'t forget your password, just ignore this email.';
 			$app->mailgun->send();
 		}
 

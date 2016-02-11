@@ -4,13 +4,13 @@
 -->
 <html>
 <head>
-	<title><?php if(isset($app->meta->title)){ echo strip_tags($app->meta->title);}else{ echo $app->dependents->SITE_NAME; } ?></title>
+	<title><?php if(isset($app->meta->title)){ echo strip_tags($app->meta->title);}else{ echo SITENAME; } ?></title>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-	<meta name="application-name" content="<?php echo $app->dependents->SITE_NAME; ?>" />
-	<meta name="description" content="<?php if(isset($app->meta->description)){echo $app->meta->description;}else{ echo $app->dependents->SITE_NAME_PROPPER.' Tutoring. Find A Tutor. Become a Tutor.'; } ?>" />
-	<meta name="keywords" content="<?php if(isset($app->meta->keywords)){echo $app->meta->keywords;}else{echo $app->dependents->SITE_NAME_PROPPER.','.$app->dependents->SITE_NAME.',avid,brain,tutor,tutoring,education';} ?>" />
+	<meta name="application-name" content="<?php echo SITENAME; ?>" />
+	<meta name="description" content="<?php if(isset($app->meta->description)){echo $app->meta->description;}else{ echo SITENAME_PROPPER.' Tutoring. Find A Tutor. Become a Tutor.'; } ?>" />
+	<meta name="keywords" content="<?php if(isset($app->meta->keywords)){echo $app->meta->keywords;}else{echo SITENAME_PROPPER.','.SITENAME.',avid,brain,tutor,tutoring,education';} ?>" />
 
-	<meta name="author" content="<?php echo $app->dependents->SITE_NAME_PROPPER; ?> inc." />
+	<meta name="author" content="<?php echo SITENAME_PROPPER; ?> inc." />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 	<link rel="icon" type="image/png" href="/images/favicon.ico" />
 <?php
@@ -33,7 +33,7 @@ foreach($app->header->headjs as $localjs){
 	echo "\t".'<script src="'.$localjs.'"></script>'."\n";
 }
 
-echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependents->stripe->STRIPE_PUBLIC.'");</script>'."\n";
+echo '	<script type="text/javascript">Stripe.setPublishableKey("'.STRIPE_PUBLIC.'");</script>'."\n";
 
 	$openClosed = NULL;
 	$hideSearch = $app->getCookie('hideSearch');
@@ -54,21 +54,21 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 	<navigation>
 
 		<div class="navigation-left">
-			<?php if($app->dependents->SITE_NAME=='amozek'): ?>
+			<?php if(SITENAME=='amozek'): ?>
 			<logo>
 				<a href="/">
 					<span class="icon amozek"></span>
 					<span class="logo">am<span>o</span>zek</span>
 				</a>
 			</logo>
-			<?php elseif($app->dependents->SITE_NAME=='avidbrain'): ?>
+			<?php elseif(SITENAME=='avidbrain'): ?>
 			<logo class="avidbrain">
 				<a href="/">
 					avidbrain
 				</a>
 			</logo>
 			<?php endif; ?>
-			<?php include($app->dependents->APP_PATH.'navigation/navigation.basics.php'); ?>
+			<?php include(APP_PATH.'navigation/navigation.basics.php'); ?>
 			<ul>
 				<?php foreach($app->leftnav as $key=> $navitem): ?>
 				<li>
@@ -105,7 +105,7 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 
 	<main>
 
-		<?php if(isset($app->howitworks)){ include($app->dependents->APP_PATH.'includes/how-it-works/how-it-works.php'); } ?>
+		<?php if(isset($app->howitworks)){ include(APP_PATH.'includes/how-it-works/how-it-works.php'); } ?>
 		<?php if(isset($_SESSION['slim.flash']['error'])): ?>
 			<div class="say-message"><div class="the-message show-message"><?php echo $_SESSION['slim.flash']['error']; ?></div></div>
 			<?php
@@ -140,7 +140,7 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 						include($app->target->include);
 					}
 					elseif(isset($app->target->include) && !file_exists($app->target->include) && $app->dependents->DEBUG==true){
-						include($app->dependents->APP_PATH.'debug/makeme.php');
+						include(APP_PATH.'debug/makeme.php');
 					}
 					else{
 						echo 'makeme';
@@ -180,7 +180,7 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 						<?php endif; ?>
 					</div>
 					<div class="col s12 m3 l3">
-						<h5 class="white-text"><?php echo $app->dependents->SITE_NAME_PROPPER; ?> Headquarters</h5>
+						<h5 class="white-text"><?php echo SITENAME_PROPPER; ?> Headquarters</h5>
 						<div class="grey-text">
 							<a href="https://www.google.com/maps/place/Regus+Scottsdale/@33.495696,-111.924473,17z/data=!4m6!1m3!3m2!1s0x872b0bbf1d86c0fd:0xae8864ada3178e8f!2sRegus+Scottsdale!3m1!1s0x872b0bbf1d86c0fd:0xae8864ada3178e8f" target="_blank">7272 E. Indian School Rd. Suite 540  <br>
 							Scottsdale, AZ 85251</a>
@@ -193,7 +193,7 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 								<a href="<?php echo $app->dependents->social->facebook; ?>" target="_blank"><i class="fa fa-facebook"></i></a>
 							</li>
 							<li>
-								<a href="<?php echo $app->dependents->social->twitter; ?>" target="_blank"><i class="fa fa-twitter"></i></a>
+								<a href="<?php echo socialTwitter; ?>" target="_blank"><i class="fa fa-twitter"></i></a>
 							</li>
 							<li>
 								<a href="<?php echo $app->dependents->social->linkedin; ?>" target="_blank"><i class="fa fa-linkedin"></i></a>
@@ -207,7 +207,7 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 				<div class="row">
 					<div class="col s12 m6 l6">
 						<div class="av-versioning">
-							<?php echo $app->dependents->SITE_NAME_PROPPER; ?> inc. &copy; All rights reserved <?php echo date('Y'); ?>
+							<?php echo SITENAME_PROPPER; ?> inc. &copy; All rights reserved <?php echo date('Y'); ?>
 							<span class="version">Version <?php echo $app->dependents->VERSION; ?></span>
 						</div>
 					</div>
@@ -226,7 +226,7 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 		<?php if(isset($app->user->email)): ?>
 		<?php include('user-dropdown.php'); ?>
 		<?php else: ?>
-		<div class="mobile-logo"><a href="/"><?php echo $app->dependents->SITE_NAME_PROPPER; ?></a></div>
+		<div class="mobile-logo"><a href="/"><?php echo SITENAME_PROPPER; ?></a></div>
 		<?php endif; ?>
 	</div>
 
@@ -234,7 +234,7 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 
 		<div id="loginModule" class="modal">
 			<div class="modal-content">
-				<h4><?php echo $app->dependents->SITE_NAME_PROPPER; ?> Login</h4>
+				<h4><?php echo SITENAME_PROPPER; ?> Login</h4>
 			</div>
 
 				<div class="row">
@@ -243,7 +243,6 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 							$thelogin = new Forms($app->connect);
 							$thelogin->formname = 'login';
 							$thelogin->url = '/login';
-							$thelogin->dependents = $app->dependents;
 							$thelogin->csrf_key = $csrf_key;
 							$thelogin->csrf_token = $csrf_token;
 							$thelogin->button = 'Login';
@@ -267,7 +266,7 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 		<div class="modal-content">
 			<h4> <i class="mdi-action-assignment-ind"></i> Background Checks</h4>
 
-			<p>At <?php echo $app->dependents->SITE_NAME_PROPPER; ?>, we require all of our tutors to be background checked to ensure the safety of our students. By requiring all tutors to go through a thorough background check, we create a place that is both safe and an effective environment for our students.</p>
+			<p>At <?php echo SITENAME_PROPPER; ?>, we require all of our tutors to be background checked to ensure the safety of our students. By requiring all tutors to go through a thorough background check, we create a place that is both safe and an effective environment for our students.</p>
 
 		</div>
 
@@ -279,11 +278,11 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 	<div id="myrank" class="modal">
 		<div class="modal-content">
 
-			<h4><?php echo $app->dependents->SITE_NAME_PROPPER; ?> Ranking</h4>
+			<h4><?php echo SITENAME_PROPPER; ?> Ranking</h4>
 
 			<div class="row">
 				<div class="col s12 m4 l4">
-					<p>At <?php echo $app->dependents->SITE_NAME_PROPPER; ?>, we rank all of our tutors with ranks and ranks and ranks and ranks.</p>
+					<p>At <?php echo SITENAME_PROPPER; ?>, we rank all of our tutors with ranks and ranks and ranks and ranks.</p>
 					<p><a href="/signup/tutor">Get Ranked</a></p>
 				</div>
 				<div class="col s12 m8 l8">

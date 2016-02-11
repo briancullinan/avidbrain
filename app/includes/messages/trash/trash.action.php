@@ -11,7 +11,7 @@
 	$data	=	$data->groupBy('messages.id');
 	
 		$count	=	$data->select('messages.id')->execute()->rowCount();
-		$offsets = new offsets((isset($number) ? $number : NULL),$app->dependents->pagination->items_per_page);
+		$offsets = new offsets((isset($number) ? $number : NULL),PERPAGE);
 	
 	$data->select('messages.*, '.user_select().', '.profile_select().', '.account_settings().'');
 	$data	=	$data->orderBy('messages.send_date','DESC');

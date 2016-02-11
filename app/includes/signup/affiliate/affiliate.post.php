@@ -37,7 +37,7 @@
         );
 
 
-        $link = $app->dependents->DOMAIN.'/signup/affiliate/'.$validation_code;
+        $link = DOMAIN.'/signup/affiliate/'.$validation_code;
         $message = '<p>Thank you for signing up to become an AvidBrain Affiliate. Please confirm your email address by clicking the link below:</p>';
         $message.= '<p><a href="'.$link.'">Confirmation Link</a> '.$link.'</p>';
 
@@ -46,7 +46,7 @@
         $app->mailgun->message = $message;
         $app->mailgun->send();
 
-        if($app->dependents->DEBUG==true){
+        if(DEBUG==true){
 			$toemails = 'david@avidbrain.com';
 		}
 		else{

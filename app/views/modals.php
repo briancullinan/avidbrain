@@ -1,7 +1,7 @@
 <?php if(empty($app->user->email)): ?>
 <div id="loginModule" class="modal">
 	<div class="modal-content">
-		<h4><?php echo $app->dependents->SITE_NAME_PROPPER; ?> Login</h4>
+		<h4><?php echo SITENAME_PROPPER; ?> Login</h4>
 	</div>
 
 		<div class="row">
@@ -10,7 +10,6 @@
 					$thelogin = new Forms($app->connect);
 					$thelogin->formname = 'login';
 					$thelogin->url = '/login';
-					$thelogin->dependents = $app->dependents;
 					$thelogin->csrf_key = $csrf_key;
 					$thelogin->csrf_token = $csrf_token;
 					$thelogin->button = 'Login';
@@ -42,7 +41,7 @@
 	<div class="modal-content">
 		<h4> <i class="mdi-action-assignment-ind"></i> Background Checks</h4>
 
-		<p>At <?php echo $app->dependents->SITE_NAME_PROPPER; ?>, we require all of our tutors to be background checked to ensure the safety of our students. By requiring all tutors to go through a thorough background check, we create a place that is both safe and an effective environment for our students.</p>
+		<p>At <?php echo SITENAME_PROPPER; ?>, we require all of our tutors to be background checked to ensure the safety of our students. By requiring all tutors to go through a thorough background check, we create a place that is both safe and an effective environment for our students.</p>
 
 	</div>
 
@@ -54,11 +53,11 @@
 <div id="myrank" class="modal">
 	<div class="modal-content">
 
-		<h4><?php echo $app->dependents->SITE_NAME_PROPPER; ?> Ranking</h4>
+		<h4><?php echo SITENAME_PROPPER; ?> Ranking</h4>
 
 		<div class="row">
 			<div class="col s12 m4 l4">
-				<p>At <?php echo $app->dependents->SITE_NAME_PROPPER; ?>, we rank all of our tutors with ranks and ranks and ranks and ranks.</p>
+				<p>At <?php echo SITENAME_PROPPER; ?>, we rank all of our tutors with ranks and ranks and ranks and ranks.</p>
 				<p><a href="/signup/tutor">Get Ranked</a></p>
 			</div>
 			<div class="col s12 m8 l8">

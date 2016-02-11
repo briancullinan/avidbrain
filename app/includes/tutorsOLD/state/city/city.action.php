@@ -20,7 +20,7 @@
 
 
 	$app->number = (isset($number) ? $number : NULL);
-	$offsets = new offsets($app->number,$app->dependents->pagination->items_per_page);
+	$offsets = new offsets($app->number,PERPAGE);
 
 
 	$data	=	$data->addSelect(everything().',user.email,user.id');

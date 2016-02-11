@@ -9,7 +9,7 @@ $url = '/'.$usertype.'/'.$state.'/'.$city.'/'.$username;
 if(isset($usertype) && isset($state) && isset($city) && isset($username)){
 
 	$urlfix = str_replace('/','--',$url);
-	$file = $app->dependents->DOCUMENT_ROOT.'profiles/approved/'.$urlfix.'*crop*';
+	$file = DOCUMENT_ROOT.'profiles/approved/'.$urlfix.'*crop*';
 	$isthecrophere = glob($file);
 
 	if(isset($app->user->usertype) && $app->user->usertype=='admin'){
@@ -34,7 +34,7 @@ if(isset($usertype) && isset($state) && isset($city) && isset($username)){
 		$img = $app->imagemanager->make($file);
 	}
 	else{
-		$img = $app->imagemanager->make($app->dependents->APP_PATH.'uploads/photos/empty-image.jpg');
+		$img = $app->imagemanager->make(APP_PATH.'uploads/photos/empty-image.jpg');
 	}
 
 	if(empty($app->user->my_upload) && empty($img)){

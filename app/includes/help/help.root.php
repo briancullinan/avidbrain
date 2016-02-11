@@ -2,7 +2,7 @@
 
 	$childen = array();
 	$childen['help-faqs'] = (object) array('name'=>'FAQs','slug'=>'/help/faqs');
-	if($app->dependents->SITE_NAME=='amozek'){
+	if(SITENAME=='amozek'){
 		$childen['what-is-amozek'] = (object) array('name'=>'What is Amozek?','slug'=>'/help/what-is-amozek');
 	}
 	//$childen['help-how-to-videos'] = (object) array('name'=>'How To Videos','slug'=>'/help/how-to-videos');

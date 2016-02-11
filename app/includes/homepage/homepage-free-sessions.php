@@ -5,12 +5,12 @@
 <p>When a friend gets tutored with your code, you both get $<?php echo numbers($signupcode->value,1); ?> off your next session.</p>
 <div class="block">
 	<div>Your Invite Link</div>
-	<div class="invite-area"><input type="text" value="<?php echo $app->dependents->DOMAIN; ?>/signup/student/<?php echo $signupcode->promocode; ?>" onclick="select();" /></div>
+	<div class="invite-area"><input type="text" value="<?php echo DOMAIN; ?>/signup/student/<?php echo $signupcode->promocode; ?>" onclick="select();" /></div>
 	<br/>
 
 	<?php
-		$facebook = 'https://www.facebook.com/sharer/sharer.php?u='.$app->dependents->DOMAIN.'/student/'.$signupcode->promocode;
-		$twitter = 'https://twitter.com/share?url='.$app->dependents->DOMAIN.'/student/'.$signupcode->promocode.'&text=I love @'.str_replace('https://twitter.com/','@',$app->dependents->social->twitter).' Sign up with my promo code and get $'.$signupcode->value.' off your first tutoring session!';
+		$facebook = 'https://www.facebook.com/sharer/sharer.php?u='.DOMAIN.'/student/'.$signupcode->promocode;
+		$twitter = 'https://twitter.com/share?url='.DOMAIN.'/student/'.$signupcode->promocode.'&text=I love @'.str_replace('https://twitter.com/','@',socialTwitter).' Sign up with my promo code and get $'.$signupcode->value.' off your first tutoring session!';
 	?>
 
 	<div class="row">
@@ -22,10 +22,10 @@
 		</div>
 		<div class="col s12 m6 l6">
 			<?php
-				$text = 'I just discovered '.$app->dependents->SITE_NAME_PROPPER.'. Signup now and get $'.numbers($signupcode->value,1).' off your next session. '.$app->dependents->DOMAIN.'/signup/student/'.$signupcode->promocode;
+				$text = 'I just discovered '.SITENAME_PROPPER.'. Signup now and get $'.numbers($signupcode->value,1).' off your next session. '.DOMAIN.'/signup/student/'.$signupcode->promocode;
 
 			?>
-			<a href="mailto:?subject=$<?php echo $signupcode->value; ?> Off Tutoring with <?php echo $app->dependents->SITE_NAME_PROPPER; ?>&amp;body=<?php echo $text; ?>" class="btn btn-block grey darken-3"> <i class="fa fa-envelope"></i> Send It</a>
+			<a href="mailto:?subject=$<?php echo $signupcode->value; ?> Off Tutoring with <?php echo SITENAME_PROPPER; ?>&amp;body=<?php echo $text; ?>" class="btn btn-block grey darken-3"> <i class="fa fa-envelope"></i> Send It</a>
 		</div>
 		<div class="col s12 m6 l6">
 			<a href="#textit" class="btn btn-block red modal-trigger"> <i class="fa fa-mobile"></i> Text It</a>

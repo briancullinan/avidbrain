@@ -11,7 +11,7 @@
 
 	<div class="profile-image center-align avatar">
 		<div class="user-photograph">
-			<img src="<?php echo userphotographs($app->user,$app->currentuser,$app->dependents); ?>" />
+			<img src="<?php echo userphotographs($app->user,$app->currentuser); ?>" />
 		</div>
 	</div>
 </div>

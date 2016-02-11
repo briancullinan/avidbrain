@@ -63,14 +63,14 @@
 
 		<!---->
 		<div class="block">
-			<?php include($app->dependents->APP_PATH.'includes/jobs/postajob.php'); ?>
+			<?php include(APP_PATH.'includes/jobs/postajob.php'); ?>
 		</div>
 		<!---->
 
 	</div>
 	<div class="col s12 m6 l6">
 		<h2>Student Benefits</h2>
-		<?php include($app->dependents->APP_PATH.'includes/signup/student/student-benefits.php'); ?>
+		<?php include(APP_PATH.'includes/signup/student/student-benefits.php'); ?>
 	</div>
 </div>
 

@@ -49,7 +49,7 @@
 
 	$app->number = (isset($number) ? $number : NULL);
 
-	$offsets = new offsets($app->number,$app->dependents->pagination->items_per_page);
+	$offsets = new offsets($app->number,PERPAGE);
 	$data	=	$data->groupBy('user.email');
 	$count	=	$data->execute()->rowCount();
 	$data	=	$data->addSelect('user.id,subjects.subject_name,subjects.parent_slug,subjects.subject_slug,av_subjects.description,av_subjects.keywords,av_subjects.subject_parent as subject_parent');

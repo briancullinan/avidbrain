@@ -22,14 +22,13 @@
 		$messagingsystem = new Forms($app->connect);
 		$messagingsystem->formname = 'messagingsystem';
 		$messagingsystem->url = $app->request->getPath();
-		$messagingsystem->dependents = $app->dependents;
 		$messagingsystem->csrf_key = $csrf_key;
 		$messagingsystem->csrf_token = $csrf_token;
 		if(isset($app->sendwhiteboard)){
 
 			$whiteboard = new stdClass();
 			$whiteboard->subject = 'Join my Whiteboard Session';
-			$whiteboard->message = 'Hi '.short($app->currentuser).' come over to '.$app->dependents->SITE_NAME_PROPPER.' and join my Scheduled Whiteboard Session.'."\n".$app->dependents->DOMAIN.'/resources/whiteboard/'.$app->sendwhiteboard->roomid;
+			$whiteboard->message = 'Hi '.short($app->currentuser).' come over to '.SITENAME_PROPPER.' and join my Scheduled Whiteboard Session.'."\n".DOMAIN.'/resources/whiteboard/'.$app->sendwhiteboard->roomid;
 			$messagingsystem->formvalues = $whiteboard;
 		}
 
@@ -88,7 +87,6 @@
 		$studentSignup = new Forms($app->connect);
 		$studentSignup->formname = 'signup';
 		$studentSignup->url = $app->request->getPath();
-		$studentSignup->dependents = $app->dependents;
 		$studentSignup->csrf_key = $csrf_key;
 		$studentSignup->csrf_token = $csrf_token;
 		$studentSignup->inserts = $newinserts;

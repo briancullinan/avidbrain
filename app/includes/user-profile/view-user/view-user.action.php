@@ -340,7 +340,7 @@
 		$app->meta->title = $app->currentuser->city.', '.ucwords($app->currentuser->state_long).'   Tutor';
 	}
 	else{
-		$app->meta->title = $myname.$var.' / '.$app->currentuser->city.', '.ucwords($app->currentuser->state_long).' '.$app->dependents->SITE_NAME_PROPPER.' Tutor';
+		$app->meta->title = $myname.$var.' / '.$app->currentuser->city.', '.ucwords($app->currentuser->state_long).' '.SITENAME_PROPPER.' Tutor';
 	}
 	$app->meta->h1 = false;
 	$app->meta->keywords = $keywords;

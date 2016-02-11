@@ -98,8 +98,8 @@
 			<h2>Talk to a tutor</h2>
 			<?php
 				$searchResults = $app->randomtutor;
-				include($app->dependents->APP_PATH.'includes/tutors/search.results.php');
-				//include($app->dependents->APP_PATH."includes/user-profile/mini.tutor.profile.php");
+				include(APP_PATH.'includes/tutors/search.results.php');
+				//include(APP_PATH."includes/user-profile/mini.tutor.profile.php");
 			?>
 			<div class="hide" id="csrf_key"><?php echo $csrf_key; ?></div>
 			<div class="hide" id="csrf_token"><?php echo $csrf_token; ?></div>

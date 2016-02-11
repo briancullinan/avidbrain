@@ -141,7 +141,7 @@
 
 	//notify($data);
 
-	$offsets = new offsets($app->number,$app->dependents->pagination->items_per_page);
+	$offsets = new offsets($app->number,PERPAGE);
 	$count	=	$data->execute()->rowCount();
 	$data	=	$data->setMaxResults($offsets->perpage)->setFirstResult($offsets->offsetStart);
 	$data	=	$data->addSelect(user_select().','.profile_select().','.account_settings().',user.id');
@@ -177,7 +177,7 @@
 
 
 	$app->meta = new stdClass();
-	$app->meta->title = $app->dependents->SITE_NAME_PROPPER.' '.$middle.' Tutor'.$s;
+	$app->meta->title = SITENAME_PROPPER.' '.$middle.' Tutor'.$s;
 	$app->meta->h1 = '<span>'.numbers($count,1).'</span> '.ucwords($middle).' Tutor'.$s;
 	#$app->meta->keywords = 'examplekeys';
 	#$app->meta->description = 'exampledescribers';

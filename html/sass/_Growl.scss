@@ -1,0 +1,116 @@
+/* jQuery Growl
+ * Copyright 2015 Kevin Sylvestre
+ * 1.3.1
+ */
+#growls {
+  z-index: 50000;
+  position: fixed;
+}
+#growls.default {
+    top: 10px;
+    right: 10px;
+}
+#growls.tl {
+    top: 10px;
+    left: 10px;
+}
+#growls.tr {
+    top: 10px;
+    right: 10px;
+}
+#growls.bl {
+    bottom: 10px;
+    left: 10px;
+}
+#growls.br {
+    bottom: 10px;
+    right: 10px;
+}
+#growls.tc {
+    top: 10px;
+    right: 10px;
+    left: 10px;
+}
+#growls.bc {
+    bottom: 10px;
+    right: 10px;
+    left: 10px;
+}
+#growls.tc .growl, #growls.bc .growl {
+    margin-left: auto;
+    margin-right: auto;
+}
+.growl {
+    position: relative;
+    border-radius: 4px;
+    -webkit-transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+}
+.growl.growl-incoming {
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+.growl.growl-outgoing {
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+.growl.growl-small {
+    width: 200px;
+    padding: 5px;
+    margin: 5px;
+}
+.growl.growl-medium {
+    width: 250px;
+    padding: 10px;
+    margin: 10px;
+}
+.growl.growl-large {
+    width: 300px;
+    padding: 15px;
+    margin: 15px;
+}
+.growl.growl-default {
+    color: $color-initial;
+    background: $color-secondary;
+}
+.growl.growl-error {
+    color: $color-initial;
+    background: $error;
+}
+.growl.growl-notice {
+    color: $color-initial;
+    background: $color-primary;
+}
+.growl.growl-warning {
+    color: $color-initial;
+    background: $warning;
+}
+.growl .growl-close {
+    cursor: pointer;
+    float: right;
+}
+.growl .growl-title {
+    line-height: 24px;
+}
+.growl .growl-message {
+    line-height: 18px;
+}
+.growl-animate{
+
+    transform: translateY(20%);
+    animation-name: growlup;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-delay: 3s;
+    animation-fill-mode: forwards;
+
+}
+@keyframes growlup {
+    0%{
+		transform: translateY(20%);
+	}
+    100%{
+		transform: translateY(-100px);
+	}
+}

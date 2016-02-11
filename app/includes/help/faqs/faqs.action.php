@@ -1,7 +1,7 @@
 <?php
 	
 	$app->meta = new stdClass();
-	$app->meta->title = $app->dependents->SITE_NAME_PROPPER." FAQ's";
+	$app->meta->title = SITENAME_PROPPER." FAQ's";
 	
 	$sql = "SELECT * FROM avid___help_faqs WHERE section = :url ORDER BY `sortorder` ASC";
 	$prepeare = array(':url'=>'general');

@@ -1,9 +1,9 @@
 <?php
 	$cropped = croppedfile($app->currentuser->my_upload);
 	
-	$approvedfile = $app->dependents->DOCUMENT_ROOT.'profiles/approved/'.$cropped;
-	$myfile = $app->dependents->APP_PATH.'uploads/photos/'.$app->currentuser->my_upload;
-	$cropped = $app->dependents->APP_PATH.'uploads/photos/'.$cropped;
+	$approvedfile = DOCUMENT_ROOT.'profiles/approved/'.$cropped;
+	$myfile = APP_PATH.'uploads/photos/'.$app->currentuser->my_upload;
+	$cropped = APP_PATH.'uploads/photos/'.$cropped;
 
 	if(file_exists($approvedfile)){
 		$img = $app->imagemanager->make($approvedfile)->rotate(90)->save();

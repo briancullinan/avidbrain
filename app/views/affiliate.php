@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title><?php if(isset($app->meta->title)){ echo strip_tags($app->meta->title);}else{ echo $app->dependents->SITE_NAME; } ?></title>
+	<title><?php if(isset($app->meta->title)){ echo strip_tags($app->meta->title);}else{ echo SITENAME; } ?></title>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-	<meta name="application-name" content="<?php echo $app->dependents->SITE_NAME; ?>" />
-	<meta name="description" content="<?php if(isset($app->meta->description)){echo $app->meta->description;}else{ echo $app->dependents->SITE_NAME_PROPPER.' Tutoring. Find A Tutor. Become a Tutor.'; } ?>" />
-	<meta name="keywords" content="<?php if(isset($app->meta->keywords)){echo $app->meta->keywords;}else{echo $app->dependents->SITE_NAME_PROPPER.','.$app->dependents->SITE_NAME.',avid,brain,tutor,tutoring,education';} ?>" />
-	<meta name="author" content="<?php echo $app->dependents->SITE_NAME_PROPPER; ?> inc." />
+	<meta name="application-name" content="<?php echo SITENAME; ?>" />
+	<meta name="description" content="<?php if(isset($app->meta->description)){echo $app->meta->description;}else{ echo SITENAME_PROPPER.' Tutoring. Find A Tutor. Become a Tutor.'; } ?>" />
+	<meta name="keywords" content="<?php if(isset($app->meta->keywords)){echo $app->meta->keywords;}else{echo SITENAME_PROPPER.','.SITENAME.',avid,brain,tutor,tutoring,education';} ?>" />
+	<meta name="author" content="<?php echo SITENAME_PROPPER; ?> inc." />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 	<link rel="icon" type="image/png" href="/images/favicon.ico" />
 
@@ -20,7 +20,7 @@ foreach($app->header->cdncss as $cdncss){
 }
 
 if(isset($app->minify)):
-	echo "\t".'<link rel="stylesheet" href="/css/final.'.$app->dependents->VERSION.'.css">'."\n";
+	echo "\t".'<link rel="stylesheet" href="/css/final.'.VERSION.'.css">'."\n";
 else:
 	foreach($app->header->localcss as $localcss){
 		echo "\t".'<link rel="stylesheet" href="/css/'.$localcss.'">'."\n";
@@ -32,7 +32,7 @@ foreach($app->header->headjs as $localjs){
 	echo "\t".'<script src="'.$localjs.'"></script>'."\n";
 }
 
-echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependents->stripe->STRIPE_PUBLIC.'");</script>'."\n";
+echo '	<script type="text/javascript">Stripe.setPublishableKey("'.STRIPE_PUBLIC.'");</script>'."\n";
 
 	$openClosed = NULL;
 	$hideSearch = $app->getCookie('hideSearch');
@@ -116,7 +116,7 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 		<div class="row">
 
 			<div class="col s12 m10 l10">
-				<h5 class="white-text"><?php echo $app->dependents->SITE_NAME_PROPPER; ?> Headquarters</h5>
+				<h5 class="white-text"><?php echo SITENAME_PROPPER; ?> Headquarters</h5>
 				<div class="grey-text">
 					<a href="https://www.google.com/maps/place/Regus+Scottsdale/@33.495696,-111.924473,17z/data=!4m6!1m3!3m2!1s0x872b0bbf1d86c0fd:0xae8864ada3178e8f!2sRegus+Scottsdale!3m1!1s0x872b0bbf1d86c0fd:0xae8864ada3178e8f" target="_blank">7272 E. Indian School Rd. Suite 540  <br>
 					Scottsdale, AZ 85251</a>
@@ -126,16 +126,16 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 				<h5 class="white-text">Follow Us</h5>
 				<ul class="follow-us">
 					<li>
-						<a href="<?php echo $app->dependents->social->facebook; ?>" target="_blank"><i class="fa fa-facebook"></i></a>
+						<a href="<?php echo socialFacebook; ?>" target="_blank"><i class="fa fa-facebook"></i></a>
 					</li>
 					<li>
-						<a href="<?php echo $app->dependents->social->twitter; ?>" target="_blank"><i class="fa fa-twitter"></i></a>
+						<a href="<?php echo socialTwitter; ?>" target="_blank"><i class="fa fa-twitter"></i></a>
 					</li>
 					<li>
-						<a href="<?php echo $app->dependents->social->linkedin; ?>" target="_blank"><i class="fa fa-linkedin"></i></a>
+						<a href="<?php echo socialLinkedin; ?>" target="_blank"><i class="fa fa-linkedin"></i></a>
 					</li>
 					<li>
-						<a href="<?php echo $app->dependents->social->pinterest; ?>" target="_blank"><i class="fa fa-pinterest"></i></a>
+						<a href="<?php echo socialPinterest; ?>" target="_blank"><i class="fa fa-pinterest"></i></a>
 					</li>
 				</ul>
 			</div>
@@ -143,8 +143,8 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.$app->dependen
 			<div class="row">
 				<div class="col s12 m6 l6">
 					<div class="av-versioning">
-						<?php echo $app->dependents->SITE_NAME_PROPPER; ?> inc. &copy; All rights reserved <?php echo date('Y'); ?>
-						<span class="version">Version <?php echo $app->dependents->VERSION; ?></span>
+						<?php echo SITENAME_PROPPER; ?> inc. &copy; All rights reserved <?php echo date('Y'); ?>
+						<span class="version">Version <?php echo VERSION; ?></span>
 					</div>
 				</div>
 				<div class="col s12 m6 l6 right-align">
@@ -166,7 +166,7 @@ foreach($app->header->cdnjs as $cdnjs){
 }
 
 if(isset($app->minify)):
-	echo "\t".'<script src="/js/final.'.$app->dependents->VERSION.'.js"></script>'."\n";
+	echo "\t".'<script src="/js/final.'.VERSION.'.js"></script>'."\n";
 else:
 	// Local JS
 	foreach($app->header->localjs as $localjs){
@@ -174,7 +174,7 @@ else:
 	}
 endif;
 ?>
-<?php if($app->dependents->DEBUG!=true): ?>
+<?php if(DEBUG!=true): ?>
 <script src="https://static.getclicky.com/js" type="text/javascript"></script>
 <script type="text/javascript">try{ clicky.init(100807251); }catch(e){}</script>
 <noscript><p><img alt="Clicky" width="1" height="1" src="https://in.getclicky.com/100807251ns.gif" /></p></noscript>

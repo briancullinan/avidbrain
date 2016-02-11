@@ -7,8 +7,8 @@
 
 	$app->connect->delete('avid___user_needsprofilereview',$deleteRequest);
 
-	$path = $app->dependents->APP_PATH.'uploads/photos/';
-	$pathApproved = $app->dependents->DOCUMENT_ROOT.'profiles/approved/';
+	$path = APP_PATH.'uploads/photos/';
+	$pathApproved = DOCUMENT_ROOT.'profiles/approved/';
 	$myfile = $app->currentuser->my_upload;
 
 	$upload = $path.$myfile;

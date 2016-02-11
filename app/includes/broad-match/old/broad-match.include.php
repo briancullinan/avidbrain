@@ -39,7 +39,7 @@
 
 
 	<?php foreach($app->broadmatch as $searchResults): ?>
-		<?php include($app->dependents->APP_PATH."includes/user-profile/fixed.tutors.php"); ?>
+		<?php include(APP_PATH."includes/user-profile/fixed.tutors.php"); ?>
 	<?php endforeach; ?>
 	<?php echo $app->pagination; ?>
 <?php else: ?>
@@ -55,7 +55,6 @@
 				$simpleSignup = new Forms($app->connect);
 				$simpleSignup->formname = 'studentapplication';
 				$simpleSignup->url = '/signup/student';
-				$simpleSignup->dependents = $app->dependents;
 				$simpleSignup->csrf_key = $csrf_key;
 				$simpleSignup->csrf_token = $csrf_token;
 				$simpleSignup->makeform();

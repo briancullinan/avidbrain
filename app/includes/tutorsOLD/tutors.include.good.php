@@ -41,7 +41,7 @@
 
 	<?php foreach($app->searchResults as $searchResults): ?>
 
-		<?php include($app->dependents->APP_PATH."includes/user-profile/mini.tutor.profile.php"); ?>
+		<?php include(APP_PATH."includes/user-profile/mini.tutor.profile.php"); ?>
 
 	<?php endforeach; ?>
 	<?php echo $app->pagination; ?>
@@ -69,7 +69,6 @@
 				$simpleSignup = new Forms($app->connect);
 				$simpleSignup->formname = 'studentapplication';
 				$simpleSignup->url = $app->request->getPath();
-				$simpleSignup->dependents = $app->dependents;
 				$simpleSignup->csrf_key = $csrf_key;
 				$simpleSignup->csrf_token = $csrf_token;
 				$simpleSignup->makeform();

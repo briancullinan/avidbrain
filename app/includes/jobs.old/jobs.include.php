@@ -152,7 +152,6 @@
 				$contestform = new Forms($app->connect);
 				$contestform->formname = 'contestform';
 				$contestform->url = '/jobs';
-				$contestform->dependents = $app->dependents;
 				$contestform->csrf_key = $csrf_key;
 				$contestform->csrf_token = $csrf_token;
 				$contestform->formvalues = $contestinfo;

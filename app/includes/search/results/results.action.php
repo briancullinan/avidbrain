@@ -92,7 +92,7 @@
     //$page
 
 
-    $offsets = new offsets((isset($page) ? $page : 1),$app->dependents->pagination->items_per_page);
+    $offsets = new offsets((isset($page) ? $page : 1),PERPAGE);
     //notify($offsets);
 
 	$limitOffset = "
@@ -226,7 +226,7 @@
 
     foreach($results->results as $key=> $build){
         $results->results[$key]->personal_statement_verified = truncate($build->personal_statement_verified,400);
-        $results->results[$key]->img = userphotographs($app->user,$build,$app->dependents);
+        $results->results[$key]->img = userphotographs($app->user,$build);
         $results->results[$key]->title = short($build);
         $results->results[$key]->location = ucwords($build->city).' '.ucwords($build->state_long);
         $results->results[$key]->statement = truncate($build->personal_statement_verified,100);

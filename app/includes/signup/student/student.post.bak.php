@@ -149,7 +149,7 @@
 		// Do Things
 
 		$welcomeMessage = '<p>Welcome to AvidBrain</p>';
-		$welcomeMessage.= '<p>Your verification link is: <a href="'.$app->dependents->DOMAIN.'/validate/'.$validation_code.'">Verify Email Address</a></p>';
+		$welcomeMessage.= '<p>Your verification link is: <a href="'.DOMAIN.'/validate/'.$validation_code.'">Verify Email Address</a></p>';
 
 		$app->mailgun->to = $app->signup->email;
 		$app->mailgun->subject = 'Please authenticate your email address';
@@ -178,7 +178,7 @@
 		$newstudentEmail.= '<p> URL: '.$url.' </p>';
 		$newstudentEmail.= '<p> Referrer: '.$referrer.' </p>';
 
-		if($app->dependents->DOMAIN=='http://avidbrain.dev'){
+		if(DOMAIN=='http://avidbrain.dev'){
 			$toemails = 'david@avidbrain.com';
 		}
 		else{

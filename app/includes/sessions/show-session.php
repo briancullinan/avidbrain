@@ -187,7 +187,6 @@
 		$messagingsystem = new Forms($app->connect);
 		$messagingsystem->formname = 'messagingsystem';
 		$messagingsystem->url = $showsession->url.'/request-review';
-		$messagingsystem->dependents = $app->dependents;
 		$messagingsystem->csrf_key = $csrf_key;
 		$messagingsystem->csrf_token = $csrf_token;
 

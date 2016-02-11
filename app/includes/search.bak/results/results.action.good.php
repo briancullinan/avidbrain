@@ -92,7 +92,7 @@
     //$page
 
 
-    $offsets = new offsets((isset($page) ? $page : 1),$app->dependents->pagination->items_per_page);
+    $offsets = new offsets((isset($page) ? $page : 1),PERPAGE);
     //notify($offsets);
 
 	$limitOffset = "

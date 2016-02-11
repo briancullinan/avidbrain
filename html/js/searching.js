@@ -284,7 +284,7 @@ var encodeHtmlEntity = function(str) {
 
 		$('.submit-a-form').attr('disabled','disabled');
 
-		$.get('/templates/mustache.template.html', maketemplate);
+		//$.get('/templates/mustache.template.html', maketemplate);
 
 
 		$('.submit-a-form').on('click',function(){

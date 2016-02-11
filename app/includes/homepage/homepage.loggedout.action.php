@@ -79,9 +79,9 @@
 		";
 		$prepare = array();
 		$results = $app->connect->executeQuery($sql,$prepare)->fetch();
-		$results->link = $app->dependents->DOMAIN.$results->url;
+		$results->link = DOMAIN.$results->url;
 		$results->name = short($results);
-		$results->img = userphotographs($app->user,$results,$app->dependents);
+		$results->img = userphotographs($app->user,$results);
 	    $cachedTestimonial = $results;
 	    $app->connect->cache->set($cachedTestimonialKey, $results, 3600);
 	}
@@ -135,7 +135,7 @@
 		$prepare = array();
 		$results = $app->connect->executeQuery($sql,$prepare)->fetch();
 		$results->name = short($results);
-		$results->img = userphotographs($app->user,$results,$app->dependents);
+		$results->img = userphotographs($app->user,$results);
 
 		$sql = "
 			SELECT
@@ -171,7 +171,7 @@
 		return $slider;
 	};
 
-	$app->slider = $slides($app->dependents->DOCUMENT_ROOT,'images/homepage-slides/*.jpg');
+	$app->slider = $slides(DOCUMENT_ROOT,'images/homepage-slides/*.jpg');
 
 
 	$featured = [];

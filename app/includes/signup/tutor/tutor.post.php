@@ -116,19 +116,19 @@
 		}
 
 
-		$message = 'Welcome to '.$app->dependents->SITE_NAME_PROPPER.', please call 1-800-485-3138 to setup an interview.';
+		$message = 'Welcome to '.SITENAME_PROPPER.', please call 1-800-485-3138 to setup an interview.';
 		$messagePlus = '<p>Please allow 24 hours to process your application.</p>';
 		$messagePlus.= '<p><a href="https://signup.avidbrain.com/interview-schedule.html" target="_blank">View our current interview schedule.</a></p>';
 
 		$app->mailgun->to = $app->tutorsignup->tutor->email;
-		$app->mailgun->subject = 'Thank you for signing up with '.$app->dependents->SITE_NAME_PROPPER;
+		$app->mailgun->subject = 'Thank you for signing up with '.SITENAME_PROPPER;
 		$app->mailgun->message = $message.$messagePlus;
 		$app->mailgun->send();
 
 		try{
 			$app->twilio->account->messages->create(array(
 				'To' => $tophone,
-				'From' => $app->dependents->twilio->number,
+				'From' => TWILIO_NUMBER,
 				'Body' => $message
 			));
 		}

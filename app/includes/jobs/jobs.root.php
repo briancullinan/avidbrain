@@ -21,8 +21,8 @@
 	$app->secondary = $app->target->secondary;
 	if(isset($app->user->usertype) && $app->user->usertype=='student'){
 		//unset($app->secondary);
-		$app->jobinclude = $app->dependents->APP_PATH.'includes/jobs/action.student';
+		$app->jobinclude = APP_PATH.'includes/jobs/action.student';
 	}
 	else{
-		$app->jobinclude = $app->dependents->APP_PATH.'includes/jobs/action.everyone';
+		$app->jobinclude = APP_PATH.'includes/jobs/action.everyone';
 	}

@@ -70,7 +70,7 @@
 
 			$subject = 'Session Refunded';
 			$message = '<p>'.short($app->user).' has refunded you $'.$app->refundme->amount.' from your last tutoring session.</p>';
-			$message.='<p><a href="'.$app->dependents->DOMAIN.'/sessions/view/'.$id.'">View Session</a></p>';
+			$message.='<p><a href="'.DOMAIN.'/sessions/view/'.$id.'">View Session</a></p>';
 
 			if(isset($app->viewsession->getemails) && $app->viewsession->getemails=='yes'){
 
@@ -108,7 +108,7 @@
 		);
 
 		$message = '<p>'. $app->contactus->message.'</p>';
-		$message.='<p><a href="'.$app->dependents->DOMAIN.'/sessions/view/'.$id.'">View Session</a></p>';
+		$message.='<p><a href="'.DOMAIN.'/sessions/view/'.$id.'">View Session</a></p>';
 
 		$app->mailgun->to = 'support@avidbrain.com';
 		$app->mailgun->subject = 'Contest Dispute';
@@ -125,5 +125,5 @@
 
 	}
 	else{
-		notify($app->dependents->SITE_NAME_PROPPER);
+		notify(SITENAME_PROPPER);
 	}

@@ -3,8 +3,8 @@
 	if(isset($method) && isset($action)){
 		if($action=='trash'){
 
-			$upload = $app->dependents->APP_PATH.'uploads/photos/'.$app->newtutor->upload;
-			$cropped = $app->dependents->APP_PATH.'uploads/photos/'.$app->newtutor->cropped;
+			$upload = APP_PATH.'uploads/photos/'.$app->newtutor->upload;
+			$cropped = APP_PATH.'uploads/photos/'.$app->newtutor->cropped;
 
 			try{
 				unlink($upload);
@@ -26,22 +26,22 @@
 		}
 		elseif($action=='rotateright'){
 
-			$cropped = $app->dependents->APP_PATH.'uploads/photos/'.$app->newtutor->cropped;
+			$cropped = APP_PATH.'uploads/photos/'.$app->newtutor->cropped;
 			$img = $app->imagemanager->make($cropped)->rotate(-90)->save();
 			$app->redirect('/signup/tutor');
 
 		}
 		elseif($action=='rotateleft'){
-			$cropped = $app->dependents->APP_PATH.'uploads/photos/'.$app->newtutor->cropped;
+			$cropped = APP_PATH.'uploads/photos/'.$app->newtutor->cropped;
 			$img = $app->imagemanager->make($cropped)->rotate(90)->save();
 			$app->redirect('/signup/tutor');
 		}
 	}
 
 	$app->meta = new stdClass();
-	$app->meta->title = 'Tutor Signup - '.$app->dependents->SITE_NAME_PROPPER;
+	$app->meta->title = 'Tutor Signup - '.SITENAME_PROPPER;
 	$app->meta->h1 = false;
-	$app->meta->keywords = 'tutor,signup,'.$app->dependents->SITE_NAME;
+	$app->meta->keywords = 'tutor,signup,'.SITENAME;
 
 	$app->titleAdd = NULL;
 	if(isset($promocode)){

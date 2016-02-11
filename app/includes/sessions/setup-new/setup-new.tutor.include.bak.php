@@ -36,7 +36,6 @@
 					$setupsession = new Forms($app->connect);
 					$setupsession->formname = 'setupsession';
 					$setupsession->url = '/sessions/setup-new/'.$username;
-					$setupsession->dependents = $app->dependents;
 					$setupsession->csrf_key = $csrf_key;
 					$setupsession->csrf_token = $csrf_token;
 						$setupsession->formvalues = $formvalues;

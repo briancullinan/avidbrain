@@ -131,7 +131,7 @@
 		// Email User
 		// Do Things
 
-		$emailcode = $app->dependents->DOMAIN.'/validate/'.$validation_code;
+		$emailcode = DOMAIN.'/validate/'.$validation_code;
 
 		$welcomeMessage = '<p>Welcome to AvidBrain</p>';
 		$welcomeMessage.= '<p>Your verification link is: <a href="'.$emailcode.'">Verify Email Address</a></p>';
@@ -178,7 +178,7 @@
 			}
 		}
 
-		if($app->dependents->DOMAIN=='http://avidbrain.dev'){
+		if(DOMAIN=='http://avidbrain.dev'){
 			$toemails = 'david@avidbrain.com';
 		}
 		else{
@@ -367,10 +367,10 @@
 			// Email User
 			// Do Things
 
-			$textlink = $app->dependents->DOMAIN.'/validate/'.$validation_code;
+			$textlink = DOMAIN.'/validate/'.$validation_code;
 
 			$welcomeMessage = '<p>Welcome to AvidBrain</p>';
-			$welcomeMessage.= '<p>Your verification link is:  '.$app->dependents->DOMAIN.'/validate/'.$validation_code.'</p>';
+			$welcomeMessage.= '<p>Your verification link is:  '.DOMAIN.'/validate/'.$validation_code.'</p>';
 			$welcomeMessage.= '<p><a href="'.$textlink.'">Verify Email Address</a></p>';
 			$welcomeMessage.= '<p>Text Link: '.$textlink.'</p>';
 
@@ -411,7 +411,7 @@
 				}
 			}
 
-			if($app->dependents->DOMAIN=='http://avidbrain.dev'){
+			if(DOMAIN=='http://avidbrain.dev'){
 				$toemails = 'david@avidbrain.com';
 			}
 			else{

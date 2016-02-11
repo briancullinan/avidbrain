@@ -38,10 +38,10 @@
 					<iframe class="video-responsive" src="https://www.youtube.com/embed/E6zmjRXjlmo" frameborder="0" allowfullscreen></iframe>
 				</div>
 				
-				<p>Tutors, here are 8 steps to Perfecting Your <?php echo $app->dependents->SITE_NAME_PROPPER; ?> Profile:</p>
+				<p>Tutors, here are 8 steps to Perfecting Your <?php echo SITENAME_PROPPER; ?> Profile:</p>
 			
 				<ol class="ordered-list">
-					<li>Go to <?php echo $app->dependents->SITE_NAME; ?>.com and log in to your account by clicking “Login” in the upper-right hand corner of the webpage.</li>
+					<li>Go to <?php echo SITENAME; ?>.com and log in to your account by clicking “Login” in the upper-right hand corner of the webpage.</li>
 					<li>Use the same password you chose when you did your background check. If you can’t remember your password, click “Forgot password” and enter your email address, and you will be sent a link to reset your password.</li>
 					<li>Enter your location by typing your Zipcode in the form and click Submit.</li>
 					<li>Next click on “Profile Information” in the left-hand column. Type in:
@@ -58,9 +58,9 @@
 					
 					</li>
 					
-					<p>If you need help writing your Short Description or Personal Statement, read the tips we’ve provided on the Account Information screen or contact an <?php echo $app->dependents->SITE_NAME_PROPPER; ?> staff member who will work with you on perfecting your profile. Don’t forget to click Submit before moving to the next step to save your information.</p>
+					<p>If you need help writing your Short Description or Personal Statement, read the tips we’ve provided on the Account Information screen or contact an <?php echo SITENAME_PROPPER; ?> staff member who will work with you on perfecting your profile. Don’t forget to click Submit before moving to the next step to save your information.</p>
 					
-					<li>Next, click on “My Subjects” in the left-hand column. Click on a Subject area from the list, then either type in a more specific Subject within that area, or click on the arrow next to “Available Subjects” in order to choose from a dropdown menu of subjects that are currently taught by <?php echo $app->dependents->SITE_NAME_PROPPER; ?> tutors. Then write a short description about why you teach this Subject. This is your chance to impress potential students and parents, so be sure to include the following:
+					<li>Next, click on “My Subjects” in the left-hand column. Click on a Subject area from the list, then either type in a more specific Subject within that area, or click on the arrow next to “Available Subjects” in order to choose from a dropdown menu of subjects that are currently taught by <?php echo SITENAME_PROPPER; ?> tutors. Then write a short description about why you teach this Subject. This is your chance to impress potential students and parents, so be sure to include the following:
 					
 						<ul>
 							<li>How you became an expert in this subject</li>
@@ -72,7 +72,7 @@
 					
 					</li>
 					
-					<p>If you can’t find the Subject you teach, you can contact an <?php echo $app->dependents->SITE_NAME_PROPPER; ?> staff member by going to Help and then clicking on Contact Us and writing a short message suggesting the Subject you would like us to add.</p>
+					<p>If you can’t find the Subject you teach, you can contact an <?php echo SITENAME_PROPPER; ?> staff member by going to Help and then clicking on Contact Us and writing a short message suggesting the Subject you would like us to add.</p>
 					
 					<li>Next, click on “My Photos” in the left-hand column. You can either choose an avatar to display next to your name on your public profile, or upload a high-resolution photo of yourself. Don’t forget to smile! Smiling in your photo makes a HUGE difference on how potential students and parents perceive you. Aim for a look that’s friendly, yet professional.</li>
 					

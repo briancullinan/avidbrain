@@ -17,7 +17,7 @@
 						<?php if(isset($results->username)): ?>
 						    <div class="user-photograph">
 						        <a href="<?php echo $results->url; ?>">
-						            <img src="<?php echo userphotographs($app->user,$results,$app->dependents); ?>" />
+						            <img src="<?php echo userphotographs($app->user,$results); ?>" />
 						        </a>
 						    </div>
 						    <div class="user-name">

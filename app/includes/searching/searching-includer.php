@@ -121,7 +121,7 @@
 
 	<div class="searching-results-right">
 		<div class="pull-tab" data-status="closed"><span>Search</span> <i class="fa fa-arrow-up"></i></div>
-		<div class="searching-results-search"><?php include($app->dependents->APP_PATH.'includes/searching/searchbox.php'); ?></div>
+		<div class="searching-results-search"><?php include(APP_PATH.'includes/searching/searchbox.php'); ?></div>
 	</div>
 
 </div>

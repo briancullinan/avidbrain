@@ -35,7 +35,7 @@
 			<?php if(isset($results->username)): ?>
 			    <div class="user-photograph">
 			        <a href="<?php echo $results->url; ?>">
-			            <img src="<?php echo userphotographs($app->user,$results,$app->dependents); ?>" />
+			            <img src="<?php echo userphotographs($app->user,$results); ?>" />
 			        </a>
 			    </div>
 			    <div class="user-name">
@@ -155,7 +155,6 @@
 			$messagingsystem = new Forms($app->connect);
 			$messagingsystem->formname = 'messagingsystem';
 			$messagingsystem->url = $results->url;
-			$messagingsystem->dependents = $app->dependents;
 			$messagingsystem->csrf_key = $csrf_key;
 			$messagingsystem->csrf_token = $csrf_token;
 			$messagingsystem->formvalues = $reply;

@@ -1,6 +1,6 @@
 <div class="homepage-logged-in">
 
-	<h1>Welcome to <?php echo $app->dependents->SITE_NAME_PROPPER; ?></h1>
+	<h1>Welcome to <?php echo SITENAME_PROPPER; ?></h1>
 
 	<div class="row">
 
@@ -72,7 +72,7 @@
 
 		<div class="col s12 m6 l4">
 			<?php if(isset($app->my_tweets)): ?>
-				<h3> News from <?php echo str_replace('https://twitter.com/','@',$app->dependents->social->twitter); ?></h3>
+				<h3> News from <?php echo str_replace('https://twitter.com/','@',socialTwitter); ?></h3>
 				<?php foreach($app->my_tweets as $tweet):# printer($tweet); ?>
 
 				<div class="block tweets">

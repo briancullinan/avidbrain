@@ -10,8 +10,8 @@
 			if(isset($app->target->include) && file_exists($app->target->include)){
 				include($app->target->include);
 			}
-			elseif(isset($app->target->include) && !file_exists($app->target->include) && $app->dependents->DEBUG==true){
-				include($app->dependents->APP_PATH.'debug/makeme.php');
+			elseif(isset($app->target->include) && !file_exists($app->target->include) && DEBUG==true){
+				include(APP_PATH.'debug/makeme.php');
 			}
 			else{
 				//echo 'makeme';

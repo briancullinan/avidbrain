@@ -102,7 +102,7 @@ if(isset($app->searchingforjobs) && !empty($app->searchingforjobs)){
 
 	$data = $data->groupBy('jobs.id');
 
-	$offsets = new offsets((isset($number) ? $number : NULL),$app->dependents->pagination->items_per_page);
+	$offsets = new offsets((isset($number) ? $number : NULL),PERPAGE);
 	$count = $data->execute()->rowCount();
 	$alljobs = $data->setMaxResults($offsets->perpage)->setFirstResult($offsets->offsetStart)->execute()->fetchAll();
 	$pagify = new Pagify();

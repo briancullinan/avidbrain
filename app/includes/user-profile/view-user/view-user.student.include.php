@@ -15,7 +15,7 @@
 					<div class="tutor-left">
 
 						<div class="user-photograph">
-							<img src="<?php echo userphotographs($app->user,$app->currentuser,$app->dependents); ?>" />
+							<img src="<?php echo userphotographs($app->user,$app->currentuser); ?>" />
 						</div>
 
 						<?php if(isset($app->childen)): ?>
@@ -78,7 +78,7 @@
 									<div class="title">My Info</div>
 								</div>
 
-								<?php include($app->dependents->APP_PATH.'includes/shared-pages/pages-sidebar.php'); ?>
+								<?php include(APP_PATH.'includes/shared-pages/pages-sidebar.php'); ?>
 
 
 							</ul>
@@ -139,7 +139,7 @@
 						<div class="tutor-info left">
 
 							<?php
-								$page = $app->dependents->APP_PATH.'includes/shared-pages/pages-'.$app->pagename.'.php';
+								$page = APP_PATH.'includes/shared-pages/pages-'.$app->pagename.'.php';
 								if(file_exists($page)){
 									include($page);
 								}

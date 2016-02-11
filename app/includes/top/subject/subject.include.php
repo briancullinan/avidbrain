@@ -30,7 +30,7 @@
 
 		<?php if(isset($app->topresults)): ?>
 			<?php foreach($app->topresults as $searchResults):?>
-				<?php include($app->dependents->APP_PATH.'includes/tutors/search.results.php'); ?>
+				<?php include(APP_PATH.'includes/tutors/search.results.php'); ?>
 			<?php endforeach; ?>
 
 			<div class="hide" id="csrf_key"><?php echo $csrf_key; ?></div>

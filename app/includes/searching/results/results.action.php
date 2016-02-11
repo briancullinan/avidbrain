@@ -115,7 +115,7 @@
     $joins = [];
     $where = [];
 
-    $offsets = new offsets((isset($page) ? $page : 1),$app->dependents->pagination->items_per_page);
+    $offsets = new offsets((isset($page) ? $page : 1),PERPAGE);
     //notify($offsets);
 
 	$limitOffset = "
@@ -345,7 +345,7 @@
 
     foreach($cachedSearchResults->results as $key=>$build){
         $cachedSearchResults->results[$key]->personal_statement_verified = truncate($build->personal_statement_verified,400);
-        $cachedSearchResults->results[$key]->img = userphotographs($app->user,$build,$app->dependents);
+        $cachedSearchResults->results[$key]->img = userphotographs($app->user,$build);
         $cachedSearchResults->results[$key]->short = short($build);
         $cachedSearchResults->results[$key]->location_link = '<a href="/searching/---/'.$build->zipcode.'/100/---/---/0/200/(distance_asc)/[1]">'.$build->city.', '.ucwords($build->state_long).'</a>';
         if(isset($subject)){

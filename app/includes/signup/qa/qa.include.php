@@ -6,7 +6,6 @@
 			$studentSignup = new Forms($app->connect);
 			$studentSignup->formname = 'signup';
 			$studentSignup->url = '/signup/student';
-			$studentSignup->dependents = $app->dependents;
 			$studentSignup->csrf_key = $csrf_key;
 			$studentSignup->csrf_token = $csrf_token;
 				$mycode = new stdClass();

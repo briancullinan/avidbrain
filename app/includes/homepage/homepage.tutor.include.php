@@ -25,7 +25,7 @@
 
 	<div class="col s12 m4 l4">
 		<?php if(isset($app->my_tweets)): ?>
-			<h3> News from <?php echo str_replace('https://twitter.com/','@',$app->dependents->social->twitter); ?></h3>
+			<h3> News from <?php echo str_replace('https://twitter.com/','@',socialTwitter); ?></h3>
 			<?php foreach($app->my_tweets as $tweet):# printer($tweet); ?>
 
 			<div class="block tweets">

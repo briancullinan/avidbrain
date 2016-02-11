@@ -19,7 +19,7 @@
 				$data	=	$data->where('payments.type = "Bi Monthly Tutor Payment" AND payments.email = :myemail')->setParameter(':myemail',$app->user->email);
 				$data	=	$data->orderBy('payments.date','DESC');
 
-				$offsets = new offsets((isset($number) ? $number : NULL),$app->dependents->pagination->items_per_page);
+				$offsets = new offsets((isset($number) ? $number : NULL),PERPAGE);
 				$count	=	$data->execute()->rowCount();
 				$data	=	$data->setMaxResults($offsets->perpage)->setFirstResult($offsets->offsetStart);
 
@@ -38,7 +38,7 @@
 				$data	=	$data->innerJoin('payments','avid___sessions','sessions','sessions.id = payments.session_id');
 				$data	=	$data->orderBy('payments.date','DESC');
 
-				$offsets = new offsets((isset($number) ? $number : NULL),$app->dependents->pagination->items_per_page);
+				$offsets = new offsets((isset($number) ? $number : NULL),PERPAGE);
 				$count	=	$data->execute()->rowCount();
 				$data	=	$data->setMaxResults($offsets->perpage)->setFirstResult($offsets->offsetStart);
 
@@ -69,7 +69,7 @@
 			$data	=	$data->innerJoin('payments','avid___sessions','sessions','sessions.id = payments.session_id');
 			$data	=	$data->orderBy('payments.date','DESC');
 
-			$offsets = new offsets((isset($number) ? $number : NULL),$app->dependents->pagination->items_per_page);
+			$offsets = new offsets((isset($number) ? $number : NULL),PERPAGE);
 			$count	=	$data->execute()->rowCount();
 			$data	=	$data->setMaxResults($offsets->perpage)->setFirstResult($offsets->offsetStart);
 

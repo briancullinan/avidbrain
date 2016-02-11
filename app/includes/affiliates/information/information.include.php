@@ -41,13 +41,13 @@
             	<div class="col s12 m4 l4">
                     <div class="input">
                         <label for="studentsignup">Student Signup</label>
-                        <input onclick="select();" id="studentsignup" type="text" value="<?php echo $app->dependents->DOMAIN; ?>/signup/student/<?php echo $app->affiliate->mycode; ?>" />
+                        <input onclick="select();" id="studentsignup" type="text" value="<?php echo DOMAIN; ?>/signup/student/<?php echo $app->affiliate->mycode; ?>" />
                     </div>
             	</div>
                 <div class="col s12 m4 l4">
                     <div class="input">
                         <label for="tutorsignup">Tutor Signup</label>
-                        <input onclick="select();" type="text" id="tutorsignup" value="<?php echo $app->dependents->DOMAIN; ?>/signup/tutor/<?php echo $app->affiliate->mycode; ?>" />
+                        <input onclick="select();" type="text" id="tutorsignup" value="<?php echo DOMAIN; ?>/signup/tutor/<?php echo $app->affiliate->mycode; ?>" />
                     </div>
             	</div>
             </div>

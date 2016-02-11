@@ -8,7 +8,6 @@
     $getpaid = new Forms($app->connect);
     $getpaid->formname = 'cutchecks';
     $getpaid->url = '/affiliates/information';
-    $getpaid->dependents = $app->dependents;
     $getpaid->csrf_key = $csrf_key;
     $getpaid->csrf_token = $csrf_token;
     if(isset($app->cutchecksinfo)){

@@ -5,9 +5,9 @@
         $width = $extras;
     }
 
-    define('PHOTOS',$app->dependents->APP_PATH.'uploads/photos/');
-    define('APPROVED',$app->dependents->DOCUMENT_ROOT.'profiles/approved/');
-    define('AVATAR',$app->dependents->DOCUMENT_ROOT);
+    define('PHOTOS',APP_PATH.'uploads/photos/');
+    define('APPROVED',DOCUMENT_ROOT.'profiles/approved/');
+    define('AVATAR',DOCUMENT_ROOT);
 
     if(isset($app->user->username) && $app->user->username==$id || isset($app->user->usertype) && $app->user->usertype=='admin'){
         if($location=='photograph'){

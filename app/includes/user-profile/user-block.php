@@ -19,7 +19,7 @@
 	<div class="user-block center-align">
 		<div class="profile-image avatar">
 
-			<?php echo show_avatar($userinfo,$app->user,$app->dependents); ?>
+			<?php echo show_avatar($userinfo,$app->user); ?>
 
 		</div>
 		<div class="user-name">

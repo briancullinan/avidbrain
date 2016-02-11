@@ -1,1 +1,1 @@
-<?php include($app->dependents->APP_PATH.'includes/searching/searching-includer.php'); ?>
+<?php include(APP_PATH.'includes/searching/searching-includer.php'); ?>

@@ -106,7 +106,6 @@
 			}
 			$studentSignup->formname = 'signup';
 			$studentSignup->url = '/signup/student';
-			$studentSignup->dependents = $app->dependents;
 			$studentSignup->csrf_key = $csrf_key;
 			$studentSignup->csrf_token = $csrf_token;
 			if(isset($promocode)){
@@ -133,6 +132,6 @@
 	</div>
 	<div class="col s12 m6 l6">
 		<h2>Benefits</h2>
-		<?php include($app->dependents->APP_PATH.'includes/signup/student/student-benefits.php'); ?>
+		<?php include(APP_PATH.'includes/signup/student/student-benefits.php'); ?>
 	</div>
 </div>

@@ -118,7 +118,7 @@
 		$_SESSION['temptutor']['email'] = $app->crypter->encrypt($app->tutorsignup->tutor->email);
 		$_SESSION['temptutor']['token'] = $app->crypter->encrypt($token);
 
-		if($app->dependents->DEBUG==true){
+		if(DEBUG==true){
 			$emails = 'david@avidbrain.com';
 		}
 		else{
@@ -139,7 +139,7 @@
 
 		$app->mailgun->to = $app->tutorsignup->tutor->email;
 		$app->mailgun->subject = 'AvidBrain Tutor Signup';
-		$app->mailgun->message = 'Thank you for signing up with AvidBrain. You may login by going to <a href="'.$app->dependents->DOMAIN.'/signup/tutor">Tutor Login</a>';
+		$app->mailgun->message = 'Thank you for signing up with AvidBrain. You may login by going to <a href="'.DOMAIN.'/signup/tutor">Tutor Login</a>';
 		$app->mailgun->send();
 
 		$googleHTML = '<!-- Google Code for Tutor Sign Up Conversion Page -->
@@ -313,7 +313,7 @@
 		else{
 			//.pdf, .doc, .docx, .rtf, .odt
 			$filename = $app->newtutor->email.$uploadfile;
-			$uploadPath = $app->dependents->APP_PATH.'uploads/resumes/'.$filename;
+			$uploadPath = APP_PATH.'uploads/resumes/'.$filename;
 
 
 			move_uploaded_file($upload->tmp_name, $uploadPath);
@@ -339,7 +339,7 @@
 		else{
 			$uploadfile = getfiletype($upload->name);
 			$filename = $app->newtutor->email.$uploadfile;
-			$uploadPath = $app->dependents->APP_PATH.'uploads/photos/';
+			$uploadPath = APP_PATH.'uploads/photos/';
 
 			$img = $app->imagemanager->make($upload->tmp_name)->save($uploadPath.$filename);
 			$app->connect->update('avid___new_temps',array('upload'=>$filename),array('email'=>$app->newtutor->email));
@@ -373,7 +373,7 @@
 			$filetype = getfiletype($app->newtutor->upload);
 			$thefile = $app->newtutor->email.$filetype;
 			$checkfile = $thefile;
-			$location = $app->dependents->APP_PATH.'uploads/photos/';
+			$location = APP_PATH.'uploads/photos/';
 			if(file_exists($location.$checkfile)){
 				$file = $checkfile;
 			}
@@ -401,8 +401,8 @@
 		else{
 			$croppedfile = croppedfile($app->newtutor->upload);
 			$croppedfileName = $croppedfile;
-			$myfile = $app->dependents->APP_PATH.'uploads/photos/'.$app->newtutor->upload;
-			$croppedfile = $app->dependents->APP_PATH.'uploads/photos/'.$croppedfile;
+			$myfile = APP_PATH.'uploads/photos/'.$app->newtutor->upload;
+			$croppedfile = APP_PATH.'uploads/photos/'.$croppedfile;
 			$cropped = $app->imagemanager->make($myfile)->crop($app->crop->w, $app->crop->h, $app->crop->x, $app->crop->y)->save($croppedfile); //->resize(250,250)
 			$height = $app->imagemanager->make($croppedfile)->height();
 			$width = $app->imagemanager->make($croppedfile)->width();
@@ -414,7 +414,7 @@
 			}
 		}
 
-		$croppedfileName = str_replace($app->dependents->APP_PATH.'uploads/photos/','',$croppedfileName);///var/www/amozek.dev/app/uploads/photos/
+		$croppedfileName = str_replace(APP_PATH.'uploads/photos/','',$croppedfileName);///var/www/amozek.dev/app/uploads/photos/
 
 
 
@@ -705,7 +705,7 @@
 			$message.='<p> <strong> Background Check Purchased  </strong> </p>';
 		}
 
-		if($app->dependents->DEBUG==true){
+		if(DEBUG==true){
 			$emails = 'david@avidbrain.com';
 		}
 		else{
