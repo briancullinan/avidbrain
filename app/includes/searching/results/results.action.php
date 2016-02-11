@@ -220,6 +220,9 @@
 
     //$app->connect->cache->clean();
 
+    if($sortType=='distance ASC' && empty($app->cachedZipcode) || $sortType=='distance DESC' && empty($app->cachedZipcode)){
+        $sortType = 'user.last_active ASC';
+    }
 
     $sql = "
         SELECT
