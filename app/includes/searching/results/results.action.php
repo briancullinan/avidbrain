@@ -59,6 +59,7 @@
     }
     $app->queries = $appget;
 
+
     if(!empty($subject)){
 
         $cachedSubjectKey = "cachedsubjectslug--".$subject;
@@ -145,6 +146,11 @@
     //notify($where);
 
     if(isset($location)){
+        $location = substr($location, 0,5);
+        $location = preg_replace("/[^0-9]/","",$location);
+        //notify($location);
+        //notify($location);
+        //$app->queries->location
         $cachedZipcodeKey = "searchingcachedzipcode-".$location;
         $cachedZipcode = $app->connect->cache->get($cachedZipcodeKey);
         if($cachedZipcode == null) {
