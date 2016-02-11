@@ -380,7 +380,7 @@
 
     $location = NULL;
     if(isset($app->cachedZipcode->id)){
-        $location = 'in '.$app->cachedZipcode->city.' '.ucwords($app->cachedZipcode->state_long);
+        $location = $app->cachedZipcode->city.' '.ucwords($app->cachedZipcode->state_long);
     }
 
     $gendertext = NULL;
@@ -392,7 +392,7 @@
     shuffle($randoms);
     $randomText = $randoms[0];
 
-    $text = $randomText.' '.$gendertext.' '.$subject.' Tutors '.$location;
+    $text = $randomText.' '.$gendertext.' '.$subject.' Tutors in '.$location;
     $text = str_replace('  ',' ',$text);
     $text = str_replace('  ',' ',$text);
     //notify($text);
@@ -423,5 +423,10 @@
 
     $app->meta = new stdClass();
     $app->meta->title = $text.' - AvidBrain Tutors';
-    $app->meta->titletext = '<span>'.numbers($app->count,1).'</span> '.$subject.' Tutors '.$location;
+    if(!empty($location)){
+        $app->meta->titletext = '<span>'.numbers($app->count,1).'</span> '.$location.' <span class="light-green-text text-accent-4">'.$subject.'</span> Tutors ';
+    }
+    else{
+        $app->meta->titletext = '<span>'.numbers($app->count,1).'</span> '.$location.' '.$subject.' Tutors ';
+    }
     $app->meta->h1 = false;
