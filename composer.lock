@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ef640428f48d560dbba26238e1e8db80",
-    "content-hash": "28df384cce0ec047a38c9af5a7fdad77",
+    "hash": "790626ac1f190a5e56cd49851c426c52",
+    "content-hash": "b7308a0fd7e08cdbb070440709fa6dd6",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -532,37 +532,39 @@
         },
         {
             "name": "filp/whoops",
-            "version": "1.1.10",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filp/whoops.git",
-                "reference": "72538eeb70bbfb11964412a3d098d109efd012f7"
+                "reference": "a327942c50cbd62b25c6fbe08f173031ce25fbff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filp/whoops/zipball/72538eeb70bbfb11964412a3d098d109efd012f7",
-                "reference": "72538eeb70bbfb11964412a3d098d109efd012f7",
+                "url": "https://api.github.com/repos/filp/whoops/zipball/a327942c50cbd62b25c6fbe08f173031ce25fbff",
+                "reference": "a327942c50cbd62b25c6fbe08f173031ce25fbff",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.0"
+                "php": ">=5.5.9"
             },
             "require-dev": {
-                "mockery/mockery": "0.9.*"
+                "mockery/mockery": "0.9.*",
+                "phpunit/phpunit": "^4.8 || ^5.0"
+            },
+            "suggest": {
+                "symfony/var-dumper": "Pretty print complex values better with var-dumper available",
+                "whoops/soap": "Formats errors as SOAP responses"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.2-dev"
+                    "dev-master": "2.0-dev"
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Whoops": "src/"
-                },
-                "classmap": [
-                    "src/deprecated"
-                ]
+                "psr-4": {
+                    "Whoops\\": "src/Whoops/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -582,11 +584,10 @@
                 "exception",
                 "handling",
                 "library",
-                "silex-provider",
                 "whoops",
                 "zf2"
             ],
-            "time": "2015-06-29 05:42:04"
+            "time": "2016-01-06 17:51:21"
         },
         {
             "name": "google/apiclient",
@@ -1761,16 +1762,16 @@
         },
         {
             "name": "stripe/stripe-php",
-            "version": "v3.8.0",
+            "version": "v3.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stripe/stripe-php.git",
-                "reference": "9eb9cb699254d738a39067854ac74c6f178c661e"
+                "reference": "81bea2927de98045b7f1b660d274e17deda713c2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/9eb9cb699254d738a39067854ac74c6f178c661e",
-                "reference": "9eb9cb699254d738a39067854ac74c6f178c661e",
+                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/81bea2927de98045b7f1b660d274e17deda713c2",
+                "reference": "81bea2927de98045b7f1b660d274e17deda713c2",
                 "shasum": ""
             },
             "require": {
@@ -1812,7 +1813,7 @@
                 "payment processing",
                 "stripe"
             ],
-            "time": "2016-02-08 17:28:39"
+            "time": "2016-02-10 02:19:11"
         },
         {
             "name": "symfony/finder",
@@ -2143,57 +2144,6 @@
                 "twilio"
             ],
             "time": "2016-01-29 00:19:22"
-        },
-        {
-            "name": "zeuxisoo/slim-whoops",
-            "version": "0.3.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/zeuxisoo/php-slim-whoops.git",
-                "reference": "da0250b0d1211bd90c5ab7e8cf7c3925e8376095"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/zeuxisoo/php-slim-whoops/zipball/da0250b0d1211bd90c5ab7e8cf7c3925e8376095",
-                "reference": "da0250b0d1211bd90c5ab7e8cf7c3925e8376095",
-                "shasum": ""
-            },
-            "require": {
-                "filp/whoops": "1.*",
-                "php": ">=5.3.0"
-            },
-            "require-dev": {
-                "filp/whoops": "1.*",
-                "phpunit/phpunit": "3.7.*@dev",
-                "slim/slim": "2.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Zeuxisoo\\Whoops\\Provider\\Slim\\WhoopsMiddleware": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-2-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Zeuxis Lo",
-                    "email": "seekstudio@gmail.com",
-                    "homepage": "http://www.chair.im/",
-                    "role": "Developer"
-                }
-            ],
-            "description": "PHP whoops error on slim framework",
-            "homepage": "https://github.com/zeuxisoo/php-slim-whoops/",
-            "keywords": [
-                "error",
-                "exception",
-                "slim",
-                "whoops"
-            ],
-            "time": "2014-11-06 06:47:24"
         }
     ],
     "packages-dev": [],

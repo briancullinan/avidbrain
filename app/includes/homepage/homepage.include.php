@@ -1,7 +1,7 @@
 <div class="homepage-banner">
     <div class="slider">
 		<ul class="slides">
-			<?php echo $app->slider; ?>
+			<?php echo $app->slider; echo $foobar; ?>
 		</ul>
 	</div>
 

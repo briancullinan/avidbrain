@@ -22,6 +22,7 @@
 	require '../app/autoload/autoload.php';
 	require(APP_PATH.'functions/global.functions.php');
 	require(APP_PATH.'dependents/avidbrain.files.php');
+	require(APP_PATH.'debug/debugger.php');
 
 	$app = new \Slim\Slim();
 	$app->config($slimConfig);
@@ -57,7 +58,7 @@
 		$app->connect->cache = new phpFastCache();
 	}
 	catch(Exception $e){
-		echo 'OOOPS!';
+		include(APP_PATH.'views/whoops.html');
 		exit;
 	}
 
@@ -94,4 +95,6 @@
 
 	require(APP_PATH.'validate/validate.post.php');
 	require(APP_PATH.'routes/page.routes.php');
+	require(APP_PATH.'debug/debugend.php');
 	$app->run();
+	ob_end_flush();

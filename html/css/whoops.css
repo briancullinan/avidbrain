@@ -1,0 +1,27 @@
+html,body{
+    background: #efefef;
+    height: 100%;
+    background: linear-gradient(0deg,#efefef,#ccc);
+    background-attachment: fixed;
+    margin: 0px;
+    padding: 0px;
+}
+h1{
+    font-size: 40px;
+    margin: 0px;
+    padding: 0px;
+}
+h1 span{
+    font-size: 30px;
+}
+.logo{
+    position: absolute;
+    left:0px;
+    top:0px;
+    width: 100%;
+    background: #333;
+    text-align: center;
+}
+.container{
+    padding-top: 100px;
+}

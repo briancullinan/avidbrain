@@ -6,8 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Zeuxisoo\\Whoops\\Provider\\Slim\\WhoopsMiddleware' => array($vendorDir . '/zeuxisoo/slim-whoops/src'),
-    'Whoops' => array($vendorDir . '/filp/whoops/src'),
     'Twig_Extensions_' => array($vendorDir . '/slim/extras/Views/Extension'),
     'Slim\\Extras' => array($vendorDir . '/slim/extras'),
     'Slim' => array($vendorDir . '/slim/slim'),
