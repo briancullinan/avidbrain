@@ -1,12 +1,9 @@
 var getzipcode = Cookies.get('getzipcode');
 
-if(getzipcode){
-	$('.javascript-location').val(getzipcode);
-}
-else{
+function geolocationaquizition(){
 	window.navigator.geolocation.getCurrentPosition(function(pos){
 
-		$.get( "https://maps.googleapis.com/maps/api/geocode/json?latlng=33.495904599999996,-111.9243226&sensor=true", function( data ) {
+		$.get( "https://maps.googleapis.com/maps/api/geocode/json?latlng="+pos.coords.latitude+","+pos.coords.longitude+"&sensor=true", function( data ) {
 			var zipcode = data.results[0].address_components[7].long_name;
 			if(zipcode){
 				Cookies.set('getzipcode', zipcode, { expires: 7 });
@@ -15,6 +12,13 @@ else{
 		});
 
 	});
+}
+
+if(getzipcode){
+	$('.javascript-location').val(getzipcode);
+}
+else{
+	geolocationaquizition();
 }
 
 var decodeHtmlEntity = function(str) {
@@ -120,8 +124,8 @@ var encodeHtmlEntity = function(str) {
 	}
 
 	function thisisatemplate(data,text) {
-		console.log(data);
-		console.log(text);
+		//console.log(data);
+		//console.log(text);
 		//$('.template').html(data);
 		//$.getJSON('http://avidbrain.dev/search/algebra/85257/200/---/male/0/100/---/---/',somethingFresh);
 	}
@@ -132,10 +136,10 @@ var encodeHtmlEntity = function(str) {
 	}
 	function activego(one,two,three){
 		var template = $('.template').html();
-		console.log(one);
-		console.log(two);
-		console.log(three);
-		console.log(template);
+		// console.log(one);
+		// console.log(two);
+		// console.log(three);
+		// console.log(template);
 	}
 
 	function makesurefocus(array){
@@ -278,9 +282,59 @@ var encodeHtmlEntity = function(str) {
 
 
 
-
-
 	$(document).ready(function() {
+
+
+		var ziplat = $('.ziplat').val();
+		var ziplong = $('.ziplong').val();
+		var mainHeight = $('main').outerHeight() - 80;
+		$('#map').css({'height':mainHeight});
+
+		if(ziplat && ziplong){
+
+
+	        var map;
+
+	        map = new GMaps({
+	            div: '#map',
+				lat: ziplat,
+				lng: ziplong
+	        });
+
+
+	        $.ajax({
+	        	type: 'POST',
+	        	url: '/locate',
+	        	data: {csrf_key:$('#csrf_key').html(),csrf_token:$('#csrf_token').html(),'getdata':{'ziplat':$('.ziplat').val(),'ziplong':$('.ziplong').val(),'zipcode':85257,'distance':30}},
+	        	success: function(response){
+	        		if(response.message){
+						map.drawOverlay({
+						  lat: response.zipdata.ziplat,
+						  lng: response.zipdata.ziplong,
+						  content: '<div class="no-users-found">'+response.message+'</div>'
+						});
+					}
+					else{
+						$.each(response,function(index,value){
+		                    map.addMarker({
+		                        lat: value.lat,
+		                        lng: value.long,
+								title:value.short,
+		                        details: {
+		                            author: 'Avidbrain'
+		                        },
+		                        infoWindow: {
+		                            content: value.content
+		                        }
+		                    });
+		                });
+						map.fitZoom();
+					}
+
+	        	}
+	        });
+		}
+
 
 		$('.submit-a-form').attr('disabled','disabled');
 
@@ -305,11 +359,6 @@ var encodeHtmlEntity = function(str) {
 		$('.javascript-subject').autocomplete({
 		    serviceUrl: '/findmesome'
 		});
-
-	});
-
-
-	$(document).ready(function() {
 
 
 		$('.sorting-feature').on('change',function(){
@@ -414,7 +463,7 @@ var encodeHtmlEntity = function(str) {
 			}
 		}
 		else{
-			console.log('more');
+			//console.log('more');
 		}
 	}
 

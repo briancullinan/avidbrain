@@ -16,6 +16,8 @@
 	$routes['facebook'] = (object)array('url'=>'/facebook','slug'=>'student','route'=>'/facebook/','params'=>array('promocode'=>'facebook'),'include'=>'signup/student','protected'=>NULL,'permissions'=>array());
 
 	$routes['partners'] = (object)array('url'=>'/partners','slug'=>'partners','route'=>'/partners/','include'=>'partners','protected'=>NULL,'permissions'=>array());
+	$routes['locate'] = (object)array('url'=>'/locate','slug'=>'locate','route'=>'/locate/','include'=>'locate','protected'=>NULL,'permissions'=>array());
+	$routes['locate-zipcode'] = (object)array('url'=>'/locate','slug'=>'locate','route'=>'/locate/:zipcode/','include'=>'locate','protected'=>NULL,'permissions'=>array());
 
 	$routes['go'] = (object)array('url'=>'/go/','slug'=>'go','route'=>'/go/','include'=>'go','protected'=>NULL,'permissions'=>array());
 	$routes['top'] = (object)array('url'=>'/top/','slug'=>'top','route'=>'/top/','include'=>'top','protected'=>NULL,'permissions'=>array());

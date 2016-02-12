@@ -216,7 +216,69 @@ padding-top: 0px;
     width: 100% !important;
 }
 
-/*searching-results-search*/
+#map{
+	width: 100%;
+    height: 500px;
+}
+main .main-locate{
+    width: 100%;
+    padding: 0px;
+    padding-top: 80px;
+}
+.maps-users{
+	width: 200px;
+	background: linear-gradient(0deg,#efefef,#fff);
+	float: left;
+	text-align: center;
+	border: solid 1px #ccc;
+}
+.maps-users-img img{
+	max-height: 100px;
+}
+.maps-users-name{
+
+}
+.maps-users-price{
+	font-size: 14px;
+	font-weight: bold;
+}
+.maps-users-price span{
+	color: #999;
+	font-weight: normal;
+}
+.maps-users-link a{
+	font-size: 16px;
+	display: block;
+	padding: 5px;
+	background: #333;
+	color: #fff;
+}
+.maps-users-link a:hover{
+	background: #009cff;
+	color: #fff;
+}
+
+.no-users-found{
+    background: red;
+    padding: 10px 20px;
+    color: #fff;
+    font-size: 16px;
+    -moz-box-shadow: 0 0 10px #000;
+    -webkit-box-shadow: 0 0 10px #000;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.77);
+
+
+}
+.modify-zipcode{
+	position: absolute;
+    left:0px;
+    bottom: 0px;
+    background: rgba(34, 34, 34, 0.89);
+    padding: 20px;
+}
+.modify-zipcode .row{
+    margin-bottom: 0px;
+}
 
 @media only screen and (max-width: 599px){
 	.searching-results-search{
@@ -233,6 +295,10 @@ padding-top: 0px;
 
 	.searching-results-right input, .searching-results-right select{
 		height: auto;
+	}
+	main .main-locate{
+		padding-top: 40px !important;
+		width: 100% !important;
 	}
 }
 @media only screen and (min-width: 501px) and (max-width:601px){

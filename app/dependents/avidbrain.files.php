@@ -9,6 +9,7 @@
 	$headjs = array(
 		'/js/jquery-2.1.1.min.js',
 		'https://js.stripe.com/v2',
+		'//maps.google.com/maps/api/js'
 		//'//code.jquery.com/jquery-2.1.1.min.js'
 	);
 	$cdnjs = array(
@@ -49,6 +50,7 @@
 	}
 	$localjs[] = 'functions.js';
 	$localjs[] = 'js.cookie.js';
+	$localjs[] = 'gmaps.js';
 	$localjs[] = 'mustache.js';
 	$localjs[] = 'searching.js';
 	$localjs[] = 'wild.js';
