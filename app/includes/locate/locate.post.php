@@ -1,7 +1,4 @@
 <?php
-    // GETIT
-
-    //notify($app->keyname);
 
     if(isset($_POST['getdata'])){
         if(isset($_POST['getdata'])){
@@ -38,15 +35,19 @@
                 profile.personal_statement_verified
     		FROM
     			avid___user user
-            LEFT JOIN avid___user_profile profile on profile.email = user.email
+
+                LEFT JOIN avid___user_profile profile on profile.email = user.email
+
     		WHERE
     			user.usertype = 'tutor'
                     AND
                 user.status IS NULL
                     AND
                 user.hidden IS NULL
-                    and
+                    AND
                 user.lock IS NULL
+                    AND
+                profile.hourly_rate IS NOT NULL
 
             GROUP BY user.email
 
@@ -54,7 +55,7 @@
 
             ORDER BY distance ASC
 
-            LIMIT 50
+            LIMIT 30
     	";
 
     	$prepare = array(
@@ -73,6 +74,17 @@
                     $content.='<div class="maps-users-price">$'.numbers($build->hourly_rate).'/ <span>Hour</span></div>';
                 $content.='</div>';
                 $results[$key]->content = $content;
+                unset($results[$key]->username);
+                unset($results[$key]->first_name);
+                unset($results[$key]->last_name);
+                unset($results[$key]->email);
+                unset($results[$key]->id);
+                unset($results[$key]->my_avatar);
+                unset($results[$key]->my_upload);
+                unset($results[$key]->my_upload_status);
+                unset($results[$key]->my_avatar_status);
+
+
 
             }
         }
