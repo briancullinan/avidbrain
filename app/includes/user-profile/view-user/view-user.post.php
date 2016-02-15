@@ -1,1 +1,2 @@
-<?php notify($app->keyname); ?>
+<?php
+    // NOTHING HERE

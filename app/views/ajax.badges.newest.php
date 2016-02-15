@@ -64,16 +64,15 @@
             $starscore = cachedeals($cacheKey,3600,$app->connect,$sql,$preparedArray,'fetch');
 
             if(isset($starscore->star_score)){
-                $return[] = array('class'=>'star-score-average','icon'=>'fa fa-star','results'=>$starscore->star_score.'/5 Stars'); //batter_badges('star-score-average','fa fa-star',$starscore->star_score.'/5 Stars');
+                $return['starscore'] = batter_badges('star-score-average','fa fa-star',$starscore->star_score.'/5 Stars');
             }
-
 
             $cacheKey = 'cacheditemfromemail---badge(backgroundcheck)---'.$email;
             $sql = "SELECT emptybgcheck FROM avid___user WHERE emptybgcheck IS NOT NULL AND email = :email";
             $preparedArray = array(':email'=>$email);
             $backgroundcheck = cachedeals($cacheKey,3600,$app->connect,$sql,$preparedArray,'fetch');
             if(empty($backgroundcheck->emptybgcheck)){
-                $return[] = array('class'=>'backgroundcheck','icon'=>'fa fa-university','results'=>'Background Check');// batter_badges('background-check','mdi-action-assignment-ind','Background Check');
+                $return['background-check'] = batter_badges('background-check','mdi-action-assignment-ind','Background Check');
             }
 
             $cacheKey = 'cacheditemfromemail---badge(sum)---'.$email;
@@ -87,15 +86,11 @@
             }
 
             if(isset($sum->sum) && !empty($sum->sum)){
-                //$return['hourstutors'] = batter_badges('hours-tutors','mdi-action-alarm',$sum->sum.'+ Hours Tutored');
-                $return[] = array('class'=>'hours-tutors','icon'=>'mdi-action-alarm','results'=>$sum->sum.'+ Hours Tutored');
+                $return['hourstutors'] = batter_badges('hours-tutors','mdi-action-alarm',$sum->sum.'+ Hours Tutored');
             }
 
             $badge_type = badge_type($sum->sum,1);
-            $return[] = array('class'=>'tutor-rank '.$badge_type->class,'icon'=>$badge_type->icon,'results'=>$badge_type->rank);
-
-
-            //$return['tutorrank'] = batter_badges('tutor-rank '.$badge_type->class,$badge_type->icon,$badge_type->rank);
+            $return['tutorrank'] = batter_badges('tutor-rank '.$badge_type->class,$badge_type->icon,$badge_type->rank);
 
 
 
@@ -111,8 +106,6 @@
                     $plural = 's';
                 }
                 $return['totalreviews'] = batter_badges('total-reviews','mdi-action-speaker-notes',$count->count.' Review'.$plural);
-                $return[] = array('class'=>'total-reviews','icon'=>'mdi-action-speaker-notes','results'=>$count->count.' Review'.$plural);
-
             }
 
             $cacheKey = 'cacheditemfromemail---badge(student_count)---'.$email;
@@ -125,7 +118,7 @@
                 if($student_count->student_count!=1){
                     $plural = 's';
                 }
-                $return[] = array('class'=>'total-students','icon'=>'fa fa-user','results'=>$student_count->student_count.' Student'.$plural);
+                $return['totalstudents'] = batter_badges('total-students','fa fa-user',$student_count->student_count.' Student'.$plural);
             }
 
             notify($return);

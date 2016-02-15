@@ -915,8 +915,8 @@ $(document).ready(function() {
 			success: function(response){
 
 				$.each( response, function( key, value,index ) {
-					$(badgeid).append('<div class="action-badge '+key+'">'+value+'</div>');
-					$(badgeid+' .'+key).hide().fadeIn();
+					$(badgeid).append('<div class="newest-badge '+value.class+'"> <span class="newest-badge-icon"><i class="'+value.icon+'"></i></span> '+value.results+' </div>');
+					//$(badgeid+' .'+key).hide().fadeIn();
 				});
 			}
 		});
