@@ -320,9 +320,9 @@ var encodeHtmlEntity = function(str) {
 	        $.ajax({
 	        	type: 'POST',
 	        	url: '/locate',
-	        	data: {csrf_key:$('#csrf_key').html(),csrf_token:$('#csrf_token').html(),'getdata':{'ziplat':$('.ziplat').val(),'ziplong':$('.ziplong').val(),'zipcode':85257,'distance':30}},
+	        	data: {csrf_key:$('#csrf_key').html(),csrf_token:$('#csrf_token').html(),'getdata':{'ziplat':$('.ziplat').val(),'ziplong':$('.ziplong').val(),'distance':50}},
 	        	success: function(response){
-	        		if(response.message){
+					if(response.message){
 						map.drawOverlay({
 						  lat: response.zipdata.ziplat,
 						  lng: response.zipdata.ziplong,

@@ -1,6 +1,8 @@
 <?php
     // GETIT
 
+    //notify($app->keyname);
+
     if(isset($_POST['getdata'])){
         if(isset($_POST['getdata'])){
             foreach($_POST as $key=> $post){
@@ -52,13 +54,14 @@
 
             ORDER BY distance ASC
 
-            LIMIT 25
+            LIMIT 50
     	";
 
     	$prepare = array(
     		':distance'=>$getdata->distance
     	);
     	$results = $app->connect->executeQuery($sql,$prepare)->fetchAll();
+        //notify($prepare);
         if(isset($results[0])){
             foreach($results as $key=>$build){
                 $short = short($build);

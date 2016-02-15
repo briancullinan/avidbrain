@@ -16,7 +16,7 @@
     // Website Details
     define('SITENAME','avidbrain');
     define('SITENAME_PROPPER','AvidBrain');
-    define('VERSION','1.70');
+    define('VERSION','1.701');
     define('SYSTEM_EMAIL','donotreply@avidbrain.com');
     define('EMAIL_DOMAIN','avidbrain.com');
     define('TEMPLATE','amozek.php');
