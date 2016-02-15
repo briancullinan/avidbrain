@@ -27,7 +27,7 @@
 
         <div class="row">
         	<div class="col l8">
-        		<div class="searching-box"><input type="text" name="whatsyourzipcode[zipcode]" placeholder="What's your zipcode?" maxlength="5" <?php if(isset($zipcode)){ echo 'value="'.$zipcode.'"';} ?> /></div>
+        		<div class="searching-box"><input type="text" class="javascript-location" name="whatsyourzipcode[zipcode]" placeholder="What's your zipcode?" maxlength="5" <?php if(isset($zipcode)){ echo 'value="'.$zipcode.'"';} ?> /></div>
         	</div>
         	<div class="col l4">
                 <div class="form-submit">

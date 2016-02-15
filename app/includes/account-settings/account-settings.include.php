@@ -36,6 +36,7 @@
 		</div>
 		<?php endif; ?>
 
+		<?php if(isset($app->user->settings->showfullname)): ?>
 		<div class="row">
 			<div class="col s6 m8 l8">
 				<div class="switch-text">Do you want to show your full name?</div>
@@ -51,6 +52,7 @@
 				</div>
 			</div>
 		</div>
+		<?php endif; ?>
 
 		<?php if($app->user->usertype=='student'): ?>
 		<div class="row">
@@ -70,7 +72,7 @@
 		</div>
 		<?php endif; ?>
 
-		<?php if($app->user->usertype=='tutor'): ?>
+		<?php if($app->user->usertype=='tutor' && isset($app->user->settings->newjobs)): ?>
 		<div class="row">
 			<div class="col s6 m8 l8">
 				<div class="switch-text">Do you want to get an email when a student posts a new job in your field?</div>
@@ -103,6 +105,7 @@
 		</div>
 		<?php endif; ?>
 
+		<?php if(isset($app->user->settings->avidbrainnews)): ?>
 		<div class="row">
 			<div class="col s6 m8 l8">
 				<div class="switch-text">Do you want to receive emails when we post news?</div>
@@ -118,8 +121,9 @@
 				</div>
 			</div>
 		</div>
+		<?php endif; ?>
 
-		<?php if(isset($app->enableaffiliates)): ?>
+		<?php if(isset($app->enableaffiliates) && isset($app->user->settings->affiliateprogram)): ?>
 			<div class="row">
 				<div class="col s6 m8 l8">
 					<div class="switch-text">Sign me up for the <a href="/affiliates">AvidBrain Affiliate Program</a></div>
@@ -137,6 +141,7 @@
 			</div>
 		<?php endif; ?>
 
+		<?php if(isset($app->user->settings->loggedinprofile)): ?>
 		<div class="row">
 			<div class="col s6 m8 l8">
 				<div class="switch-text">
@@ -157,6 +162,7 @@
 				</div>
 			</div>
 		</div>
+		<?php endif; ?>
 
 		<input type="hidden" name="accountsettings[target]" value="accountsettings"  />
 		<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
@@ -173,6 +179,7 @@
 			$thelogin = new Forms($app->connect);
 			$thelogin->formname = 'changepassword';
 			$thelogin->url = $app->request->getPath();
+			//$thelogin->dependents = $app->dependents;
 			$thelogin->csrf_key = $csrf_key;
 			$thelogin->csrf_token = $csrf_token;
 			$thelogin->makeform();

@@ -1,25 +1,38 @@
-var getzipcode = Cookies.get('getzipcode');
-
 function geolocationaquizition(){
-	window.navigator.geolocation.getCurrentPosition(function(pos){
+	var getzipcode = Cookies.get('getzipcode');
+	var locide = $('#location').attr('id');
+	var javaloc = $('.javascript-location').attr('class');
 
-		$.get( "https://maps.googleapis.com/maps/api/geocode/json?latlng="+pos.coords.latitude+","+pos.coords.longitude+"&sensor=true", function( data ) {
-			var zipcode = data.results[0].address_components[7].long_name;
-			if(zipcode){
+	if(getzipcode){
+
+	}
+	else if(locide || javaloc){
+
+		if(locide){
+			$('#'+locide).parent().parent().append('<div class="locating-zipcode"><i class="fa fa-spinner fa-spin"></i></div>');
+		}
+		else if(javaloc){
+			$('.'+javaloc).parent().append('<div class="locating-zipcode"><i class="fa fa-spinner fa-spin"></i></div>');
+		}
+
+		window.navigator.geolocation.getCurrentPosition(function(pos){
+			$.get( "https://maps.googleapis.com/maps/api/geocode/json?latlng="+pos.coords.latitude+","+pos.coords.longitude+"&sensor=true", function( data ) {
+				var zipcode = data.results[0].address_components[7].long_name;
+				$('.locating-zipcode').remove();
 				Cookies.set('getzipcode', zipcode, { expires: 7 });
-				$('.javascript-location').val(zipcode);
-			}
+				if(locide){
+					$('#'+locide).val(zipcode);
+				}
+				else if(javaloc){
+					$('#whatsyourzipcode').submit();
+				}
+			});
 		});
+	}
 
-	});
 }
 
-if(getzipcode){
-	$('.javascript-location').val(getzipcode);
-}
-else{
-	geolocationaquizition();
-}
+geolocationaquizition();
 
 var decodeHtmlEntity = function(str) {
 	return str.replace(/&#(\d+);/g, function(match, dec) {
@@ -280,7 +293,9 @@ var encodeHtmlEntity = function(str) {
 
 	}
 
-
+	function robotjones(){
+		console.log('xxx');
+	}
 
 	$(document).ready(function() {
 
@@ -314,9 +329,10 @@ var encodeHtmlEntity = function(str) {
 						  content: '<div class="no-users-found">'+response.message+'</div>'
 						});
 					}
-					else{
+					else if(response){
 						$.each(response,function(index,value){
-		                    map.addMarker({
+
+							map.addMarker({
 		                        lat: value.lat,
 		                        lng: value.long,
 								title:value.short,
