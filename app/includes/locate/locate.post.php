@@ -23,6 +23,7 @@
     			user.email,
                 user.lat,
                 user.long,
+                user.username,
                 $selectDistance,
 
                 profile.hourly_rate,
