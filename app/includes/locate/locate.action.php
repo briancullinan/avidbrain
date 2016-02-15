@@ -1,6 +1,6 @@
 <?php
 
-    foobar();
+    echo $googa;
 
     $app->meta = new stdClass();
     $app->meta->title = 'Find a Local Tutor';
