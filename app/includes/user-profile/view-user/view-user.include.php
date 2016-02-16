@@ -1,14 +1,69 @@
-<h1>
-    <?php echo $app->actualuser->short_description_verified; ?>
-</h1>
-<div class="user-hero">
-    <div class="user-hero-left">
-        <div class="user-hero-image"><img src="<?php echo userphotographs($app->user,$app->actualuser); ?>" /></div>
-        <!-- <div class="theimage-parent">
-            <div class="theimage"><img src="<?php echo userphotographs($app->user,$app->actualuser); ?>" /></div>
-        </div> -->
+<?php
+    /*
+    <div class="user-hero">
+        <div class="user-hero-left">
+            <div class="user-hero-image"><img src="<?php echo userphotographs($app->user,$app->actualuser); ?>" /></div>
+            <!-- <div class="theimage-parent">
+                <div class="theimage"><img src="<?php echo userphotographs($app->user,$app->actualuser); ?>" /></div>
+            </div> -->
+        </div>
+        <div class="user-hero-right">
+
+            <div class="user-hero-items">
+
+                <div class="user-hero-block">
+                    <div class="user-hero-block-title">
+                        Students
+                    </div>
+                    <div class="user-hero-block-content">
+                        13
+                    </div>
+                </div>
+
+                <div class="user-hero-block">
+                    <div class="user-hero-block-title">
+                        Tutors
+                    </div>
+                    <div class="user-hero-block-content">
+                        452
+                    </div>
+                </div>
+
+                <div class="user-hero-block">
+                    <div class="user-hero-block-title">
+                        Q&amp;A Posts
+                    </div>
+                    <div class="user-hero-block-content">
+                        1,234
+                    </div>
+                </div>
+
+                <div class="user-hero-block">
+                    <div class="user-hero-block-title">
+                        Profile Views
+                    </div>
+                    <div class="user-hero-block-content">
+                        666
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="actual-hero">
+                <!-- myhero -->
+            </div>
+
+        </div>
     </div>
-    <div class="user-hero-right">
+    */
+?>
+<div class="new-hero">
+    <div class="new-hero-left">
+        <img src="<?php echo userphotographs($app->user,$app->actualuser); ?>" />
+    </div>
+    <div class="new-hero-right">
+
+        <div class="my-tagline"><span><?php echo $app->actualuser->short_description_verified; ?></span></div>
 
         <div class="user-hero-items">
 
@@ -50,10 +105,6 @@
 
         </div>
 
-        <div class="actual-hero">
-            <!-- myhero -->
-        </div>
-
     </div>
 </div>
 
@@ -61,7 +112,6 @@
 <div class="row fixed-rows">
     <div class="col s12 m4 l3">
         <div class="user-info">
-
 
             <?php
                 $staticBadges = [];
@@ -144,7 +194,68 @@
 <div class="hide" id="csrf_token"><?php echo $csrf_token; ?></div>
 
 <style type="text/css">
+.my-tagline{
+    text-align: center;
+    font-family: 'Quicksand';
+    font-weight: 800;
+    font-size: 30px;
+    left:0;
+    right: 0;
+    padding-left: 25%;
+    position: absolute;
+    top: 40%;
+    color: #fff;
+    transform: translateY(-40%);
+}
+.my-tagline span:before{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top:0px;
+    background: rgba(0, 0, 0, 0.79);
+    content: "";
+    z-index: -1;
 
+    -webkit-filter: blur(10px);
+    -moz-filter: blur(10px);
+    -ms-filter: blur(10px);
+    -o-filter: blur(10px);
+    filter: blur(10px);
+}
+.my-tagline span{
+    position: relative;
+}
+.new-hero{
+    background: #fff;
+    margin-bottom: 15px;
+    position: relative;
+
+    background:  url('/images/heros/001.jpg');
+    background-size: cover;
+    background-position:  right top;
+    /*
+
+    /*background-attachment: fixed;
+    background-size: cover;
+    background-position: bottom center;*/
+    width: 100%;
+    float: left;
+    box-sizing: border-box;
+    border-bottom: solid 5px #fff;
+}
+.new-hero-left{
+    width: 25%;
+    float: left;
+    margin-bottom: -6px;
+}
+.new-hero-left img{
+    max-width: 100%;
+    border: solid 5px #fff;
+}
+.new-hero-right{
+    float: left;
+    width: 75%;
+}
 .theimage-parent{
     position: relative;
     height: 300px;
@@ -211,7 +322,7 @@
 }
 main .view-user----view-user{
     padding: 0px;
-    padding-top: 30px;
+    padding-top: 1px;
     width: 100% !important;
 }
 .user-hero{
@@ -288,6 +399,10 @@ main .view-user----view-user{
 .user-hero-items{
     display: flex;
     width: 100%;
+    position: absolute;
+    bottom: 0px;
+    left:0px;
+    padding-left: 25%;
 }
 .user-hero-block-content{
     color: #007dff;
