@@ -1,62 +1,3 @@
-<?php
-    /*
-    <div class="user-hero">
-        <div class="user-hero-left">
-            <div class="user-hero-image"><img src="<?php echo userphotographs($app->user,$app->actualuser); ?>" /></div>
-            <!-- <div class="theimage-parent">
-                <div class="theimage"><img src="<?php echo userphotographs($app->user,$app->actualuser); ?>" /></div>
-            </div> -->
-        </div>
-        <div class="user-hero-right">
-
-            <div class="user-hero-items">
-
-                <div class="user-hero-block">
-                    <div class="user-hero-block-title">
-                        Students
-                    </div>
-                    <div class="user-hero-block-content">
-                        13
-                    </div>
-                </div>
-
-                <div class="user-hero-block">
-                    <div class="user-hero-block-title">
-                        Tutors
-                    </div>
-                    <div class="user-hero-block-content">
-                        452
-                    </div>
-                </div>
-
-                <div class="user-hero-block">
-                    <div class="user-hero-block-title">
-                        Q&amp;A Posts
-                    </div>
-                    <div class="user-hero-block-content">
-                        1,234
-                    </div>
-                </div>
-
-                <div class="user-hero-block">
-                    <div class="user-hero-block-title">
-                        Profile Views
-                    </div>
-                    <div class="user-hero-block-content">
-                        666
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="actual-hero">
-                <!-- myhero -->
-            </div>
-
-        </div>
-    </div>
-    */
-?>
 <div class="new-hero">
     <div class="new-hero-left">
         <img src="<?php echo userphotographs($app->user,$app->actualuser); ?>" />
@@ -67,40 +8,29 @@
 
         <div class="user-hero-items">
 
-            <div class="user-hero-block">
-                <div class="user-hero-block-title">
-                    Students
-                </div>
-                <div class="user-hero-block-content">
-                    13
-                </div>
-            </div>
 
-            <div class="user-hero-block">
-                <div class="user-hero-block-title">
-                    Tutors
-                </div>
-                <div class="user-hero-block-content">
-                    452
-                </div>
-            </div>
-
-            <div class="user-hero-block">
-                <div class="user-hero-block-title">
-                    Q&amp;A Posts
-                </div>
-                <div class="user-hero-block-content">
-                    1,234
-                </div>
-            </div>
-
-            <div class="user-hero-block">
-                <div class="user-hero-block-title">
-                    Profile Views
-                </div>
-                <div class="user-hero-block-content">
-                    666
-                </div>
+            <?php
+                if(empty($pagename)){
+                    $pagename = 'about-me';
+                }
+                $mypages = [
+                    'about-me'=>'About Me',
+                    'my-subjects'=>'My Subjects',
+                    'qa-posts'=>'Q&amp;A Posts',
+                    'my-reviews'=>'My Reviews',
+                    'send-message'=>'Send Message'
+                ];
+            ?>
+            <div class="my-tabs">
+                <ul>
+                    <?php foreach($mypages as $key => $page): ?>
+                        <li <?php if(isset($pagename) && $pagename==$key){ echo 'class="active"';} ?>>
+                            <a href="<?php echo $app->actualuser->url; ?>/<?php echo $key; ?>">
+                                <?php echo $page; ?>
+                            </a>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
             </div>
 
         </div>
@@ -115,20 +45,30 @@
 
             <?php
                 $staticBadges = [];
-                $staticBadges[] = (object)array('class'=>'my-name','icon'=>'fa fa-bolt','results'=>short($app->actualuser));
+                $staticBadges[] = (object)array('class'=>'my-name','icon'=>'fa fa-rocket','results'=>short($app->actualuser));
+                if(!empty($app->actualuser->hourly_rate)){
+                    $staticBadges[] = (object)array('class'=>'hourlyrate','icon'=>'fa fa-dollar','results'=>'$'.numbers($app->actualuser->hourly_rate).'/<span>Hour</span>');
+                }
                 $staticBadges[] = (object)array('class'=>'location','icon'=>'fa fa-map-marker','results'=>'<a href="/searching/---/'.$app->actualuser->zipcode.'">'.$app->actualuser->city.', '.ucwords($app->actualuser->state_long).'</a>');
                 $staticBadges[] = (object)array('class'=>'signup-date','icon'=>'fa fa-calendar','results'=>'Joined '.formatdate($app->actualuser->signup_date));
-                $staticBadges[] = (object)array('class'=>'hourlyrate','icon'=>'fa fa-dollar','results'=>'$'.numbers($app->actualuser->hourly_rate).'/<span>Hour</span>');
-                $staticBadges[] = (object)array('class'=>'gender','icon'=>'fa fa-'.$app->actualuser->gender,'results'=>"I'm ".ucwords($app->actualuser->gender));
-                $staticBadges[] = (object)array('class'=>'potato','icon'=>'fa fa-car','results'=>'I Will Travel '.$app->actualuser->travel_distance.' Miles');
-                $staticBadges[] = (object)array('class'=>'potato','icon'=>'fa fa-clock-o','results'=>$app->actualuser->cancellation_policy.' Hour Cancelation Policy');
-                $staticBadges[] = (object)array('class'=>'potato','icon'=>'fa fa-times-circle-o ','results'=>'$'.numbers($app->actualuser->cancellation_rate).' Cancelation Rate');
+                if(!empty($app->actualuser->gender) && $app->actualuser->gender!='_empty_'){
+                    $staticBadges[] = (object)array('class'=>'gender','icon'=>'fa fa-'.$app->actualuser->gender,'results'=>"I'm ".ucwords($app->actualuser->gender));
+                }
+                if(!empty($app->actualuser->travel_distance)){
+                    $staticBadges[] = (object)array('class'=>'travel-distance','icon'=>'fa fa-car','results'=>'I Will Travel '.$app->actualuser->travel_distance.' Miles');
+                }
+                if(!empty($app->actualuser->cancellation_policy)){
+                    $staticBadges[] = (object)array('class'=>'cancellation-policy','icon'=>'fa fa-clock-o','results'=>$app->actualuser->cancellation_policy.' Hour Cancelation Policy');
+                }
+                if(!empty($app->actualuser->cancellation_rate)){
+                    $staticBadges[] = (object)array('class'=>'cancellation-rate','icon'=>'fa fa-times-circle-o ','results'=>'$'.numbers($app->actualuser->cancellation_rate).' Cancelation Rate');
+                }
 
             ?>
             <?php foreach($staticBadges as $ajaxBadge): ?>
-                <div class="newest-badge <?php echo $ajaxBadge->class; ?>">
-                    <span class="newest-badge-icon"><i class="<?php echo $ajaxBadge->icon; ?>"></i></span> <?php echo $ajaxBadge->results; ?>
-                </div>
+                    <div class="newest-badge <?php echo $ajaxBadge->class; ?>">
+                        <span class="newest-badge-icon"><i class="<?php echo $ajaxBadge->icon; ?>"></i></span> <?php echo $ajaxBadge->results; ?>
+                    </div>
             <?php endforeach; ?>
 
             <div class="ajax-badges" id="<?php echo str_replace('/','',$app->actualuser->url); ?>" data-url="<?php echo $app->actualuser->url; ?>"></div>
@@ -156,29 +96,6 @@
         </div>
     </div>
     <div class="col s12 m8 l7">
-        <?php
-            if(empty($pagename)){
-                $pagename = 'about-me';
-            }
-            $mypages = [
-                'about-me'=>'About Me',
-                'my-subjects'=>'My Subjects',
-                'qa-posts'=>'Q&amp;A Posts',
-                'my-reviews'=>'My Reviews',
-                'send-message'=>'Send Message'
-            ];
-        ?>
-        <div class="my-tabs">
-            <ul>
-                <?php foreach($mypages as $key => $page): ?>
-                    <li <?php if(isset($pagename) && $pagename==$key){ echo 'class="active"';} ?>>
-                        <a href="<?php echo $app->actualuser->url; ?>/<?php echo $key; ?>">
-                            <?php echo $page; ?>
-                        </a>
-                    </li>
-                <?php endforeach; ?>
-            </ul>
-        </div>
         <div class="tab-content">
             <?php
                 include('view-user--'.$pagename.'.php');
@@ -194,6 +111,10 @@
 <div class="hide" id="csrf_token"><?php echo $csrf_token; ?></div>
 
 <style type="text/css">
+.my-name{
+    font-size: 16px;
+    font-weight: bold;
+}
 .my-tagline{
     text-align: center;
     font-family: 'Quicksand';
@@ -233,11 +154,6 @@
     background:  url('/images/heros/001.jpg');
     background-size: cover;
     background-position:  right top;
-    /*
-
-    /*background-attachment: fixed;
-    background-size: cover;
-    background-position: bottom center;*/
     width: 100%;
     float: left;
     box-sizing: border-box;
@@ -247,10 +163,13 @@
     width: 25%;
     float: left;
     margin-bottom: -6px;
+    background: #fff;
+    text-align: center;
 }
 .new-hero-left img{
     max-width: 100%;
     border: solid 5px #fff;
+    min-height: 200px;
 }
 .new-hero-right{
     float: left;
@@ -377,10 +296,13 @@ main .view-user----view-user{
     color: red;
 }
 .backgroundcheck i{
-    color: #b0d400;
+    color: #839e00;
 }
 .badge-new-user i{
     color: orange;
+}
+.cancellation-rate i{
+    color: #cc0000;
 }
 .user-hero-left{
     text-align: center;
@@ -427,7 +349,8 @@ main .view-user----view-user{
     min-height: 250px;
 }
 .my-tabs{
-
+    width: 100%;
+    margin-bottom: -6px;
 }
 .my-tabs ul{
     display: flex;
@@ -450,6 +373,7 @@ main .view-user----view-user{
 .my-tabs ul li a:hover{
     color: #222;
     border-bottom: solid 2px #ccc;
+    background: #efefef;
 }
 .my-tabs ul li.active a{
 
@@ -512,11 +436,29 @@ main .view-user----view-user{
 
 
 @media only screen and (max-width: 600px){
-    .user-hero-left{
+    .new-hero-left{
+        width: 100%;
+        background: #fff;
+        text-align: center;
+    }
+    .new-hero-right{
         width: 100%;
     }
-    .user-hero-right{
-        width: 100%;
+    .my-tagline, .user-hero-items{
+        position: relative;
+    }
+    .my-tagline{
+        padding: 0px;
+        top:auto;
+        transform: none;
+        padding: 10px;
+        font-size: 26px;
+    }
+    .my-tagline span:before{
+        display: none;
+    }
+    .user-hero-items{
+        padding: 0px;
     }
     h1{
         text-align: center;
