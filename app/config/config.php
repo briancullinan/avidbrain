@@ -30,6 +30,8 @@
     define('ENGINE','mysql');
     define('PORT','3306');
     define('CHARSET','utf8');
+    define('PREFIX','avid___');
+
 
     // TWILIO
     define('TWILIO_ID','AC0b159b382464c3e1c63f5d18fdf7ca22');

@@ -4,6 +4,9 @@
 <div class="user-hero">
     <div class="user-hero-left">
         <div class="user-hero-image"><img src="<?php echo userphotographs($app->user,$app->actualuser); ?>" /></div>
+        <!-- <div class="theimage-parent">
+            <div class="theimage"><img src="<?php echo userphotographs($app->user,$app->actualuser); ?>" /></div>
+        </div> -->
     </div>
     <div class="user-hero-right">
 
@@ -29,7 +32,7 @@
 
             <div class="user-hero-block">
                 <div class="user-hero-block-title">
-                    Q&A Posts
+                    Q&amp;A Posts
                 </div>
                 <div class="user-hero-block-content">
                     1,234
@@ -66,6 +69,10 @@
                 $staticBadges[] = (object)array('class'=>'location','icon'=>'fa fa-map-marker','results'=>'<a href="/searching/---/'.$app->actualuser->zipcode.'">'.$app->actualuser->city.', '.ucwords($app->actualuser->state_long).'</a>');
                 $staticBadges[] = (object)array('class'=>'signup-date','icon'=>'fa fa-calendar','results'=>'Joined '.formatdate($app->actualuser->signup_date));
                 $staticBadges[] = (object)array('class'=>'hourlyrate','icon'=>'fa fa-dollar','results'=>'$'.numbers($app->actualuser->hourly_rate).'/<span>Hour</span>');
+                $staticBadges[] = (object)array('class'=>'gender','icon'=>'fa fa-'.$app->actualuser->gender,'results'=>"I'm ".ucwords($app->actualuser->gender));
+                $staticBadges[] = (object)array('class'=>'potato','icon'=>'fa fa-car','results'=>'I Will Travel '.$app->actualuser->travel_distance.' Miles');
+                $staticBadges[] = (object)array('class'=>'potato','icon'=>'fa fa-clock-o','results'=>$app->actualuser->cancellation_policy.' Hour Cancelation Policy');
+                $staticBadges[] = (object)array('class'=>'potato','icon'=>'fa fa-times-circle-o ','results'=>'$'.numbers($app->actualuser->cancellation_rate).' Cancelation Rate');
 
             ?>
             <?php foreach($staticBadges as $ajaxBadge): ?>
@@ -79,30 +86,30 @@
 
         </div>
         <div class="right-nav hide-on-large-only" id="copyme">
-            <div class="signup-now">
-                <a href="">Signup Now</a>
+            <div class="new-user-prompt">
+
+                <div class="new-user-prompt-title">New to AvidBrain?</div>
+                <div class="new-user-prompt-copy">Sign up now and start learning in no time!</div>
+                <div>
+                    <a href="/signup" class="btn blue btn-block">Signup Now</a>
+                </div>
+
             </div>
-            <ul class="insides">
-                <li>
-                    <a href="">
-                        potato
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        ninja
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        baloon
-                    </a>
-                </li>
-            </ul>
+
+            <div class="recommendations-title">Recommendations</div>
+            <div class="recommendations">
+                recommendations
+            </div>
+            <div class="recommendations">
+                recommendations
+            </div>
         </div>
     </div>
     <div class="col s12 m8 l7">
         <?php
+            if(empty($pagename)){
+                $pagename = 'about-me';
+            }
             $mypages = [
                 'about-me'=>'About Me',
                 'my-subjects'=>'My Subjects',
@@ -137,13 +144,74 @@
 <div class="hide" id="csrf_token"><?php echo $csrf_token; ?></div>
 
 <style type="text/css">
+
+.theimage-parent{
+    position: relative;
+    height: 300px;
+    background: #fff;
+    text-align: center;
+    width: 100%;
+    overflow: hidden;
+    border: solid 5px #fff;
+}
+.theimage{
+    left: 0;  right: 0;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    box-sizing: border-box;
+}
+.theimage img{
+    box-sizing: border-box;
+    max-width: 100%;
+}
+.new-user-prompt{
+    background: #e1e8ed;
+    color: #fff;
+    background: #333;
+    padding: 10px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+.new-user-prompt-title{
+    font-weight: bold;
+    font-size: 18px;
+
+    color: #d3ed00;
+}
+.new-user-prompt-copy{
+    margin-bottom: 15px;
+}
+.recommendations-title{
+    font-size: 16px;
+    font-weight: bold;
+}
+.recommendations{
+    background: #fff;
+    padding: 10px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.viewuserviewuser .itstheheader{
+    position: relative;
+}
 .viewuserviewuser h1{
-    padding: 0px 15px;
+    padding: 10px 15px;
     margin: 0px;
-    margin-top: -25px;
-    margin-bottom: -20px;
+    background: rgba(33, 33, 33, 0.65);
+    font-size: 33px;
+    color: #fff;
+    margin-top: -29px;
 }
 main .view-user----view-user{
+    padding: 0px;
+    padding-top: 30px;
     width: 100% !important;
 }
 .user-hero{
@@ -153,6 +221,7 @@ main .view-user----view-user{
 }
 .row.fixed-rows{
     margin: 0px;
+    margin-bottom: 25px;
 }
 .user-info{
     padding-bottom: 20px;
@@ -212,6 +281,9 @@ main .view-user----view-user{
     float: left;
     width: 75%;
     box-sizing: border-box;
+    height: 300px;
+    overflow: hidden;
+    border: solid 5px #fff;
 }
 .user-hero-items{
     display: flex;
@@ -228,16 +300,16 @@ main .view-user----view-user{
 }
 .user-hero-block-title{
     text-transform: uppercase;
-    font-size: 12px;
+    font-size: 15px;
     font-weight: bold;
 }
 .actual-hero{
     background-image:url('http://i.imgur.com/BdPMeg8.jpg');
+    background-image: url('/images/heros/001.jpg');
     background-size: cover;
     background-position:  center center;
     width: 100%;
     min-height: 250px;
-    border: solid 5px #fff;
 }
 .my-tabs{
 
@@ -276,6 +348,53 @@ main .view-user----view-user{
     margin-top: 1px;
 }
 
+.my-content-block{
+    padding: 10px;
+    margin-bottom: 15px;
+    background: #efefef;
+    background: linear-gradient(0deg,#efefef,#fff);
+    border: solid 1px #efefef;
+}
+.my-content-block-title{
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+.my-content-block-title a{
+    color: #333;
+    padding: 0px 5px;
+}
+.my-content-block-title a:hover{
+    background: #ccc;
+}
+.my-content-block-copy{
+    padding: 5px;
+    font-size: 14px;
+    color: #555;
+}
+.my-content-block-date{
+    text-align: right;
+    font-size: 12px;
+    color: #999;
+}
+.myStars{
+    padding: 0px 5px;
+    float: right;
+    display: inline-block;
+}
+.myStars .fa-star-o{
+    color: #ccc;
+}
+.myStars .fa-star, .starbox .fa-star{
+    color: #ee7a00;
+}
+.starbox{
+    padding: 10px;
+    margin-bottom: 15px;
+}
+.starbox .row{
+    margin-bottom: 0px;
+}
+
 
 @media only screen and (max-width: 600px){
     .user-hero-left{
@@ -283,6 +402,16 @@ main .view-user----view-user{
     }
     .user-hero-right{
         width: 100%;
+    }
+    h1{
+        text-align: center;
+        font-size: 22px;
+    }
+    .user-hero-block-title{
+        font-size: 12px;
+    }
+    .theimage-parent{
+        height: 360px;
     }
 }
 @media only screen and (min-width: 601px) and (max-width: 993px){

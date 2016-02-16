@@ -64,7 +64,7 @@
             $starscore = cachedeals($cacheKey,3600,$app->connect,$sql,$preparedArray,'fetch');
 
             if(isset($starscore->star_score)){
-                $return[] = array('class'=>'star-score-average','icon'=>'fa fa-star','results'=>$starscore->star_score.'/5 Stars'); //batter_badges('star-score-average','fa fa-star',$starscore->star_score.'/5 Stars');
+                $return[] = array('class'=>'starScoreAverage','icon'=>'fa fa-star','results'=>$starscore->star_score.'/5 Stars'); //batter_badges('star-score-average','fa fa-star',$starscore->star_score.'/5 Stars');
             }
 
 
@@ -110,8 +110,8 @@
                 if($count->count!=1){
                     $plural = 's';
                 }
-                $return['totalreviews'] = batter_badges('total-reviews','mdi-action-speaker-notes',$count->count.' Review'.$plural);
-                $return[] = array('class'=>'total-reviews','icon'=>'mdi-action-speaker-notes','results'=>$count->count.' Review'.$plural);
+                //$return['totalreviews'] = batter_badges('total-reviews','mdi-action-speaker-notes',$count->count.' Review'.$plural);
+                $return[] = array('class'=>'totalReviews','icon'=>'fa fa-comment','results'=>$count->count.' Review'.$plural);
 
             }
 
@@ -125,7 +125,7 @@
                 if($student_count->student_count!=1){
                     $plural = 's';
                 }
-                $return[] = array('class'=>'total-students','icon'=>'fa fa-user','results'=>$student_count->student_count.' Student'.$plural);
+                $return[] = array('class'=>'totalstudents','icon'=>'fa fa-user','results'=>$student_count->student_count.' Student'.$plural);
             }
 
             notify($return);

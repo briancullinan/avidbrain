@@ -1,3 +1,3 @@
 <div>
-    <?php echo $app->actualuser->personal_statement_verified; ?>
+    <?php echo nl2br($app->actualuser->personal_statement_verified); ?>
 </div>
