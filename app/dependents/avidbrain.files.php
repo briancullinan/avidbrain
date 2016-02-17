@@ -26,6 +26,7 @@
 		'jquery.nouislider.min.css',
 		'forms.css',
 		'view-user.css',
+		'newuserlayout.css',
 		'sessions-messages.css',
 		'subs.css',
 		'searching.css',

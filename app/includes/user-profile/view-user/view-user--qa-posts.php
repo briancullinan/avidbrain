@@ -16,5 +16,5 @@
         </div>
 	<?php endforeach; ?>
 <?php else: ?>
-	You have not answered any Q&amp;A Posts
+	I have not answered any Q&amp;A Posts
 <?php endif; ?>

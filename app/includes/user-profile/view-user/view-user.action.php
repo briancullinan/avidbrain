@@ -101,6 +101,8 @@
 			user.url,
 			user.username,
 			user.signup_date,
+			user.lat,
+			user.long,
 
 			profile.hourly_rate,
             profile.my_avatar,
@@ -112,7 +114,8 @@
 			profile.gender,
 			profile.travel_distance,
 			profile.cancellation_policy,
-			profile.cancellation_rate
+			profile.cancellation_rate,
+			profile.online_tutor
 
 		FROM
 			avid___user user
@@ -129,6 +132,7 @@
 	//notify($actualuser);
 	if(isset($actualuser->id)){
 		$app->actualuser = $actualuser;
+
 		if(isset($pagename)){
 			if($pagename=='my-subjects'){
 				$app->actualuser->subjects = getmysubjects($app->connect,$app->actualuser->email);
@@ -263,32 +267,83 @@
 					$app->actualuser->qaposts = $qaposts;
 				}
 
-				/*
-				$sql = "
-					SELECT
-						posts.postid,
-						posts.title,
-						posts.created,
-						posts.content,
-						postsJoin.content as answere
-					FROM
-						questions_answers.qa_posts posts
 
-					LEFT JOIN
-						questions_answers.qa_posts postsJoin on postsJoin.parentid = posts.postid
-
-					WHERE
-						posts.userid = :myid
-				";
-				$prepare = array(
-					':myid'=>$app->actualuser->id
-				);
-				$qaposts = $app->connect->executeQuery($sql,$prepare)->fetchAll();
-				if(!empty($qaposts)){
-					$app->actualuser->qaposts = $qaposts;
-				}
-				*/
-				//notify('science');
 			}
 		}
+
+
+		$getDistance = "round(((acos(sin((" . $app->actualuser->lat . "*pi()/180)) * sin((user.lat*pi()/180))+cos((" . $app->actualuser->lat . "*pi()/180)) * cos((user.lat*pi()/180)) * cos(((" .$app->actualuser->long. "- user.long)* pi()/180))))*180/pi())*60*1.1515) ";
+		$asDistance = ' as distance ';
+		$select = $getDistance.$asDistance;
+		$having = "HAVING distance <= :distance";
+
+
+		$sql = "
+			SELECT
+				user.id,
+				user.email,
+				user.first_name,
+				user.last_name,
+				user.username,
+				user.url,
+				profile.hourly_rate,
+				profile.my_avatar,
+	            profile.my_avatar_status,
+	            profile.my_upload,
+	            profile.my_upload_status,
+				$select
+			FROM
+				avid___user user
+
+			INNER JOIN avid___user_profile profile on profile.email = user.email
+
+			WHERE
+				user.usertype = 'tutor'
+					AND
+				user.status IS NULL
+					AND
+				user.hidden IS NULL
+					AND
+				profile.hourly_rate IS NOT NULL
+					AND
+				user.lock IS NULL
+					AND
+				profile.hourly_rate BETWEEN :pricelow and :pricehigh
+					AND
+				user.email != :myemail
+					AND
+				user.first_name IS NOT NULL
+
+			$having
+
+			ORDER BY distance ASC
+
+			LIMIT 4
+		";
+
+		$prepare = [];
+		$prepare[':distance'] = 30;
+		$prepare[':myemail'] = $app->actualuser->email;
+		$prepare[':pricelow'] = ($app->actualuser->hourly_rate-20);
+		$prepare[':pricehigh'] = ($app->actualuser->hourly_rate+20);
+		$cachedKeyforReccomendations = "cachedrecomendationsfor".$app->actualuser->email;
+		$recommendations = $app->connect->cache->get($cachedKeyforReccomendations);
+		if($recommendations == null) {
+		    $recommendations = $app->connect->executeQuery($sql,$prepare)->fetchAll();
+		    $app->connect->cache->set($cachedKeyforReccomendations, $results, 3600);
+		}
+		if(!empty($recommendations)){
+			$app->recommendations = $recommendations;
+		}
+
+
+
+		$app->mypages = [
+			'about-me'=>'About Me',
+			'my-subjects'=>'My Subjects',
+			'qa-posts'=>'Q&amp;A Posts',
+			'my-reviews'=>'My Reviews',
+			'send-message'=>'Send Message'
+		];
+
 	}

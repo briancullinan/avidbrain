@@ -1,5 +1,8 @@
 $(document).ready(function() {
 
+	var sidenav = $('#copyme').html();
+	$('.copy-that').html(sidenav);
+
 
 
 	$('.searchbox, #setupsession_session_subject, #getprices_subject').autocomplete({

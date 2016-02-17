@@ -62,6 +62,7 @@
 		exit;
 	}
 
+	$app->enableaffiliates = true;
 	$app->crypter = new Crypter(SALT, MCRYPT_RIJNDAEL_256);
 	$app->user = new User($app->connect,$app->crypter);
 	$app->affiliate = new Affiliate($app->connect,$app->crypter);

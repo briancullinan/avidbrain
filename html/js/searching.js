@@ -431,6 +431,16 @@ var encodeHtmlEntity = function(str) {
 			}
 		});
 
+		$('#userlocationinfo').autocomplete({
+			serviceUrl: '/suggestlocation',
+			beforeRender: function(){
+				//$('.zipcodeactual').val('');
+			},
+			onSelect: function (suggestion){
+				$('#userlocationinfo-zipcode').val(suggestion.data);
+			}
+		});
+
 		$('#subject').autocomplete({
 			serviceUrl: '/findmesome',
 			beforeRender: function(){
