@@ -160,10 +160,10 @@
 			$statement = NULL;
 		}
 
-		if(isset($actualuser->short_description) && isset($actualuser->personal_statement_verified) && $actualuser->short_description != $actualuser->personal_statement_verified){
+		if(isset($app->user->email) && $app->user->email==$actualuser->email &&  isset($actualuser->short_description) && isset($actualuser->personal_statement_verified) && $actualuser->short_description != $actualuser->personal_statement_verified){
 			$actualuser->mytaglineflag = true;
 		}
-		if(isset($actualuser->personal_statement) && isset($actualuser->personal_statement_verified) && $actualuser->personal_statement != $actualuser->personal_statement_verified){
+		if(isset($app->user->email) && $app->user->email==$actualuser->email &&  isset($actualuser->personal_statement) && isset($actualuser->personal_statement_verified) && $actualuser->personal_statement != $actualuser->personal_statement_verified){
 			$actualuser->statementflag = true;
 		}
 		$actualuser->mytagline = $tagline;

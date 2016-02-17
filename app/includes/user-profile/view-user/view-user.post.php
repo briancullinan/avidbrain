@@ -29,7 +29,56 @@
         }
     }
 
-    if($app->actualuser->email==$app->user->email && isset($app->makechanges)){
+    if($app->actualuser->email==$app->user->email && isset($app->mysubjects)){
+
+        printer($app->mysubjects);
+
+        if(isset($app->mysubjects->newitem)){
+
+            $sql = "SELECT sortorder FROM avid___user_subjects WHERE email = :email ORDER BY sortorder DESC LIMIT 1";
+            $prepeare = array(':email'=>$app->actualuser->email);
+            $sortMax = $app->connect->executeQuery($sql,$prepeare)->fetch();
+
+            $insert = [
+                'email'=>$app->actualuser->email,
+                'subject_slug'=>$app->mysubjects->subject_slug,
+                'parent_slug'=>$app->mysubjects->parent_slug,
+                'description'=>$app->mysubjects->description,
+                'last_modified'=>thedate(),
+                'status'=>'needs-review',
+                'usertype'=>'tutor',
+                'subject_name'=>$app->mysubjects->subject_name,
+                'sortorder'=>($sortMax->sortorder+1)
+            ];
+
+            $app->connect->insert('avid___user_subjects',$insert);
+        }
+        if(isset($app->mysubjects->description_verified)){
+            $update = [
+                'description'=>$app->mysubjects->description_verified,
+                'last_modified'=>thedate(),
+                'status'=>'needs-review'
+            ];
+            $app->connect->update('avid___user_subjects',$update,array('email'=>$app->actualuser->email,'id'=>$app->mysubjects->id));
+        }
+        elseif(isset($app->mysubjects->status) && $app->mysubjects->status=='save'){
+            $update = [
+                'description'=>$app->mysubjects->description,
+                'last_modified'=>thedate(),
+                'status'=>'needs-review'
+            ];
+            $app->connect->update('avid___user_subjects',$update,array('email'=>$app->actualuser->email,'id'=>$app->mysubjects->id));
+        }
+        elseif(isset($app->mysubjects->status) && $app->mysubjects->status=='delete'){
+            $app->mysubjects->subject_slug = NULL;
+            $app->connect->delete('avid___user_subjects',array('email'=>$app->actualuser->email,'id'=>$app->mysubjects->id));
+        }
+        else{
+            printer('UHOH!');
+        }
+        $app->redirect($app->actualuser->url.'/my-subjects/'.$app->mysubjects->parent_slug.'/'.$app->mysubjects->subject_slug);
+    }
+    elseif($app->actualuser->email==$app->user->email && isset($app->makechanges)){
 
         if(checkagainst($app->makechanges,$allowed)!==true){
 
@@ -113,4 +162,7 @@
             notify('UHOH!');
         }
 
+    }
+    else{
+        notify('science');
     }

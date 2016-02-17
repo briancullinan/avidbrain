@@ -107,6 +107,9 @@
     <div class="col s12 m8 l6">
         <div class="tab-content">
             <?php
+                if(isset($app->user->email) && $app->user->email == $app->actualuser->email && $pagename=='my-subjects'){
+                    $pagename = $pagename.'-edit-subjects';
+                }
                 include('view-user--'.$pagename.'.php');
             ?>
         </div>
