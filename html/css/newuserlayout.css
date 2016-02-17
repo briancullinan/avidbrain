@@ -149,7 +149,10 @@ main .view-user----view-user{
     margin-bottom: 25px;
 }
 .user-info{
-    padding-bottom: 20px;
+    padding: 5px;
+    border: solid 1px #ccc;
+    margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.4);
 }
 .user-hero-image img{
     border: solid 8px #fff;
@@ -167,10 +170,15 @@ main .view-user----view-user{
     z-index: 12;
 }
 .newest-badge{
+    padding: 5px;
+}
+.user-info .newest-badge{
     position: relative;
     background: #fff;
-    padding: 5px;
-    margin-bottom: 1px;
+    border-bottom: dashed 2px #e8e8e8;
+}
+.newest-badge:last-child{
+    border-bottom: none;
 }
 .newest-badge .newest-badge-icon{
     display: inline-block;
@@ -323,6 +331,19 @@ main .view-user----view-user{
 .starbox .row{
     margin-bottom: 0px;
 }
+.makechangescontainer .modal-content h4{
+    margin-bottom: 10px;
+}
+.modal-inputs input, .modal-inputs textarea{
+    padding: 0px;
+    margin: 0px;
+    height: auto;
+    line-height: normal;
+    background: #efefef;
+    padding: 10px;
+    border: solid 1px #ccc;
+    box-sizing: border-box;
+}
 
 
 @media only screen and (max-width: 600px){
@@ -346,6 +367,7 @@ main .view-user----view-user{
         transform: none;
         padding: 10px;
         font-size: 26px;
+        padding: 60px 0px;
     }
     .my-tagline span:before{
         display: none;

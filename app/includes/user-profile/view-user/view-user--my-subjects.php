@@ -2,7 +2,7 @@
     <?php $count = count($app->actualuser->subjects->approved); foreach($app->actualuser->subjects->approved as $key=> $approved): ?>
         <div class="my-content-block">
             <div class="my-content-block-title">
-                <i class="mdi-maps-beenhere tooltipped verified-by" data-position="top" data-delay="50" data-tooltip="Verified By AvidBrain" data-tooltip-id="f0df68ad-3031-8f0c-efa1-ca1f03a3480a"></i>
+                <i class="mdi-maps-beenhere tooltipped verified-by" data-position="top" data-delay="50" data-tooltip="Verified By AvidBrain"></i>
                 <?php echo $approved->subject_name; ?>
             </div>
             <div class="my-content-block-copy"><?php echo ($approved->description_verified); ?></div>

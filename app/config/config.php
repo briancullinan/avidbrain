@@ -50,7 +50,7 @@
     define('socialTwitter','https://twitter.com/avidbrain');
     define('socialLinkedin','https://www.linkedin.com/company/avidbrain/');
     define('socialPinterest','https://www.pinterest.com/avidbrain/');
-    define('socialBlog','https://blog.avidbrain.com');
+    define('socialBlog','http://blog.avidbrain.com');
 
     if(SERVERNAME=='avidbrain.dev'){
 

@@ -109,8 +109,10 @@
             profile.my_avatar_status,
             profile.my_upload,
             profile.my_upload_status,
+			profile.short_description,
             profile.short_description_verified,
             profile.personal_statement_verified,
+            profile.personal_statement,
 			profile.gender,
 			profile.travel_distance,
 			profile.cancellation_policy,
@@ -131,7 +133,45 @@
 	$actualuser = $app->connect->executeQuery($sql,$prepare)->fetch();
 	//notify($actualuser);
 	if(isset($actualuser->id)){
+
+		if(isset($app->user->email) && $app->user->email==$actualuser->email && isset($actualuser->short_description)){
+			$tagline = $actualuser->short_description;
+		}
+		elseif(isset($actualuser->short_description_verified)){
+			$tagline = $actualuser->short_description_verified;
+		}
+		elseif(empty($actualuser->short_description_verified) && isset($actualuser->short_description)){
+			$tagline = $actualuser->short_description;
+		}
+		else{
+			$tagline = NULL;
+		}
+
+		if(isset($app->user->email) && $app->user->email==$actualuser->email && isset($actualuser->personal_statement)){
+			$statement = $actualuser->personal_statement;
+		}
+		elseif(isset($actualuser->personal_statement_verified)){
+			$statement = $actualuser->personal_statement_verified;
+		}
+		elseif(empty($actualuser->personal_statement_verified) && isset($actualuser->personal_statement)){
+			$statement = $actualuser->personal_statement;
+		}
+		else{
+			$statement = NULL;
+		}
+
+		if(isset($actualuser->short_description) && isset($actualuser->personal_statement_verified) && $actualuser->short_description != $actualuser->personal_statement_verified){
+			$actualuser->mytaglineflag = true;
+		}
+		if(isset($actualuser->personal_statement) && isset($actualuser->personal_statement_verified) && $actualuser->personal_statement != $actualuser->personal_statement_verified){
+			$actualuser->statementflag = true;
+		}
+		$actualuser->mytagline = $tagline;
+		$actualuser->statement = $statement;
+
+
 		$app->actualuser = $actualuser;
+		//notify($app->actualuser);
 
 		if(isset($pagename)){
 			if($pagename=='my-subjects'){
@@ -345,5 +385,13 @@
 			'my-reviews'=>'My Reviews',
 			'send-message'=>'Send Message'
 		];
+
+		if(isset($pagename) && !array_key_exists($pagename, $app->mypages)){
+			$app->redirect($app->actualuser->url);
+		}
+
+		$app->meta = new stdClass();
+		$app->meta->title = $app->actualuser->short_description_verified.' - '.short($app->actualuser).' - '.online_tutor($app->actualuser->online_tutor).' Tutor in '.$app->actualuser->city.' '.ucwords($app->actualuser->state_long);
+		$app->meta->h1 = false;
 
 	}
