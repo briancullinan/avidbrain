@@ -10,6 +10,7 @@
 			$resetpass = new Forms($app->connect);
 			$resetpass->formname = 'resetpassword';
 			$resetpass->url = '/help/forgot-password';
+			$resetpass->csrf_key = $csrf_key;
 			$resetpass->csrf_token = $csrf_token;
 			$resetpass->makeform();
 		?>
