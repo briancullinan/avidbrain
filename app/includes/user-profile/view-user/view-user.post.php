@@ -54,14 +54,7 @@
             $app->connect->insert('avid___user_subjects',$insert);
         }
 
-        // if(isset($app->mysubjects->description_verified)){
-        //     $update = [
-        //         'description'=>$app->mysubjects->description_verified,
-        //         'last_modified'=>thedate(),
-        //         'status'=>'needs-review'
-        //     ];
-        //     $app->connect->update('avid___user_subjects',$update,array('email'=>$app->actualuser->email,'id'=>$app->mysubjects->id));
-        // }
+        
 
         if(isset($app->mysubjects->status) && $app->mysubjects->status=='approve'){
             $update = [
@@ -170,10 +163,6 @@
 
             $updateUser['first_name'] = ($app->makechanges->first_name ? $app->makechanges->first_name : $app->actualuser->first_name);
             $updateUser['last_name'] = ($app->makechanges->last_name ? $app->makechanges->last_name : $app->actualuser->last_name);
-
-
-            #$updateProfile['short_description_verified'] = ($app->makechanges->mytagline ? $app->makechanges->mytagline : $app->actualuser->short_description_verified);
-            #$updateProfile['personal_statement_verified'] = ($app->makechanges->personal_statement_verified ? $app->makechanges->personal_statement_verified : $app->actualuser->personal_statement_verified);
             $updateProfile['hourly_rate'] = ($app->makechanges->hourly_rate ? $app->makechanges->hourly_rate : $app->actualuser->hourly_rate);
             $updateProfile['gender'] = ($app->makechanges->gender ? $app->makechanges->gender : $app->actualuser->gender);
             $updateProfile['travel_distance'] = ($app->makechanges->travel_distance ? $app->makechanges->travel_distance : $app->actualuser->travel_distance);
@@ -222,8 +211,6 @@
 
         	$app->connect->delete('avid___user_needsprofilereview',$deleteRequest);
 
-
-
         	if(file_exists($upload)){
         		unlink($upload);
         	}
@@ -246,7 +233,6 @@
             $app->imagemanager->make($cropped)->rotate(90)->save();
         }
         elseif($app->myphoto->status=='approve'){
-            // APPROVE
 
             $deleteRequest = array(
             	'type'=>'My Photo',
@@ -291,8 +277,6 @@
     elseif(isset($app->upload)){
         if(isset($app->upload) && $upload = makefileupload((object)$_FILES['upload'],'file')){
 
-			//notify($upload);
-
 			if(isset($upload->tmp_name)){
 
 				$uploaddir = APP_PATH.'uploads/photos/';
@@ -305,22 +289,6 @@
 				$width = $img->width();
 				$height = $img->height();
 				$mime = $img->mime();
-
-				// $resize = NULL;
-                //
-				// $minimumWidth = 150;
-				// if($width < $minimumWidth){
-				// 	$resize = $minimumWidth;
-				// }
-				// elseif($width > $app->upload->width){
-				// 	$resize = $app->upload->width;
-				// }
-                //
-				// if(isset($resize)){
-				// 	$img->resize($resize, NULL, function ($constraint) {
-				// 	    $constraint->aspectRatio();
-				// 	})->save();
-				// }
 
                 $app->connect->update('avid___user_profile',array('my_upload'=>$filename,'my_upload_status'=>'needs-review'),array('email'=>$app->actualuser->email));
 
@@ -409,23 +377,20 @@
     }
     elseif(isset($app->administer)){
         //notify($app->actualuser);
+        $updateuser = [];
 
         $lock = 1;
         $status = NULL;
         if($app->administer->status=='free-and-clear'){
             $lock = NULL;
             $status = NULL;
+            $updateuser['hidden'] = NULL;
         }
         else{
             $status = $app->administer->status;
         }
 
-        // if(empty($app->administer->lock)){
-        //     $lock = NULL;
-        // }
-        // else{
-        //     $lock = 1;
-        // }
+
         if($app->administer->anotheragency=='yes'){
             $app->administer->anotheragency = 1;
         }
@@ -433,32 +398,19 @@
             $app->administer->anotheragency = NULL;
         }
 
-        $updateuser = [
-            'anotheragency'=>$app->administer->anotheragency,
-            'anotheragency_rate'=>$app->administer->anotheragency_rate,
-            '`lock`'=>$lock,
-            'status'=>$status
-        ];
+        $updateuser['anotheragency'] = $app->administer->anotheragency;
+        $updateuser['anotheragency_rate'] = $app->administer->anotheragency_rate;
+        $updateuser['`lock`'] = $lock;
+        $updateuser['status'] = $status;
 
 
         $app->connect->update('avid___user',$updateuser,array('email'=>$app->actualuser->email));
 
-        /*
-        new Flash(
-        	array(
-        		'action'=>'jump-to',
-                'location'=>$app->actualuser->url.'/administer',
-        		'message'=>'Profile Updated'
-        	)
-        );
-        */
+
         new Flash(
         	array(
         		'action'=>'alert',
         		'message'=>'Profile Updated'
         	)
         );
-    }
-    else{
-        notify($app->keyname);
     }
