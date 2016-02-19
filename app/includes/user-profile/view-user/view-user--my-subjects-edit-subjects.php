@@ -119,6 +119,14 @@
                 <button class="btn btn-s red confirm-submit" type="button" data-name="mysubjects" data-value="delete">
                     Delete <i class="fa fa-trash"></i>
                 </button>
+                <?php if(isset($app->adminnow)): ?>
+                    <button type="button" class="btn btn-s blue confirm-submit" data-name="mysubjects" data-value="approve">
+                        Approve <i class="fa fa-check"></i>
+                    </button>
+                    <button type="button" class="btn btn-s orange confirm-submit" data-name="mysubjects" data-value="reject">
+                        Reject <i class="fa fa-ban"></i>
+                    </button>
+                <?php endif; ?>
             </form>
         </div>
     <?php endforeach; ?>
@@ -150,6 +158,8 @@
 <?php endif; ?>
 
 <?php if(isset($app->actualuser->subjects->notApproved)): ?>
+    <div class="the-divider"></div>
+    <h3>Non-Approved Subjects</h3>
     <?php foreach($app->actualuser->subjects->notApproved as $key=> $notApproved): ?>
         <div class="my-content-block <?php if(isset($subject) && $subject==$notApproved->subject_slug){ echo ' active-subject-block ';} ?>" data-id="<?php echo $notApproved->parent_slug.$notApproved->subject_slug; ?>" id="<?php echo $notApproved->parent_slug.$notApproved->subject_slug; ?>">
             <div class="my-content-block-title">
@@ -167,11 +177,21 @@
 
                 <div class="my-content-block-copy"><textarea name="mysubjects[description]" class="materialize-textarea"><?php echo $notApproved->description; ?></textarea></div>
                 <button class="btn btn-s confirm-submit" type="button" data-name="mysubjects" data-value="save">
-                    Save
+                    Save <i class="fa fa-save"></i>
                 </button>
                 <button class="btn btn-s red confirm-submit" type="button" data-name="mysubjects" data-value="delete">
                     Delete <i class="fa fa-trash"></i>
                 </button>
+
+                <?php if(isset($app->adminnow)): ?>
+                    <button type="button" class="btn btn-s blue confirm-submit" data-name="mysubjects" data-value="approve">
+                        Approve <i class="fa fa-check"></i>
+                    </button>
+                    <button type="button" class="btn btn-s orange confirm-submit" data-name="mysubjects" data-value="reject">
+                        Reject <i class="fa fa-ban"></i>
+                    </button>
+                <?php endif; ?>
+
             </form>
         </div>
     <?php endforeach; ?>
@@ -184,11 +204,9 @@
     text-align: center;
 }
 .the-divider{
+    margin: 15px 0px;
+    height: 20px;
     width: 100%;
-    float: left;
-    background: #efefef;
-    padding: 1px;
-    margin: 10px 0px;
 }
 .my-content-block.active-subject{
 	border: solid 5px #2196F3;

@@ -10,6 +10,12 @@
 	-moz-border-radius: 5px;
 	border-radius: 5px;
 }
+button.button{
+	margin: 0px;
+	padding: 0px;
+	border: none;
+	padding: 5px 10px;
+}
 .button.button-block{
 	display: block;
 	margin-bottom: 5px;

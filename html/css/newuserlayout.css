@@ -1,7 +1,4 @@
-.my-name{
-    font-size: 16px;
-    font-weight: bold;
-}
+
 .my-tagline{
     text-align: center;
     font-family: 'Quicksand';
@@ -208,6 +205,33 @@ main .view-user----view-user{
 .cancellation-rate i{
     color: #cc0000;
 }
+
+.newest-badge i{
+    /*color: #666;*/
+}
+.totalReviews i{
+    color: #3f89a4;
+}
+.totalstudents i{
+    color: #f5a56a;
+}
+.starScoreAverage i{
+    color: #f69b00;
+}
+.tutortype-rate i{
+    color: #1c468e;
+}
+.newest-badge.my-name{
+    padding: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    border-bottom: solid 1px #ccc;
+    background: transparent;
+}
+.newest-badge.my-name i{
+    color: #FF1D1D;
+}
+
 .user-hero-left{
     text-align: center;
     float: left;
@@ -343,6 +367,33 @@ main .view-user----view-user{
     padding: 10px;
     border: solid 1px #ccc;
     box-sizing: border-box;
+}
+
+.make-changes, .changemaker{
+    background: #efefef;
+    color: #666;
+    position: absolute;
+    right: 1px;
+    top:1px;
+    padding:5px 10px;
+    font-size: 18px;
+    cursor: pointer;
+}
+.changemaker{
+    top:5px;
+    right: 5px;
+    background: #fff;
+}
+.make-changes i, .changemaker i{
+    color: #666 !important;
+}
+.make-changes:hover, .changemaker:hover{
+    background: #ccc;
+    color: #333;
+}
+.avatar-clicks.activeAvatar{
+    background: #efefef;
+    border: solid 1px #ccc;
 }
 
 

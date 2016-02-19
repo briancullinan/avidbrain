@@ -31,8 +31,6 @@
 
     if($app->actualuser->email==$app->user->email && isset($app->mysubjects)){
 
-        printer($app->mysubjects);
-
         if(isset($app->mysubjects->newitem)){
 
             $sql = "SELECT sortorder FROM avid___user_subjects WHERE email = :email ORDER BY sortorder DESC LIMIT 1";
@@ -53,17 +51,46 @@
 
             $app->connect->insert('avid___user_subjects',$insert);
         }
-        if(isset($app->mysubjects->description_verified)){
+
+        // if(isset($app->mysubjects->description_verified)){
+        //     $update = [
+        //         'description'=>$app->mysubjects->description_verified,
+        //         'last_modified'=>thedate(),
+        //         'status'=>'needs-review'
+        //     ];
+        //     $app->connect->update('avid___user_subjects',$update,array('email'=>$app->actualuser->email,'id'=>$app->mysubjects->id));
+        // }
+
+        if(isset($app->mysubjects->status) && $app->mysubjects->status=='approve'){
             $update = [
-                'description'=>$app->mysubjects->description_verified,
+                'description'=>$app->mysubjects->description,
+                'description_verified'=>$app->mysubjects->description,
                 'last_modified'=>thedate(),
-                'status'=>'needs-review'
+                'status'=>'verified'
             ];
             $app->connect->update('avid___user_subjects',$update,array('email'=>$app->actualuser->email,'id'=>$app->mysubjects->id));
         }
-        elseif(isset($app->mysubjects->status) && $app->mysubjects->status=='save'){
+        elseif(isset($app->mysubjects->status) && $app->mysubjects->status=='reject'){
             $update = [
-                'description'=>$app->mysubjects->description,
+                'description'=>$app->mysubjects->description_verified,
+                'description_verified'=>NULL,
+                'last_modified'=>thedate(),
+                'status'=>'needs-review'
+            ];
+            //notify($update);
+            $app->connect->update('avid___user_subjects',$update,array('email'=>$app->actualuser->email,'id'=>$app->mysubjects->id));
+        }
+        elseif(isset($app->mysubjects->status) && $app->mysubjects->status=='save'){
+
+            if(isset($app->mysubjects->description_verified)){
+                $description = $app->mysubjects->description_verified;
+            }
+            else{
+                $description = $app->mysubjects->description;
+            }
+
+            $update = [
+                'description'=>$description,
                 'last_modified'=>thedate(),
                 'status'=>'needs-review'
             ];
@@ -87,7 +114,10 @@
 
             if(isset($app->makechanges->mytagline)){
 
-                if(!empty($app->actualuser->short_description_verified) && $app->makechanges->mytagline != $app->actualuser->short_description_verified){
+                if(isset($app->adminnow)){
+                    $updateProfile['short_description_verified'] = $app->makechanges->mytagline;
+                }
+                elseif(!empty($app->actualuser->short_description_verified) && $app->makechanges->mytagline != $app->actualuser->short_description_verified){
                     $updateProfile['short_description'] = $app->makechanges->mytagline;
                 }
                 elseif(!empty($app->actualuser->short_description_verified) && $app->makechanges->mytagline == $app->actualuser->short_description_verified){
@@ -102,7 +132,10 @@
 
             if(isset($app->makechanges->statement)){
 
-                if(!empty($app->actualuser->personal_statement_verified) && $app->makechanges->statement != $app->actualuser->personal_statement_verified){
+                if(isset($app->adminnow)){
+                    $updateProfile['personal_statement_verified'] = $app->makechanges->statement;
+                }
+                elseif(!empty($app->actualuser->personal_statement_verified) && $app->makechanges->statement != $app->actualuser->personal_statement_verified){
                     $updateProfile['personal_statement'] = $app->makechanges->statement;
                 }
                 elseif(!empty($app->actualuser->personal_statement_verified) && $app->makechanges->statement == $app->actualuser->personal_statement_verified){
@@ -163,6 +196,174 @@
         }
 
     }
+    elseif(isset($app->myavatar->name)){
+        $app->connect->update('avid___user_profile',array('my_avatar'=>$app->myavatar->name),array('email'=>$app->user->email));
+        $app->redirect($app->actualuser->url.'/my-photos');
+    }
+    elseif(isset($app->myphoto->status)){
+
+        if($app->myphoto->status=='crop'){
+            $app->redirect($app->actualuser->url.'/my-photos/crop-photo');
+        }
+        elseif($app->myphoto->status=='delete'){
+            $deleteRequest = array(
+        		'type'=>'My Photo',
+        		'email'=>$app->user->email
+        	);
+
+        	$app->connect->delete('avid___user_needsprofilereview',$deleteRequest);
+
+        	$path = APP_PATH.'uploads/photos/';
+        	$pathApproved = DOCUMENT_ROOT.'profiles/approved/';
+        	$myfile = $app->actualuser->my_upload;
+
+        	$upload = $path.$myfile;
+        	$cropped = croppedfile($path.$myfile);
+        	$approved = $pathApproved.$myfile;
+
+        	if(file_exists($upload)){
+        		unlink($upload);
+        	}
+        	if(file_exists($cropped)){
+        		unlink($cropped);
+        	}
+        	if(file_exists($approved)){
+        		unlink($approved);
+        	}
+
+            $delete = ['my_upload'=>NULL,'my_upload_status'=>NULL];
+            $app->connect->update('avid___user_profile',$delete,array('email'=>$app->user->email));
+
+        	$app->redirect($app->actualuser->url.'/my-photos');
+        }
+        elseif($app->myphoto->status=='rotate-right'){
+            printer('rotate-right');
+        }
+        elseif($app->myphoto->status=='rotate-left'){
+            printer('rotate-left');
+        }
+
+        notify($app->myphoto->status);
+    }
+    elseif(isset($app->upload)){
+        if(isset($app->upload) && $upload = makefileupload((object)$_FILES['upload'],'file')){
+
+			//notify($upload);
+
+			if(isset($upload->tmp_name)){
+
+				$uploaddir = APP_PATH.'uploads/photos/';
+
+				$type = getfiletype($upload->name);
+				$filename = $app->user->username.$type;
+				$uploadfile = $uploaddir.$filename;
+
+				$img = $app->imagemanager->make($upload->tmp_name)->save($uploadfile);
+				$width = $img->width();
+				$height = $img->height();
+				$mime = $img->mime();
+
+				// $resize = NULL;
+                //
+				// $minimumWidth = 150;
+				// if($width < $minimumWidth){
+				// 	$resize = $minimumWidth;
+				// }
+				// elseif($width > $app->upload->width){
+				// 	$resize = $app->upload->width;
+				// }
+                //
+				// if(isset($resize)){
+				// 	$img->resize($resize, NULL, function ($constraint) {
+				// 	    $constraint->aspectRatio();
+				// 	})->save();
+				// }
+
+                $app->connect->update('avid___user_profile',array('my_upload'=>$filename,'my_upload_status'=>'needs-review'),array('email'=>$app->user->email));
+
+				$app->redirect($app->actualuser->url.'/my-photos/crop-photo');
+
+			}
+
+		}
+    }
+    elseif(isset($app->resizecrop)){
+
+        $app->img->resize($app->resizecrop->width, NULL, function ($constraint) {
+            $constraint->aspectRatio();
+        })->save();
+
+        $app->redirect($app->actualuser->url.'/my-photos/crop-photo');
+
+    }
+    elseif(isset($app->crop)){
+        // MIGHT Work
+        $croppedfile = croppedfile($app->actualuser->my_upload);
+		$path = APP_PATH.'uploads/photos/';
+		$myupload = $path.$app->actualuser->my_upload;
+		$croppedfile = $path.$croppedfile;
+
+		if(isset($app->crop->fullwidth)){
+
+
+			$filetype = getfiletype($app->user->my_upload);
+			$thefile = $app->user->username.$filetype;
+			$checkfile = $thefile;
+			$location = APP_PATH.'uploads/photos/';
+
+
+			if(file_exists($location.$checkfile)){
+				$file = $checkfile;
+			}
+
+			if(isset($file)){
+				$img = $app->imagemanager->make($location.$file);
+				$cropped = croppedfile($location.$file);
+
+				if(isset($app->crop->fullwidth)){
+					$img->resize($app->crop->fullwidth, NULL, function ($constraint) {
+						$constraint->aspectRatio();
+					});
+
+					$img->crop($app->crop->w, $app->crop->h, $app->crop->x, $app->crop->y)->save($cropped);
+
+					$height = $img->height();
+					$width = $img->width();
+
+					if($height > 500 || $width > 500){
+						$img->resize(500,500)->save($cropped);
+					}
+				}
+			}
+			else{
+				notify('FILE MISSING');
+			}
+		}
+		else{
+			$cropped = $app->imagemanager->make($myupload)->crop($app->crop->w, $app->crop->h, $app->crop->x, $app->crop->y)->save($croppedfile); //->resize(250,250)
+			$height = $app->imagemanager->make($croppedfile)->height();
+			$width = $app->imagemanager->make($croppedfile)->width();
+
+			if($height > 500 || $width > 500){
+				$cropped = $app->imagemanager->make($myupload)->crop($app->crop->w, $app->crop->h, $app->crop->x, $app->crop->y)->resize(500,500)->save($croppedfile);
+			}
+
+			if($app->actualuser->my_upload_status=='verified'){
+
+				$photos = APP_PATH.'uploads/photos/';
+				$approved = DOCUMENT_ROOT.'profiles/approved/';
+				//
+				$myfile = $app->actualuser->my_upload;
+				$cropped = croppedfile($myfile);
+
+				copy($photos.$cropped,$approved.$cropped);
+			}
+		}
+
+		$app->connect->update('avid___user_profile',array('my_upload_status'=>NULL),array('email'=>$app->user->email));
+		$app->redirect($app->actualuser->url.'/my-photos');
+        // MIGHT NOT
+    }
     else{
-        notify('science');
+        notify($app->keyname);
     }

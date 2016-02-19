@@ -1,11 +1,19 @@
 <div class="new-hero">
     <div class="new-hero-left">
+        <?php if(isset($app->user->email) && $app->user->email==$app->actualuser->email): ?>
+            <a class="changemaker" href="<?php echo $app->actualuser->url; ?>/my-photos"><i class="fa fa-pencil"></i></a>
+        <?php endif; ?>
         <img src="<?php echo userphotographs($app->user,$app->actualuser); ?>" />
     </div>
     <div class="new-hero-right">
 
         <div class="my-tagline">
-            <span><?php echo $app->actualuser->mytagline; ?><?php if(isset($app->actualuser->mytaglineflag)){ echo ' <i class="yellow-text fa fa-warning tooltipped" data-position="top" data-delay="50" data-tooltip="Needs Verified"></i> ';} ?></span>
+            <?php if(isset($app->adminnow)): ?>
+                <div><i class="fa fa-warning yellow-text"></i> <?php echo $app->actualuser->short_description; ?></div>
+                <div><?php echo $app->actualuser->short_description_verified; ?></div>
+            <?php else: ?>
+                <span><?php echo $app->actualuser->mytagline; ?><?php if(isset($app->actualuser->mytaglineflag)){ echo ' <i class="yellow-text fa fa-warning tooltipped" data-position="top" data-delay="50" data-tooltip="Needs Verified"></i> ';} ?></span>
+            <?php endif; ?>
         </div>
 
         <div class="user-hero-items">
@@ -122,25 +130,7 @@
 <div class="hide" id="csrf_key"><?php echo $csrf_key; ?></div>
 <div class="hide" id="csrf_token"><?php echo $csrf_token; ?></div>
 
-<style type="text/css">
-.make-changes{
-    background: #efefef;
-    color: #666;
-    position: absolute;
-    right: 1px;
-    top:1px;
-    padding:5px 10px;
-    font-size: 18px;
-    cursor: pointer;
-}
-.make-changes i{
-    color: #666;
-}
-.make-changes:hover{
-    background: #ccc;
-    color: #333;
-}
-</style>
+
 
 
 <?php if($app->actualuser->email==$app->user->email): ?>
@@ -167,7 +157,6 @@
             '.newest-badge.travel-distance':'changetraveldistance',
             '.newest-badge.cancellation-policy':'changecancellationpolicy',
             '.newest-badge.cancellation-rate':'changecancellationrate',
-            '.new-hero-left':'changephoto',
             '.newest-badge.tutortype-rate':'changetutortype'
         };
         $.each(makeclicks,function(index,value){
@@ -207,7 +196,11 @@
         <div class="modal-content">
     	    <h4>About Me</h4>
 			<div class="modal-inputs">
-				<textarea class="materialize-textarea" rows="10" id="personal_statement" name="makechanges[statement]"><?php echo $app->actualuser->statement; ?></textarea>
+				<?php if(isset($app->adminnow)): ?>
+                    <textarea class="materialize-textarea" rows="10" id="personal_statement" name="makechanges[statement]"><?php echo $app->actualuser->personal_statement_verified; ?></textarea>
+                <?php else: ?>
+                    <textarea class="materialize-textarea" rows="10" id="personal_statement" name="makechanges[statement]"><?php echo $app->actualuser->statement; ?></textarea>
+                <?php endif; ?>
 			</div>
     	</div>
         <div class="modal-footer">
@@ -276,21 +269,7 @@
         </div>
     </div>
 
-    <div class="makechangescontainer changephoto-container hide">
-        <div class="modal-content">
-    	    <h4>My Photo</h4>
-			<div class="modal-inputs">
-                <img src="<?php echo userphotographs($app->user,$app->actualuser); ?>" />
-				crop,delete,rotate-left,rotate-right
 
-                AVATARS
-			</div>
-    	</div>
-        <div class="modal-footer">
-    		<a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Dismiss</a>
-    		<a href="#!" data-target="changephoto" class="savecahnges modal-action modal-close waves-effect waves-green btn-flat">Save Changes</a>
-        </div>
-    </div>
 
     <div class="makechangescontainer changetutortype-container hide">
         <div class="modal-content">
@@ -311,28 +290,17 @@
         </div>
     </div>
 
-    <?php
-    /*
-    <div class="makechangescontainer xxxxxx-container hide">
-        <div class="modal-content">
-    	    <h4>xxxxxx</h4>
-			<div class="modal-inputs">
-				<input type="text" id="xxxxxx" name="makechanges[xxxxxx]" value="<?php echo $app->actualuser->xxxxxx; ?>"  />
-			</div>
-    	</div>
-        <div class="modal-footer">
-    		<a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Dismiss</a>
-    		<a href="#!" data-target="xxxxxx" class="savecahnges modal-action modal-close waves-effect waves-green btn-flat">Save Changes</a>
-        </div>
-    </div>
-    */
-    ?>
+
 
     <div class="makechangescontainer mytagline-container hide">
         <div class="modal-content">
     	    <h4>My Tagline</h4>
 			<div class="modal-inputs">
-				<input type="text" id="mytagline" maxlength="40" name="makechanges[mytagline]" value="<?php echo $app->actualuser->mytagline; ?>"  />
+                <?php if(isset($app->adminnow)): ?>
+                    <input type="text" id="mytagline" maxlength="40" name="makechanges[mytagline]" value="<?php echo $app->actualuser->short_description_verified; ?>"  />
+                <?php else: ?>
+                    <input type="text" id="mytagline" maxlength="40" name="makechanges[mytagline]" value="<?php echo $app->actualuser->mytagline; ?>"  />
+                <?php endif; ?>
 			</div>
     	</div>
         <div class="modal-footer">

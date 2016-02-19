@@ -131,6 +131,20 @@
 		':url'=>$url
 	);
 	$actualuser = $app->connect->executeQuery($sql,$prepare)->fetch();
+
+	if(isset($actualuser->email) && isset($app->user->usertype) && $app->user->usertype=='admin'){
+		$app->user->email = $actualuser->email;
+		$app->adminnow = true;
+	}
+
+	if(isset($category) && $category=='crop-photo'){
+
+		$myupload = APP_PATH.'uploads/photos/'.$actualuser->my_upload;
+		$app->img = $app->imagemanager->make($myupload);
+
+		$app->target->include = str_replace('.include.','.crop-photo.',$app->target->include);
+	}
+
 	//notify($actualuser);
 	if(isset($actualuser->id)){
 
@@ -160,7 +174,9 @@
 			$statement = NULL;
 		}
 
-		if(isset($app->user->email) && $app->user->email==$actualuser->email &&  isset($actualuser->short_description) && isset($actualuser->personal_statement_verified) && $actualuser->short_description != $actualuser->personal_statement_verified){
+		//printer($actualuser,1);
+
+		if(isset($app->user->email) && $app->user->email==$actualuser->email &&  isset($actualuser->short_description) && isset($actualuser->short_description_verified) && $actualuser->short_description != $actualuser->short_description_verified){
 			$actualuser->mytaglineflag = true;
 		}
 		if(isset($app->user->email) && $app->user->email==$actualuser->email &&  isset($actualuser->personal_statement) && isset($actualuser->personal_statement_verified) && $actualuser->personal_statement != $actualuser->personal_statement_verified){
@@ -378,7 +394,7 @@
 
 
 
-		$app->mypages = [
+		$mypages = [
 			'about-me'=>'About Me',
 			'my-subjects'=>'My Subjects',
 			'qa-posts'=>'Q&amp;A Posts',
@@ -386,9 +402,17 @@
 			'send-message'=>'Send Message'
 		];
 
-		if(isset($pagename) && !array_key_exists($pagename, $app->mypages)){
+		if(isset($app->user->email) && $app->user->email==$app->actualuser->email){
+			$mypages['my-photos'] = 'My Photos';
+		}
+
+		if(isset($pagename) && !array_key_exists($pagename, $mypages)){
 			$app->redirect($app->actualuser->url);
 		}
+
+		unset($mypages['my-photos']);
+
+		$app->mypages = $mypages;
 
 		$app->meta = new stdClass();
 		$app->meta->title = $app->actualuser->short_description_verified.' - '.short($app->actualuser).' - '.online_tutor($app->actualuser->online_tutor).' Tutor in '.$app->actualuser->city.' '.ucwords($app->actualuser->state_long);
