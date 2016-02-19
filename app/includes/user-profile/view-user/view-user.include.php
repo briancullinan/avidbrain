@@ -9,7 +9,7 @@
 
         <div class="my-tagline">
             <?php if(isset($app->adminnow)): ?>
-                <div><i class="fa fa-warning yellow-text"></i> <?php echo $app->actualuser->short_description; ?></div>
+                <div><i class="fa fa-check yellow-text"></i> <?php echo $app->actualuser->short_description; ?></div>
                 <div><?php echo $app->actualuser->short_description_verified; ?></div>
             <?php else: ?>
                 <span><?php echo $app->actualuser->mytagline; ?><?php if(isset($app->actualuser->mytaglineflag)){ echo ' <i class="yellow-text fa fa-warning tooltipped" data-position="top" data-delay="50" data-tooltip="Needs Verified"></i> ';} ?></span>
@@ -44,32 +44,48 @@
     <div class="col s12 m4 l3">
         <div class="user-info">
 
-            <?php
-                $staticBadges = [];
-                $staticBadges[] = (object)array('class'=>'my-name','icon'=>'fa fa-rocket','results'=>short($app->actualuser));
-                if(!empty($app->actualuser->hourly_rate)){
-                    $staticBadges[] = (object)array('class'=>'hourlyrate','icon'=>'fa fa-dollar','results'=>'$'.numbers($app->actualuser->hourly_rate).'/<span>Hour</span>');
-                }
-                $staticBadges[] = (object)array('class'=>'location','icon'=>'fa fa-map-marker','results'=>'<a href="/searching/---/'.$app->actualuser->zipcode.'">'.$app->actualuser->city.', '.ucwords($app->actualuser->state_long).'</a>');
-                if(!empty($app->actualuser->gender) && $app->actualuser->gender!='_empty_'){
-                    $staticBadges[] = (object)array('class'=>'gender','icon'=>'fa fa-'.$app->actualuser->gender,'results'=>"I'm ".ucwords($app->actualuser->gender));
-                }
-                if(!empty($app->actualuser->travel_distance)){
-                    $staticBadges[] = (object)array('class'=>'travel-distance','icon'=>'fa fa-car','results'=>'I Will Travel '.numbers($app->actualuser->travel_distance,1).' Miles');
-                }
-                if(!empty($app->actualuser->cancellation_policy)){
-                    $staticBadges[] = (object)array('class'=>'cancellation-policy','icon'=>'fa fa-clock-o','results'=>$app->actualuser->cancellation_policy.' Hour Cancelation Policy');
-                }
-                if(!empty($app->actualuser->cancellation_rate)){
-                    $staticBadges[] = (object)array('class'=>'cancellation-rate','icon'=>'fa fa-times-circle-o ','results'=>'$'.numbers($app->actualuser->cancellation_rate).' Cancelation Rate');
-                }
-                if(!empty($app->actualuser->online_tutor)){
-                    $staticBadges[] = (object)array('class'=>'tutortype-rate','icon'=>'fa fa-bookmark ','results'=>'I Tutor '.online_tutor($app->actualuser->online_tutor));
-                }
 
-                $staticBadges[] = (object)array('class'=>'signup-date','icon'=>'fa fa-calendar','results'=>'Joined '.formatdate($app->actualuser->signup_date));
+                <?php
+                    $staticBadges = [];
 
-            ?>
+                    if(isset($app->adminnow)){
+                        $staticBadges[] = (object)array('class'=>'adminmodule','icon'=>'fa fa-bomb','results'=>'<a href="'.$app->actualuser->url.'/administer">Admin Module</a>');
+                    }
+
+                    if(isset($app->user->email) && $app->user->email==$app->actualuser->email){
+                        if($app->actualuser->hidden==true){
+                            $staticBadges[] = (object)array('class'=>'hideshow-profile','icon'=>'fa fa-unlock-alt','results'=>'<a class="btn btn-s blue white-text confirm-click" href="'.$app->actualuser->url.'/actions/showprofile">  Show Profile</a>');
+                        }
+                        else{
+                            $staticBadges[] = (object)array('class'=>'hideshow-profile','icon'=>'fa fa-lock','results'=>'<a class="btn btn-s grey white-text confirm-click" href="'.$app->actualuser->url.'/actions/hideprofile">Hide Profile</a>');
+                        }
+                    }
+
+                    $staticBadges[] = (object)array('class'=>'my-name','icon'=>'fa fa-rocket','results'=>short($app->actualuser));
+
+                    if(!empty($app->actualuser->hourly_rate)){
+                        $staticBadges[] = (object)array('class'=>'hourlyrate','icon'=>'fa fa-dollar','results'=>'$'.numbers($app->actualuser->hourly_rate).'/<span>Hour</span>');
+                    }
+                    $staticBadges[] = (object)array('class'=>'location','icon'=>'fa fa-map-marker','results'=>'<a href="/searching/---/'.$app->actualuser->zipcode.'">'.$app->actualuser->city.', '.ucwords($app->actualuser->state_long).'</a>');
+                    if(!empty($app->actualuser->gender) && $app->actualuser->gender!='_empty_'){
+                        $staticBadges[] = (object)array('class'=>'gender','icon'=>'fa fa-'.$app->actualuser->gender,'results'=>"I'm ".ucwords($app->actualuser->gender));
+                    }
+                    if(!empty($app->actualuser->travel_distance)){
+                        $staticBadges[] = (object)array('class'=>'travel-distance','icon'=>'fa fa-car','results'=>'I Will Travel '.numbers($app->actualuser->travel_distance,1).' Miles');
+                    }
+                    if(!empty($app->actualuser->cancellation_policy)){
+                        $staticBadges[] = (object)array('class'=>'cancellation-policy','icon'=>'fa fa-clock-o','results'=>$app->actualuser->cancellation_policy.' Hour Cancelation Policy');
+                    }
+                    if(!empty($app->actualuser->cancellation_rate)){
+                        $staticBadges[] = (object)array('class'=>'cancellation-rate','icon'=>'fa fa-times-circle-o ','results'=>'$'.numbers($app->actualuser->cancellation_rate).' Cancelation Rate');
+                    }
+                    if(!empty($app->actualuser->online_tutor)){
+                        $staticBadges[] = (object)array('class'=>'tutortype-rate','icon'=>'fa fa-bookmark ','results'=>'I Tutor '.online_tutor($app->actualuser->online_tutor));
+                    }
+
+                    $staticBadges[] = (object)array('class'=>'signup-date','icon'=>'fa fa-calendar','results'=>'Joined '.formatdate($app->actualuser->signup_date));
+
+                ?>
             <?php foreach($staticBadges as $ajaxBadge): ?>
                     <div class="newest-badge <?php echo $ajaxBadge->class; ?>">
                         <span class="newest-badge-icon"><i class="<?php echo $ajaxBadge->icon; ?>"></i></span> <?php echo $ajaxBadge->results; ?>

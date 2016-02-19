@@ -259,7 +259,7 @@
 								<select name="tutorsignup[tutor][howdidyouhear]" class="browser-default">
 									<option value="">How Did You Hear About Us?</option>
 									<?php
-										foreach(array('Facebook','Twitter','Craigslist','Indeed','Google','Bing','Friend') as $value){
+										foreach(array('Facebook','Twitter','Craigslist','Friend','Indeed','Google','Bing') as $value){
 											echo '<option value="'.$value.'">'.$value.'</option>';
 										}
 									?>

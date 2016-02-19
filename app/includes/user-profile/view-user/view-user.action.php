@@ -103,6 +103,13 @@
 			user.signup_date,
 			user.lat,
 			user.long,
+			user.phone,
+			user.anotheragency,
+			user.anotheragency_rate,
+			user.hidden,
+			user.status,
+			user.lock,
+			user.emptybgcheck,
 
 			profile.hourly_rate,
             profile.my_avatar,
@@ -135,6 +142,18 @@
 	if(isset($actualuser->email) && isset($app->user->usertype) && $app->user->usertype=='admin'){
 		$app->user->email = $actualuser->email;
 		$app->adminnow = true;
+	}
+
+	if(isset($app->user->email) && $app->user->email == $actualuser->email){
+		if(isset($pagename) && $pagename=='actions' && isset($category) && $category=='hideprofile'){
+			$app->connect->update('avid___user',array('hidden'=>1),array('email'=>$app->user->email));
+			$app->redirect($actualuser->url);
+		}
+		elseif(isset($pagename) && $pagename=='actions' && isset($category) && $category=='showprofile'){
+			$app->connect->update('avid___user',array('hidden'=>NULL),array('email'=>$app->user->email));
+			$app->redirect($actualuser->url);
+		}
+
 	}
 
 	if(isset($category) && $category=='crop-photo'){
@@ -406,11 +425,16 @@
 			$mypages['my-photos'] = 'My Photos';
 		}
 
+		if(isset($app->adminnow)){
+			$mypages['administer'] = 'Administer';
+		}
+
 		if(isset($pagename) && !array_key_exists($pagename, $mypages)){
 			$app->redirect($app->actualuser->url);
 		}
 
 		unset($mypages['my-photos']);
+		unset($mypages['administer']);
 
 		$app->mypages = $mypages;
 

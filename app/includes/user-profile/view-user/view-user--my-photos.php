@@ -6,6 +6,16 @@
 
 <?php if(!empty($app->actualuser->my_upload)): ?>
     <form method="post" class="center-align" action="<?php echo $app->actualuser->url; ?>" id="myphoto">
+
+        <?php if(isset($app->adminnow)): ?>
+            <?php if($app->actualuser->my_upload_status=='verified'): ?>
+                <button type="button" class="button confirm-submit" data-name="myphoto" data-value="reject"><i class="fa fa-ban"></i> Reject Photo </button>
+            <?php else: ?>
+                <button type="button" class="button confirm-submit" data-name="myphoto" data-value="approve"><i class="fa fa-check"></i> Approve Photo </button>
+            <?php endif; ?>
+
+
+        <?php endif; ?>
         <button type="button" class="button confirm-submit" data-name="myphoto" data-value="crop"><i class="fa fa-crop"></i> Crop Photo</button>
         <button type="button" class="button confirm-submit" data-name="myphoto" data-value="delete"><i class="fa fa-trash"></i> Delete Photo</button>
         <button type="button" class="button confirm-submit" data-name="myphoto" data-value="rotate-right"><i class="fa fa-rotate-right"></i> Rotate Right</button>

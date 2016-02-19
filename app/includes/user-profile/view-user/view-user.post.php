@@ -1,5 +1,7 @@
 <?php
 
+    //notify('snakes');
+
     unset($app->makechanges->target);
 
     //notify($app->makechanges);
@@ -186,8 +188,8 @@
                 $url = $app->actualuser->url;
             }
 
-            $app->connect->update('avid___user_profile',$updateProfile,array('email'=>$app->user->email));
-            $app->connect->update('avid___user',$updateUser,array('email'=>$app->user->email));
+            $app->connect->update('avid___user_profile',$updateProfile,array('email'=>$app->actualuser->email));
+            $app->connect->update('avid___user',$updateUser,array('email'=>$app->actualuser->email));
             $app->redirect($url);
         }
         else{
@@ -197,10 +199,17 @@
 
     }
     elseif(isset($app->myavatar->name)){
-        $app->connect->update('avid___user_profile',array('my_avatar'=>$app->myavatar->name),array('email'=>$app->user->email));
+        $app->connect->update('avid___user_profile',array('my_avatar'=>$app->myavatar->name),array('email'=>$app->actualuser->email));
         $app->redirect($app->actualuser->url.'/my-photos');
     }
     elseif(isset($app->myphoto->status)){
+
+        $path = APP_PATH.'uploads/photos/';
+        $pathApproved = DOCUMENT_ROOT.'profiles/approved/';
+        $myfile = $app->actualuser->my_upload;
+        $upload = $path.$myfile;
+        $cropped = croppedfile($path.$myfile);
+        $approved = $pathApproved.$myfile;
 
         if($app->myphoto->status=='crop'){
             $app->redirect($app->actualuser->url.'/my-photos/crop-photo');
@@ -208,18 +217,12 @@
         elseif($app->myphoto->status=='delete'){
             $deleteRequest = array(
         		'type'=>'My Photo',
-        		'email'=>$app->user->email
+        		'email'=>$app->actualuser->email
         	);
 
         	$app->connect->delete('avid___user_needsprofilereview',$deleteRequest);
 
-        	$path = APP_PATH.'uploads/photos/';
-        	$pathApproved = DOCUMENT_ROOT.'profiles/approved/';
-        	$myfile = $app->actualuser->my_upload;
 
-        	$upload = $path.$myfile;
-        	$cropped = croppedfile($path.$myfile);
-        	$approved = $pathApproved.$myfile;
 
         	if(file_exists($upload)){
         		unlink($upload);
@@ -232,18 +235,58 @@
         	}
 
             $delete = ['my_upload'=>NULL,'my_upload_status'=>NULL];
-            $app->connect->update('avid___user_profile',$delete,array('email'=>$app->user->email));
+            $app->connect->update('avid___user_profile',$delete,array('email'=>$app->actualuser->email));
 
-        	$app->redirect($app->actualuser->url.'/my-photos');
+
         }
         elseif($app->myphoto->status=='rotate-right'){
-            printer('rotate-right');
+            $app->imagemanager->make($cropped)->rotate(-90)->save();
         }
         elseif($app->myphoto->status=='rotate-left'){
-            printer('rotate-left');
+            $app->imagemanager->make($cropped)->rotate(90)->save();
+        }
+        elseif($app->myphoto->status=='approve'){
+            // APPROVE
+
+            $deleteRequest = array(
+            	'type'=>'My Photo',
+            	'email'=>$app->actualuser->email
+            );
+
+            $delete = $app->connect->delete('avid___user_needsprofilereview',$deleteRequest);
+
+            if($delete==true){
+            	$app->mailgun->to = $app->actualuser->email;
+            	$app->mailgun->subject = 'Your photo has been approved';
+            	$app->mailgun->message = 'Congratulations, your photo has been approved.';
+            	$app->mailgun->send();
+            }
+
+            $photos = APP_PATH.'uploads/photos/';
+            $approved = DOCUMENT_ROOT.'profiles/approved/';
+
+            $myfile = $app->actualuser->my_upload;
+            $cropped = croppedfile($myfile);
+
+            copy($photos.$cropped, $approved.$cropped);
+
+            $app->connect->update('avid___user_profile',array('my_upload_status'=>'verified'),array('email'=>$app->actualuser->email));
+
+        }
+        elseif($app->myphoto->status=='reject'){
+            $filePath = croppedfile($app->actualuser->my_upload);
+            $fileName = str_replace(APP_PATH.'uploads/photos/','',$filePath);
+            $newfile = DOCUMENT_ROOT.'profiles/approved/'.$fileName;
+
+            if(file_exists($newfile)){
+            	unlink($newfile);
+            }
+
+
+            $app->connect->update('avid___user_profile',array('my_upload_status'=>'needs-review'),array('email'=>$app->actualuser->email));
         }
 
-        notify($app->myphoto->status);
+        $app->redirect($app->actualuser->url.'/my-photos');
     }
     elseif(isset($app->upload)){
         if(isset($app->upload) && $upload = makefileupload((object)$_FILES['upload'],'file')){
@@ -255,7 +298,7 @@
 				$uploaddir = APP_PATH.'uploads/photos/';
 
 				$type = getfiletype($upload->name);
-				$filename = $app->user->username.$type;
+				$filename = $app->actualuser->username.$type;
 				$uploadfile = $uploaddir.$filename;
 
 				$img = $app->imagemanager->make($upload->tmp_name)->save($uploadfile);
@@ -279,7 +322,7 @@
 				// 	})->save();
 				// }
 
-                $app->connect->update('avid___user_profile',array('my_upload'=>$filename,'my_upload_status'=>'needs-review'),array('email'=>$app->user->email));
+                $app->connect->update('avid___user_profile',array('my_upload'=>$filename,'my_upload_status'=>'needs-review'),array('email'=>$app->actualuser->email));
 
 				$app->redirect($app->actualuser->url.'/my-photos/crop-photo');
 
@@ -306,8 +349,8 @@
 		if(isset($app->crop->fullwidth)){
 
 
-			$filetype = getfiletype($app->user->my_upload);
-			$thefile = $app->user->username.$filetype;
+			$filetype = getfiletype($app->actualuser->my_upload);
+			$thefile = $app->actualuser->username.$filetype;
 			$checkfile = $thefile;
 			$location = APP_PATH.'uploads/photos/';
 
@@ -360,9 +403,61 @@
 			}
 		}
 
-		$app->connect->update('avid___user_profile',array('my_upload_status'=>NULL),array('email'=>$app->user->email));
+		$app->connect->update('avid___user_profile',array('my_upload_status'=>NULL),array('email'=>$app->actualuser->email));
 		$app->redirect($app->actualuser->url.'/my-photos');
         // MIGHT NOT
+    }
+    elseif(isset($app->administer)){
+        //notify($app->actualuser);
+
+        $lock = 1;
+        $status = NULL;
+        if($app->administer->status=='free-and-clear'){
+            $lock = NULL;
+            $status = NULL;
+        }
+        else{
+            $status = $app->administer->status;
+        }
+
+        // if(empty($app->administer->lock)){
+        //     $lock = NULL;
+        // }
+        // else{
+        //     $lock = 1;
+        // }
+        if($app->administer->anotheragency=='yes'){
+            $app->administer->anotheragency = 1;
+        }
+        else{
+            $app->administer->anotheragency = NULL;
+        }
+
+        $updateuser = [
+            'anotheragency'=>$app->administer->anotheragency,
+            'anotheragency_rate'=>$app->administer->anotheragency_rate,
+            '`lock`'=>$lock,
+            'status'=>$status
+        ];
+
+
+        $app->connect->update('avid___user',$updateuser,array('email'=>$app->actualuser->email));
+
+        /*
+        new Flash(
+        	array(
+        		'action'=>'jump-to',
+                'location'=>$app->actualuser->url.'/administer',
+        		'message'=>'Profile Updated'
+        	)
+        );
+        */
+        new Flash(
+        	array(
+        		'action'=>'alert',
+        		'message'=>'Profile Updated'
+        	)
+        );
     }
     else{
         notify($app->keyname);

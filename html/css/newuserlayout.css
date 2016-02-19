@@ -225,11 +225,24 @@ main .view-user----view-user{
     padding: 10px;
     font-size: 18px;
     font-weight: bold;
-    border-bottom: solid 1px #ccc;
-    background: transparent;
 }
+
 .newest-badge.my-name i{
     color: #FF1D1D;
+}
+.adminmodule{
+}
+.adminmodule:hover{
+    background: red;
+}
+.adminmodule:hover a{
+    color: #fff;
+}
+.adminmodule a{
+    background: #333;
+    color: #fff;
+    display: inline-block;
+    padding: 5px 15px;
 }
 
 .user-hero-left{
@@ -395,7 +408,11 @@ main .view-user----view-user{
     background: #efefef;
     border: solid 1px #ccc;
 }
-
+.my-background-check-status div{
+    padding: 10px;
+    margin: 10px 0px;
+    text-align: center;
+}
 
 @media only screen and (max-width: 600px){
     main .container.view-user----view-user{
