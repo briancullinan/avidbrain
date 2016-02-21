@@ -295,41 +295,45 @@ var encodeHtmlEntity = function(str) {
 
 	$(document).ready(function() {
 
-		var makeclicks = {
-            '.aboutme':'aboutme',
-            '.my-tagline':'mytagline',
-            '.newest-badge.my-name':'changemyname',
-            '.newest-badge.hourlyrate':'changerate',
-            '.newest-badge.location':'changelocation',
-            '.newest-badge.gender':'changemygender',
-            '.newest-badge.travel-distance':'changetraveldistance',
-            '.newest-badge.cancellation-policy':'changecancellationpolicy',
-            '.newest-badge.cancellation-rate':'changecancellationrate',
-            '.newest-badge.tutortype-rate':'changetutortype'
-        };
-        $.each(makeclicks,function(index,value){
-            $(index).append('<div data-target="'+value+'" class="make-changes"><i class="fa fa-pencil"></i></div>');
-        });
+		if($('#makechanges').attr('data-value')){
+
+			var makeclicks = {
+	            '.aboutme':'aboutme',
+	            '.my-tagline':'mytagline',
+	            '.newest-badge.my-name':'changemyname',
+	            '.newest-badge.hourlyrate':'changerate',
+	            '.newest-badge.location':'changelocation',
+	            '.newest-badge.gender':'changemygender',
+	            '.newest-badge.travel-distance':'changetraveldistance',
+	            '.newest-badge.cancellation-policy':'changecancellationpolicy',
+	            '.newest-badge.cancellation-rate':'changecancellationrate',
+	            '.newest-badge.tutortype-rate':'changetutortype'
+	        };
+	        $.each(makeclicks,function(index,value){
+	            $(index).append('<div data-target="'+value+'" class="make-changes"><i class="fa fa-pencil"></i></div>');
+	        });
 
 
-        var makechanges = $('#makechanges').detach();
-        $('footer').parent().append(makechanges);
+	        var makechanges = $('#makechanges').detach();
+	        $('footer').parent().append(makechanges);
 
-        $('.make-changes').on('click',function(){
-            var target = $(this).attr('data-target');
-            $('.makechangescontainer').addClass('hide');
-            $('#makechanges').openModal({
-                ready:function(){
-                    $('.'+target+'-container').removeClass('hide').hide().fadeIn();
-                }
-            });
+	        $('.make-changes').on('click',function(){
+	            var target = $(this).attr('data-target');
+	            $('.makechangescontainer').addClass('hide');
+	            $('#makechanges').openModal({
+	                ready:function(){
+	                    $('.'+target+'-container').removeClass('hide').hide().fadeIn();
+	                }
+	            });
 
-            $('.savecahnges').on('click',function(){
-                var savetarget = $(this).attr('data-target');
-                var savevalue = $('#'+savetarget);
-                $('#makethechanges').append(savevalue).submit();;
-            });
-        });
+	            $('.savecahnges').on('click',function(){
+	                var savetarget = $(this).attr('data-target');
+	                var savevalue = $('#'+savetarget);
+	                $('#makethechanges').append(savevalue).submit();;
+	            });
+	        });
+
+		}
 
 
 		var ziplat = $('.ziplat').val();

@@ -13,7 +13,38 @@
 
 	$app->target->action = str_replace('.action','.'.$usertype.'.action',$app->target->action);
 	$app->target->include = str_replace('.include','.'.$usertype.'.include',$app->target->include);
-	//notify($app->target);
+
+
+	function itemblocks($array){
+        foreach($array as $item){
+            $string.='<div class="item-blocks">';
+                $string.='<div class="title">';
+                    $string.= $item->question;
+                $string.='</div>';
+                $string.='<div class="description">';
+                    $string.= nl2br($item->answer);
+                $string.='</div>';
+            $string.='</div>';
+        }
+        return $string;
+    }
+
+	function showthelist($listname,$array){
+		$string='<div class="item-blocks-container">';
+			$string.= '<div class="item-block-top">'.$listname.'</div>';
+	        foreach($array as $item){
+	            $string.='<div class="item-blocks">';
+	                $string.='<div class="title">';
+	                    $string.= $item->name;
+	                $string.='</div>';
+	                $string.='<div class="description">';
+	                    $string.= $item->info;
+	                $string.='</div>';
+	            $string.='</div>';
+	        }
+		$string.='</div>';
+        return $string;
+    }
 
 	function mystars($count){
 		if(!empty($count)){

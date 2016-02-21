@@ -355,19 +355,39 @@
 		}
 
 		if(isset($pagename) && !array_key_exists($pagename, $mypages)){
-			$app->redirect($app->actualuser->url);
+			//$app->redirect($app->actualuser->url);
 		}
 
 		unset($mypages['my-photos']);
 		unset($mypages['administer']);
 
-		$app->mypages = $mypages;
+		$mySubs = [
+			'surge'=>'Surge!',
+			'test-bank'=>'Test Bank',
+			'resources'=>'Resources',
+			'my-posts'=>'My Posts',
+			'forum'=>'Forum'
+		];
+
+		$app->mypagesMain = $mypages;
+		//$app->mypagesSub = $mySubs;
 
 		$app->meta = new stdClass();
 		$app->meta->title = $app->actualuser->short_description_verified.' - '.short($app->actualuser).' - '.online_tutor($app->actualuser->online_tutor).' Tutor in '.$app->actualuser->city.' '.ucwords($app->actualuser->state_long);
 		$app->meta->h1 = false;
 
 	}
+
+	$mysudents = [];
+	$mysudents[] = (object)array('name'=>'Sally F.','info'=>'Scottsdale Arizona Student, looking for math help.');
+	$mysudents[] = (object)array('name'=>'Simon D.','info'=>'I need help with Javascript.');
+	#$app->mysudents = $mysudents;
+
+	$collaborators = [];
+	$collaborators[] = (object)array('name'=>'Walter White','info'=>'I am a chemistry teacher from New Mexico');
+	$collaborators[] = (object)array('name'=>'James Peach','info'=>'I am a botany professor.');
+	#$app->collaborators = $collaborators;
+
 
 
 	if(empty($app->actualuser)){

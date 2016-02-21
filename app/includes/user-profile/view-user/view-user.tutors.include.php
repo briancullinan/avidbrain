@@ -1,41 +1,56 @@
-<div class="new-hero">
-    <div class="new-hero-left">
-        <?php if(isset($app->user->email) && $app->user->email==$app->actualuser->email): ?>
-            <a class="changemaker" href="<?php echo $app->actualuser->url; ?>/my-photos"><i class="fa fa-pencil"></i></a>
-        <?php endif; ?>
-        <img src="<?php echo userphotographs($app->user,$app->actualuser); ?>" />
-    </div>
-    <div class="new-hero-right">
-
-        <div class="my-tagline">
-            <?php if(isset($app->adminnow)): ?>
-                <div><i class="fa fa-check yellow-text"></i> <?php echo $app->actualuser->short_description; ?></div>
-                <div><?php echo $app->actualuser->short_description_verified; ?></div>
-            <?php else: ?>
-                <span><?php echo $app->actualuser->mytagline; ?><?php if(isset($app->actualuser->mytaglineflag)){ echo ' <i class="yellow-text fa fa-warning tooltipped" data-position="top" data-delay="50" data-tooltip="Needs Verified"></i> ';} ?></span>
+<div class="new-hero-container">
+    <div class="new-hero">
+        <div class="new-hero-left">
+            <?php if(isset($app->user->email) && $app->user->email==$app->actualuser->email): ?>
+                <a class="changemaker" href="<?php echo $app->actualuser->url; ?>/my-photos"><i class="fa fa-pencil"></i></a>
             <?php endif; ?>
+            <img src="<?php echo userphotographs($app->user,$app->actualuser); ?>" />
         </div>
+        <div class="new-hero-right">
 
-        <div class="user-hero-items">
-            <?php
-                if(empty($pagename)){
-                    $pagename = 'about-me';
-                }
-            ?>
-            <div class="my-tabs">
-                <ul>
-                    <?php foreach($app->mypages as $key => $page): ?>
-                        <li <?php if(isset($pagename) && $pagename==$key){ echo 'class="active"';} ?>>
-                            <a href="<?php echo $app->actualuser->url; ?>/<?php echo $key; ?>">
-                                <?php echo $page; ?>
-                            </a>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
+            <div class="my-tagline">
+                <?php if(isset($app->adminnow)): ?>
+                    <div><i class="fa fa-check yellow-text"></i> <?php echo $app->actualuser->short_description; ?></div>
+                    <div><?php echo $app->actualuser->short_description_verified; ?></div>
+                <?php else: ?>
+                    <span><?php echo $app->actualuser->mytagline; ?><?php if(isset($app->actualuser->mytaglineflag)){ echo ' <i class="yellow-text fa fa-warning tooltipped" data-position="top" data-delay="50" data-tooltip="Needs Verified"></i> ';} ?></span>
+                <?php endif; ?>
+            </div>
+
+            <div class="user-hero-items">
+                <?php
+                    if(empty($pagename)){
+                        $pagename = 'about-me';
+                    }
+                ?>
+                <div class="my-tabs">
+                    <?php if(isset($app->mypagesMain)): ?>
+                    <ul>
+                        <?php  foreach($app->mypagesMain as $key => $page): ?>
+                            <li <?php if(isset($pagename) && $pagename==$key){ echo 'class="active"';} ?>>
+                                <a href="<?php echo $app->actualuser->url; ?>/<?php echo $key; ?>">
+                                    <?php echo $page; ?>
+                                </a>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                    <?php endif; ?>
+                    <?php if(isset($app->mypagesSub)): ?>
+                    <ul>
+                        <?php foreach($app->mypagesSub as $key => $page): ?>
+                            <li <?php if(isset($pagename) && $pagename==$key){ echo 'class="active"';} ?>>
+                                <a href="<?php echo $app->actualuser->url; ?>/<?php echo $key; ?>">
+                                    <?php echo $page; ?>
+                                </a>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                    <?php endif; ?>
+                </div>
+
             </div>
 
         </div>
-
     </div>
 </div>
 
@@ -107,6 +122,14 @@
 
             </div>
 
+            <?php if(isset($app->mysudents)): ?>
+                <?php echo showthelist('My Students',$app->mysudents) ?>
+            <?php endif; ?>
+
+            <?php if(isset($app->collaborators)): ?>
+                <?php echo showthelist('Collaborators',$app->collaborators) ?>
+            <?php endif; ?>
+
             <?php if(isset($app->recommendations)): ?>
                 <div class="recommendations-container hide-on-small-only">
                     <div class="recommendations-title">Recommendations</div>
@@ -147,9 +170,8 @@
 <div class="hide" id="csrf_token"><?php echo $csrf_token; ?></div>
 
 
-
-
 <?php if($app->actualuser->email==$app->user->email): ?>
+
 <form method="post" id="makethechanges" action="<?php echo $app->request->getPath(); ?>">
 
 	<input type="hidden" name="makechanges[target]" value="makechanges"  />
@@ -157,11 +179,7 @@
 
 </form>
 
-<?php endif; ?>
-
-
-<?php if($app->actualuser->email==$app->user->email): ?>
-<div id="makechanges" class="modal">
+<div id="makechanges" class="modal" data-value="makechanges">
     <div class="makechangescontainer aboutme-container hide">
         <div class="modal-content">
     	    <h4>About Me</h4>
