@@ -1,5 +1,5 @@
 <div class="findatutor-container">
-    <div class="page-title">
+    <div class="pagesTitle">
         <h1>Math Tutoring in Phoenix</h1>
         <h2>Teach Something. Learn Anything.</h2>
     </div>
@@ -135,8 +135,7 @@
     color: #fff;
     background: rgba(0, 0, 0, 0.61);
     display: inline-block;
-    position: relative;
-    z-index: 22;
+    clear: both;
     padding: 10px;
 }
 .mainsignup main {
