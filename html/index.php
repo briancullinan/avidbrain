@@ -88,7 +88,7 @@
 
 
 	//$minime = true;
-	//$app->minify = true;
+	$app->minify = true;
 	if(isset($minime)){
 		include(APP_PATH.'minify.php');
 	}

@@ -192,8 +192,13 @@ main .view-user----view-user{
     position: relative;
     z-index: 12;
 }
+.newest-badge .row{
+
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
 .newest-badge{
-    padding: 5px;
+    margin-bottom: 2px;
 }
 .user-info .newest-badge{
     position: relative;
@@ -203,12 +208,21 @@ main .view-user----view-user{
 .newest-badge:last-child{
     border-bottom: none;
 }
+.tutor-left .newest-badge{
+    background: #fff;
+    border: solid 1px #dedede;
+}
+
 .newest-badge .newest-badge-icon{
     display: inline-block;
-    width: 35px;
+    width: 100%;
     margin-right: 10px;
     text-align: center;
     font-size: 22px;
+}
+.newest-badge-text{
+    display: block;
+    padding: 5px 0px;
 }
 .signup-date i{
     color: #666;

@@ -16,10 +16,14 @@
 .homepage-banner{
 
     background-size: cover;
-    height: 500px;
+    max-height: 500px;
     padding-top: 0px;
     overflow: hidden;
 
+}
+.homepage-banner video{
+    min-width: 100%;
+    min-height: 400px;
 }
 .homepage-box{
     width: 80%;

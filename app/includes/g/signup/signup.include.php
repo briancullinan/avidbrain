@@ -148,9 +148,10 @@
 }
 .gsignup-block ul{
     margin: 0px;
-    padding: 20px;
+    padding:10px 20px;
     color: #fff;
     background: #7ac143;
+    border-top: solid 5px #0099ff;
 }
 .gsignup-block ul li{
     list-style-type: disc;

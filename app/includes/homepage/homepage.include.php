@@ -1,9 +1,5 @@
 <div class="homepage-banner">
-    <div class="slider">
-		<ul class="slides">
-			<?php echo $app->slider; echo $foobar; ?>
-		</ul>
-	</div>
+
 
     <div class="homepage-box">
         <div class="homepage-copytext">Teach Something. Learn Anything.</div>
@@ -15,6 +11,17 @@
 
         </div>
     </div>
+
+    <video loop="loop" preload="auto" autoplay="true" class="video-playing hide-on-small-only">
+        <source src="/videos/main-intro.mp4" type='video/mp4'>
+        <source src="/videos/main-intro.m4v" type='video/mp4'>
+        <source src="/videos/main-intro.webm" type='video/webm'>
+    </video>
+    <div class="slider hide-on-med-and-up">
+		<ul class="slides">
+			<?php echo $app->slider; echo $foobar; ?>
+		</ul>
+	</div>
 
 </div>
 <div class="content-blocks">

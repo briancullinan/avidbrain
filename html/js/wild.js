@@ -908,6 +908,20 @@ $(document).ready(function() {
 		}
 	});
 
+	var badgeTemplate = '';
+	badgeTemplate += '<div class="newest-badge {{class}}">';
+		badgeTemplate += '<div class="row">';
+			badgeTemplate += '<div class="col s2 m2 l2">';
+				badgeTemplate += '<span class="newest-badge-icon"><i class="{{icon}}"></i></span>';
+			badgeTemplate += '</div>';
+			badgeTemplate += '<div class="col s10 m10 l10">';
+				badgeTemplate += '<span class="newest-badge-text">{{results}}</span>';
+			badgeTemplate += '</div>';
+		badgeTemplate += '</div>';
+	badgeTemplate += '</div>';
+
+
+
 	$( ".ajax-badges" ).each(function( index ) {
 		var badgeurl = $(this).attr('data-url');
 		var badgeid = '#'+$(this).attr('id');
@@ -918,8 +932,8 @@ $(document).ready(function() {
 			success: function(response){
 
 				$.each( response, function( key, value,index ) {
-					$(badgeid).append('<div class="newest-badge '+value.class+'"> <span class="newest-badge-icon"><i class="'+value.icon+'"></i></span> '+value.results+' </div>');
-					//$(badgeid+' .'+key).hide().fadeIn();
+					var output = Mustache.render(badgeTemplate, value);
+					$(badgeid).append(output);
 				});
 			}
 		});
