@@ -64,34 +64,4 @@
 		<a class="modal-trigger btn blue btn-block" href="#loginModule">Log In To Message</a>
 	</p>
 
-
-	<div class="orsignup">Or Signup To Message <?php echo short($app->currentuser); ?></div class="orsignup">
-
-	<?php
-
-		$newinserts = array();
-		$newinserts[] = (object)array(
-			'id'=>'555',
-			'order'=>'0',
-			'form_name'=>'signup',
-			'type'=>'textarea',
-			'required'=>NULL,
-			'text'=>'Send '.short($app->currentuser).' A Message',
-			'name'=>'signup_message',
-			'helper'=>'What would you like to say?',
-			'required_text'=>'Please enter a message',
-			'value'=>'Hi '.short($app->currentuser).', I would like to be tutored by you.',
-			'class'=>' s12 send-a-message'
-		);
-
-		$studentSignup = new Forms($app->connect);
-		$studentSignup->formname = 'signup';
-		$studentSignup->url = $app->request->getPath();
-		$studentSignup->csrf_key = $csrf_key;
-		$studentSignup->csrf_token = $csrf_token;
-		$studentSignup->inserts = $newinserts;
-		$studentSignup->makeform();
-
-	?>
-
 <?php endif; ?>

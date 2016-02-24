@@ -73,7 +73,7 @@
             $preparedArray = array(':email'=>$email);
             $backgroundcheck = cachedeals($cacheKey,3600,$app->connect,$sql,$preparedArray,'fetch');
             if(empty($backgroundcheck->emptybgcheck)){
-                $return[] = array('class'=>'backgroundcheck','icon'=>'fa fa-university','results'=>'Background Check');// batter_badges('background-check','mdi-action-assignment-ind','Background Check');
+                $return[] = array('class'=>'backgroundcheck','icon'=>'fa fa-balance-scale','results'=>'Background Check');// batter_badges('background-check','mdi-action-assignment-ind','Background Check');
             }
 
             $cacheKey = 'cacheditemfromemail---badge(sum)---'.$email;

@@ -31,6 +31,8 @@
 	$routes['track'] = (object)array('url'=>'/t','slug'=>'t','route'=>'/t/','include'=>'t','protected'=>NULL,'permissions'=>array());
 	$routes['track-discounts'] = (object)array('url'=>'/t/discount/company','slug'=>'company','route'=>'/t/discount/:company/','include'=>'t/discount/company','protected'=>NULL,'permissions'=>array());
 	$routes['track-students'] = (object)array('url'=>'/t/signup/subject','slug'=>'subject','route'=>'/t/signup/:subject/','include'=>'t/signup/subject','protected'=>NULL,'permissions'=>array());
+	$routes['google-analytics'] = (object)array('url'=>'/g/signup/','slug'=>'signup','route'=>'/g/signup/','include'=>'g/signup','protected'=>NULL,'permissions'=>array());
+	$routes['google-analytics-action'] = (object)array('url'=>'/g/signup/','slug'=>'signup','route'=>'/g/signup/:subject/','include'=>'g/signup','protected'=>NULL,'permissions'=>array());
 
 	// SEARCH
 	//http://handlebarsjs.com/

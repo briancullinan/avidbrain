@@ -277,6 +277,7 @@
 		$select = $getDistance.$asDistance;
 		$having = "HAVING distance <= :distance";
 
+		//$app->connect->cache->clean();
 
 		$sql = "
 			SELECT
@@ -354,10 +355,6 @@
 			$mypages['administer'] = 'Administer';
 		}
 
-		if(isset($pagename) && !array_key_exists($pagename, $mypages)){
-			//$app->redirect($app->actualuser->url);
-		}
-
 		unset($mypages['my-photos']);
 		unset($mypages['administer']);
 
@@ -370,7 +367,7 @@
 		];
 
 		$app->mypagesMain = $mypages;
-		//$app->mypagesSub = $mySubs;
+		#$app->mypagesSub = $mySubs;
 
 		$app->meta = new stdClass();
 		$app->meta->title = $app->actualuser->short_description_verified.' - '.short($app->actualuser).' - '.online_tutor($app->actualuser->online_tutor).' Tutor in '.$app->actualuser->city.' '.ucwords($app->actualuser->state_long);
@@ -378,16 +375,22 @@
 
 	}
 
-	$mysudents = [];
-	$mysudents[] = (object)array('name'=>'Sally F.','info'=>'Scottsdale Arizona Student, looking for math help.');
-	$mysudents[] = (object)array('name'=>'Simon D.','info'=>'I need help with Javascript.');
+	#$mysudents = [];
+	#$mysudents[] = (object)array('name'=>'Sally F.','info'=>'Scottsdale Arizona Student, looking for math help.');
+	#$mysudents[] = (object)array('name'=>'Simon D.','info'=>'I need help with Javascript.');
 	#$app->mysudents = $mysudents;
 
-	$collaborators = [];
-	$collaborators[] = (object)array('name'=>'Walter White','info'=>'I am a chemistry teacher from New Mexico');
-	$collaborators[] = (object)array('name'=>'James Peach','info'=>'I am a botany professor.');
+	#$collaborators = [];
+	#$collaborators[] = (object)array('name'=>'Walter White','info'=>'I am a chemistry teacher from New Mexico');
+	#$collaborators[] = (object)array('name'=>'James Peach','info'=>'I am a botany professor.');
 	#$app->collaborators = $collaborators;
 
+	if(isset($pagename)){
+
+		if(!array_key_exists($pagename, $mypages) && !array_key_exists($pagename, $mySubs)){
+			$app->redirect($app->actualuser->url);
+		}
+	}
 
 
 	if(empty($app->actualuser)){

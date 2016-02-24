@@ -39,13 +39,12 @@
 
 .new-hero{
     position: relative;
-    background-image: url('/images/heros/001.jpg');
-    background-position: center bottom;
-    background-size: cover;
+
     width: 100%;
     float: left;
     box-sizing: border-box;
     border-bottom: solid 5px #fff;
+
 }
 .new-hero-left{
     position: relative;
@@ -63,6 +62,10 @@
 .new-hero-right{
     float: left;
     width: 75%;
+    background-image: url('/images/heros/001.jpg');
+    background-position: center center;
+    background-size: cover;
+    height: 100%;
 }
 .theimage-parent{
     position: relative;
@@ -105,16 +108,35 @@
     margin-bottom: 15px;
 }
 .recommendations-title{
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
 }
 .recommendations{
     background: #fff;
     padding: 10px;
+    font-size: 14px;
+    color: #999;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
     margin-bottom: 5px;
+    position: relative;
+}
+.recommendations .dot{
+    position: absolute;
+    left:5px;
+    top:5px;
+    width: 10px;
+    height: 10px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+.recommendations:nth-child(even) .dot{
+    background: #00c73e;
+}
+.recommendations:nth-child(odd) .dot{
+    background: #999;
 }
 .recommendations .row{
     margin-bottom: 0px;

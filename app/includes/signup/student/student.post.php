@@ -23,6 +23,10 @@
 			new Flash(array('action'=>'required','message'=>"Zip Code Not Valid"));
 		}
 
+		if(isset($app->signup->phone) && $app->signup->phone=='666-666-6666'){
+			$app->signup->phone = NULL;
+		}
+
 
 		if(doesuserexist($app->connect,$app->signup->email)){
 			new Flash(array('action'=>'required','message'=>'Email address already used to signup'));
@@ -269,6 +273,10 @@
 
 		if($zipData==false){
 			new Flash(array('action'=>'required','message'=>'Invalid Zip Code','formID'=>'studentsignup','field'=>'ts_zipcode'));
+		}
+
+		if(isset($app->studentsignup->student->phone) && $app->studentsignup->student->phone=='6666666666'){
+			$app->studentsignup->student->phone = NULL;
 		}
 
 		$password = password_hash($app->studentsignup->student->password, PASSWORD_DEFAULT);

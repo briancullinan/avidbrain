@@ -59,7 +59,6 @@
     <div class="col s12 m4 l3">
         <div class="user-info">
 
-
                 <?php
                     $staticBadges = [];
 
@@ -82,6 +81,7 @@
                         $staticBadges[] = (object)array('class'=>'hourlyrate','icon'=>'fa fa-dollar','results'=>'$'.numbers($app->actualuser->hourly_rate).'/<span>Hour</span>');
                     }
                     $staticBadges[] = (object)array('class'=>'location','icon'=>'fa fa-map-marker','results'=>'<a href="/searching/---/'.$app->actualuser->zipcode.'">'.$app->actualuser->city.', '.ucwords($app->actualuser->state_long).'</a>');
+                    $staticBadges[] = (object)array('class'=>'alma-mater','icon'=>'fa fa-university','results'=>'Princeton');
                     if(!empty($app->actualuser->gender) && $app->actualuser->gender!='_empty_'){
                         $staticBadges[] = (object)array('class'=>'gender','icon'=>'fa fa-'.$app->actualuser->gender,'results'=>"I'm ".ucwords($app->actualuser->gender));
                     }
@@ -135,6 +135,7 @@
                     <div class="recommendations-title">Recommendations</div>
                     <?php foreach($app->recommendations as $recommendations): ?>
                         <div class="recommendations">
+                            <div class="dot"></div>
                             <div class="row">
                             	<div class="col s12 m4 l4">
                                     <a href="<?php echo $recommendations->url; ?>"><img class="responsive-img" src="<?php echo userphotographs($app->user,$recommendations); ?>" /></a>
@@ -321,6 +322,19 @@
         <div class="modal-footer">
     		<a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Dismiss</a>
     		<a href="#!" data-target="changelocation" class="savecahnges modal-action modal-close waves-effect waves-green btn-flat">Save Changes</a>
+        </div>
+    </div>
+
+    <div class="makechangescontainer myschool-container hide">
+        <div class="modal-content">
+    	    <h4>myschool</h4>
+			<div class="modal-inputs" id="myschool">
+                myschool
+			</div>
+    	</div>
+        <div class="modal-footer">
+    		<a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Dismiss</a>
+    		<a href="#!" data-target="myschool" class="savecahnges modal-action modal-close waves-effect waves-green btn-flat">Save Changes</a>
         </div>
     </div>
 

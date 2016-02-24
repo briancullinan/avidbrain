@@ -295,6 +295,15 @@ var encodeHtmlEntity = function(str) {
 
 	$(document).ready(function() {
 
+		var newherocontainer = $('.new-hero-container');
+		if(newherocontainer){
+			setTimeout(function(){
+
+				$('.new-hero-right').css({'height':($('.new-hero-container').outerHeight()-10)});
+			},1000);
+		}
+
+
 		if($('#makechanges').attr('data-value')){
 
 			var makeclicks = {
@@ -302,6 +311,7 @@ var encodeHtmlEntity = function(str) {
 	            '.my-tagline':'mytagline',
 	            '.newest-badge.my-name':'changemyname',
 	            '.newest-badge.hourlyrate':'changerate',
+	            '.newest-badge.alma-mater':'myschool',
 	            '.newest-badge.location':'changelocation',
 	            '.newest-badge.gender':'changemygender',
 	            '.newest-badge.travel-distance':'changetraveldistance',
