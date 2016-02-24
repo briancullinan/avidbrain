@@ -60,8 +60,17 @@
 
 <?php else: ?>
 
-	<p>
-		<a class="modal-trigger btn blue btn-block" href="#loginModule">Log In To Message</a>
-	</p>
+	<div class="block">
+		<div class="row">
+			<div class="col s12 m6 l6">
+				<p>Found the perfect tutor? Login and start learning.</p>
+				<p>Don't have an account? Signup Now, it will only take 5 minutes.</p>
+			</div>
+			<div class="col s12 m6 l6 right-align">
+				<a class="modal-trigger btn blue" href="#loginModule">Please Log In To Message</a>
+				<a class="modal-trigger btn green" href="/signup/student">Signup</a>
+			</div>
+		</div>
+	</div>
 
 <?php endif; ?>

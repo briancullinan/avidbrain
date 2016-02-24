@@ -909,7 +909,7 @@ $(document).ready(function() {
 	});
 
 	var badgeTemplate = '';
-	badgeTemplate += '<div class="newest-badge {{class}}">';
+	badgeTemplate += '<div class="newest-badge {{class}}" id="{{id}}">';
 		badgeTemplate += '<div class="row">';
 			badgeTemplate += '<div class="col s2 m2 l2">';
 				badgeTemplate += '<span class="newest-badge-icon"><i class="{{icon}}"></i></span>';
@@ -924,7 +924,7 @@ $(document).ready(function() {
 
 	$( ".ajax-badges" ).each(function( index ) {
 		var badgeurl = $(this).attr('data-url');
-		var badgeid = '#'+$(this).attr('id');
+		var badgeid = $(this).attr('id');
 		$.ajax({
 			type: 'POST',
 			url: '/badges',
@@ -932,8 +932,10 @@ $(document).ready(function() {
 			success: function(response){
 
 				$.each( response, function( key, value,index ) {
+					value.id = badgeid+'mc--'+key;
 					var output = Mustache.render(badgeTemplate, value);
-					$(badgeid).append(output);
+					$('#'+badgeid).append(output);
+					$('#'+value.id).hide().delay((100*key)).fadeIn('slow');
 				});
 			}
 		});
