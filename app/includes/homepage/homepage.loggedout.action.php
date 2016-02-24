@@ -171,7 +171,7 @@
 		return $slider;
 	};
 
-	$app->slider = $slides(DOCUMENT_ROOT,'images/homepage-slides/*.jpg');
+	$app->slider = $slides(DOCUMENT_ROOT,'images/avidbrainslides/*.jpg');
 
 
 	$featured = [];

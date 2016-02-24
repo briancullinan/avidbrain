@@ -19,7 +19,7 @@
     </video>
     <div class="slider hide-on-med-and-up">
 		<ul class="slides">
-			<?php echo $app->slider; echo $foobar; ?>
+			<?php echo $app->slider; ?>
 		</ul>
 	</div>
 
