@@ -175,8 +175,8 @@
     background: #57AD57;
     background:
     linear-gradient(
-      rgba(88, 173, 88, 0.9),
-      rgba(88, 173, 88, 0.5)
+      rgba(102, 181, 72, 0.9),
+      rgba(102, 181, 72, 0.79)
     ),
     url('/images/homepage-slides/penandpaper.jpg');
     background-attachment: fixed;
@@ -240,12 +240,12 @@ border: solid 5px #fff;
 }
 .featured-on{
 
-    background: #6d019d;
+    background: #d46c00;
 
       background:
       linear-gradient(
-        rgba(109, 1, 157, 0.9),
-        rgba(109, 1, 157, 0.5)
+        rgba(203, 97, 0, 0.9),
+        rgba(203, 91, 0, 0.5)
       ),
       url('/images/homepage-slides/plains.jpg');
       background-attachment: fixed;
