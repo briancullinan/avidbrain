@@ -1,5 +1,6 @@
 <?php
 	$fix = array(
+		'fixbgchecks'=>'Fix BG Checks',
 		'import-promocode-students'=>'Import Promocodes',
 		'changeimagenames'=>'Change Image Names',
 		'check-username-doubles'=>'Check Username Doubles',
@@ -26,7 +27,82 @@
 		$allcurrentphotos = glob(APP_PATH.'uploads/photos/*');
 		$allcrops = glob(APP_PATH.'uploads/photos/*.crop*');
 
-		if($action=='rename'){
+		if($action=='fixbgchecks'){
+
+			$candidates = 'https://api.checkr.com/v1/candidates';
+			$reports = 'https://api.checkr.com/v1/reports';
+
+			$sql = "
+				SELECT
+					user.email,
+					temps.*
+				FROM
+					avid___user user
+
+				LEFT JOIN avid___new_temps temps on temps.email = user.email
+
+				WHERE
+					user.emptybgcheck IS NOT NULL
+						AND
+					temps.charge_id IS NOT NULL
+
+			";
+			$prepare = array();
+			$results = $app->connect->executeQuery($sql,$prepare)->fetchAll();
+			foreach($results as $fix){
+
+				$userinfo = array(
+		            'us'=>CHECKR_USERNAME,
+		            'first_name'=>$fix->first_name,
+		            'middle_name'=>$fix->middle_name,
+		            'last_name'=>$fix->last_name,
+		            'email'=>$fix->email,
+		            'phone'=>$fix->phone,
+		            'zipcode'=>$fix->zipcode,
+		            'dob'=>$app->crypter->decrypt($fix->dob),
+		            'ssn'=>$app->crypter->decrypt($fix->ssn)
+		        );
+
+				
+
+				$middlename = NULL;
+				if(isset($fix->middle_name) && $fix->middle_name=='no_middle_name'){
+					$userinfo['middle_name'] = NULL;
+					$userinfo['no_middle_name'] = true;
+				}
+				elseif(empty($fix->middle_name)){
+					$userinfo['middle_name'] = NULL;
+					$userinfo['no_middle_name'] = true;
+				}
+
+
+		        $createCanditate = curlieque($userinfo,$candidates);
+				if(isset($createCanditate->error)){
+		            printer($createCanditate);
+		        }
+				elseif(isset($createCanditate->id)){
+					$report = array(
+		                'u'=>CHECKR_USERNAME,
+		                'package' => 'tasker_basic',
+		                'object' =>'package',
+		                'candidate_id' => $createCanditate->id
+		            );
+
+					try{
+		            	$report = curlieque($report,$reports);
+		            }
+		            catch(Exception $e){
+		            	echo '<pre>'; print_r($e); echo '</pre>';
+		                exit;
+		            }
+
+					$app->connect->update('avid___new_temps',array('candidate_id'=>$createCanditate->id,'report_ids'=>$report->id),array('email'=>$fix->email));
+		            $app->connect->delete('avid___needs_bgcheck',array('email'=>$fix->email));
+				}
+
+			}
+		}
+		elseif($action=='rename'){
 			foreach($allcurrentphotos as $photo){
 
 				#printer($photo);

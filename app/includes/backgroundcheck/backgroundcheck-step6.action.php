@@ -7,7 +7,7 @@
         $reports = 'https://api.checkr.com/v1/reports';
 
         $userinfo = array(
-            'us'=>checkrUsername,
+            'us'=>CHECKR_USERNAME,
             'first_name'=>$app->newtutor->first_name,
             'middle_name'=>$app->newtutor->middle_name,
             'last_name'=>$app->newtutor->last_name,
@@ -41,7 +41,7 @@
 
         if(isset($createCanditate->id)){
             $report = array(
-                'u'=>checkrUsername,
+                'u'=>CHECKR_USERNAME,
                 'package' => 'tasker_basic',
                 'object' =>'package',
                 'candidate_id' => $createCanditate->id
