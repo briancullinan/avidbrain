@@ -51,6 +51,7 @@
     define('socialLinkedin','https://www.linkedin.com/company/avidbrain/');
     define('socialPinterest','https://www.pinterest.com/avidbrain/');
     define('socialBlog','http://blog.avidbrain.com');
+    define('CHECKR_PASS',NULL);
 
     if(SERVERNAME=='avidbrain.dev'){
 

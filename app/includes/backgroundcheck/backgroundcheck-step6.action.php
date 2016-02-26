@@ -3,8 +3,8 @@
     if(empty($app->newtutor->candidate_id) && isset($app->newtutor->charge_id)){
 
 
-        $candidates = 'https://api.checkr.io/v1/candidates';
-        $reports = 'https://api.checkr.io/v1/reports';
+        $candidates = 'https://api.checkr.com/v1/candidates';
+        $reports = 'https://api.checkr.com/v1/reports';
 
         $userinfo = array(
             'us'=>checkrUsername,
