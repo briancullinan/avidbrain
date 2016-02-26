@@ -34,17 +34,20 @@
 
 			$sql = "
 				SELECT
-					user.email,
-					temps.*
+				user.email,
+				temps.*
 				FROM
-					avid___user user
+				avid___user user
 
 				LEFT JOIN avid___new_temps temps on temps.email = user.email
 
 				WHERE
-					user.emptybgcheck IS NOT NULL
-						AND
-					temps.charge_id IS NOT NULL
+				user.emptybgcheck IS NOT NULL
+					AND
+				temps.charge_id IS NOT NULL
+					AND
+				temps.candidate_id IS NULL
+
 
 			";
 			$prepare = array();
@@ -63,7 +66,7 @@
 		            'ssn'=>$app->crypter->decrypt($fix->ssn)
 		        );
 
-				
+
 
 				$middlename = NULL;
 				if(isset($fix->middle_name) && $fix->middle_name=='no_middle_name'){
