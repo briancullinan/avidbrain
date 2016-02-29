@@ -115,17 +115,21 @@
 
             }
 
-            $cacheKey = 'cacheditemfromemail---badge(student_count)---'.$email;
-            $sql = "SELECT count(sessions.to_user) as student_count FROM avid___sessions sessions WHERE sessions.from_user = :email GROUP BY sessions.to_user";
-            $prepare = array(':email'=>$email);
-            $student_count = cachedeals($cacheKey,3600,$app->connect,$sql,$preparedArray,'fetch');
+            //$app->connect->cache->clean();
 
-            if(isset($student_count->student_count) && !empty($student_count->student_count)){
+            $cacheKey = 'getallmystudentsfrom___avid___approved_tutors'.$email;
+            $sql = "SELECT COUNT(student_email) as count FROM avid___approved_tutors WHERE tutor_email = :email ";
+            $prepare = array(':email'=>$email);
+            $student_count = cachedeals($cacheKey,3600,$app->connect,$sql,$prepare,'fetch');
+
+
+            if(isset($student_count->count) && !empty($student_count->count)){
                 $plural=NULL;
-                if($student_count->student_count!=1){
+                if($student_count->count!=1){
                     $plural = 's';
                 }
-                $return[] = array('class'=>'totalstudents','icon'=>'fa fa-user','results'=>$student_count->student_count.' Student'.$plural);
+                //$return[] = array('class'=>'totalstudents','icon'=>'fa fa-user','results'=>$student_count->count);
+                $return[] = array('class'=>'totalstudents','icon'=>'fa fa-user','results'=>$student_count->count.' Student'.$plural);
             }
 
             notify($return);
