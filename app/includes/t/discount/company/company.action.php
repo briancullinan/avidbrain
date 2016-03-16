@@ -3,7 +3,8 @@
     $discountPages = array(
         'amex',
         'discount-tire',
-        'mathworks'
+        'mathworks',
+        'smiles-of-christmas'
     );
 
     if(!in_array($company, $discountPages)){
@@ -43,6 +44,12 @@
     $companyInfo->mathworks = (object)[
         'name'=>'MathWorks',
         'title'=>'AvidBrain Discounts - MathWorks',
+        'h1'=>'Looking For A Tutor?',
+        'content'=>"<div class='discounts-top'>Welcome to AvidBrain, the easiest way to find a tutor.</div> <div class='discounts-signup-now'>Signup Now & Get <strong>$".$isvalidpromo->value."</strong> Off Your First Session</div>"
+    ];
+    $companyInfo->{'smiles-of-christmas'} = (object)[
+        'name'=>'Smiles of Christmas',
+        'title'=>'AvidBrain Discounts - Smiles of Christmas',
         'h1'=>'Looking For A Tutor?',
         'content'=>"<div class='discounts-top'>Welcome to AvidBrain, the easiest way to find a tutor.</div> <div class='discounts-signup-now'>Signup Now & Get <strong>$".$isvalidpromo->value."</strong> Off Your First Session</div>"
     ];

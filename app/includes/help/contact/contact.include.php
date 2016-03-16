@@ -2,7 +2,7 @@
 	<div class="col s12 m6 l6">
 		<p>Need more help? Find a bug? Fill out our contact us form and we will get back to as soon as possible.</p>
 
-		<p>Need immediate help? <br> Call us Monday - Friday 8am - 6pm at <a href="tel:1-800-485-3138">1-800-485-3138</a></p>
+		<?php //<p>Need immediate help? <br> Call us Monday - Friday 8am - 6pm at <a href="tel:1-800-485-3138">1-800-485-3138</a></p> ?>
 
 	</div>
 	<div class="col s12 m6 l6">
