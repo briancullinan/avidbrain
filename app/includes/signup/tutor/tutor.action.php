@@ -86,7 +86,7 @@
 		elseif($promocode=='iteach'){
 			//$app->titleAdd = 'iteach';
 			$app->replace = ' Teachers ';
-			$app->replacetext = 'Year after year we see teachers work harder and get paid less. At AvidBrain we want to change this, that is why we are excited to lauch iteach: our new program to introduce teachers to AvidBrain and empower them with the skills they already have. <strong>Over the next 18 months, we will on-board 50,000 members of the  education community to the AvidBrain platform.</strong>';
+			$app->replacetext = 'Year after year we see teachers work harder and get paid less. At MindSpree we want to change this, that is why we are excited to lauch iteach: our new program to introduce teachers to MindSpree and empower them with the skills they already have. <strong>Over the next 18 months, we will on-board 50,000 members of the  education community to the MindSpree platform.</strong>';
 			$promoactivate = new stdClass();
 			$promoactivate->class = ' holidays-activate ';
 			$promoactivate->text = 'Get 80% Pay';

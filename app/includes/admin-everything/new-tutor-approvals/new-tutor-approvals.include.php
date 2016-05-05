@@ -77,7 +77,7 @@
 							<?php if(!empty($app->thetutor->over18)){ echo "<span class=' blue white-text'>I'm Over 18</span>";} ?>
 							<?php if(!empty($app->thetutor->legalresident)){ echo "<span class=' blue white-text'>I'm Am A Legal US Resident</span>";} ?>
 							<?php if(!empty($app->thetutor->tutoredbefore)){ echo "<span class=' blue white-text'>I Have Tought or Tutored Before</span>";} ?>
-							<?php if(!empty($app->thetutor->howdidyouhear)){ echo "<span class=' blue white-text'>I Heard About AvidBrain From: ".$app->thetutor->howdidyouhear."</span>";} ?>
+							<?php if(!empty($app->thetutor->howdidyouhear)){ echo "<span class=' blue white-text'>I Heard About MindSpree From: ".$app->thetutor->howdidyouhear."</span>";} ?>
 							<?php if(isset($app->thetutor->my_resume) && $app->thetutor->my_resume!=$app->thetutor->resume_text){ echo "<span class=' blue white-text'><a target='_blank' href='/admin-everything/new-tutor-approvals/".$id."/download'>Download Resume</a></span>";} //".$app->thetutor->my_resume." ?>
 							<?php if(empty($app->thetutor->my_resume)){echo '<span class="red white-text">NO RESUME</span>'; $ignore = true;} ?>
 						</div>
@@ -165,7 +165,7 @@
 
 						<div class="row infos">
 							<div class="col s12 m12 l12">
-								<div class="title"> Why do you want to tutor with AvidBrain? </div>
+								<div class="title"> Why do you want to tutor with MindSpree? </div>
 								<div>
 									<?php echo nl2br($app->thetutor->whytutor); ?>
 								</div>
@@ -387,7 +387,7 @@
 
 								$body.= '</ul>';
 
-								$body.= '<p>You can login and complete your application by going here: https://www.avidbrain.com/signup/tutor and clicking the <strong>Complete Signup Proccess</strong> button.</p>';
+								$body.= '<p>You can login and complete your application by going here: https://www.mindspree.com/signup/tutor and clicking the <strong>Complete Signup Proccess</strong> button.</p>';
 							?>
 
 							<div class="red white-text padd5">

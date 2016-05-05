@@ -1,6 +1,6 @@
 {
     "require": {
-        "slim/slim": "~2.0",
+        "slim/slim": "^3.3",
         "slim/extras":  "2.*",
         "phpfastcache/phpfastcache": "^3.0",
         "stripe/stripe-php": "^3.4",

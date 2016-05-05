@@ -148,7 +148,7 @@
 		// Email User
 		// Do Things
 
-		$welcomeMessage = '<p>Welcome to AvidBrain</p>';
+		$welcomeMessage = '<p>Welcome to MindSpree</p>';
 		$welcomeMessage.= '<p>Your verification link is: <a href="'.DOMAIN.'/validate/'.$validation_code.'">Verify Email Address</a></p>';
 
 		$app->mailgun->to = $app->signup->email;

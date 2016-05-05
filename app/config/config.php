@@ -14,8 +14,8 @@
     define('IV',password_hash(str_shuffle(rand(0,64).uniqid()), PASSWORD_BCRYPT));
 
     // Website Details
-    define('SITENAME','avidbrain');
-    define('SITENAME_PROPPER','AvidBrain');
+    define('SITENAME','mindspree');
+    define('SITENAME_PROPPER','MindSpree');
     define('VERSION','1.703');
     define('SYSTEM_EMAIL','donotreply@avidbrain.com');
     define('EMAIL_DOMAIN','avidbrain.com');
@@ -45,20 +45,23 @@
     define('PERPAGE',11);
 
     // social
-    define('socialQa','https://qa.avidbrain.com');
-    define('socialFacebook','https://www.facebook.com/avidbrain');
-    define('socialTwitter','https://twitter.com/avidbrain');
-    define('socialLinkedin','https://www.linkedin.com/company/avidbrain/');
-    define('socialPinterest','https://www.pinterest.com/avidbrain/');
-    define('socialBlog','http://blog.avidbrain.com');
+    define('socialQa','https://qa.mindspree.com');
+    define('socialFacebook','https://www.facebook.com/themindspree');
+    define('socialTwitter','https://twitter.com/themindspree');
+    define('socialLinkedin','https://www.mindspree.com/');//'https://www.linkedin.com/company/avidbrain/');
+    define('socialPinterest','https://www.pinterest.com/themindspree/');
+    define('socialBlog','http://blog.mindspree.com');
     define('CHECKR_PASS',NULL);
 
-    if(SERVERNAME=='avidbrain.dev'){
+
+
+
+    if(SERVERNAME=='localhost:5000'){
 
         // DEBUG
         define('DEBUG',true);
         define('MODE','development');
-        define('DOMAIN','http://avidbrain.dev');
+        define('DOMAIN','http://localhost:5000');
 
         // STRIPE
         define('STRIPE_SECRET','sk_test_RKw0H6vV3pyB5JsBuQKXU4sO');
@@ -67,7 +70,7 @@
         // Database
         define('HOST','localhost');
         define('DBUSER','root');
-        define('DBPASS','root');
+        define('DBPASS','');
 
         // CHECKR
         define('CHECKR_USERNAME','490604533e55e6c996bdf6db6c17dcdd8315a1d6');
@@ -75,7 +78,7 @@
     }
     else{
 
-        // DEBUG
+        // production
         define('DEBUG',false);
         define('MODE','production');
         define('DOMAIN','https://www.avidbrain.com');

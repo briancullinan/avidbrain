@@ -87,8 +87,8 @@
 		// $app->mailgun->send();
 
 		$app->mailgun->to = $app->tutorsignup->tutor->email;
-		$app->mailgun->subject = 'AvidBrain Tutor Signup';
-		$app->mailgun->message = 'Thank you for signing up with AvidBrain. You may login by going to <a href="'.DOMAIN.'/signup/tutor">Tutor Login</a>';
+		$app->mailgun->subject = 'MindSpree Tutor Signup';
+		$app->mailgun->message = 'Thank you for signing up with MindSpree. You may login by going to <a href="'.DOMAIN.'/signup/tutor">Tutor Login</a>';
 		$app->mailgun->send();
 
 		new Flash(array('action'=>'jump-to','formID'=>'tutorsignup','location'=>'/signup/tutor','message'=>'Step 1 Complete'));
@@ -624,7 +624,7 @@
 		$message.='<p> Thank you for completing the signup process, we will take a look at your application and get back to you shortly. </p>';
 
 		$app->mailgun->to = $app->newtutor->email;
-		$app->mailgun->subject = 'AvidBrain Tutor Signup';
+		$app->mailgun->subject = 'MindSpree Tutor Signup';
 		$app->mailgun->message = $message;
 		$app->mailgun->send();
 

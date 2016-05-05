@@ -28,12 +28,12 @@
 <div class="row">
 	<div class="col s12 m6 l6">
 		<h2>How to Make Money</h2>
-		<div>Whatever walk of life you are in there are several ways anyone can advertise for AvidBrain and make a some extra cash.</div>
-		<div>Below is a list of ideas on how you can advertise for AvidBrain:</div>
+		<div>Whatever walk of life you are in there are several ways anyone can advertise for MindSpree and make a some extra cash.</div>
+		<div>Below is a list of ideas on how you can advertise for MindSpree:</div>
 		 
 		<ul class="collection">
 			<li class="collection-item">
-				Share AvidBrain on you Social Media accounts. Make sure to include your promo code! If anyone signs up using it, you make money!
+				Share MindSpree on you Social Media accounts. Make sure to include your promo code! If anyone signs up using it, you make money!
 			</li>
 			<li class="collection-item">
 				Post to Free Job Boards

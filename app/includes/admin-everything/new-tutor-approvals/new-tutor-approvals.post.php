@@ -139,7 +139,7 @@
 
         $app->connect->update('avid___new_temps',array('activated'=>1,'approval_status'=>'approved'),array('email'=>$app->thetutor->email));
 
-        $subject = 'AvidBrain Application Approval';
+        $subject = 'MindSpree Application Approval';
         $message = '<p>Congratulations <strong>'.$app->thetutor->first_name.' '.$app->thetutor->last_name.'</strong>, your profile has been approved. You can now login and find students.</p>';
         $message.= '<p> Your username is your email address and your password is what you used to signup with. <br/> If you can\'t remember your password you can <a href="'.DOMAIN.'/help/forgot-password">reset it here</a>. </p>';
         $message.= '<p> <a href="'.DOMAIN.'/login">Login</a> </p>';
@@ -150,7 +150,7 @@
         }
 
         if(isset($app->thetutor->comper)){
-            $message.= '<br><p> Your background check application fee of $29.99 has been comped by AvidBrain. </p>';
+            $message.= '<br><p> Your background check application fee of $29.99 has been comped by MindSpree. </p>';
         }
 
 

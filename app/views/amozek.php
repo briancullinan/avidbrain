@@ -5,7 +5,7 @@
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 	<meta name="application-name" content="<?php echo SITENAME; ?>" />
 	<meta name="description" content="<?php if(isset($app->meta->description)){echo $app->meta->description;}else{ echo SITENAME_PROPPER.' Tutoring. Find A Tutor. Become a Tutor.'; } ?>" />
-	<meta name="keywords" content="<?php if(isset($app->meta->keywords)){echo $app->meta->keywords;}else{echo SITENAME_PROPPER.','.SITENAME.',avid,brain,tutor,tutoring,education';} ?>" />
+	<meta name="keywords" content="<?php if(isset($app->meta->keywords)){echo $app->meta->keywords;}else{echo SITENAME_PROPPER.','.SITENAME.',avid,brain,mind,Spree,tutor,tutoring,education';} ?>" />
 	<meta name="author" content="<?php echo SITENAME_PROPPER; ?> inc." />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 	<link rel="icon" type="image/png" href="/images/favicon.ico" />
@@ -56,7 +56,7 @@
 <sidebar>
 
 	<div class="logo">
-		<a href="/">avidbrain</a>
+		<a href="/">MindSpree</a>
 	</div>
 
 	<div class="sidebar-status">
@@ -113,7 +113,7 @@
 	</div>
 
 	<div class="logo logo-main">
-		<a href="/"><img src="/images/avidbrainlogo.png" /></a>
+		<a href="/"><img src="/images/MindSpreeLogo.png" /></a>
 	</div>
 
 	<div class="right-info">

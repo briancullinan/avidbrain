@@ -12,11 +12,11 @@
 <div class="content-blocks">
 
     <div class="content-block about-avidbrain">
-        <div class="content-blocks-title">About AvidBrain</div>
+        <div class="content-blocks-title">About MindSpree</div>
         <div class="content-block-item">
             <div class="row">
             	<div class="col s12 m8 l8">
-                    <div class="content-blocks-about"><span class="yellow-text">AvidBrain</span> is the leader in on-demand tutoring where all of our tutors are both interviewed and background checked.</div>
+                    <div class="content-blocks-about"><span class="yellow-text">MindSpree</span> is the leader in on-demand tutoring where all of our tutors are both interviewed and background checked.</div>
                     <div class="content-blocks-about-next">
                         With over 2,000 tutors available we’ll have you learning what you want to learn in no time at all.
                     </div>
@@ -115,7 +115,7 @@
                         Hire a Tutor
                     </div>
                     <div class="howitworks-homepage-text">
-                        Connect with tutors, confirm tutoring sessions, and pay - all through AvidBrain’s trusted services.
+                        Connect with tutors, confirm tutoring sessions, and pay - all through MindSpree’s trusted services.
                     </div>
             	</div>
             	<div class="col s12 m4 l4">
@@ -134,7 +134,7 @@
             	</div>
             </div>
 
-            <div class="learn-more-about"><a href="/how-it-works">Learn more</a> about tutoring on AvidBrain and show your students how well you can teach them.</div>
+            <div class="learn-more-about"><a href="/how-it-works">Learn more</a> about tutoring on MindSpree and show your students how well you can teach them.</div>
 
         </div>
     </div>

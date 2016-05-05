@@ -5,7 +5,7 @@
 			<div class="tutor-signup-title"><h1>Looking For A Tutor?</h1></div>
 			<div class="tutor-signup-sub"><h2>You've Come To The Right Place</h2></div>
 			<p class="signup-copy">
-				Welcome to AvidBrain, the easiest way to find a tutor.
+				Welcome to MindSpree, the easiest way to find a tutor.
 			</p>
 
 			<div class="blocks">
@@ -33,7 +33,7 @@
 								Convenient
 							</div>
 							<div class="copy">
-								Get help when you need it! With thousands of tutors on AvidBrain, there is always someone here to help!
+								Get help when you need it! With thousands of tutors on MindSpree, there is always someone here to help!
 							</div>
 						</div>
 					</div>
@@ -153,7 +153,7 @@
 						<div class="row">
 							<div class="col s12 m12 l12">
 								<div class="the-disclaimer">
-									By signing up I agree that AvidBrain may contact me by email, phone, or SMS at the email address or number I provide. I have read, understand and agree to the <a href="/terms-of-use" target="_blank">Terms of Service</a>.
+									By signing up I agree that MindSpree may contact me by email, phone, or SMS at the email address or number I provide. I have read, understand and agree to the <a href="/terms-of-use" target="_blank">Terms of Service</a>.
 								</div>
 							</div>
 						</div>

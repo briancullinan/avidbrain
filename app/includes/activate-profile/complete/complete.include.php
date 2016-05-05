@@ -1,5 +1,5 @@
 <?php if(isset($app->user->qasignup)): ?>
-<p>Thank you for activating your profile. You may now start asking questions at AvidBrain Q&A.</p>
+<p>Thank you for activating your profile. You may now start asking questions at MindSpree Q&A.</p>
 <p>
     <a class="btn blue white-text" href="/qa-login">Visit Q&A</a>
 </p>

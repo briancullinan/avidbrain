@@ -137,7 +137,7 @@
 
 		$emailcode = DOMAIN.'/validate/'.$validation_code;
 
-		$welcomeMessage = '<p>Welcome to AvidBrain</p>';
+		$welcomeMessage = '<p>Welcome to MindSpree</p>';
 		$welcomeMessage.= '<p>Your verification link is: <a href="'.$emailcode.'">Verify Email Address</a></p>';
 		$welcomeMessage.= '<p>Text Link: '.$emailcode.'</p>';
 
@@ -377,7 +377,7 @@
 
 			$textlink = DOMAIN.'/validate/'.$validation_code;
 
-			$welcomeMessage = '<p>Welcome to AvidBrain</p>';
+			$welcomeMessage = '<p>Welcome to MindSpree</p>';
 			$welcomeMessage.= '<p>Your verification link is:  '.DOMAIN.'/validate/'.$validation_code.'</p>';
 			$welcomeMessage.= '<p><a href="'.$textlink.'">Verify Email Address</a></p>';
 			$welcomeMessage.= '<p>Text Link: '.$textlink.'</p>';

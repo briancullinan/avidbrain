@@ -10,7 +10,7 @@
     			"amount" => $pay,
     			"currency" => "usd",
     			"destination" => $app->affiliateuser->managed_id,
-    			"description" => "AvidBrain Affiliate Payment"
+    			"description" => "MindSpree Affiliate Payment"
     		);
 
             $transfer = array();
@@ -83,7 +83,7 @@
 		$message.= '<p>You are receiving this email, to let you know that we have paid you <span>$'.numbers(($pay/100)).'</span> via Direct Deposit. The funds should be in your account within 2 days.</p>';
 
         $app->mailgun->to = $app->affiliateuser->email;
-        $app->mailgun->subject = 'AvidBrain Affiliate Payment';
+        $app->mailgun->subject = 'MindSpree Affiliate Payment';
         $app->mailgun->message = $message;
         $app->mailgun->send();
 

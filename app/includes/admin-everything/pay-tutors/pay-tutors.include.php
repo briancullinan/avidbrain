@@ -177,7 +177,7 @@
 					</td>
 				</tr>
 				<?php endforeach; ?>
-				
+
 			</table>
 
 			<?php
@@ -206,7 +206,7 @@
 				</div>
 				<div class="col s12 m4 l4">
 					<div class="alert green white-text">
-						AvidBrain Profit: $<?php echo ($total-$finaltotalpay) ?>
+						MindSpree Profit: $<?php echo ($total-$finaltotalpay) ?>
 					</div>
 				</div>
 			</div>

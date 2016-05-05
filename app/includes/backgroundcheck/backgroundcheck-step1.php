@@ -2,7 +2,7 @@
 <div class="bgcheck-step-info">Applicant Info</div>
 
 
-<p>AvidBrain Inc. (the “Company”) has engaged Checkr, Inc. to obtain a consumer report and/or investigative consumer report for employment purposes. Checkr Inc. will provide a background investigation as a pre-condition of your engagement with the Company and in compliance with federal and state employment laws.</p>
+<p>MindSpree (the “Company”) has engaged Checkr, Inc. to obtain a consumer report and/or investigative consumer report for employment purposes. Checkr Inc. will provide a background investigation as a pre-condition of your engagement with the Company and in compliance with federal and state employment laws.</p>
 
 <p>If you have any questions related to the screening process, please contact us at <a class="green-text" href="mailto:support@checkr.com">support@checkr.com</a>.</p>
 

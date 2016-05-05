@@ -58,7 +58,7 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.STRIPE_PUBLIC.
 <sidebar>
 
 	<div class="logo">
-		<a href="/">avidbrain</a>
+		<a href="/">MindSpree</a>
 	</div>
 
 	<div class="sidebar-status">
@@ -115,7 +115,7 @@ echo '	<script type="text/javascript">Stripe.setPublishableKey("'.STRIPE_PUBLIC.
 	</div>
 
 	<div class="logo logo-main">
-		<a href="/"><img src="/images/avidbrainlogo.png" /></a>
+		<a href="/"><img src="/images/MindSpreeLogo.png" /></a>
 	</div>
 
 	<div class="right-info">

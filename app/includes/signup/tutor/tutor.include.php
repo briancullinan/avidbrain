@@ -6,7 +6,7 @@
 			</div>
 			<div class="tutor-signup-sub"><h2>Just Like You</h2></div>
 			<p class="signup-copy">
-				<?php if(isset($app->replacetext)){ echo $app->replacetext; }else{ echo 'Teach with AvidBrain and earn money as an independent contractor. Get paid bi-monthly for teaching something you love.';} ?>
+				<?php if(isset($app->replacetext)){ echo $app->replacetext; }else{ echo 'Teach with MindSpree and earn money as an independent contractor. Get paid bi-monthly for teaching something you love.';} ?>
 			</p>
 
 			<?php if(isset($promocode) && $promocode == 'iteach'): ?>
@@ -33,7 +33,7 @@
 								Free background check
 							</div>
 							<div class="copy">
-								Let AvidBrain cover your start up costs on AvidBrain, so you can focus on what you do best- Teaching!
+								Let MindSpree cover your start up costs on MindSpree, so you can focus on what you do best- Teaching!
 							</div>
 						</div>
 					</div>
@@ -78,7 +78,7 @@
 								Make Extra Money
 							</div>
 							<div class="copy">
-								Are you an expert in a subject? Turn it into a revenue stream. School is in session and AvidBrain makes it easy for you to cash in on the action.
+								Are you an expert in a subject? Turn it into a revenue stream. School is in session and MindSpree makes it easy for you to cash in on the action.
 							</div>
 						</div>
 					</div>
@@ -92,7 +92,7 @@
 								Choose Subjects You Love
 							</div>
 							<div class="copy">
-								Love chemistry but hate math? No problem! At AvidBrain you choose what subjects you want to tutor in. You also choose how you want to tutor them. So if you have a better way to teach a concept to help a student, Go For It!
+								Love chemistry but hate math? No problem! At MindSpree you choose what subjects you want to tutor in. You also choose how you want to tutor them. So if you have a better way to teach a concept to help a student, Go For It!
 							</div>
 						</div>
 					</div>
@@ -106,7 +106,7 @@
 								Tutor When You Want
 							</div>
 							<div class="copy">
-								Looking to work on the weekends, or maybe even after work? As an independent contractor for AvidBrain you have the freedom to set your own schedule and work when you want to.
+								Looking to work on the weekends, or maybe even after work? As an independent contractor for MindSpree you have the freedom to set your own schedule and work when you want to.
 							</div>
 						</div>
 					</div>
@@ -335,7 +335,7 @@
 						<div class="row">
 							<div class="col s12 m12 l12">
 								<div class="the-disclaimer">
-									By signing up I agree that AvidBrain may contact me by email, phone, or SMS at the email address or number I provide. I have read, understand and agree to the <a href="/terms-of-use" target="_blank">Terms of Service</a>.
+									By signing up I agree that MindSpree may contact me by email, phone, or SMS at the email address or number I provide. I have read, understand and agree to the <a href="/terms-of-use" target="_blank">Terms of Service</a>.
 								</div>
 							</div>
 						</div>

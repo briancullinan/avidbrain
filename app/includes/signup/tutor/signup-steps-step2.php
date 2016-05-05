@@ -32,7 +32,7 @@
     	<div class="col s12 m6 l6">
     		<div class="help-info">
                 <div class="title">Help</div>
-                <p>List what makes you a great candidate to become a tutor with AvidBrain</p>
+                <p>List what makes you a great candidate to become a tutor with MindSpree</p>
             </div>
     	</div>
     </div>

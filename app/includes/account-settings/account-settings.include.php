@@ -126,7 +126,7 @@
 		<?php if(isset($app->enableaffiliates) && isset($app->user->settings->affiliateprogram)): ?>
 			<div class="row">
 				<div class="col s6 m8 l8">
-					<div class="switch-text">Sign me up for the <a href="/affiliates">AvidBrain Affiliate Program</a></div>
+					<div class="switch-text">Sign me up for the <a href="/affiliates">MindSpree Affiliate Program</a></div>
 				</div>
 				<div class="col s6 m4 l4 right-align">
 					<div class="switch">
