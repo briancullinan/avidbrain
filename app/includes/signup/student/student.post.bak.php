@@ -179,10 +179,10 @@
 		$newstudentEmail.= '<p> Referrer: '.$referrer.' </p>';
 
 		if(DOMAIN=='http://avidbrain.dev'){
-			$toemails = 'david@avidbrain.com';
+			$toemails = 'ivan.kavuma@mindspree.com';
 		}
 		else{
-			$toemails = 'jake.stoll@avidbrain.com,keith@avidbrain.com,david@avidbrain.com';
+			$toemails = 'jake.stoll@avidbrain.com,keith@avidbrain.com,ivan.kavuma@mindspree.com';
 		}
 
 		$app->mailgun->to = $toemails;
@@ -201,7 +201,7 @@
 		}
 
 		if($app->freesessions->enabled==false){
-			$app->mailgun->to = 'david@avidbrain.com';
+			$app->mailgun->to = 'ivan.kavuma@mindspree.com';
 			$app->mailgun->subject = 'Maximum Free Sessions';
 			$app->mailgun->message = 'You have reached the maximum free sessions of: $'.numbers($app->freesessions->maximum);
 			$app->mailgun->send();

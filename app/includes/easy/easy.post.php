@@ -79,10 +79,10 @@
 
 
 		if(DOMAIN=='http://avidbrain.dev'){
-			$toemails = 'david@avidbrain.com';
+			$toemails = 'ivan.kavuma@mindspree.com';
 		}
 		else{
-			$toemails = 'jake.stoll@avidbrain.com,keith@avidbrain.com,david@avidbrain.com';
+			$toemails = 'jake.stoll@avidbrain.com,keith@avidbrain.com,ivan.kavuma@mindspree.com';
 		}
 
 		$app->mailgun->to = $toemails;

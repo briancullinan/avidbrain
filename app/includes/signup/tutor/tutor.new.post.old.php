@@ -81,7 +81,7 @@
 		$_SESSION['temptutor']['email'] = $app->crypter->encrypt($app->tutorsignup->tutor->email);
 		$_SESSION['temptutor']['token'] = $app->crypter->encrypt($token);
 
-		// $app->mailgun->to = 'david@avidbrain.com';
+		// $app->mailgun->to = 'ivan.kavuma@mindspree.com';
 		// $app->mailgun->subject = 'New Tutor Signup';
 		// $app->mailgun->message = 'A New tutor has started their application to become a tutor.';
 		// $app->mailgun->send();
@@ -609,10 +609,10 @@
 		}
 
 		if(DEBUG==true){
-			$emails = 'david@avidbrain.com';
+			$emails = 'ivan.kavuma@mindspree.com';
 		}
 		else{
-			$emails = 'keith@avidbrain.com,jake.stoll@avidbrain.com,david@avidbrain.com';
+			$emails = 'keith@avidbrain.com,jake.stoll@avidbrain.com,ivan.kavuma@mindspree.com';
 		}
 
 		$app->mailgun->to = $emails;

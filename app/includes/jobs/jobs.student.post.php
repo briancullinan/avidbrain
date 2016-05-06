@@ -118,10 +118,10 @@
         }
 
         if(DEBUG==true){
-            $app->mailgun->to = 'david@avidbrain.com';
+            $app->mailgun->to = 'ivan.kavuma@mindspree.com';
         }
         else{
-            $app->mailgun->to = 'keith@avidbrain.com,jake.stoll@avidbrain.com,david@avidbrain.com';
+            $app->mailgun->to = 'keith@avidbrain.com,jake.stoll@avidbrain.com,ivan.kavuma@mindspree.com';
         }
         $app->mailgun->subject = 'New Job Post -- Please verify';
         $app->mailgun->message = $newjobmessage;

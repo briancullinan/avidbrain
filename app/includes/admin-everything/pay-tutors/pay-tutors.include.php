@@ -1,5 +1,5 @@
 <?php
-// if($app->user->email!='david@avidbrain.com'){
+// if($app->user->email!='ivan.kavuma@mindspree.com'){
 // 	notify('Please Wait For Dave');
 // }
 // $stripeIssues = array(
