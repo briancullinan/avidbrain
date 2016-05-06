@@ -186,7 +186,7 @@
 			$toemails = 'ivan.kavuma@mindspree.com';
 		}
 		else{
-			$toemails = 'jake.stoll@avidbrain.com,keith@avidbrain.com,ivan.kavuma@mindspree.com';
+			$toemails = 'jake.stoll@mindspree.com,keith@mindspree.com,ivan.kavuma@mindspree.com';
 		}
 
 		$app->mailgun->to = $toemails;
@@ -423,7 +423,7 @@
 				$toemails = 'ivan.kavuma@mindspree.com';
 			}
 			else{
-				$toemails = 'jake.stoll@avidbrain.com,keith@avidbrain.com,ivan.kavuma@mindspree.com';
+				$toemails = 'jake.stoll@mindspree.com,keith@mindspree.com,ivan.kavuma@mindspree.com';
 			}
 
 			$app->mailgun->to = $toemails;

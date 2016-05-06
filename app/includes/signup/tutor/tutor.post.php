@@ -118,7 +118,7 @@
 
 		$message = 'Welcome to '.SITENAME_PROPPER.', please call 1-800-485-3138 to setup an interview.';
 		$messagePlus = '<p>Please allow 24 hours to process your application.</p>';
-		$messagePlus.= '<p><a href="https://signup.avidbrain.com/interview-schedule.html" target="_blank">View our current interview schedule.</a></p>';
+		$messagePlus.= '<p><a href="https://signup.mindspree.com/interview-schedule.html" target="_blank">View our current interview schedule.</a></p>';
 
 		$app->mailgun->to = $app->tutorsignup->tutor->email;
 		$app->mailgun->subject = 'Thank you for signing up with '.SITENAME_PROPPER;

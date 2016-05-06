@@ -110,7 +110,7 @@
 		$message = '<p>'. $app->contactus->message.'</p>';
 		$message.='<p><a href="'.DOMAIN.'/sessions/view/'.$id.'">View Session</a></p>';
 
-		$app->mailgun->to = 'support@avidbrain.com';
+		$app->mailgun->to = 'support@mindspree.com';
 		$app->mailgun->subject = 'Contest Dispute';
 		$app->mailgun->message = $message;
 		$app->mailgun->send();

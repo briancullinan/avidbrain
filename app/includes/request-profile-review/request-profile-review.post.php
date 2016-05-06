@@ -12,7 +12,7 @@
 				'type'=>'My Photo'
 			);
 
-			$app->mailgun->to = 'support@avidbrain.com';
+			$app->mailgun->to = 'support@mindspree.com';
 			$app->mailgun->subject = 'Someone needs their photo reviewed';
 			$app->mailgun->message = "Please review this user: ".DOMAIN.$app->user->url." <br> Reason: My Photo ";
 			$app->mailgun->send();
@@ -35,7 +35,7 @@
 				'type'=>$app->requestprofilereview->type
 			);
 
-			$app->mailgun->to = 'support@avidbrain.com';
+			$app->mailgun->to = 'support@mindspree.com';
 			$app->mailgun->subject = 'Someone needs their profile reviewed';
 			$app->mailgun->message = "Please review this user: ".DOMAIN.$app->user->url." <br> Reason:  ".$app->requestprofilereview->type;
 			$app->mailgun->send();
@@ -66,7 +66,7 @@
 			'type'=>'My Photo'
 		);
 
-		$app->mailgun->to = 'support@avidbrain.com';
+		$app->mailgun->to = 'support@mindspree.com';
 		$app->mailgun->subject = 'Someone needs their photo reviewed';
 		$app->mailgun->message = "Please review this user: ".DOMAIN.$app->user->url." <br> Reason: My Photo ";
 		$app->mailgun->send();

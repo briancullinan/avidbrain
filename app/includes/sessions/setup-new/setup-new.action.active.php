@@ -18,7 +18,7 @@
 		WHERE
 			messages.to_user = :myemail
 				AND
-			messages.from_user NOT LIKE '%@avidbrain.com%'
+			messages.from_user NOT LIKE '%@mindspree.com%'
 
 				GROUP BY messages.from_user
 

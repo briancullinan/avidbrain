@@ -112,7 +112,7 @@
         $newjobmessage = '<p>New job post from: '.short($app->user).'</p>';
         $newjobmessage.= '<p>Subject Name: '.$app->postjob->subject_name.'</p>';
         $newjobmessage.= '<p>Job Description: '.$app->postjob->job_description.'</p>';
-        $newjobmessage.= '<p><a href="https://www.avidbrain.com/jobs/apply/'.$jobid.'">View Post</a> </p>';
+        $newjobmessage.= '<p><a href="https://www.mindspree.com/jobs/apply/'.$jobid.'">View Post</a> </p>';
         if(!empty($app->user->customer_id)){
             $newjobmessage.= '<p> '.short($app->user).' has a credit card on file. </p>';
         }
@@ -121,7 +121,7 @@
             $app->mailgun->to = 'ivan.kavuma@mindspree.com';
         }
         else{
-            $app->mailgun->to = 'keith@avidbrain.com,jake.stoll@avidbrain.com,ivan.kavuma@mindspree.com';
+            $app->mailgun->to = 'keith@mindspree.com,jake.stoll@mindspree.com,ivan.kavuma@mindspree.com';
         }
         $app->mailgun->subject = 'New Job Post -- Please verify';
         $app->mailgun->message = $newjobmessage;

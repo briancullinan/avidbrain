@@ -85,7 +85,7 @@
 <?php endif; ?>
 
 <?php if(isset($promocode) && $promocode=='facebook'): ?>
-<a href="https://www.facebook.com/dialog/feed?app_id=184683071273&link=https%3A%2F%2Fwww.avidbrain.com%2Ffacebook&picture=https%3A%2F%2Fwww.avidbrain.com%2Fimages%2Fshare%2Ffacebookpromo.jpg&name=Signup%20now%20and%20get%20%2430%20off%20your%20first%20lesson.&caption=%20&description=Looking%20for%20a%20tutor%3F%20Look%20no%20further.%20Signup%20now%20with%20avidbrain%20and%20get%20%2430%20off%20your%20next%20tutoring%20session.&redirect_uri=http%3A%2F%2Fwww.facebook.com%2F" target="_blank" class="share-on-facebook">
+<a href="https://www.facebook.com/dialog/feed?app_id=184683071273&link=https%3A%2F%2Fwww.mindspree.com%2Ffacebook&picture=https%3A%2F%2Fwww.mindspree.com%2Fimages%2Fshare%2Ffacebookpromo.jpg&name=Signup%20now%20and%20get%20%2430%20off%20your%20first%20lesson.&caption=%20&description=Looking%20for%20a%20tutor%3F%20Look%20no%20further.%20Signup%20now%20with%20avidbrain%20and%20get%20%2430%20off%20your%20next%20tutoring%20session.&redirect_uri=http%3A%2F%2Fwww.facebook.com%2F" target="_blank" class="share-on-facebook">
 	<i class="fa fa-facebook"></i> Share On Facebook
 </a>
 <?php endif; ?>

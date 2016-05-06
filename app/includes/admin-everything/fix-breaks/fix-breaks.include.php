@@ -365,7 +365,7 @@
 		}
 		elseif($action=='changeimagenames'){
 
-			$sql = "UPDATE avid___user_profile SET my_upload = REPLACE(my_upload, '/var/www/avidbrain.com/app/uploads/photos/', '') WHERE my_upload LIKE '%/var/www/avidbrain.com/app/uploads/photos/%'";
+			$sql = "UPDATE avid___user_profile SET my_upload = REPLACE(my_upload, '/var/www/mindspree.com/app/uploads/photos/', '') WHERE my_upload LIKE '%/var/www/mindspree.com/app/uploads/photos/%'";
 			$app->connect->executeQuery($sql,array());
 
 			$sql = "

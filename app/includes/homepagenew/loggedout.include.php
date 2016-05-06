@@ -158,14 +158,14 @@
 
             <div class="row">
             	<div class="col s12 m3 l3">
-            		<div class="featured-block-img"><a href="https://www.avidbrain.com/tutors/arizona/scottsdale/323439"><img src="https://www.avidbrain.com/profiles/approved/323439.crop.jpg" class="responsive-img" /></a></div>
+            		<div class="featured-block-img"><a href="https://www.mindspree.com/tutors/arizona/scottsdale/323439"><img src="https://www.mindspree.com/profiles/approved/323439.crop.jpg" class="responsive-img" /></a></div>
                     <div class="featured-block-view">
-                        <a href="https://www.avidbrain.com/tutors/arizona/scottsdale/323439">View Full Profile</a>
+                        <a href="https://www.mindspree.com/tutors/arizona/scottsdale/323439">View Full Profile</a>
                     </div>
             	</div>
             	<div class="col s12 m9 l9">
                     <div class="featured-block-name">
-                        <a href="https://www.avidbrain.com/tutors/arizona/scottsdale/323439">Keith R.</a>
+                        <a href="https://www.mindspree.com/tutors/arizona/scottsdale/323439">Keith R.</a>
                     </div>
                     <div class="featured-block-location">
                         Scottsdale Arizona

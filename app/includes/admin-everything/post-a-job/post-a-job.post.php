@@ -5,7 +5,7 @@
 function ghost($connect){
     $start = "ghost-";
     $middle = unique_username($connect,2);
-    $end = "@avidbrain.com";
+    $end = "@mindspree.com";
 
     return $start.$middle.$end;
 }

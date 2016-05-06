@@ -7,7 +7,7 @@
             <div class="my-content-block-copy">
                 <?php echo truncate($qaposts->content,200); ?>
                 <div class="read-more">
-                    <a href="https://qa.avidbrain.com/<?php echo $qaposts->parentid; ?>">View Full Answer</a>
+                    <a href="https://qa.mindspree.com/<?php echo $qaposts->parentid; ?>">View Full Answer</a>
                 </div>
             </div>
             <div class="my-content-block-date">

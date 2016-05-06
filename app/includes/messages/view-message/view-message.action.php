@@ -92,7 +92,7 @@
 
 		$app->message->user = getmessageuserinfo($app->connect,$app->message->messageuser,$app->user);
 		if(empty($app->message->user)){
-			$app->message->user = getmessageuserinfo($app->connect,'support@avidbrain.com',$app->user);
+			$app->message->user = getmessageuserinfo($app->connect,'support@mindspree.com',$app->user);
 		}
 		//notify($app->message->user);
 		//notify($app->message);

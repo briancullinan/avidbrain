@@ -121,7 +121,7 @@
 				'contest_dispute_text'=>$message
 			);
 
-			$app->mailgun->to = 'support@avidbrain.com';
+			$app->mailgun->to = 'support@mindspree.com';
 			$app->mailgun->subject = 'Contest Dispute';
 			$app->mailgun->message = $message;
 			$app->mailgun->send();

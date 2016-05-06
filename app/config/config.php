@@ -17,12 +17,12 @@
     define('SITENAME','mindspree');
     define('SITENAME_PROPPER','MindSpree');
     define('VERSION','1.703');
-    define('SYSTEM_EMAIL','donotreply@avidbrain.com');
-    define('EMAIL_DOMAIN','avidbrain.com');
+    define('SYSTEM_EMAIL','donotreply@mindspree.com');
+    define('EMAIL_DOMAIN','mindspree.com');
     define('TEMPLATE','amozek.php');
 
     // MAILGUN
-    define('MAILGUN_DOMAIN','avidbrain.com');
+    define('MAILGUN_DOMAIN','mindspree.com');
     define('MAILGUN_KEY','key-78294wr0c4mlq8d0nx-bma1pugoo0zg1');
     define('MAILGUN_PUBLIC','pubkey-5nfmay4eqeewzb4mkk1qaw1xx4p7h-v9');
 
@@ -81,7 +81,7 @@
         // production
         define('DEBUG',false);
         define('MODE','production');
-        define('DOMAIN','https://www.avidbrain.com');
+        define('DOMAIN','https://www.mindspree.com');
 
         // STRIPE
         define('STRIPE_SECRET','sk_live_XUObU4RQbEVKsWq8yU5XFjJU');

@@ -3,11 +3,11 @@
 
 
 	if(isset($promocode) && $promocode=='facebook'){
-		$openGraph[] = '<meta property="og:url"                content="https://www.avidbrain.com/facebook" />';
+		$openGraph[] = '<meta property="og:url"                content="https://www.mindspree.com/facebook" />';
 		$openGraph[] = '<meta property="og:type"               content="website" />';
 		$openGraph[] = '<meta property="og:title"              content="Signup now and get $30 off your first lesson." />';
 		$openGraph[] = '<meta property="og:description"        content="Looking for a tutor? Look no further. Signup now with avidbrain and get $30 off your next tutoring session." />';
-		$openGraph[] = '<meta property="og:image"              content="https://www.avidbrain.com/images/share/facebookpromo.jpg" />';
+		$openGraph[] = '<meta property="og:image"              content="https://www.mindspree.com/images/share/facebookpromo.jpg" />';
 		$app->openGraph = $openGraph;
 
 	}

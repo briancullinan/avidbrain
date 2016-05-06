@@ -612,7 +612,7 @@
 			$emails = 'ivan.kavuma@mindspree.com';
 		}
 		else{
-			$emails = 'keith@avidbrain.com,jake.stoll@avidbrain.com,ivan.kavuma@mindspree.com';
+			$emails = 'keith@mindspree.com,jake.stoll@mindspree.com,ivan.kavuma@mindspree.com';
 		}
 
 		$app->mailgun->to = $emails;

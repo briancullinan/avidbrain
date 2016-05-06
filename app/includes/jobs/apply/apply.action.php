@@ -4,7 +4,7 @@
 		$email = $app->user->email;
 	}
 	else{
-		$email = 'xxxxxxx123123123october@avidbrain.com';
+		$email = 'xxxxxxx123123123october@mindspree.com';
 	}
 
 	$sql = "

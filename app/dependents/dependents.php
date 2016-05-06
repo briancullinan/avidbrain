@@ -20,9 +20,9 @@
 			www.amozek.com/amozek";
 
 		$dependents->mailgun = new stdClass();
-		$dependents->mailgun->SYSTEM_EMAIL = 'donotreply@avidbrain.com';
-		$dependents->mailgun->EMAIL_DOMAIN = '@avidbrain.com';
-		$dependents->mailgun->MAILGUN_DOMAIN = 'avidbrain.com';
+		$dependents->mailgun->SYSTEM_EMAIL = 'donotreply@mindspree.com';
+		$dependents->mailgun->EMAIL_DOMAIN = '@mindspree.com';
+		$dependents->mailgun->MAILGUN_DOMAIN = 'mindspree.com';
 		$dependents->mailgun->MAILGUN_KEY = 'key-78294wr0c4mlq8d0nx-bma1pugoo0zg1';
 		$dependents->mailgun->MAILGUN_PUBLIC = 'pubkey-5nfmay4eqeewzb4mkk1qaw1xx4p7h-v9';
 
@@ -30,9 +30,9 @@
 		$dependents->social->twitter = 'https://twitter.com/avidbrain';
 		$dependents->social->facebook = 'https://www.facebook.com/avidbrain';
 		$dependents->social->linkedin = 'https://www.linkedin.com/company/avidbrain/';
-		$dependents->social->blog = 'http://blog.avidbrain.com';
-		$dependents->social->qa = 'https://qa.avidbrain.com';
-		$dependents->social->check = 'http://signup.avidbrain.com';
+		$dependents->social->blog = 'http://blog.mindspree.com';
+		$dependents->social->qa = 'https://qa.mindspree.com';
+		$dependents->social->check = 'http://signup.mindspree.com';
 		$dependents->social->pinterest = 'https://www.pinterest.com/avidbrain/';
 
 	}
@@ -48,9 +48,9 @@
 		";
 
 		$dependents->mailgun = new stdClass();
-		$dependents->mailgun->SYSTEM_EMAIL = 'donotreply@avidbrain.com';
-		$dependents->mailgun->EMAIL_DOMAIN = '@avidbrain.com';
-		$dependents->mailgun->MAILGUN_DOMAIN = 'avidbrain.com';
+		$dependents->mailgun->SYSTEM_EMAIL = 'donotreply@mindspree.com';
+		$dependents->mailgun->EMAIL_DOMAIN = '@mindspree.com';
+		$dependents->mailgun->MAILGUN_DOMAIN = 'mindspree.com';
 		$dependents->mailgun->MAILGUN_KEY = 'key-78294wr0c4mlq8d0nx-bma1pugoo0zg1';
 		$dependents->mailgun->MAILGUN_PUBLIC = 'pubkey-5nfmay4eqeewzb4mkk1qaw1xx4p7h-v9';
 
@@ -58,9 +58,9 @@
 		$dependents->social->twitter = 'https://twitter.com/avidbrain';
 		$dependents->social->facebook = 'https://www.facebook.com/avidbrain';
 		$dependents->social->linkedin = 'https://www.linkedin.com/company/avidbrain/';
-		$dependents->social->blog = 'http://blog.avidbrain.com';
-		$dependents->social->qa = 'https://qa.avidbrain.com';
-		$dependents->social->check = 'http://signup.avidbrain.com';
+		$dependents->social->blog = 'http://blog.mindspree.com';
+		$dependents->social->qa = 'https://qa.mindspree.com';
+		$dependents->social->check = 'http://signup.mindspree.com';
 		$dependents->social->pinterest = 'https://www.pinterest.com/avidbrain/';
 	}
 
@@ -81,7 +81,7 @@
 
 	}
 
-	if($dependents->SERVER_NAME=='www.avidbrain.com' || $dependents->SERVER_NAME=='avidbrain.com'){
+	if($dependents->SERVER_NAME=='www.mindspree.com' || $dependents->SERVER_NAME=='mindspree.com'){
 		$dependents->database->HOST = '7b9488aeb86ce5dc0843d7298b2b70b44ddeb574.rackspaceclouddb.com';
 		$dependents->database->DBUSER = 'brainiac';
 		$dependents->database->DBPASS = 'ipi}nGaN6P4QAEJtxJ3W^Xc%Q9aforDBwnpFk}B';

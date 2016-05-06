@@ -18,10 +18,10 @@
 		// check if user is a ghost
 		$subjectPlus = NULL;
 		$messagePlus = NULL;
-		$checkEmail = explode('@avidbrain.com',$app->job->email);
+		$checkEmail = explode('@mindspree.com',$app->job->email);
 		$ghost = NULL;
 		if(isset($checkEmail[0]) && strpos($checkEmail[0], 'ghost-') !== false){
-			$app->job->email = 'jake.stoll@avidbrain.com';
+			$app->job->email = 'jake.stoll@mindspree.com';
 			$app->job->getemails = true;
 			$subjectPlus = ' -- Anonomous User';
 			$messagePlus = 'This is an email to an anonomous user';

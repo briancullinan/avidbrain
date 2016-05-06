@@ -6,7 +6,7 @@
 			Please call 1-800-485-3138 to setup an interview
 		</p>
 
-		<p><a class="btn blue" href="https://signup.avidbrain.com/interview-schedule.html" target="_blank">View our current interview schedule.</a></p>
+		<p><a class="btn blue" href="https://signup.mindspree.com/interview-schedule.html" target="_blank">View our current interview schedule.</a></p>
 
 	</div>
 	<div class="col s12 m6 l6">
