@@ -27,7 +27,7 @@
 	</div>
 	
 	<div class="hiw-bottom">
-		<a href="/how-it-works">Learn more</a> about tutoring with <?php echo SITENAME_PROPPER; ?> and discover our unique community of expert tutors.
+		<a href="/how-it-works">Learn more</a> about tutoring with MindSpree and discover our unique community of expert tutors.
 	</div>
 	
 </div>

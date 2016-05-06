@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col s12 m6 l6">
-        <p>Signup to become an AvidBrain affiliate and earn $20 for every student or tutor who signs up and completes a session.</p>
+        <p>Signup to become an MindSpree affiliate and earn $20 for every student or tutor who signs up and completes a session.</p>
 
         <ul class="collection">
         	<li class="collection-item">

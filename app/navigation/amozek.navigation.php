@@ -155,16 +155,16 @@
 	$footerlinks = array();
 	if(isset($app->user->email) && empty($app->user->status)){
 		$qalink = '/qa-login';
-		$footerlinks[$qalink] = (object) array('name'=>'Questions & Answers');
+	#	$footerlinks[$qalink] = (object) array('name'=>'Questions & Answers');
 	}
 	elseif(isset($app->user->email) && isset($app->user->status)){
 		$qalink = '/resources/questions-and-answers';
-		$footerlinks[$qalink] = (object) array('name'=>'Questions & Answers');
+	#	$footerlinks[$qalink] = (object) array('name'=>'Questions & Answers');
 	}
 	else{
-		$footerlinks[socialQa] = (object) array('name'=>'Questions & Answers');
+	#	$footerlinks[socialQa] = (object) array('name'=>'Questions & Answers');
 	}
-	$footerlinks[socialBlog] = (object) array('name'=>'Our Blog');
+	#$footerlinks[socialBlog] = (object) array('name'=>'Our Blog');
 	$footerlinks['/terms-of-use'] = (object) array('name'=>'Terms of Use');
 	$footerlinks['/help/contact'] = (object) array('name'=>'Contact Us');
 	$footerlinks['/staff'] = (object) array('name'=>'Our Staff');

@@ -1,3 +1,3 @@
 <?php
-    notify('AvidBrain Jobs');
+    notify('MindSpree Jobs');
 ?>

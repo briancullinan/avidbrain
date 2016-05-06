@@ -8,7 +8,7 @@ tour = new Shepherd.Tour({
 });
 
 tour.addStep('step0', {
-	title: "Welcome to the new AvidBrain",
+	title: "Welcome to the new MindSpree",
 	text: "Let us help you create the best profile so we can help you find what you need.",
 	classes: 'shepherd shepherd-open shepherd-theme-arrows shepherd-transparent-text',
 	buttons: [

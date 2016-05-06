@@ -260,9 +260,9 @@
 					<li>
 						<a href="<?php echo socialTwitter; ?>" target="_blank"><i class="fa fa-twitter"></i></a>
 					</li>
-					<li>
+				<!--	<li>
 						<a href="<?php echo socialLinkedin; ?>" target="_blank"><i class="fa fa-linkedin"></i></a>
-					</li>
+					</li> -->
 					<li>
 						<a href="<?php echo socialPinterest; ?>" target="_blank"><i class="fa fa-pinterest"></i></a>
 					</li>

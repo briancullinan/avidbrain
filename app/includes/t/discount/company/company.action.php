@@ -31,27 +31,27 @@
     $companyInfo = (object)[];
     $companyInfo->amex = (object)[
         'name'=>'American Express',
-        'title'=>'AvidBrain Discounts - American Express',
+        'title'=>'MindSpree Discounts - American Express',
         'h1'=>'Looking For A Tutor?',
-        'content'=>"<div class='discounts-top'>Welcome to AvidBrain, the easiest way to find a tutor.</div> <div class='discounts-signup-now'>Signup Now & Get <strong>$".$isvalidpromo->value."</strong> Off Your First Session</div>"
+        'content'=>"<div class='discounts-top'>Welcome to MindSpree, the easiest way to find a tutor.</div> <div class='discounts-signup-now'>Signup Now & Get <strong>$".$isvalidpromo->value."</strong> Off Your First Session</div>"
     ];
     $companyInfo->{'discount-tire'} = (object)[
         'name'=>'Discount Tire',
-        'title'=>'AvidBrain Discounts - Discount Tire',
+        'title'=>'MindSpree Discounts - Discount Tire',
         'h1'=>'Looking For A Tutor?',
-        'content'=>"<div class='discounts-top'>Welcome to AvidBrain, the easiest way to find a tutor.</div> <div class='discounts-signup-now'>Signup Now & Get <strong>$".$isvalidpromo->value."</strong> Off Your First Session</div>"
+        'content'=>"<div class='discounts-top'>Welcome to MindSpree, the easiest way to find a tutor.</div> <div class='discounts-signup-now'>Signup Now & Get <strong>$".$isvalidpromo->value."</strong> Off Your First Session</div>"
     ];
     $companyInfo->mathworks = (object)[
         'name'=>'MathWorks',
-        'title'=>'AvidBrain Discounts - MathWorks',
+        'title'=>'MindSpree Discounts - MathWorks',
         'h1'=>'Looking For A Tutor?',
-        'content'=>"<div class='discounts-top'>Welcome to AvidBrain, the easiest way to find a tutor.</div> <div class='discounts-signup-now'>Signup Now & Get <strong>$".$isvalidpromo->value."</strong> Off Your First Session</div>"
+        'content'=>"<div class='discounts-top'>Welcome to MindSpree, the easiest way to find a tutor.</div> <div class='discounts-signup-now'>Signup Now & Get <strong>$".$isvalidpromo->value."</strong> Off Your First Session</div>"
     ];
     $companyInfo->{'smiles-of-christmas'} = (object)[
         'name'=>'Smiles of Christmas',
-        'title'=>'AvidBrain Discounts - Smiles of Christmas',
+        'title'=>'MindSpree Discounts - Smiles of Christmas',
         'h1'=>'Looking For A Tutor?',
-        'content'=>"<div class='discounts-top'>Welcome to AvidBrain, the easiest way to find a tutor.</div> <div class='discounts-signup-now'>Signup Now & Get <strong>$".$isvalidpromo->value."</strong> Off Your First Session</div>"
+        'content'=>"<div class='discounts-top'>Welcome to MindSpree, the easiest way to find a tutor.</div> <div class='discounts-signup-now'>Signup Now & Get <strong>$".$isvalidpromo->value."</strong> Off Your First Session</div>"
     ];
     $app->company = $companyInfo->$company;
 

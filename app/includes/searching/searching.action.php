@@ -24,5 +24,5 @@
     }
 
     $app->meta = new stdClass();
-    $app->meta->title = 'Looking for a tutor? Find an Online or In-Person Tutor @ AvidBrain';
+    $app->meta->title = 'Looking for a tutor? Find an Online or In-Person Tutor @ MindSpree';
     $app->meta->h1 = false;

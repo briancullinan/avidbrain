@@ -8,7 +8,7 @@
 	$childen['students'] = (object) array('name'=>'Students','slug'=>'/how-it-works/students');
 	$childen['tutors'] = (object) array('name'=>'Tutors','slug'=>'/how-it-works/tutors');
 	$childen['organizations'] = (object) array('name'=>'Organizations','slug'=>'/how-it-works/organizations');
-	$childen['a-message-from-our-ceo'] = (object) array('name'=>'A Message From Our CEO','slug'=>'/how-it-works/a-message-from-our-ceo');
+	//$childen['a-message-from-our-ceo'] = (object) array('name'=>'A Message From Our CEO','slug'=>'/how-it-works/a-message-from-our-ceo');
 
 	$app->childen = $childen;
 	$navtitle = (object)array('slug'=>'/how-it-works','text'=>'How It Works');

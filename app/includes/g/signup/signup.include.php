@@ -9,13 +9,13 @@
     <div class="col s12 m8 l8">
 
         <div class="block gsignup-block">
-            <p>At AvidBrain, we understand that gaining fundamental math skills early on will help students succeed throughout their lives. Our tutors help students overcome roadblocks and help them exceed standards.</p>
+            <p>At MindSpree, we understand that gaining fundamental math skills early on will help students succeed throughout their lives. Our tutors help students overcome roadblocks and help them exceed standards.</p>
 
             <p>While our students come from a walks of lives, our tutors are all interviewed and background check to ensure quality and safety.</p>
 
 
             <ul>
-                <div><strong>Benefits of AvidBrain</strong></div>
+                <div><strong>Benefits of MindSpree</strong></div>
                 <li>
                     Be tutored online or in-person
                 </li>
@@ -110,7 +110,7 @@
                     <div class="row">
                         <div class="col s12 m12 l12">
                             <div class="the-disclaimer">
-                                By signing up I agree that AvidBrain may contact me by email, phone, or SMS at the email address or number I provide. I have read, understand and agree to the <a href="/terms-of-use" target="_blank">Terms of Service</a>.
+                                By signing up I agree that MindSpree may contact me by email, phone, or SMS at the email address or number I provide. I have read, understand and agree to the <a href="/terms-of-use" target="_blank">Terms of Service</a>.
                             </div>
                         </div>
                     </div>

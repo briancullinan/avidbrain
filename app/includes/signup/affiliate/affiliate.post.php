@@ -38,11 +38,11 @@
 
 
         $link = DOMAIN.'/signup/affiliate/'.$validation_code;
-        $message = '<p>Thank you for signing up to become an AvidBrain Affiliate. Please confirm your email address by clicking the link below:</p>';
+        $message = '<p>Thank you for signing up to become an MindSpree Affiliate. Please confirm your email address by clicking the link below:</p>';
         $message.= '<p><a href="'.$link.'">Confirmation Link</a> '.$link.'</p>';
 
         $app->mailgun->to = $app->affsignup->email;
-        $app->mailgun->subject = 'AvidBrain Affiliate Signup';
+        $app->mailgun->subject = 'MindSpree Affiliate Signup';
         $app->mailgun->message = $message;
         $app->mailgun->send();
 
@@ -54,7 +54,7 @@
 		}
 
         $app->mailgun->to = $toemails;
-        $app->mailgun->subject = 'AvidBrain Affiliate Signup';
+        $app->mailgun->subject = 'MindSpree Affiliate Signup';
         $app->mailgun->message = 'A new Affiliate has signed up.';
         $app->mailgun->send();
 

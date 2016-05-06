@@ -21,7 +21,7 @@
 				<div class="title sub-title">
 					Great way to connect & Collaborate
 				</div>
-				<p>What makes <?php echo SITENAME_PROPPER; ?> unique is that it’s a site for students to connect to great tutors and other students. Students are encouraged to connect to classmates who may be on our site or other students around the country undergoing the same issues on their homework and studies. It is a great place for students to connect with other like-minded students to share, collaborate and learn. </p>
+				<p>What makes MindSpree unique is that it’s a site for students to connect to great tutors and other students. Students are encouraged to connect to classmates who may be on our site or other students around the country undergoing the same issues on their homework and studies. It is a great place for students to connect with other like-minded students to share, collaborate and learn. </p>
 
 			</div>
 		</li>
@@ -36,7 +36,7 @@
 	</div>
 
 	<div class="description">
-		<?php echo SITENAME_PROPPER; ?> makes it easy to search for a tutor. Students can post a job, such as, “I need help in high-school algebra.” Students can search for a tutor by using our search feature or if they have more specific requirements, check out our advanced search features. After searching and sorting based on price, location, or reviews, students can connect and communicate directly with the tutor of their choice. Lastly, if students can’t find what they are looking for they are always encouraged to contact our support staff to put in a special search request and we would be happy to find a tutor that matches their needs.
+		MindSpree makes it easy to search for a tutor. Students can post a job, such as, “I need help in high-school algebra.” Students can search for a tutor by using our search feature or if they have more specific requirements, check out our advanced search features. After searching and sorting based on price, location, or reviews, students can connect and communicate directly with the tutor of their choice. Lastly, if students can’t find what they are looking for they are always encouraged to contact our support staff to put in a special search request and we would be happy to find a tutor that matches their needs.
 	</div>
 
 	<ul class="collapsible collapse" data-collapsible="expandable">
@@ -71,7 +71,7 @@
 	</div>
 
 	<div class="description">
-		Our goal at <?php echo SITENAME_PROPPER; ?> is to make things as simple as possible for students to connect with an expert tutor anytime for face-to-face or online tutoring. Scheduling a session has never been simpler.
+		Our goal at MindSpree is to make things as simple as possible for students to connect with an expert tutor anytime for face-to-face or online tutoring. Scheduling a session has never been simpler.
 	</div>
 
 	<ul class="collapsible collapse" data-collapsible="expandable">
@@ -90,7 +90,7 @@
 					Before your session
 				</div>
 				<p>
-					Before any session, we encourage students and tutors to communicate as to location, place, time and what is expected of each user. For students, if they are expected to bring certain learning materials. Both sides are encouraged to come prepared to have a great tutoring session. If <?php echo SITENAME_PROPPER; ?> can assist in any way to make the preparation easier, we’re here to help.
+					Before any session, we encourage students and tutors to communicate as to location, place, time and what is expected of each user. For students, if they are expected to bring certain learning materials. Both sides are encouraged to come prepared to have a great tutoring session. If MindSpree can assist in any way to make the preparation easier, we’re here to help.
 				</p>
 
 				<div class="title sub-title">
@@ -111,7 +111,7 @@
 					Payment & Confirmation
 				</div>
 				<p>
-					<?php echo SITENAME_PROPPER; ?> handles all the payment processing for all tutoring sessions. If there’s a discrepancy in the billing or fees, we encourage students to first connect with their tutors to get is resolved and if this is not possible to contact our support staff. We want to ensure proper and correct handling of all charges and payments for both tutors and students. Our goal is to have a great tutoring experience so tutors and students will continue to use our services.
+					MindSpree handles all the payment processing for all tutoring sessions. If there’s a discrepancy in the billing or fees, we encourage students to first connect with their tutors to get is resolved and if this is not possible to contact our support staff. We want to ensure proper and correct handling of all charges and payments for both tutors and students. Our goal is to have a great tutoring experience so tutors and students will continue to use our services.
 				</p>
 
 			</div>
@@ -142,7 +142,7 @@
 					Check out our Help Center
 				</div>
 				<p>
-					Visit our Students and Tutors FAQs to learn more about how <?php echo SITENAME_PROPPER; ?> works.
+					Visit our Students and Tutors FAQs to learn more about how MindSpree works.
 				</p>
 
 				<div class="title sub-title">

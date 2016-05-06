@@ -142,7 +142,7 @@
 	$app->pagination = $pagify->get_links();
 
 	$app->meta = new stdClass();
-	$app->meta->title = 'AvidBrain '.$app->broadMatchCap.' Tutors';
+	$app->meta->title = 'MindSpree '.$app->broadMatchCap.' Tutors';
 	$app->meta->h1 = $app->broadMatchCap.' Tutors';
 	#$app->meta->keywords = 'examplekeys';
 	#$app->meta->description = 'exampledescribers';

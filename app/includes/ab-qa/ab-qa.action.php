@@ -1,3 +1,3 @@
 <?php
-    header("Location: https://qa.avidbrain.com", true, 301);
+    header("Location: http://qa.mindspree.com", true, 301);
     exit;

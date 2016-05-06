@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="col s12 m6 l6">
 
-		<div>Did you forget your password? You can reset your password for your AvidBrain account by entering your email address.</div>
+		<div>Did you forget your password? You can reset your password for your MindSpree account by entering your email address.</div>
 
 
 	</div>

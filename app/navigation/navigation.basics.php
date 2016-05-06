@@ -65,7 +65,7 @@
 		$footerlinks[$qalink] = (object) array('name'=>'Questions & Answers');
 	}
 	else{
-		$footerlinks[socialQa] = (object) array('name'=>'Questions & Answers');
+		;//	$footerlinks[socialQa] = (object) array('name'=>'Questions & Answers');
 	}
 	$footerlinks[socialBlog] = (object) array('name'=>'Our Blog');
 	$footerlinks['/terms-of-use'] = (object) array('name'=>'Terms of Use');

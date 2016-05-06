@@ -431,7 +431,7 @@
 
 
     $app->meta = new stdClass();
-    $app->meta->title = $text.' - AvidBrain Tutors';
+    $app->meta->title = $text.' - MindSpree Tutors';
     if(!empty($location)){
         $app->meta->titletext = '<span>'.numbers($app->count,1).'</span> '.$location.' <span class="light-green-text text-accent-4">'.$subject.'</span> Tutors ';
     }

@@ -10,7 +10,7 @@
 	</div>
 <?php elseif(isset($app->user->needs_bgcheck)): ?>
 
-	<p>AvidBrain Requires that all tutors have a background check before they are allowed to interact with students. You may apply to a job post, but you can't read or reply to the student if they agree to tutoring.</p>
+	<p>MindSpree Requires that all tutors have a background check before they are allowed to interact with students. You may apply to a job post, but you can't read or reply to the student if they agree to tutoring.</p>
 
 	<a href="/background-check" class="btn green">
 		Complete Your Background Check

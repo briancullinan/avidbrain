@@ -1,7 +1,7 @@
 <?php if(isset($_SESSION['slim.flash']['error'])): ?>
     <h1 class="custom-error"><?php echo $_SESSION['slim.flash']['error']; ?></h1>
 <?php else: ?>
-    <h1>AvidBrain Error</h1>
+    <h1>MindSpree Error</h1>
 <?php endif; ?>
 
 <p>

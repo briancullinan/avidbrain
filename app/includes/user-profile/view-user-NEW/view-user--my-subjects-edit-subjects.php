@@ -98,7 +98,7 @@
     <?php foreach($app->actualuser->subjects->approved as $key=> $approved): ?>
         <div class="my-content-block <?php if(isset($subject) && $subject==$approved->subject_slug){ echo ' active-subject-block ';} ?>" data-id="<?php echo $approved->parent_slug.$approved->subject_slug; ?>" id="<?php echo $approved->parent_slug.$approved->subject_slug; ?>">
             <div class="my-content-block-title">
-                <i class="mdi-maps-beenhere tooltipped verified-by" data-position="top" data-delay="50" data-tooltip="Verified By AvidBrain"></i>
+                <i class="mdi-maps-beenhere tooltipped verified-by" data-position="top" data-delay="50" data-tooltip="Verified By MindSpree"></i>
                 <?php echo $approved->subject_name; ?>
             </div>
 

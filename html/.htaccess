@@ -1,12 +1,11 @@
 ## AvidBrain .htaccess
 RewriteEngine On
 
-<If "%{HTTP_HOST} == 'avidbrain.com'">
+<If "%{HTTP_HOST} == 'mindspree.com'">
 	RewriteCond %{HTTP_HOST} !^$
-	RewriteCond %{HTTP_HOST} !^www\. [NC]
-	RewriteCond %{HTTPS}s ^on(s)|
-	RewriteRule ^ http%1://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+	RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 </If>
+
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^ index.php [QSA,L]

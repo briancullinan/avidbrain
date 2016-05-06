@@ -100,7 +100,7 @@
     if($app->howmanyCount>0){
 
         $app->meta = new stdClass();
-        $app->meta->title = 'AvidBrain Jobs';
+        $app->meta->title = 'MindSpree Jobs';
         $app->meta->h1 = 'Find A Tutoring Job ';
 
         if(!empty($app->searchingforjobs->search)){

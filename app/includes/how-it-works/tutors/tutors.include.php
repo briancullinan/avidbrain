@@ -5,7 +5,7 @@
 	</div>
 
 	<div class="description">
-		If you have a skill you think others can benefit by your tutelage, <?php echo SITENAME_PROPPER; ?> encourage you to create a profile and add it to your list of repertoire. Whether you’re a surfing instructor looking to find new clients or a master Mathematicians, we believe that all of us have some unique talent or skills that can benefit many people. 
+		If you have a skill you think others can benefit by your tutelage, MindSpree encourage you to create a profile and add it to your list of repertoire. Whether you’re a surfing instructor looking to find new clients or a master Mathematicians, we believe that all of us have some unique talent or skills that can benefit many people. 
 	</div>
 
 </div>
@@ -29,14 +29,14 @@
 					Find Students
 				</div>
 				<p>
-					Everyday more and more students are joining <?php echo SITENAME_PROPPER; ?> to receive help in many subjects. By being a tutor at <?php echo SITENAME_PROPPER; ?>, you are receiving access to students that are located around the world!
+					Everyday more and more students are joining MindSpree to receive help in many subjects. By being a tutor at MindSpree, you are receiving access to students that are located around the world!
 				</p>
 				
 				<div class="title sub-title">
 					Great way to connect & Collaborate
 				</div>
 				<p>
-					What makes <?php echo SITENAME_PROPPER; ?> unique is that it’s a site for students to connect to great tutors and tutors to connect to other tutors. We encourage <?php echo SITENAME_PROPPER; ?> tutors to use our system to send referrals to other tutors, make recommendations to help improve their profile, and collaborate to create study material. 
+					What makes MindSpree unique is that it’s a site for students to connect to great tutors and tutors to connect to other tutors. We encourage MindSpree tutors to use our system to send referrals to other tutors, make recommendations to help improve their profile, and collaborate to create study material. 
 				</p>
 				
 			</div>
@@ -88,7 +88,7 @@
 	</div>
 
 	<div class="description">
-		Scheduling a session is never simpler than with <?php echo SITENAME_PROPPER; ?>. We make it easy to schedule and confirm sessions. 
+		Scheduling a session is never simpler than with MindSpree. We make it easy to schedule and confirm sessions. 
 	</div>
 	
 	<ul class="collapsible collapse" data-collapsible="expandable">
@@ -114,7 +114,7 @@
 					Payment & Confirmation
 				</div>
 				<p>
-					<?php echo SITENAME_PROPPER; ?> handles all the payment processing as well as make sure prior to all payment processing that all students have credit card on file prior to the session. Through this process <?php echo SITENAME_PROPPER; ?> can assure all tutors that they will be paid. <?php echo SITENAME_PROPPER; ?> also allows tutors to receive cancellation fees if the student does not show up. 
+					MindSpree handles all the payment processing as well as make sure prior to all payment processing that all students have credit card on file prior to the session. Through this process MindSpree can assure all tutors that they will be paid. MindSpree also allows tutors to receive cancellation fees if the student does not show up. 
 				</p>
 				
 			</div>
@@ -145,7 +145,7 @@
 					Check out our Help Center
 				</div>
 				<p>
-					Visit our Students and Tutors FAQs to learn more about how <?php echo SITENAME_PROPPER; ?> works.
+					Visit our Students and Tutors FAQs to learn more about how MindSpree works.
 				</p>
 				
 				<div class="title sub-title">

@@ -312,7 +312,7 @@
 
 
 	$app->meta = new stdClass();
-	$app->meta->title = 'AvidBrain Tutors - Find Online Tutors';
+	$app->meta->title = 'MindSpree Tutors - Find Online Tutors';
 	$app->meta->h1 = false;
 
 	$app->metah1 = NULL;

@@ -1,3 +1,3 @@
-<p>Why the name change? Recently we have received a “cease and desist” when trying to copy write our current name AvidBrain. Since we are a new company we figured let’s not only rebrand the name but the entire site and give our customers more of what they want.</p>
+<p>Why the name change? Recently we have received a “cease and desist” when trying to copy write our current name MindSpree. Since we are a new company we figured let’s not only rebrand the name but the entire site and give our customers more of what they want.</p>
 
 <p>The name Amozek comes from the Czech word Mozek, which translates to brain. We wanted to create a place that is not just known for academic subjects but a place where anything the brain can learn is taught. </p>

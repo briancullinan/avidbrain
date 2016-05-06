@@ -50,7 +50,7 @@
 		$welcomeMessage.= '<p>Someone will contact you shortly to setup your free Student Profile</p>';
 
 		$app->mailgun->to = $app->easy->email;
-		$app->mailgun->subject = 'Welcome to AvidBrain';
+		$app->mailgun->subject = 'Welcome to MindSpree';
 		$app->mailgun->message = $welcomeMessage;
 		$app->mailgun->send();
 

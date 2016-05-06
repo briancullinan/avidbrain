@@ -33,7 +33,7 @@
                 data-amount = "2999"
                 data-panel-label = "Pay"
                 data-label = "Purchase Background Check"
-                data-name = "AvidBrain Background Check"
+                data-name = "MindSpree Background Check"
                 data-description = "$29.99"
                 data-allow-remember-me = "false"
             ></script>

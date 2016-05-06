@@ -114,7 +114,7 @@
         <div class="right-nav hide-on-large-only" id="copyme">
             <div class="new-user-prompt">
 
-                <div class="new-user-prompt-title">New to AvidBrain?</div>
+                <div class="new-user-prompt-title">New to MindSpree?</div>
                 <div class="new-user-prompt-copy">Sign up now and start learning in no time!</div>
                 <div>
                     <a href="/signup" class="btn blue btn-block">Signup Now</a>

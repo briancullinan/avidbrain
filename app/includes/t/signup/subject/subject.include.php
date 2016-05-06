@@ -6,7 +6,7 @@
 			<div class="blockmin-main">
 				<div class="blockmin-main-title1">Looking For A Tutor?</div>
 				<div class="blockmin-main-title2">You've Come To The Right Place</div>
-				<div class="blockmin-main-title3">Welcome to AvidBrain, the easiest way to find a tutor.</div>
+				<div class="blockmin-main-title3">Welcome to MindSpree, the easiest way to find a tutor.</div>
 			</div>
 
             <div class="signup-info hide-on-small-only">
@@ -80,7 +80,7 @@
 						<div class="row">
 							<div class="col s12 m12 l12">
 								<div class="the-disclaimer">
-									By signing up I agree that AvidBrain may contact me by email, phone, or SMS at the email address or number I provide. I have read, understand and agree to the <a href="/terms-of-use" target="_blank">Terms of Service</a>.
+									By signing up I agree that MindSpree may contact me by email, phone, or SMS at the email address or number I provide. I have read, understand and agree to the <a href="/terms-of-use" target="_blank">Terms of Service</a>.
 								</div>
 							</div>
 						</div>

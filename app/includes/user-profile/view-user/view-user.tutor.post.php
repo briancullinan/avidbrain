@@ -55,7 +55,7 @@
 
 
 			$message = '<p>Hello, '.$app->currentuser->first_name.' '.$app->currentuser->last_name.'</p>';
-			$message.='<p>Your background check application fee of $29.99 has been comped by AvidBrain.</p>';
+			$message.='<p>Your background check application fee of $29.99 has been comped by MindSpree.</p>';
 
 			$app->mailgun->to = $app->adminmodulecomper->email;
 			$app->mailgun->subject = 'Free Background Check';
