@@ -50,13 +50,11 @@
     define('socialTwitter','https://twitter.com/themindspree');
     define('socialLinkedin','https://www.mindspree.com/');//'https://www.linkedin.com/company/avidbrain/');
     define('socialPinterest','https://www.pinterest.com/themindspree/');
-    define('socialBlog','http://blog.mindspree.com');
+    define('socialBlog','http://blog-mindspree.com');
     define('CHECKR_PASS',NULL);
 
 
-
-
-    if(SERVERNAME=='localhost:5000'){
+    if(SERVERNAME=='mindspree.dev'){
 
         // DEBUG
         define('DEBUG',true);

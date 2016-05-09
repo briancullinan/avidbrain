@@ -164,7 +164,7 @@
 	else{
 	#	$footerlinks[socialQa] = (object) array('name'=>'Questions & Answers');
 	}
-	#$footerlinks[socialBlog] = (object) array('name'=>'Our Blog');
+	$footerlinks[socialBlog] = (object) array('name'=>'Our Blog');
 	$footerlinks['/terms-of-use'] = (object) array('name'=>'Terms of Use');
 	$footerlinks['/help/contact'] = (object) array('name'=>'Contact Us');
 	$footerlinks['/staff'] = (object) array('name'=>'Our Staff');
