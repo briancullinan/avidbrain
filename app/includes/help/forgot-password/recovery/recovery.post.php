@@ -15,12 +15,28 @@
 			$prepare = array(':password'=>$password,':email'=>$app->recoveryinfo->email);
 			$results = $app->connect->executeQuery($query,$prepare);
 			$location = '/signup/tutor';
-		}
-		else{
-			$query = "UPDATE avid___user SET password = :password WHERE `email` = :email ";
-			$prepare = array(':password'=>$password,':email'=>$app->recoveryinfo->email);
-			$results = $app->connect->executeQuery($query,$prepare);
-			$location = '/login';
+		}else{
+	
+			//look for the password in the admin table.
+			$sql = 'SELECT email FROM avid___admins WHERE email = :email LIMIT 1';
+			$prepeare = array(':email'=>$app->recoveryinfo->email);
+			$results2 = $app->connect->executeQuery($sql,$prepeare)->fetch();
+
+			//if you find this user in the admin table then update the admin table with the new password.
+			if(isset($results2->email) && $app->recoveryinfo->email==$results2->email){
+
+					$query = "UPDATE avid___admins SET password = :password WHERE `email` = :email ";
+					$prepare = array(':password'=>$password,':email'=>$app->recoveryinfo->email);
+					$results = $app->connect->executeQuery($query,$prepare);
+					$location = '/login';
+				}
+				else{
+
+					$query = "UPDATE avid___user SET password = :password WHERE `email` = :email ";
+					$prepare = array(':password'=>$password,':email'=>$app->recoveryinfo->email);
+					$results = $app->connect->executeQuery($query,$prepare);
+					$location = '/login';
+				}
 		}
 
 		$query = "DELETE FROM avid___user_resetpassword WHERE `email` = :email ";
