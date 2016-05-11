@@ -9,6 +9,7 @@
     date_default_timezone_set('America/Phoenix');
     define('SERVERNAME',$server->SERVER_NAME);
     define('APP_PATH',str_replace('/html','/app/',$server->DOCUMENT_ROOT));
+    define('UPLOAD_DIR',APP_PATH.'/uploads/photos/');
     define('DOCUMENT_ROOT',$server->DOCUMENT_ROOT.'/');
     define('SALT','4,CrHGdb}tATeGMCd9KomebEc4kz>zDQD4HEcMfBVx;g72k++y');
     define('IV',password_hash(str_shuffle(rand(0,64).uniqid()), PASSWORD_BCRYPT));
