@@ -64,7 +64,7 @@
 		$dependents->social->pinterest = 'https://www.pinterest.com/avidbrain/';
 	}
 
-	if($dependents->SERVER_NAME=='avidbrain.dev' || $dependents->SERVER_NAME=='amozek.dev'){
+	if($dependents->SERVER_NAME=='mindspree.dev' || $dependents->SERVER_NAME=='amozek.dev'){
 
 		$dependents->stripe->STRIPE_SECRET = 'sk_test_RKw0H6vV3pyB5JsBuQKXU4sO';
 		$dependents->stripe->STRIPE_PUBLIC = 'pk_test_jIcjo9aRNH4Xm8uaWuGZdf7B';
@@ -87,12 +87,12 @@
 		$dependents->database->DBPASS = 'ipi}nGaN6P4QAEJtxJ3W^Xc%Q9aforDBwnpFk}B';
 		$dependents->DOMAIN = 'https://www.'.$sitename.'.com';
 	}
-	elseif($dependents->SERVER_NAME=='amozek.dev' || $dependents->SERVER_NAME=='avidbrain.dev' || $dependents->SERVER_NAME=='www.avidbrain.dev'){
+	elseif($dependents->SERVER_NAME=='amozek.dev' || $dependents->SERVER_NAME=='mindspree.dev' || $dependents->SERVER_NAME=='www.mindspree.dev'){
 		$dependents->database->HOST = 'localhost';
 		$dependents->database->DBUSER = 'root';
 		$dependents->database->DBPASS = 'root';
 		$dependents->DOMAIN = 'http://'.$sitename.'.dev';
-		$dependents->social->qa = 'http://qa.avidbrain.dev';
+		$dependents->social->qa = 'http://qa.mindspree.dev';
 	}
 	elseif($dependents->SERVER_NAME=='avidbra.in'){
 		$dependents->database->HOST = 'localhost';

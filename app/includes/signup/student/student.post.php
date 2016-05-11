@@ -182,11 +182,11 @@
 			}
 		}
 
-		if(DOMAIN=='http://avidbrain.dev'){
+		if(DOMAIN=='http://mindspree.dev'){
 			$toemails = 'ivan.kavuma@mindspree.com';
 		}
 		else{
-			$toemails = 'jake.stoll@mindspree.com,keith@mindspree.com,ivan.kavuma@mindspree.com';
+			$toemails = 'admins@mindspree.com';
 		}
 
 		$app->mailgun->to = $toemails;
@@ -205,7 +205,7 @@
 		}
 
 		if($app->freesessions->enabled==false){
-			$app->mailgun->to = 'ivan.kavuma@mindspree.com';
+			$app->mailgun->to = 'admins@mindspree.com';
 			$app->mailgun->subject = 'Maximum Free Sessions';
 			$app->mailgun->message = 'You have reached the maximum free sessions of: $'.numbers($app->freesessions->maximum);
 			$app->mailgun->send();
@@ -419,11 +419,11 @@
 				}
 			}
 
-			if(DOMAIN=='http://avidbrain.dev'){
+			if(DOMAIN=='http://mindspree.dev'){
 				$toemails = 'ivan.kavuma@mindspree.com';
 			}
 			else{
-				$toemails = 'jake.stoll@mindspree.com,keith@mindspree.com,ivan.kavuma@mindspree.com';
+				$toemails = 'admins@mindspree.com';
 			}
 
 			$app->mailgun->to = $toemails;
@@ -442,7 +442,7 @@
 			}
 
 			if($app->freesessions->enabled==false){
-				$app->mailgun->to = 'ivan.kavuma@mindspree.com';
+				$app->mailgun->to = 'admins@mindspree.com';
 				$app->mailgun->subject = 'Maximum Free Sessions';
 				$app->mailgun->message = 'You have reached the maximum free sessions of: $'.numbers($app->freesessions->maximum);
 				$app->mailgun->send();

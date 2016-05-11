@@ -17,7 +17,7 @@
         $message.= '<p>Email Address: '.$app->studentsignup->student->email.'</p>';
         $message.= '<p>Address: '.DOMAIN.$app->request->getPath().'</p>';
 
-        $app->mailgun->to = 'jake.stoll@mindspree.com';
+        $app->mailgun->to = 'admins@mindspree.com';
         $app->mailgun->subject = 'New Email Signup';
         $app->mailgun->message = $message;
         $app->mailgun->send();

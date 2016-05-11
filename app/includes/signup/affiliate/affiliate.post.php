@@ -47,10 +47,10 @@
         $app->mailgun->send();
 
         if(DEBUG==true){
-			$toemails = 'ivan.kavuma@mindspree.com';
+			$toemails = 'admins@mindspree.com';
 		}
 		else{
-			$toemails = 'jake.stoll@mindspree.com,keith@mindspree.com,ivan.kavuma@mindspree.com';
+			$toemails = 'admins@mindspree.com';
 		}
 
         $app->mailgun->to = $toemails;

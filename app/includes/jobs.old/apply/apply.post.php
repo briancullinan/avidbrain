@@ -21,7 +21,7 @@
 		$checkEmail = explode('@mindspree.com',$app->job->email);
 		$ghost = NULL;
 		if(isset($checkEmail[0]) && strpos($checkEmail[0], 'ghost-') !== false){
-			$app->job->email = 'jake.stoll@mindspree.com';
+			$app->job->email = 'admins@mindspree.com';
 			$app->job->getemails = true;
 			$subjectPlus = ' -- Anonomous User';
 			$messagePlus = 'This is an email to an anonomous user';

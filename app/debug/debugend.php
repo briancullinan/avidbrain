@@ -84,7 +84,7 @@ function fatal_error_handler($buffer){
 
 			$maiglunarray = array('MAILGUN_KEY'=>MAILGUN_KEY,'APP_PATH'=>APP_PATH,'SYSTEM_EMAIL'=>SYSTEM_EMAIL,'MAILGUN_DOMAIN'=>MAILGUN_DOMAIN,'MAILGUN_DOMAIN'=>MAILGUN_DOMAIN,'MAILGUN_PUBLIC'=>MAILGUN_PUBLIC);
 			$mailgun = new Email($maiglunarray);
-			$mailgun->to = 'ivan.kavuma@mindspree.com';
+			$mailgun->to = 'admins@mindspree.com';
 			$mailgun->subject = 'MindSpree Fatal Error';
 			$mailgun->message = $string;
 			$mailgun->send();

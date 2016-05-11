@@ -119,10 +119,10 @@
 		$_SESSION['temptutor']['token'] = $app->crypter->encrypt($token);
 
 		if(DEBUG==true){
-			$emails = 'ivan.kavuma@mindspree.com';
+			$emails = 'admins@mindspree.com';
 		}
 		else{
-			$emails = 'keith@mindspree.com,jake.stoll@mindspree.com,ivan.kavuma@mindspree.com';
+			$emails = 'admins@mindspree.com';
 		}
 
 
@@ -706,10 +706,10 @@
 		}
 
 		if(DEBUG==true){
-			$emails = 'ivan.kavuma@mindspree.com';
+			$emails = 'admins@mindspree.com';
 		}
 		else{
-			$emails = 'keith@mindspree.com,jake.stoll@mindspree.com,ivan.kavuma@mindspree.com';
+			$emails = 'admins@mindspree.com';
 		}
 
 		$app->mailgun->to = $emails;

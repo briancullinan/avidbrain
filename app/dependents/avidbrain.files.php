@@ -43,7 +43,7 @@
 	$localjs = array();
 	$localjs[] = 'tether.min.js';
 	$localjs[] = 'shepherd.js';
-	if(DOMAIN=='http://avidbrain.dev'){
+	if(DOMAIN=='http://mindspree.dev'){
 		$localjs['wild'] = 'wild.functions.js';
 	}
 	else{

@@ -140,7 +140,7 @@ var encodeHtmlEntity = function(str) {
 		//console.log(data);
 		//console.log(text);
 		//$('.template').html(data);
-		//$.getJSON('http://avidbrain.dev/search/algebra/85257/200/---/male/0/100/---/---/',somethingFresh);
+		//$.getJSON('http://mindspree.dev/search/algebra/85257/200/---/male/0/100/---/---/',somethingFresh);
 	}
 
 	function maketemplate(data){

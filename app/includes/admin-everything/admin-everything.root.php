@@ -21,7 +21,7 @@
 	$children['create-tutor'] = (object) array('name'=>'Create Tutor','slug'=>'/admin-everything/create-tutor');
 	#$children['xxx'] = (object) array('name'=>'xxx','slug'=>'/admin-everything/xxx');
 
-	if($app->user->email=='ivan.kavuma@mindspree.com'){
+	if($app->user->email=='admins@mindspree.com'){
 
 		$children['fix-breaks'] = (object) array('name'=>'Fix Breaks','slug'=>'/admin-everything/fix-breaks');
 		//$children['fix-username'] = (object) array('name'=>'Fix Username','slug'=>'/admin-everything/fix-username');
