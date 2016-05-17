@@ -309,7 +309,14 @@ endif;
 		include($page = APP_PATH.'includes/shared-pages/setup-instructions.'.$app->user->usertype.'.php');
 	}
 ?>
-<?php if(DEBUG!=true): ?>
+<?php if(DEBUG==false): ?>
+
+  <script src="//static.getclicky.com/js" type="text/javascript"></script>
+	<script type="text/javascript">try{ clicky.init(100955063); }catch(e){}</script>
+	<noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100955063ns.gif" /></p></noscript>
+
+
+
 <script src="https://static.getclicky.com/js" type="text/javascript"></script>
 <script type="text/javascript">try{ clicky.init(100807251); }catch(e){}</script>
 <noscript><p><img alt="Clicky" width="1" height="1" src="https://in.getclicky.com/100807251ns.gif" /></p></noscript>
