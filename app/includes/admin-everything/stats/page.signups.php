@@ -16,9 +16,10 @@
 	$tutorsignups = $app->connect->executeQuery($sql,$prepare)->fetchAll();
 ?>
 
-<div class="title">Signups VS Accounts</div>
+<!-- <div class="title">Signups VS Accounts</div> -->
 
 <?php
+/*
 	$sql = "SELECT count(id) as total FROM signup_avidbrain.signup___signups";
 	$prepare = array();
 	$totalTutorSignups = $app->connect->executeQuery($sql,$prepare)->fetch();
@@ -39,12 +40,12 @@
 			signupdate IS NOT NULL
 		GROUP BY
 			DATE_FORMAT(signupdate,'%Y %M')
-		ORDER BY signupdate ASC
+		ORDER BY signupdate DESC
 	";
 	$prepare = array();
 	$breakdown = $app->connect->executeQuery($sql,$prepare)->fetchAll();
 
-
+*/
 ?>
 <?php if(isset($breakdown[0])): ?>
 	<div class="block">
@@ -67,7 +68,8 @@
 <?php endif; ?>
 <?php if(isset($tutorsignups[0])): ?>
 	<div class="block">
-		<div class="title">Tutor Account Activation</div>
+		<!-- <div class="title">Tutor Account Activation</div> -->
+		<div class="title">Tutor Signups</div>
 		<?php foreach($tutorsignups as $key=> $info): ?>
 			<div class="row">
 				<div class="col s12 m2 l2">

@@ -5,6 +5,7 @@
 	$children = array();
 	//$children['edit-profile'] = (object) array('name'=>'Edit Profile','slug'=>'/admin-everything/edit-profile');
 	$children['stats'] = (object) array('name'=>'Stats','slug'=>'/admin-everything/stats');
+	$children['signupdetails'] = (object) array('name'=>'Signup Details','slug'=>'/admin-everything/signupdetails');
 	$children['post-a-job'] = (object) array('name'=>'Post a Job','slug'=>'/admin-everything/post-a-job');
 	$children['affiliates'] = (object) array('name'=>'Affiliates','slug'=>'/admin-everything/affiliates');
 	$children['view-everyone'] = (object) array('name'=>'View Everyone','slug'=>'/admin-everything/view-everyone');

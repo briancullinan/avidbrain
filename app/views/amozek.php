@@ -113,7 +113,7 @@
 	</div>
 
 	<div class="logo logo-main">
-		<a href="/"><img src="/images/MindSpreeLogo.png" /></a>
+		<a href="/"><img src="/images/MindSpreeLogo.png" style="padding-top:10px;"/></a>
 	</div>
 
 	<div class="right-info">
