@@ -54,6 +54,9 @@
     define('socialBlog','http://blog-mindspree.com');
     define('CHECKR_PASS',NULL);
 
+    //session
+    define('MinimumSessionRate',20);
+    define('MaximumSessionRate',500);
 
     if(SERVERNAME=='mindspree.dev'){
 

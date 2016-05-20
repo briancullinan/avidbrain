@@ -18,15 +18,15 @@
 			new Flash(array('action'=>'required','formID'=>'setupsession','message'=>'Tutoring Subject Already Set'));
 		}
 
-		if(isset($app->completesession->session_rate) && $app->completesession->session_rate< 30){
-			new Flash(array('action'=>'required','formID'=>'setupsession','message'=>'<span>$30</span> Minimum Session Limit'));
+		if(isset($app->completesession->session_rate) && $app->completesession->session_rate< MinimumSessionRate){
+			new Flash(array('action'=>'required','formID'=>'setupsession','message'=>'<span>$'.MinimumSessionRate.'</span> Minimum Session Limit'));
 		}
 
-		if(isset($app->completesession->session_rate) && $app->completesession->session_rate>500){
-			new Flash(array('action'=>'required','formID'=>'setupsession','message'=>'<span>$500</span> Maximum Session Limit'));
+		if(isset($app->completesession->session_rate) && $app->completesession->session_rate>MaximumSessionRate){
+			new Flash(array('action'=>'required','formID'=>'setupsession','message'=>'<span>$'.MaximumSessionRate.'</span> Maximum Session Limit'));
 		}
-		if(session_cost($app->completesession,1)<30){
-			new Flash(array('action'=>'required','formID'=>'setupsession','message'=>'<span>$30</span> Minimum Session Limit'));
+		if(session_cost($app->completesession,1)<MinimumSessionRate){
+			new Flash(array('action'=>'required','formID'=>'setupsession','message'=>'<span>$'.MinimumSessionRate.'</span> Minimum Session Limit'));
 		}
 
 		if(session_cost($app->completesession,1) > 1000){
