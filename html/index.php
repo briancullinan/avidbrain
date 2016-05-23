@@ -41,7 +41,7 @@
 	use Doctrine\Common\ClassLoader;
 	$config = new \Doctrine\DBAL\Configuration();
 	$connectionParams = array(
-	    'dbname' => 'avidbrain',
+	    'dbname' => DBNAME,
 	    'user' => DBUSER,
 	    'password' => DBPASS,
 	    'host' => HOST,
@@ -73,7 +73,8 @@
 	use \Slim\Extras\Middleware\CSRFNINJA;
 	use \Slim\Extras\Middleware\HttpBasicAuth;
 	use Intervention\Image\ImageManager;
-	$app->imagemanager = new ImageManager(array('driver' => 'imagick'));
+//	$app->imagemanager = new ImageManager(array('driver' => 'imagick'));
+	$app->imagemanager = new ImageManager(array('driver' => 'gd'));
 	$app->add(new CSRFNINJA());
 
 	$app->purechat = true;

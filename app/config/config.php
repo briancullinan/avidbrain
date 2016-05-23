@@ -71,8 +71,30 @@
 
         // Database
         define('HOST','localhost');
+        define('DBNAME','avidbrain');
         define('DBUSER','root');
         define('DBPASS','');
+
+        // CHECKR
+        define('CHECKR_USERNAME','490604533e55e6c996bdf6db6c17dcdd8315a1d6');
+
+    }
+    elseif(SERVERNAME=='avidbra.in'){
+
+        // DEBUG
+        define('DEBUG',true);
+        define('MODE','development');
+        define('DOMAIN','http://avidbra.in');
+
+        // STRIPE
+        define('STRIPE_SECRET','sk_test_RKw0H6vV3pyB5JsBuQKXU4sO');
+        define('STRIPE_PUBLIC','pk_test_jIcjo9aRNH4Xm8uaWuGZdf7B');
+
+        // Database
+        define('HOST','7b9488aeb86ce5dc0843d7298b2b70b44ddeb574.rackspaceclouddb.com');
+        define('DBNAME','avidTest');
+        define('DBUSER','brainiac');
+        define('DBPASS','ipi}nGaN6P4QAEJtxJ3W^Xc%Q9aforDBwnpFk}B');
 
         // CHECKR
         define('CHECKR_USERNAME','490604533e55e6c996bdf6db6c17dcdd8315a1d6');
@@ -91,6 +113,7 @@
 
         // Database
         define('HOST','7b9488aeb86ce5dc0843d7298b2b70b44ddeb574.rackspaceclouddb.com');
+        define('DBNAME','avidbrain');
         define('DBUSER','brainiac');
         define('DBPASS','ipi}nGaN6P4QAEJtxJ3W^Xc%Q9aforDBwnpFk}B');
 
