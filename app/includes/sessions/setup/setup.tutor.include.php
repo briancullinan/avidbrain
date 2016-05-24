@@ -31,13 +31,13 @@
 
 				?>
 
-				<?php if($sessionCost >= 30): ?>
+				<?php if($sessionCost >= MinimumSessionRate): ?>
 					<a class="btn blue btn-l btn-block btn-notice" href="/sessions/complete-active/mark-complete/<?php echo $app->setup->id; ?>">
 						Click To Complete Session
 					</a>
 				<?php else: ?>
 					<div class="alert purple white-text">
-						You session must be at least $30 to continue. <br> Right now it's estimated at $<?php echo numbers($sessionCost); ?>
+						You session must be at least $<?php echo MinimumSessionRate; ?> to continue. <br> Right now it's estimated at $<?php echo numbers($sessionCost); ?>
 					</div>
 				<?php endif; ?>
 
