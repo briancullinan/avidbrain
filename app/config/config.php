@@ -51,7 +51,7 @@
     define('socialTwitter','https://twitter.com/themindspree');
     define('socialLinkedin','https://www.mindspree.com/');//'https://www.linkedin.com/company/avidbrain/');
     define('socialPinterest','https://www.pinterest.com/themindspree/');
-    define('socialBlog','http://blog-mindspree.com');
+    define('socialBlog','https://www.mindspree.com/blog');
     define('CHECKR_PASS',NULL);
 
     //session

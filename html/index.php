@@ -73,8 +73,15 @@
 	use \Slim\Extras\Middleware\CSRFNINJA;
 	use \Slim\Extras\Middleware\HttpBasicAuth;
 	use Intervention\Image\ImageManager;
-//	$app->imagemanager = new ImageManager(array('driver' => 'imagick'));
-	$app->imagemanager = new ImageManager(array('driver' => 'gd'));
+
+	if(DEBUG == false)
+	{
+		$app->imagemanager = new ImageManager(array('driver' => 'imagick'));
+	}else {
+		$app->imagemanager = new ImageManager(array('driver' => 'gd'));
+	}
+
+
 	$app->add(new CSRFNINJA());
 
 	$app->purechat = true;

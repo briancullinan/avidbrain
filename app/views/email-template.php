@@ -468,8 +468,8 @@
                                     <table border="0" cellpadding="0" cellspacing="0" width="100%" id="templateHeader">
                                         <tr>
                                             <td valign="top" class="headerContent">
-                                            	<a href="https://www.WEBSNAME.com" target="_blank">
-	                                            	<img src="http://avidbrane.com/images/email/header.gif" style="max-width:600px;" id="headerImage" mc:label="header_image" mc:edit="header_image" mc:allowdesigner mc:allowtext />
+                                            	<a href="https://www.mindspree.com" target="_blank">
+	                                            	<img src="https://www.mindspree.com/images/emailheader.png" style="max-width:600px;" id="headerImage" mc:label="header_image" mc:edit="header_image" mc:allowdesigner mc:allowtext />
                                             	</a>
                                             </td>
                                         </tr>
@@ -482,9 +482,9 @@
                                         <tr>
                                             <td valign="top" class="bodyContent" mc:edit="body_content00">
                                                 <h1>SUBJECTGOESHERE</h1>
-                                                
+
                                                 MESSAGEBODYGOESHERE
-                                                
+
                                             </td>
                                         </tr>
                                     </table>
@@ -495,20 +495,18 @@
                                     <table border="0" cellpadding="0" cellspacing="0" width="100%" id="templateFooter">
                                         <tr>
                                             <td valign="top" class="footerContent" mc:edit="footer_content00">
-                                                
-                                                <a href="FACEBOOKURL" target="_blank">Facebook</a>
-                                                <a href="TWITTERURL" target="_blank">Twitter</a>
-                                                <a href="LINKEDINURL" target="_blank">LinkedIn</a>
-                                                <a href="BLOGURL" target="_blank">Our Blog</a>
-                                                
+
+                                                <a href="https://www.facebook.com/themindspree" target="_blank">Facebook</a>
+                                                <a href="https://twitter.com/themindspree" target="_blank">Twitter</a>
+                                                <a href="http://blog-mindspree.com" target="_blank">Our Blog</a>
+
                                             </td>
                                         </tr>
                                         <tr>
                                             <td valign="top" class="footerContent" style="padding-top:0;" mc:edit="footer_content01">
-                                                <em>Copyright &copy; THEDATE SITENAMEPROPPER Inc., All rights reserved.</em>
                                                 <br />
                                                 <br />
-                                                <strong>Our mailing address is:</strong>
+                                                <strong>Mind Spree address is:</strong>
                                                 <br />
                                                 7272 E. Indian School Rd. Suite 540 Scottsdale, AZ 85251
                                             </td>
