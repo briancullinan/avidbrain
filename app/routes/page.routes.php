@@ -57,6 +57,12 @@
 	$routes['image'] = (object)array('url'=>'/image','slug'=>'image','route'=>'/image/:location/:id/','include'=>'image','protected'=>NULL,'permissions'=>array());
 	$routes['image-extras'] = (object)array('url'=>'/image','slug'=>'image','route'=>'/image/:location/:extras/:id/','include'=>'image','protected'=>NULL,'permissions'=>array());
 
+
+	//subjects
+	$routes['subjects'] = (object)array('url'=>'/subjects','slug'=>'subjects','route'=>'/subjects','include'=>'subjects','protected'=>NULL,'permissions'=>array());
+	$routes['subjects-page'] = (object)array('url'=>'/subjects','slug'=>'subjects','route'=>'/subjects/:page/','include'=>'subjects','protected'=>NULL,'permissions'=>array());
+
+
 	$routes['subjects-match'] = (object)array('url'=>'/subjects-match','slug'=>'subjects-match','route'=>'/subjects/:subject/','include'=>'subjects-match','protected'=>NULL,'permissions'=>array());
 
 	if(SITENAME=='amozek'){
@@ -147,6 +153,8 @@
 	$routes['students-page-pages'] = (object)array('url'=>'/user-profile/state/city/view-user/pages','slug'=>'view-user','route'=>'/students/:state/:city/:username/:pagename/','include'=>'user-profile/view-user','protected'=>NULL,'permissions'=>array());
 	$routes['students-page-pages-category'] = (object)array('url'=>'/user-profile/state/city/view-user/pages','slug'=>'view-user','route'=>'/students/:state/:city/:username/:pagename/:category/','include'=>'user-profile/view-user','protected'=>NULL,'permissions'=>array());
 	$routes['students-page-pages-subject'] = (object)array('url'=>'/user-profile/state/city/view-user/pages','slug'=>'view-user','route'=>'/students/:state/:city/:username/:pagename/:category/:subject/','include'=>'user-profile/view-user','protected'=>NULL,'permissions'=>array());
+
+
 
 	// Filter By...
 	$routes['filterbynumber'] = (object)array('url'=>'/filterby','slug'=>'filterby','route'=>'/filterby/:location/:action/:number','include'=>'filterby','protected'=>NULL,'permissions'=>array());

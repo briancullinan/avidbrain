@@ -320,14 +320,22 @@ endif;
 <script src="https://static.getclicky.com/js" type="text/javascript"></script>
 <script type="text/javascript">try{ clicky.init(100807251); }catch(e){}</script>
 <noscript><p><img alt="Clicky" width="1" height="1" src="https://in.getclicky.com/100807251ns.gif" /></p></noscript>
+
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-62466709-1', 'auto');
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-77842513-2', 'auto');
   ga('send', 'pageview');
+
 </script>
+
+
+
+
+
 <?php endif; ?>
 <?php if(DEBUG==false): ?><noscript><link rel="stylesheet" href="/css/scripts-required.css"><div class="js-required">Javascript Is Required. Please Enable.</div></noscript><?php endif; ?>
 <?php
