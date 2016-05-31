@@ -66,20 +66,20 @@
 			'pending'=>1
 		);
 
-		if(isset($app->setupsession->whiteboard) && $app->setupsession->whiteboard=='yes'){
-			$createRoom = array(
-				'api_key'=>SCRIBBLAR_ID,
-				'function'=>'rooms.add',
-				'roomname'=>'Tutor with '.short($app->user),
-				'allowguests'=>1,
-				'clearassets'=>1,
-				'roomowner'=>$app->user->email
-			);
-
-			$newroom = scribblar($createRoom);
-			$newsession['roomid'] = $newroom['result']['roomid'];
-			$roomid = $newroom['result']['roomid'];
-		}
+		// if(isset($app->setupsession->whiteboard) && $app->setupsession->whiteboard=='yes'){
+		// 	$createRoom = array(
+		// 		'api_key'=>SCRIBBLAR_ID,
+		// 		'function'=>'rooms.add',
+		// 		'roomname'=>'Tutor with '.short($app->user),
+		// 		'allowguests'=>1,
+		// 		'clearassets'=>1,
+		// 		'roomowner'=>$app->user->email
+		// 	);
+		//
+		// 	$newroom = scribblar($createRoom);
+		// 	$newsession['roomid'] = $newroom['result']['roomid'];
+		// 	$roomid = $newroom['result']['roomid'];
+		// }
 
 		//notify($newsession);
 		$app->connect->insert('avid___sessions',$newsession);

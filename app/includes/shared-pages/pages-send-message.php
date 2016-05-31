@@ -26,10 +26,10 @@
 		$messagingsystem->csrf_token = $csrf_token;
 		if(isset($app->sendwhiteboard)){
 
-			$whiteboard = new stdClass();
-			$whiteboard->subject = 'Join my Whiteboard Session';
-			$whiteboard->message = 'Hi '.short($app->currentuser).' come over to '.SITENAME_PROPPER.' and join my Scheduled Whiteboard Session.'."\n".DOMAIN.'/resources/whiteboard/'.$app->sendwhiteboard->roomid;
-			$messagingsystem->formvalues = $whiteboard;
+			$theMessage = new stdClass();
+			$theMessage->subject = 'Join my Whiteboard Session';
+			$theMessage->message = 'Hi '.short($app->currentuser).' come over to '.SITENAME_PROPPER.' and join my Scheduled Whiteboard Session.'."\n".DOMAIN.'/resources/whiteboard/'.$app->sendwhiteboard->roomid;
+			$messagingsystem->formvalues = $theMessage;
 		}
 
 		$messagingsystem->makeform();

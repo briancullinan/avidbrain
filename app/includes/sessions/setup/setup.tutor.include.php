@@ -41,10 +41,10 @@
 					</div>
 				<?php endif; ?>
 
-				<?php if(!empty($app->setup->roomid)): ?>
+				<!-- <?php if(!empty($app->setup->roomid)): ?>
 				<a href="/resources/whiteboard/<?php echo $app->setup->roomid; ?>" class="btn btn-block">
 					View Whiteboard Session
-				</a>
+				</a> -->
 				<div class="hr"></div>
 				<br>
 				<?php endif; ?>
@@ -61,10 +61,10 @@
 			<?php elseif(isset($app->setup->dateDiff->text)): ?>
 				<p>Your session will occur in <br> <span class="notice blue white-text"><?php echo $app->setup->dateDiff->text; ?></span></p>
 
-				<?php if(!empty($app->setup->roomid)): ?>
+				<!-- <?php if(!empty($app->setup->roomid)): ?>
 				<a href="/resources/whiteboard/<?php echo $app->setup->roomid; ?>" class="btn btn-block">
 					View Whiteboard Session
-				</a>
+				</a> -->
 				<div class="hr"></div>
 				<br>
 				<?php endif; ?>
@@ -92,12 +92,12 @@
 
 		<?php
 
-			if(!empty($app->setup->roomid)){
-				$app->setup->whiteboard = 'yes';
-			}
-			else{
-				$app->setup->whiteboard = 'no';
-			}
+			// if(!empty($app->setup->roomid)){
+			// 	$app->setup->whiteboard = 'yes';
+			// }
+			// else{
+			//	$app->setup->whiteboard = 'no';
+			//}
 
 			$setupsession = new Forms($app->connect);
 			$setupsession->formname = 'setupsession';
@@ -110,4 +110,4 @@
 	</div>
 </div>
 
-<?php include($app->target->base.'what-is-a-whiteboard.php'); ?>
+<?php //include($app->target->base.'what-is-a-whiteboard.php'); ?>

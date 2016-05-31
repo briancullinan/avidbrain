@@ -30,11 +30,11 @@
 
 
 	$childen = array();
-	$childen['resources-whiteboard'] = (object) array('name'=>'Whiteboard','slug'=>'/resources/whiteboard');
+	//$childen['resources-whiteboard'] = (object) array('name'=>'Whiteboard','slug'=>'/resources/whiteboard');
 	$childen['resources-qanda'] = (object) array('name'=>'Questions & Answers','slug'=>'/resources/questions-and-answers');
-	if(isset($action) && isset($type) && $type=='whiteboard' && $app->user->usertype=='tutor'){
-		$app->tertiary = $app->target->secondary;
-	}
+	// if(isset($action) && isset($type) && $type=='whiteboard' && $app->user->usertype=='tutor'){
+	// 	$app->tertiary = $app->target->secondary;
+	// }
 
 	$app->childen = $childen;
 	$navtitle = (object)array('slug'=>'/resources','text'=>'Resources');

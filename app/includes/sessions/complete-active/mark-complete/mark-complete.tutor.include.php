@@ -55,4 +55,4 @@
 	</div>
 </div>
 
-<?php include($app->target->base.'what-is-a-whiteboard.php'); ?>
+<?php //include($app->target->base.'what-is-a-whiteboard.php'); ?>

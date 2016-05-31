@@ -52,4 +52,4 @@
 	</div>
 </div>
 
-<?php $loadModal = 'what-is-a-whiteboard'; ?>
+<?php //$loadModal = 'what-is-a-whiteboard'; ?>

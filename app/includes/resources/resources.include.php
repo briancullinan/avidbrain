@@ -2,13 +2,13 @@
 
 
 <div class="row">
-	<div class="col s12 m6 l6">
+	<!-- <div class="col s12 m6 l6">
 		<div class="block">
 			<div class="title">Whiteboard</div>
 			<div class="date">Teach your students online!</div>
 			<div class="description">Video chat and interactive whiteboards going hand in hand.</div>
 		</div>
-	</div>
+	</div> -->
 	<div class="col s12 m6 l6">
 		<div class="block">
 			<div class="title">Questions and Answers</div>

@@ -130,9 +130,9 @@
 								<p><a class="btn btn-block <?php echo $additionalButtonCss; ?>" href="/sessions/view/<?php echo $jobsessions->id; ?>">View <?php echo $additionalText; ?> Session</a></p>
 							<?php endif; ?>
 
-							<?php if(!empty($jobsessions->roomid)): ?>
+							<!-- <?php if(!empty($jobsessions->roomid)): ?>
 								<a class="btn btn-s" href="/resources/whiteboard/<?php echo $jobsessions->roomid; ?>">View Whiteboard</a>
-							<?php endif; ?>
+							<?php endif; ?> -->
 
 							<?php if($jobsessions->session_status=='canceled-session' || $jobsessions->session_status=='complete' || empty($jobsessions->jobid)):else: ?>
 							<p><a class="btn btn-s blue" href="/jobs/apply/<?php echo $jobsessions->jobid; ?>">View Job Posting</a></p>

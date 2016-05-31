@@ -115,7 +115,10 @@
                 <p>The average <span class="blue-text">hourly rate</span> for tutoring is $40.00, but it can range widly from $15.00/Hour all the way up to $300.00/Hour.</p>
                 <p>We require that you provide <span class="blue-text">3 references</span>, to ensure the highest quality tutors. If you don't have any references, please explain why.</p>
                 <p>How far are you  <span class="blue-text">willing to travel</span> to meetup with a student?</p>
-                <p>You can tutor <span class="blue-text">Online, In-Person or Both.</span> We provide an online Whiteboard solution you can use to tutor students online. Or if you prefer you can setup an in-person meeting with them at your desired location.</p>
+                <p>You can tutor <span class="blue-text">Online, In-Person or Both.</span>
+                  You can use <b>Skype</b> or <b>Google Hangouts</b> to tutor students online. 
+                  Or if you prefer You can setup an in-person meeting with them at your desired location.</p>
+
                 <p>You can provide a <span class="blue-text">cancellation policy</span> if you would like to require a student to notify you that they have to cancel.</p>
                 <p>If a student cancels without letting you know you can charge them a  <span class="blue-text">cancellation fee.</span></p>
 

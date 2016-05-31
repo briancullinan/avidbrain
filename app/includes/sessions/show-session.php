@@ -147,9 +147,9 @@
 				$details['<span class="orange-text">'.get_stars($showsession->review_score)->icons.'</span>'] = 'Star Score';
 			}
 
-			if(!empty($showsession->roomid)){
-				$details['<a href="/resources/whiteboard/'.$showsession->roomid.'" class="btn btn-s">View Whiteboard Session</a>'] = 'Whiteboard Session';
-			}
+			// if(!empty($showsession->roomid)){
+			// 	$details['<a href="/resources/whiteboard/'.$showsession->roomid.'" class="btn btn-s">View Whiteboard Session</a>'] = 'Whiteboard Session';
+			// }
 
 			if(isset($showsession->review_text) && !empty($showsession->review_text)){
 				$details[$showsession->review_text] = 'Review';
@@ -192,12 +192,12 @@
 
 			$message = "Hi ".short($showsession)." will you please review our last tutoring session?";
 
-			$whiteboard = new stdClass();
-			$whiteboard->subject = 'Please Review Our Latest Session';
-			$whiteboard->message = $message;
-			$whiteboard->extra = $id;
+			$theMessage = new stdClass();
+			$theMessage->subject = 'Please Review Our Latest Session';
+			$theMessage->message = $message;
+			$theMessage->extra = $id;
 
-			$messagingsystem->formvalues = $whiteboard;
+			$messagingsystem->formvalues = $theMessage;
 
 		$messagingsystem->makeform();
 
