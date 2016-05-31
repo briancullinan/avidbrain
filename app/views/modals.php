@@ -32,9 +32,9 @@
 <?php endif; ?>
 
 <?php
-	if(isset($loadModal) && $loadModal=='what-is-a-whiteboard'){
-		include($app->target->base.'what-is-a-whiteboard.php');
-	}
+	// if(isset($loadModal) && $loadModal=='what-is-a-whiteboard'){
+	// 	include($app->target->base.'what-is-a-whiteboard.php');
+	// }
 ?>
 
 <div id="bgcheck_modal" class="modal">
