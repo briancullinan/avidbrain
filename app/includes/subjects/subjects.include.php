@@ -20,7 +20,10 @@
 				}
 			}
 			else{
-	           echo 'Please select a subject to exporer from the left';
+					$file = str_replace('subjects.include.','page.subjects.',$app->target->include);
+					 if(file_exists($file)){
+						 include($file);
+					 }
 			}
 
 		?>

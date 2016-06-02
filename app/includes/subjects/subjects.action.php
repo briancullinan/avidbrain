@@ -7,7 +7,7 @@
     'computer'=>'Computer',
     'elementary'=>'Elementary',
     'english'=>'English',
-    'games'=>'Games',
+  //  'games'=>'Games',
     'history'=>'History',
     'language'=>'Language',
     'music'=>'Music',
