@@ -37,3 +37,39 @@ var google_remarketing_only = false;
 <img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/945094692/?label=ZwOUCO_lrmMQpIDUwgM&amp;guid=ON&amp;script=0"/>
 </div>
 </noscript>
+
+
+<!-- Facebook Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+
+fbq('init', '632834226863566');
+fbq('track', "PageView");
+fbq('track', 'Lead');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=632834226863566&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
+
+<script type=text/javascript src="https://services.xg4ken.com/js/kenshoo.js?cid=99f5fa84-146a-4242-ac9c-17ce8d09aadd" ></script>
+<script type=text/javascript>
+kenshoo.trackConversion('1154','99f5fa84-146a-4242-ac9c-17ce8d09aadd',{
+   //OPTIONAL PARAMETERS. FILL VALUES OR REMOVE UNNEEDED PARAMETERS
+   conversionType: 'conv', //specific conversion type. example: type:'AppInstall' default is 'conv'
+   revenue: 0, //numeric conversion value. example convValue: 12.34
+   currency:'USD', //example currency:'USD'
+   orderId:'',//example orderId: 'abc'
+   promoCode:'',
+   customParam1:'', //any custom parameter. example: Airport: 'JFK'
+   customParam2:'', //any custom parameter. example: Rooms: '3'
+   customParamN:'' })
+</script>
+
+<noscript>
+   <img src="https://1154.xg4ken.com/pixel/v1?track=1&token=99f5fa84-146a-4242-ac9c-17ce8d09aadd&conversionType=conv&revenue=0&currency=USD&orderId=&promoCode=&customParam1=&customParam2=" width="1" height="1" />
+</noscript>
