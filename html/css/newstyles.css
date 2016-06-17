@@ -8,7 +8,6 @@
 	width: 100%;
 	color: #333;
 	border: solid 1px #E4E4E4;
-
 }
 .action-badge a{
 	color: #333;
@@ -78,13 +77,13 @@
 	max-height: 300px;
 	display: inline-block;
 }
-.short-description a{
+/*.short-description a{
 	color: #333;
 }
 .short-description a:hover{
 	background: #333;
 	color: #fff;
-}
+}*/
 .my-rate{
 	display: inline-block;
 	margin-top: 15px;
@@ -116,13 +115,12 @@
 	margin-bottom: 5px;
 	border-bottom: solid 1px #ccc;
 }
-.im-a-tutor-short a{
-	color: #333;
+/*.im-a-tutor-short a{
+	color: #6fe4de;
 }
 .im-a-tutor-short a:hover{
-	background: #333;
-	color: #fff;
-}
+	color: #84e000;
+}*/
 .im-a-tutor-long{
 	color: #666;
 	font-size: 14px;
@@ -169,3 +167,108 @@
 .previous-next-nav a{
     color: #ccc;
 }
+
+
+
+
+/* Ivan new style start here. */
+
+body{
+	    font-family: 'Open Sans', 'Arial', sans-serif;
+			font-size: 18px;
+}
+
+h1,h2,h3,h4,h5,h6{
+	font-family: 'Overlock SC', cursive;
+}
+h2 {
+	color:#0321a4;
+}
+h3 {
+	color:#0321a4;
+}
+
+main .container {
+    background:transparent;
+}
+
+.tutor-results ,.message-blocks{
+    /*background: #CEF6CE;*/
+}
+
+.collection{
+	background: transparent;
+}
+.collection-item {
+	background : transparent;
+}
+.signup-mid li{
+		margin-left:20px !important;
+}
+
+.application-process ol li{
+  padding-left:5px  !important;
+}
+
+.turquoise-text{
+    color:#6fe4de;
+}
+
+.affiliate-img{
+		width:100px;
+}
+. message-buttons{
+	display: inline-block;
+}
+.message-buttons ul li{
+		list-style-type: none;
+		width: 100px;
+		float: left;
+		margin-left: 10px;
+}
+
+.tutoring-block a.blue,searching-results a.blue {
+		display: none;
+}
+
+a:hover.btn{
+	color:#000;
+}
+.round-icons{
+	border-radius: 50%;
+}
+  /* ----------- Retina Screens ----------- */
+
+
+  @media screen
+    and (min-device-width: 1200px)
+    and (max-device-width: 3600px)
+    and (-webkit-min-device-pixel-ratio: 1) {
+
+      html,body {
+                }
+        h1 {
+          font-size: 2.6em;
+        }
+        h2 {
+          font-size: 2.4rem;
+					color:#0321a4;
+        }
+        h3 {
+          font-size: 1.6rem;
+					color:#0321a4;
+        }
+        h4 {
+          font-size: 1.2rem;
+        }
+        h5 {
+          font-size: 0.7rem;
+        }
+        h6 {
+          font-size: 0.5rem;
+        }
+
+  }
+
+
+/*# sourceMappingURL=avidbrain.css.map */

@@ -4,15 +4,15 @@
 
 ?>
 
-<form method="post" action="/searching/" class="get-searching">
+<form method="post" action="/searching/" class="form-post">
 
-    <input data-default="searching" type="hidden" name="searching[target]" value="searching"  />
-	<input data-default="<?php echo $csrf_token; ?>" type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
-
-    <div class="searching-container">
-        <label for="subject">Subject</label>
-        <div class="searching-box" id="search-subject">
-            <input id="subject" type="text" name="searching[subject]" <?php if(isset($app->cachedSubjectQuery->subject_name)){ echo 'value="'.$app->cachedSubjectQuery->subject_name.'"';} ?> />
+    <div class="signup-title">
+    Tutor Search
+  </div>
+    <div class="">
+      <label for="distance">Subject</label>
+        <div class="search-box-wrapper" id="search-subject">
+            <input  id="subject" type="text" name="searching[subject]" <?php if(isset($app->cachedSubjectQuery->subject_name)){ echo 'value="'.$app->cachedSubjectQuery->subject_name.'"';} ?> />
         </div>
     </div>
 
@@ -24,22 +24,24 @@
             $zipcode = $app->cachedZipcode->zipcode;
         }
     ?>
+    <input data-default="searching" type="hidden" name="searching[target]" value="searching"  />
+    <input data-default="<?php echo $csrf_token; ?>" type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
 
     <div class="row nomargins">
     	<div class="col s12 m6 l6">
-            <div class="searching-container">
-                <label for="location">City, State / Zipcode</label>
-                <div class="searching-box">
+            <div class="">
+              <label for="distance">City, State / Zipcode</label>
+                <div class="search-box-wrapper">
                     <input id="location" type="text" name="searching[location]" value="<?php echo $location; ?>" />
                 </div>
             </div>
             <input id="zipcodeactual" type="hidden" name="searching[zipcodeactual]" class="zipcodeactual" value="<?php echo $zipcode; ?>"  />
     	</div>
     	<div class="col s12 m6 l6">
-            <div class="searching-container">
+            <div class="">
                 <label for="distance">Distance</label>
-                <div class="searching-box">
-                    <select data-default="50" id="distance" class="browser-default" name="searching[distance]">
+                <div class="">
+                    <select data-default="50" id="distance" class="browser-default" name="searching[distance]" placeholder='Distance'>
                         <?php foreach(array(5,20,50,100,500,1000,5000,10000) as $distance): ?>
                             <option <?php if(isset($app->queries->distance) && $app->queries->distance==$distance){echo 'selected="selected"';}elseif(empty($app->queries->distance) && $distance==50){echo 'selected="selected"';} ?> value="<?php echo $distance; ?>"><?php echo numbers($distance,1); ?> Miles</option>
                         <?php endforeach; ?>
@@ -49,16 +51,16 @@
     	</div>
     </div>
 
-    <div class="searching-container">
+    <div class="">
         <label for="name">Tutor's Name</label>
-        <div class="searching-box">
+        <div class="search-box-wrapper">
             <input id="name" type="text" name="searching[name]" <?php if(isset($app->queries->name)){ echo 'value="'.$app->queries->name.'"';} ?> />
         </div>
     </div>
 
-    <div class="searching-container">
+    <div class="">
         <label for="gender">Gender</label>
-        <div class="searching-box">
+        <div class="">
             <select data-default="No Preference" id="gender" class="browser-default" name="searching[gender]">
                 <?php foreach(array('No Preference'=>'','Male'=>'male','Female'=>'female',) as $key=> $gender): ?>
                     <option <?php if(isset($app->queries->gender) && $app->queries->gender==$gender){echo 'selected="selected"';} ?> value="<?php echo $gender; ?>">
@@ -71,9 +73,9 @@
 
     <div class="row nomargins">
     	<div class="col s12 m6 l6">
-            <div class="searching-container">
+            <div class="new-inputs">
                 <label for="pricelow">Price Range Low</label>
-                <div class="searching-box">
+                <div class="">
                     <select data-default="0" id="pricelow" class="browser-default" name="searching[pricelow]">
                         <?php foreach(range(0,1000,10) as $pricerange): ?>
                             <option <?php if(isset($app->queries->pricelow) && $app->queries->pricelow==$pricerange){echo 'selected="selected"';} ?> value="<?php echo $pricerange; ?>">
@@ -86,9 +88,9 @@
     	</div>
 
     	<div class="col s12 m6 l6">
-            <div class="searching-container">
+            <div class="new-inputs">
                 <label for="pricehigh">Price Range High</label>
-                <div class="searching-box">
+                <div class="">
                     <select data-default="200" id="pricehigh" class="browser-default" name="searching[pricehigh]">
                         <?php foreach(range(0,1000,10) as $pricerangehigh): ?>
                             <option <?php if(isset($app->queries->pricehigh) && $app->queries->pricehigh==$pricerangehigh){echo 'selected="selected"';}elseif(empty($app->queries->pricehigh) && $pricerangehigh==200){ echo 'selected="selected"';} ?> value="<?php echo $pricerangehigh; ?>">
@@ -103,14 +105,14 @@
 
     <div class="searching-container hidden">
         <label for="page">Page</label>
-        <div class="searching-box">
+        <div class="search-box-wrapper">
             <input data-default="1" id="page" type="hidden" name="searching[page]" <?php if(isset($app->queries->page)){ echo 'value="'.$app->queries->page.'"';} ?> />
         </div>
     </div>
 
     <div class="searching-container hidden">
         <label for="sort">Sort Order</label>
-        <div class="searching-box">
+        <div class="search-box-wrapper">
             <input data-default="last_active" id="sort" type="hidden" name="searching[sort]" value="<?php if(isset($app->queries->sort)){ echo $app->queries->sort; } ?>" />
         </div>
     </div>
@@ -125,7 +127,7 @@
             </button>
     	</div>
     	<div class="col s6 m6 l6">
-    		<button class="btn form-reset grey" type="button">Reset Form</button>
+    		<button class="btn " type="button">Reset Form</button>
     	</div>
     </div>
 

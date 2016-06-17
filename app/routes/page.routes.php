@@ -164,6 +164,8 @@
 	$routes['account-settings'] = (object)array('url'=>'/account-settings','slug'=>'account-settings','route'=>'/account-settings/','include'=>'account-settings','protected'=>true,'permissions'=>array());
 
 	// How It Works
+	$routes['how-it-works-faqs'] = (object)array('url'=>'/how-it-works/faqs','slug'=>'faqs','route'=>'/how-it-works/faqs/','include'=>'how-it-works/faqs','protected'=>NULL,'permissions'=>array());
+	$routes['how-it-works-faqs-url'] = (object)array('url'=>'/how-it-works/faqs','slug'=>'faqs','route'=>'/how-it-works/faqs/:url/','include'=>'how-it-works/faqs','protected'=>NULL,'permissions'=>array());
 	$routes['how-it-works'] = (object)array('url'=>'/how-it-works','slug'=>'how-it-works','route'=>'/how-it-works/','include'=>'how-it-works','protected'=>NULL,'permissions'=>array());
 	$routes['a-message-from-our-ceo'] = (object)array('url'=>'/how-it-works/a-message-from-our-ceo','slug'=>'a-message-from-our-ceo','route'=>'/how-it-works/a-message-from-our-ceo/','include'=>'how-it-works/a-message-from-our-ceo','protected'=>NULL,'permissions'=>array());
 	$routes['how-it-works-students'] = (object)array('url'=>'/how-it-works/students','slug'=>'students','route'=>'/how-it-works/students/','include'=>'how-it-works/students','protected'=>NULL,'permissions'=>array());
@@ -176,8 +178,6 @@
 	if(SITENAME=='amozek'){
 		$routes['what-is-amozek'] = (object)array('url'=>'/help/what-is-amozek','slug'=>'what-is-amozek','route'=>'/help/what-is-amozek/','include'=>'help/what-is-amozek','protected'=>NULL,'permissions'=>array());
 	}
-	$routes['help-faqs'] = (object)array('url'=>'/help/faqs','slug'=>'faqs','route'=>'/help/faqs/','include'=>'help/faqs','protected'=>NULL,'permissions'=>array());
-	$routes['help-faqs-type'] = (object)array('url'=>'/help/faqs','slug'=>'faqs','route'=>'/help/faqs/:type/','include'=>'help/faqs','protected'=>NULL,'permissions'=>array());
 	//$routes['help-how-to-videos'] = (object)array('url'=>'/help/how-to-videos','slug'=>'how-to-videos','route'=>'/help/how-to-videos/','include'=>'help/how-to-videos','protected'=>NULL,'permissions'=>array());
 	$routes['help-forgot-password'] = (object)array('url'=>'/help/forgot-password','slug'=>'forgot-password','route'=>'/help/forgot-password/','include'=>'help/forgot-password','protected'=>NULL,'permissions'=>array());
 	$routes['help-forgot-password-recovery'] = (object)array('url'=>'/help/forgot-password/recovery','slug'=>'recovery','route'=>'/help/forgot-password/recovery/:validationcode/','include'=>'help/forgot-password/recovery','protected'=>NULL,'permissions'=>array());

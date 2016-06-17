@@ -1,5 +1,5 @@
 <?php
-	
+
 	$app->meta = new stdClass();
 	$app->meta->title = SITENAME_PROPPER.' Help';
 	$app->meta->keywords = 'get help with '.SITENAME_PROPPER;
@@ -11,9 +11,9 @@
 		}
 		elseif($app->user->usertype=='student'){
 			$app->redirect('/help/faqs/tutors');
-			
+
 		}
 	}
 	else{
-		$app->redirect('/help/faqs');		
+		$app->redirect('/help/faqs');
 	}

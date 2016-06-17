@@ -9,6 +9,29 @@
 	<meta name="author" content="<?php echo SITENAME_PROPPER; ?> inc." />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 	<link rel="icon" type="image/png" href="/images/favicon.ico" />
+  <link href='https://fonts.googleapis.com/css?family=Overlock+SC' rel='stylesheet' type='text/css'>
+
+	<?php if(DEBUG==false): ?>
+
+	  <script src="//static.getclicky.com/js" type="text/javascript"></script>
+		<script type="text/javascript">try{ clicky.init(100955063); }catch(e){}</script>
+		<noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100955063ns.gif" /></p></noscript>
+
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-77842513-2', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
+
+	<?php endif; ?>
+
+
+
 
 	<?php
 
@@ -17,7 +40,7 @@
 		echo '<link rel="stylesheet" href="'.$cdncss.'">'."\n";
 	}
 
-	if(isset($app->minify)){
+	if($app->minify){
 		echo "\t".'<link rel="stylesheet" href="/css/final.'.VERSION.'.css">'."\n";
 	}
 	else{
@@ -52,27 +75,55 @@
 
 
 <!-- START -->
-<body class="body <?php if(isset($app->secondary) && file_exists($app->secondary)){ echo 'sub-active';} if(isset($app->user->email)){ echo ' active-user ';} echo ' page--'.str_replace('-','',$app->target->css).' '; ?>">
-<sidebar>
+<body class="body <?php if(isset($app->secondary) && file_exists($app->secondary))
+			{ echo 'sub-active';} if(isset($app->user->email)){ echo ' active-user ';
+			} echo ' page--'.str_replace('-','',$app->target->css).' '; ?>">
 
-	<div class="logo">
-		<a href="/">MindSpree</a>
+<header class="itstheheader">
+
+	<div class="logo logo-main left">
+		<a href="/"><img src="/images/MindSpreeLogo.png" style="padding-top:10px;"/></a>
 	</div>
 
+	<div class="right activate-menu" data-status="closed">
+		<i class="fa fa-bars"></i>  <?php if(isset($app->messsesscount)){ echo '<i class="fa fa-circle menu-new"></i>'; } ?>
+	</div>
+	<div class="right-info">
+
+		<ul class="header-nav">
+			<?php foreach($app->headerNavigation as $key=> $navitem): ?>
+			<li class='otherMenuItems hide-on-small-only'>
+				<a class="<?php if(myrootisyourroot($app->request->getPath(),$key)){ echo ' active ';} if(isset($navitem->class)){ echo $navitem->class; } ?>" href="<?php echo $key; ?>">
+					<?php echo $navitem->name; ?>
+				</a>
+			</li>
+			<?php endforeach; ?>
+			<?php if(isset($app->user->email)): ?>
+				<li>
+				<?php include('user-dropdown.wild.php'); ?>
+			</li>
+			<?php endif; ?>
+		</ul>
+
+
+	</div>
+
+
+	<?php if(isset($app->notifications)): ?>
+	<notifications class="<?php echo $app->notifications->status; ?>">
+		<?php echo $app->notifications->message; ?>
+	</notifications>
+	<?php endif; ?>
+
+</header>
+
+<sidebar>
 	<div class="sidebar-status">
 
 		<?php if(isset($app->user->email)): ?>
 			<!-- Something Here -->
 		<?php else: ?>
-		<a class="sidebar-signup" href="/signup">Signup</a>
-		<div class="row">
-			<div class="col s6 m6 l6">
-				<div class="sidebar-close"><i class="fa fa-times"></i></div>
-			</div>
-			<div class="col s6 m6 l6 right-align">
-				<div class="sidebar-login"><a href="/login">LOG IN</a></div>
-			</div>
-		</div>
+
 		<?php endif; ?>
 
 	</div>
@@ -86,65 +137,11 @@
 			</a>
 		</li>
 		<?php endforeach; ?>
-	</ul>
-	<?php endif; ?>
-
-	<?php if(isset($app->leftnavsubs)): ?>
-	<ul class="sidebar-subs">
-		<?php foreach($app->leftnavsubs as $key=> $navitem): ?>
-		<li>
-			<a class="<?php if(myrootisyourroot($app->request->getPath(),$key)){ echo ' active ';} if(isset($navitem->class)){ echo $navitem->class; } ?>" href="<?php echo $key; ?>">
-				<?php echo $navitem->name; ?>
-			</a>
-		</li>
-		<?php endforeach; ?>
-	</ul>
+		</ul>
 	<?php endif; ?>
 
 
 </sidebar>
-<header class="itstheheader">
-
-	<div class="left">
-		<div class="left activate-menu" data-status="closed">
-			<i class="fa fa-bars"></i> <span>Menu</span> <?php if(isset($app->messsesscount)){ echo '<i class="fa fa-circle menu-new"></i>'; } ?>
-		</div>
-
-	</div>
-
-	<div class="logo logo-main">
-		<a href="/"><img src="/images/MindSpreeLogo.png" style="padding-top:10px;"/></a>
-	</div>
-
-	<div class="right-info">
-		<?php if(isset($app->user->email)): ?>
-			<?php include('user-dropdown.wild.php'); ?>
-		<?php else: ?>
-		<ul class="header-nav">
-			<?php
-				$links = array();
-				$links[] = (object)array('text'=>'Log In','link'=>'#loginModule','class'=>'modal-trigger');
-				$links[] = (object)array('text'=>'Signup','link'=>'/signup','class'=>'signup-link');
-				$links[] = (object)array('text'=>'Help','link'=>'/help','class'=>NULL);
-			?>
-			<?php foreach($links as $link): ?>
-			<li <?php if($app->request->getPath()==$link->link){ echo 'class="active"';} ?>>
-				<a class="<?php echo $link->class; ?>" href="<?php echo $link->link; ?>"><?php echo $link->text; ?></a>
-			</li>
-			<?php endforeach; ?>
-		</ul>
-		<?php endif; ?>
-	</div>
-
-
-	<?php if(isset($app->notifications)): ?>
-	<notifications class="<?php echo $app->notifications->status; ?>">
-		<?php echo $app->notifications->message; ?>
-	</notifications>
-	<?php endif; ?>
-
-</header>
-
 <?php if(isset($app->howitworks)){ include(APP_PATH.'includes/how-it-works/how-it-works.php'); } ?>
 <main>
 	<?php
@@ -216,7 +213,6 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col s12 m3 l3">
-				<h5 class="white-text">Important Things</h5>
 				<div class="qa-location" data-attr="<?php echo socialQa; ?>"></div>
 				<?php if(isset($app->footerlinks)): ?>
 				<ul class="footer-li">
@@ -231,7 +227,7 @@
 				<?php endif; ?>
 			</div>
 			<div class="col s12 m3 l3">
-				<h5 class="white-text">Find Out More</h5>
+				<!-- <h5 class="white-text">Find Out More</h5> -->
 				<?php if(isset($app->leftnav)): ?>
 				<ul class="footer-li">
 					<?php foreach($app->leftnav as $key=> $navitem): ?>
@@ -309,34 +305,9 @@ endif;
 		include($page = APP_PATH.'includes/shared-pages/setup-instructions.'.$app->user->usertype.'.php');
 	}
 ?>
-<?php if(DEBUG==false): ?>
-
-  <script src="//static.getclicky.com/js" type="text/javascript"></script>
-	<script type="text/javascript">try{ clicky.init(100955063); }catch(e){}</script>
-	<noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100955063ns.gif" /></p></noscript>
 
 
 
-<script src="https://static.getclicky.com/js" type="text/javascript"></script>
-<script type="text/javascript">try{ clicky.init(100807251); }catch(e){}</script>
-<noscript><p><img alt="Clicky" width="1" height="1" src="https://in.getclicky.com/100807251ns.gif" /></p></noscript>
-
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-77842513-2', 'auto');
-  ga('send', 'pageview');
-
-</script>
-
-
-
-
-
-<?php endif; ?>
 <?php if(DEBUG==false): ?><noscript><link rel="stylesheet" href="/css/scripts-required.css"><div class="js-required">Javascript Is Required. Please Enable.</div></noscript><?php endif; ?>
 <?php
 	unset($_SESSION['slim.flash']['error']);

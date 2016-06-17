@@ -51,7 +51,11 @@
 					<?php //printer($subjects); ?>
 
 					<?php if(isset($searchResults->short_description_verified)): ?>
-						<div class="short-description"><?php echo $searchResults->short_description_verified; ?></div>
+						<div class="short-description">
+								<a href="<?php echo $searchResults->url; ?>">
+										<?php echo $searchResults->short_description_verified; ?>
+								</a>
+						</div>
 					<?php endif; ?>
 					<?php if(isset($searchResults->personal_statement_verified)): ?>
 						<div class="personal-statement"><?php echo truncate($searchResults->personal_statement_verified,300); ?></div>
@@ -76,8 +80,8 @@
 					<?php if(isset($app->user->email) && $app->user->email == $searchResults->email): ?>
 						<div class="view-profile"><a class="btn orange btn-block" href="<?php echo $searchResults->url; ?>">Edit Your Profile</a></div>
 					<?php else: ?>
-						<div class="view-profile"><a class="btn btn-block" href="<?php echo $searchResults->url; ?>">View Profile</a></div>
-						<div class="view-profile"><a class="btn btn-block blue" href="<?php echo $searchResults->url; ?>/send-message">Send Message</a></div>
+						<!-- <div class="view-profile"><a class="btn btn-block" href="<?php echo $searchResults->url; ?>">View Profile</a></div> -->
+						<div class="view-profile"><a class="btn btn-block" href="<?php echo $searchResults->url; ?>/send-message">Send Message</a></div>
 					<?php endif; ?>
 				</div>
 			</div>

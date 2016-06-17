@@ -8,7 +8,6 @@ html {
 body {
   color: #606c76;
   font-family: 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
-  font-size: 1.6em;
   font-weight: 300;
   letter-spacing: .01em;
   line-height: 1.6; }
@@ -436,7 +435,9 @@ h5,
 h6 {
   font-weight: 300;
   margin-bottom: 2rem;
-  margin-top: 0; }
+  margin-top: 0;
+
+}
 
 h1 {
   font-size: 4rem;
@@ -664,5 +665,3 @@ pre strong {
 pre.handle-errors strong {
   color: #33D000;
   text-transform: capitalize; }
-
-/*# sourceMappingURL=avidbrain.css.map */

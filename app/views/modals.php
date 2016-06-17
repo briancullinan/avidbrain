@@ -303,7 +303,7 @@
 					<select id="anotheragency" class="browser-default" name="adminmodule[anotheragency]">
 
 						<option <?php if($app->currentuser->anotheragency==1){ echo 'selected="selected"';} ?> value="1">Yes</option>
-						<option <?php if(empty($app->currentuser->anotheragency)){ echo 'selected="selected"';} ?> value="">No</option>
+						<option <?php if(empty($app->currentuser->anotheragency)){ echo 'selected="selected"';} ?> value="0">No</option>
 
 					</select>
 				</div>

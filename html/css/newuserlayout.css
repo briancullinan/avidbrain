@@ -1,7 +1,7 @@
 
 .my-tagline{
     text-align: center;
-    font-family: 'Quicksand';
+	  font-family: 'Overlock SC', cursive;
     font-weight: 800;
     font-size: 30px;
     left:0;
@@ -148,6 +148,7 @@
 
 .viewuserviewuser .itstheheader{
     position: relative;
+    opacity: 100%;
 }
 .viewuserviewuser h1{
     padding: 10px 15px;

@@ -5,7 +5,7 @@
 	</div>
 
 	<div class="description">
-		MindSpree started as an idea in 2013 when Keith Rezendes and David Glaeseman noticed that the current state of the tutoring industry was not fulfilling the needs of many. As a veteran in the tutoring industry Co-Founder Keith Rezendes could clearly see how he could design a place where students could receive the highest quality tutors for the best value. MindSpree is this type of place! By utilizing the sharing economy, MindSpree can utilize tutors across the United States to share their knowledge and expertise with students who are eager to learn. 
+		MindSpree started as an idea in 2013 when Keith Rezendes and David Glaeseman noticed that the current state of the tutoring industry was not fulfilling the needs of many. As a veteran in the tutoring industry Co-Founder Keith Rezendes could clearly see how he could design a place where students could receive the highest quality tutors for the best value. MindSpree is this type of place! By utilizing the sharing economy, MindSpree can utilize tutors across the United States to share their knowledge and expertise with students who are eager to learn.
 	</div>
 
 </div>
@@ -125,7 +125,7 @@
 	<div class="title">
 		Looking for More Info?
 	</div>
-
+<!-- 
 	<ul class="collapsible collapse" data-collapsible="expandable">
 		<li>
 			<div class="collapsible-header blue-text"> <span class="fa fa-chevron-right"></span> Learn More </div>
@@ -154,6 +154,6 @@
 
 			</div>
 		</li>
-	</ul>
+	</ul> -->
 
 </div>

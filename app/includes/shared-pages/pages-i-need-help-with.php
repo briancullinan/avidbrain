@@ -77,7 +77,7 @@
 
 			<p></p>
 			<div class="form-submit">
-				<button class="btn blue" type="submit">
+				<button class="btn " type="submit">
 					Post Job
 				</button>
 			</div>
@@ -106,23 +106,23 @@
 
 				<div class="col s12 m8 l8">
 
-					<div><?php echo formatdate($myjobs->date); ?></div>
+					<div>Posted On:<strong><?php echo formatdate($myjobs->date); ?></strong></div>
 
 					<?php if(isset($myjobs->type)): ?>
 					<div>
-						I'm looking for <strong><?php echo strtolower(online_tutor($myjobs->type)); ?></strong> tutoring
+						Tutoring Type: <strong><?php echo strtolower(online_tutor($myjobs->type)); ?></strong>
 					</div>
 					<?php endif; ?>
 
 					<?php if(isset($myjobs->skill_level)): ?>
 					<div>
-						My Skill Level: <?php echo $myjobs->skill_level; ?>
+						My Skill Level:<strong> <?php echo $myjobs->skill_level; ?> <strong>
 					</div>
 					<?php endif; ?>
 
 					<?php if(isset($myjobs->price_range_low)): ?>
 					<div>
-						My Price Range: <strong class="green-text">$<?php echo $myjobs->price_range_low; ?> - $<?php echo $myjobs->price_range_high; ?></strong>
+						My Price Range: <strong>$<?php echo $myjobs->price_range_low; ?> - $<?php echo $myjobs->price_range_high; ?></strong>
 					</div>
 					<?php endif; ?>
 
@@ -130,9 +130,9 @@
 
 				<div class="col s12 m4 l4 right-align">
 					<?php if(isset($app->currentuser->thisisme)): ?>
-					<a class="btn orange blue" href="/jobs/manage/<?php echo $myjobs->id; ?>">Edit Tutor Request</a>
+					<a class="btn" href="/jobs/manage/<?php echo $myjobs->id; ?>">Edit Tutor Request</a>
 					<?php else: ?>
-					<a class="btn blue" href="/jobs/apply/<?php echo $myjobs->id; ?>">Apply To Job</a>
+					<a class="btn " href="/jobs/apply/<?php echo $myjobs->id; ?>">Apply To Job</a>
 					<?php endif; ?>
 				</div>
 

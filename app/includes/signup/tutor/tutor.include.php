@@ -40,7 +40,7 @@
 
 					<div class="row">
 						<div class="col s12 m4 l4">
-							<div class="center-align"><img src="/images/icons/choose.png" class="responsive-img" /></div>
+							<div class="center-align"><img src="/images/icons/books.png" class="responsive-img" /></div>
 						</div>
 						<div class="col s12 m8 l8">
 							<div class="page-title">
@@ -54,7 +54,7 @@
 
 					<div class="row">
 						<div class="col s12 m4 l4">
-							<div class="center-align"><img src="/images/icons/convenient.png" class="responsive-img" /></div>
+							<div class="center-align"><img src="/images/icons/calendar.png" class="responsive-img" /></div>
 						</div>
 						<div class="col s12 m8 l8">
 							<div class="page-title">
@@ -71,9 +71,10 @@
 				<div class="blocks">
 					<div class="row">
 						<div class="col s12 m4 l4">
-							<div class="center-align"><img src="/images/icons/money.png" class="responsive-img" /></div>
+							<div class="center-align"><img src="/images/icons/Money2.png" class="responsive-img" /></div>
 						</div>
 						<div class="col s12 m8 l8">
+							<br/>
 							<div class="page-title">
 								Make Extra Money
 							</div>
@@ -85,7 +86,7 @@
 
 					<div class="row">
 						<div class="col s12 m4 l4">
-							<div class="center-align"><img src="/images/icons/choose.png" class="responsive-img" /></div>
+							<div class="center-align"><img src="/images/icons/books.png" class="responsive-img" /></div>
 						</div>
 						<div class="col s12 m8 l8">
 							<div class="page-title">
@@ -99,7 +100,7 @@
 
 					<div class="row">
 						<div class="col s12 m4 l4">
-							<div class="center-align"><img src="/images/icons/time.png" class="responsive-img" /></div>
+							<div class="center-align"><img src="/images/icons/calendar.png" class="responsive-img" /></div>
 						</div>
 						<div class="col s12 m8 l8">
 							<div class="page-title">
@@ -113,9 +114,10 @@
 
 					<div class="row see-how-much">
 						<div class="col s12 m4 l4">
-							<div class="center-align"><img src="/images/icons/see.png" class="responsive-img" /></div>
+							<div class="center-align"><img src="/images/icons/money3.png" class="responsive-img" /></div>
 						</div>
 						<div class="col s12 m8 l8">
+							<br/>
 							<div class="page-title">
 								See How Much You Can Make
 							</div>
@@ -142,7 +144,7 @@
 
 		</div>
 		<div class="col s12 m6 l4">
-			<div class="complete-signup" data-status="closed">
+			<!-- <div class="complete-signup" data-status="closed">
 				<span>Complete Signup Process <i class="fa fa-sign-in"></i> </span>
 			</div>
 			<div class="complete-signup-form">
@@ -177,7 +179,7 @@
 					<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
 
 				</form>
-			</div>
+			</div> -->
 			<div class="block tutor-block">
 
 				<form class="form-post" action="/signup/tutor" method="post" id="tutorsignup">
@@ -346,48 +348,62 @@
 
 			</div>
 
-			<h3>Tutor Benefits</h3>
+			<h3>As a Tutor You Will...</h3>
 			<ul class="collection">
 
 				<li class="collection-item">
 					<div class="row">
-						<div class="col s1 m1 l1"><i class="fa fa-check light-green-text accent-2-text"></i></div>
+						<div class="col s1 m1 l1">
+							<i class="material-icons  turquoise-text ">play_arrow</i>
+						</div>
 						<div class="col s11 m11 l11"> Choose your rate </div>
 					</div>
 				</li>
 				<li class="collection-item">
 					<div class="row">
-						<div class="col s1 m1 l1"><i class="fa fa-check light-green-text accent-2-text"></i></div>
+						<div class="col s1 m1 l1">
+							<i class="material-icons  turquoise-text ">play_arrow</i>
+						</div>
 						<div class="col s11 m11 l11"> Choose your hours </div>
 					</div>
 				</li>
 				<li class="collection-item">
 					<div class="row">
-						<div class="col s1 m1 l1"><i class="fa fa-check light-green-text accent-2-text"></i></div>
+						<div class="col s1 m1 l1">
+							<i class="material-icons  turquoise-text ">play_arrow</i>
+						</div>
 						<div class="col s11 m11 l11"> Choose your clients </div>
 					</div>
 				</li>
 				<li class="collection-item">
 					<div class="row">
-						<div class="col s1 m1 l1"><i class="fa fa-check light-green-text accent-2-text"></i></div>
+						<div class="col s1 m1 l1">
+							<i class="material-icons  turquoise-text ">play_arrow</i>
+						</div>
 						<div class="col s11 m11 l11"> Work remotely or in person </div>
 					</div>
 				</li>
 				<li class="collection-item">
 					<div class="row">
-						<div class="col s1 m1 l1"><i class="fa fa-check light-green-text accent-2-text"></i></div>
+						<div class="col s1 m1 l1">
+							<i class="material-icons  turquoise-text ">play_arrow</i>
+						</div>
 						<div class="col s11 m11 l11"> Access to teaching resources </div>
 					</div>
 				</li>
 				<li class="collection-item">
 					<div class="row">
-						<div class="col s1 m1 l1"><i class="fa fa-check light-green-text accent-2-text"></i></div>
+						<div class="col s1 m1 l1">
+							<i class="material-icons  turquoise-text ">play_arrow</i>
+						</div>
 						<div class="col s11 m11 l11"> Network with other tutors </div>
 					</div>
 				</li>
 				<li class="collection-item">
 					<div class="row">
-						<div class="col s1 m1 l1"><i class="fa fa-check light-green-text accent-2-text"></i></div>
+						<div class="col s1 m1 l1">
+							<i class="material-icons  turquoise-text ">play_arrow</i>
+						</div>
 						<div class="col s11 m11 l11"> <strong>Highest pay percentage in the industry!</strong> </div>
 					</div>
 				</li>
@@ -395,41 +411,25 @@
 			</ul>
 
 			<div class="application-process">
-				<h3>Application Process</h3>
-				<ul class="collection">
-
+				<h3>The Application Process</h3>
+				<ol class="collection">
 					<li class="collection-item">
-						<div class="row">
-							<div class="col s1 m1 l1"><i class="fa fa-check light-green-text accent-2-text"></i></div>
-							<div class="col s11 m11 l11"> Submit your application and resume </div>
-						</div>
+								Submit your application and resume
 					</li>
 					<li class="collection-item">
-						<div class="row">
-							<div class="col s1 m1 l1"><i class="fa fa-check light-green-text accent-2-text"></i></div>
-							<div class="col s11 m11 l11"> Schedule a phone interview with one of our staff members </div>
-						</div>
+						 Schedule a phone interview with one of our staff members
 					</li>
 					<li class="collection-item">
-						<div class="row">
-							<div class="col s1 m1 l1"><i class="fa fa-check light-green-text accent-2-text"></i></div>
-							<div class="col s11 m11 l11"> Mandatory Background Check <span class="green-text">($29.99)</span> </div>
-						</div>
+						 Mandatory Background Check <span class="green-text">($29.99)</span>
 					</li>
 					<li class="collection-item">
-						<div class="row">
-							<div class="col s1 m1 l1"><i class="fa fa-check light-green-text accent-2-text"></i></div>
-							<div class="col s11 m11 l11"> Profile Creation </div>
-						</div>
+ 								Create a Profile
 					</li>
 					<li class="collection-item">
-						<div class="row">
-							<div class="col s1 m1 l1"><i class="fa fa-check light-green-text accent-2-text"></i></div>
-							<div class="col s11 m11 l11"> Start Tutoring </div>
-						</div>
+						 Start Tutoring
 					</li>
 
-				</ul>
+				</ol>
 			</div>
 
 		</div>

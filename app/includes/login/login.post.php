@@ -27,7 +27,7 @@
 
 			    $app->connect->update('avid___new_temps',array('token'=>$token),array('email'=>$temps->email));
 
-			    new Flash(array('action'=>'jump-to','formID'=>'signuplogin','location'=>'/signup/tutor','message'=>'You are now logged in'));
+			    new Flash(array('action'=>'jump-to','formID'=>'signuplogin','location'=>'/','message'=>'You are now logged in'));
 			}
 			else{
 			    new Flash(array('action'=>'required','message'=>'Invalid Password','formID'=>'signuplogin','field'=>'li_password'));
@@ -95,7 +95,8 @@
 			$prepeare = array(':email'=>$app->login->email,':last_active'=>thedate());
 			$app->connect->executeQuery($sql,$prepeare);
 
-			new Flash(array('action'=>'login','formID'=>'loginModule','message'=>'You are now logged in'));
+			new Flash(array('action'=>'jump-to','location'=>'/','formID'=>'loginModule','message'=>'You are now logged in'));
+
 
 		}
 		else{

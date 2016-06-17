@@ -66,7 +66,7 @@
 						<br>Please complete your <a href="/background-check" class="green-text">background check</a>, to view this message.
 					<?php else: ?>
 					<div class="message-view-full">
-						<a class="blue white-text" href="/messages/view-message/<?php echo $message->id; ?>">View Full Message</a>
+						<a class="btn " href="/messages/view-message/<?php echo $message->id; ?>">View Full Message</a>
 					</div>
 					<?php endif; ?>
 				</div>

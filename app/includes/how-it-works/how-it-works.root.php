@@ -5,6 +5,7 @@
 	}
 
 	$childen = array();
+	$childen['FAQs'] = (object) array('name'=>'FAQs','slug'=>'/how-it-works/faqs');
 	$childen['students'] = (object) array('name'=>'Students','slug'=>'/how-it-works/students');
 	$childen['tutors'] = (object) array('name'=>'Tutors','slug'=>'/how-it-works/tutors');
 	$childen['organizations'] = (object) array('name'=>'Organizations','slug'=>'/how-it-works/organizations');
@@ -24,6 +25,6 @@
 	$prepeare = array(':url'=>'lookingformore');
 	$app->lookingformore = $app->connect->executeQuery($sql,$prepeare)->fetchAll();
 
-	$app->target->include = $app->target->base.'how-it-works.template.php';
+//	$app->target->include = $app->target->base.'how-it-works.template.php';
 
 //	printer($app->target->include,1);

@@ -1,11 +1,10 @@
 <div class="row">
-	<div class="col s12 m6 l6">
-		<p>Need more help? Find a bug? Fill out our contact us form and we will get back to as soon as possible.</p>
+	<div class="col s12 m12 l6">
+		<p>Need more help? Fill out our contact us form and we will get back to as soon as possible.</p>
 
 		<?php //<p>Need immediate help? <br> Call us Monday - Friday 8am - 6pm at <a href="tel:1-800-485-3138">1-800-485-3138</a></p> ?>
 
-	</div>
-	<div class="col s12 m6 l6">
+
 		<?php
 			$variablename = new Forms($app->connect);
 			$variablename->formname = 'contactus';
@@ -20,5 +19,8 @@
 			$variablename->csrf_token = $csrf_token;
 			$variablename->makeform();
 		?>
+	</div>
+	<div class="col s12 m6 l6">
+
 	</div>
 </div>

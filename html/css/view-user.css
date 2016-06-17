@@ -438,7 +438,9 @@ badge.badge-mad-scientist a i{
 
 .tutor-results{
 	position: relative;
-	background: #dfdfdf;
+	/*background: #dfdfdf;*/
+	/*background: #CEF6CE;*/
+
 	border: solid 1px #ccc;
 	float: left;
 	width: 100%;
@@ -914,15 +916,14 @@ input.reset-input.hourly_rate{
 	display: block;
 	text-align: center;
 }
+
 .user-photograph img{
-	background: #ccc;
-	border: solid 4px #fff;
+	border: solid 4px #000;
 	max-height: 500px;
 	max-width: 100%;
-	-moz-box-shadow: 0 0 10px #000;
-	-webkit-box-shadow: 0 0 10px #000;
-	box-shadow: 0 0 10px #999;
+	border-radius: 50%;
 }
+
 .user-photograph img.the-avatar{
 	border: none;
 }

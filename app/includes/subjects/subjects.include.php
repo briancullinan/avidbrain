@@ -1,9 +1,16 @@
 <div class="row">
 	<div class="col s12 m2 l2">
-		<div class="block block-list">
-			<?php foreach($app->subjectslinks as $key=> $link): ?>
-			<a <?php if(isset($page) && $page==$key){ echo 'class="active"';} ?> href="/subjects/<?php echo $key; ?>"><?php echo $link; ?></a>
+		<div class="left-navigation">
+			<div class="sub-navigation-title">
+					<a	href="/subjects">Subjects</a>
+			</div>
+			<ul class="sub-navigation" >
+				<?php foreach($app->subjectslinks as $key=> $link): ?>
+				<li>
+					<a <?php if(isset($page) && $page==$key){ echo 'class="active"';} ?> href="/subjects/<?php echo $key; ?>"><?php echo $link; ?></a>
+				</li>
 			<?php endforeach; ?>
+		 </ul>
 		</div>
 	</div>
 	<div class="col s12 m10 l10">

@@ -44,7 +44,7 @@
 
 		$notications = new stdClass();
 		$notications->status = 'urgent';
-		$notications->message = '<a class="btn black btn-s" href="/request-profile-review">Request Profile Review</a>';
+		$notications->message = '<a class="btn btn-s" href="/request-profile-review">Request Profile Review</a>';
 		$app->notifications = $notications;
 
 	}
@@ -92,41 +92,47 @@
 		}
 	}
 
-	$navigationsubs = array();
-	$navigationsubs['/terms-of-use'] = (object) array('name'=>'Terms of Service');
-	$navigationsubs['/help/contact'] = (object) array('name'=>'Contact Us');
-	//$navigationsubs['/about-us'] = (object) array('name'=>'About Us');
-	#$navigationsubs['/xxx'] = (object) array('name'=>'xxx');
-	#$navigationsubs['/xxx'] = (object) array('name'=>'xxx');
-	#$navigationsubs['/xxx'] = (object) array('name'=>'xxx');
+	$sidebarNavigationsubs = array();
+	$sidebarNavigationsubs['/terms-of-use'] = (object) array('name'=>'Terms of Service');
+	$sidebarNavigationsubs['/help/contact'] = (object) array('name'=>'Contact Us');
+	//$sidebarNavigationsubs['/about-us'] = (object) array('name'=>'About Us');
+	#$sidebarNavigationsubs['/xxx'] = (object) array('name'=>'xxx');
+	#$sidebarNavigationsubs['/xxx'] = (object) array('name'=>'xxx');
+	#$sidebarNavigationsubs['/xxx'] = (object) array('name'=>'xxx');
 
+  $headerNavigation = array();
 
-
-	$navigation = array();
-	$navigation['/'] = (object) array('name'=>'<i class="fa fa-home"></i> Home');
+	$sidebarNavigation = array();
+	$sidebarNavigation['/'] = (object) array('name'=>'<i class="fa fa-home"></i> Home');
 
 	if(isset($app->user->usertype) && $app->user->usertype=='tutor'){
-		$navigation['/tutors'] = (object) array('name'=>'Tutors');
-		$navigation['/jobs'] = (object) array('name'=>'Tutoring Jobs');
+ // $sidebarNavigation['/tutors'] = (object) array('name'=>'Tutors');
+		$sidebarNavigation['/jobs'] = (object) array('name'=>'Gigs');
+		$sidebarNavigation['/students'] = (object) array('name'=>'Students');
+		$headerNavigation['/jobs'] = (object) array('name'=>'Gigs');
+		$headerNavigation['/students'] = (object) array('name'=>'Students');
 	}
 	elseif(isset($app->user->usertype) && $app->user->usertype=='student'){
-		$navigation['/tutors'] = (object) array('name'=>'Find A Tutor');
-		$navigation['/jobs'] = (object) array('name'=>'Request A Tutor');
+		$sidebarNavigation['/tutors'] = (object) array('name'=>'Find A Tutor');
+		$headerNavigation['/tutors'] = (object) array('name'=>'Find A Tutor');
+//		$sidebarNavigation['/jobs'] = (object) array('name'=>'Request A Tutor');
 	}
 	else{
-		$navigation['/tutors'] = (object) array('name'=>'Tutors');
-		$navigation['/jobs'] = (object) array('name'=>'Jobs');
+		$sidebarNavigation['/tutors'] = (object) array('name'=>'Tutors');
+		$sidebarNavigation['/jobs'] = (object) array('name'=>'Gigs');
+		$sidebarNavigation['/login'] = (object)array('name'=>'Log In','class'=>'modal-trigger');
+		$sidebarNavigation['/signup'] = (object)array('name'=>'Signup','class'=>'');
+
+		$headerNavigation['/login'] = (object)array('name'=>'Log In','class'=>'modal-trigger');
+		$headerNavigation['/signup'] = (object)array('name'=>'Signup','class'=>'btn signup-link');
+
+
+
+		$headerNavigation['/how-it-works/faqs'] = (object)array('name'=>'FAQs','class'=>NULL);
+
 	}
 
-
-	if(isset($app->user->email)){
-		$navigation['/students'] = (object) array('name'=>'Students');
-	}
-
-	if(empty($app->user->email)){
-	}
-	else{
-
+	if(!empty($app->user->email)){
 
 		$countnewmessages = countnewmessages($app->connect,$app->user->email);
 		if(isset($countnewmessages)){
@@ -137,18 +143,21 @@
 			$app->messsesscount = 1;
 		}
 
-		$navigation['/messages'] = (object) array('name'=>'Messages '.$countnewmessages);
-		$navigation['/sessions'] = (object) array('name'=>'Sessions '.$countpendingsessions);
+		$sidebarNavigation['/messages'] = (object) array('name'=>'Messages '.$countnewmessages);
+		$sidebarNavigation['/sessions'] = (object) array('name'=>'Sessions '.$countpendingsessions);
+		$headerNavigation['/messages'] = (object) array('name'=>'Messages '.$countnewmessages);
+		$headerNavigation['/sessions'] = (object) array('name'=>'Sessions '.$countpendingsessions);
+
 	}
 
-	$navigation['/help'] = (object) array('name'=>'Help');
+	$sidebarNavigation['/how-it-works/faqs'] = (object) array('name'=>'FAQs');
 	if(isset($app->enableaffiliates)){
-		$navigation['/affiliates'] = (object) array('name'=>'Affiliate Program');
+	//	$sidebarNavigation['/affiliates'] = (object) array('name'=>'Affiliate Program');
 	}
-	$navigation['/ab-qa'] = (object) array('name'=>'Q&A Forum','class'=>'qa-link');
-	$navigation['/how-it-works'] = (object) array('name'=>'How It Works');
+	//$sidebarNavigation['/ab-qa'] = (object) array('name'=>'Q&A Forum','class'=>'qa-link');
+	//$sidebarNavigation['/how-it-works'] = (object) array('name'=>'How It Works');
 	if(isset($app->user->email)){
-		$navigation['/resources'] = (object) array('name'=>'Resources');
+	//	$sidebarNavigation['/resources'] = (object) array('name'=>'Resources');
 	}
 
 
@@ -158,7 +167,7 @@
 	#	$footerlinks[$qalink] = (object) array('name'=>'Questions & Answers');
 	}
 	elseif(isset($app->user->email) && isset($app->user->status)){
-		$qalink = '/resources/questions-and-answers';
+	//	$qalink = '/resources/questions-and-answers';
 	#	$footerlinks[$qalink] = (object) array('name'=>'Questions & Answers');
 	}
 	else{
@@ -169,7 +178,7 @@
 	$footerlinks['/help/contact'] = (object) array('name'=>'Contact Us');
 	$footerlinks['/staff'] = (object) array('name'=>'Our Staff');
 	$footerlinks['/tutors-by-location'] = (object) array('name'=>'Tutors By Location');
-	$footerlinks['/attributions'] = (object) array('name'=>'Attributions');
+	// $footerlinks['/attributions'] = (object) array('name'=>'Attributions');
 	$footerlinks['/partners'] = (object) array('name'=>'Partners');
 	//$footerlinks['/signup/affiliate'] = (object) array('name'=>'Affiliates');
 	$footerlinks['/sitemap'] = (object) array('name'=>'Sitemap');
@@ -179,6 +188,8 @@
 
 	$app->footerlinks = $footerlinks;
 
-	$app->leftnav = $navigation;
+	$app->leftnav = $sidebarNavigation;
 
-	$app->leftnavsubs = $navigationsubs;
+	$app->leftnavsubs = $sidebarNavigationsubs;
+
+	$app->headerNavigation = $headerNavigation;

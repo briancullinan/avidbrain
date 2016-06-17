@@ -19,12 +19,12 @@
 						</div>
 
 						<?php if(isset($app->childen)): ?>
-							<div class="my-links">
+							<!--	<div class="my-links">
 
 								<div class="my-links-title">
 									My Profile
 								</div>
-								<ul>
+							 <ul>
 									<?php foreach($app->childen as $key=> $mylinks): ?>
 										<li <?php if($app->request->getPath()==$mylinks->slug || $key=='about-me' && empty($pagename)){ echo 'class="active"';} ?>>
 											<a href="<?php echo $mylinks->slug; ?>">
@@ -35,17 +35,11 @@
 								</ul>
 
 							</div>
-						<?php endif; ?>
+						<?php endif; ?>  -->
 
 						<div class="about-me" id="about-me">
 
-							<?php if(isset($app->currentuser->toplinks['send-message'])): ?>
-							<div class="message-box">
-								<a href="<?php echo $app->currentuser->url; ?>/send-message" class="btn send waves-effect waves-light">
-									Send Message
-								</a>
-							</div>
-							<?php endif; ?>
+
 
 							<ul class="collection my-info">
 								<?php if($app->currentuser->status==NULL): ?>
@@ -74,12 +68,20 @@
 
 								<?php endif; ?>
 
-								<div class="gray-box">
-									<div class="title">My Info</div>
-								</div>
-
 								<?php include(APP_PATH.'includes/shared-pages/pages-sidebar.php'); ?>
 
+								<?php //if(isset($app->currentuser->toplinks['send-message'])): ?>
+								<div class="row">
+									<div class="col s6 m6 l6 right-align">
+											<a href="<?php echo $app->currentuser->url?>"	class="btn">View Details</a>
+									</div>
+									<div class="col s6 m6 l6">
+											<a href="<?php echo $app->currentuser->url; ?>/send-message" class="btn send waves-effect waves-light">
+												Send Message
+											</a>
+								</div>
+								</div>
+								<?php //endif; ?>
 
 							</ul>
 
@@ -139,13 +141,48 @@
 						<div class="tutor-info left">
 
 							<?php
-								$page = APP_PATH.'includes/shared-pages/pages-'.$app->pagename.'.php';
-								if(file_exists($page)){
-									include($page);
+
+
+								if(isset($app->pagename) && $app->pagename == 'send-message'){
+
+									$page = APP_PATH.'includes/shared-pages/pages-'.$app->pagename.'.php';
+									if(file_exists($page)){
+										include($page);
+									}
+									else{
+										coder($page);
+									}
 								}
-								else{
-									coder($page);
-								}
+								else {
+
+											$page = APP_PATH.'includes/shared-pages/pages-about-me.php';
+											if(file_exists($page)){
+												include($page);
+											}
+
+
+											$page = APP_PATH.'includes/shared-pages/pages-my-subjects.php';
+											if(file_exists($page)){
+												include($page);
+											}
+											//
+											// $page = APP_PATH.'includes/shared-pages/pages-my-subjects.php';
+											// if(file_exists($page)){
+											// 	include($page);
+											// }
+
+											$page = APP_PATH.'includes/shared-pages/pages-i-need-help-with.php';
+											if(file_exists($page)){
+												include($page);
+											}
+									}
+								// $page = APP_PATH.'includes/shared-pages/pages-'.$app->pagename.'.php';
+								// if(file_exists($page)){
+								// 	include($page);
+								// }
+								// else{
+								// 	coder($page);
+								//  }
 							?>
 
 						</div>

@@ -105,8 +105,9 @@
 		font-size: 17px;
 	}
 
-	.logo.logo-main{
-		display: none;
+	.logo img{
+		/*display: none;*/
+		height:45px;
 	}
 	sidebar .logo{
 		display: block;

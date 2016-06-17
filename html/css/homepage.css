@@ -83,7 +83,7 @@
 
 }
 .hiw-title{
-	font-family: 'Quicksand';
+	font-family: 'Overlock SC', cursive;
 	font-size: 25px;
 	line-height: normal;
 	background: #000;
@@ -329,7 +329,7 @@ border-radius: 5px;
 }
 
 .how-it-works-slide{
-    font-family: 'Quicksand';
+	font-family: 'Overlock SC', cursive;
 }
 .howie-howitworks-img img{
 	max-height: 160px;

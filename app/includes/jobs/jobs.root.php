@@ -3,7 +3,7 @@
 	function applicantcount($count){
 		if(isset($count)){
 			if($count==0){
-				return 'green';
+				return '';
 			}
 			elseif($count>0 && $count<10){
 				return 'blue';

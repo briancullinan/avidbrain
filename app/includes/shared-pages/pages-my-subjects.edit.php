@@ -99,7 +99,7 @@
 				<input type="hidden" name="mysubjects[id]" value="<?php echo $app->subjectinfo->id; ?>"  />
 				<input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
 				<div>
-					<button class="btn light-green accent-4 waves-effect" type="submit">
+					<button class="btn" type="submit">
 						Save
 					</button>
 				</div>

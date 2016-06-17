@@ -523,7 +523,7 @@ var encodeHtmlEntity = function(str) {
                                 template += '<div class="im-a-tutor-long">{{statement}}</div>';
                             template += '</div>';
                             template += '<div class="col s12 m12 l4">';
-                                template += '<a class="btn btn-block blue" href="{{url}}">View Profile</a>';
+                              //  template += '<a class="btn btn-block blue" href="{{url}}">View Profile</a>';
                                 template += '<a class="btn btn-block" href="{{url}}/send-message">Send Message</a>';
 
                                 template += '<div class="badges"><div class="ajax-badges" id="urlstring--'+index+'" data-url="{{url}}"></div></div>';

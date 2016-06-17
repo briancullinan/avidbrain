@@ -36,9 +36,16 @@
 .collection-item .row .col{
 	padding: 0px;
 }
+
+.collection .collection-item{
+	border:none;
+	background-color:transparent;
+}
+
 .collection{
 	margin: 0px;
 	overflow: visible;
+	border:none;
 }
 .collection a i{
 	color: #5bc000;
@@ -62,13 +69,16 @@
 	line-height: normal;
 	text-transform: none;
 	padding: 10px 15px;
-	background-color: #57ce0d;
+	background-color: #6fe4de;
+	border-radius: 10px;
+	color:#222;
 }
+
 .btn:hover, .btn:active, .btn:focus{
-	background-color: #0dcf2e;
+	background-color:  #84e000;
 }
 .btn.active{
-	background: #2196F3;
+	/*background: #2196F3;*/
 }
 .btn.btn-s{
 	padding: 5px 15px;
@@ -140,6 +150,12 @@
 	width: 100%;
 	margin-bottom: 5px;
 }
+
+.tutorbtn{
+	background-color: #00A72a;
+	color:#fff;
+}
+
 .collapse{
 	margin: 0px;
 	padding: 0px;
@@ -158,6 +174,7 @@
 .collapse .collapsible-header.active span{
 	display: inline-block;
 }
+
 .collapse .collapsible-body{
 	border: none;
 }
@@ -168,7 +185,7 @@
 }
 .collapsible-text{
 	padding: 2rem;
-	background: #efefef;
+	background: #edfdfc;
 }
 .collapsible p{
 	padding: 0px;
@@ -185,7 +202,7 @@
 	z-index: 333;
 }
 .faqs .collapsible-header.active{
-	background: #2196F3;
+	background: #00a72a;
 	color: #fff;
 }
 

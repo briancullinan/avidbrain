@@ -27,11 +27,11 @@
 	padding: 5px;
 }
 .block-list a:hover{
-	background: #efefef;
+	background:transparent;
 }
 .block-list a.active{
-	background: #444;
-	color: #fff;
+	/*background: #0321a4;*/
+	color: #6fe4de;
 }
 .block.active-block{
 	text-align: center;
@@ -246,7 +246,7 @@ main .container-nopadd{
 }
 .tutor-search-form legend{
 	background: #efefef;
-	font-family: 'Quicksand';
+	font-family: 'Overlock SC', cursive;
 	font-weight: 700;
 	font-size: 18px;
 	display: inline-block;

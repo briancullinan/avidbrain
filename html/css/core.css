@@ -4,7 +4,6 @@ html,body{
 	height: 100%;
 	font-family: 'Open Sans', 'Arial', sans-serif;
     -webkit-font-smoothing: subpixel-antialiased;
-	
 	background: #222;
 }
 a{
@@ -14,10 +13,10 @@ h1,h2,h3,h4,h5{
 	margin: 0px;
 	padding: 0px;
 	line-height: normal;
-	font-family: 'Quicksand';
+	font-family: 'Overlock SC', cursive;
 }
 h1{
-	font-size: 3.5rem;
+	font-size: 3.2rem;
 	margin-bottom: 5px;
 	font-weight: 700;
 	font-kerning: normal;
@@ -74,7 +73,7 @@ logo{
 	background: #222;
 	display: block;
 	text-align: center;
-	font-family: 'Quicksand', sans-serif;
+	font-family: 'Overlock SC', cursive;
 	font-size: 40px;
 	color: #fff;
 	font-weight: 300;
@@ -312,7 +311,7 @@ span.badge.new{
 	color: #fff;
 }
 .active-user .navigation-right{
-	
+
 }
 main{
 	float: left;
@@ -329,7 +328,7 @@ main{
 	padding: 10px;
 	margin-bottom: -300px;
 	padding-bottom: 320px;
-	
+
 
 /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f7f7f7+0,ededed+100 */
 background: rgb(247,247,247); /* Old browsers */
@@ -451,7 +450,7 @@ footer ul li a:hover{
 	-moz-box-shadow: 0 0 10px #000;
 	-webkit-box-shadow: 0 0 10px #000;
 	box-shadow: 0 0 10px #ccc;
-	
+
 	width: 100%;
 	z-index: 22;
 	height: 50px;
@@ -460,7 +459,7 @@ footer ul li a:hover{
 	min-width: 200px;
 }
 .dropdown-content li a{
-	font-size: 12px;
+	/*font-size: 12px;*/
 }
 .dropdown-content li.request a{
 	background: #e8e8e8;
@@ -564,7 +563,7 @@ ul.list li:before{
 	position: absolute;
 	left: -15px;
 	top:7px;
-	
+
 	-webkit-border-radius: 300px;
 	-moz-border-radius: 300px;
 	border-radius: 300px;
@@ -677,52 +676,52 @@ ul.list li.active:before{
 }
 
 /* Breadcrumbs */
-.breadcrumb { 
-	list-style: none; 
+.breadcrumb {
+	list-style: none;
 	overflow: hidden;
 	font-size: 12px;
 }
-.breadcrumb li { 
-	float: left; 
+.breadcrumb li {
+	float: left;
 }
 .breadcrumb li a {
 	color: white;
-	text-decoration: none; 
+	text-decoration: none;
 	padding: 5px 0 5px 40px;
 	background: #333;
-	position: relative; 
+	position: relative;
 	display: block;
 	float: left;
 }
-.breadcrumb li a:after { 
-	content: " "; 
-	display: block; 
-	width: 0; 
+.breadcrumb li a:after {
+	content: " ";
+	display: block;
+	width: 0;
 	height: 0;
 	border-top: 50px solid transparent;           /* Go big on the size, and let overflow hide */
 	border-bottom: 50px solid transparent;
 	border-left: 30px solid #333;
 	position: absolute;
 	top: 50%;
-	margin-top: -50px; 
+	margin-top: -50px;
 	left: 100%;
-	z-index: 2; 
-}	
-.breadcrumb li a:before { 
-	content: " "; 
-	display: block; 
-	width: 0; 
+	z-index: 2;
+}
+.breadcrumb li a:before {
+	content: " ";
+	display: block;
+	width: 0;
 	height: 0;
 	border-top: 50px solid transparent;           /* Go big on the size, and let overflow hide */
 	border-bottom: 50px solid transparent;
 	border-left: 30px solid white;
 	position: absolute;
 	top: 50%;
-	margin-top: -50px; 
+	margin-top: -50px;
 	margin-left: 1px;
 	left: 100%;
-	z-index: 1; 
-}	
+	z-index: 1;
+}
 .breadcrumb li:first-child a {
 	padding-left: 10px;
 }

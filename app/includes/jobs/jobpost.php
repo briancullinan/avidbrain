@@ -29,7 +29,7 @@
             <?php if(!empty($jobpost->type)): ?>
             <div>
 
-                I'm looking for <strong class="blue-text"><?php echo online_tutor($jobpost->type); ?> Tutoring</strong>
+                Tutoring Type: <strong><?php echo online_tutor($jobpost->type); ?> </strong>
 
             </div>
             <?php endif; ?>
@@ -42,25 +42,25 @@
 
 
             <div>
-                Applicants: <strong class="applicant-count <?php echo applicantcount($jobpost->applicants); ?>"><?php echo $jobpost->applicants; ?></strong>
+                Applicants: <strong><?php echo $jobpost->applicants; ?></strong>
             </div>
             <div>
                 Price Range:
-                    <strong class="green-text">$<?php echo $jobpost->price_range_low; ?> - $<?php echo $jobpost->price_range_high; ?></strong>
+                    <strong>$<?php echo $jobpost->price_range_low; ?> - $<?php echo $jobpost->price_range_high; ?></strong>
             </div>
 
             <div>
-                Posted By: <?php echo $jobpost->first_name; ?> on <?php echo formatdate($jobpost->date, 'M. jS, Y @ g:i a') ?>
+                Posted on:<strong> <?php echo formatdate($jobpost->date, 'M. jS, Y @ g:i a') ?></strong>
             </div>
 
 
             <?php if(isset($app->user->usertype) && $app->user->usertype=='admin'): ?>
-                <a href="/admin-everything/post-a-job/<?php echo $jobpost->id; ?>" class="btn red">
+                <a href="/admin-everything/post-a-job/<?php echo $jobpost->id; ?>" class="btn">
                     Manage Post
                 </a>
             <?php elseif(!empty($jobpost->open)): ?>
                 <div class="apply-now">
-                    <a href="/jobs/apply/<?php echo $jobpost->id; ?>" class="btn blue">
+                    <a href="/jobs/apply/<?php echo $jobpost->id; ?>" class="btn">
                         Apply Now
                     </a>
                 </div>

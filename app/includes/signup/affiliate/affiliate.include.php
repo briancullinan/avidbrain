@@ -1,91 +1,70 @@
 <div class="new-signup">
 	<div class="row">
 		<div class="col s12 m6 l8">
-
+			<br/>
 			<div><img class="responsive-img" src="/images/affiliate.jpg" /></div>
 			<div class="affiliate-text">
-				<p>Whatever walk of life you are in there are several ways anyone can advertise for MindSpree and make extra cash.</p>
-				<p>Become a MindSpree affiliate and earn $20 for every student or tutor who signs up and completes a session.</p>
-				<p>Earn Part-time Income By Doing What you Love.</p>
+				<p>Whatever your walk of life, anyone can advertise for MindSpree and make extra cash.</p>
+				<p>Become a MindSpree Affiliate and earn $20 for every Student or Tutor you refer that signs up and completes a session.</p>
+				<p>Earn easy part-time income using social networks you already have.</p>
 			</div>
 
-			<div class="row affbens">
+			<div class="blocks">
 
-				<div class="col s12 m12 l4 center-align">
-					<div class="block">
+				<div class="row">
+					<div class=" col s5 m4 l2  center-align">
 
-						<div class="affbens-title">
-							Signup
+							<div class="affiliate-img">
+								<div class="center-align"><img src="/images/icons/signup.png" class="responsive-img" /></div>
+							</div>
+
 						</div>
 
-						<div class="afbens-icon">
-							<div class="affbens-stack">
-								<span class="fa-stack fa-lg">
-									<i class="fa fa-circle fa-stack-2x green-text"></i>
-									<i class="fa fa-pencil fa-stack-1x white-text"></i>
-								</span>
+						<div class=" col s7 m8 l10 affbens-text">
+							<div class="page-title">
+								Join MindSpree
 							</div>
-							<div class="affbens-drop">
-								<i class="fa fa-sort-down"></i>
+								<div class="copy">
+										Signup now and get a unique promo code that you can share, post, blog or do whatever you can think of with.
 							</div>
 						</div>
+				</div>
 
-						<div class="affbens-text">
-							Signup now and get a unique promo code that you can share, post, blog or do whatever you can think of with.
+				<div class="row">
+					<div class=" col s5 m4 l2  center-align">
+
+						<div class="affbens-stack">
+							<div class="affiliate-img"><img src="/images/icons/upload.png" class="responsive-img" /></div>
 						</div>
 
 					</div>
-				</div>
 
-				<div class="col s12 m12 l4 center-align">
-					<div class="block">
-
-						<div class="affbens-title">
-							Download
+					<div class=" col s7 m8 l10 affbens-text">
+						<div class="page-title">
+							Share Online
 						</div>
-
-						<div class="afbens-icon">
-							<div class="affbens-stack">
-								<span class="fa-stack fa-lg">
-									<i class="fa fa-circle fa-stack-2x green-text"></i>
-									<i class="fa fa-download fa-stack-1x white-text"></i>
-								</span>
-							</div>
-							<div class="affbens-drop">
-								<i class="fa fa-sort-down"></i>
-							</div>
-						</div>
-
-						<div class="affbens-text">
+						<div class="copy">
 							Download our Flyers and Start sharing on your social media network or share your promo code with friends and colleagues.
 						</div>
-
 					</div>
 				</div>
 
-				<div class="col s12 m12 l4 center-align">
-					<div class="block">
+				<div class="row">
+					<div class=" col s5 m4 l2  center-align">
 
-						<div class="affbens-title">
-							Make Money
+						<div class="affbens-stack">
+							<div class="affiliate-img"><img src="/images/icons/moneyyoumake.png" class="responsive-img" /></div>
 						</div>
 
-						<div class="afbens-icon">
-							<div class="affbens-stack">
-								<span class="fa-stack fa-lg">
-									<i class="fa fa-circle fa-stack-2x green-text"></i>
-									<i class="fa fa-dollar fa-stack-1x white-text"></i>
-								</span>
-							</div>
-							<div class="affbens-drop">
-								<i class="fa fa-sort-down"></i>
-							</div>
-						</div>
+					</div>
 
-						<div class="affbens-text">
+					<div class=" col s7 m8 l10 affbens-text">
+						<div class="page-title">
+							Enjoy the Benefits
+						</div>
+						<div class="copy">
 							Start making passive income with our easy to use dashboard &amp; keep track of your earnings.
 						</div>
-
 					</div>
 				</div>
 
@@ -123,25 +102,67 @@
 			</div>
 
 			<!---->
-			<h3 class="white-text">Affiliate Benefits</h3>
+			<h3>As an Affiliate You Will...</h3>
 			<ul class="collection collection-fix">
 				<li class="collection-item">
-					Make great money working part-time
+					<div class="row">
+						<div class="col s1 m1 l1">
+							<i class="material-icons  turquoise-text ">play_arrow</i>
+						</div>
+						<div class="col s11 m11 l11">
+								Make great money working part-time.
+						</div>
+					</div>
 				</li>
 				<li class="collection-item">
-					Work from the convenient of your home
+					<div class="row">
+						<div class="col s1 m1 l1">
+							<i class="material-icons  turquoise-text ">play_arrow</i>
+						</div>
+						<div class="col s11 m11 l11">
+					Work from the convenience of your home.
+				</div>
+			</div>
 				</li>
 				<li class="collection-item">
-					Every tutor or student that you get to signup on our site and that have a session, you earn $20!
+					<div class="row">
+						<div class="col s1 m1 l1">
+							<i class="material-icons  turquoise-text ">play_arrow</i>
+						</div>
+						<div class="col s11 m11 l11">
+					For every Tutor or Student that you get to signup on our site and that completes a session, you earn $20!
+				</div>
+			</div>
 				</li>
 				<li class="collection-item">
-					Easy to promote, every student that signups with your PROMO CODE get $30 off their first session
+					<div class="row">
+						<div class="col s1 m1 l1">
+							<i class="material-icons  turquoise-text ">play_arrow</i>
+						</div>
+						<div class="col s11 m11 l11">
+					Great Promotions! Every Student that signups with your PROMO CODE get $30 off their first session.
+				</div>
+			</div>
 				</li>
 				<li class="collection-item">
-					Every tutors that signups up with your PROMO CODE starts at 70% take-home rate. Highest in the Industry
+					<div class="row">
+						<div class="col s1 m1 l1">
+							<i class="material-icons  turquoise-text ">play_arrow</i>
+						</div>
+						<div class="col s11 m11 l11">
+					Every Tutor that signups up with your PROMO CODE starts at the 70% take-home rate. Highest percentage in the industry!
+				</div>
+			</div>
 				</li>
 				<li class="collection-item">
-					It is free for students and tutors to signup
+					<div class="row">
+						<div class="col s1 m1 l1">
+							<i class="material-icons  turquoise-text ">play_arrow</i>
+						</div>
+						<div class="col s11 m11 l11">
+				 Student and Tutor signup is FREE!
+			 </div>
+		 </div>
 				</li>
 
 		    </ul>
@@ -156,65 +177,5 @@
 
 
 <style type="text/css">
-.collection-fix{
-	float: left;
-	width: 100%;
-}
-.affbens-title{
 
-}
-.affbens-title{
-	font-family: 'Quicksand';
-	font-weight: 400;
-	font-size: 30px;
-	margin-bottom: 10px;
-}
-.affbens-stack{
-	font-size: 30px;
-	position: relative;
-	z-index: 11;
-}
-.affbens-drop{
-	font-size: 75px;
-	margin-top: -77px;
-	color: #efefef;
-	position: relative;
-	z-index: 10;
-	margin-bottom: -10px;
-}
-.affbens-text{
-	font-size: 13px;
-}
-.new-signup .affbens .block{
-	min-height: 270px;
-}
-#affsignup{
-	padding: 0px;
-}
-.block.affiliate-block{
-
-	min-height: inherit;
-}
-.affiliate-text{
-	color: #fff;
-    font-size: 20px;
-    text-shadow: 2px 2px 5px #000;
-}
-.submit-affiliate{
-	margin: 0px;
-}
-.mainaffiliate main{
-	background-image: url('/images/subs/affiliate.jpg');
-
-	background-size: cover;
-    /*background-repeat: repeat-x;
-    background-position: top left;
-    background-attachment: scroll;*/
-}
-.mainaffiliate h1{
-	color: #fff;
-	font-size: 50px;
-    padding: 0;
-    text-shadow: 2px 2px 5px #000;
-}
 </style>

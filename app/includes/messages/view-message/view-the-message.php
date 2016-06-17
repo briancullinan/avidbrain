@@ -36,57 +36,7 @@
 
 
 
-            <?php if($app->message->to_user==$app->user->email): ?>
-                <div class="form-block">
-                    <form method="post" class="form-post button-form-switch" action="<?php echo $app->request->getPath(); ?>">
 
-                        <?php if($app->message->location=='trash'): ?>
-                        <button class="btn red darken-2 btn-s btn-block" data-name="inboxaction[value]" data-value="un-delete">
-                            <i class="fa fa-trash"></i> Un-Delete
-                        </button>
-                        <?php else: ?>
-
-                        <a class="btn btn-s btn-block" href="/messages/view-message/<?php echo $id; ?>/reply">
-                            <i class="fa fa-reply"></i> Reply
-                        </a>
-
-                        <button class="btn red btn-s btn-block" data-name="inboxaction[value]" data-value="delete">
-                            <i class="fa fa-trash"></i> Delete
-                        </button>
-                        <?php endif; ?>
-
-                        <?php if($app->message->location!='trash'): ?>
-                        <button class="btn grey btn-s btn-block" data-name="inboxaction[value]" data-value="markunread">
-                            <i class="fa fa-check"></i> Mark As Un-Read
-                        </button>
-                        <?php endif; ?>
-
-
-                        <?php if(isset($app->message->status__flagged)): ?>
-                        <button class="btn blue darken-2 btn-s btn-block" data-name="inboxaction[value]" data-value="un-flag">
-                            <i class="fa fa-flag"></i> Un-Flag Spam
-                        </button>
-                        <?php else: ?>
-                        <button class="btn blue btn-s btn-block" data-name="inboxaction[value]" data-value="flag">
-                            <i class="fa fa-flag"></i> Flag as Spam
-                        </button>
-                        <?php endif; ?>
-
-                        <?php if(isset($app->message->status__starred)): ?>
-                        <button class="btn orange darken-2 btn-s btn-block" data-name="inboxaction[value]" data-value="un-star">
-                            <i class="fa fa-star"></i> Un-Star
-                        </button>
-                        <?php else: ?>
-                        <button class="btn orange btn-s btn-block" data-name="inboxaction[value]" data-value="star">
-                            <i class="fa fa-star"></i> Star
-                        </button>
-                        <?php endif; ?>
-
-                        <input type="hidden" name="inboxaction[target]" value="inboxaction"  />
-                        <input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
-                    </form>
-                </div>
-            <?php endif; ?>
 
     	</div>
     	<div class="col s12 m9 l9">
@@ -96,6 +46,61 @@
 				<?php echo nl2br($app->message->message); ?>
 			</div>
     	</div>
+      <?php if($app->message->to_user==$app->user->email): ?>
+          <div class="form-block message-buttons">
+              <form method="post" class="form-post button-form-switch" action="<?php echo $app->request->getPath(); ?>">
+                  <ul class="">
+                  <?php if($app->message->location=='trash'): ?>
+                  <!-- <button class="btn red darken-2 btn-s btn-block" data-name="inboxaction[value]" data-value="un-delete">
+                      <i class="fa fa-trash"></i> Un-Delete
+                  </button> -->
+                  <?php else: ?>
+                  <li>
+                    <a class="btn btn-s btn-block" href="/messages/view-message/<?php echo $id; ?>/reply">
+                      <i class="fa fa-reply"></i> Reply
+                    </a>
+                  <li>
+                  <li>
+                    <button class="btn btn-s btn-block" data-name="inboxaction[value]" data-value="delete">
+                      <i class="fa fa-trash"></i> Delete
+                    </button>
+                </li>
+                  <?php endif; ?>
+
+                  <?php if($app->message->location!='trash'): ?>
+                  <!-- <button class="btn grey btn-s btn-block" data-name="inboxaction[value]" data-value="markunread">
+                      <i class="fa fa-check"></i> Mark As Un-Read
+                  </button> -->
+                  <?php endif; ?>
+
+
+                  <?php if(isset($app->message->status__flagged)): ?>
+                  <!-- <button class="btn blue darken-2 btn-s btn-block" data-name="inboxaction[value]" data-value="un-flag">
+                      <i class="fa fa-flag"></i> Un-Flag Spam
+                  </button> -->
+                  <?php else: ?>
+                  <!-- <button class="btn blue btn-s btn-block" data-name="inboxaction[value]" data-value="flag">
+                      <i class="fa fa-flag"></i> Flag as Spam
+                  </button> -->
+                  <?php endif; ?>
+
+                <li>
+                  <?php if(isset($app->message->status__starred)): ?>
+                  <button class="btn darken-2 btn-s btn-block" data-name="inboxaction[value]" data-value="un-star">
+                      <i class="fa fa-star"></i> Un-Star
+                  </button>
+                  <?php else: ?>
+                  <button class="btn btn-s btn-block" data-name="inboxaction[value]" data-value="star">
+                      <i class="fa fa-star"></i> Star
+                  </button>
+                  <?php endif; ?>
+                </li>
+                  <input type="hidden" name="inboxaction[target]" value="inboxaction"  />
+                  <input type="hidden" name="<?php echo $csrf_key; ?>" value="<?php echo $csrf_token; ?>">
+                </ul>
+              </form>
+          </div>
+      <?php endif; ?>
     </div>
 
 </div>

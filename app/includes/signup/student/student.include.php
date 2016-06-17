@@ -12,7 +12,7 @@
 
 				<div class="row">
 					<div class="col s12 m4 l4">
-						<div class="center-align"><img src="/images/icons/money.png" class="responsive-img" /></div>
+						<div class="center-align"><img src="/images/icons/pricing.png" class="responsive-img" /></div>
 					</div>
 					<div class="col s12 m8 l8">
 						<div class="page-title">
@@ -26,7 +26,7 @@
 
 					<div class="row">
 						<div class="col s12 m4 l4">
-							<div class="center-align"><img src="/images/icons/convenient.png" class="responsive-img" /></div>
+							<div class="center-align"><img src="/images/icons/calendar.png" class="responsive-img" /></div>
 						</div>
 						<div class="col s12 m8 l8">
 							<div class="page-title">
@@ -40,7 +40,7 @@
 
 				<div class="row">
 					<div class="col s12 m4 l4">
-						<div class="center-align"><img src="/images/icons/knowledge.png" class="responsive-img" /></div>
+						<div class="center-align"><img src="/images/icons/tutors.png" class="responsive-img" /></div>
 					</div>
 					<div class="col s12 m8 l8">
 						<div class="page-title">
@@ -165,95 +165,95 @@
 
 			</div>
 
-			<h3>Student Benefits</h3>
+			<h3>As a Student You Will...</h3>
 
 			<ul class="collection">
 				<li class="collection-item">
 					<div class="row">
-						<div class="col s2 m2 l2">
-							<i class="fa fa-search light-green-text accent-2-text"></i>
+						<div class="col s1 m1 l1">
+							<i class="material-icons  turquoise-text ">play_arrow</i>
 						</div>
-						<div class="col s10 m10 l10">
+						<div class="col s11 m11 l11">
 							Choose a tutor that works for you
 						</div>
 					</div>
 				</li>
 				<li class="collection-item">
 					<div class="row">
-						<div class="col s2 m2 l2">
-							<i class="fa fa-calendar-o  light-green-text accent-2-text"></i>
+						<div class="col s1 m1 l1">
+							<i class="material-icons  turquoise-text ">play_arrow</i>
 						</div>
-						<div class="col s10 m10 l10">
+						<div class="col s11 m11 l11">
 							Choose your schedule
 						</div>
 					</div>
 				</li>
 				<li class="collection-item">
 					<div class="row">
-						<div class="col s2 m2 l2">
-							<i class="fa fa-wifi light-green-text accent-2-text"></i>
+						<div class="col s1 m1 l1">
+							<i class="material-icons  turquoise-text ">play_arrow</i>
 						</div>
-						<div class="col s10 m10 l10">
+						<div class="col s11 m11 l11">
 							Be tutored online or in person
 						</div>
 					</div>
 				</li>
 				<li class="collection-item">
 					<div class="row">
-						<div class="col s2 m2 l2">
-							<i class="fa fa-exchange  light-green-text accent-2-text"></i>
+						<div class="col s1 m1 l1">
+							<i class="material-icons  turquoise-text ">play_arrow</i>
 						</div>
-						<div class="col s10 m10 l10">
+						<div class="col s11 m11 l11">
 							Network with other students
 						</div>
 					</div>
 				</li>
 				<li class="collection-item">
 					<div class="row">
-						<div class="col s2 m2 l2">
-							<i class="fa fa-check light-green-text accent-2-text"></i>
+						<div class="col s1 m1 l1">
+							<i class="material-icons  turquoise-text ">play_arrow</i>
 						</div>
-						<div class="col s10 m10 l10">
-							No long term contracts
+						<div class="col s11 m11 l11">
+						Have no long term contracts
 						</div>
 					</div>
 				</li>
 				<li class="collection-item">
 					<div class="row">
-						<div class="col s2 m2 l2">
-							<i class="fa fa-globe light-green-text accent-2-text"></i>
+						<div class="col s1 m1 l1">
+							<i class="material-icons  turquoise-text ">play_arrow</i>
 						</div>
-						<div class="col s10 m10 l10">
+						<div class="col s11 m11 l11">
 							Tutors are available nationwide
 						</div>
 					</div>
 				</li>
 				<li class="collection-item">
 					<div class="row">
-						<div class="col s2 m2 l2">
-							<i class="fa fa-dollar light-green-text accent-2-text"></i>
+						<div class="col s1 m1 l1">
+							<i class="material-icons  turquoise-text ">play_arrow</i>
 						</div>
-						<div class="col s10 m10 l10">
+						<div class="col s11 m11 l11">
 							No sign up cost
 						</div>
 					</div>
 				</li>
 				<li class="collection-item">
 					<div class="row">
-						<div class="col s2 m2 l2">
-							<i class="fa fa-user light-green-text accent-2-text"></i>
+						<div class="col s1 m1 l1">
+							<i class="material-icons  turquoise-text ">play_arrow</i>
 						</div>
-						<div class="col s10 m10 l10">
+						<div class="col s11 m11 l11">
 							Tutors are interviewed and background checked
 						</div>
 					</div>
 				</li>
 				<li class="collection-item">
 					<div class="row">
-						<div class="col s2 m2 l2">
-							<i class="fa fa-thumbs-up  light-green-text accent-2-text"></i>
+						<div class="col s1 m1 l1">
+							<i class="material-icons  turquoise-text ">play_arrow</i>
 						</div>
-						<div class="col s10 m10 l10">
+						<div class="col s11 m11 l11">
 							First hour guaranteed*
 						</div>
 					</div>

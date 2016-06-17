@@ -42,7 +42,9 @@
 		</div>
 		<div class="col s12 m12 l8">
 			<?php if(isset($searchResults->short_description_verified)): ?>
-				<div class="short-description"><?php echo $searchResults->short_description_verified; ?></div>
+				<div class="short-description">
+					<?php echo $searchResults->short_description_verified; ?>
+				</div>
 			<?php endif; ?>
 			<?php if(isset($searchResults->personal_statement_verified)): ?>
 				<div class="personal-statement"><?php echo truncate($searchResults->personal_statement_verified,300); ?></div>

@@ -1,159 +1,151 @@
-<div class="box">
 
-	<div class="title">
-		Create a Free Profile
-	</div>
+		<div class="box">
 
-	<div class="description">
-		It’s easy and FREE to sign up!
-	</div>
 
-	<ul class="collapsible collapse" data-collapsible="expandable">
-		<li>
-			<div class="collapsible-header blue-text"> <span class="fa fa-chevron-right"></span> Learn More </div>
-			<div class="collapsible-body">
-
-				<div class="title sub-title">
-					Free to Signup
+			<div class="row row-fix">
+				<div class="col s12 m4 l4 center-align ">
+					<img class="responsive-img" src="/images/how-it-works/whytutor.png">
 				</div>
-				<p>We believe that education should be affordable to everyone and we don’t want our students to incur any additional cost, thus students are encouraged to sign up on our site and connect with tutors and other students to get the help they need.</p>
+				<div class="col s12 m8 l8">
+					<div class="title">
+						Why Tutoring?					</div>
 
-				<div class="title sub-title">
-					Great way to connect & Collaborate
+						<div class="description">
+						<div>In today’s world, students can benefit from tutoring in many ways:</div>
+						<ul>
+							<li>Tutoring provides personalized, one-on-one attention.</li>
+							<li>Tutoring creates extra study time (focused and on-task).</li>
+							<li>Tutoring provides opportunities for advancement.</li>
+						</ul>
+					</div>
 				</div>
-				<p>What makes MindSpree unique is that it’s a site for students to connect to great tutors and other students. Students are encouraged to connect to classmates who may be on our site or other students around the country undergoing the same issues on their homework and studies. It is a great place for students to connect with other like-minded students to share, collaborate and learn. </p>
 
 			</div>
-		</li>
-	</ul>
 
-</div>
 
-<div class="box">
 
-	<div class="title">
-		Discover Amazing Tutors
-	</div>
+			<ul class="collapsible collapse" data-collapsible="expandable">
+				<li class="">
+					<div class="collapsible-header blue-text"> <span class="fa fa-chevron-right"></span> Learn More </div>
+					<div class="collapsible-body sub-copy" style="display: none;">
 
-	<div class="description">
-		MindSpree makes it easy to search for a tutor. Students can post a job, such as, “I need help in high-school algebra.” Students can search for a tutor by using our search feature or if they have more specific requirements, check out our advanced search features. After searching and sorting based on price, location, or reviews, students can connect and communicate directly with the tutor of their choice. Lastly, if students can’t find what they are looking for they are always encouraged to contact our support staff to put in a special search request and we would be happy to find a tutor that matches their needs.
-	</div>
+						<h3>Tutoring provides personalized, one-on-one attention.</h3>
+						<p>In today's schools, the majority of teachers are because they enjoy helping students learn. However, teachers are limited by time and resources in regards to how much time they can spend giving attention to individual students. Teachers must show a strong balance between answering individual questions and focusing on the group as a whole. Because of this, your student might not be receiving the individual attention they need. With one-on-one tutoring, the tutor is dedicated 100% to your child's specific needs. Tutors are able to tailor sessions to best be able to help your student with his or her individual goals and challenges. </p>
 
-	<ul class="collapsible collapse" data-collapsible="expandable">
-		<li>
-			<div class="collapsible-header blue-text"> <span class="fa fa-chevron-right"></span> Learn More </div>
-			<div class="collapsible-body">
 
-				<div class="title sub-title">
-					Tools that help you search
+						<h3>Tutoring creates extra study time (focused and on-task).&nbsp;</h3>
+						<p>Another reason tutoring works is that it gives the student a set day or days each week to dedicate extra time to his or her schoolwork. </p>
+
+
+						<h3>Tutoring provides opportunities for advancement.</h3>
+						<p>As globalization increases, it is of the upmost importance that students gain a competitive ad. Some students feel they are already excelling in their classes, yet they want more of a competitive edge. A tutor can help with this.</p>
+					</div>
+				</li>
+			</ul>
+
+
+		</div>
+
+		<div class="box">
+
+
+			<div class="row row-fix">
+				<div class="col s12 m4 l4 center-align ">
+					<img class="responsive-img" src="/images/how-it-works/tutorprofile.png">
 				</div>
-				<p>
-					We have search features where students can simply find the tutor that meets all of their criteria.
-				</p>
+					<div class="col s12 m8 l8">
+							<div class="title">
+							Search Tutor Profiles					</div>
 
-				<div class="title sub-title">
-					Contacting tutors to schedule a session
-				</div>
-				<p>
-					Our goal is to make it as simple as possible for students to connect to great tutors. Students can message tutors and setup a session face-to-face or online tutoring session.
-				</p>
+										<div class="description">
+						MindSpree students have thousands of tutors available at their fingertips. Through our large supply of tutors, students can be sure to find a tutor that matches both their criteria and price point. Also all tutors are interviewed and background checked, so there is no need to worry about the quality of the tutor or safety. 					</div>
+					</div>
 
 			</div>
-		</li>
-	</ul>
 
-</div>
+			<ul class="collapsible collapse" data-collapsible="expandable">
+				<li>
+					<div class="collapsible-header blue-text"> <span class="fa fa-chevron-right"></span> Learn More </div>
+					<div class="collapsible-body sub-copy">
 
-<div class="box">
+						<h3>Have access to qualified tutors who offer in-person and online tutoring.</h3>
+						<p>At MindSpree you can find tutors who teach in-person, online, or both! This opens up possibilities to be taught by experts around the world. No matter what you are looking for, it can always be found on MindSpree, if not we will help you look for it. </p>
 
-	<div class="title">
-		Schedule a Session
-	</div>
+						<h3>All tutors at MindSpree are interviewed to ensure top quality.</h3>
+						<p>To help insure that our tutors will be effective when working with students, we conduct interviews with every applicant. Through this process we can make careful examinations and only approve tutors we are willing to stand behind.</p>
 
-	<div class="description">
-		Our goal at MindSpree is to make things as simple as possible for students to connect with an expert tutor anytime for face-to-face or online tutoring. Scheduling a session has never been simpler.
-	</div>
+						<h3>All tutors at MindSpree are background checked to ensure safety.</h3>
+						<p>The safety of our students is the number one concern at MindSpree, to insure safety all tutors are background checked before they are allowed to create a profile on our site. Since many other companies do not do this, we feel that this is something that will help MindSpree students rest assured. </p>
+					</div>
+				</li>
+			</ul>
 
-	<ul class="collapsible collapse" data-collapsible="expandable">
-		<li>
-			<div class="collapsible-header blue-text"> <span class="fa fa-chevron-right"></span> Learn More </div>
-			<div class="collapsible-body">
 
-				<div class="title sub-title">
-					Automatic Notifications
+		</div>
+
+		<div class="box">
+
+
+			<div class="row row-fix">
+				<div class="col s12 m4 l4 center-align ">
+					<img class="responsive-img" src="/images/how-it-works/commtutor.png">
 				</div>
-				<p>
-					If there’s a way to automate any process, we are working hard to make it so. This helps all our tutors and students stay connected without the hassles of having to visit our site or constantly messaging their tutors to confirm sessions date, time and location. Students have the option of setting their notification for tutoring session on their profile setting.
-				</p>
+				<div class="col s12 m8 l8">
+					<div class="title">
+						Communicate with tutors					</div>
 
-				<div class="title sub-title">
-					Before your session
+										<div class="description">
+						Once you've found tutors who have met your qualifications, message them on our system to discuss scheduling and any other questions you may have. 					</div>
 				</div>
-				<p>
-					Before any session, we encourage students and tutors to communicate as to location, place, time and what is expected of each user. For students, if they are expected to bring certain learning materials. Both sides are encouraged to come prepared to have a great tutoring session. If MindSpree can assist in any way to make the preparation easier, we’re here to help.
-				</p>
-
-				<div class="title sub-title">
-					During your session
-				</div>
-				<p>
-					Even during a tutoring session, we encourage students to keep a note of what’s covered, how their tutor is doing and to give feedback to their tutor during the session. The goal is to have our students have a great tutoring experience so we encourage students to speak up during the session if their tutor is speaking too fast, too slow or going over irrelevant materials that do not pertain to what they need to cover.
-				</p>
-
-				<div class="title sub-title">
-					After your session
-				</div>
-				<p>
-					After each session, students are encouraged to write a summary of how they think their tutor did during that session. This is a testimonial that would help tutors improve their teaching style as well as make it useful for other students who will decide if they should use this tutor in the future. We believe in open communication and our built-in reviews and testimonials will definitely help both tutors and students.
-				</p>
-
-				<div class="title sub-title">
-					Payment & Confirmation
-				</div>
-				<p>
-					MindSpree handles all the payment processing for all tutoring sessions. If there’s a discrepancy in the billing or fees, we encourage students to first connect with their tutors to get is resolved and if this is not possible to contact our support staff. We want to ensure proper and correct handling of all charges and payments for both tutors and students. Our goal is to have a great tutoring experience so tutors and students will continue to use our services.
-				</p>
 
 			</div>
-		</li>
-	</ul>
 
-</div>
+			<ul class="collapsible collapse" data-collapsible="expandable">
+				<li>
+					<div class="collapsible-header blue-text"> <span class="fa fa-chevron-right"></span> Learn More </div>
+					<div class="collapsible-body sub-copy">
 
-<div class="box">
+						<h3>Review feedback and ratings from past students</h3>
+<p>Students can view all of the past testimonials about a tutor, this helps see what other users thought about the tutor. </p>
 
-	<div class="title">
-		Looking for More Info?
-	</div>
+<h3>Discuss scheduling, learning styles and more to ensure you find the perfect fit.</h3>
+<p>While many sites are against this, we encourage students to communicate with their tutors as much as needed. Through this process, students can get the most out of their tutoring session. </p>
+					</div>
+				</li>
+			</ul>
 
-	<ul class="collapsible collapse" data-collapsible="expandable">
-		<li>
-			<div class="collapsible-header blue-text"> <span class="fa fa-chevron-right"></span> Learn More </div>
-			<div class="collapsible-body">
 
-				<div class="title sub-title">
-					Great Refund Policy
+		</div>
+
+		<div class="box">
+
+
+			<div class="row row-fix">
+				<div class="col s12 m4 l4 center-align">
+					<img class="responsive-img" src="/images/how-it-works/secure.png">
 				</div>
-				<p>
-					Our customer service team will support you in the event you experience a Tutoring issue. If you’re not completely satisfied with your tutoring session, we will refund the cost. Please keep in mind that this only applies to the first hour of session.
-				</p>
+				<div class="col s12 m8 l8">
+					<div class="title">
+						Safe and Secure Payment					</div>
 
-				<div class="title sub-title">
-					Check out our Help Center
-				</div>
-				<p>
-					Visit our Students and Tutors FAQs to learn more about how MindSpree works.
-				</p>
-
-				<div class="title sub-title">
-					Visit our Safety Center
-				</div>
-				<p>
-					Your safety is our number one concern. We ensure that all tutors are interviewed and background checked. At the same time we ensure that all students have payments on files. We also monitor our site for malicious and illegal. We also realize that no matter how good our front-line defense is there will be spammers and scammers who slip through the crack and that is an inherent issue with being an open community. We can only promise we will continue to work to improve and get better at what we set out to achieve, and that is to be the best tutoring site.
-				</p>
+										<div class="description">
+						MindSpree does its best to ensure secure transactions when paying for sessions. To hedge any risk we handle all of our transactions through the third party provider Stripe. 					</div>
+									</div>
 
 			</div>
-		</li>
-	</ul>
 
-</div>
+
+
+			<ul class="collapsible collapse" data-collapsible="expandable">
+				<li>
+					<div class="collapsible-header blue-text"> <span class="fa fa-chevron-right"></span> Learn More </div>
+					<div class="collapsible-body sub-copy">
+
+						<h3>Encryption</h3>
+<p>All card numbers are encrypted on disk with AES-256. Decryption keys are stored on separate machines. None of Stripe's internal servers and daemons are able to obtain plaintext card numbers; instead, they can just request that cards be sent to a service provider on a static whitelist. Stripe's infrastructure for storing, decrypting, and transmitting card numbers runs in separate hosting infrastructure, and doesn't share any credentials with Stripe's primary services (API, website, etc.).</p>
+					</div>
+				</li>
+			</ul>
+
+
+		</div>
