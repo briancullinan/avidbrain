@@ -77,9 +77,9 @@
     else{
 
         // DEBUG
-        define('DEBUG',false);
-        define('MODE','production');
-        define('DOMAIN','https://www.avidbrain.com');
+        define('DEBUG',true);
+        define('MODE','development');
+        define('DOMAIN','https://avidbrain.herokuapp.com');
 
         // STRIPE
         define('STRIPE_SECRET','sk_live_XUObU4RQbEVKsWq8yU5XFjJU');
