@@ -1,5 +1,6 @@
 {
     "require": {
+        "php": "^7.0.0",
         "slim/slim": "~2.0",
         "slim/extras":  "2.*",
         "phpfastcache/phpfastcache": "^3.0",
@@ -14,7 +15,8 @@
         "google/apiclient": "^1.1",
         "abraham/twitteroauth": "^0.5.4",
         "snipe/banbuilder": "dev-master",
-        "filp/whoops": "^2.0"
+        "filp/whoops": "^2.0",
+        "ext-mbstring": "*"
     },
     "require-dev": {
         "heroku/heroku-buildpack-php": "*"
