@@ -15,5 +15,8 @@
         "abraham/twitteroauth": "^0.5.4",
         "snipe/banbuilder": "dev-master",
         "filp/whoops": "^2.0"
+    },
+    "require-dev": {
+        "heroku/heroku-buildpack-php": "*"
     }
 }
