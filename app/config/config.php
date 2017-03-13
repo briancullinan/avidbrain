@@ -86,11 +86,12 @@
         define('STRIPE_PUBLIC','pk_live_QjMUIzGXr1yqTKehZrvwXCsQ');
 
         // mysql://q9cp5qwlxnne7xpn:gmk310ucrvcj6wub@y06qcehxdtkegbeb.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/so8wedpz3faoabrz
+        // mysql://bf02664ec7c581:a32487f6@us-cdbr-iron-east-03.cleardb.net/heroku_39ffb5706bbfdf1?reconnect=true
         if(strpos(SERVERNAME, 'heroku') !== false) {
-            define('HOST','y06qcehxdtkegbeb.cbetxkdyhwsb.us-east-1.rds.amazonaws.com');
-            define('DBUSER','q9cp5qwlxnne7xpn');
-            define('DBPASS','gmk310ucrvcj6wub');
-            define('DBNAME', 'so8wedpz3faoabrz');
+            define('HOST','us-cdbr-iron-east-03.cleardb.net');
+            define('DBUSER','bf02664ec7c581');
+            define('DBPASS','a32487f6');
+            define('DBNAME', 'heroku_39ffb5706bbfdf1');
         }
         else {
             // Database
