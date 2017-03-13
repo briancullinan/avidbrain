@@ -55,7 +55,7 @@
 	try{
 		$conn = \Doctrine\DBAL\DriverManager::getConnection($connectionParams, $config);
 		$conn->setFetchMode(PDO::FETCH_OBJ);
-		$connecteddatabase = $conn->executeQuery("SHOW TABLES FROM " . DBNAME,array())->fetchALL();
+		//$connecteddatabase = $conn->executeQuery("SHOW TABLES FROM avidbrain",array())->fetchALL();
 		$app->connect = $conn;
 		phpFastCache::setup("storage","auto");
 		$app->connect->cache = new phpFastCache();
