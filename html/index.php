@@ -61,6 +61,7 @@
 		$app->connect->cache = new phpFastCache();
 	}
 	catch(Exception $e){
+        error_log($e);
 		include(APP_PATH.'views/whoops.html');
 		exit;
 	}
