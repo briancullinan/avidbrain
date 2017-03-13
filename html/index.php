@@ -3,6 +3,9 @@
 	header('Content-Type: text/html; charset=utf-8');
 	mb_internal_encoding("UTF-8");
 	mb_http_output('UTF-8');
+    ini_set( 'upload_max_filesize', '25M');
+    ini_set( 'post_max_size', '25M');
+
 	ini_set('session.cookie_httponly','on');
 	ini_set('session.use_only_cookies','on');
 	if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']=='on'){

@@ -67,8 +67,6 @@ ServerSignature Off
 
 # limit file uploads to 10mb
 LimitRequestBody 10240000
-php_value upload_max_filesize 25M
-php_value post_max_size 25M
 
 #Set Directory Index
 DirectoryIndex index.php index.html 404.php
