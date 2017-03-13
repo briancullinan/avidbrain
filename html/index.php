@@ -1,4 +1,5 @@
 <?php
+try{
 	#echo 'AvidBrain Under Maintanance. Please Hold On.';exit;
 	header('Content-Type: text/html; charset=utf-8');
 	mb_internal_encoding("UTF-8");
@@ -54,19 +55,12 @@
 	    'charset' => CHARSET,
 	    'driver' => 'pdo_mysql'
 	);
-	try{
 		$conn = \Doctrine\DBAL\DriverManager::getConnection($connectionParams, $config);
 		$conn->setFetchMode(PDO::FETCH_OBJ);
 		//$connecteddatabase = $conn->executeQuery("SHOW TABLES FROM avidbrain",array())->fetchALL();
 		$app->connect = $conn;
 		phpFastCache::setup("storage","auto");
 		$app->connect->cache = new phpFastCache();
-	}
-	catch(Exception $e){
-        error_log($e);
-		include(APP_PATH.'views/whoops.html');
-		exit;
-	}
 
 	$app->enableaffiliates = true;
 	$app->crypter = new Crypter(SALT, MCRYPT_RIJNDAEL_256);
@@ -105,3 +99,9 @@
 	require(APP_PATH.'debug/debugend.php');
 	$app->run();
 	ob_end_flush();
+}
+catch(Exception $e){
+    error_log($e);
+    include(APP_PATH.'views/whoops.html');
+    exit;
+}
