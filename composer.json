@@ -16,8 +16,8 @@
         "abraham/twitteroauth": "^0.5.4",
         "snipe/banbuilder": "dev-master",
         "filp/whoops": "^2.0",
-        "ext-mbstring": "*",
-        "ext-mcrypt" : "*"
+        "mbstring": "*",
+        "mcrypt" : "*"
     },
     "require-dev": {
         "heroku/heroku-buildpack-php": "*"
