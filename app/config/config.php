@@ -77,7 +77,7 @@
     else{
 
         // DEBUG
-        define('DEBUG',true);
+        define('DEBUG',false);
         define('MODE','development');
         define('DOMAIN','https://avidbrain.herokuapp.com');
 
