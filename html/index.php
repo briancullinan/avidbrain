@@ -1,4 +1,10 @@
 <?php
+
+use Doctrine\Common\ClassLoader;
+use \Slim\Extras\Middleware\CSRFNINJA;
+use \Slim\Extras\Middleware\HttpBasicAuth;
+use Intervention\Image\ImageManager;
+
 try{
 	#echo 'AvidBrain Under Maintanance. Please Hold On.';exit;
 	header('Content-Type: text/html; charset=utf-8');
@@ -43,8 +49,6 @@ try{
 		header('Pragma: no-cache');
 	}
 	\Stripe\Stripe::setApiKey(STRIPE_SECRET);
-
-	use Doctrine\Common\ClassLoader;
 	$config = new \Doctrine\DBAL\Configuration();
 	$connectionParams = array(
 	    'dbname' => DBNAME,
@@ -70,9 +74,6 @@ try{
 	$app->sendmessage = new SendMessage($app->connect);
 	$app->twilio = new Services_Twilio(TWILIO_ID, TWILIO_AUTH_TOKEN);
 
-	use \Slim\Extras\Middleware\CSRFNINJA;
-	use \Slim\Extras\Middleware\HttpBasicAuth;
-	use Intervention\Image\ImageManager;
 	$app->imagemanager = new ImageManager(array('driver' => 'imagick'));
 	$app->add(new CSRFNINJA());
 
