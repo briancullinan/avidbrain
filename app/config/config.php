@@ -53,7 +53,7 @@
     define('socialBlog','http://blog.avidbrain.com');
     define('CHECKR_PASS',NULL);
 
-    if(SERVERNAME=='avidbrain.dev'){
+    if(SERVERNAME=='avidbrain.dev' || SERVERNAME=='localhost'){
 
         // DEBUG
         define('DEBUG',true);
@@ -65,9 +65,10 @@
         define('STRIPE_PUBLIC','pk_test_jIcjo9aRNH4Xm8uaWuGZdf7B');
 
         // Database
-        define('HOST','localhost');
+        define('HOST','avidbraindb');
         define('DBUSER','root');
-        define('DBPASS','root');
+        define('DBPASS','avidbrain2017');
+        define('DBNAME','avidbrain');
 
         // CHECKR
         define('CHECKR_USERNAME','490604533e55e6c996bdf6db6c17dcdd8315a1d6');
@@ -84,10 +85,20 @@
         define('STRIPE_SECRET','sk_live_XUObU4RQbEVKsWq8yU5XFjJU');
         define('STRIPE_PUBLIC','pk_live_QjMUIzGXr1yqTKehZrvwXCsQ');
 
-        // Database
-        define('HOST','7b9488aeb86ce5dc0843d7298b2b70b44ddeb574.rackspaceclouddb.com');
-        define('DBUSER','brainiac');
-        define('DBPASS','ipi}nGaN6P4QAEJtxJ3W^Xc%Q9aforDBwnpFk}B');
+        // mysql://q9cp5qwlxnne7xpn:gmk310ucrvcj6wub@y06qcehxdtkegbeb.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/so8wedpz3faoabrz
+        if(strpos(SERVERNAME, 'heroku') !== false) {
+            define('HOST','y06qcehxdtkegbeb.cbetxkdyhwsb.us-east-1.rds.amazonaws.com');
+            define('DBUSER','q9cp5qwlxnne7xpn');
+            define('DBPASS','gmk310ucrvcj6wub');
+            define('DBNAME', 'so8wedpz3faoabrz');
+        }
+        else {
+            // Database
+            define('HOST','7b9488aeb86ce5dc0843d7298b2b70b44ddeb574.rackspaceclouddb.com');
+            define('DBUSER','brainiac');
+            define('DBPASS','ipi}nGaN6P4QAEJtxJ3W^Xc%Q9aforDBwnpFk}B');
+            define('DBNAME', 'avidbrain');
+        }
 
         // CHECKR
         define('CHECKR_USERNAME','5a055e0454d2727daebad2a56ba51aaad0c05031');
