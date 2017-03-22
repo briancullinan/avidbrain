@@ -75,7 +75,7 @@ try{
 	$app->twilio = new Services_Twilio(TWILIO_ID, TWILIO_AUTH_TOKEN);
 
 	$app->imagemanager = new ImageManager(array('driver' => 'imagick'));
-	$app->add(new CSRFNINJA());
+	//$app->add(new CSRFNINJA());
 
 	$app->purechat = true;
 	if(isset($app->user->email)){

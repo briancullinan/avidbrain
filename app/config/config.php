@@ -65,10 +65,14 @@
         define('STRIPE_PUBLIC','pk_test_jIcjo9aRNH4Xm8uaWuGZdf7B');
 
         // Database
-        define('HOST','avidbraindb');
-        define('DBUSER','root');
-        define('DBPASS','avidbrain2017');
-        define('DBNAME','avidbrain');
+        //define('HOST','avidbraindb');
+        //define('DBUSER','root');
+        //define('DBPASS','avidbrain2017');
+        //define('DBNAME','avidbrain');
+        define('HOST','us-cdbr-iron-east-03.cleardb.net');
+        define('DBUSER','bf02664ec7c581');
+        define('DBPASS','a32487f6');
+        define('DBNAME', 'heroku_39ffb5706bbfdf1');
 
         // CHECKR
         define('CHECKR_USERNAME','490604533e55e6c996bdf6db6c17dcdd8315a1d6');
